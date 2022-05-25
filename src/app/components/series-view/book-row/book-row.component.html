@@ -1,0 +1,45 @@
+<div [id]="book.id" *ngIf="parity" class="book-core">
+    <div class="book-cover">
+        <img [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
+    </div>
+    <div class="book-infos">
+        <div class="book-title">{{book.name}}
+            <app-book-badge [book]="book"></app-book-badge>
+        </div>
+        <div class="book-authors">{{tools.getAuthors(book.authorIds) | async}}</div>
+        <div class="book-info" *ngIf="book.tome?.length !== 0">TOME: {{book.tome}}</div>
+        <div class="book-info" *ngIf="book.isbn10?.length !== 0">ISNB10: {{book.isbn10}}</div>
+        <div class="book-info" *ngIf="book.isbn13?.length !== 0">ISNB13: {{book.isbn13}}</div>
+        <div class="book-info">Editeur: {{tools.getPublisher(book.publisherId) | async}}</div>
+        <div class="book-info" *ngIf="book.format?.length !== 0">Format: {{book.format}}</div>
+        <div class="book-info" *ngIf="book.page?.length !== 0">Page: {{book.page}}</div>
+        <div class="book-info" *ngIf="book.year?.length !== 0">Achat: {{book.year}}</div>
+        <div class="book-info" *ngIf="book.ref?.length !== 0">Repère: {{book.ref}}</div>
+        <div class="book-resume">
+            {{book.resume}}
+        </div>
+    </div>
+</div>
+
+<div [id]="book.id" *ngIf="!parity" class="book-core">
+    <div class="book-infos">
+        <div class="book-title">{{book.name}}
+            <app-book-badge [book]="book"></app-book-badge>
+        </div>
+        <div class="book-authors">{{tools.getAuthors(book.authorIds) | async}}</div>
+        <div class="book-info" *ngIf="book.tome?.length !== 0">TOME: {{book.tome}}</div>
+        <div class="book-info" *ngIf="book.isbn10?.length !== 0">ISNB10: {{book.isbn10}}</div>
+        <div class="book-info" *ngIf="book.isbn13?.length !== 0">ISNB13: {{book.isbn13}}</div>
+        <div class="book-info">Editeur: {{tools.getPublisher(book.publisherId) | async}}</div>
+        <div class="book-info" *ngIf="book.format?.length !== 0">Format: {{book.format}}</div>
+        <div class="book-info" *ngIf="book.page?.length !== 0">Page: {{book.page}}</div>
+        <div class="book-info" *ngIf="book.year?.length !== 0">Achat: {{book.year}}</div>
+        <div class="book-info" *ngIf="book.ref?.length !== 0">Repère: {{book.ref}}</div>
+        <div class="book-resume">
+            {{book.resume}}
+        </div>
+    </div>
+    <div class="book-cover">
+        <img [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
+    </div>
+</div>

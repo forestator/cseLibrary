@@ -1,0 +1,43 @@
+<div class="library-menu" id="top">
+    <div class="library-title">
+        <div class="title">
+            <div [class]="tools.adminMode?'admin actif':'admin inactif'" (click)="toggleAdminMode()">
+                <mat-icon>manage_accounts</mat-icon>
+            </div>
+            {{library?.name}}
+        </div>
+        <div class="menu">
+            <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+                <mat-icon>view_headline</mat-icon>
+            </button>
+            <mat-menu #mainMenu="matMenu">
+                <button
+                    mat-menu-item 
+                    *ngFor="let item of menu" 
+                    (click)="selectView(VIEW_MODES.BY_LIBRARY, item.id)">
+                    <span class="popup-menu-label">{{item.name}}</span>
+                </button>
+                <button
+                    *ngIf="tools.adminMode"
+                    mat-menu-item 
+                    (click)="selectView(VIEW_MODES.ADMIN, undefined)">
+                    <span class="popup-menu-label"><mat-icon>settings</mat-icon>Administration</span>
+                </button>
+            </mat-menu>
+        </div>
+    </div>
+    <div class="category-menu">
+        <div (click)="selectView(VIEW_MODES.NEW, undefined)">
+            Nouveautés
+        </div>
+        <div *ngIf="library?.by === 'BY_SERIES'" (click)="selectView(VIEW_MODES.BY_AUTHOR, undefined)">
+            Par auteur
+        </div>
+        <div *ngFor='let category of library?.categories' (click)="selectView(VIEW_MODES.BY_CATEGORY, category?.id)">
+            {{category?.name}}
+        </div>
+        <!-- <div class="admin" (click)="selectView(VIEW_MODES.ADMIN, undefined)">
+            <mat-icon>settings</mat-icon>
+        </div> -->
+    </div>
+</div>

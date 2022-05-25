@@ -1,0 +1,31 @@
+<div *ngIf="series && library && category" class="core-page fadein">
+    <div class="core-header">
+        <div class="core-title">
+            <div class="secondary" (click)="selectLibrary(library.id)">{{library.name}}</div>
+            <mat-icon>navigate_next</mat-icon>
+            <div class="secondary" (click)="selectCategory(category.id)">{{category.name}}</div>
+            <mat-icon>navigate_next</mat-icon>
+            <div class="primary">{{series.name}}</div>
+            <div class="badge">
+                <app-series-badge [series]="series"></app-series-badge>
+            </div>
+            <div class="counter">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
+        </div>
+        <div class="core-resume">
+            {{series.resume}}
+        </div>
+        <div class="books">
+            <div *ngFor="let book of series.books | bookFilter: tools.adminMode" class="book" [title]="book.name">
+                <a [href]="'#'+book.id">
+                    <img class="book-cover" [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
+                </a>
+                <div class="book-badge">
+                    <app-book-badge [book]="book" [display]="'small'"></app-book-badge>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="core-body">
+        <app-book-row *ngFor="let book of series.books | bookFilter: tools.adminMode;let index=index;" [book]="book" [index]="index"></app-book-row>
+    </div>
+</div>

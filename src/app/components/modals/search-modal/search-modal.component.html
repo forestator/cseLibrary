@@ -1,0 +1,53 @@
+<h1 mat-dialog-title id="top-modal">
+    <mat-icon>search</mat-icon>
+    Recherche par {{by}}, {{searchResults.length}} résultat(s)
+</h1>
+<div *ngFor="let result of searchResults; let index=index;" class="search" mat-dialog-content>
+    <div class="search-item">
+        <mat-checkbox class="" [(ngModel)]="result.checked" (click)="select(index)">Selection</mat-checkbox>
+    </div>
+
+    <div class="search-item">
+        <div class="search-label">Titre</div>
+        <div class="search-value">{{result.title}}</div>
+    </div>
+    <div class="search-item">
+        <div class="search-label">Auteurs</div>
+        <div class="search-value">{{result.authors}}</div>
+    </div>
+    <div class="search-item">
+        <div class="search-label">Résumé</div>
+        <div class="search-value">{{result.resume}}</div>
+    </div>
+    <div class="search-item">
+        <div class="search-label">ISBN 10</div>
+        <div class="search-value">{{result.isbn10}}</div>
+    </div>
+    <div class="search-item">
+        <div class="search-label">ISBN 13</div>
+        <div class="search-value">{{result.isbn13}}</div>
+    </div>
+    <div class="search-item">
+        <div class="search-label">Editeur</div>
+        <div class="search-value">{{result.publisher}}</div>
+    </div>
+    <div class="search-item">
+        <div class="search-label">Date de publication</div>
+        <div class="search-value">{{result.publishedDate}}</div>
+    </div>
+    <div class="search-item">
+        <div class="search-label">Nombre de page</div>
+        <div class="search-value">{{result.page}}</div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <a href="#top-modal" class="go-top-link"><mat-icon class="go-top-link">keyboard_arrow_up</mat-icon></a>
+    <button mat-raised-button (click)="cancel()">
+        <mat-icon>cancel</mat-icon>
+        Abandonner
+    </button>
+    <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>
+        <mat-icon>check</mat-icon>
+        Enregistrer
+    </button>
+</div>

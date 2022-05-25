@@ -1,0 +1,148 @@
+<h1 *ngIf="!isNew" mat-dialog-title>
+    <mat-icon>edit</mat-icon>
+    Edition du livre : {{title.value}}
+</h1>
+<h1 *ngIf="isNew" mat-dialog-title>
+    <mat-icon>add</mat-icon>
+    Ajout d'un nouveau livre
+</h1>
+<div mat-dialog-content>
+    <div class="book-edit">
+        <div class="book-cover">
+            <img [src]="dataService.selectedLib?.library?.path+'/'+cover.value">
+        </div>
+        <div class="book-form">
+            <form>
+                <mat-form-field class="full-width" appearance="fill">
+                    <mat-label for="title">Titre</mat-label>
+                    <input id="title" type="text" matInput placeholder="Titre" [formControl]="title">
+                </mat-form-field>
+
+                <mat-form-field class="full-width resume" appearance="fill">
+                    <mat-label for="resume">Résumé</mat-label>
+                    <textarea id="resume" type="text" matInput placeholder="Résumé" [formControl]="resume"></textarea>
+                </mat-form-field>
+
+                <div class="pair">
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="author">Auteur</mat-label>
+                            <mat-select [formControl]="author">
+                                <mat-option *ngFor="let option of dataService.selectedLib?.authors" [value]="option">
+                                    {{option.firstName}} {{option.lastName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="status">Status</mat-label>
+                            <mat-select [formControl]="status">
+                                <mat-option *ngFor="let option of allStatus" [value]="option">
+                                    {{option}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="pair">
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="tome" >Tome</mat-label>
+                            <input id="tome" matInput placeholder="Tome" [formControl]="tome">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="ref">Référence</mat-label>
+                            <input id="ref" matInput placeholder="Référence" [formControl]="ref">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="pair">
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="isbn10">ISBN10</mat-label>
+                            <input id="isbn10" matInput placeholder="Isbn10" [formControl]="isbn10">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="isbn13">ISBN13</mat-label>
+                            <input id="isbn13" matInput placeholder="Isbn13" [formControl]="isbn13">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="pair">
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="publisher">Editeur</mat-label>
+                            <mat-select id="publisher" [formControl]="publisher">
+                                <mat-option *ngFor="let option of dataService.selectedLib?.publishers" [value]="option">
+                                    {{option.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="date">Date de publication</mat-label>
+                            <input id="date" matInput placeholder="Date de publication" [formControl]="publishedDate">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="pair">
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="format">Format</mat-label>
+                            <input id="format" matInput placeholder="Format" [formControl]="format">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="page">Nombre de page</mat-label>
+                            <input id="page" matInput placeholder="Nombre de page" [formControl]="page">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="pair">
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="cover">Couverture</mat-label>
+                            <input id="cover" matInput placeholder="Couverture" [formControl]="cover">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field class="full-width" appearance="fill">
+                            <mat-label for="year">Année d'achat</mat-label>
+                            <input id="year" matInput placeholder="Nombre de page" [formControl]="year">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="accent" (click)="find()">
+        <mat-icon>image</mat-icon>
+        Choisir
+    </button>
+    <button mat-raised-button color="accent" (click)="find()">
+        <mat-icon>search</mat-icon>
+        Chercher
+    </button>
+    <button mat-raised-button (click)="cancel()">
+        <mat-icon>cancel</mat-icon>
+        Abandonner
+    </button>
+    <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>
+        <mat-icon>check</mat-icon>
+        Enregistrer
+    </button>
+</div>

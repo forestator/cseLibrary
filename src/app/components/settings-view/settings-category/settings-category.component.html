@@ -1,0 +1,51 @@
+<mat-expansion-panel [expanded]="true">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <div class="settings-header">
+                <div class="designation">
+                    #{{index+1}}: {{category.name}}
+                </div>
+                <div class="controls">
+                    <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
+                    <mat-icon class="ctrl-delete" (click)="delete($event)">delete</mat-icon>
+                    <mat-icon *ngIf="category.by==='BY_SERIES'" class="ctrl-add" (click)="add($event)" title="Ajouter une nouvelle serie">add</mat-icon>
+                    <mat-icon *ngIf="category.by==='BY_AUTHOR'" class="ctrl-add" (click)="add($event)" title="Ajouter un nouvel auteur">person_add_alt_1</mat-icon>
+                </div>
+            </div>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="description">
+        <div class="field">
+            <div class="label">Nom</div>
+            <div class="content">{{category.name}}</div>
+        </div>
+        <div *ngIf="category.resume.length>0" class="field">
+            <div class="label">Résumé</div>
+            <div class="content">{{category.resume}}</div>
+        </div>
+        <div class="field">
+            <div class="label">Visuel</div>
+            <div class="content">{{category.bg}}</div>
+        </div>
+        <div class="field">
+            <div class="label">Prefix</div>
+            <div class="content">{{category.prefix}}</div>
+        </div>
+    </div>
+    <ng-container *ngIf="category.by === 'BY_SERIES'">    
+        <app-settings-series 
+            *ngFor="let serie of category.series; let si=index;"
+            (sendDelete)="deleteSeries($event)"
+            [series]="serie"
+            [index]="(index+1) + '_' + (si+1)">
+        </app-settings-series>   
+    </ng-container> 
+    <ng-container *ngIf="category.by === 'BY_AUTHOR'">    
+        <app-settings-author 
+            *ngFor="let author of category.authors; let ai=index;"
+            (sendDelete)="deleteAuthor($event)"
+            [author]="author"
+            [index]="(index+1) + '_' + (ai+1)">
+        </app-settings-author>   
+    </ng-container> 
+</mat-expansion-panel>

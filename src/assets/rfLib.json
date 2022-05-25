@@ -1,0 +1,37 @@
+{
+    "authors": [],
+    "publishers": [],
+    "library": {
+        "id": "1ecea9ac-0484-4b01-bea2-c2fa33588cfdyy",
+        "name": "Roman français",
+        "prefix": "RF",
+        "path": "assets/covers/rf",
+        "resume": "",
+        "categories": [
+            {
+                "id": "8ecfa31e-3e40-4c98-a8e5-9a240e6f965fyy",
+                "libraryId": "1ecea9ac-0484-4b01-bea2-c2fa33588cfd",
+                "name": "RF1",
+                "prefix": "RF1",
+                "resume": "",
+                "series": []
+            },
+            {
+                "id": "1d8a93de-4127-42e2-85a4-ff6d0b2b4ed2yy",
+                "libraryId": "1ecea9ac-0484-4b01-bea2-c2fa33588cfd",
+                "name": "RF2",
+                "prefix": "RF2",
+                "resume": "",
+                "series": []
+            },
+            {
+                "id": "a739e777-0548-4930-b485-0b2d4977de5eyy",
+                "libraryId": "1ecea9ac-0484-4b01-bea2-c2fa33588cfd",
+                "name": "RF3",
+                "prefix": "RF3",
+                "resume": "",
+                "series": []
+            }
+        ]
+    }
+}

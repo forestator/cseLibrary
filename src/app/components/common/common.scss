@@ -1,0 +1,121 @@
+$bloc-bg-color: rgb(60, 60, 60);
+$bloc-fg-color: white;
+$small-radius: 5px;
+$small-space: 5px;
+$medium-space: 10px;
+
+.core-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Courier Prime', monospace;
+
+    .core-body{
+        margin: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgba(210,210,210,0.5);
+        color: #808080;
+    }
+
+    .core-header{
+        margin: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: rgba(210,210,210,0.5);
+        color: #808080;
+
+        .core-title{
+            text-transform: uppercase;
+            font-weight: bold;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            vertical-align: middle;
+            height: 40px;
+            line-height: 40px;
+            div{            
+                &.primary{
+                    color: black;
+                    font-size: x-large;
+                }
+                &.secondary{
+                    color: #808080;
+                    font-size: x-large;
+                    cursor: pointer;
+                    &.secondary:hover{
+                        color: black;
+                    }
+                }
+                &.badge{
+                    margin-left: 10px;
+                }
+                &.counter{
+                    margin-left: 10px;
+                    text-transform: capitalize;
+                }
+            }
+        }
+
+        .core-resume{
+            font-size: large;
+            white-space: pre-wrap;
+            &.category-resume:first-letter {
+                text-transform: uppercase;
+                font-weight: bold;
+                font-size: xx-large;
+            }
+        }
+    }
+}
+
+.bloc-link{
+    background-color: $bloc-bg-color;
+    color: $bloc-fg-color;
+    border-radius: $small-radius;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: $small-space;
+    transition-property: background-color;
+    transition-duration: .5s;
+    transition-timing-function: ease-in;
+    a{
+        text-decoration: none;
+        color: $bloc-fg-color;
+    }
+    &.bloc-selected{
+        background-color: $bloc-fg-color;
+        color: $bloc-bg-color;
+        box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    
+        a{
+            color: $bloc-bg-color;
+        }
+    }
+}
+.bloc-link:hover{
+    background-color: $bloc-fg-color;
+    color: $bloc-bg-color;
+    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+
+    a{
+        color: $bloc-bg-color;
+    }
+}
+
+.fadein{
+    animation: fadein 2s;
+}
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

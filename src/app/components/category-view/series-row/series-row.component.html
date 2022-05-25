@@ -1,0 +1,61 @@
+<mat-accordion *ngIf="series">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <app-series-badge [series]="series"></app-series-badge>
+                <span class="series-title">{{series.name}}</span>
+                <span class="series-info">{{(series.books | bookFilter: tools.adminMode).length}} livres</span>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        {{series.resume}}
+
+        <table *ngIf="series.books" mat-table [dataSource]="series.books | bookFilter: tools.adminMode" class="mat-elevation-z8 books">
+
+
+            <ng-container matColumnDef="cover">
+                <th mat-header-cell *matHeaderCellDef class="mat-cell-cover"> Couverture </th>
+                <td mat-cell *matCellDef="let book">
+                    <img class="cover" [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
+                </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef> Titre </th>
+                <td mat-cell *matCellDef="let book"> {{book.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="authors">
+                <th mat-header-cell *matHeaderCellDef class="mat-cell-authors"> Auteur(s) </th>
+                <td mat-cell *matCellDef="let book"> {{tools.getAuthors(book.authorIds) | async}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="tome">
+                <th mat-header-cell *matHeaderCellDef> Tome </th>
+                <td mat-cell *matCellDef="let book"> {{book.tome}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="isbn">
+                <th mat-header-cell *matHeaderCellDef class="mat-cell-isbn"> ISBN </th>
+                <td mat-cell *matCellDef="let book"> {{book.isbn10}}<br/>{{book.isbn13}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="page">
+                <th mat-header-cell *matHeaderCellDef class="mat-cell-format"> Format </th>
+                <td mat-cell *matCellDef="let book"> {{book.page}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef class="mat-cell-status"> Status </th>
+                <td mat-cell *matCellDef="let book"> 
+                    <app-book-badge [book]="book"></app-book-badge>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="bookColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: bookColumns;"></tr>
+        </table>
+
+
+    </mat-expansion-panel>
+</mat-accordion>
