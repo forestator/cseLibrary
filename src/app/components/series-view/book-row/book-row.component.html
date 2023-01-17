@@ -1,6 +1,7 @@
 <div [id]="book.id" *ngIf="parity" class="book-core">
     <div class="book-cover">
         <img [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
+        <div *ngIf="badge" class="badge">{{badge}}</div>
     </div>
     <div class="book-infos">
         <div class="book-title">{{book.name}}
@@ -41,5 +42,6 @@
     </div>
     <div class="book-cover">
         <img [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
+        <div *ngIf="badge" class="badge">{{badge}}</div>
     </div>
 </div>
