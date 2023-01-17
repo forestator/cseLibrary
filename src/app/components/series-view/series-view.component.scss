@@ -1,68 +1,6 @@
 @import '../common/common.scss';
 .core-page {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // width: 75%;
-    // margin-left: auto;
-    // margin-right: auto;
-    // font-family: 'Courier Prime', monospace;
-
-    // .series-core{
-    //     margin: 20px;
-    //     padding: 10px;
-    //     border-radius: 10px;
-    //     background-color: rgba(210,210,210,0.5);
-    //     color: #808080;
-    // }
-
     .core-header{
-        // margin: 20px;
-        // padding: 10px;
-        // border-radius: 10px;
-        // background-color: rgba(210,210,210,0.5);
-        // color: #808080;
-
-        // .series-title{
-        //     text-transform: uppercase;
-        //     font-weight: bold;
-        //     div{
-        //         display: inline-block;
-        //         height: 40px;
-        //         vertical-align: middle;
-        //         &.primary{
-        //             color: black;
-        //             vertical-align: middle;
-        //             font-size: x-large;
-        //         }
-        //         &.secondary{
-        //             color: #808080;
-        //             font-size: normal;
-        //             cursor: pointer;
-        //             &.secondary:hover{
-        //                 background-color: darkgrey;
-        //                 color: white;
-        //             }
-        //         }
-        //         &.badge{
-        //             margin-left: 10px;
-        //         }
-        //         &.counter{
-        //             margin-left: 10px;
-        //             text-transform: capitalize;
-        //         }
-        //     }
-        // }
-
-        // .series-resume{
-        //     font-size: large;
-        //     &.series-resume:first-letter {
-        //         text-transform: uppercase;
-        //         font-weight: bold;
-        //         font-size: xx-large;
-        //     }
-        // }
-
         .books{
             display: flex;
             flex-wrap: wrap;

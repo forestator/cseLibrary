@@ -1,59 +1,7 @@
 @import '../common/common.scss';
 
 .core-page {
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // width: 75%;
-    // margin-left: auto;
-    // margin-right: auto;
-    // font-family: 'Courier Prime', monospace;
-
-    // .category-core{
-    //     margin: 20px;
-    //     padding: 10px;
-    //     border-radius: 10px;
-    //     background-color: rgba(210,210,210,0.5);
-    //     color: #808080;
-    // }
-
     .core-header{
-        // margin: 20px;
-        // padding: 10px;
-        // border-radius: 10px;
-        // background-color: rgba(210,210,210,0.5);
-        // color: #808080;
-
-        // .category-title{
-        //     text-transform: uppercase;
-        //     font-weight: bold;
-        //     div{
-        //         display: inline-block;
-        //         height: 40px;
-        //         vertical-align: middle;
-        //         &.primary{
-        //             color: black;
-        //             font-size: x-large;
-        //         }
-        //         &.secondary{
-        //             color: #808080;
-        //             font-size: medium;
-        //         }
-        //         &.counter{
-        //             margin-left: 10px;
-        //             text-transform: capitalize;
-        //         }
-        //     }
-        // }
-
-        // .category-resume{
-        //     font-size: large;
-        //     &.category-resume:first-letter {
-        //         text-transform: uppercase;
-        //         font-weight: bold;
-        //         font-size: xx-large;
-        //     }
-        // }
         .all-series{
             display: flex;
             flex-wrap: wrap;
