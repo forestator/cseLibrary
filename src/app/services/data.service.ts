@@ -4,6 +4,7 @@ import imgLib from '../../assets/imgLib.json';
 import romLib from '../../assets/romLib.json';
 import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
+import boardGame from '../../assets/ludo/boardGameLib.json';
 
 @Injectable({
    providedIn: 'root'
@@ -26,6 +27,7 @@ export class DataService {
       this.allBiblio.push(romLib as Biblio);
       this.allBiblio.push(kidsLib as Biblio);
       this.allBiblio.push(incLib as Biblio);
+      this.allBiblio.push(boardGame as Biblio);
       this.selectedLib = this.allBiblio[0];
       this.log();
    }
@@ -45,7 +47,7 @@ export class DataService {
    //          publishers: lib.publishers,
    //          library: lib.library
    //       };
-         
+
    //       lib.library?.categories?.forEach(c => {
    //          c.series?.forEach(s => {
    //             s.books?.forEach(b => {

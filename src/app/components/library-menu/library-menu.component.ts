@@ -18,7 +18,7 @@ export class LibraryMenuComponent implements OnInit {
     this._library = value;
     //build menu
     this.menu = [];
-    this.newProperty.dataService.allBiblio.forEach(item => {
+    this.newProperty.dataService.allBiblio.forEach((item) => {
       if (item.library?.id !== this.library?.id) {
         this.menu.push({ name: item.library?.name, id: item.library?.id });
       }
@@ -43,7 +43,7 @@ export class LibraryMenuComponent implements OnInit {
     this.tools.adminMode = !this.tools.adminMode;
     console.log('adminMode', this.tools.adminMode);
   }
-  
+
   public selectView(view: ViewMode, id: string | undefined) {
     this.sendView.emit({mode: view, id: id});
   }
