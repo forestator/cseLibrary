@@ -1,6 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Category, Library, SelectorView, ViewBy, ViewMode } from 'src/app/models/author.model';
-import { ToolsService } from 'src/app/services/tools.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Category, Library, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
+import {ToolsService} from 'src/app/services/tools.service';
+import {BoardGameCategory} from '../../models/boardGame.model';
+import {DataService} from '../../services/data.service';
 
 @Component({
   selector: 'app-category-view',
@@ -13,15 +15,21 @@ export class CategoryViewComponent implements OnInit {
   library!: Library | undefined;
 
   private _category!: Category | undefined;
+  public isBoardGameCategory: boolean = false;
   @Input('category')
-  set category(value: Category | undefined){
+  set category(value: Category | undefined) {
     this._category = value;
-    this._category?.series?.forEach(s => {
-      console.log('counters')
-      this.counter += s.books?s.books.length:0;
-    });
+    if (this._category?.id && this._category.id in BoardGameCategory) {
+      this.isBoardGameCategory = true;
+    } else {
+      this._category?.series?.forEach(s => {
+        console.log('counters')
+        this.counter += s.books ? s.books.length : 0;
+      });
+    }
   }
-  get category(): Category | undefined{
+
+  get category(): Category | undefined {
     return this._category;
   }
 
@@ -32,7 +40,8 @@ export class CategoryViewComponent implements OnInit {
 
   ALPHABET: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-  constructor(public tools: ToolsService) { }
+  constructor(public tools: ToolsService, public dataService: DataService) {
+  }
 
   ngOnInit(): void {
 
@@ -43,7 +52,7 @@ export class CategoryViewComponent implements OnInit {
       this.sendView.emit({mode: ViewMode.BY_LIBRARY, id: id});
     }
   }
-  
+
   selectSeries(id: string | undefined) {
     if (id) {
       this.sendView.emit({mode: ViewMode.BY_SERIES, id: id});

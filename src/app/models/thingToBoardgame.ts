@@ -1,20 +1,25 @@
 import {BoardGame, Thing} from './boardGame.model';
-
 export class ThingToBoardgame {
   static convertGameDetailsThingToBoardGame(boardGameWithDetails: Thing): BoardGame {
     const elements = boardGameWithDetails.elements;
     return {
-      id: boardGameWithDetails.attributes.id,
+      id: boardGameWithDetails.attributes.id ?? 'not found',
       name: this.getAttributeValue(elements, 'name'),
-      thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail'),
-      fullImage: this.getAttributeFirstElementText(elements, 'image'),
+      thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail') ?? '',
+      fullImage: this.getAttributeFirstElementText(elements, 'image') ?? '',
       description: this.getAttributeFirstElementText(elements, 'description'),
+      // @ts-ignore
       yearPublished: +this.getAttributeValue(elements, 'yearpublished'),
+      // @ts-ignore
       minPlayers: +this.getAttributeValue(elements, 'minplayers'),
+      // @ts-ignore
       maxPlayers: +this.getAttributeValue(elements, 'maxplayers'),
+      // @ts-ignore
       playingTime: +this.getAttributeValue(elements, 'playingtime'),
+      // @ts-ignore
       minAge: +this.getAttributeValue(elements, 'minage'),
       suggestedPlayAge: this.getSuggestedPlayAge(elements),
+      // @ts-ignore
       themes: this.getAllAttributesOfType(elements, 'boardgamecategory')
     };
   }
@@ -35,10 +40,10 @@ export class ThingToBoardgame {
   static getAttributeTopPollResult(elements: Thing[], attribute: string): string | undefined {
     const poll = elements.find(el => el.name === 'poll' && el.attributes.name === attribute);
     let maxResult: string | undefined = undefined;
-    if (+poll?.attributes?.totalvotes > 0) {
+    if (poll?.attributes?.totalvotes && +poll.attributes.totalvotes > 0) {
       let maxNumVote = 0;
       poll.elements[0].elements.forEach(el => {
-        if (+el.attributes.numvotes > maxNumVote) {
+        if (el.attributes.numvotes && +el.attributes.numvotes > maxNumVote) {
           maxNumVote = +el.attributes.numvotes;
           maxResult = el.attributes.value;
         }
@@ -47,7 +52,7 @@ export class ThingToBoardgame {
     return maxResult;
   }
 
-  static getAllAttributesOfType(elements: Thing[], attribute: string): Array<string> {
+  static getAllAttributesOfType(elements: Thing[], attribute: string): Array<string | undefined> {
     return elements.filter(el => el.attributes?.type === attribute).map(el => el.attributes.value);
   }
 }

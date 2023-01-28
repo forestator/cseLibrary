@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
-import { map, mergeMap, Observable, take } from 'rxjs';
-import { Author, Book, BookPath, Category, Library, Publisher, SelectorView, Series, ViewBy, ViewMode } from './models/author.model';
-import { AuthorService } from './services/author.service';
-import * as xml2js from 'xml2js';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PublisherService } from './services/publisher.service';
-import { LibraryService } from './services/library.service';
-import { CategoryService } from './services/category.service';
-import { XmlParserService } from './services/xml-parser.service';
-import { DataService } from './services/data.service';
+import {Component} from '@angular/core';
+import {map, Observable, take} from 'rxjs';
+import {Author, Book, BookPath, Category, Library, SelectorView, Series, ViewBy, ViewMode} from './models/author.model';
+import {AuthorService} from './services/author.service';
+import {PublisherService} from './services/publisher.service';
+import {LibraryService} from './services/library.service';
+import {CategoryService} from './services/category.service';
+import {XmlParserService} from './services/xml-parser.service';
+import {DataService} from './services/data.service';
 
 
 @Component({
@@ -51,7 +49,7 @@ export class AppComponent {
    }
 
    selectView(selectorView: SelectorView) {
-      this.viewMode = selectorView.mode;
+     this.viewMode = selectorView.mode;
       switch (selectorView.mode) {
          case ViewMode.ADMIN:
             this.category = undefined;

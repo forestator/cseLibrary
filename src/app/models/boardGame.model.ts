@@ -11,15 +11,15 @@ export interface Thing {
   type: string;
   name: string;
   attributes: Attributes;
-  elements?: Thing[];
+  elements: Thing[];
   text?: string;
 }
 
 export interface BoardGame {
-  id?: string;
+  id: string;
   name?: string;
-  thumbnail?: string;
-  fullImage?: string;
+  thumbnail: string;
+  fullImage: string;
   description?: string;
   yearPublished?: number;
   minPlayers?: number;
@@ -28,4 +28,8 @@ export interface BoardGame {
   minAge?: number;
   suggestedPlayAge?: number;
   themes?: string[];
+}
+
+export enum BoardGameCategory {
+  DUO = 'DUO'
 }

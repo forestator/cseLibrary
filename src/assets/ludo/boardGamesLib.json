@@ -3,1274 +3,1052 @@
   },
   "jeuxSociete": [
     {
+      "id": "11971",
+      "category": "todo",
       "name": "Kakerlaken Poker",
-      "nbJoueurs": "2 à 6",
-      "age": "8+",
-      "tpsMoyen": "15'",
       "poids": "",
       "ref": ""
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Quizz pays de Rennes",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
       "poids": "",
       "ref": ""
     },
     {
+      "id": "15139",
+      "category":  "todo",
       "name": "RapidCroco",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
       "poids": "",
       "ref": ""
     },
     {
+      "id": "30966",
+      "category":  "todo",
       "name": "Tempête sur l'échiquier",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
       "poids": "",
       "ref": ""
     },
     {
+      "id": "255674",
+      "category":  "todo",
       "name": "Imhotep Le Duel",
-      "nbJoueurs": "2",
-      "age": "10",
-      "tpsMoyen": "30'",
       "poids": "346",
       "ref": "l"
     },
     {
+      "id": "268586",
+      "category":  "todo",
       "name": "6 qui prend",
-      "nbJoueurs": "2-10",
-      "age": "10",
-      "tpsMoyen": "45'",
       "poids": "250",
       "ref": "ludo 14"
     },
     {
+      "id": "332087",
+      "category":  "todo",
       "name": "Obscurio",
-      "nbJoueurs": "2-8",
-      "age": "10",
-      "tpsMoyen": "45'",
       "poids": "1356",
       "ref": "ludo100"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puzzle Unicorn Garden (500pcs)",
-      "nbJoueurs": "1",
-      "age": "7",
-      "tpsMoyen": "",
       "poids": "855",
       "ref": "ludo101"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puzzle Land & Sea (1000pcs)",
-      "nbJoueurs": "1",
-      "age": "9",
-      "tpsMoyen": "",
       "poids": "755",
       "ref": "ludo102"
     },
     {
+      "id": "343866",
+      "category":  "todo",
       "name": "Black Stories",
-      "nbJoueurs": "2-25",
-      "age": "14",
-      "tpsMoyen": "2'-30'",
       "poids": "200",
       "ref": "ludo103"
     },
     {
+      "id": "24839",
+      "category":  "todo",
       "name": "Time Bomb",
-      "nbJoueurs": "4-8",
-      "age": "8",
-      "tpsMoyen": "15'",
       "poids": "184",
       "ref": "ludo104"
     },
     {
+      "id": "246203",
+      "category":  "todo",
       "name": "Speed Mandala",
-      "nbJoueurs": "1-4",
-      "age": "6",
-      "tpsMoyen": "15'",
       "poids": "157",
       "ref": "ludo105"
     },
     {
+      "id": "4550",
+      "category":  "todo",
       "name": "Blank",
-      "nbJoueurs": "2-6",
-      "age": "6",
-      "tpsMoyen": "2-30'",
       "poids": "284",
       "ref": "ludo106"
     },
     {
+      "id": "289985",
+      "category":  "todo",
       "name": "Rêve de Trésor",
-      "nbJoueurs": "2-5",
-      "age": "5",
-      "tpsMoyen": "15'",
       "poids": "646",
       "ref": "ludo107"
     },
     {
+      "id": "269526",
+      "category":  "todo",
       "name": "La Vallée des Vikings",
-      "nbJoueurs": "2-4",
-      "age": "6",
-      "tpsMoyen": "15'",
       "poids": "934",
       "ref": "ludo108"
     },
     {
+      "id": "248900",
+      "category":  "todo",
       "name": "Ceylan",
-      "nbJoueurs": "2-4",
-      "age": "10",
-      "tpsMoyen": "45'",
       "poids": "1556",
       "ref": "ludo109"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puzzle observation Tour Du Monde (200pcs)",
-      "nbJoueurs": "",
-      "age": "6",
-      "tpsMoyen": "",
       "poids": "756",
       "ref": "ludo110"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puzzle art Cameléon (150pcs)",
-      "nbJoueurs": "",
-      "age": "6",
-      "tpsMoyen": "",
       "poids": "582",
       "ref": "ludo111"
     },
     {
+      "id": "24209",
+      "category":  "todo",
       "name": "Kaleidos Junior",
-      "nbJoueurs": "2-12",
-      "age": "4",
-      "tpsMoyen": "10'",
       "poids": "1013",
       "ref": "ludo112"
     },
     {
+      "id": "260922",
+      "category":  "todo",
       "name": "Déblock",
-      "nbJoueurs": "1-4",
-      "age": "6",
-      "tpsMoyen": "20'",
       "poids": "786",
       "ref": "ludo113"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Blanc-Manger Coco Junior",
-      "nbJoueurs": "3+",
-      "age": "8",
-      "tpsMoyen": "20'",
       "poids": "824",
       "ref": "ludo114"
     },
     {
+      "id": "268620",
+      "category":  "todo",
       "name": "Similo Contes",
-      "nbJoueurs": "2-8",
-      "age": "7",
-      "tpsMoyen": "10'",
       "poids": "131",
       "ref": "ludo115"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock7! Epic Adventures",
-      "nbJoueurs": "1-6",
-      "age": "10",
-      "tpsMoyen": "60'",
       "poids": "804",
       "ref": "ludo116"
     },
     {
+      "id": "173090",
+      "category":  "todo",
       "name": "The Game edition couleur",
-      "nbJoueurs": "1-5",
-      "age": "8",
-      "tpsMoyen": "20'",
       "poids": "209",
       "ref": "ludo117"
     },
     {
+      "id": "277123",
+      "category":  "todo",
       "name": "The Game Le Duel",
-      "nbJoueurs": "2",
-      "age": "8",
-      "tpsMoyen": "20'",
       "poids": "249",
       "ref": "ludo118"
     },
     {
+      "id": "134277",
+      "category":  "todo",
       "name": "Catan",
-      "nbJoueurs": "3-4",
-      "age": "10",
-      "tpsMoyen": "75'",
       "poids": "952",
       "ref": "ludo119"
     },
     {
+      "id": "279859",
+      "category":  "todo",
       "name": "Celestia",
-      "nbJoueurs": "2-6",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "596",
       "ref": "ludo120"
     },
     {
+      "id": "129900",
+      "category":  "todo",
       "name": "Augustus",
-      "nbJoueurs": "2-6",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "632",
       "ref": "ludo121"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Tantrix - Gigamix",
-      "nbJoueurs": "1-4",
-      "age": "6",
-      "tpsMoyen": "30'",
       "poids": "599",
       "ref": "ludo122"
     },
     {
+      "id": "254195",
+      "category":  "todo",
       "name": "Trivial Pursuit Harry Potter Ultimate",
-      "nbJoueurs": "2+",
-      "age": "10",
-      "tpsMoyen": "60'",
       "poids": "1288",
       "ref": "ludo123"
     },
     {
+      "id": "307798",
+      "category":  "todo",
       "name": "Specific",
-      "nbJoueurs": "2-10",
-      "age": "6",
-      "tpsMoyen": "20'",
       "poids": "233",
       "ref": "ludo124"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Escape Game au Château",
-      "nbJoueurs": "1-4",
-      "age": "6",
-      "tpsMoyen": "15'",
       "poids": "1100",
       "ref": "ludo125"
     },
     {
+      "id": "130680",
+      "category":  "todo",
       "name": "iKnow",
-      "nbJoueurs": "2-6",
-      "age": "15",
-      "tpsMoyen": "45'",
       "poids": "858",
       "ref": "ludo126"
     },
     {
+      "id": "12150",
+      "category":  "todo",
       "name": "Watergate",
-      "nbJoueurs": "2",
-      "age": "12",
-      "tpsMoyen": "45'",
       "poids": "590",
       "ref": "ludo127"
     },
     {
+      "id": "336104",
+      "category":  "todo",
       "name": "Kingdomino",
-      "nbJoueurs": "2-4",
-      "age": "8",
-      "tpsMoyen": "15'",
       "poids": "559",
       "ref": "ludo128"
     },
     {
+      "id": "8477",
+      "category":  "todo",
       "name": "Fou Fou Fou !",
-      "nbJoueurs": "3-8",
-      "age": "8",
-      "tpsMoyen": "15'",
       "poids": "167",
       "ref": "ludo129"
     },
     {
+      "id": "204135",
+      "category":  "todo",
       "name": "Skyjo",
-      "nbJoueurs": "2-8",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "350",
       "ref": "ludo130"
     },
     {
+      "id": "339017",
+      "category":  "todo",
       "name": "Wingspan",
-      "nbJoueurs": "1-5",
-      "age": "10",
-      "tpsMoyen": "90'",
       "poids": "2300",
       "ref": "ludo131"
     },
     {
+      "id": "347505",
+      "category":  "todo",
       "name": "Nouvelles ContRées",
-      "nbJoueurs": "2-6",
-      "age": "10",
-      "tpsMoyen": "30'-60'",
       "poids": "595",
       "ref": "ludo132"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock10!: Game adventures",
-      "nbJoueurs": "1-6",
-      "age": "10",
-      "tpsMoyen": "60'",
       "poids": "850",
       "ref": "ludo133"
     },
     {
+      "id": "340041",
+      "category":  "todo",
       "name": "Kingdomino: Origins",
-      "nbJoueurs": "2-4",
-      "age": "8",
-      "tpsMoyen": "25'",
       "poids": "820",
       "ref": "ludo134"
     },
     {
+      "id": "344427",
+      "category":  "todo",
       "name": "Pas vu pas pris",
-      "nbJoueurs": "2-4",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "721",
       "ref": "ludo135"
     },
     {
+      "id": "9933",
+      "category":  "todo",
       "name": "Top Ten",
-      "nbJoueurs": "4-9",
-      "age": "14",
-      "tpsMoyen": "30'",
       "poids": "482",
       "ref": "ludo136"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Micro Macro Crime city : Fulle House",
-      "nbJoueurs": "1-4",
-      "age": "10",
-      "tpsMoyen": "15'-45'",
       "poids": "488",
       "ref": "ludo137"
     },
     {
+      "id": "327056",
+      "category":  "todo",
       "name": "Unlock! Kids",
-      "nbJoueurs": "1-4",
-      "age": "6",
-      "tpsMoyen": "20'",
       "poids": "785",
       "ref": "ludo138"
     },
     {
+      "id": "6931",
+      "category":  "todo",
       "name": "Gagne ton papa",
-      "nbJoueurs": "1-2",
-      "age": "3",
-      "tpsMoyen": "15'",
       "poids": "792",
       "ref": "ludo139"
     },
     {
+      "id": "346703",
+      "category":  "todo",
       "name": "7 Wonders Architects",
-      "nbJoueurs": "2-7",
-      "age": "8",
-      "tpsMoyen": "25'",
       "poids": "1462",
       "ref": "ludo140"
     },
     {
+      "id": "25669",
+      "category":  "todo",
       "name": "Qwirkle",
-      "nbJoueurs": "2-4",
-      "age": "6",
-      "tpsMoyen": "30'-60'",
       "poids": "924",
       "ref": "ludo141"
     },
     {
+      "id": "9913",
+      "category":  "todo",
       "name": "César",
-      "nbJoueurs": "2-5",
-      "age": "10",
-      "tpsMoyen": "30'-60'",
       "poids": "1998",
       "ref": "ludo142"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Jet Lag",
-      "nbJoueurs": "3 - 8",
-      "age": "12",
-      "tpsMoyen": "30'",
       "poids": "246",
       "ref": "ludo143"
     },
     {
+      "id": "341178",
+      "category":  "todo",
       "name": "Bubble Stories",
-      "nbJoueurs": "1 - 2",
-      "age": "4",
-      "tpsMoyen": "20'",
       "poids": "223",
       "ref": "ludo144"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Fiesta Del Los Muertos",
-      "nbJoueurs": "4 - 8",
-      "age": "12",
-      "tpsMoyen": "30'",
       "poids": "667",
       "ref": "ludo145"
     },
     {
+      "id": "324416",
+      "category":  "todo",
       "name": "Sobek",
-      "nbJoueurs": "2",
-      "age": "10",
-      "tpsMoyen": "30'",
       "poids": "621",
       "ref": "ludo146"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "5 minutes Marvel",
-      "nbJoueurs": "2 - 5",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "985",
       "ref": "ludo147"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Citadelles 4ème édition",
-      "nbJoueurs": "2 - 8",
-      "age": "10",
-      "tpsMoyen": "30' - 60'",
       "poids": "446",
       "ref": "ludo148"
     },
     {
+      "id": "355992",
+      "category":  "todo",
       "name": "Parks",
-      "nbJoueurs": "1 - 5",
-      "age": "10",
-      "tpsMoyen": "30' - 60'",
       "poids": "1032",
       "ref": "ludo149"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "BATA-WAFF",
-      "nbJoueurs": "2-4",
-      "age": "3",
-      "tpsMoyen": "15'",
       "poids": "160",
       "ref": "ludo15"
     },
     {
+      "id": "209778",
+      "category":  "todo",
       "name": "Magic Maze",
-      "nbJoueurs": "1 - 8",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "784",
       "ref": "ludo150"
     },
     {
+      "id": "300010",
+      "category":  "todo",
       "name": "Dragomino",
-      "nbJoueurs": "2 - 4",
-      "age": "5",
-      "tpsMoyen": "30'",
       "poids": "592",
       "ref": "ludo151"
     },
     {
+      "id": "336901",
+      "category":  "todo",
       "name": "Living Forest",
-      "nbJoueurs": "2 - 4",
-      "age": "8",
-      "tpsMoyen": "30' - 60'",
       "poids": "1327",
       "ref": "ludo152"
     },
     {
+      "id": "342942",
+      "category":  "todo",
       "name": "Ark Nova",
-      "nbJoueurs": "1 -4",
-      "age": "14",
-      "tpsMoyen": "120' - 180'",
       "poids": "2166",
       "ref": "ludo153"
     },
     {
+      "id": "302135",
+      "category":  "todo",
       "name": "Butine !",
-      "nbJoueurs": "2 - 4",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "502",
       "ref": "ludo154"
     },
     {
+      "id": "190783",
+      "category":  "todo",
       "name": "Noé",
-      "nbJoueurs": "2-5",
-      "age": "7",
-      "tpsMoyen": "30'",
       "poids": "",
       "ref": "ludo16"
     },
     {
+      "id": "173346",
+      "category":  "DUO",
       "name": "7 Wonders: DUEL",
-      "nbJoueurs": "2",
-      "age": "10",
-      "tpsMoyen": "30'",
       "poids": "487",
       "ref": "ludo17"
     },
     {
-      "name": "TAKENOKO",
-      "nbJoueurs": "2-4",
-      "age": "8",
-      "tpsMoyen": "45'",
-      "poids": "930",
-      "ref": "ludo18"
-    },
-    {
+      "id": "41916",
+      "category":  "todo",
       "name": "Le labyrinthe magique",
-      "nbJoueurs": "2-4",
-      "age": "6",
-      "tpsMoyen": "15'",
       "poids": "",
       "ref": "ludo19"
     },
     {
+      "id": "18186",
+      "category":  "todo",
       "name": "Défis Nature",
-      "nbJoueurs": "2-6",
-      "age": "7",
-      "tpsMoyen": "30'",
       "poids": "",
       "ref": "ludo20"
     },
     {
+      "id": "150658",
+      "category":  "todo",
       "name": "Pandémie Le remède",
-      "nbJoueurs": "2-5",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "",
       "ref": "ludo21"
     },
     {
+      "id": "168168",
+      "category":  "todo",
       "name": "Petite Danseuse Etoile",
-      "nbJoueurs": "2-6",
-      "age": "4",
-      "tpsMoyen": "10'",
       "poids": "",
       "ref": "ludo22"
     },
     {
+      "id": "181098",
+      "category":  "todo",
       "name": "Shadows Hunters",
-      "nbJoueurs": "4-8",
-      "age": "10",
-      "tpsMoyen": "30'",
       "poids": "",
       "ref": "ludo23"
     },
     {
-      "name": "Brainbox ABC > Disparu",
-      "nbJoueurs": "2+",
-      "age": "4",
-      "tpsMoyen": "10'",
-      "poids": "",
-      "ref": "ludo24"
-    },
-    {
+      "id": "29967",
+      "category":  "todo",
       "name": "Tour du Dragon",
-      "nbJoueurs": "2-4",
-      "age": "5-9",
-      "tpsMoyen": "15'",
       "poids": "",
       "ref": "ludo25"
     },
     {
+      "id": "174219",
+      "category":  "todo",
       "name": "Time's Up Kids",
-      "nbJoueurs": "4+",
-      "age": "2-1",
-      "tpsMoyen": "20'",
       "poids": "560",
       "ref": "ludo26"
     },
     {
-      "name": "Kikou le Coucou",
-      "nbJoueurs": "2-5",
-      "age": "4-9",
-      "tpsMoyen": "15'",
-      "poids": "",
-      "ref": "ludo27"
-    },
-    {
+      "id": "67823",
+      "category":  "todo",
       "name": "Piou Piou",
-      "nbJoueurs": "2-5",
-      "age": "5-9",
-      "tpsMoyen": "10'",
       "poids": "",
       "ref": "ludo28"
     },
     {
-      "name": "Aladin et la lampe merveilleuse",
-      "nbJoueurs": "2-5",
-      "age": "7",
-      "tpsMoyen": "20'",
-      "poids": "",
-      "ref": "ludo29"
-    },
-    {
+      "id": "182082",
+      "category":  "todo",
       "name": "Carcassonne par monts et par vaux",
-      "nbJoueurs": "2-5",
-      "age": "7",
-      "tpsMoyen": "35'",
       "poids": "598",
       "ref": "ludo30"
     },
     {
+      "id": "9441",
+      "category":  "todo",
       "name": "La course des tortues",
-      "nbJoueurs": "2-5",
-      "age": "5",
-      "tpsMoyen": "20'",
       "poids": "528",
       "ref": "ludo31"
     },
     {
-      "name": "Mito - Permis de tricher",
-      "nbJoueurs": "3-5",
-      "age": "7",
-      "tpsMoyen": "25'",
-      "poids": "",
-      "ref": "ludo32"
-    },
-    {
+      "id": "83195",
+      "category":  "todo",
       "name": "Bazar Bizarre",
-      "nbJoueurs": "2-8",
-      "age": "6",
-      "tpsMoyen": "20'",
       "poids": "",
       "ref": "ludo33"
     },
     {
+      "id": "30928",
+      "category":  "todo",
       "name": "Jamaica",
-      "nbJoueurs": "2-6",
-      "age": "8",
-      "tpsMoyen": "30-60'",
       "poids": "1222",
       "ref": "ludo34"
     },
     {
+      "id": "104780",
+      "category":  "todo",
       "name": "Hop! Hop! Galopons!",
-      "nbJoueurs": "2-4",
-      "age": "3-1",
-      "tpsMoyen": "10'",
       "poids": "744",
       "ref": "ludo35"
     },
     {
+      "id": "191894",
+      "category":  "todo",
       "name": "Imagine",
-      "nbJoueurs": "3-8",
-      "age": "12",
-      "tpsMoyen": "30'",
       "poids": "407",
       "ref": "ludo36"
     },
     {
+      "id": "132497",
+      "category":  "todo",
       "name": "Lift it!",
-      "nbJoueurs": "1-8",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "",
       "ref": "ludo37"
     },
     {
-      "name": "Mysterium",
-      "nbJoueurs": "2-7",
-      "age": "10",
-      "tpsMoyen": "42'",
-      "poids": "1396",
-      "ref": "ludo38"
-    },
-    {
+      "id": "175",
+      "category":  "todo",
       "name": "Stupide vautour",
-      "nbJoueurs": "2-5",
-      "age": "8",
-      "tpsMoyen": "20'",
       "poids": "230",
       "ref": "ludo39"
     },
     {
+      "id": "154858",
+      "category":  "todo",
       "name": "Vice & Versa",
-      "nbJoueurs": "2-6",
-      "age": "4",
-      "tpsMoyen": "10'",
       "poids": "",
       "ref": "ludo40"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Chef de tribu Boum -Ba- Boum",
-      "nbJoueurs": "3-5",
-      "age": "6",
-      "tpsMoyen": "15'",
       "poids": "",
       "ref": "ludo41"
     },
     {
+      "id": "357988",
+      "category":  "todo",
       "name": "Blanc-Manger Coco",
-      "nbJoueurs": "3-20",
-      "age": "16",
-      "tpsMoyen": "20'",
       "poids": "975",
       "ref": "ludo42"
     },
     {
-      "name": "Exit: La cabane abandonnée",
-      "nbJoueurs": "1-6",
-      "age": "12",
-      "tpsMoyen": "60'",
-      "poids": "248",
-      "ref": "ludo43"
-    },
-    {
+      "id": "158899",
+      "category":  "todo",
       "name": "Colt Express",
-      "nbJoueurs": "2-6",
-      "age": "10",
-      "tpsMoyen": "40'",
       "poids": "960",
       "ref": "ludo44"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock2 ! Mystery Adventures",
-      "nbJoueurs": "1-6",
-      "age": "10",
-      "tpsMoyen": "60'",
       "poids": "701",
       "ref": "ludo45"
     },
     {
+      "id": "147151",
+      "category":  "todo",
       "name": "Concept",
-      "nbJoueurs": "4-12",
-      "age": "10",
-      "tpsMoyen": "40'",
       "poids": "951",
       "ref": "ludo46"
     },
     {
+      "id": "369258",
+      "category":  "todo",
       "name": "Isle of Skye",
-      "nbJoueurs": "2-5",
-      "age": "8",
-      "tpsMoyen": "60'",
       "poids": "825",
       "ref": "ludo47"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Wanted (Bang!)",
-      "nbJoueurs": "4-7",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "345",
       "ref": "ludo48"
     },
     {
+      "id": "25623",
+      "category":  "todo",
       "name": "MMM !",
-      "nbJoueurs": "1-6",
-      "age": "5",
-      "tpsMoyen": "20'",
       "poids": "480",
       "ref": "ludo49"
     },
     {
-      "name": "Piratatak",
-      "nbJoueurs": "2-4",
-      "age": "5-",
-      "tpsMoyen": "15'",
-      "poids": "210",
-      "ref": "ludo50"
-    },
-    {
+      "id": "not found",
+      "category":  "todo",
       "name": "Kakerlaken Poker (Bug Bluff)",
-      "nbJoueurs": "2-6",
-      "age": "8",
-      "tpsMoyen": "15-25'",
       "poids": "172",
       "ref": "ludo51"
     },
     {
+      "id": "4522",
+      "category":  "todo",
       "name": "Au bal masqué des coccinelles",
-      "nbJoueurs": "2-6",
-      "age": "4",
-      "tpsMoyen": "30'",
       "poids": "629",
       "ref": "ludo52"
     },
     {
+      "id": "23224",
+      "category":  "todo",
       "name": "Les monstres farceurs",
-      "nbJoueurs": "2-6",
-      "age": "6",
-      "tpsMoyen": "30'",
       "poids": "182",
       "ref": "ludo53"
     },
     {
+      "id": "6573",
+      "category":  "todo",
       "name": "Petites sorcières",
-      "nbJoueurs": "2-6",
-      "age": "3,5-",
-      "tpsMoyen": "15'",
       "poids": "756",
       "ref": "ludo54"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puissance 4 Evolution",
-      "nbJoueurs": "2",
-      "age": "8",
-      "tpsMoyen": "",
       "poids": "921",
       "ref": "ludo55"
     },
     {
+      "id": "17198",
+      "category":  "todo",
       "name": "Twister",
-      "nbJoueurs": "3-6",
-      "age": "6",
-      "tpsMoyen": "20'",
       "poids": "605",
       "ref": "ludo56"
     },
     {
+      "id": "183251",
+      "category":  "todo",
       "name": "Karuba",
-      "nbJoueurs": "2-4",
-      "age": "8",
-      "tpsMoyen": "40'",
       "poids": "992",
       "ref": "ludo61"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Code Names",
-      "nbJoueurs": "2-8",
-      "age": "12",
-      "tpsMoyen": "15'",
       "poids": "500",
       "ref": "ludo62"
     },
     {
+      "id": "65244",
+      "category":  "todo",
       "name": "L'île Interdite",
-      "nbJoueurs": "2-4",
-      "age": "10",
-      "tpsMoyen": "30'",
       "poids": "600",
       "ref": "ludo63"
     },
     {
+      "id": "15549",
+      "category":  "todo",
       "name": "Splendor",
-      "nbJoueurs": "2-4",
-      "age": "10",
-      "tpsMoyen": "30'",
       "poids": "818",
       "ref": "ludo64"
     },
     {
+      "id": "172358",
+      "category":  "todo",
       "name": "Maître Renard",
-      "nbJoueurs": "2-4",
-      "age": "7",
-      "tpsMoyen": "20'",
       "poids": "420",
       "ref": "ludo65"
     },
     {
+      "id": "222887",
+      "category":  "todo",
       "name": "Twin It!",
-      "nbJoueurs": "2-6",
-      "age": "6",
-      "tpsMoyen": "10'",
       "poids": "223",
       "ref": "ludo66"
     },
     {
+      "id": "287916",
+      "category":  "todo",
       "name": "T.I.M.E Stories",
-      "nbJoueurs": "2-4",
-      "age": "12",
-      "tpsMoyen": "90'",
       "poids": "1730",
       "ref": "ludo67"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock1! Escape Adventures",
-      "nbJoueurs": "2-6",
-      "age": "10",
-      "tpsMoyen": "60",
       "poids": "703",
       "ref": "ludo68"
     },
     {
+      "id": "235467",
+      "category":  "todo",
       "name": "BOOUM !",
-      "nbJoueurs": "2-4",
-      "age": "7",
-      "tpsMoyen": "",
       "poids": "626",
       "ref": "ludo69"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock3! Secret Adventures",
-      "nbJoueurs": "1-6",
-      "age": "10",
-      "tpsMoyen": "60",
       "poids": "760",
       "ref": "ludo70"
     },
     {
-      "name": "La Course Farfelue Des Souris Des Champs",
-      "nbJoueurs": "2-4",
-      "age": "5",
-      "tpsMoyen": "15",
-      "poids": "664",
-      "ref": "ludo71"
-    },
-    {
+      "id": "173236",
+      "category":  "todo",
       "name": "Rush Hour",
-      "nbJoueurs": "1",
-      "age": "8",
-      "tpsMoyen": "10'",
       "poids": "366",
       "ref": "ludo72"
     },
     {
+      "id": "9354",
+      "category":  "todo",
       "name": "Privacy ?!",
-      "nbJoueurs": "3-12",
-      "age": "18",
-      "tpsMoyen": "30'",
       "poids": "687",
       "ref": "ludo73"
     },
     {
+      "id": "244521",
+      "category":  "todo",
       "name": "Les Charlatans de Belcastel",
-      "nbJoueurs": "2-4",
-      "age": "10",
-      "tpsMoyen": "45'",
       "poids": "1155",
       "ref": "ludo74"
     },
     {
+      "id": "2511",
+      "category":  "todo",
       "name": "Sherlock Holmes: Les meurtres de la Tamise",
-      "nbJoueurs": "1-8",
-      "age": "14",
-      "tpsMoyen": "90'",
       "poids": "1954",
       "ref": "ludo75"
     },
     {
+      "id": "72644",
+      "category":  "todo",
       "name": "Perplexus Original",
-      "nbJoueurs": "1",
-      "age": "8",
-      "tpsMoyen": "",
       "poids": "382",
       "ref": "ludo76"
     },
     {
-      "name": "7 Wonders",
-      "nbJoueurs": "2-7",
-      "age": "10",
-      "tpsMoyen": "30'",
-      "poids": "1139",
-      "ref": "ludo77"
-    },
-    {
-      "name": "Dixit Odyssey",
-      "nbJoueurs": "3-12",
-      "age": "8",
-      "tpsMoyen": "30'",
-      "poids": "810",
-      "ref": "ludo78"
-    },
-    {
+      "id": "271512",
+      "category":  "todo",
       "name": "Azul",
-      "nbJoueurs": "2-4",
-      "age": "8",
-      "tpsMoyen": "30-45",
       "poids": "1185",
       "ref": "ludo79"
     },
     {
+      "id": "350391",
+      "category":  "todo",
       "name": "Orbis",
-      "nbJoueurs": "2-4",
-      "age": "10",
-      "tpsMoyen": "45'",
       "poids": "783",
       "ref": "ludo80"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puzzle Rainbow Tigers (1000pcs)",
-      "nbJoueurs": "",
-      "age": "9",
-      "tpsMoyen": "",
       "poids": "772",
       "ref": "ludo81"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puzzle Day at the Zoo (48pcs)",
-      "nbJoueurs": "",
-      "age": "4",
-      "tpsMoyen": "",
       "poids": "725",
       "ref": "ludo82"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Puzzle observation Animaux (100pcs)",
-      "nbJoueurs": "",
-      "age": "6",
-      "tpsMoyen": "",
       "poids": "730",
       "ref": "ludo83"
     },
     {
+      "id": "70919",
+      "category":  "todo",
+      "name": "TAKENOKO",
+      "poids": "930",
+      "ref": "ludo18"
+    },
+    {
+      "id": "192547",
+      "category":  "todo",
+      "name": "Kikou le Coucou",
+      "poids": "",
+      "ref": "ludo27"
+    },
+    {
+      "id": "not found",
+      "category":  "todo",
+      "name": "Brainbox ABC > Disparu",
+      "poids": "",
+      "ref": "ludo24"
+    },
+    {
+      "id": "17687",
+      "category":  "todo",
+      "name": "Mysterium",
+      "poids": "1396",
+      "ref": "ludo38"
+    },
+    {
+      "id": "not found",
+      "category":  "todo",
+      "name": "Aladin et la lampe merveilleuse",
+      "poids": "",
+      "ref": "ludo29"
+    },
+    {
+      "id": "203420",
+      "category":  "todo",
+      "name": "Exit: La cabane abandonnée",
+      "poids": "248",
+      "ref": "ludo43"
+    },
+    {
+      "id": "31159",
+      "category":  "todo",
+      "name": "Piratatak",
+      "poids": "210",
+      "ref": "ludo50"
+    },
+    {
+      "id": "128838",
+      "category":  "todo",
       "name": "Quarto",
-      "nbJoueurs": "2",
-      "age": "8",
-      "tpsMoyen": "15'",
       "poids": "1140",
       "ref": "ludo84"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock4! Exotic Adventures",
-      "nbJoueurs": "1-6",
-      "age": "10",
-      "tpsMoyen": "60'",
       "poids": "705",
       "ref": "ludo85"
     },
     {
+      "id": "not found",
+      "category":  "todo",
+      "name": "Mito - Permis de tricher",
+      "poids": "",
+      "ref": "ludo32"
+    },
+    {
+      "id": "107420",
+      "category":  "todo",
+      "name": "La Course Farfelue Des Souris Des Champs",
+      "poids": "664",
+      "ref": "ludo71"
+    },
+    {
+      "id": "143085",
+      "category":  "todo",
+      "name": "7 Wonders",
+      "poids": "1139",
+      "ref": "ludo77"
+    },
+    {
+      "id": "92828",
+      "category":  "todo",
+      "name": "Dixit Odyssey",
+      "poids": "810",
+      "ref": "ludo78"
+    },
+    {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock5! Heroic Adventures",
-      "nbJoueurs": "1-6",
-      "age": "10",
-      "tpsMoyen": "60'",
       "poids": "722",
       "ref": "ludo86"
     },
     {
+      "id": "276671",
+      "category":  "todo",
       "name": "Sequence",
-      "nbJoueurs": "2-12",
-      "age": "6",
-      "tpsMoyen": "30'",
       "poids": "971",
       "ref": "ludo87"
     },
     {
+      "id": "168215",
+      "category":  "DUO",
       "name": "Saboteur Le Duel",
-      "nbJoueurs": "1-2",
-      "age": "8",
-      "tpsMoyen": "30'",
       "poids": "231",
       "ref": "ludo88"
     },
     {
+      "id": "114143",
+      "category":  "todo",
       "name": "The Mind",
-      "nbJoueurs": "2-4",
-      "age": "8",
-      "tpsMoyen": "20'",
       "poids": "245",
       "ref": "ludo89"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Brains: jardin Japonais",
-      "nbJoueurs": "1",
-      "age": "10",
-      "tpsMoyen": "5-20'",
       "poids": "291",
       "ref": "ludo90"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "ClacClac",
-      "nbJoueurs": "2-6",
-      "age": "4",
-      "tpsMoyen": "10'",
       "poids": "487",
       "ref": "ludo91"
     },
     {
+      "id": "41010",
+      "category":  "todo",
       "name": "Mon Premier Carcassonne",
-      "nbJoueurs": "2-4",
-      "age": "4",
-      "tpsMoyen": "20'",
       "poids": "755",
       "ref": "ludo92"
     },
     {
+      "id": "172931",
+      "category":  "todo",
       "name": "Nom d'un Renard !",
-      "nbJoueurs": "2-4",
-      "age": "5",
-      "tpsMoyen": "20'",
       "poids": "703",
       "ref": "ludo93"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Pavlova Coco",
-      "nbJoueurs": "3-8",
-      "age": "18",
-      "tpsMoyen": "20'",
       "poids": "1176",
       "ref": "ludo94"
     },
     {
+      "id": "172225",
+      "category":  "todo",
       "name": "Exploding Kittens",
-      "nbJoueurs": "2-5",
-      "age": "7",
-      "tpsMoyen": "15'",
       "poids": "213",
       "ref": "ludo95"
     },
     {
+      "id": "236475",
+      "category":  "todo",
       "name": "Best Of Loups Garous",
-      "nbJoueurs": "8-28",
-      "age": "10",
-      "tpsMoyen": "30'",
       "poids": "395",
       "ref": "ludo96"
     },
     {
+      "id": "not found",
+      "category":  "DUO",
       "name": "Mr Jack le duel",
-      "nbJoueurs": "2",
-      "age": "9",
-      "tpsMoyen": "30'",
       "poids": "750",
       "ref": "ludo98"
     },
     {
+      "id": "not found",
+      "category":  "todo",
       "name": "Unlock6! Timeless Adventures",
-      "nbJoueurs": "1-6",
-      "age": "10",
-      "tpsMoyen": "60'",
       "poids": "754",
       "ref": "ludo99"
     },
     {
+      "id": "9209",
+      "category":  "todo",
       "name": "Les aventurier du rail",
-      "nbJoueurs": "2-5",
-      "age": "8",
-      "tpsMoyen": "45'",
       "poids": "1314",
       "ref": "STC56"
     },
     {
-      "name": "CAN'T STOP",
-      "nbJoueurs": "2",
-      "age": "3",
-      "tpsMoyen": "",
+      "id": "33061",
+      "category":  "todo",
+      "name": "Defifoo",
       "poids": "",
       "ref": ""
     },
     {
+      "id": "24371",
+      "category":  "todo",
+      "name": "CAN'T STOP",
+      "poids": "",
+      "ref": ""
+    },
+    {
+      "id": "85827",
+      "category":  "todo",
+      "name": "Mastermind",
+      "poids": "",
+      "ref": ""
+    },
+    {
+      "id": "not found",
+      "category":  "todo",
+      "name": "Echec contre Kasparov",
+      "poids": "",
+      "ref": ""
+    },
+    {
+      "id": "232965",
+      "category":  "todo",
+      "name": "Visionary",
+      "poids": "",
+      "ref": ""
+    },
+    {
+      "id": "590",
+      "category":  "todo",
+      "name": "Mille bornes",
+      "poids": "",
+      "ref": ""
+    },
+    {
+      "id": "1294",
+      "category":  "todo",
       "name": "Cluedo",
-      "nbJoueurs": "3-6",
-      "age": "8",
-      "tpsMoyen": "",
       "poids": "1038",
       "ref": ""
     },
     {
-      "name": "Cluedo Junior",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Defifoo",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Echec contre Kasparov",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Fragrances",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Geomag",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Jeux de bataille",
-      "nbJoueurs": "",
-      "age": "",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Katamino Junior",
-      "nbJoueurs": "1-2",
-      "age": "6",
-      "tpsMoyen": "15'",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Loto Memory",
-      "nbJoueurs": "2",
-      "age": "2",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Mastermind",
-      "nbJoueurs": "2",
-      "age": "8",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Mille bornes",
-      "nbJoueurs": "2",
-      "age": "3",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Pippo",
-      "nbJoueurs": "2-8",
-      "age": "4",
-      "tpsMoyen": "15'",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Tac-Tik",
-      "nbJoueurs": "2-6",
-      "age": "3",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Time's",
-      "nbJoueurs": "2",
-      "age": "3",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "name": "Visionary",
-      "nbJoueurs": "2",
-      "age": "3",
-      "tpsMoyen": "",
-      "poids": "",
-      "ref": ""
-    },
-    {
+      "id": "not found",
+      "category":  "todo",
       "name": "Zoom street - Mastermind junior",
-      "nbJoueurs": "2",
-      "age": "3",
-      "tpsMoyen": "",
       "poids": "",
       "ref": ""
     }

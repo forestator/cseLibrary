@@ -54,6 +54,9 @@ import { SettingsPublisherComponent } from './components/settings-view/settings-
 import { PublisherModalComponent } from './components/modals/publisher-modal/publisher-modal.component';
 import { BookFilterPipe } from './pipes/book-filter.pipe';
 import { SeriesFilterPipe } from './pipes/series-filter.pipe';
+import { BoardGameCategoryDetailsComponent } from './components/boardGames/board-game-category-details/board-game-category-details.component';
+import { BoardGameRowComponent } from './components/boardGames/board-game-row/board-game-row.component';
+import { BoardGameDetailsPipe } from './components/common/boardGameDetailPipe/board-game-details.pipe';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDBvqQptbNHI8nngeGAt0IhKrrGMGBR0PY",
@@ -96,7 +99,10 @@ const firebaseConfig = {
     SettingsPublisherComponent,
     PublisherModalComponent,
     BookFilterPipe,
-    SeriesFilterPipe
+    SeriesFilterPipe,
+    BoardGameCategoryDetailsComponent,
+    BoardGameRowComponent,
+    BoardGameDetailsPipe
   ],
   imports: [
     BrowserModule,
