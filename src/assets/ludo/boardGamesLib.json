@@ -4,1052 +4,1017 @@
   "jeuxSociete": [
     {
       "id": "11971",
-      "category": "todo",
+      "category": "ambiance",
       "name": "Kakerlaken Poker",
       "poids": "",
       "ref": ""
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "culture",
       "name": "Quizz pays de Rennes",
       "poids": "",
       "ref": ""
     },
     {
       "id": "15139",
-      "category":  "todo",
+      "category":  "familial",
       "name": "RapidCroco",
       "poids": "",
       "ref": ""
     },
     {
       "id": "30966",
-      "category":  "todo",
+      "category":  "strategie",
       "name": "Tempête sur l'échiquier",
       "poids": "",
       "ref": ""
     },
     {
       "id": "255674",
-      "category":  "todo",
+      "category":  "duo",
       "name": "Imhotep Le Duel",
       "poids": "346",
       "ref": "l"
     },
     {
       "id": "268586",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "6 qui prend",
       "poids": "250",
       "ref": "ludo 14"
     },
     {
-      "id": "332087",
-      "category":  "todo",
+      "id": "273477",
+      "category":  "familial",
       "name": "Obscurio",
       "poids": "1356",
       "ref": "ludo100"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "puzzle",
       "name": "Puzzle Unicorn Garden (500pcs)",
       "poids": "855",
       "ref": "ludo101"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "puzzle",
       "name": "Puzzle Land & Sea (1000pcs)",
       "poids": "755",
       "ref": "ludo102"
     },
     {
       "id": "343866",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Black Stories",
       "poids": "200",
       "ref": "ludo103"
     },
     {
       "id": "24839",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Time Bomb",
       "poids": "184",
       "ref": "ludo104"
     },
     {
       "id": "246203",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Speed Mandala",
       "poids": "157",
       "ref": "ludo105"
     },
     {
       "id": "4550",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Blank",
       "poids": "284",
       "ref": "ludo106"
     },
     {
       "id": "289985",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Rêve de Trésor",
       "poids": "646",
       "ref": "ludo107"
     },
     {
       "id": "269526",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "La Vallée des Vikings",
       "poids": "934",
       "ref": "ludo108"
     },
     {
       "id": "248900",
-      "category":  "todo",
+      "category":  "strategie",
       "name": "Ceylan",
       "poids": "1556",
       "ref": "ludo109"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "puzzle",
       "name": "Puzzle observation Tour Du Monde (200pcs)",
       "poids": "756",
       "ref": "ludo110"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "puzzle",
       "name": "Puzzle art Cameléon (150pcs)",
       "poids": "582",
       "ref": "ludo111"
     },
     {
       "id": "24209",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Kaleidos Junior",
       "poids": "1013",
       "ref": "ludo112"
     },
     {
       "id": "260922",
-      "category":  "todo",
+      "category":  "strategie",
       "name": "Déblock",
       "poids": "786",
       "ref": "ludo113"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Blanc-Manger Coco Junior",
       "poids": "824",
       "ref": "ludo114"
     },
     {
       "id": "268620",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Similo Contes",
       "poids": "131",
       "ref": "ludo115"
     },
     {
-      "id": "not found",
-      "category":  "todo",
+      "id": "294612",
+      "category":  "escape",
       "name": "Unlock7! Epic Adventures",
       "poids": "804",
       "ref": "ludo116"
     },
     {
       "id": "173090",
-      "category":  "todo",
+      "category":  "familial",
       "name": "The Game edition couleur",
       "poids": "209",
       "ref": "ludo117"
     },
     {
-      "id": "277123",
-      "category":  "todo",
+      "id": "382679",
+      "category":  "duo",
       "name": "The Game Le Duel",
       "poids": "249",
       "ref": "ludo118"
     },
     {
       "id": "134277",
-      "category":  "todo",
+      "category":  "strategie",
       "name": "Catan",
       "poids": "952",
       "ref": "ludo119"
     },
     {
-      "id": "279859",
-      "category":  "todo",
+      "id": "175117",
+      "category":  "familial",
       "name": "Celestia",
       "poids": "596",
       "ref": "ludo120"
     },
     {
-      "id": "129900",
-      "category":  "todo",
+      "id": "137297",
+      "category":  "familial",
       "name": "Augustus",
       "poids": "632",
       "ref": "ludo121"
     },
     {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Tantrix - Gigamix",
+      "id": "1038",
+      "category":  "abstrait",
+      "name": "Tantrix",
       "poids": "599",
       "ref": "ludo122"
     },
     {
       "id": "254195",
-      "category":  "todo",
+      "category":  "culture",
       "name": "Trivial Pursuit Harry Potter Ultimate",
       "poids": "1288",
       "ref": "ludo123"
     },
     {
-      "id": "307798",
-      "category":  "todo",
+      "id": "192237",
+      "category":  "enfant",
       "name": "Specific",
       "poids": "233",
       "ref": "ludo124"
     },
     {
       "id": "not found",
-      "category":  "todo",
-      "name": "Escape Game au Château",
+      "category":  "escape",
+      "name": "escape au Château",
       "poids": "1100",
       "ref": "ludo125"
     },
     {
       "id": "130680",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "iKnow",
       "poids": "858",
       "ref": "ludo126"
     },
     {
-      "id": "12150",
-      "category":  "todo",
+      "id": "274364",
+      "category":  "strategie",
       "name": "Watergate",
       "poids": "590",
       "ref": "ludo127"
     },
     {
-      "id": "336104",
-      "category":  "todo",
+      "id": "204583",
+      "category":  "familial",
       "name": "Kingdomino",
       "poids": "559",
       "ref": "ludo128"
     },
     {
-      "id": "8477",
-      "category":  "todo",
+      "id": "291008",
+      "category":  "ambiance",
       "name": "Fou Fou Fou !",
       "poids": "167",
       "ref": "ludo129"
     },
     {
       "id": "204135",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Skyjo",
       "poids": "350",
       "ref": "ludo130"
     },
     {
-      "id": "339017",
-      "category":  "todo",
+      "id": "266192",
+      "category":  "strategie",
       "name": "Wingspan",
       "poids": "2300",
       "ref": "ludo131"
     },
     {
       "id": "347505",
-      "category":  "todo",
+      "category":  "inclassable",
       "name": "Nouvelles ContRées",
       "poids": "595",
       "ref": "ludo132"
     },
     {
-      "id": "not found",
-      "category":  "todo",
+      "id": "350636",
+      "category":  "escape",
       "name": "Unlock10!: Game adventures",
       "poids": "850",
       "ref": "ludo133"
     },
     {
       "id": "340041",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Kingdomino: Origins",
       "poids": "820",
       "ref": "ludo134"
     },
     {
       "id": "344427",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Pas vu pas pris",
       "poids": "721",
       "ref": "ludo135"
     },
     {
       "id": "9933",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Top Ten",
       "poids": "482",
       "ref": "ludo136"
     },
     {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Micro Macro Crime city : Fulle House",
+      "id": "338834",
+      "category":  "enquete",
+      "name": "Micro Macro Crime city : Full House",
       "poids": "488",
       "ref": "ludo137"
     },
     {
       "id": "327056",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Unlock! Kids",
       "poids": "785",
       "ref": "ludo138"
     },
     {
       "id": "6931",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Gagne ton papa",
       "poids": "792",
       "ref": "ludo139"
     },
     {
       "id": "346703",
-      "category":  "todo",
+      "category":  "familial",
       "name": "7 Wonders Architects",
       "poids": "1462",
       "ref": "ludo140"
     },
     {
       "id": "25669",
-      "category":  "todo",
+      "category":  "abstrait",
       "name": "Qwirkle",
       "poids": "924",
       "ref": "ludo141"
     },
     {
-      "id": "9913",
-      "category":  "todo",
+      "id": "341496",
+      "category":  "strategie",
       "name": "César",
       "poids": "1998",
       "ref": "ludo142"
     },
     {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Jet Lag",
+      "id": "252530",
+      "category":  "ambiance",
+      "name": "JetLag",
       "poids": "246",
       "ref": "ludo143"
     },
     {
       "id": "341178",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Bubble Stories",
       "poids": "223",
       "ref": "ludo144"
     },
     {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Fiesta Del Los Muertos",
+      "id": "285253",
+      "category":  "ambiance",
+      "name": "Fiesta De Los Muertos",
       "poids": "667",
       "ref": "ludo145"
     },
     {
-      "id": "324416",
-      "category":  "todo",
+      "id": "332944",
+      "category":  "duo",
       "name": "Sobek",
       "poids": "621",
       "ref": "ludo146"
     },
     {
-      "id": "not found",
-      "category":  "todo",
+      "id": "253618",
+      "category":  "familial",
       "name": "5 minutes Marvel",
       "poids": "985",
       "ref": "ludo147"
     },
     {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Citadelles 4ème édition",
+      "id": "205398",
+      "category":  "ambiance",
+      "name": "Citadelles",
       "poids": "446",
       "ref": "ludo148"
     },
     {
-      "id": "355992",
-      "category":  "todo",
+      "id": "266524",
+      "category":  "familial",
       "name": "Parks",
       "poids": "1032",
       "ref": "ludo149"
     },
     {
-      "id": "not found",
-      "category":  "todo",
+      "id": "33020",
+      "category":  "enfant",
       "name": "BATA-WAFF",
       "poids": "160",
       "ref": "ludo15"
     },
     {
       "id": "209778",
-      "category":  "todo",
+      "category":  "coop",
       "name": "Magic Maze",
       "poids": "784",
       "ref": "ludo150"
     },
     {
       "id": "300010",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Dragomino",
       "poids": "592",
       "ref": "ludo151"
     },
     {
-      "id": "336901",
-      "category":  "todo",
+      "id": "328479",
+      "category":  "familial",
       "name": "Living Forest",
       "poids": "1327",
       "ref": "ludo152"
     },
     {
       "id": "342942",
-      "category":  "todo",
+      "category":  "strategie",
       "name": "Ark Nova",
       "poids": "2166",
       "ref": "ludo153"
     },
     {
       "id": "302135",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Butine !",
       "poids": "502",
       "ref": "ludo154"
     },
     {
       "id": "190783",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Noé",
       "poids": "",
       "ref": "ludo16"
     },
     {
       "id": "173346",
-      "category":  "DUO",
+      "category":  "duo",
       "name": "7 Wonders: DUEL",
       "poids": "487",
       "ref": "ludo17"
     },
     {
       "id": "41916",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Le labyrinthe magique",
       "poids": "",
       "ref": "ludo19"
     },
     {
       "id": "18186",
-      "category":  "todo",
+      "category":  "culture",
       "name": "Défis Nature",
       "poids": "",
       "ref": "ludo20"
     },
     {
       "id": "150658",
-      "category":  "todo",
+      "category":  "coop",
       "name": "Pandémie Le remède",
       "poids": "",
       "ref": "ludo21"
     },
     {
       "id": "168168",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Petite Danseuse Etoile",
       "poids": "",
       "ref": "ludo22"
     },
     {
       "id": "181098",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Shadows Hunters",
       "poids": "",
       "ref": "ludo23"
     },
     {
       "id": "29967",
-      "category":  "todo",
+      "category":  "",
       "name": "Tour du Dragon",
       "poids": "",
       "ref": "ludo25"
     },
     {
       "id": "174219",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Time's Up Kids",
       "poids": "560",
       "ref": "ludo26"
     },
     {
       "id": "67823",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Piou Piou",
       "poids": "",
       "ref": "ludo28"
     },
     {
       "id": "182082",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Carcassonne par monts et par vaux",
       "poids": "598",
       "ref": "ludo30"
     },
     {
       "id": "9441",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "La course des tortues",
       "poids": "528",
       "ref": "ludo31"
     },
     {
       "id": "83195",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Bazar Bizarre",
       "poids": "",
       "ref": "ludo33"
     },
     {
       "id": "30928",
-      "category":  "todo",
+      "category":  "Stratégie",
       "name": "Jamaica",
       "poids": "1222",
       "ref": "ludo34"
     },
     {
       "id": "104780",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Hop! Hop! Galopons!",
       "poids": "744",
       "ref": "ludo35"
     },
     {
       "id": "191894",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Imagine",
       "poids": "407",
       "ref": "ludo36"
     },
     {
       "id": "132497",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Lift it!",
       "poids": "",
       "ref": "ludo37"
     },
     {
       "id": "175",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Stupide vautour",
       "poids": "230",
       "ref": "ludo39"
     },
     {
       "id": "154858",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Vice & Versa",
       "poids": "",
       "ref": "ludo40"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Chef de tribu Boum -Ba- Boum",
       "poids": "",
       "ref": "ludo41"
     },
     {
       "id": "357988",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Blanc-Manger Coco",
       "poids": "975",
       "ref": "ludo42"
     },
     {
       "id": "158899",
-      "category":  "todo",
+      "category":  "coop",
       "name": "Colt Express",
       "poids": "960",
       "ref": "ludo44"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Unlock2 ! Mystery Adventures",
       "poids": "701",
       "ref": "ludo45"
     },
     {
       "id": "147151",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Concept",
       "poids": "951",
       "ref": "ludo46"
     },
     {
       "id": "369258",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Isle of Skye",
       "poids": "825",
       "ref": "ludo47"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Wanted (Bang!)",
       "poids": "345",
       "ref": "ludo48"
     },
     {
       "id": "25623",
-      "category":  "todo",
+      "category":  "escape",
       "name": "MMM !",
       "poids": "480",
       "ref": "ludo49"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "Bluff",
       "name": "Kakerlaken Poker (Bug Bluff)",
       "poids": "172",
       "ref": "ludo51"
     },
     {
       "id": "4522",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Au bal masqué des coccinelles",
       "poids": "629",
       "ref": "ludo52"
     },
     {
       "id": "23224",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Les monstres farceurs",
       "poids": "182",
       "ref": "ludo53"
     },
     {
       "id": "6573",
-      "category":  "todo",
+      "category":  "Stratégie",
       "name": "Petites sorcières",
       "poids": "756",
       "ref": "ludo54"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Puissance 4 Evolution",
       "poids": "921",
       "ref": "ludo55"
     },
     {
       "id": "17198",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Twister",
       "poids": "605",
       "ref": "ludo56"
     },
     {
       "id": "183251",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Karuba",
       "poids": "992",
       "ref": "ludo61"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Code Names",
       "poids": "500",
       "ref": "ludo62"
     },
     {
       "id": "65244",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "L'île Interdite",
       "poids": "600",
       "ref": "ludo63"
     },
     {
       "id": "15549",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Splendor",
       "poids": "818",
       "ref": "ludo64"
     },
     {
       "id": "172358",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Maître Renard",
       "poids": "420",
       "ref": "ludo65"
     },
     {
       "id": "222887",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Twin It!",
       "poids": "223",
       "ref": "ludo66"
     },
     {
       "id": "287916",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "T.I.M.E Stories",
       "poids": "1730",
       "ref": "ludo67"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Unlock1! Escape Adventures",
       "poids": "703",
       "ref": "ludo68"
     },
     {
       "id": "235467",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "BOOUM !",
       "poids": "626",
       "ref": "ludo69"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "coop",
       "name": "Unlock3! Secret Adventures",
       "poids": "760",
       "ref": "ludo70"
     },
     {
       "id": "173236",
-      "category":  "todo",
+      "category":  "Stratégie",
       "name": "Rush Hour",
       "poids": "366",
       "ref": "ludo72"
     },
     {
       "id": "9354",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Privacy ?!",
       "poids": "687",
       "ref": "ludo73"
     },
     {
       "id": "244521",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Les Charlatans de Belcastel",
       "poids": "1155",
       "ref": "ludo74"
     },
     {
       "id": "2511",
-      "category":  "todo",
+      "category":  "enquete",
       "name": "Sherlock Holmes: Les meurtres de la Tamise",
       "poids": "1954",
       "ref": "ludo75"
     },
     {
       "id": "72644",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Perplexus Original",
       "poids": "382",
       "ref": "ludo76"
     },
     {
       "id": "271512",
-      "category":  "todo",
+      "category":  "",
       "name": "Azul",
       "poids": "1185",
       "ref": "ludo79"
     },
     {
       "id": "350391",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Orbis",
       "poids": "783",
       "ref": "ludo80"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Puzzle Rainbow Tigers (1000pcs)",
       "poids": "772",
       "ref": "ludo81"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Puzzle Day at the Zoo (48pcs)",
       "poids": "725",
       "ref": "ludo82"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Puzzle observation Animaux (100pcs)",
       "poids": "730",
       "ref": "ludo83"
     },
     {
       "id": "70919",
-      "category":  "todo",
+      "category":  "familial",
       "name": "TAKENOKO",
       "poids": "930",
       "ref": "ludo18"
     },
     {
       "id": "192547",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Kikou le Coucou",
       "poids": "",
       "ref": "ludo27"
     },
     {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Brainbox ABC > Disparu",
-      "poids": "",
-      "ref": "ludo24"
-    },
-    {
       "id": "17687",
-      "category":  "todo",
+      "category":  "coop",
       "name": "Mysterium",
       "poids": "1396",
       "ref": "ludo38"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Aladin et la lampe merveilleuse",
       "poids": "",
       "ref": "ludo29"
     },
     {
       "id": "203420",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Exit: La cabane abandonnée",
       "poids": "248",
       "ref": "ludo43"
     },
     {
       "id": "31159",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Piratatak",
       "poids": "210",
       "ref": "ludo50"
     },
     {
       "id": "128838",
-      "category":  "todo",
+      "category":  "abstrait",
       "name": "Quarto",
       "poids": "1140",
       "ref": "ludo84"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Unlock4! Exotic Adventures",
       "poids": "705",
       "ref": "ludo85"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Mito - Permis de tricher",
       "poids": "",
       "ref": "ludo32"
     },
     {
       "id": "107420",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "La Course Farfelue Des Souris Des Champs",
       "poids": "664",
       "ref": "ludo71"
     },
     {
       "id": "143085",
-      "category":  "todo",
+      "category":  "strategie",
       "name": "7 Wonders",
       "poids": "1139",
       "ref": "ludo77"
     },
     {
       "id": "92828",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Dixit Odyssey",
       "poids": "810",
       "ref": "ludo78"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Unlock5! Heroic Adventures",
       "poids": "722",
       "ref": "ludo86"
     },
     {
       "id": "276671",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Sequence",
       "poids": "971",
       "ref": "ludo87"
     },
     {
       "id": "168215",
-      "category":  "DUO",
+      "category":  "duo",
       "name": "Saboteur Le Duel",
       "poids": "231",
       "ref": "ludo88"
     },
     {
       "id": "114143",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "The Mind",
       "poids": "245",
       "ref": "ludo89"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "abstrait",
       "name": "Brains: jardin Japonais",
       "poids": "291",
       "ref": "ludo90"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "ClacClac",
       "poids": "487",
       "ref": "ludo91"
     },
     {
       "id": "41010",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Mon Premier Carcassonne",
       "poids": "755",
       "ref": "ludo92"
     },
     {
       "id": "172931",
-      "category":  "todo",
+      "category":  "enfant",
       "name": "Nom d'un Renard !",
       "poids": "703",
       "ref": "ludo93"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Pavlova Coco",
       "poids": "1176",
       "ref": "ludo94"
     },
     {
       "id": "172225",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Exploding Kittens",
       "poids": "213",
       "ref": "ludo95"
     },
     {
       "id": "236475",
-      "category":  "todo",
+      "category":  "ambiance",
       "name": "Best Of Loups Garous",
       "poids": "395",
       "ref": "ludo96"
     },
     {
-      "id": "not found",
-      "category":  "DUO",
-      "name": "Mr Jack le duel",
+      "id": "72287",
+      "category":  "duo",
+      "name": "Mr Jack pocket",
       "poids": "750",
       "ref": "ludo98"
     },
     {
       "id": "not found",
-      "category":  "todo",
+      "category":  "escape",
       "name": "Unlock6! Timeless Adventures",
       "poids": "754",
       "ref": "ludo99"
     },
     {
       "id": "9209",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Les aventurier du rail",
       "poids": "1314",
       "ref": "STC56"
     },
     {
       "id": "33061",
-      "category":  "todo",
+      "category":  "",
       "name": "Defifoo",
       "poids": "",
       "ref": ""
     },
     {
       "id": "24371",
-      "category":  "todo",
+      "category":  "familial",
       "name": "CAN'T STOP",
       "poids": "",
       "ref": ""
     },
     {
       "id": "85827",
-      "category":  "todo",
+      "category":  "familial",
       "name": "Mastermind",
       "poids": "",
       "ref": ""
     },
     {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Echec contre Kasparov",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "id": "232965",
-      "category":  "todo",
-      "name": "Visionary",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "id": "590",
-      "category":  "todo",
-      "name": "Mille bornes",
-      "poids": "",
-      "ref": ""
-    },
-    {
       "id": "1294",
-      "category":  "todo",
+      "category":  "enquete",
       "name": "Cluedo",
       "poids": "1038",
-      "ref": ""
-    },
-    {
-      "id": "not found",
-      "category":  "todo",
-      "name": "Zoom street - Mastermind junior",
-      "poids": "",
       "ref": ""
     }
   ],

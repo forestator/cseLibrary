@@ -6,8 +6,7 @@ import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
 import boardGame from '../../assets/ludo/boardGameLib.json';
 import boardGames from '../../assets/ludo/boardGamesLib.json';
-import {BGGService} from './bgg.service';
-import {BoardGameCategory} from '../models/boardGame.model';
+import {BoardGameCategory, LudoGame} from '../models/boardGame.model';
 
 @Injectable({
   providedIn: 'root'
@@ -74,13 +73,26 @@ export class DataService {
     return authors;
   }
 
-  // todo return type
-  public getGamesOfCategory(category?: string): Array<{id: string; name: string; category: string;}> {
+  public getGamesOfCategory(category?: string): Array<LudoGame> {
     if (category !== undefined && category in BoardGameCategory) {
-      return boardGames.jeuxSociete.filter(j2s => j2s.category === category && j2s.id !== 'not found');
+      return boardGames.jeuxSociete
+        .filter(j2s => j2s.category === category && j2s.id !== 'not found')
+        // todo fix type
+        .map(j2s => j2s as any as LudoGame)
+        .sort((a, b) => {
+          if (this.ludoRefNumber(a.ref) > this.ludoRefNumber(b.ref)) {
+            return 1;
+          } else {
+            return -1;
+          }
+        });
     } else {
       return [];
     }
+  }
+
+  private ludoRefNumber(ref: string): number {
+    return +ref.slice(4);
   }
 
   public log() {

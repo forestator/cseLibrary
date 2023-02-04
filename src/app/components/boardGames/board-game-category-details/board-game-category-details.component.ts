@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {LudoGame} from '../../../models/boardGame.model';
 
 @Component({
   selector: 'app-board-game-category-details',
@@ -8,13 +9,13 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 })
 export class BoardGameCategoryDetailsComponent implements OnInit {
 
-  @Input() boardGames: Array<{id: string; name: string; category: string;}> | null = [];
+  @Input() boardGames: Array<LudoGame> = [];
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  trackBoardGame(index: number, item: {id: string; name: string; category: string;}){
+  trackBoardGame(index: number, item: LudoGame){
     return item.id + item.name;
   }
 }

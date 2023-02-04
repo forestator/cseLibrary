@@ -1,10 +1,13 @@
-import {BoardGame, Thing} from './boardGame.model';
+import {BoardGame, LudoGame, Thing} from './boardGame.model';
 export class ThingToBoardgame {
-  static convertGameDetailsThingToBoardGame(boardGameWithDetails: Thing): BoardGame {
+  static convertGameDetailsThingToBoardGame(boardGameWithDetails: Thing, ludoGame: LudoGame): BoardGame {
     const elements = boardGameWithDetails.elements;
     return {
-      id: boardGameWithDetails.attributes.id ?? 'not found',
-      name: this.getAttributeValue(elements, 'name'),
+      id: ludoGame.id,
+      name: ludoGame.name,
+      category: ludoGame.category,
+      ref: ludoGame.ref,
+      poids: ludoGame.poids,
       thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail') ?? '',
       fullImage: this.getAttributeFirstElementText(elements, 'image') ?? '',
       description: this.getAttributeFirstElementText(elements, 'description'),
@@ -29,7 +32,12 @@ export class ThingToBoardgame {
   }
 
   static getAttributeFirstElementText(elements: Thing[], attribute: string): string | undefined {
-    return elements.find(el => el.name === attribute)?.elements[0]?.text;
+    let text = elements.find(el => el.name === attribute)?.elements[0]?.text;
+    if (attribute === 'description') {
+      // todo
+      // text = text?.replace('&#10;&#10;', '\n');
+    }
+    return text;
   }
 
   static getSuggestedPlayAge(elements: Thing[]): number | undefined {

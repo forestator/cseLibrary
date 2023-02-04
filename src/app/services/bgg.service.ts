@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import * as convert from 'xml-js';
-import {BoardGame, Thing} from '../models/boardGame.model';
+import {BoardGame, LudoGame, Thing} from '../models/boardGame.model';
 import {ThingToBoardgame} from '../models/thingToBoardgame';
 
 @Injectable({
@@ -32,10 +32,10 @@ export class BGGService {
     return this.send(url);
   }
 
-  gameDetails(gameId: string): Observable<BoardGame> {
-    const url = `${this.bggUrl}/thing?id=${gameId}`;
+  gameDetails(ludoGame: LudoGame): Observable<BoardGame> {
+    const url = `${this.bggUrl}/thing?id=${ludoGame.id}`;
     return this.send(url).pipe(map(rep => {
-      return ThingToBoardgame.convertGameDetailsThingToBoardGame(rep[0]);
+      return ThingToBoardgame.convertGameDetailsThingToBoardGame(rep[0], ludoGame);
     }));
   }
 }

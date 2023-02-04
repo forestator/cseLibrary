@@ -15,9 +15,7 @@ export interface Thing {
   text?: string;
 }
 
-export interface BoardGame {
-  id: string;
-  name?: string;
+export interface BoardGame extends LudoGame {
   thumbnail: string;
   fullImage: string;
   description?: string;
@@ -31,5 +29,24 @@ export interface BoardGame {
 }
 
 export enum BoardGameCategory {
-  DUO = 'DUO'
+  duo = 'duo',
+  ambiance = 'ambiance',
+  culture = 'culture',
+  familial = 'familial',
+  strategie = 'strategie',
+  puzzle = 'puzzle',
+  enfant = 'enfant',
+  escape = 'escape',
+  abstrait = 'abstrait',
+  inclassable = 'inclassable',
+  enquete = 'enquete',
+  coop = 'coop',
+}
+
+export interface LudoGame {
+  id: string,
+  category:  BoardGameCategory,
+  name: string,
+  poids: string,
+  ref: string
 }
