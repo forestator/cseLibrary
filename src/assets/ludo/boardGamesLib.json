@@ -3,14 +3,7 @@
   },
   "jeuxSociete": [
     {
-      "id": "11971",
-      "category": "ambiance",
-      "name": "Kakerlaken Poker",
-      "poids": "",
-      "ref": ""
-    },
-    {
-      "id": "not found",
+      "id": "321210",
       "category":  "culture",
       "name": "Quizz pays de Rennes",
       "poids": "",
@@ -52,14 +45,14 @@
       "ref": "ludo100"
     },
     {
-      "id": "not found",
+      "id": "puzzleId",
       "category":  "puzzle",
       "name": "Puzzle Unicorn Garden (500pcs)",
       "poids": "855",
       "ref": "ludo101"
     },
     {
-      "id": "not found",
+      "id": "puzzleId",
       "category":  "puzzle",
       "name": "Puzzle Land & Sea (1000pcs)",
       "poids": "755",
@@ -115,14 +108,14 @@
       "ref": "ludo109"
     },
     {
-      "id": "not found",
+      "id": "puzzleId",
       "category":  "puzzle",
       "name": "Puzzle observation Tour Du Monde (200pcs)",
       "poids": "756",
       "ref": "ludo110"
     },
     {
-      "id": "not found",
+      "id": "puzzleId",
       "category":  "puzzle",
       "name": "Puzzle art Cameléon (150pcs)",
       "poids": "582",
@@ -193,7 +186,7 @@
     },
     {
       "id": "137297",
-      "category":  "familial",
+      "category":  "strategie",
       "name": "Augustus",
       "poids": "632",
       "ref": "ludo121"
@@ -222,7 +215,7 @@
     {
       "id": "not found",
       "category":  "escape",
-      "name": "escape au Château",
+      "name": "Escape au Château",
       "poids": "1100",
       "ref": "ludo125"
     },
@@ -235,7 +228,7 @@
     },
     {
       "id": "274364",
-      "category":  "strategie",
+      "category":  "duo",
       "name": "Watergate",
       "poids": "590",
       "ref": "ludo127"
@@ -340,7 +333,7 @@
     },
     {
       "id": "341496",
-      "category":  "strategie",
+      "category":  "familial",
       "name": "César",
       "poids": "1998",
       "ref": "ludo142"
@@ -389,7 +382,7 @@
     },
     {
       "id": "266524",
-      "category":  "familial",
+      "category":  "strategie",
       "name": "Parks",
       "poids": "1032",
       "ref": "ludo149"
@@ -437,7 +430,7 @@
       "ref": "ludo154"
     },
     {
-      "id": "190783",
+      "id": "116858",
       "category":  "enfant",
       "name": "Noé",
       "poids": "",
@@ -487,7 +480,7 @@
     },
     {
       "id": "29967",
-      "category":  "",
+      "category":  "enfant",
       "name": "Tour du Dragon",
       "poids": "",
       "ref": "ludo25"
@@ -508,7 +501,7 @@
     },
     {
       "id": "182082",
-      "category":  "enfant",
+      "category":  "familial",
       "name": "Carcassonne par monts et par vaux",
       "poids": "598",
       "ref": "ludo30"
@@ -529,7 +522,7 @@
     },
     {
       "id": "30928",
-      "category":  "Stratégie",
+      "category":  "strategie",
       "name": "Jamaica",
       "poids": "1222",
       "ref": "ludo34"
@@ -570,7 +563,7 @@
       "ref": "ludo40"
     },
     {
-      "id": "not found",
+      "id": "165998",
       "category":  "ambiance",
       "name": "Chef de tribu Boum -Ba- Boum",
       "poids": "",
@@ -585,13 +578,13 @@
     },
     {
       "id": "158899",
-      "category":  "coop",
+      "category":  "familial",
       "name": "Colt Express",
       "poids": "960",
       "ref": "ludo44"
     },
     {
-      "id": "not found",
+      "id": "228867",
       "category":  "escape",
       "name": "Unlock2 ! Mystery Adventures",
       "poids": "701",
@@ -599,20 +592,20 @@
     },
     {
       "id": "147151",
-      "category":  "enfant",
+      "category":  "ambiance",
       "name": "Concept",
       "poids": "951",
       "ref": "ludo46"
     },
     {
-      "id": "369258",
-      "category":  "enfant",
+      "id": "176494",
+      "category":  "strategie",
       "name": "Isle of Skye",
       "poids": "825",
       "ref": "ludo47"
     },
     {
-      "id": "not found",
+      "id": "3955",
       "category":  "ambiance",
       "name": "Wanted (Bang!)",
       "poids": "345",
@@ -620,21 +613,21 @@
     },
     {
       "id": "25623",
-      "category":  "escape",
+      "category":  "enfant",
       "name": "MMM !",
       "poids": "480",
       "ref": "ludo49"
     },
     {
-      "id": "not found",
-      "category":  "Bluff",
+      "id": "11971",
+      "category":  "bluff",
       "name": "Kakerlaken Poker (Bug Bluff)",
       "poids": "172",
       "ref": "ludo51"
     },
     {
       "id": "4522",
-      "category":  "escape",
+      "category":  "enfant",
       "name": "Au bal masqué des coccinelles",
       "poids": "629",
       "ref": "ludo52"
@@ -648,34 +641,34 @@
     },
     {
       "id": "6573",
-      "category":  "Stratégie",
+      "category":  "enfant",
       "name": "Petites sorcières",
       "poids": "756",
       "ref": "ludo54"
     },
     {
-      "id": "not found",
-      "category":  "ambiance",
+      "id": "2719",
+      "category":  "abstrait",
       "name": "Puissance 4 Evolution",
       "poids": "921",
       "ref": "ludo55"
     },
     {
       "id": "17198",
-      "category":  "enfant",
+      "category":  "ambiance",
       "name": "Twister",
       "poids": "605",
       "ref": "ludo56"
     },
     {
       "id": "183251",
-      "category":  "enfant",
+      "category":  "strategie",
       "name": "Karuba",
       "poids": "992",
       "ref": "ludo61"
     },
     {
-      "id": "not found",
+      "id": "178900",
       "category":  "ambiance",
       "name": "Code Names",
       "poids": "500",
@@ -683,14 +676,14 @@
     },
     {
       "id": "65244",
-      "category":  "enfant",
+      "category":  "coop",
       "name": "L'île Interdite",
       "poids": "600",
       "ref": "ludo63"
     },
     {
       "id": "15549",
-      "category":  "enfant",
+      "category":  "familial",
       "name": "Splendor",
       "poids": "818",
       "ref": "ludo64"
@@ -711,13 +704,13 @@
     },
     {
       "id": "287916",
-      "category":  "ambiance",
+      "category":  "enquete",
       "name": "T.I.M.E Stories",
       "poids": "1730",
       "ref": "ludo67"
     },
     {
-      "id": "not found",
+      "id": "213460",
       "category":  "escape",
       "name": "Unlock1! Escape Adventures",
       "poids": "703",
@@ -731,22 +724,22 @@
       "ref": "ludo69"
     },
     {
-      "id": "not found",
-      "category":  "coop",
+      "id": "239307",
+      "category":  "escape",
       "name": "Unlock3! Secret Adventures",
       "poids": "760",
       "ref": "ludo70"
     },
     {
       "id": "173236",
-      "category":  "Stratégie",
+      "category":  "enfant",
       "name": "Rush Hour",
       "poids": "366",
       "ref": "ludo72"
     },
     {
       "id": "9354",
-      "category":  "enfant",
+      "category":  "ambiance",
       "name": "Privacy ?!",
       "poids": "687",
       "ref": "ludo73"
@@ -767,42 +760,42 @@
     },
     {
       "id": "72644",
-      "category":  "escape",
+      "category":  "abstrait",
       "name": "Perplexus Original",
       "poids": "382",
       "ref": "ludo76"
     },
     {
       "id": "271512",
-      "category":  "",
+      "category":  "familial",
       "name": "Azul",
       "poids": "1185",
       "ref": "ludo79"
     },
     {
       "id": "350391",
-      "category":  "escape",
+      "category":  "strategie",
       "name": "Orbis",
       "poids": "783",
       "ref": "ludo80"
     },
     {
-      "id": "not found",
-      "category":  "enfant",
+      "id": "puzzleId",
+      "category":  "puzzle",
       "name": "Puzzle Rainbow Tigers (1000pcs)",
       "poids": "772",
       "ref": "ludo81"
     },
     {
-      "id": "not found",
-      "category":  "enfant",
+      "id": "puzzleId",
+      "category":  "puzzle",
       "name": "Puzzle Day at the Zoo (48pcs)",
       "poids": "725",
       "ref": "ludo82"
     },
     {
-      "id": "not found",
-      "category":  "ambiance",
+      "id": "puzzleId",
+      "category":  "puzzle",
       "name": "Puzzle observation Animaux (100pcs)",
       "poids": "730",
       "ref": "ludo83"
@@ -829,7 +822,7 @@
       "ref": "ludo38"
     },
     {
-      "id": "not found",
+      "id": "203462",
       "category":  "enfant",
       "name": "Aladin et la lampe merveilleuse",
       "poids": "",
@@ -857,14 +850,14 @@
       "ref": "ludo84"
     },
     {
-      "id": "not found",
+      "id": "254226",
       "category":  "escape",
       "name": "Unlock4! Exotic Adventures",
       "poids": "705",
       "ref": "ludo85"
     },
     {
-      "id": "not found",
+      "id": "105593",
       "category":  "ambiance",
       "name": "Mito - Permis de tricher",
       "poids": "",
@@ -892,7 +885,7 @@
       "ref": "ludo78"
     },
     {
-      "id": "not found",
+      "id": "266121",
       "category":  "escape",
       "name": "Unlock5! Heroic Adventures",
       "poids": "722",
@@ -920,7 +913,7 @@
       "ref": "ludo89"
     },
     {
-      "id": "not found",
+      "id": "244948",
       "category":  "abstrait",
       "name": "Brains: jardin Japonais",
       "poids": "291",
@@ -976,7 +969,7 @@
       "ref": "ludo98"
     },
     {
-      "id": "not found",
+      "id": "279613",
       "category":  "escape",
       "name": "Unlock6! Timeless Adventures",
       "poids": "754",

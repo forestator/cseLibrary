@@ -79,19 +79,16 @@ export class DataService {
         .filter(j2s => j2s.category === category && j2s.id !== 'not found')
         // todo fix type
         .map(j2s => j2s as any as LudoGame)
-        .sort((a, b) => {
-          if (this.ludoRefNumber(a.ref) > this.ludoRefNumber(b.ref)) {
-            return 1;
-          } else {
-            return -1;
-          }
-        });
+        .sort((a, b) =>
+          this.ludoRefNumber(a.ref) > this.ludoRefNumber(b.ref) ? -1 : 1
+        );
     } else {
       return [];
     }
   }
 
   private ludoRefNumber(ref: string): number {
+    // ludo123 -> 123
     return +ref.slice(4);
   }
 

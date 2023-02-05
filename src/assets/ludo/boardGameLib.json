@@ -7,13 +7,13 @@
     "resume": "",
     "categories" : [
       {
-        "id": "duo",
+        "id": "enfant",
         "parentId": "jeuxDeSociete",
-        "name": "Duo",
-        "resume": "Envie de faire un jeu de société, mais vous n’êtes que deux ? Ne vous inquiétez pas, car de plus en plus de jeux de société sont maintenant jouables à 2 ! Donc plus besoin d’être entre amis ou en famille pour se faire des parties endiablées, car même en couple ou en tête-à-tête vous pouvez vous amuser !\n\nAlors découvrez dès maintenant tout ce qu’il faut savoir sur les jeux en duo pour profiter au maximum du bonheur de jouer même lorsqu’on est que deux !\n\n",
-        "bg": "7-wonders-duel_600Blanc.png",
+        "name": "Jeux pour enfants",
+        "resume": "Les jeux pour enfants sont des jeux conçus pour les enfants en bas âge, souvent conçus pour les aider à développer des compétences telles que la coordination œil-main, la reconnaissance des couleurs et des formes, la résolution de problèmes et la pensée stratégique. Les exemples incluent les jeux de construction, les jeux de memory, les jeux de société simples et les puzzles.",
+        "bg": "bubbleStories.webp",
         "by": "BY_SERIES",
-        "prefix": "duo"
+        "prefix": "enfant"
       },
       {
         "id": "ambiance",
@@ -34,6 +34,15 @@
         "prefix": "familial"
       },
       {
+        "id": "duo",
+        "parentId": "jeuxDeSociete",
+        "name": "Duo",
+        "resume": "Envie de faire un jeu de société, mais vous n’êtes que deux ? Ne vous inquiétez pas, car de plus en plus de jeux de société sont maintenant jouables à 2 ! Donc plus besoin d’être entre amis ou en famille pour se faire des parties endiablées, car même en couple ou en tête-à-tête vous pouvez vous amuser !\n\nAlors découvrez dès maintenant tout ce qu’il faut savoir sur les jeux en duo pour profiter au maximum du bonheur de jouer même lorsqu’on est que deux !\n\n",
+        "bg": "7-wonders-duel_600Blanc.png",
+        "by": "BY_SERIES",
+        "prefix": "duo"
+      },
+      {
         "id": "strategie",
         "parentId": "jeuxDeSociete",
         "name": "Jeux de stratégie",
@@ -50,15 +59,6 @@
         "bg": "puzzle.jfif",
         "by": "BY_SERIES",
         "prefix": "puzzle"
-      },
-      {
-        "id": "enfant",
-        "parentId": "jeuxDeSociete",
-        "name": "Jeux pour enfants",
-        "resume": "Les jeux pour enfants sont des jeux conçus pour les enfants en bas âge, souvent conçus pour les aider à développer des compétences telles que la coordination œil-main, la reconnaissance des couleurs et des formes, la résolution de problèmes et la pensée stratégique. Les exemples incluent les jeux de construction, les jeux de memory, les jeux de société simples et les puzzles.",
-        "bg": "bubbleStories.webp",
-        "by": "BY_SERIES",
-        "prefix": "enfant"
       },
       {
         "id": "escape",
