@@ -4,7 +4,7 @@
             <div class="secondary" (click)="selectLibrary(library?.id)">{{library?.name}}</div>
             <mat-icon>navigate_next</mat-icon>
             <div class="primary">{{category?.name}}</div>
-            <div class="counter">{{counter}} livres</div>
+            <div class="counter" *ngIf="!isBoardGameCategory">{{counter}} livres</div>
         </div>
         <div class="core-resume">
             {{category?.resume}}

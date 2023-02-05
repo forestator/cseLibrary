@@ -59,14 +59,14 @@
       "ref": "ludo102"
     },
     {
-      "id": "343866",
+      "id": "18803",
       "category":  "ambiance",
       "name": "Black Stories",
       "poids": "200",
       "ref": "ludo103"
     },
     {
-      "id": "24839",
+      "id": "231748",
       "category":  "ambiance",
       "name": "Time Bomb",
       "poids": "184",
@@ -129,8 +129,8 @@
       "ref": "ludo112"
     },
     {
-      "id": "260922",
-      "category":  "strategie",
+      "id": "204498",
+      "category":  "abstrait",
       "name": "Déblock",
       "poids": "786",
       "ref": "ludo113"
@@ -164,14 +164,14 @@
       "ref": "ludo117"
     },
     {
-      "id": "382679",
+      "id": "236461",
       "category":  "duo",
       "name": "The Game Le Duel",
       "poids": "249",
       "ref": "ludo118"
     },
     {
-      "id": "134277",
+      "id": "13",
       "category":  "strategie",
       "name": "Catan",
       "poids": "952",
@@ -290,7 +290,7 @@
       "ref": "ludo135"
     },
     {
-      "id": "9933",
+      "id": "300905",
       "category":  "ambiance",
       "name": "Top Ten",
       "poids": "482",
@@ -451,7 +451,7 @@
       "ref": "ludo19"
     },
     {
-      "id": "18186",
+      "id": "100670",
       "category":  "culture",
       "name": "Défis Nature",
       "poids": "",
@@ -472,9 +472,9 @@
       "ref": "ludo22"
     },
     {
-      "id": "181098",
+      "id": "24068",
       "category":  "ambiance",
-      "name": "Shadows Hunters",
+      "name": "Shadow Hunters",
       "poids": "",
       "ref": "ludo23"
     },
@@ -521,7 +521,7 @@
       "ref": "ludo33"
     },
     {
-      "id": "30928",
+      "id": "28023",
       "category":  "strategie",
       "name": "Jamaica",
       "poids": "1222",
@@ -556,7 +556,7 @@
       "ref": "ludo39"
     },
     {
-      "id": "154858",
+      "id": "162191",
       "category":  "enfant",
       "name": "Vice & Versa",
       "poids": "",
@@ -570,7 +570,7 @@
       "ref": "ludo41"
     },
     {
-      "id": "357988",
+      "id": "193328",
       "category":  "ambiance",
       "name": "Blanc-Manger Coco",
       "poids": "975",
@@ -612,7 +612,7 @@
       "ref": "ludo48"
     },
     {
-      "id": "25623",
+      "id": "172507",
       "category":  "enfant",
       "name": "MMM !",
       "poids": "480",
@@ -654,7 +654,7 @@
       "ref": "ludo55"
     },
     {
-      "id": "17198",
+      "id": "535591",
       "category":  "ambiance",
       "name": "Twister",
       "poids": "605",
@@ -682,7 +682,7 @@
       "ref": "ludo63"
     },
     {
-      "id": "15549",
+      "id": "148228",
       "category":  "familial",
       "name": "Splendor",
       "poids": "818",
@@ -703,7 +703,7 @@
       "ref": "ludo66"
     },
     {
-      "id": "287916",
+      "id": "146508",
       "category":  "enquete",
       "name": "T.I.M.E Stories",
       "poids": "1730",
@@ -731,7 +731,7 @@
       "ref": "ludo70"
     },
     {
-      "id": "173236",
+      "id": "173389",
       "category":  "enfant",
       "name": "Rush Hour",
       "poids": "366",
@@ -766,14 +766,14 @@
       "ref": "ludo76"
     },
     {
-      "id": "271512",
+      "id": "230802",
       "category":  "familial",
       "name": "Azul",
       "poids": "1185",
       "ref": "ludo79"
     },
     {
-      "id": "350391",
+      "id": "255507",
       "category":  "strategie",
       "name": "Orbis",
       "poids": "783",
@@ -815,7 +815,7 @@
       "ref": "ludo27"
     },
     {
-      "id": "17687",
+      "id": "181304",
       "category":  "coop",
       "name": "Mysterium",
       "poids": "1396",
@@ -843,7 +843,7 @@
       "ref": "ludo50"
     },
     {
-      "id": "128838",
+      "id": "681",
       "category":  "abstrait",
       "name": "Quarto",
       "poids": "1140",
@@ -871,7 +871,7 @@
       "ref": "ludo71"
     },
     {
-      "id": "143085",
+      "id": "68448",
       "category":  "strategie",
       "name": "7 Wonders",
       "poids": "1139",
@@ -906,7 +906,7 @@
       "ref": "ludo88"
     },
     {
-      "id": "114143",
+      "id": "244992",
       "category":  "ambiance",
       "name": "The Mind",
       "poids": "245",
@@ -990,14 +990,14 @@
       "ref": ""
     },
     {
-      "id": "24371",
+      "id": "164592",
       "category":  "familial",
       "name": "CAN'T STOP",
       "poids": "",
       "ref": ""
     },
     {
-      "id": "85827",
+      "id": "2392",
       "category":  "familial",
       "name": "Mastermind",
       "poids": "",

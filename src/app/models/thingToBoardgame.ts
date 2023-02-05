@@ -34,8 +34,7 @@ export class ThingToBoardgame {
   static getAttributeFirstElementText(elements: Thing[], attribute: string): string | undefined {
     let text = elements.find(el => el.name === attribute)?.elements[0]?.text;
     if (attribute === 'description') {
-      // todo
-      // text = text?.replace('&#10;&#10;', '\n');
+      text = text?.split('&#10;&#10;').join('<br>').split('&mdash;').join('-').split('&quot;').join('"');
     }
     return text;
   }

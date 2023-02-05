@@ -9,13 +9,12 @@
     <div class="book-info" *ngIf="boardGame.suggestedPlayAge">Suggested age: {{boardGame.suggestedPlayAge}}</div>
     <div class="book-info" *ngIf="boardGame.yearPublished">Published: {{boardGame.yearPublished}}</div>
     <div class="book-info" *ngIf="boardGame.themes && boardGame.themes.length">
+      Themes :
       <ng-container *ngFor="let theme of boardGame.themes">
         {{theme}}
       </ng-container>
     </div>
-    <div class="book-resume">
-      {{boardGame.description}}
-    </div>
+    <div class="book-resume" [innerHTML]="boardGame.description"></div>
   </div>
   <ng-container [ngTemplateOutlet]="image" *ngIf="!parity"></ng-container>
 </div>
