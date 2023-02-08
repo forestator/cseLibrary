@@ -3,8 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import * as convert from 'xml-js';
-import {BoardGame, LudoGame, Thing} from '../models/boardGame.model';
-import {ThingToBoardgame} from '../models/thingToBoardgame';
+import {BoardGame, LudoGame, Thing} from '../../models/boardGame.model';
+import {ThingToBoardgame} from '../../models/thingToBoardgame';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {BGGService} from '../../../services/bgg.service';
+import {BGGService} from '../../services/bgg.service';
 import {Observable} from 'rxjs';
 import {BoardGame, LudoGame} from '../../../models/boardGame.model';
 
