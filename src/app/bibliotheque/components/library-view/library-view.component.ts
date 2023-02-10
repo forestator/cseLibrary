@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Library, SelectorView, ViewMode } from 'src/app/models/author.model';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Library, SelectorView, ViewMode} from 'src/app/models/author.model';
 
 @Component({
   selector: 'app-library-view',
