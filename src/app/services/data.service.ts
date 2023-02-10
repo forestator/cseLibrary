@@ -4,7 +4,6 @@ import imgLib from '../../assets/imgLib.json';
 import romLib from '../../assets/romLib.json';
 import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
-import boardGame from '../../assets/ludo/boardGameLib.json';
 import boardGames from '../../assets/ludo/boardGamesLib.json';
 import {BoardGameCategory, LudoGame} from '../models/boardGame.model';
 
@@ -31,7 +30,6 @@ export class DataService {
     this.allBiblio.push(romLib as Biblio);
     this.allBiblio.push(kidsLib as Biblio);
     this.allBiblio.push(incLib as Biblio);
-    this.allBiblio.push(boardGame as Biblio);
     this.selectedLib = this.allBiblio[0];
     this.log();
   }

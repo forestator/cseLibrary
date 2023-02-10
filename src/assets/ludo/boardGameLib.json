@@ -5,6 +5,7 @@
     "by": "BY_SERIES",
     "path": "assets/covers/boardGames/cat",
     "resume": "",
+      "prefix": "ludo",
     "categories" : [
       {
         "id": "enfant",

@@ -4,7 +4,7 @@
             <div [class]="tools.adminMode?'admin actif':'admin inactif'" (click)="toggleAdminMode()">
                 <mat-icon>manage_accounts</mat-icon>
             </div>
-            {{library?.name}}
+            {{title}}
         </div>
         <div class="menu">
             <button mat-icon-button [matMenuTriggerFor]="mainMenu">
@@ -12,16 +12,17 @@
             </button>
             <mat-menu #mainMenu="matMenu">
                 <button
-                    mat-menu-item 
-                    *ngFor="let item of menu" 
-                    (click)="selectView(VIEW_MODES.BY_LIBRARY, item.id)">
+                    mat-menu-item
+                    *ngFor="let item of menu"
+                    [routerLink]="prefixRoute  + item.route">
                     <span class="popup-menu-label">{{item.name}}</span>
                 </button>
                 <button
                     *ngIf="tools.adminMode"
-                    mat-menu-item 
-                    (click)="selectView(VIEW_MODES.ADMIN, undefined)">
-                    <span class="popup-menu-label"><mat-icon>settings</mat-icon>Administration</span>
+                    mat-menu-item>
+                    <span class="popup-menu-label">
+                        <mat-icon>settings</mat-icon>
+                        Administration</span>
                 </button>
             </mat-menu>
         </div>
@@ -30,13 +31,14 @@
         <div (click)="selectView(VIEW_MODES.NEW, undefined)">
             Nouveautés
         </div>
+        <!--
         <div *ngIf="library?.by === 'BY_SERIES'" (click)="selectView(VIEW_MODES.BY_AUTHOR, undefined)">
             Par auteur
         </div>
         <div *ngFor='let category of library?.categories' (click)="selectView(VIEW_MODES.BY_CATEGORY, category?.id)">
             {{category?.name}}
         </div>
-        <!-- <div class="admin" (click)="selectView(VIEW_MODES.ADMIN, undefined)">
+        <div class="admin" (click)="selectView(VIEW_MODES.ADMIN, undefined)">
             <mat-icon>settings</mat-icon>
         </div> -->
     </div>
