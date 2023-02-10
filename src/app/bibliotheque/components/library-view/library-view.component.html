@@ -1,4 +1,4 @@
-<div *ngIf="library" class="core-page fadein">
+<div *ngIf="(library$ | async) as library" class="core-page fadein">
     <div class="core-header">
         <div class="core-title">
             <div class="primary">{{library.name}}</div>
@@ -7,9 +7,9 @@
             {{library.resume}}
         </div>
     </div>
-    <div *ngFor="let category of library?.categories" 
-         class="core-body core-body-category" 
-         (click)="selectCategory(category.id)"
+    <div *ngFor="let category of library?.categories"
+         class="core-body core-body-category"
+         [routerLink]="'bibliotheque/'+category.id"
          title="Clickez ici pour visualiser cette categorie">
         <div><img class="category-visuel" src="{{library.path}}/{{category.bg}}"></div>
         <div class="core-header">

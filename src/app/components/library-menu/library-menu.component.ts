@@ -53,6 +53,8 @@ export class LibraryMenuComponent implements OnInit {
             this.prefixRoute = 'ludotheque/';
         } else {
             this.menu = [];
+            this.title = 'Cse';
+            this.prefixRoute = '/';
         }
     }
 }

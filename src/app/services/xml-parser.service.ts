@@ -1,10 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { last, Observable } from 'rxjs';
-import { Library, Author, Publisher, Category, Series, Book, Biblio, ViewBy } from '../models/author.model';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {Author, Biblio, Book, Category, Library, Publisher, Series, ViewBy} from '../models/author.model';
 import * as xml2js from 'xml2js';
-import { v4 as uuidv4 } from 'uuid';
-import { DataService } from './data.service';
+import {v4 as uuidv4} from 'uuid';
+import {DataService} from './data.service';
 
 @Injectable({
    providedIn: 'root'
@@ -68,7 +68,7 @@ export class XmlParserService {
                      library: xmlLib
                   };
                   // this.dataService.allBiblio.push(biblio);
-                  console.log('BIBLIO: ', biblio);
+                  // console.log('BIBLIO: ', biblio);
                   observer.next(biblio);
                });
             });
@@ -78,7 +78,7 @@ export class XmlParserService {
    //store xml data into array variable
    private parseXML(data: any): Observable<Library> {
       const parseCategories = (libId: string, by: ViewBy, categoryList: Array<any>): Array<Category> => {
-         console.log('parse categories: ', categoryList);
+         // console.log('parse categories: ', categoryList);
          const categories: Array<Category> = [];
          categoryList.forEach(item => {
             let catId: string = uuidv4();
@@ -102,7 +102,7 @@ export class XmlParserService {
       }
 
       const parseSeries = (parentId: string, authId: string | undefined, by: ViewBy, seriesList: Array<any>): Array<Series> => {
-         console.log('parse series: ', seriesList);
+         // console.log('parse series: ', seriesList);
          const series: Array<Series> = [];
          if (seriesList) {
             if (Array.isArray(seriesList)) {
@@ -140,10 +140,10 @@ export class XmlParserService {
       }
 
       const parseAuthors = (catId: string, by: ViewBy, authorList: Array<any>): Array<Author> => {
-         console.log('parse authors: ', authorList);
+         //console.log('parse authors: ', authorList);
          const authors: Array<Author> = [];
          authorList.forEach(item => {
-            console.log('author: ', item);
+            //console.log('author: ', item);
             let autId: string = uuidv4();
             let firstName: string = '';
             let lastName: string = '';
@@ -233,7 +233,7 @@ export class XmlParserService {
          let k: string | number;
          let parser = new xml2js.Parser({ trim: true, explicitArray: false });
          parser.parseString(data, function (err: any, result: any) {
-            console.log('parse XML result: ', result);
+            //console.log('parse XML result: ', result);
             let libId: string = uuidv4();
             let lib: Library = {
                id: libId,

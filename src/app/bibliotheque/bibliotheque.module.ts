@@ -50,6 +50,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -96,7 +97,8 @@ import {MatTableModule} from '@angular/material/table';
         MatButtonModule,
         MatCheckboxModule,
         FormsModule,
-        MatTableModule
+        MatTableModule,
+        RouterModule
     ]
 })
 export class BibliothequeModule { }

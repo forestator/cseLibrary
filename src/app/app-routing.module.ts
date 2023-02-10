@@ -6,13 +6,13 @@ import {
 } from './ludotheque/components/board-game-category-details/board-game-category-details.component';
 import {BibliothequeComponent} from './bibliotheque/components/bibliotheque/bibliotheque.component';
 import {HomeComponent} from './home/home.component';
-import {CategoryViewComponent} from './bibliotheque/components/category-view/category-view.component';
+import {LibraryViewComponent} from './bibliotheque/components/library-view/library-view.component';
 
 const routes: Routes = [
     {path: 'ludotheque', component: LudothequeComponent},
     {path: 'ludotheque/:id', component: BoardGameCategoryDetailsComponent},
     {path: 'bibliotheque', component: BibliothequeComponent},
-    {path: 'bibliotheque/:id', component: CategoryViewComponent},
+    {path: 'bibliotheque/:id', component: LibraryViewComponent},
     {path: '', component: HomeComponent},
     {path: '**', component: HomeComponent},
 ];
