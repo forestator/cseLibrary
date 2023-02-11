@@ -1009,6 +1009,132 @@
       "name": "Cluedo",
       "poids": "1038",
       "ref": ""
+    },
+    {
+      "id": "344114",
+      "category":  "ambiance",
+      "name": "Chips",
+      "poids": "130",
+      "ref": "ludo157"
+    },
+    {
+      "id": "191925",
+      "category":  "familial",
+      "name": "Bandido",
+      "poids": "119",
+      "ref": "ludo158"
+    },
+    {
+      "id": "258309",
+      "category":  "culture",
+      "name": "Premier contact",
+      "poids": "680",
+      "ref": "ludo159"
+    },
+    {
+      "id": "241266",
+      "category":  "strategie",
+      "name": "Little Town",
+      "poids": "569",
+      "ref": "ludo160"
+    },
+    {
+      "id": "not found",
+      "category":  "enfant",
+      "name": "Smart Game : Pirate en vue",
+      "poids": "451",
+      "ref": "ludo161"
+    },
+    {
+      "id": "not found",
+      "category":  "enfant",
+      "name": "Smart Game : Il était une ferme",
+      "poids": "524",
+      "ref": "ludo162"
+    },
+    {
+      "id": "not found",
+      "category":  "enfant",
+      "name": "Quick Couic",
+      "poids": "377",
+      "ref": "ludo163"
+    },
+    {
+      "id": "314503",
+      "category":  "familial",
+      "name": "Codex Naturalis",
+      "poids": "258",
+      "ref": "ludo164"
+    },
+    {
+      "id": "369750",
+      "category":  "ambiance",
+      "name": "Monique",
+      "poids": "607",
+      "ref": "ludo165"
+    },
+    {
+      "id": "300753",
+      "category":  "ambiance",
+      "name": "Mot Malin",
+      "poids": "278",
+      "ref": "ludo166"
+    },
+    {
+      "id": "364766",
+      "category":  "enquete",
+      "name": "Micro Macro Crime city : Tricks Town",
+      "poids": "488",
+      "ref": "ludo167"
+    },
+    {
+      "id": "330084",
+      "category":  "escape",
+      "name": "Unlock 9 : Legendary Adventures",
+      "poids": "962",
+      "ref": "ludo168"
+    },
+    {
+      "id": "302425",
+      "category":  "escape",
+      "name": "Unlock 8 : Mythic Adventures",
+      "poids": "808",
+      "ref": "ludo169"
+    },
+    {
+      "id": "262341",
+      "category":  "ambiance",
+      "name": "TTMC : Tu te mets combien ?",
+      "poids": "1656",
+      "ref": "ludo170"
+    },
+    {
+      "id": "191004",
+      "category":  "enfant",
+      "name": "Age de pierre Junior",
+      "poids": "928",
+      "ref": "ludo171"
+    },
+    {
+      "id": "300531",
+      "category":  "cooperation",
+      "name": "Paleo",
+      "poids": "1323",
+      "ref": "ludo172"
+    },
+    {
+      "id": "300683",
+      "category":  "strategie",
+      "name": "Meeple Land",
+      "poids": "1310",
+      "ref": "ludo173"
+    },
+    {
+      "id": "355947",
+      "category":  "enfant",
+      "name": "Pin Pon !",
+      "poids": "581",
+      "ref": "ludo174"
     }
   ],
   "jeuxVideos": {
