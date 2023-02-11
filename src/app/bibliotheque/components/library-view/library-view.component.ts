@@ -20,7 +20,7 @@ export class LibraryViewComponent implements OnInit {
         this.library$ = this.route.paramMap.pipe(
             map((params: ParamMap) => {
                 return this.dataService.allBiblio
-                        .find(biblio => biblio.library?.id === params.get('id')!)?.library;
+                        .find(biblio => biblio.library?.id === params.get('libraryId')!)?.library;
                 }
             ));
     }

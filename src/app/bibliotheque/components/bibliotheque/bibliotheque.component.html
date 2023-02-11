@@ -1,31 +1,11 @@
-<!--<app-library-view [library]="library"></app-library-view>
-<app-settings-view *ngIf="viewMode === VIEW_MODES.ADMIN"
-                   [library]="library">
-</app-settings-view>
-<app-category-view *ngIf="viewMode === VIEW_MODES.BY_CATEGORY"
-                   [library]="library"
-                   [category]="category"
-                   (sendView)="selectView($event)">
-</app-category-view>
-<app-series-view *ngIf="viewMode === VIEW_MODES.BY_SERIES || viewMode === VIEW_MODES.BY_BOOK"
-                 [library]="library"
-                 [category]="category"
-                 [series]="series"
-                 [book]="book"
-                 (sendView)="selectView($event)">
-</app-series-view>
-<app-authors-view *ngIf="viewMode === VIEW_MODES.BY_AUTHOR && library?.by === VIEW_BY.BY_SERIES"
-                  [library]="library"
-                  [authors]="dataService.selectedLib?.authors"
-                  (sendView)="selectView($event)">
-</app-authors-view>
-<app-author-view *ngIf="viewMode === VIEW_MODES.BY_AUTHOR && library?.by === VIEW_BY.BY_AUTHOR"
-                 [library]="library"
-                 [category]="category"
-                 [author]="author"
-                 (sendView)="selectView($event)">
-</app-author-view>
-<app-new-view *ngIf="viewMode === VIEW_MODES.NEW"
-              [library]="library">
-</app-new-view>
--->
+<div class="core-page fadein">
+    <div class="core-header" *ngFor="let biblio of allBiblio"
+    [routerLink]="biblio.library?.id">
+        <div class="core-title">
+            <div class="primary">{{biblio.library?.name}}</div>
+        </div>
+        <div class="core-resume">
+            {{biblio.library?.resume}}
+        </div>
+    </div>
+</div>

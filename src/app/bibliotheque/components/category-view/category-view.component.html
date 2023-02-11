@@ -13,7 +13,9 @@
             <app-alphabet *ngIf="category?.by===VIEW_BY.BY_AUTHOR"></app-alphabet>
         </div>
         <div *ngIf="category?.by===VIEW_BY.BY_SERIES" class="all-series">
-            <div *ngFor="let series of category?.series | seriesFilter : tools.adminMode" class="series bloc-link" (click)="selectSeries(series?.id)">
+            <div *ngFor="let series of category?.series | seriesFilter : tools.adminMode"
+                 class="series bloc-link"
+                 (click)="selectSeries(series?.id)">
                 <div class="series-title">{{series.name}}</div>
                 <div class="series-info">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
             </div>

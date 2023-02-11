@@ -9,7 +9,7 @@
     </div>
     <div *ngFor="let category of library?.categories"
          class="core-body core-body-category"
-         [routerLink]="'bibliotheque/'+category.id"
+         [routerLink]="category.id"
          title="Clickez ici pour visualiser cette categorie">
         <div><img class="category-visuel" src="{{library.path}}/{{category.bg}}"></div>
         <div class="core-header">

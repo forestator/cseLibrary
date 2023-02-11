@@ -1,5 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {Category, Library, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
+import {Component, OnInit} from '@angular/core';
+import {Category, Library, SelectorView, ViewBy} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/tools.service';
 import {DataService} from '../../../services/data.service';
 import {map, Observable} from 'rxjs';
@@ -27,8 +27,6 @@ export class CategoryViewComponent implements OnInit {
         return this._category;
     }
 
-    @Output() sendView = new EventEmitter<SelectorView>();
-
     counter: number = 0;
     VIEW_BY = ViewBy;
 
@@ -43,28 +41,20 @@ export class CategoryViewComponent implements OnInit {
         this.library$ = this.route.paramMap.pipe(
             map((params: ParamMap) => {
                     const lib = this.dataService.allBiblio
-                        .find(biblio => biblio.library?.id === params.get('id')!)?.library;
-                    // @ts-ignore
-                this.category = lib.categories[0] as Category;
+                        .find(biblio => biblio.library?.id === params.get('libraryId')!)?.library;
+                    this.category = lib?.categories?.find(cat => cat.id ===  params.get('catId')!);
                     return lib;
                 }
             ));
     }
 
-    selectLibrary(id: string | undefined) {
-        if (id) {
-            this.sendView.emit({mode: ViewMode.BY_LIBRARY, id: id});
-        }
-    }
-
     selectSeries(id: string | undefined) {
         if (id) {
-            this.sendView.emit({mode: ViewMode.BY_SERIES, id: id});
+            //   this.sendView.emit({mode: ViewMode.BY_SERIES, id: id});
         }
     }
 
     selectAuthor(selectorView: SelectorView) {
-        this.sendView.emit(selectorView);
+        // this.sendView.emit(selectorView);
     }
-
 }

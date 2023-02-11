@@ -4,9 +4,9 @@
             <div [class]="tools.adminMode?'admin actif':'admin inactif'" (click)="toggleAdminMode()">
                 <mat-icon>manage_accounts</mat-icon>
             </div>
-            {{title}}
+            <span [routerLink]="''">{{title}}</span>
         </div>
-        <div class="menu">
+        <div class="menu" *ngIf="menu.length > 0">
             <button mat-icon-button [matMenuTriggerFor]="mainMenu">
                 <mat-icon>view_headline</mat-icon>
             </button>

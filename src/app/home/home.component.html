@@ -1,7 +1,20 @@
-<div routerLink="/bibliotheque">
-    bibliotheque
-</div>
-<br>
-<div routerLink="/ludotheque">
-    ludothque
+<div class="core-page fadein">
+    <div class="core-header"
+         [routerLink]="'bibliotheque'">
+        <div class="core-title">
+            <div class="primary">Bibliotheque</div>
+        </div>
+        <div class="core-resume">
+            Retrouvez vos livres préférés
+        </div>
+    </div>
+    <div class="core-header"
+         [routerLink]="'ludotheque'">
+        <div class="core-title">
+            <div class="primary">Ludotheque</div>
+        </div>
+        <div class="core-resume">
+            Les jeux !
+        </div>
+    </div>
 </div>

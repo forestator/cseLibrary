@@ -1,18 +1,7 @@
 import {Component} from '@angular/core';
-import {
-    Author,
-    Book,
-    BookPath,
-    Category,
-    Library,
-    SelectorView,
-    Series,
-    ViewBy,
-    ViewMode
-} from '../../../models/author.model';
+import {Biblio} from '../../../models/author.model';
 import {XmlParserService} from '../../../services/xml-parser.service';
 import {DataService} from '../../../services/data.service';
-import {map, Observable, take} from 'rxjs';
 
 @Component({
     selector: 'app-bibliotheque',
@@ -21,15 +10,7 @@ import {map, Observable, take} from 'rxjs';
 })
 export class BibliothequeComponent {
 
-    public viewMode: ViewMode = ViewMode.BY_LIBRARY;
-    public VIEW_MODES = ViewMode;
-    public VIEW_BY = ViewBy;
-    public library: Library | undefined;
-    public category: Category | undefined;
-    public series: Series | undefined;
-    public author: Author | undefined;
-    public book: Book | undefined;
-
+    allBiblio: Array<Biblio>;
     constructor(
         private xmlParser: XmlParserService,
         public dataService: DataService) {
@@ -41,9 +22,9 @@ export class BibliothequeComponent {
         });
 
         // console.log('allBiblio', this.dataService.allBiblio);
-        this.library = this.dataService.selectedLib?.library;
+        this.allBiblio = this.dataService.allBiblio;
     }
-
+/*
     selectLibrary(libraryId: string) {
         this.library = this.dataService.selectLibrary(libraryId)?.library;
         this.category = this.library?.categories?.[0];
@@ -120,5 +101,5 @@ export class BibliothequeComponent {
             }
             observer.next(undefined);
         });
-    }
+    }*/
 }

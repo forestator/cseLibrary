@@ -7,12 +7,14 @@ import {
 import {BibliothequeComponent} from './bibliotheque/components/bibliotheque/bibliotheque.component';
 import {HomeComponent} from './home/home.component';
 import {LibraryViewComponent} from './bibliotheque/components/library-view/library-view.component';
+import {CategoryViewComponent} from './bibliotheque/components/category-view/category-view.component';
 
 const routes: Routes = [
     {path: 'ludotheque', component: LudothequeComponent},
     {path: 'ludotheque/:id', component: BoardGameCategoryDetailsComponent},
     {path: 'bibliotheque', component: BibliothequeComponent},
-    {path: 'bibliotheque/:id', component: LibraryViewComponent},
+    {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
+    {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
     {path: '', component: HomeComponent},
     {path: '**', component: HomeComponent},
 ];
