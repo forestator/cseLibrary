@@ -43,7 +43,7 @@ export class CategoryViewComponent implements OnInit {
                     const lib = this.dataService.allBiblio
                         .find(biblio => biblio.library?.id === params.get('libraryId')!)?.library;
                     this.category = lib?.categories?.find(cat => cat.id ===  params.get('catId')!);
-                    return lib;
+                return lib;
                 }
             ));
     }

@@ -18,4 +18,11 @@ export class AppComponent {
             //   // this.category = this.library?.categories?.[0];
         });
     }
+
+  scrollToTop() {
+    const target: HTMLElement | null = document.getElementById('top');
+    if (target) {
+      target.scrollIntoView({behavior: 'smooth'});
+    }
+  }
 }
