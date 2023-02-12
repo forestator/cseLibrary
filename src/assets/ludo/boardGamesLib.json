@@ -161,7 +161,7 @@
     {
       "id": "blcMangerCocoJunior",
       "status":  "AVAILABLE",
-      "category":  "enfant",
+      "category":  "ambiance",
       "name": "Blanc-Manger Coco Junior",
       "poids": "824",
       "thumbnail": "assets/covers/boardGames/covers/j2s/blanc-manger-coco-junior.jpg",
@@ -495,6 +495,22 @@
       "name": "Butine !",
       "poids": "502",
       "ref": "ludo154"
+    },
+    {
+      "id": "364073",
+      "status":  "AVAILABLE",
+      "category":  "duo",
+      "name": "Splendor duel",
+      "poids": "434",
+      "ref": "ludo155"
+    },
+    {
+      "id": "319793",
+      "status":  "AVAILABLE",
+      "category":  "familial",
+      "name": "Happy city",
+      "poids": "266",
+      "ref": "ludo156"
     },
     {
       "id": "116858",
