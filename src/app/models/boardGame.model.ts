@@ -16,7 +16,9 @@ export interface Thing {
 }
 
 export enum BoardGameStatus {
-  AVAILABLE = 'AVAILABLE'
+  AVAILABLE = 'AVAILABLE',
+  EMPRUNTE = 'EMPRUNTE',
+  MISSING = 'MISSING',
 }
 
 export interface BoardGame {

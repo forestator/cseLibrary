@@ -9,19 +9,33 @@ import {LudothequeComponent} from './components/ludotheque/ludotheque.component'
 import {MatIconModule} from '@angular/material/icon';
 import {RouterModule} from '@angular/router';
 import {AppCommonModule} from '../common/app-common.module';
+import {ChangeBorrowStatusComponent} from './components/change-borrow-status/change-borrow-status.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 @NgModule({
   declarations: [
     BoardGameCategoryDetailsComponent,
     BoardGameRowComponent,
     BoardGameDetailsPipe,
-    LudothequeComponent],
+    LudothequeComponent,
+    ChangeBorrowStatusComponent],
   exports: [],
   imports: [
     CommonModule,
     MatIconModule,
     RouterModule,
-    AppCommonModule
+    AppCommonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatButtonToggleModule
   ]
 })
 export class LudothequeModule {

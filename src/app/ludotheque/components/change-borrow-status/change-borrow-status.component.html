@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Changer le status du jeu {{data.boardGame.name}}</h1>
+<div mat-dialog-content class="modal-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Employé ?</mat-label>
+    <input matInput [(ngModel)]="employee">
+  </mat-form-field>
+  <div class="status">
+    <mat-label>New Status</mat-label>
+    <mat-button-toggle-group [(ngModel)]="newStatus" aria-label="Status">
+      <mat-button-toggle *ngFor="let status of statusOptions" [value]="status">{{status}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button [disabled]="!employee || newStatus === data.boardGame.status"
+          mat-button
+          [mat-dialog-close]="{newStatus, employee}"
+          cdkFocusInitial>Valid</button>
+</div>

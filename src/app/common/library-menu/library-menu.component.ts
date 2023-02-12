@@ -35,6 +35,7 @@ export class LibraryMenuComponent implements OnInit {
 
   public toggleAdminMode() {
     this.tools.adminMode = !this.tools.adminMode;
+    this.tools.adminMode$.next(this.tools.adminMode);
     console.log('adminMode', this.tools.adminMode);
   }
 
