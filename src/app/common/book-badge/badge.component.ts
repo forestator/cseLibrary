@@ -1,14 +1,15 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Book, BookStatus} from 'src/app/models/author.model';
+import {BookStatus} from 'src/app/models/author.model';
+import {BoardGameStatus} from '../../models/boardGame.model';
 
 @Component({
-  selector: 'app-book-badge',
-  templateUrl: './book-badge.component.html',
-  styleUrls: ['./book-badge.component.scss']
+  selector: 'app-badge',
+  templateUrl: './badge.component.html',
+  styleUrls: ['./badge.component.scss']
 })
-export class BookBadgeComponent implements OnInit {
+export class BadgeComponent implements OnInit {
 
-  @Input() book!: Book;
+  @Input() status!: BookStatus | BoardGameStatus;
   @Input() display: string = 'normal';
 
   txt!: string;
@@ -18,7 +19,7 @@ export class BookBadgeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    switch (this.book.status) {
+    switch (this.status) {
       case BookStatus.NEW:
         this.txt = 'NOUVEAU';
         this.bg = 'chartreuse';
@@ -45,7 +46,7 @@ export class BookBadgeComponent implements OnInit {
         this.fg = 'white';
         break;
       default:
-        this.txt = this.book.status;
+        this.txt = this.status.toString();
         this.bg = 'gray';
         this.fg = 'black';
         break;

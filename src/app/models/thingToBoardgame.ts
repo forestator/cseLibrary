@@ -5,11 +5,7 @@ export class ThingToBoardgame {
     if (boardGameWithDetails) {
       const elements = boardGameWithDetails.elements;
       return {
-        id: ludoGame.id,
-        name: ludoGame.name,
-        category: ludoGame.category,
-        ref: ludoGame.ref,
-        poids: ludoGame.poids,
+        ...ludoGame,
         thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail') ?? '',
         fullImage: this.getAttributeFirstElementText(elements, 'image') ?? '',
         description: this.getAttributeFirstElementText(elements, 'description'),

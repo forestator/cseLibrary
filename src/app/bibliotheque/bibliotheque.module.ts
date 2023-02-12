@@ -5,14 +5,13 @@ import {SeriesRowComponent} from './components/category-view/series-row/series-r
 import {SeriesViewComponent} from './components/series-view/series-view.component';
 import {SeriesBadgeComponent} from './components/common/series-badge/series-badge.component';
 import {BookRowComponent} from './components/series-view/book-row/book-row.component';
-import {BookBadgeComponent} from './components/common/book-badge/book-badge.component';
 import {SettingsViewComponent} from './components/settings-view/settings-view.component';
 import {SettingsCategoryComponent} from './components/settings-view/settings-category/settings-category.component';
 import {
-    SettingsSeriesComponent
+  SettingsSeriesComponent
 } from './components/settings-view/settings-category/settings-series/settings-series.component';
 import {
-    SettingsBookComponent
+  SettingsBookComponent
 } from './components/settings-view/settings-category/settings-series/settings-book/settings-book.component';
 import {SeriesModalComponent} from './components/modals/series-modal/series-modal.component';
 import {BookModalComponent} from './components/modals/book-modal/book-modal.component';
@@ -24,17 +23,17 @@ import {AuthorViewComponent} from './components/author-view/author-view.componen
 import {AlphabetComponent} from './components/common/alphabet/alphabet.component';
 import {LibraryViewComponent} from './components/library-view/library-view.component';
 import {
-    SettingsAuthorComponent
+  SettingsAuthorComponent
 } from './components/settings-view/settings-category/settings-author/settings-author.component';
 import {AuthorModalComponent} from './components/modals/author-modal/author-modal.component';
 import {CategoryModalComponent} from './components/modals/category-modal/category-modal.component';
 import {DeleteModalComponent} from './components/modals/delete-modal/delete-modal.component';
 import {SettingsAuthorsComponent} from './components/settings-view/settings-authors/settings-authors.component';
 import {
-    SettingsPublishersComponent
+  SettingsPublishersComponent
 } from './components/settings-view/settings-publishers/settings-publishers.component';
 import {
-    SettingsPublisherComponent
+  SettingsPublisherComponent
 } from './components/settings-view/settings-publishers/settings-publisher/settings-publisher.component';
 import {PublisherModalComponent} from './components/modals/publisher-modal/publisher-modal.component';
 import {BookFilterPipe} from '../pipes/book-filter.pipe';
@@ -51,54 +50,56 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import {RouterModule} from '@angular/router';
+import {AppCommonModule} from '../common/app-common.module';
 
 @NgModule({
-    declarations: [
-        BibliothequeComponent,
-        SeriesRowComponent,
-        SeriesViewComponent,
-        SeriesBadgeComponent,
-        BookRowComponent,
-        BookBadgeComponent,
-        SettingsViewComponent,
-        SettingsCategoryComponent,
-        SettingsSeriesComponent,
-        SettingsBookComponent,
-        SeriesModalComponent,
-        BookModalComponent,
-        SearchModalComponent,
-        AuthorsViewComponent,
-        AuthorRowComponent,
-        NewViewComponent,
-        AuthorViewComponent,
-        AlphabetComponent,
-        LibraryViewComponent,
-        SettingsAuthorComponent,
-        AuthorModalComponent,
-        CategoryModalComponent,
-        DeleteModalComponent,
-        SettingsAuthorsComponent,
-        SettingsPublishersComponent,
-        SettingsPublisherComponent,
-        PublisherModalComponent,
-        BookFilterPipe,
-        SeriesFilterPipe,
-        CategoryViewComponent,
-    ],
-    imports: [
-        CommonModule,
-        MatExpansionModule,
-        MatIconModule,
-        MatMenuModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        ReactiveFormsModule,
-        MatDialogModule,
-        MatButtonModule,
-        MatCheckboxModule,
-        FormsModule,
-        MatTableModule,
-        RouterModule
-    ]
+  declarations: [
+    BibliothequeComponent,
+    SeriesRowComponent,
+    SeriesViewComponent,
+    SeriesBadgeComponent,
+    BookRowComponent,
+    SettingsViewComponent,
+    SettingsCategoryComponent,
+    SettingsSeriesComponent,
+    SettingsBookComponent,
+    SeriesModalComponent,
+    BookModalComponent,
+    SearchModalComponent,
+    AuthorsViewComponent,
+    AuthorRowComponent,
+    NewViewComponent,
+    AuthorViewComponent,
+    AlphabetComponent,
+    LibraryViewComponent,
+    SettingsAuthorComponent,
+    AuthorModalComponent,
+    CategoryModalComponent,
+    DeleteModalComponent,
+    SettingsAuthorsComponent,
+    SettingsPublishersComponent,
+    SettingsPublisherComponent,
+    PublisherModalComponent,
+    BookFilterPipe,
+    SeriesFilterPipe,
+    CategoryViewComponent,
+  ],
+  imports: [
+    CommonModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatMenuModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatTableModule,
+    RouterModule,
+    AppCommonModule
+  ]
 })
-export class BibliothequeModule { }
+export class BibliothequeModule {
+}

@@ -9,37 +9,31 @@ import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {MatIconModule} from '@angular/material/icon';
-
-import {LibraryMenuComponent} from './components/library-menu/library-menu.component';
-import {HomeComponent} from './home/home.component';
 import {LudothequeModule} from './ludotheque/ludotheque.module';
 import {BibliothequeModule} from './bibliotheque/bibliotheque.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {SearchInLibComponent} from './components/search-in-lib/search-in-lib.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule} from '@angular/forms';
+import {AppCommonModule} from './common/app-common.module';
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDBvqQptbNHI8nngeGAt0IhKrrGMGBR0PY",
-    authDomain: "csebiblio.firebaseapp.com",
-    projectId: "csebiblio",
-    storageBucket: "csebiblio.appspot.com",
-    messagingSenderId: "590961298237",
-    appId: "1:590961298237:web:2171ab2048ec8d182c9354"
+  apiKey: "AIzaSyDBvqQptbNHI8nngeGAt0IhKrrGMGBR0PY",
+  authDomain: "csebiblio.firebaseapp.com",
+  projectId: "csebiblio",
+  storageBucket: "csebiblio.appspot.com",
+  messagingSenderId: "590961298237",
+  appId: "1:590961298237:web:2171ab2048ec8d182c9354"
 };
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LibraryMenuComponent,
-        HomeComponent,
-        SearchInLibComponent,
-    ],
+  declarations: [
+    AppComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -58,12 +52,11 @@ const firebaseConfig = {
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppCommonModule
   ],
-    exports: [
-    ],
-    providers: [],
-    bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -4,6 +4,7 @@
   "jeuxSociete": [
     {
       "id": "321210",
+      "status": "AVAILABLE",
       "category":  "culture",
       "name": "Quizz pays de Rennes",
       "poids": "",
@@ -11,6 +12,7 @@
     },
     {
       "id": "15139",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "RapidCroco",
       "poids": "",
@@ -18,6 +20,7 @@
     },
     {
       "id": "30966",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Tempête sur l'échiquier",
       "poids": "",
@@ -25,6 +28,7 @@
     },
     {
       "id": "255674",
+      "status":  "AVAILABLE",
       "category":  "duo",
       "name": "Imhotep Le Duel",
       "poids": "346",
@@ -32,6 +36,7 @@
     },
     {
       "id": "268586",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "6 qui prend",
       "poids": "250",
@@ -39,6 +44,7 @@
     },
     {
       "id": "273477",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Obscurio",
       "poids": "1356",
@@ -46,6 +52,7 @@
     },
     {
       "id": "unicornPuzzle",
+      "status":  "AVAILABLE",
       "category":  "puzzle",
       "name": "Puzzle Unicorn Garden (500pcs)",
       "poids": "855",
@@ -54,6 +61,7 @@
     },
     {
       "id": "puzzleLandAndSea",
+      "status":  "AVAILABLE",
       "category":  "puzzle",
       "name": "Puzzle Land & Sea (1000pcs)",
       "poids": "755",
@@ -62,6 +70,7 @@
     },
     {
       "id": "18803",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Black Stories",
       "poids": "200",
@@ -69,6 +78,7 @@
     },
     {
       "id": "231748",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Time Bomb",
       "poids": "184",
@@ -76,6 +86,7 @@
     },
     {
       "id": "246203",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Speed Mandala",
       "poids": "157",
@@ -83,6 +94,7 @@
     },
     {
       "id": "4550",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Blank",
       "poids": "284",
@@ -90,6 +102,7 @@
     },
     {
       "id": "289985",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Rêve de Trésor",
       "poids": "646",
@@ -97,6 +110,7 @@
     },
     {
       "id": "269526",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "La Vallée des Vikings",
       "poids": "934",
@@ -104,6 +118,7 @@
     },
     {
       "id": "248900",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Ceylan",
       "poids": "1556",
@@ -111,6 +126,7 @@
     },
     {
       "id": "puzzleTourMonde",
+      "status":  "AVAILABLE",
       "category":  "puzzle",
       "name": "Puzzle observation Tour Du Monde (200pcs)",
       "poids": "756",
@@ -119,6 +135,7 @@
     },
     {
       "id": "puzzleCameleon",
+      "status":  "AVAILABLE",
       "category":  "puzzle",
       "name": "Puzzle art Cameléon (150pcs)",
       "poids": "582",
@@ -127,6 +144,7 @@
     },
     {
       "id": "24209",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Kaleidos Junior",
       "poids": "1013",
@@ -134,6 +152,7 @@
     },
     {
       "id": "204498",
+      "status":  "AVAILABLE",
       "category":  "abstrait",
       "name": "Déblock",
       "poids": "786",
@@ -141,6 +160,7 @@
     },
     {
       "id": "blcMangerCocoJunior",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Blanc-Manger Coco Junior",
       "poids": "824",
@@ -149,6 +169,7 @@
     },
     {
       "id": "268620",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Similo Contes",
       "poids": "131",
@@ -156,6 +177,7 @@
     },
     {
       "id": "294612",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock7! Epic Adventures",
       "poids": "804",
@@ -163,6 +185,7 @@
     },
     {
       "id": "173090",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "The Game edition couleur",
       "poids": "209",
@@ -170,6 +193,7 @@
     },
     {
       "id": "236461",
+      "status":  "AVAILABLE",
       "category":  "duo",
       "name": "The Game Le Duel",
       "poids": "249",
@@ -177,6 +201,7 @@
     },
     {
       "id": "13",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Catan",
       "poids": "952",
@@ -184,6 +209,7 @@
     },
     {
       "id": "175117",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Celestia",
       "poids": "596",
@@ -191,6 +217,7 @@
     },
     {
       "id": "137297",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Augustus",
       "poids": "632",
@@ -198,6 +225,7 @@
     },
     {
       "id": "1038",
+      "status":  "AVAILABLE",
       "category":  "abstrait",
       "name": "Tantrix",
       "poids": "599",
@@ -205,6 +233,7 @@
     },
     {
       "id": "254195",
+      "status":  "AVAILABLE",
       "category":  "culture",
       "name": "Trivial Pursuit Harry Potter Ultimate",
       "poids": "1288",
@@ -212,6 +241,7 @@
     },
     {
       "id": "192237",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Specific",
       "poids": "233",
@@ -219,6 +249,7 @@
     },
     {
       "id": "escapeChateau",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Escape au Château",
       "thumbnail": "assets/covers/boardGames/covers/j2s/escape-game-au-chateau-ne.jpg",
@@ -227,6 +258,7 @@
     },
     {
       "id": "130680",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "iKnow",
       "poids": "858",
@@ -234,6 +266,7 @@
     },
     {
       "id": "274364",
+      "status":  "AVAILABLE",
       "category":  "duo",
       "name": "Watergate",
       "poids": "590",
@@ -241,6 +274,7 @@
     },
     {
       "id": "204583",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Kingdomino",
       "poids": "559",
@@ -248,6 +282,7 @@
     },
     {
       "id": "291008",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Fou Fou Fou !",
       "poids": "167",
@@ -255,6 +290,7 @@
     },
     {
       "id": "204135",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Skyjo",
       "poids": "350",
@@ -262,6 +298,7 @@
     },
     {
       "id": "266192",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Wingspan",
       "poids": "2300",
@@ -269,6 +306,7 @@
     },
     {
       "id": "347505",
+      "status":  "AVAILABLE",
       "category":  "inclassable",
       "name": "Nouvelles ContRées",
       "poids": "595",
@@ -276,6 +314,7 @@
     },
     {
       "id": "350636",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock10!: Game adventures",
       "poids": "850",
@@ -283,6 +322,7 @@
     },
     {
       "id": "340041",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Kingdomino: Origins",
       "poids": "820",
@@ -290,6 +330,7 @@
     },
     {
       "id": "344427",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Pas vu pas pris",
       "poids": "721",
@@ -297,6 +338,7 @@
     },
     {
       "id": "300905",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Top Ten",
       "poids": "482",
@@ -304,6 +346,7 @@
     },
     {
       "id": "338834",
+      "status":  "AVAILABLE",
       "category":  "enquete",
       "name": "Micro Macro Crime city : Full House",
       "poids": "488",
@@ -311,6 +354,7 @@
     },
     {
       "id": "327056",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock! Kids",
       "poids": "785",
@@ -318,6 +362,7 @@
     },
     {
       "id": "6931",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Gagne ton papa",
       "poids": "792",
@@ -325,6 +370,7 @@
     },
     {
       "id": "346703",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "7 Wonders Architects",
       "poids": "1462",
@@ -332,6 +378,7 @@
     },
     {
       "id": "25669",
+      "status":  "AVAILABLE",
       "category":  "abstrait",
       "name": "Qwirkle",
       "poids": "924",
@@ -339,6 +386,7 @@
     },
     {
       "id": "341496",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "César",
       "poids": "1998",
@@ -346,6 +394,7 @@
     },
     {
       "id": "252530",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "JetLag",
       "poids": "246",
@@ -353,6 +402,7 @@
     },
     {
       "id": "341178",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Bubble Stories",
       "poids": "223",
@@ -360,6 +410,7 @@
     },
     {
       "id": "285253",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Fiesta De Los Muertos",
       "poids": "667",
@@ -367,6 +418,7 @@
     },
     {
       "id": "332944",
+      "status":  "AVAILABLE",
       "category":  "duo",
       "name": "Sobek",
       "poids": "621",
@@ -374,6 +426,7 @@
     },
     {
       "id": "253618",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "5 minutes Marvel",
       "poids": "985",
@@ -381,6 +434,7 @@
     },
     {
       "id": "205398",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Citadelles",
       "poids": "446",
@@ -388,6 +442,7 @@
     },
     {
       "id": "266524",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Parks",
       "poids": "1032",
@@ -395,6 +450,7 @@
     },
     {
       "id": "33020",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "BATA-WAFF",
       "poids": "160",
@@ -402,6 +458,7 @@
     },
     {
       "id": "209778",
+      "status":  "AVAILABLE",
       "category":  "coop",
       "name": "Magic Maze",
       "poids": "784",
@@ -409,6 +466,7 @@
     },
     {
       "id": "300010",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Dragomino",
       "poids": "592",
@@ -416,6 +474,7 @@
     },
     {
       "id": "328479",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Living Forest",
       "poids": "1327",
@@ -423,6 +482,7 @@
     },
     {
       "id": "342942",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Ark Nova",
       "poids": "2166",
@@ -430,6 +490,7 @@
     },
     {
       "id": "302135",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Butine !",
       "poids": "502",
@@ -437,6 +498,7 @@
     },
     {
       "id": "116858",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Noé",
       "poids": "",
@@ -444,6 +506,7 @@
     },
     {
       "id": "173346",
+      "status":  "AVAILABLE",
       "category":  "duo",
       "name": "7 Wonders: DUEL",
       "poids": "487",
@@ -451,6 +514,7 @@
     },
     {
       "id": "41916",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Le labyrinthe magique",
       "poids": "",
@@ -458,6 +522,7 @@
     },
     {
       "id": "100670",
+      "status":  "AVAILABLE",
       "category":  "culture",
       "name": "Défis Nature",
       "poids": "",
@@ -465,6 +530,7 @@
     },
     {
       "id": "150658",
+      "status":  "AVAILABLE",
       "category":  "coop",
       "name": "Pandémie Le remède",
       "poids": "",
@@ -472,6 +538,7 @@
     },
     {
       "id": "168168",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Petite Danseuse Etoile",
       "poids": "",
@@ -479,6 +546,7 @@
     },
     {
       "id": "24068",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Shadow Hunters",
       "poids": "",
@@ -486,6 +554,7 @@
     },
     {
       "id": "29967",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Tour du Dragon",
       "poids": "",
@@ -493,6 +562,7 @@
     },
     {
       "id": "174219",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Time's Up Kids",
       "poids": "560",
@@ -500,6 +570,7 @@
     },
     {
       "id": "67823",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Piou Piou",
       "poids": "",
@@ -507,6 +578,7 @@
     },
     {
       "id": "182082",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Carcassonne par monts et par vaux",
       "poids": "598",
@@ -514,6 +586,7 @@
     },
     {
       "id": "9441",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "La course des tortues",
       "poids": "528",
@@ -521,6 +594,7 @@
     },
     {
       "id": "83195",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Bazar Bizarre",
       "poids": "",
@@ -528,6 +602,7 @@
     },
     {
       "id": "28023",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Jamaica",
       "poids": "1222",
@@ -535,6 +610,7 @@
     },
     {
       "id": "104780",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Hop! Hop! Galopons!",
       "poids": "744",
@@ -542,6 +618,7 @@
     },
     {
       "id": "191894",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Imagine",
       "poids": "407",
@@ -549,6 +626,7 @@
     },
     {
       "id": "132497",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Lift it!",
       "poids": "",
@@ -556,6 +634,7 @@
     },
     {
       "id": "175",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Stupide vautour",
       "poids": "230",
@@ -563,6 +642,7 @@
     },
     {
       "id": "162191",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Vice & Versa",
       "poids": "",
@@ -570,6 +650,7 @@
     },
     {
       "id": "165998",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Chef de tribu Boum -Ba- Boum",
       "poids": "",
@@ -577,6 +658,7 @@
     },
     {
       "id": "193328",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Blanc-Manger Coco",
       "poids": "975",
@@ -584,6 +666,7 @@
     },
     {
       "id": "158899",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Colt Express",
       "poids": "960",
@@ -591,6 +674,7 @@
     },
     {
       "id": "228867",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock2 ! Mystery Adventures",
       "poids": "701",
@@ -598,6 +682,7 @@
     },
     {
       "id": "147151",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Concept",
       "poids": "951",
@@ -605,6 +690,7 @@
     },
     {
       "id": "176494",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Isle of Skye",
       "poids": "825",
@@ -612,6 +698,7 @@
     },
     {
       "id": "3955",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Wanted (Bang!)",
       "poids": "345",
@@ -619,6 +706,7 @@
     },
     {
       "id": "172507",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "MMM !",
       "poids": "480",
@@ -626,6 +714,7 @@
     },
     {
       "id": "11971",
+      "status":  "AVAILABLE",
       "category":  "bluff",
       "name": "Kakerlaken Poker (Bug Bluff)",
       "poids": "172",
@@ -633,6 +722,7 @@
     },
     {
       "id": "4522",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Au bal masqué des coccinelles",
       "poids": "629",
@@ -640,6 +730,7 @@
     },
     {
       "id": "23224",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Les monstres farceurs",
       "poids": "182",
@@ -647,6 +738,7 @@
     },
     {
       "id": "6573",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Petites sorcières",
       "poids": "756",
@@ -654,6 +746,7 @@
     },
     {
       "id": "2719",
+      "status":  "AVAILABLE",
       "category":  "abstrait",
       "name": "Puissance 4 Evolution",
       "poids": "921",
@@ -661,6 +754,7 @@
     },
     {
       "id": "535591",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Twister",
       "poids": "605",
@@ -668,6 +762,7 @@
     },
     {
       "id": "183251",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Karuba",
       "poids": "992",
@@ -675,6 +770,7 @@
     },
     {
       "id": "178900",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Code Names",
       "poids": "500",
@@ -682,6 +778,7 @@
     },
     {
       "id": "65244",
+      "status":  "AVAILABLE",
       "category":  "coop",
       "name": "L'île Interdite",
       "poids": "600",
@@ -689,6 +786,7 @@
     },
     {
       "id": "148228",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Splendor",
       "poids": "818",
@@ -696,6 +794,7 @@
     },
     {
       "id": "172358",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Maître Renard",
       "poids": "420",
@@ -703,6 +802,7 @@
     },
     {
       "id": "222887",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Twin It!",
       "poids": "223",
@@ -710,6 +810,7 @@
     },
     {
       "id": "146508",
+      "status":  "AVAILABLE",
       "category":  "enquete",
       "name": "T.I.M.E Stories",
       "poids": "1730",
@@ -717,6 +818,7 @@
     },
     {
       "id": "213460",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock1! Escape Adventures",
       "poids": "703",
@@ -724,6 +826,7 @@
     },
     {
       "id": "235467",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "BOOUM !",
       "poids": "626",
@@ -731,6 +834,7 @@
     },
     {
       "id": "239307",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock3! Secret Adventures",
       "poids": "760",
@@ -738,6 +842,7 @@
     },
     {
       "id": "173389",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Rush Hour",
       "poids": "366",
@@ -745,6 +850,7 @@
     },
     {
       "id": "9354",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Privacy ?!",
       "poids": "687",
@@ -752,6 +858,7 @@
     },
     {
       "id": "244521",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Les Charlatans de Belcastel",
       "poids": "1155",
@@ -759,6 +866,7 @@
     },
     {
       "id": "2511",
+      "status":  "AVAILABLE",
       "category":  "enquete",
       "name": "Sherlock Holmes: Les meurtres de la Tamise",
       "poids": "1954",
@@ -766,6 +874,7 @@
     },
     {
       "id": "72644",
+      "status":  "AVAILABLE",
       "category":  "abstrait",
       "name": "Perplexus Original",
       "poids": "382",
@@ -773,6 +882,7 @@
     },
     {
       "id": "230802",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Azul",
       "poids": "1185",
@@ -780,6 +890,7 @@
     },
     {
       "id": "255507",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Orbis",
       "poids": "783",
@@ -787,6 +898,7 @@
     },
     {
       "id": "puzzleRainbowTigger",
+      "status":  "AVAILABLE",
       "category":  "puzzle",
       "name": "Puzzle Rainbow Tigers (1000pcs)",
       "thumbnail": "assets/covers/boardGames/covers/puzzle/rainbow-tigers.jpg",
@@ -795,6 +907,7 @@
     },
     {
       "id": "puzzleZoo",
+      "status":  "AVAILABLE",
       "category":  "puzzle",
       "name": "Puzzle Day at the Zoo (48pcs)",
       "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-une-journee-au-zoo-48-pieces.webp",
@@ -803,6 +916,7 @@
     },
     {
       "id": "puzzleObsAnimaux",
+      "status":  "AVAILABLE",
       "category":  "puzzle",
       "name": "Puzzle observation Animaux (100pcs)",
       "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-les-animaux-du-monde-livret-100-pcs.jpg",
@@ -811,6 +925,7 @@
     },
     {
       "id": "70919",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "TAKENOKO",
       "poids": "930",
@@ -818,6 +933,7 @@
     },
     {
       "id": "192547",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Kikou le Coucou",
       "poids": "",
@@ -825,6 +941,7 @@
     },
     {
       "id": "181304",
+      "status":  "AVAILABLE",
       "category":  "coop",
       "name": "Mysterium",
       "poids": "1396",
@@ -832,6 +949,7 @@
     },
     {
       "id": "203462",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Aladin et la lampe merveilleuse",
       "poids": "",
@@ -839,6 +957,7 @@
     },
     {
       "id": "203420",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Exit: La cabane abandonnée",
       "poids": "248",
@@ -846,6 +965,7 @@
     },
     {
       "id": "31159",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Piratatak",
       "poids": "210",
@@ -853,6 +973,7 @@
     },
     {
       "id": "681",
+      "status":  "AVAILABLE",
       "category":  "abstrait",
       "name": "Quarto",
       "poids": "1140",
@@ -860,6 +981,7 @@
     },
     {
       "id": "254226",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock4! Exotic Adventures",
       "poids": "705",
@@ -867,6 +989,7 @@
     },
     {
       "id": "105593",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Mito - Permis de tricher",
       "poids": "",
@@ -874,6 +997,7 @@
     },
     {
       "id": "107420",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "La Course Farfelue Des Souris Des Champs",
       "poids": "664",
@@ -881,6 +1005,7 @@
     },
     {
       "id": "68448",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "7 Wonders",
       "poids": "1139",
@@ -888,6 +1013,7 @@
     },
     {
       "id": "92828",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Dixit Odyssey",
       "poids": "810",
@@ -895,6 +1021,7 @@
     },
     {
       "id": "266121",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock5! Heroic Adventures",
       "poids": "722",
@@ -902,6 +1029,7 @@
     },
     {
       "id": "276671",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Sequence",
       "poids": "971",
@@ -909,6 +1037,7 @@
     },
     {
       "id": "168215",
+      "status":  "AVAILABLE",
       "category":  "duo",
       "name": "Saboteur Le Duel",
       "poids": "231",
@@ -916,6 +1045,7 @@
     },
     {
       "id": "244992",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "The Mind",
       "poids": "245",
@@ -923,6 +1053,7 @@
     },
     {
       "id": "244948",
+      "status":  "AVAILABLE",
       "category":  "abstrait",
       "name": "Brains: jardin Japonais",
       "poids": "291",
@@ -930,6 +1061,7 @@
     },
     {
       "id": "117555",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "ClacClac",
       "poids": "487",
@@ -937,6 +1069,7 @@
     },
     {
       "id": "41010",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Mon Premier Carcassonne",
       "poids": "755",
@@ -944,6 +1077,7 @@
     },
     {
       "id": "172931",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Nom d'un Renard !",
       "poids": "703",
@@ -951,6 +1085,7 @@
     },
     {
       "id": "pavlovaCoco",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Pavlova Coco",
       "poids": "1176",
@@ -959,6 +1094,7 @@
     },
     {
       "id": "172225",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Exploding Kittens",
       "poids": "213",
@@ -966,6 +1102,7 @@
     },
     {
       "id": "236475",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Best Of Loups Garous",
       "poids": "395",
@@ -973,6 +1110,7 @@
     },
     {
       "id": "72287",
+      "status":  "AVAILABLE",
       "category":  "duo",
       "name": "Mr Jack pocket",
       "poids": "750",
@@ -980,6 +1118,7 @@
     },
     {
       "id": "279613",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock6! Timeless Adventures",
       "poids": "754",
@@ -987,6 +1126,7 @@
     },
     {
       "id": "9209",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Les aventurier du rail",
       "poids": "1314",
@@ -994,6 +1134,7 @@
     },
     {
       "id": "33061",
+      "status":  "AVAILABLE",
       "category":  "",
       "name": "Defifoo",
       "poids": "",
@@ -1001,6 +1142,7 @@
     },
     {
       "id": "164592",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "CAN'T STOP",
       "poids": "",
@@ -1008,6 +1150,7 @@
     },
     {
       "id": "2392",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Mastermind",
       "poids": "",
@@ -1015,6 +1158,7 @@
     },
     {
       "id": "1294",
+      "status":  "AVAILABLE",
       "category":  "enquete",
       "name": "Cluedo",
       "poids": "1038",
@@ -1022,6 +1166,7 @@
     },
     {
       "id": "344114",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Chips",
       "poids": "130",
@@ -1029,6 +1174,7 @@
     },
     {
       "id": "191925",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Bandido",
       "poids": "119",
@@ -1036,6 +1182,7 @@
     },
     {
       "id": "258309",
+      "status":  "AVAILABLE",
       "category":  "culture",
       "name": "Premier contact",
       "poids": "680",
@@ -1043,6 +1190,7 @@
     },
     {
       "id": "241266",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Little Town",
       "poids": "569",
@@ -1050,6 +1198,7 @@
     },
     {
       "id": "pirateEnVue",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "minAge": "6",
       "name": "Smart Game : Pirate en vue",
@@ -1060,6 +1209,7 @@
     },
     {
       "id": "smartUneFerme",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "minAge": "4",
       "description": "Il était une ferme est un jeu de gestion de ferme pour les enfants. Les joueurs prennent le rôle d'un fermier et doivent gérer leur ferme en cultivant des cultures, en prenant soin de leurs animaux et en vendant leurs produits.\n\nLe jeu propose une variété de tâches pour les joueurs, telles que la plantation de semences, l'arrosage des plantes, la récolte des cultures et la soins des animaux. Les joueurs peuvent également construire des structures supplémentaires sur leur ferme, telles que des silos à grains, des étables pour les animaux et des bâtiments pour stocker les produits.\n\nLe jeu est conçu pour être amusant et éducatif pour les jeunes joueurs, enseignant des compétences telles que la gestion du temps, la planification et la résolution de problèmes. Les graphismes sont attrayants et les personnages adorables, ajoutant encore plus d'attrait à l'expérience de jeu.",
@@ -1070,6 +1220,7 @@
     },
     {
       "id": "quickCouic",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Quick Couic",
       "thumbnail": "assets/covers/boardGames/covers/j2s/quick-couic.jpg",
@@ -1078,6 +1229,7 @@
     },
     {
       "id": "314503",
+      "status":  "AVAILABLE",
       "category":  "familial",
       "name": "Codex Naturalis",
       "poids": "258",
@@ -1085,6 +1237,7 @@
     },
     {
       "id": "369750",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Monique",
       "poids": "607",
@@ -1092,6 +1245,7 @@
     },
     {
       "id": "300753",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "Mot Malin",
       "poids": "278",
@@ -1099,6 +1253,7 @@
     },
     {
       "id": "364766",
+      "status":  "AVAILABLE",
       "category":  "enquete",
       "name": "Micro Macro Crime city : Tricks Town",
       "poids": "488",
@@ -1106,6 +1261,7 @@
     },
     {
       "id": "330084",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock 9 : Legendary Adventures",
       "poids": "962",
@@ -1113,6 +1269,7 @@
     },
     {
       "id": "302425",
+      "status":  "AVAILABLE",
       "category":  "escape",
       "name": "Unlock 8 : Mythic Adventures",
       "poids": "808",
@@ -1120,6 +1277,7 @@
     },
     {
       "id": "262341",
+      "status":  "AVAILABLE",
       "category":  "ambiance",
       "name": "TTMC : Tu te mets combien ?",
       "poids": "1656",
@@ -1127,6 +1285,7 @@
     },
     {
       "id": "191004",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Age de pierre Junior",
       "poids": "928",
@@ -1134,6 +1293,7 @@
     },
     {
       "id": "300531",
+      "status":  "AVAILABLE",
       "category":  "cooperation",
       "name": "Paleo",
       "poids": "1323",
@@ -1141,6 +1301,7 @@
     },
     {
       "id": "300683",
+      "status":  "AVAILABLE",
       "category":  "strategie",
       "name": "Meeple Land",
       "poids": "1310",
@@ -1148,6 +1309,7 @@
     },
     {
       "id": "355947",
+      "status":  "AVAILABLE",
       "category":  "enfant",
       "name": "Pin Pon !",
       "poids": "581",

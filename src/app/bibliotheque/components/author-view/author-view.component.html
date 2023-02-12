@@ -17,7 +17,7 @@
                     <img class="book-cover" [src]="library?.path+'/'+book.cover">
                 </a>
                 <div *ngIf="book.id" class="book-badge">
-                    <app-book-badge [book]="book" [display]="'small'"></app-book-badge>
+                    <app-badge [status]="book.status" [display]="'small'"></app-badge>
                 </div>
             </div>
         </div>

@@ -15,7 +15,12 @@ export interface Thing {
   text?: string;
 }
 
+export enum BoardGameStatus {
+  AVAILABLE = 'AVAILABLE'
+}
+
 export interface BoardGame {
+  status: BoardGameStatus;
   id: string,
   category:  BoardGameCategory,
   name: string,

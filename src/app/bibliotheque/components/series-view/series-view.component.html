@@ -21,7 +21,7 @@
             <img class="book-cover" [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
           </div>
           <div class="book-badge">
-            <app-book-badge [book]="book" [display]="'small'"></app-book-badge>
+            <app-badge [status]="book.status" [display]="'small'"></app-badge>
           </div>
         </div>
       </div>

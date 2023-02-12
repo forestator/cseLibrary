@@ -5,7 +5,7 @@
     </div>
     <div class="book-infos">
         <div class="book-title">{{book.name}}
-            <app-book-badge [book]="book"></app-book-badge>
+            <app-badge [status]="book.status"></app-badge>
         </div>
         <div class="book-authors">{{tools.getAuthors(book.authorIds) | async}}</div>
         <div class="book-info" *ngIf="book.tome?.length !== 0">TOME: {{book.tome}}</div>
@@ -25,7 +25,7 @@
 <div [id]="book.id" *ngIf="!parity" class="book-core">
     <div class="book-infos">
         <div class="book-title">{{book.name}}
-            <app-book-badge [book]="book"></app-book-badge>
+            <app-badge [status]="book.status"></app-badge>
         </div>
         <div class="book-authors">{{tools.getAuthors(book.authorIds) | async}}</div>
         <div class="book-info" *ngIf="book.tome?.length !== 0">TOME: {{book.tome}}</div>
