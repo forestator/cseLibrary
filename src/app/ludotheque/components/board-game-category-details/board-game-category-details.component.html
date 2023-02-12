@@ -3,6 +3,7 @@
     <div class="core-body">
       <app-board-game-row
         [boardGame]="bg | boardGameDetails | async"
+        [selectedBoardGameId]="selectedBoardGameId"
         [index]="index"></app-board-game-row>
     </div>
   </ng-container>

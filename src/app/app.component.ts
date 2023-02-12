@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {XmlParserService} from './services/xml-parser.service';
+import {ToolsService} from './services/tools.service';
 
 
 @Component({
@@ -10,7 +11,8 @@ import {XmlParserService} from './services/xml-parser.service';
 export class AppComponent {
     title = 'Cse';
     constructor(
-        private xmlParser: XmlParserService) {
+        private xmlParser: XmlParserService,
+        private toolService: ToolsService) {
 
         this.xmlParser.loadXML('assets/IMG.xml').subscribe(biblio => {
             //   // this.dataService.selectedLib = biblio;
@@ -20,9 +22,6 @@ export class AppComponent {
     }
 
   scrollToTop() {
-    const target: HTMLElement | null = document.getElementById('top');
-    if (target) {
-      target.scrollIntoView({behavior: 'smooth'});
-    }
+   this.toolService.scrollToId('top');
   }
 }

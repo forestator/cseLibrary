@@ -18,6 +18,11 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SearchInLibComponent} from './components/search-in-lib/search-in-lib.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDBvqQptbNHI8nngeGAt0IhKrrGMGBR0PY",
@@ -33,23 +38,28 @@ const firebaseConfig = {
         AppComponent,
         LibraryMenuComponent,
         HomeComponent,
+        SearchInLibComponent,
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        AngularFireModule.initializeApp(firebaseConfig),
-        AngularFirestoreModule, // firestore
-        AngularFireAuthModule, // auth
-        AngularFireStorageModule, // storage
-        AngularFireDatabaseModule,
-        LudothequeModule,
-        BibliothequeModule,
-        MatIconModule,
-        MatButtonModule,
-        MatMenuModule,
-        HttpClientModule,
-        BrowserAnimationsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
+    AngularFireStorageModule, // storage
+    AngularFireDatabaseModule,
+    LudothequeModule,
+    BibliothequeModule,
+    MatIconModule,
+    MatButtonModule,
+    MatMenuModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
+  ],
     exports: [
     ],
     providers: [],

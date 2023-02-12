@@ -45,7 +45,7 @@
       "ref": "ludo100"
     },
     {
-      "id": "puzzleId",
+      "id": "unicornPuzzle",
       "category":  "puzzle",
       "name": "Puzzle Unicorn Garden (500pcs)",
       "poids": "855",
@@ -53,7 +53,7 @@
       "ref": "ludo101"
     },
     {
-      "id": "puzzleId",
+      "id": "puzzleLandAndSea",
       "category":  "puzzle",
       "name": "Puzzle Land & Sea (1000pcs)",
       "poids": "755",
@@ -110,7 +110,7 @@
       "ref": "ludo109"
     },
     {
-      "id": "puzzleId",
+      "id": "puzzleTourMonde",
       "category":  "puzzle",
       "name": "Puzzle observation Tour Du Monde (200pcs)",
       "poids": "756",
@@ -118,7 +118,7 @@
       "ref": "ludo110"
     },
     {
-      "id": "puzzleId",
+      "id": "puzzleCameleon",
       "category":  "puzzle",
       "name": "Puzzle art Cameléon (150pcs)",
       "poids": "582",
@@ -140,7 +140,7 @@
       "ref": "ludo113"
     },
     {
-      "id": "not found",
+      "id": "blcMangerCocoJunior",
       "category":  "enfant",
       "name": "Blanc-Manger Coco Junior",
       "poids": "824",
@@ -218,7 +218,7 @@
       "ref": "ludo124"
     },
     {
-      "id": "not found",
+      "id": "escapeChateau",
       "category":  "escape",
       "name": "Escape au Château",
       "thumbnail": "assets/covers/boardGames/covers/j2s/escape-game-au-chateau-ne.jpg",
@@ -786,7 +786,7 @@
       "ref": "ludo80"
     },
     {
-      "id": "puzzleId",
+      "id": "puzzleRainbowTigger",
       "category":  "puzzle",
       "name": "Puzzle Rainbow Tigers (1000pcs)",
       "thumbnail": "assets/covers/boardGames/covers/puzzle/rainbow-tigers.jpg",
@@ -794,7 +794,7 @@
       "ref": "ludo81"
     },
     {
-      "id": "puzzleId",
+      "id": "puzzleZoo",
       "category":  "puzzle",
       "name": "Puzzle Day at the Zoo (48pcs)",
       "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-une-journee-au-zoo-48-pieces.webp",
@@ -802,7 +802,7 @@
       "ref": "ludo82"
     },
     {
-      "id": "puzzleId",
+      "id": "puzzleObsAnimaux",
       "category":  "puzzle",
       "name": "Puzzle observation Animaux (100pcs)",
       "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-les-animaux-du-monde-livret-100-pcs.jpg",
@@ -950,7 +950,7 @@
       "ref": "ludo93"
     },
     {
-      "id": "not found",
+      "id": "pavlovaCoco",
       "category":  "ambiance",
       "name": "Pavlova Coco",
       "poids": "1176",
@@ -1049,7 +1049,7 @@
       "ref": "ludo160"
     },
     {
-      "id": "not found",
+      "id": "pirateEnVue",
       "category":  "enfant",
       "minAge": "6",
       "name": "Smart Game : Pirate en vue",
@@ -1059,7 +1059,7 @@
       "ref": "ludo161"
     },
     {
-      "id": "not found",
+      "id": "smartUneFerme",
       "category":  "enfant",
       "minAge": "4",
       "description": "Il était une ferme est un jeu de gestion de ferme pour les enfants. Les joueurs prennent le rôle d'un fermier et doivent gérer leur ferme en cultivant des cultures, en prenant soin de leurs animaux et en vendant leurs produits.\n\nLe jeu propose une variété de tâches pour les joueurs, telles que la plantation de semences, l'arrosage des plantes, la récolte des cultures et la soins des animaux. Les joueurs peuvent également construire des structures supplémentaires sur leur ferme, telles que des silos à grains, des étables pour les animaux et des bâtiments pour stocker les produits.\n\nLe jeu est conçu pour être amusant et éducatif pour les jeunes joueurs, enseignant des compétences telles que la gestion du temps, la planification et la résolution de problèmes. Les graphismes sont attrayants et les personnages adorables, ajoutant encore plus d'attrait à l'expérience de jeu.",
@@ -1069,7 +1069,7 @@
       "ref": "ludo162"
     },
     {
-      "id": "not found",
+      "id": "quickCouic",
       "category":  "enfant",
       "name": "Quick Couic",
       "thumbnail": "assets/covers/boardGames/covers/j2s/quick-couic.jpg",

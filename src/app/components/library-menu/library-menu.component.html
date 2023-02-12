@@ -28,7 +28,10 @@
     </div>
   </div>
   <div class="category-menu">
-    <div *ngIf="prefixRoute !== '/'"
+    <div *ngIf="prefixRoute === 'ludotheque/'" class="search">
+      <app-search-in-lib [boardGames]="dataService.boardGames"></app-search-in-lib>
+    </div>
+    <div class="cat-nav" *ngIf="prefixRoute !== '/'"
          [routerLink]="prefixRoute + 'new'">
       Nouveautés
     </div>

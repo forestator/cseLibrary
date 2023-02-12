@@ -13,7 +13,8 @@ import {NewViewComponent} from './bibliotheque/components/new-view/new-view.comp
 
 const routes: Routes = [
     {path: 'ludotheque', component: LudothequeComponent},
-    {path: 'ludotheque/:id', component: BoardGameCategoryDetailsComponent},
+    {path: 'ludotheque/:categoryId', component: BoardGameCategoryDetailsComponent},
+    {path: 'ludotheque/:categoryId/:id', component: BoardGameCategoryDetailsComponent},
     {path: 'ludotheque/new', component: BoardGameCategoryDetailsComponent},
     {path: 'bibliotheque', component: BibliothequeComponent},
     {path: 'bibliotheque/new', component: NewViewComponent},

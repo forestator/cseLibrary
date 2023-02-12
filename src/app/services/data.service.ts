@@ -13,6 +13,7 @@ import {BoardGame, BoardGameCategory} from '../models/boardGame.model';
 export class DataService {
   public allBiblio: Array<Biblio>;
   public selectedLib!: Biblio | undefined;
+  public boardGames: Array<BoardGame>;
 
   constructor() {
     this.allBiblio = [];
@@ -25,6 +26,8 @@ export class DataService {
     //    item.by = tmp.library?.by;
     // })
     // console.log('tmp', tmp);
+
+    this.boardGames = boardGames.jeuxSociete as Array<BoardGame>;
 
     this.allBiblio.push(imgLib as Biblio);
     this.allBiblio.push(romLib as Biblio);
@@ -73,7 +76,7 @@ export class DataService {
 
   public getGamesOfCategory(category?: string): Array<BoardGame> {
     if (category !== undefined && category in BoardGameCategory) {
-      return boardGames.jeuxSociete
+      return this.boardGames
         .filter(j2s => j2s.category === category)
         // todo fix type
         .map(j2s => j2s as any as BoardGame)

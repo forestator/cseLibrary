@@ -1,5 +1,6 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../models/boardGame.model';
+import {ToolsService} from '../../../services/tools.service';
 
 @Component({
   selector: 'app-board-game-row',
@@ -7,17 +8,26 @@ import {BoardGame} from '../../../models/boardGame.model';
   styleUrls: ['./board-game-row.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BoardGameRowComponent implements OnInit {
+export class BoardGameRowComponent implements OnInit, OnChanges {
 
   @Input() boardGame: BoardGame | null = null;
   @Input() index!: number;
+  @Input() selectedBoardGameId?: string;
 
   parity!: boolean;
 
-  constructor() { }
+  constructor(private toolsService: ToolsService) { }
 
   ngOnInit(): void {
     this.parity = this.index % 2 === 0;
+    if (this.selectedBoardGameId) {
+      this.toolsService.scrollToId(this.selectedBoardGameId);
+    }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedBoardGameId'] && !!changes['selectedBoardGameId'].currentValue) {
+      this.toolsService.scrollToId(changes['selectedBoardGameId'].currentValue);
+    }
+  }
 }

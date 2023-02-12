@@ -37,7 +37,7 @@ export class SeriesViewComponent implements OnInit {
             this.series.books = this.series.books?.reverse();
           }
           if (this.book && this.book.id) {
-            this.scrollTo(this.book.id);
+            this.tools.scrollToId(this.book.id);
           }
           return lib;
         }
@@ -50,15 +50,6 @@ export class SeriesViewComponent implements OnInit {
 
   selectLibrary(id: string | undefined) {
     this.router.navigateByUrl(`/bibliotheque/${id}`);
-  }
-
-  scrollTo(id: string | undefined) {
-    if (id) {
-      const target: HTMLElement | null = document.getElementById(id);
-      if (target) {
-        target.scrollIntoView({behavior: 'smooth'});
-      }
-    }
   }
 }
 

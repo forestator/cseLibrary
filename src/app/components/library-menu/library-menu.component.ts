@@ -19,7 +19,7 @@ export class LibraryMenuComponent implements OnInit {
   prefixRoute: string = '';
   library$!: Observable<Library | undefined>;
 
-  constructor(private dataService: DataService,
+  constructor(public dataService: DataService,
               private route: ActivatedRoute,
               private router: Router,
               public tools: ToolsService) {
@@ -36,9 +36,6 @@ export class LibraryMenuComponent implements OnInit {
   public toggleAdminMode() {
     this.tools.adminMode = !this.tools.adminMode;
     console.log('adminMode', this.tools.adminMode);
-  }
-
-  public selectView(view: ViewMode, id: string | undefined) {
   }
 
   private handleUrlChange(url: string) {
