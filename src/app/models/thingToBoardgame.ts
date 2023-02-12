@@ -1,30 +1,35 @@
-import {BoardGame, LudoGame, Thing} from './boardGame.model';
+import {BoardGame, Thing} from './boardGame.model';
+
 export class ThingToBoardgame {
-  static convertGameDetailsThingToBoardGame(boardGameWithDetails: Thing, ludoGame: LudoGame): BoardGame {
-    const elements = boardGameWithDetails.elements;
-    return {
-      id: ludoGame.id,
-      name: ludoGame.name,
-      category: ludoGame.category,
-      ref: ludoGame.ref,
-      poids: ludoGame.poids,
-      thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail') ?? '',
-      fullImage: this.getAttributeFirstElementText(elements, 'image') ?? '',
-      description: this.getAttributeFirstElementText(elements, 'description'),
-      // @ts-ignore
-      yearPublished: +this.getAttributeValue(elements, 'yearpublished'),
-      // @ts-ignore
-      minPlayers: +this.getAttributeValue(elements, 'minplayers'),
-      // @ts-ignore
-      maxPlayers: +this.getAttributeValue(elements, 'maxplayers'),
-      // @ts-ignore
-      playingTime: +this.getAttributeValue(elements, 'playingtime'),
-      // @ts-ignore
-      minAge: +this.getAttributeValue(elements, 'minage'),
-      suggestedPlayAge: this.getSuggestedPlayAge(elements),
-      // @ts-ignore
-      themes: this.getAllAttributesOfType(elements, 'boardgamecategory')
-    };
+  static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
+    if (boardGameWithDetails) {
+      const elements = boardGameWithDetails.elements;
+      return {
+        id: ludoGame.id,
+        name: ludoGame.name,
+        category: ludoGame.category,
+        ref: ludoGame.ref,
+        poids: ludoGame.poids,
+        thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail') ?? '',
+        fullImage: this.getAttributeFirstElementText(elements, 'image') ?? '',
+        description: this.getAttributeFirstElementText(elements, 'description'),
+        // @ts-ignore
+        yearPublished: +this.getAttributeValue(elements, 'yearpublished'),
+        // @ts-ignore
+        minPlayers: +this.getAttributeValue(elements, 'minplayers'),
+        // @ts-ignore
+        maxPlayers: +this.getAttributeValue(elements, 'maxplayers'),
+        // @ts-ignore
+        playingTime: +this.getAttributeValue(elements, 'playingtime'),
+        // @ts-ignore
+        minAge: +this.getAttributeValue(elements, 'minage'),
+        suggestedPlayAge: this.getSuggestedPlayAge(elements),
+        // @ts-ignore
+        themes: this.getAllAttributesOfType(elements, 'boardgamecategory')
+      };
+    } else {
+      return ludoGame;
+    }
   }
 
   static getAttributeValue(elements: Thing[], attribute: string): string | undefined {

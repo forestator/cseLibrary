@@ -5,7 +5,7 @@ import romLib from '../../assets/romLib.json';
 import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
 import boardGames from '../../assets/ludo/boardGamesLib.json';
-import {BoardGameCategory, LudoGame} from '../models/boardGame.model';
+import {BoardGame, BoardGameCategory} from '../models/boardGame.model';
 
 @Injectable({
   providedIn: 'root'
@@ -71,12 +71,12 @@ export class DataService {
     return authors;
   }
 
-  public getGamesOfCategory(category?: string): Array<LudoGame> {
+  public getGamesOfCategory(category?: string): Array<BoardGame> {
     if (category !== undefined && category in BoardGameCategory) {
       return boardGames.jeuxSociete
-        .filter(j2s => j2s.category === category && j2s.id !== 'not found')
+        .filter(j2s => j2s.category === category)
         // todo fix type
-        .map(j2s => j2s as any as LudoGame)
+        .map(j2s => j2s as any as BoardGame)
         .sort((a, b) =>
           this.ludoRefNumber(a.ref) > this.ludoRefNumber(b.ref) ? -1 : 1
         );

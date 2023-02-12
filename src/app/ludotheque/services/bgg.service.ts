@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import * as convert from 'xml-js';
-import {BoardGame, LudoGame, Thing} from '../../models/boardGame.model';
+import {BoardGame, Thing} from '../../models/boardGame.model';
 import {ThingToBoardgame} from '../../models/thingToBoardgame';
 
 @Injectable({
@@ -32,10 +32,15 @@ export class BGGService {
     return this.send(url);
   }
 
-  gameDetails(ludoGame: LudoGame): Observable<BoardGame> {
-    const url = `${this.bggUrl}/thing?id=${ludoGame.id}`;
-    return this.send(url).pipe(map(rep => {
-      return ThingToBoardgame.convertGameDetailsThingToBoardGame(rep[0], ludoGame);
-    }));
+  gameDetails(ludoGame: BoardGame): Observable<BoardGame> {
+    if (typeof +ludoGame.id === 'number') {
+      const url = `${this.bggUrl}/thing?id=${ludoGame.id}`;
+      return this.send(url).pipe(map(rep => {
+        const detailsFromApi: Thing | null = rep ? rep[0] : null;
+        return ThingToBoardgame.convertGameDetailsThingToBoardGame(ludoGame, detailsFromApi);
+      }));
+    } else {
+      return of(ThingToBoardgame.convertGameDetailsThingToBoardGame(ludoGame, null));
+    }
   }
 }

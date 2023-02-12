@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {LudoGame} from '../../../models/boardGame.model';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {map, Observable} from 'rxjs';
 import {DataService} from '../../../services/data.service';
+import {BoardGame} from '../../../models/boardGame.model';
 
 @Component({
     selector: 'app-board-game-category-details',
@@ -13,7 +13,7 @@ import {DataService} from '../../../services/data.service';
 export class BoardGameCategoryDetailsComponent implements OnInit {
 
     // @ts-ignore
-    boardGames$: Observable<Array<LudoGame>> = [];
+    boardGames$: Observable<Array<BoardGame>> = [];
 
     constructor(private router: Router,
                 private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class BoardGameCategoryDetailsComponent implements OnInit {
         );
     }
 
-    trackBoardGame(index: number, item: LudoGame) {
+    trackBoardGame(index: number, item: BoardGame) {
         return item.id + item.name;
     }
 }
