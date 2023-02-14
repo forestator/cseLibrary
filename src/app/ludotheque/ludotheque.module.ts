@@ -3,8 +3,8 @@ import {CommonModule} from '@angular/common';
 import {BoardGameDetailsPipe} from './pipes/boardGameDetailPipe/board-game-details.pipe';
 import {
   BoardGameCategoryDetailsComponent
-} from './components/board-game-category-details/board-game-category-details.component';
-import {BoardGameRowComponent} from './components/board-game-row/board-game-row.component';
+} from './components/board-games/components/board-game-category-details/board-game-category-details.component';
+import {BoardGameRowComponent} from './components/board-games/components/board-game-row/board-game-row.component';
 import {LudothequeComponent} from './components/ludotheque/ludotheque.component';
 import {MatIconModule} from '@angular/material/icon';
 import {RouterModule} from '@angular/router';
@@ -16,6 +16,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {BoardGamesComponent} from './components/board-games/board-games.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     BoardGameRowComponent,
     BoardGameDetailsPipe,
     LudothequeComponent,
-    ChangeBorrowStatusComponent],
+    ChangeBorrowStatusComponent,
+    BoardGamesComponent],
   exports: [],
   imports: [
     CommonModule,

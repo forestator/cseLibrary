@@ -34,6 +34,6 @@ export class SearchInLibComponent implements OnInit {
 
   goToSelectedItem(matAutocompleteSelectedEvent: MatAutocompleteSelectedEvent) {
     const boardGame: BoardGame = this.boardGames.find(bg => bg.name === matAutocompleteSelectedEvent.option.value)!;
-    this.router.navigateByUrl(`/ludotheque/${boardGame.category}/${boardGame.id}`);
+    this.router.navigateByUrl(`/ludotheque/j2s/${boardGame.category}/${boardGame.id}`);
   }
 }

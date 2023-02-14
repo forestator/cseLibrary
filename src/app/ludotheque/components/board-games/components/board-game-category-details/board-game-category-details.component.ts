@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {map, Observable} from 'rxjs';
-import {DataService} from '../../../services/data.service';
-import {BoardGame} from '../../../models/boardGame.model';
+import {DataService} from '../../../../../services/data.service';
+import {BoardGame} from '../../../../../models/boardGame.model';
 
 @Component({
   selector: 'app-board-game-category-details',

@@ -40,16 +40,17 @@ export class LibraryMenuComponent implements OnInit {
   }
 
   private handleUrlChange(url: string) {
+    console.log(url);
     if (url.includes('bibliotheque')) {
       this.menu = this.dataService.allBiblio.map((item) => {
         return {name: item.library!.name, route: item.library!.id!};
       });
       this.prefixRoute = 'bibliotheque/';
-    } else if (url.includes('ludotheque')) {
+    } else if (url.includes('ludotheque/j2s')) {
       this.menu = boardGamCats.library.categories.map(cat => {
         return {name: cat.name, route: cat.id};
       });
-      this.prefixRoute = 'ludotheque/';
+      this.prefixRoute = 'ludotheque/j2s';
     } else {
       this.menu = [];
       this.prefixRoute = '/';

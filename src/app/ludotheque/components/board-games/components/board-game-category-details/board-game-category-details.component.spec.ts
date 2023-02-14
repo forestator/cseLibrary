@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { BoardGameCategoryDetailsComponent } from './board-game-category-details.component';
+import {BoardGameCategoryDetailsComponent} from './board-game-category-details.component';
 
 describe('BoardGameCategoryDetailsComponent', () => {
   let component: BoardGameCategoryDetailsComponent;

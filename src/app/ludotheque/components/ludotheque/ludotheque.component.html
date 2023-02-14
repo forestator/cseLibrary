@@ -1,26 +1,20 @@
 <div class="core-page fadein">
-    <div class="core-header">
-        <div class="core-title">
-            <div class="primary">{{library.name}}</div>
-        </div>
-        <div class="core-resume">
-            {{library.resume}}
-        </div>
+  <div class="core-header"
+       [routerLink]="'j2s'">
+    <div class="core-title">
+      <div class="primary">Jeux de société</div>
     </div>
-    <div *ngFor="let category of library?.categories"
-         [routerLink]="category.id" routerLinkActive="active"
-         class="core-body core-body-category"
-         title="Cliquez ici pour visualiser cette categorie">
-        <div><img class="category-visuel" src="{{library.path}}/{{category.bg}}"></div>
-        <div class="core-header">
-            <div class="core-title">
-                <div class="primary">
-                    {{category.name}}
-                </div>
-            </div>
-            <div class="core-resume">
-                {{category.resume}}
-            </div>
-        </div>
+    <div class="core-resume">
+      Les j2s
     </div>
+  </div>
+  <div class="core-header"
+       [routerLink]="'videoGames'">
+    <div class="core-title">
+      <div class="primary">Jeux vidéos</div>
+    </div>
+    <div class="core-resume">
+      Les jeux vidéo !
+    </div>
+  </div>
 </div>
