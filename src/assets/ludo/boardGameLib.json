@@ -1,12 +1,12 @@
 {
   "library": {
-    "id": "ludotheque",
+    "id": "j2s",
     "name": "Jeux de société",
     "by": "BY_SERIES",
     "path": "assets/covers/boardGames/cat",
     "resume": "",
-      "prefix": "ludo",
-    "categories" : [
+    "prefix": "j2s",
+    "categories": [
       {
         "id": "enfant",
         "parentId": "jeuxDeSociete",

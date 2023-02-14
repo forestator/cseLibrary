@@ -11,9 +11,12 @@ import {CategoryViewComponent} from './bibliotheque/components/category-view/cat
 import {SeriesViewComponent} from './bibliotheque/components/series-view/series-view.component';
 import {NewViewComponent} from './bibliotheque/components/new-view/new-view.component';
 import {BoardGamesComponent} from './ludotheque/components/board-games/board-games.component';
+import {VideoGamesComponent} from './ludotheque/components/video-games/video-games.component';
 
 const routes: Routes = [
     {path: 'ludotheque', component: LudothequeComponent},
+    {path: 'ludotheque/outsideGames', component: VideoGamesComponent},
+    {path: 'ludotheque/videoGames', component: VideoGamesComponent},
     {path: 'ludotheque/j2s', component: BoardGamesComponent},
     {path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent},
     {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent},

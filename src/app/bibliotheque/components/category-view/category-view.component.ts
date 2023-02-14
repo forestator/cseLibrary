@@ -3,7 +3,8 @@ import {Category, Library, SelectorView, ViewBy} from 'src/app/models/author.mod
 import {ToolsService} from 'src/app/services/tools.service';
 import {DataService} from '../../../services/data.service';
 import {map, Observable} from 'rxjs';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {Params} from '@angular/router';
+import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
     selector: 'app-category-view',
@@ -30,28 +31,20 @@ export class CategoryViewComponent implements OnInit {
     counter: number = 0;
     VIEW_BY = ViewBy;
 
-    ALPHABET: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
     constructor(public tools: ToolsService,
-                private route: ActivatedRoute,
+                private navigationService: NavigationService,
                 public dataService: DataService) {
     }
 
     ngOnInit(): void {
-        this.library$ = this.route.paramMap.pipe(
-            map((params: ParamMap) => {
+        this.library$ = this.navigationService.getRouteParams().pipe(
+            map((params: Params) => {
                     const lib = this.dataService.allBiblio
-                        .find(biblio => biblio.library?.id === params.get('libraryId')!)?.library;
-                    this.category = lib?.categories?.find(cat => cat.id ===  params.get('catId')!);
+                        .find(biblio => biblio.library?.id === params['libraryId']!)?.library;
+                    this.category = lib?.categories?.find(cat => cat.id ===  params['catId']!);
                 return lib;
                 }
             ));
-    }
-
-    selectSeries(id: string | undefined) {
-        if (id) {
-            //   this.sendView.emit({mode: ViewMode.BY_SERIES, id: id});
-        }
     }
 
     selectAuthor(selectorView: SelectorView) {

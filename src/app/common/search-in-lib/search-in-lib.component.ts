@@ -4,6 +4,7 @@ import {map, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
+import {NavigationService} from '../../services/navigation.service';
 
 @Component({
   selector: 'app-search-in-lib',
@@ -16,7 +17,7 @@ export class SearchInLibComponent implements OnInit {
   searchText: FormControl = new FormControl('');
   filteredOptions?: Observable<any>;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private navigateService: NavigationService) {
   }
 
   ngOnInit() {
@@ -34,6 +35,6 @@ export class SearchInLibComponent implements OnInit {
 
   goToSelectedItem(matAutocompleteSelectedEvent: MatAutocompleteSelectedEvent) {
     const boardGame: BoardGame = this.boardGames.find(bg => bg.name === matAutocompleteSelectedEvent.option.value)!;
-    this.router.navigateByUrl(`/ludotheque/j2s/${boardGame.category}/${boardGame.id}`);
+    this.navigateService.goToBoardGame(boardGame);
   }
 }

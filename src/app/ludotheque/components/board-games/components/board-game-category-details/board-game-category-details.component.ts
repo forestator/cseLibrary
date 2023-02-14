@@ -1,8 +1,9 @@
 import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Params} from '@angular/router';
 import {map, Observable} from 'rxjs';
 import {DataService} from '../../../../../services/data.service';
 import {BoardGame} from '../../../../../models/boardGame.model';
+import {NavigationService} from '../../../../../services/navigation.service';
 
 @Component({
   selector: 'app-board-game-category-details',
@@ -16,16 +17,15 @@ export class BoardGameCategoryDetailsComponent implements OnInit {
   boardGames$: Observable<Array<BoardGame>> = [];
   public selectedBoardGameId?: string;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute,
+  constructor(private navService: NavigationService,
               private dataService: DataService) {
   }
 
   ngOnInit(): void {
-    this.boardGames$ = this.route.paramMap.pipe(
-      map((params: ParamMap) => {
-          const boardGames: Array<BoardGame> = this.dataService.getGamesOfCategory(params.get('categoryId')!);
-          this.selectedBoardGameId = params.get('id')!;
+    this.boardGames$ = this.navService.getRouteParams().pipe(
+      map((params: Params) => {
+          const boardGames: Array<BoardGame> = this.dataService.getGamesOfCategory(params['categoryId']);
+          this.selectedBoardGameId = params['id'];
           return boardGames;
         }
       ));

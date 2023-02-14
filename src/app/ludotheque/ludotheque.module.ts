@@ -17,6 +17,8 @@ import {FormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {BoardGamesComponent} from './components/board-games/board-games.component';
+import {VideoGamesComponent} from './components/video-games/video-games.component';
+import {OutsideGamesComponent} from './components/outside-games/outside-games.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import {BoardGamesComponent} from './components/board-games/board-games.componen
     BoardGameDetailsPipe,
     LudothequeComponent,
     ChangeBorrowStatusComponent,
-    BoardGamesComponent],
+    BoardGamesComponent,
+    VideoGamesComponent,
+    OutsideGamesComponent],
   exports: [],
   imports: [
     CommonModule,

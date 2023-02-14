@@ -40,7 +40,6 @@ export class LibraryMenuComponent implements OnInit {
   }
 
   private handleUrlChange(url: string) {
-    console.log(url);
     if (url.includes('bibliotheque')) {
       this.menu = this.dataService.allBiblio.map((item) => {
         return {name: item.library!.name, route: item.library!.id!};

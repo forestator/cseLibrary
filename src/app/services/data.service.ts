@@ -4,7 +4,7 @@ import imgLib from '../../assets/imgLib.json';
 import romLib from '../../assets/romLib.json';
 import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
-import boardGames from '../../assets/ludo/boardGamesLib.json';
+import boardGames from '../../assets/ludo/listeJeuxSociete.json';
 import {BoardGame, BoardGameCategory} from '../models/boardGame.model';
 
 @Injectable({
@@ -27,7 +27,7 @@ export class DataService {
     // })
     // console.log('tmp', tmp);
 
-    this.boardGames = boardGames.jeuxSociete as Array<BoardGame>;
+    this.boardGames = boardGames as Array<BoardGame>;
 
     this.allBiblio.push(imgLib as Biblio);
     this.allBiblio.push(romLib as Biblio);

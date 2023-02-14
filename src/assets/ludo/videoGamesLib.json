@@ -1,0 +1,21 @@
+{
+  "library": {
+    "id": "videoGames",
+    "name": "Jeux vidéos",
+    "by": "BY_SERIES",
+    "path": "todo",
+    "resume": "",
+    "prefix": "videoGames",
+    "categories": [
+      {
+        "id": "enfant",
+        "parentId": "jeuxDeSociete",
+        "name": "Jeux pour enfants",
+        "resume": "Les jeux pour enfants sont des jeux conçus pour les enfants en bas âge, souvent conçus pour les aider à développer des compétences telles que la coordination œil-main, la reconnaissance des couleurs et des formes, la résolution de problèmes et la pensée stratégique. Les exemples incluent les jeux de construction, les jeux de memory, les jeux de société simples et les puzzles.",
+        "bg": "bubbleStories.webp",
+        "by": "BY_SERIES",
+        "prefix": "enfant"
+      }
+    ]
+  }
+}

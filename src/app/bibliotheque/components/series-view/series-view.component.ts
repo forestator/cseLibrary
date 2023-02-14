@@ -3,7 +3,8 @@ import {Book, Category, Library, Series, SeriesStatus} from 'src/app/models/auth
 import {DataService} from 'src/app/services/data.service';
 import {ToolsService} from 'src/app/services/tools.service';
 import {map, Observable} from 'rxjs';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Params, Router} from '@angular/router';
+import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-series-view',
@@ -21,18 +22,18 @@ export class SeriesViewComponent implements OnInit {
   book!: Book | undefined;
 
   constructor(public dataService: DataService,
-              private route: ActivatedRoute,
+              private navigationService: NavigationService,
               private router: Router,
               public tools: ToolsService) {
   }
 
   ngOnInit(): void {
-    this.library$ = this.route.paramMap.pipe(
-      map((params: ParamMap) => {
+    this.library$ = this.navigationService.getRouteParams().pipe(
+      map((params: Params) => {
           const lib = this.dataService.allBiblio
-            .find(biblio => biblio.library?.id === params.get('libraryId')!)?.library;
-          this.category = lib?.categories?.find(cat => cat.id === params.get('catId')!);
-          this.series = this.category?.series?.find(serie => serie.id === params.get('seriesId')!);
+            .find(biblio => biblio.library?.id === params['libraryId']!)?.library;
+          this.category = lib?.categories?.find(cat => cat.id === params['catId']!);
+          this.series = this.category?.series?.find(serie => serie.id === params['seriesId']!);
           if (this.series?.status === SeriesStatus.ONE_SHOT) {
             this.series.books = this.series.books?.reverse();
           }
