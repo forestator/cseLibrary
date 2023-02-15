@@ -19,6 +19,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {BoardGamesComponent} from './components/board-games/board-games.component';
 import {VideoGamesComponent} from './components/video-games/video-games.component';
 import {OutsideGamesComponent} from './components/outside-games/outside-games.component';
+import {
+  VideoGamesConsoleDetailsComponent
+} from './components/video-games/video-games-console-details/video-games-console-details.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import {OutsideGamesComponent} from './components/outside-games/outside-games.co
     ChangeBorrowStatusComponent,
     BoardGamesComponent,
     VideoGamesComponent,
-    OutsideGamesComponent],
+    OutsideGamesComponent,
+    VideoGamesConsoleDetailsComponent],
   exports: [],
   imports: [
     CommonModule,

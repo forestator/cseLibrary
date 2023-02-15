@@ -3,18 +3,33 @@
     "id": "videoGames",
     "name": "Jeux vidéos",
     "by": "BY_SERIES",
-    "path": "todo",
+    "path": "assets/covers/videoGames/cat",
     "resume": "",
     "prefix": "videoGames",
     "categories": [
       {
-        "id": "enfant",
-        "parentId": "jeuxDeSociete",
-        "name": "Jeux pour enfants",
-        "resume": "Les jeux pour enfants sont des jeux conçus pour les enfants en bas âge, souvent conçus pour les aider à développer des compétences telles que la coordination œil-main, la reconnaissance des couleurs et des formes, la résolution de problèmes et la pensée stratégique. Les exemples incluent les jeux de construction, les jeux de memory, les jeux de société simples et les puzzles.",
-        "bg": "bubbleStories.webp",
+        "id": "switch",
+        "parentId": "videoGames",
+        "name": "Jeux Switch",
+        "bg": "switch.jfif",
         "by": "BY_SERIES",
-        "prefix": "enfant"
+        "prefix": "switch"
+      },
+      {
+        "id": "ps5",
+        "parentId": "videoGames",
+        "name": "Jeux PS5",
+        "bg": "ps5.jpg",
+        "by": "BY_SERIES",
+        "prefix": "ps5"
+      },
+      {
+        "id": "ps4",
+        "parentId": "videoGames",
+        "name": "Jeux PS4",
+        "bg": "ps4.jpg",
+        "by": "BY_SERIES",
+        "prefix": "ps4"
       }
     ]
   }

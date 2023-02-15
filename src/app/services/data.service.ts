@@ -5,7 +5,11 @@ import romLib from '../../assets/romLib.json';
 import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
 import boardGames from '../../assets/ludo/listeJeuxSociete.json';
+import ps4VideoGames from '../../assets/ludo/videoGames/jeuxPs4.json';
+import switchVideoGames from '../../assets/ludo/videoGames/jeuxSwitch.json';
+import ps5VideoGames from '../../assets/ludo/videoGames/jeuxPs5.json';
 import {BoardGame, BoardGameCategory} from '../models/boardGame.model';
+import {VideoGames, VideoGamesLibs} from '../models/videoGames.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +18,7 @@ export class DataService {
   public allBiblio: Array<Biblio>;
   public selectedLib!: Biblio | undefined;
   public boardGames: Array<BoardGame>;
+  public videoGames: VideoGamesLibs;
 
   constructor() {
     this.allBiblio = [];
@@ -28,6 +33,12 @@ export class DataService {
     // console.log('tmp', tmp);
 
     this.boardGames = boardGames as Array<BoardGame>;
+
+    this.videoGames = {
+      switch: switchVideoGames as Array<VideoGames>,
+      ps4: ps4VideoGames as Array<VideoGames>,
+      ps5: ps5VideoGames as Array<VideoGames>
+    };
 
     this.allBiblio.push(imgLib as Biblio);
     this.allBiblio.push(romLib as Biblio);
@@ -114,6 +125,11 @@ export class DataService {
       })
     }
     console.log('LOG:', this.selectedLib);
+  }
+
+  getVideoGamesOfCategory(consoleId: string): Array<VideoGames> {
+    // @ts-ignore
+    return this.videoGames[consoleId] as Array<VideoGames>;
   }
 }
 
