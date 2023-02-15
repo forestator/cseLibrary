@@ -22,6 +22,7 @@ import {OutsideGamesComponent} from './components/outside-games/outside-games.co
 import {
   VideoGamesConsoleDetailsComponent
 } from './components/video-games/video-games-console-details/video-games-console-details.component';
+import {VideoGameRowComponent} from './components/video-games/video-game-row/video-game-row.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {
     BoardGamesComponent,
     VideoGamesComponent,
     OutsideGamesComponent,
-    VideoGamesConsoleDetailsComponent],
+    VideoGamesConsoleDetailsComponent,
+    VideoGameRowComponent],
   exports: [],
   imports: [
     CommonModule,

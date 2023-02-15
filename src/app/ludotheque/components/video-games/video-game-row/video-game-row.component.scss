@@ -1,0 +1,17 @@
+@import '../../../../common/common';
+
+.video-game-core {
+  display: flex;
+  align-items: center;
+
+  .video-game-info {
+    margin-left: 5px;
+
+    .video-game-title {
+      font-size: large;
+      font-weight: bold;
+      color: black;
+      margin-bottom: 5px;
+    }
+  }
+}

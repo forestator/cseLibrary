@@ -1,10 +1,15 @@
-export interface VideoGames {
+import {BoardGameStatus} from './boardGame.model';
+
+export interface VideoGame {
   name: string;
   ref: string;
+  // todo enum
+  status: BoardGameStatus;
+  cover?: string;
 }
 
 export interface VideoGamesLibs {
-  switch: Array<VideoGames>;
-  ps4: Array<VideoGames>;
-  ps5: Array<VideoGames>;
+  switch: Array<VideoGame>;
+  ps4: Array<VideoGame>;
+  ps5: Array<VideoGame>;
 }

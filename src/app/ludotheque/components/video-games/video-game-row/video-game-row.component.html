@@ -1,0 +1,15 @@
+<div [id]="videoGame.ref" class="video-game-core">
+  <ng-container [ngTemplateOutlet]="image"></ng-container>
+  <div class="video-game-info">
+    <div class="video-game-title">{{videoGame.name}}</div>
+    <app-badge class="badge" [status]="videoGame.status"></app-badge>
+    <div class="" *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
+  </div>
+</div>
+<ng-template #image>
+  <div class="book-cover" *ngIf="videoGame?.cover">
+    <img width="150" height="150"
+         [src]="videoGame?.cover"
+         [alt]="videoGame.name + ' cover'"/>
+  </div>
+</ng-template>

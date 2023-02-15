@@ -1,138 +1,173 @@
 [
   {
     "name": "RingFit Adventure ( boites)",
+    "status": "AVAILABLE",
+    "cover": "assets/covers/videoGames/ringfit.jpg",
     "ref": "1287"
   },
   {
     "name": "Fast & Furious Spy Racers",
+    "status":  "AVAILABLE",
     "ref": "1286"
   },
   {
     "name": "Just Dance 2022",
+    "status":  "AVAILABLE",
     "ref": "1285"
   },
   {
     "name": "Jurassic World Légo",
+    "status":  "AVAILABLE",
     "ref": "1284"
   },
   {
     "name": "Mario Party Superstars",
+    "status":  "AVAILABLE",
     "ref": "1283"
   },
   {
     "name": "Roller Cosater Tyccon Adventures",
+    "status":  "AVAILABLE",
     "ref": "1282"
   },
   {
     "name": "Go Vacation",
+    "status":  "AVAILABLE",
     "ref": "1281"
   },
   {
     "name": "Fort Boyard - Edition 2020",
+    "status":  "AVAILABLE",
     "ref": "1280"
   },
   {
     "name": "Pokémon: Let's Go, Pikachu!",
+    "status":  "AVAILABLE",
     "ref": "1279"
   },
   {
     "name": "51 Worlwide Games",
+    "status":  "AVAILABLE",
     "ref": "1278"
   },
   {
     "name": "Minecraft",
+    "status":  "AVAILABLE",
     "ref": "1277"
   },
   {
     "name": "Luigi's Mansion 3",
+    "status":  "AVAILABLE",
     "ref": "1276"
   },
   {
     "name": "CTR Nitro Fueled",
+    "status":  "AVAILABLE",
     "ref": "1275"
   },
   {
     "name": "Super Mario Party",
+    "status":  "AVAILABLE",
     "ref": "1274"
   },
   {
     "name": "WRC 8",
+    "status":  "AVAILABLE",
     "ref": "1273"
   },
   {
     "name": "Programme d'Entraînement Cérébral",
+    "status":  "AVAILABLE",
     "ref": "1272"
   },
   {
     "name": "L'aventure Layton : Katrielle",
+    "status":  "AVAILABLE",
     "ref": "1271"
   },
   {
     "name": "Mario + the Lapins Cretins : Kingdom Battle",
+    "status":  "AVAILABLE",
     "ref": "1270"
   },
   {
     "name": "Mario Tennis Aces",
+    "status":  "AVAILABLE",
     "ref": "1269"
   },
   {
     "name": "Super Smash Bros Ultimate",
+    "status":  "AVAILABLE",
     "ref": "1268"
   },
   {
     "name": "Zelda : Link's Awakening",
+    "status":  "AVAILABLE",
     "ref": "1267"
   },
   {
     "name": "Fifa 20",
+    "status":  "AVAILABLE",
     "ref": "1266"
   },
   {
     "name": "Rocket League",
+    "status":  "AVAILABLE",
     "ref": "1265"
   },
   {
     "name": "Mario Kart Deluxe 8",
+    "status":  "AVAILABLE",
     "ref": "1264"
   },
   {
     "name": "Overcooked 2",
+    "status":  "AVAILABLE",
     "ref": "1263"
   },
   {
     "name": "DONKEY KONG COUNTRY Tropical Freeze",
+    "status":  "AVAILABLE",
     "ref": "1262"
   },
   {
     "name": "Overcooked",
+    "status":  "AVAILABLE",
     "ref": "1261"
   },
   {
     "name": "SNIPPERCLIPS PLUS les Deux font la Paire",
+    "status":  "AVAILABLE",
     "ref": "1260"
   },
   {
     "name": "Rayman Legends Definitive Edition",
+    "status":  "AVAILABLE",
     "ref": "1259"
   },
   {
     "name": "Just Dance 2018",
+    "status":  "AVAILABLE",
     "ref": "1258"
   },
   {
     "name": "Super Mario Odyssey",
+    "status":  "AVAILABLE",
     "ref": "1257"
   },
   {
     "name": "Splatoon 2",
+    "status":  "AVAILABLE",
     "ref": "1256"
   },
   {
     "name": "Mario Kart Deluxe 8",
+    "status":  "AVAILABLE",
     "ref": "1255"
   },
   {
     "name": "The Legend of Zelda : Breath of the wild",
+    "status":  "AVAILABLE",
     "ref": "1254"
   }
 ]

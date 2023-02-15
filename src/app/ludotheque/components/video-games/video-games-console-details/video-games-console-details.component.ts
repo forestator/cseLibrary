@@ -3,7 +3,7 @@ import {map, Observable} from 'rxjs';
 import {Params} from '@angular/router';
 import {NavigationService} from '../../../../services/navigation.service';
 import {DataService} from '../../../../services/data.service';
-import {VideoGames} from '../../../../models/videoGames.model';
+import {VideoGame} from '../../../../models/videoGames.model';
 
 @Component({
   selector: 'app-video-games-console-details',
@@ -11,7 +11,8 @@ import {VideoGames} from '../../../../models/videoGames.model';
   styleUrls: ['./video-games-console-details.component.scss']
 })
 export class VideoGamesConsoleDetailsComponent implements OnInit {
-  public videoGamesOfConsole$?: Observable<Array<VideoGames>>;
+  public videoGamesOfConsole$?: Observable<Array<VideoGame>>;
+  selectedVideoGameId?: string;
 
   constructor(private navService: NavigationService,
               private dataService: DataService) {
@@ -25,4 +26,7 @@ export class VideoGamesConsoleDetailsComponent implements OnInit {
       ));
   }
 
+  trackVideoGame(index: number, item: VideoGame) {
+    return item.ref;
+  }
 }

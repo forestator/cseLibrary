@@ -9,7 +9,7 @@ import ps4VideoGames from '../../assets/ludo/videoGames/jeuxPs4.json';
 import switchVideoGames from '../../assets/ludo/videoGames/jeuxSwitch.json';
 import ps5VideoGames from '../../assets/ludo/videoGames/jeuxPs5.json';
 import {BoardGame, BoardGameCategory} from '../models/boardGame.model';
-import {VideoGames, VideoGamesLibs} from '../models/videoGames.model';
+import {VideoGame, VideoGamesLibs} from '../models/videoGames.model';
 
 @Injectable({
   providedIn: 'root'
@@ -35,9 +35,9 @@ export class DataService {
     this.boardGames = boardGames as Array<BoardGame>;
 
     this.videoGames = {
-      switch: switchVideoGames as Array<VideoGames>,
-      ps4: ps4VideoGames as Array<VideoGames>,
-      ps5: ps5VideoGames as Array<VideoGames>
+      switch: switchVideoGames as Array<VideoGame>,
+      ps4: ps4VideoGames as Array<VideoGame>,
+      ps5: ps5VideoGames as Array<VideoGame>
     };
 
     this.allBiblio.push(imgLib as Biblio);
@@ -127,9 +127,9 @@ export class DataService {
     console.log('LOG:', this.selectedLib);
   }
 
-  getVideoGamesOfCategory(consoleId: string): Array<VideoGames> {
+  getVideoGamesOfCategory(consoleId: string): Array<VideoGame> {
     // @ts-ignore
-    return this.videoGames[consoleId] as Array<VideoGames>;
+    return this.videoGames[consoleId] as Array<VideoGame>;
   }
 }
 

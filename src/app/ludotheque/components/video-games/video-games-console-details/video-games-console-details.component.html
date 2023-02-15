@@ -1,3 +1,9 @@
-<ng-container *ngFor="let videoGame of videoGamesOfConsole$ | async">
-  {{videoGame.name}}
-</ng-container>
+<div class="core-body video-game-row" *ngIf="videoGamesOfConsole$">
+  <ng-container *ngFor="let videoGame of videoGamesOfConsole$ | async; let index = index; trackBy: trackVideoGame">
+    <div class="core-body">
+      <app-video-game-row [videoGame]="videoGame"
+                          [selectedVideoGameId]="selectedVideoGameId">
+      </app-video-game-row>
+    </div>
+  </ng-container>
+</div>
