@@ -15,6 +15,7 @@ import {VideoGamesComponent} from './ludotheque/components/video-games/video-gam
 import {
   VideoGamesConsoleDetailsComponent
 } from './ludotheque/components/video-games/video-games-console-details/video-games-console-details.component';
+import {SettingsViewComponent} from './bibliotheque/components/settings-view/settings-view.component';
 
 const routes: Routes = [
     {path: 'ludotheque', component: LudothequeComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
     {path: 'bibliotheque/new', component: NewViewComponent},
     {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
     {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
+    {path: 'bibliotheque/:libraryId/:catId/settings', component: SettingsViewComponent},
     {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
     {path: '', component: HomeComponent},
     {path: '**', component: HomeComponent},

@@ -10,7 +10,8 @@
             {{category?.resume}}
         </div>
         <div *ngIf="category?.by===VIEW_BY.BY_AUTHOR">
-            <app-alphabet *ngIf="category?.by===VIEW_BY.BY_AUTHOR"></app-alphabet>
+            <app-alphabet *ngIf="category?.by===VIEW_BY.BY_AUTHOR"
+                          (filterByLetter)="filterByLetter($event)"></app-alphabet>
         </div>
         <div class="all-series">
             <div *ngFor="let series of category?.series | seriesFilter : tools.adminMode"
@@ -29,7 +30,7 @@
     </div>
     <div *ngIf="category?.by===VIEW_BY.BY_AUTHOR" class="category-core">
         <app-author-row
-            *ngFor="let author of category?.authors"
+            *ngFor="let author of filterAuthors(category?.authors)"
             [author]="author"
             (sendView)="selectAuthor($event)">
         </app-author-row>

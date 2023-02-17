@@ -1,9 +1,49 @@
-<div class="core-body video-game-row" *ngIf="videoGamesOfConsole$">
-  <ng-container *ngFor="let videoGame of videoGamesOfConsole$ | async; let index = index; trackBy: trackVideoGame">
-    <div class="core-body">
-      <app-video-game-row [videoGame]="videoGame"
-                          [selectedVideoGameId]="selectedVideoGameId">
-      </app-video-game-row>
+<ng-container *ngIf="videoGamesOfConsole$ | async as videoGames">
+  <div class="core-page">
+    <div class="core-header">
+      <div class="core-title">
+        <div class="primary">Consoles</div>
+      </div>
     </div>
-  </ng-container>
-</div>
+    <ng-container
+      *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.CONSOLE; let index = index; trackBy: trackVideoGame">
+      <div class="core-body">
+        <app-video-game-console-row [videoGame]="videoGame"
+                                    [selectedVideoGameId]="selectedVideoGameId">
+        </app-video-game-console-row>
+      </div>
+    </ng-container>
+    <mat-divider></mat-divider>
+    <ng-container *ngIf="(videoGames | filterVideoGameByType: videoGameType.ACCESSORY).length > 0">
+      <div class="core-header">
+        <div class="core-title">
+          <div class="primary">Accessories</div>
+        </div>
+      </div>
+      <ng-container
+        *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.ACCESSORY  ; let index = index; trackBy: trackVideoGame">
+        <div class="core-body">
+          <app-video-game-accessory-row [videoGame]="videoGame"
+                                        [selectedVideoGameId]="selectedVideoGameId">
+          </app-video-game-accessory-row>
+        </div>
+      </ng-container>
+      <mat-divider></mat-divider>
+    </ng-container>
+    <div class="core-header">
+      <div class="core-title">
+        <div class="primary">Games</div>
+      </div>
+    </div>
+    <div class="core-body video-game-row">
+      <ng-container
+        *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.GAME; let index = index; trackBy: trackVideoGame">
+        <div class="core-body">
+          <app-video-game-row [videoGame]="videoGame"
+                              [selectedVideoGameId]="selectedVideoGameId">
+          </app-video-game-row>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-container>

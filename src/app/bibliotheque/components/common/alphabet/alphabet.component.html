@@ -1,5 +1,5 @@
 <div class="alphabet">
-    <div *ngFor="let letter of ALPHABET" class="letter bloc-link">
-        <a href="#{{letter}}">{{letter}}</a>
+    <div *ngFor="let letter of ALPHABET" class="letter bloc-link" (click)="filterByLetter.emit(letter)">
+        {{letter}}
     </div>
 </div>

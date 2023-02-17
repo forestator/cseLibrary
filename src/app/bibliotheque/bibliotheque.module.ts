@@ -99,7 +99,8 @@ import {AppCommonModule} from '../common/app-common.module';
     MatTableModule,
     RouterModule,
     AppCommonModule
-  ]
+  ],
+  providers: [BookFilterPipe]
 })
 export class BibliothequeModule {
 }

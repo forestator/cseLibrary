@@ -1,4 +1,4 @@
-<div class="library-menu" id="top">
+<div class="library-menu" id="top" *ngIf="navService.url$ | async as url">
   <div class="library-title">
     <div class="title">
       <div [class]="tools.adminMode?'admin actif':'admin inactif'" (click)="toggleAdminMode()">
@@ -14,7 +14,7 @@
         <button
           mat-menu-item
           *ngFor="let item of menu"
-          [routerLink]="prefixRoute  + item.route">
+          [routerLink]="item.route">
           <span class="popup-menu-label">{{item.name}}</span>
         </button>
         <button
@@ -28,22 +28,29 @@
     </div>
   </div>
   <div class="category-menu">
-    <div *ngIf="prefixRoute === 'ludotheque/j2s'" class="search">
-      <app-search-in-lib [boardGames]="dataService.boardGames"></app-search-in-lib>
-    </div>
+    <ng-container *ngIf="url?.includes('j2s') || url?.includes('videoGame'); else biblio">
+      <div class="search">
+        <app-search-in-lib
+          [videoGames]="dataService.videoGames"
+          [boardGames]="dataService.boardGames">
+        </app-search-in-lib>
+      </div>
+    </ng-container>
     <div class="cat-nav" *ngIf="prefixRoute !== '/'"
          [routerLink]="prefixRoute + 'new'">
       Nouveautés
     </div>
-    <!--
-    <div *ngIf="library?.by === 'BY_SERIES'" (click)="selectView(VIEW_MODES.BY_AUTHOR, undefined)">
-        Par auteur
-    </div>
-    <div *ngFor='let category of library?.categories' (click)="selectView(VIEW_MODES.BY_CATEGORY, category?.id)">
-        {{category?.name}}
-    </div>
-    <div class="admin" (click)="selectView(VIEW_MODES.ADMIN, undefined)">
+    <ng-template #biblio>
+      <ng-container *ngIf="selectedMenu">
+        <div *ngFor='let category of selectedMenu?.categories'
+             class="cat-nav"
+             [routerLink]="selectedMenu.route + '/' + category.id">
+          {{category?.name}}
+        </div>
+      </ng-container>
+      <div class="admin" *ngIf="tools.adminMode$ | async" [routerLink]="selectedMenu?.route + '/settings'">
         <mat-icon>settings</mat-icon>
-    </div> -->
+      </div>
+    </ng-template>
   </div>
 </div>

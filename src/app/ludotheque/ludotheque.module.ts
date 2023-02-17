@@ -23,6 +23,14 @@ import {
   VideoGamesConsoleDetailsComponent
 } from './components/video-games/video-games-console-details/video-games-console-details.component';
 import {VideoGameRowComponent} from './components/video-games/video-game-row/video-game-row.component';
+import {
+  VideoGameConsoleRowComponent
+} from './components/video-games/video-game-console-row/video-game-console-row.component';
+import {
+  VideoGameAccessoryRowComponent
+} from './components/video-games/video-game-accessory-row/video-game-accessory-row.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {FilterVideoGameByTypePipe} from './pipes/filter-video-game-by-type.pipe';
 
 @NgModule({
   declarations: [
@@ -35,20 +43,24 @@ import {VideoGameRowComponent} from './components/video-games/video-game-row/vid
     VideoGamesComponent,
     OutsideGamesComponent,
     VideoGamesConsoleDetailsComponent,
-    VideoGameRowComponent],
+    VideoGameRowComponent,
+    VideoGameConsoleRowComponent,
+    VideoGameAccessoryRowComponent,
+    FilterVideoGameByTypePipe],
   exports: [],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    RouterModule,
-    AppCommonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatButtonToggleModule
-  ]
+    imports: [
+        CommonModule,
+        MatIconModule,
+        RouterModule,
+        AppCommonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatDividerModule
+    ]
 })
 export class LudothequeModule {
 }

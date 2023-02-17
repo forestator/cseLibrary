@@ -1,0 +1,19 @@
+@import '../../../../common/common';
+
+.video-console-core {
+  display: flex;
+  align-items: center;
+
+  .video-console-info {
+
+    .video-console-title {
+      font-size: x-large;
+      font-weight: bold;
+      color: black;
+    }
+
+    * {
+      margin: 10px;
+    }
+  }
+}

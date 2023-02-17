@@ -7,11 +7,14 @@
   .video-game-info {
     margin-left: 5px;
 
+    * {
+      padding: 5px;
+    }
+
     .video-game-title {
       font-size: large;
       font-weight: bold;
       color: black;
-      margin-bottom: 5px;
     }
   }
 }
