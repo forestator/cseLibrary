@@ -1,0 +1,16 @@
+<div [id]="game.ref" *ngIf="game" class="book-core">
+  <ng-container [ngTemplateOutlet]="image" *ngIf="parity"></ng-container>
+  <div class="book-infos">
+    <div class="book-title">{{game.name}}
+      <app-badge class="badge" [status]="game.status"></app-badge>
+    </div>
+    <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
+  </div>
+  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity"></ng-container>
+</div>
+
+<ng-template #image>
+  <div class="book-cover" *ngIf="game.cover">
+    <img width="400" height="400" [src]="game.cover" [alt]="game.name"/>
+  </div>
+</ng-template>

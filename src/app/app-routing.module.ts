@@ -18,10 +18,11 @@ import {
 import {SettingsViewComponent} from './bibliotheque/components/settings-view/settings-view.component';
 import {BoardGameOfCategoryResolver} from './resolvers/board-game-of-category.resolver';
 import {GamesOfConcolesResolver} from './resolvers/games-of-concoles.resolver';
+import {OutsideGamesComponent} from './ludotheque/components/outside-games/outside-games.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
-  {path: 'ludotheque/outsideGames', component: VideoGamesComponent},
+  {path: 'ludotheque/outsideGames', component: OutsideGamesComponent},
   {path: 'ludotheque/videoGames', component: VideoGamesComponent},
   {
     path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent,

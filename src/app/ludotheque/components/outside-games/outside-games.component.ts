@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
+import {Observable} from 'rxjs';
 import {Library} from '../../../models/author.model';
-import outsideGames from '../../../../assets/ludo/outsideGamesLib.json';
+import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
+import {OutsideGame} from '../../../models/outsideGames.model';
 
 @Component({
   selector: 'app-outside-games',
@@ -8,8 +10,7 @@ import outsideGames from '../../../../assets/ludo/outsideGamesLib.json';
   styleUrls: ['./outside-games.component.scss']
 })
 export class OutsideGamesComponent {
-
-  library: Library = outsideGames.library as Library;
-  constructor() { }
-
+  library$: Observable<Library> = this.firebaseDatabase.outsideGamesLibrary$;
+  games$: Observable<Array<OutsideGame>> = this.firebaseDatabase.outsideGames$;
+  constructor(private firebaseDatabase: FirebaseDatabaseService) { }
 }

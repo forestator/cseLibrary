@@ -1,5 +1,5 @@
 <div class="core-page fadein">
-  <div class="core-header">
+  <div class="core-header" *ngIf="library$ | async as library">
     <div class="core-title">
       <div class="primary">{{library.name}}</div>
     </div>
@@ -7,20 +7,7 @@
       {{library.resume}}
     </div>
   </div>
-  <div *ngFor="let category of library?.categories"
-       [routerLink]="category.id" routerLinkActive="active"
-       class="core-body core-body-category"
-       title="Cliquez ici pour visualiser cette categorie">
-    <div><img class="category-visuel" src="{{library.path}}/{{category.bg}}"></div>
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">
-          {{category.name}}
-        </div>
-      </div>
-      <div class="core-resume">
-        {{category.resume}}
-      </div>
-    </div>
+  <div *ngFor="let game of games$ | async; let index = index" class="core-body">
+    <app-outside-game-row [game]="game" [index]="index"></app-outside-game-row>
   </div>
 </div>
