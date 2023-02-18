@@ -3,18 +3,18 @@
         <div class="core-title">
             <div class="secondary"></div>
             <mat-icon>navigate_next</mat-icon>
-            <div class="primary">{{category?.name}}</div>
+            <div class="primary">{{category.name}}</div>
             <div class="counter">{{counter}} livres</div>
         </div>
         <div class="core-resume">
-            {{category?.resume}}
+            {{category.resume}}
         </div>
-        <div *ngIf="category?.by===VIEW_BY.BY_AUTHOR">
-            <app-alphabet *ngIf="category?.by===VIEW_BY.BY_AUTHOR"
+        <div *ngIf="category.by===VIEW_BY.BY_AUTHOR">
+            <app-alphabet *ngIf="category.by===VIEW_BY.BY_AUTHOR"
                           (filterByLetter)="filterByLetter($event)"></app-alphabet>
         </div>
         <div class="all-series">
-            <div *ngFor="let series of category?.series | seriesFilter : tools.adminMode"
+            <div *ngFor="let series of category.series | seriesFilter : tools.adminMode"
                  class="series bloc-link"
                  [routerLink]="series?.id">
                 <div class="series-title">{{series.name}}</div>
@@ -24,13 +24,13 @@
     </div>
     <div class="category-core">
         <app-series-row
-            *ngFor="let series of category?.series  | seriesFilter : tools.adminMode"
+            *ngFor="let series of category.series  | seriesFilter : tools.adminMode"
             [series]="series">
         </app-series-row>
     </div>
-    <div *ngIf="category?.by===VIEW_BY.BY_AUTHOR" class="category-core">
+    <div *ngIf="category.by===VIEW_BY.BY_AUTHOR" class="category-core">
         <app-author-row
-            *ngFor="let author of filterAuthors(category?.authors)"
+            *ngFor="let author of filterAuthors(category.authors)"
             [author]="author"
             (sendView)="selectAuthor($event)">
         </app-author-row>

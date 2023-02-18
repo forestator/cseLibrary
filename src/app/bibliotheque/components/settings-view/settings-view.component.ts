@@ -39,7 +39,6 @@ export class SettingsViewComponent implements OnInit {
           const lib = this.dataService.allBiblio
             .find(biblio => biblio.library?.id === params['libraryId']!)?.library;
           this.library = lib;
-        console.log(lib);
         return lib;
         }
       ));

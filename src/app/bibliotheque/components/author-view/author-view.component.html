@@ -1,9 +1,9 @@
 <div *ngIf="library && category && author" class="core-page fadein">
     <div class="core-header">
         <div class="core-title">
-            <div class="secondary" (click)="selectLibrary(library?.id)">{{library.name}}</div>
+            <div class="secondary" (click)="selectLibrary(library.id)">{{library.name}}</div>
             <mat-icon>navigate_next</mat-icon>
-            <div class="secondary" (click)="selectCategory(category?.id)">{{category.name}}</div>
+            <div class="secondary" (click)="selectCategory(category.id)">{{category.name}}</div>
             <mat-icon>navigate_next</mat-icon>
             <div class="primary">{{author.lastName}} {{author.firstName}}</div>
             <div class="counter">{{counter}} livre(s)</div>
@@ -14,7 +14,7 @@
         <div class="books">
             <div *ngFor="let book of books" [class]="book.id?'book':'separator'" [title]="book.name">
                 <a *ngIf="book.id" [href]="'#'+book.id">
-                    <img class="book-cover" [src]="library?.path+'/'+book.cover">
+                    <img class="book-cover" [src]="library.path+'/'+book.cover" [alt]="library.name">
                 </a>
                 <div *ngIf="book.id" class="book-badge">
                     <app-badge [status]="book.status" [display]="'small'"></app-badge>

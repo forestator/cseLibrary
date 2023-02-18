@@ -1,7 +1,7 @@
 <div *ngIf="library && authors" class="core-page fadein">
     <div class="core-header">
         <div class="core-title">
-            <div class="secondary" (click)="selectLibrary(library?.id)">{{library.name}}</div>
+            <div class="secondary" (click)="selectLibrary(library.id)">{{library.name}}</div>
             <mat-icon>navigate_next</mat-icon>
             <div class="primary">Par Auteur</div>
             <!-- <div class="counter">{{counter}} auteur</div> -->
@@ -9,8 +9,8 @@
         <app-alphabet></app-alphabet>
     </div>
     <div class="core-body">
-        <app-author-row 
-            *ngFor="let author of authors" 
+        <app-author-row
+            *ngFor="let author of authors"
             [author]="author"
             (sendView)="select($event)">
         </app-author-row>
