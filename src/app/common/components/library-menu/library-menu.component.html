@@ -6,33 +6,35 @@
       </div>
       <span [routerLink]="''">{{title}}</span>
     </div>
-    <div class="menu" *ngIf="menu.length > 0">
-      <button mat-icon-button [matMenuTriggerFor]="mainMenu">
-        <mat-icon>view_headline</mat-icon>
-      </button>
-      <mat-menu #mainMenu="matMenu">
-        <button
-          mat-menu-item
-          *ngFor="let item of menu"
-          [routerLink]="item.route">
-          <span class="popup-menu-label">{{item.name}}</span>
+    <ng-container *ngIf="menu$ | async as menu">
+      <div class="menu" *ngIf="menu.length > 0">
+        <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+          <mat-icon>view_headline</mat-icon>
         </button>
-        <button
-          *ngIf="tools.adminMode"
-          mat-menu-item>
+        <mat-menu #mainMenu="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let item of menu"
+            [routerLink]="item.route">
+            <span class="popup-menu-label">{{item.name}}</span>
+          </button>
+          <button
+            *ngIf="tools.adminMode"
+            mat-menu-item>
           <span class="popup-menu-label">
             <mat-icon>settings</mat-icon>
             Administration</span>
-        </button>
-      </mat-menu>
-    </div>
+          </button>
+        </mat-menu>
+      </div>
+    </ng-container>
   </div>
   <div class="category-menu">
     <ng-container *ngIf="url?.includes('j2s') || url?.includes('videoGame'); else biblio">
       <div class="search">
         <app-search-in-lib
           [videoGames]="dataService.videoGames"
-          [boardGames]="dataService.boardGames">
+          [boardGames]="firebaseDatabaseService.boardGames$ | async">
         </app-search-in-lib>
       </div>
     </ng-container>
@@ -41,16 +43,16 @@
       Nouveautés
     </div>
     <ng-template #biblio>
-      <ng-container *ngIf="selectedMenu">
+      <ng-container *ngIf="selectedMenu$ | async as selectedMenu">
         <div *ngFor='let category of selectedMenu?.categories'
              class="cat-nav"
              [routerLink]="selectedMenu.route + '/' + category.id">
           {{category?.name}}
         </div>
+        <div class="admin" *ngIf="tools.adminMode$ | async" [routerLink]="selectedMenu.route + '/settings'">
+          <mat-icon>settings</mat-icon>
+        </div>
       </ng-container>
-      <div class="admin" *ngIf="tools.adminMode$ | async" [routerLink]="selectedMenu?.route + '/settings'">
-        <mat-icon>settings</mat-icon>
-      </div>
     </ng-template>
   </div>
 </div>

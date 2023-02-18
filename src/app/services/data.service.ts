@@ -4,12 +4,10 @@ import imgLib from '../../assets/imgLib.json';
 import romLib from '../../assets/romLib.json';
 import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
-import boardGames from '../../assets/ludo/listeJeuxSociete.json';
 import ps4VideoGames from '../../assets/ludo/videoGames/jeuxPs4.json';
 import switchVideoGames from '../../assets/ludo/videoGames/jeuxSwitch.json';
 import ps5VideoGames from '../../assets/ludo/videoGames/jeuxPs5.json';
 import xboxOneGames from '../../assets/ludo/videoGames/jeuxXboxOne.json';
-import {BoardGame, BoardGameCategory} from '../models/boardGame.model';
 import {VideoGame, VideoGamesLibs} from '../models/videoGames.model';
 
 @Injectable({
@@ -18,7 +16,6 @@ import {VideoGame, VideoGamesLibs} from '../models/videoGames.model';
 export class DataService {
   public allBiblio: Array<Biblio>;
   public selectedLib!: Biblio | undefined;
-  public boardGames: Array<BoardGame>;
   public videoGames: VideoGamesLibs;
 
   constructor() {
@@ -32,8 +29,6 @@ export class DataService {
     //    item.by = tmp.library?.by;
     // })
     // console.log('tmp', tmp);
-
-    this.boardGames = boardGames as Array<BoardGame>;
 
     this.videoGames = {
       switch: switchVideoGames as Array<VideoGame>,
@@ -85,25 +80,6 @@ export class DataService {
       }
     });
     return authors;
-  }
-
-  public getGamesOfCategory(category?: string): Array<BoardGame> {
-    if (category !== undefined && category in BoardGameCategory) {
-      return this.boardGames
-        .filter(j2s => j2s.category === category)
-        // todo fix type
-        .map(j2s => j2s as any as BoardGame)
-        .sort((a, b) =>
-          this.ludoRefNumber(a.ref) > this.ludoRefNumber(b.ref) ? -1 : 1
-        );
-    } else {
-      return [];
-    }
-  }
-
-  private ludoRefNumber(ref: string): number {
-    // ludo123 -> 123
-    return +ref.slice(4);
   }
 
   public log() {

@@ -1,5 +1,5 @@
-<div class="core-body" *ngIf="boardGames$">
-  <ng-container *ngFor="let bg of boardGames$ | async; let index = index; trackBy: trackBoardGame">
+<div class="core-body" *ngIf="boardGames$ | async as boardGames">
+  <ng-container *ngFor="let bg of boardGames; let index = index; trackBy: trackBoardGame">
     <div class="core-body">
       <app-board-game-row
         [boardGame]="bg | boardGameDetails | async"

@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {Library} from '../../../models/author.model';
-import boardGame from '../../../../assets/ludo/boardGameLib.json';
+import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
+import {Observable} from 'rxjs';
+import {Router} from '@angular/router';
+import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-board-games',
@@ -8,6 +11,6 @@ import boardGame from '../../../../assets/ludo/boardGameLib.json';
   styleUrls: ['./board-games.component.scss']
 })
 export class BoardGamesComponent {
-  library: Library = boardGame.library as Library;
-  constructor() { }
+  library$: Observable<Library> = this.firebaseDatabase.boardGamesLibrary$;
+  constructor(private firebaseDatabase: FirebaseDatabaseService, private navigationService: NavigationService) { }
 }

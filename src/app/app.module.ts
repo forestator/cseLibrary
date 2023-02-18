@@ -3,11 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
-import {AngularFireModule} from "@angular/fire/compat";
-import {AngularFireAuthModule} from "@angular/fire/compat/auth";
-import {AngularFireStorageModule} from '@angular/fire/compat/storage';
-import {AngularFirestoreModule} from '@angular/fire/compat/firestore';
-import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {MatIconModule} from '@angular/material/icon';
 import {LudothequeModule} from './ludotheque/ludotheque.module';
 import {BibliothequeModule} from './bibliotheque/bibliotheque.module';
@@ -20,14 +15,17 @@ import {MatInputModule} from '@angular/material/input';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppCommonModule} from './common/app-common.module';
+import {AngularFireModule} from '@angular/fire/compat';
+import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDBvqQptbNHI8nngeGAt0IhKrrGMGBR0PY",
-  authDomain: "csebiblio.firebaseapp.com",
-  projectId: "csebiblio",
-  storageBucket: "csebiblio.appspot.com",
-  messagingSenderId: "590961298237",
-  appId: "1:590961298237:web:2171ab2048ec8d182c9354"
+  apiKey: "AIzaSyDK-byU9NpioO3Lve34_Y4QvxvOviDCKFY",
+  authDomain: "cseh-50966.firebaseapp.com",
+  databaseURL: "https://cseh-50966-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "cseh-50966",
+  storageBucket: "cseh-50966.appspot.com",
+  messagingSenderId: "380057552327",
+  appId: "1:380057552327:web:6f48c47bb21f44fd32c5e2"
 };
 
 @NgModule({
@@ -38,9 +36,6 @@ const firebaseConfig = {
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
-    AngularFireStorageModule, // storage
     AngularFireDatabaseModule,
     LudothequeModule,
     BibliothequeModule,

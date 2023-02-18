@@ -1,27 +1,22 @@
 import {Component} from '@angular/core';
-import {XmlParserService} from './services/xml-parser.service';
 import {ToolsService} from './services/tools.service';
+import {FirebaseDatabaseService} from './services/firebase-database.service';
 
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'Cse';
-    constructor(
-        private xmlParser: XmlParserService,
-        private toolService: ToolsService) {
+  title = 'Cse';
 
-        this.xmlParser.loadXML('assets/IMG.xml').subscribe(biblio => {
-            //   // this.dataService.selectedLib = biblio;
-            //   // this.library = biblio.library;
-            //   // this.category = this.library?.categories?.[0];
-        });
-    }
+  constructor(
+    public firebaseDatabaseService: FirebaseDatabaseService,
+    private toolService: ToolsService) {
+  }
 
   scrollToTop() {
-   this.toolService.scrollToId('top');
+    this.toolService.scrollToId('top');
   }
 }

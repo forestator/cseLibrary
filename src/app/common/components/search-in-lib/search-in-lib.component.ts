@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
@@ -19,14 +19,15 @@ interface SearchOption {
   templateUrl: './search-in-lib.component.html',
   styleUrls: ['./search-in-lib.component.scss']
 })
-export class SearchInLibComponent implements OnInit {
+export class SearchInLibComponent implements OnInit, OnChanges {
 
-  @Input() boardGames!: Array<BoardGame>;
+  @Input() boardGames!: Array<BoardGame> | null;
   @Input() videoGames!: VideoGamesLibs;
   searchText: FormControl = new FormControl('');
   filteredOptions?: Observable<Array<SearchOption>>;
 
   datas: Array<{ category: string; name: string; id: string }> = [];
+  private currentUrl?: string;
 
   constructor(private dataService: DataService,
               private router: Router,
@@ -40,6 +41,12 @@ export class SearchInLibComponent implements OnInit {
     this.navigateService.url$.subscribe(url => this.datas = this.setDatasToSeachIn(url));
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.currentUrl) {
+      this.setDatasToSeachIn(this.currentUrl);
+    }
+  }
+
   private _filter(value: string): { category: string; name: string; id: string }[] {
     const filterValue = value.toLowerCase();
     return this.datas.filter((item) =>
@@ -49,7 +56,7 @@ export class SearchInLibComponent implements OnInit {
 
   goToSelectedItem(matAutocompleteSelectedEvent: MatAutocompleteSelectedEvent) {
     const optValue: SearchOption = this.datas.find(data => data.name === matAutocompleteSelectedEvent.option.value)!;
-    const boardGame: BoardGame | undefined = this.boardGames.find(bg => bg.id === optValue.id);
+    const boardGame: BoardGame | undefined = this.boardGames?.find(bg => bg.id === optValue.id);
     if (boardGame) {
       this.navigateService.goToBoardGame(boardGame);
     } else {
@@ -57,8 +64,10 @@ export class SearchInLibComponent implements OnInit {
     }
   }
 
+  // todo a réparer
   private setDatasToSeachIn(url: string): Array<SearchOption> {
-    if (url.includes('j2s')) {
+    this.currentUrl = url;
+    if (this.boardGames && url.includes('j2s')) {
       return this.boardGames;
     } else {
       return [

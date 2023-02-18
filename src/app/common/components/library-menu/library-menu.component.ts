@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Category, Library, ViewMode} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {ToolsService} from 'src/app/services/tools.service';
-import boardGamCats from '../../../../assets/ludo/boardGameLib.json';
 import videoGamCats from '../../../../assets/ludo/videoGamesLib.json';
-import {Observable} from 'rxjs';
+import {filter, map, Observable, of} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
+import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
 
 @Component({
   selector: 'app-library-menu',
@@ -14,14 +14,13 @@ import {NavigationService} from '../../../services/navigation.service';
 })
 export class LibraryMenuComponent implements OnInit {
 
-  public menu: Array<{ name: string, route: string, categories?: Array<Category> }> = [];
-  public VIEW_MODES = ViewMode;
+  menu$?: Observable<any>;
   title: string = 'Cse';
   prefixRoute: string = '';
-  library$!: Observable<Library | undefined>;
-  public selectedMenu: { name: string; route: string; categories?: Array<Category> } | undefined;
+  selectedMenu$: Observable<{ name: string; route: string; categories?: Array<Category> }> | undefined;
 
   constructor(public dataService: DataService,
+              public firebaseDatabaseService: FirebaseDatabaseService,
               public navService: NavigationService,
               public tools: ToolsService) {
   }
@@ -41,32 +40,35 @@ export class LibraryMenuComponent implements OnInit {
   private handleUrlChange(url: string) {
     if (url.includes('bibliotheque')) {
       this.prefixRoute = 'bibliotheque/';
-      this.menu = this.dataService.allBiblio.map((item) => {
+      this.menu$ = of(this.dataService.allBiblio.map((item) => {
         return {
           name: item.library!.name,
           route: this.prefixRoute + item.library!.id!,
           categories: item.library!.categories};
-      });
-      this.setCategories(url, this.menu);
+      }));
+      // todo
+      //this.setCategories(url, this.menu);
     } else if (url.includes('ludotheque/j2s')) {
       this.prefixRoute = 'ludotheque/j2s/';
-      this.menu = boardGamCats.library.categories.map(cat => {
-        return {name: cat.name, route: this.prefixRoute + cat.id};
-      });
+      this.menu$ = this.firebaseDatabaseService.boardGamesLibrary$?.pipe(map(library => {
+        return library?.categories?.map(cat => {
+          return {name: cat.name, route: this.prefixRoute + cat.id};
+        });
+      }));
     } else if (url.includes('ludotheque/videoGames')) {
       this.prefixRoute = 'ludotheque/videoGames/';
-      this.menu = videoGamCats.library.categories.map(cat => {
+      this.menu$ = of(videoGamCats.library.categories.map(cat => {
         return {name: cat.name, route: this.prefixRoute + cat.id};
-      });
+      }));
     } else if (url.includes('ludotheque')) {
       this.prefixRoute = '/ludotheque';
     } else {
-      this.menu = [];
+      this.menu$ = of([]);
       this.prefixRoute = '/';
     }
   }
 
-  private setCategories(url: string, menu: Array<{ name: string; route: string; categories?: Array<Category> }>) {
-    this.selectedMenu = menu.find(men => url.includes(men.route.slice(13)));
-  }
+  // private setCategories(url: string, menu: Observable<Array<{ name: string; route: string; categories?: Array<Category> }>>) {
+  //   this.selectedMenu$ = menu.pipe(filter((menus) => menus.find(men => url.includes(men.route.slice(13))));
+  // }
 }

@@ -16,30 +16,41 @@ import {
   VideoGamesConsoleDetailsComponent
 } from './ludotheque/components/video-games/video-games-console-details/video-games-console-details.component';
 import {SettingsViewComponent} from './bibliotheque/components/settings-view/settings-view.component';
+import {BoardGameOfCategoryResolver} from './resolvers/board-game-of-category.resolver';
 
 const routes: Routes = [
-    {path: 'ludotheque', component: LudothequeComponent},
-    {path: 'ludotheque/outsideGames', component: VideoGamesComponent},
-    {path: 'ludotheque/videoGames', component: VideoGamesComponent},
-    {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent},
-    {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesConsoleDetailsComponent},
-    {path: 'ludotheque/j2s', component: BoardGamesComponent},
-    {path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent},
-    {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent},
-    {path: 'ludotheque/new', component: BoardGameCategoryDetailsComponent},
-    {path: 'bibliotheque', component: BibliothequeComponent},
-    {path: 'bibliotheque/new', component: NewViewComponent},
-    {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
-    {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
-    {path: 'bibliotheque/:libraryId/:catId/settings', component: SettingsViewComponent},
-    {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
-    {path: '', component: HomeComponent},
-    {path: '**', component: HomeComponent},
+  {path: 'ludotheque', component: LudothequeComponent},
+  {path: 'ludotheque/outsideGames', component: VideoGamesComponent},
+  {path: 'ludotheque/videoGames', component: VideoGamesComponent},
+  {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent},
+  {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesConsoleDetailsComponent},
+  {path: 'ludotheque/j2s', component: BoardGamesComponent},
+  {
+    path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent,
+    resolve: {
+      boardGames: BoardGameOfCategoryResolver
+    }
+  },
+  {
+    path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent,
+    resolve: {
+      boardGames: BoardGameOfCategoryResolver
+    }
+  },
+  {path: 'ludotheque/new', component: BoardGameCategoryDetailsComponent},
+  {path: 'bibliotheque', component: BibliothequeComponent},
+  {path: 'bibliotheque/new', component: NewViewComponent},
+  {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
+  {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
+  {path: 'bibliotheque/:libraryId/:catId/settings', component: SettingsViewComponent},
+  {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
+  {path: '', component: HomeComponent},
+  {path: '**', component: HomeComponent},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

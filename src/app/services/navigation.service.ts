@@ -24,6 +24,10 @@ export class NavigationService {
     this.router.navigateByUrl(`/${comissionName}`);
   }
 
+  goToBoardGameCategory(categoryId: string) {
+    this.router.navigateByUrl(`/ludotheque/j2s/${categoryId}}`);
+  }
+
   goToBoardGame(boardGame: BoardGame): void {
     this.router.navigateByUrl(`/ludotheque/j2s/${boardGame.category}/${boardGame.id}`);
   }

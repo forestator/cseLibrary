@@ -1,0 +1,1481 @@
+{
+  "ludotheque": {
+    "boardGames": {
+      "games": [
+        {
+          "category": "culture",
+          "id": "321210",
+          "name": "Quizz pays de Rennes",
+          "poids": "",
+          "ref": "",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "15139",
+          "name": "RapidCroco",
+          "poids": "",
+          "ref": "",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "30966",
+          "name": "Tempête sur l'échiquier",
+          "poids": "",
+          "ref": "",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "255674",
+          "name": "Imhotep Le Duel",
+          "poids": "346",
+          "ref": "l",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "268586",
+          "name": "6 qui prend",
+          "poids": "250",
+          "ref": "ludo 14",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "273477",
+          "name": "Obscurio",
+          "poids": "1356",
+          "ref": "ludo100",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "puzzle",
+          "id": "unicornPuzzle",
+          "name": "Puzzle Unicorn Garden (500pcs)",
+          "poids": "855",
+          "ref": "ludo101",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/unicorn-garden-500-pcs-djeco_OA.jpg"
+        },
+        {
+          "category": "puzzle",
+          "id": "puzzleLandAndSea",
+          "name": "Puzzle Land & Sea (1000pcs)",
+          "poids": "755",
+          "ref": "ludo102",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/p2_FULL.jpg"
+        },
+        {
+          "category": "ambiance",
+          "id": "18803",
+          "name": "Black Stories",
+          "poids": "200",
+          "ref": "ludo103",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "231748",
+          "name": "Time Bomb",
+          "poids": "184",
+          "ref": "ludo104",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "246203",
+          "name": "Speed Mandala",
+          "poids": "157",
+          "ref": "ludo105",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "4550",
+          "name": "Blank",
+          "poids": "284",
+          "ref": "ludo106",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "289985",
+          "name": "Rêve de Trésor",
+          "poids": "646",
+          "ref": "ludo107",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "269526",
+          "name": "La Vallée des Vikings",
+          "poids": "934",
+          "ref": "ludo108",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "248900",
+          "name": "Ceylan",
+          "poids": "1556",
+          "ref": "ludo109",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "puzzle",
+          "id": "puzzleTourMonde",
+          "name": "Puzzle observation Tour Du Monde (200pcs)",
+          "poids": "756",
+          "ref": "ludo110",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-tour-du-monde-200-pcs-djeco-7412.jpg"
+        },
+        {
+          "category": "puzzle",
+          "id": "puzzleCameleon",
+          "name": "Puzzle art Cameléon (150pcs)",
+          "poids": "582",
+          "ref": "ludo111",
+          "status": "EMPRUNTE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/Puzzle-Cameleon-(150pcs).jpg"
+        },
+        {
+          "category": "enfant",
+          "id": "24209",
+          "name": "Kaleidos Junior",
+          "poids": "1013",
+          "ref": "ludo112",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "abstrait",
+          "id": "204498",
+          "name": "Déblock",
+          "poids": "786",
+          "ref": "ludo113",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "blcMangerCocoJunior",
+          "name": "Blanc-Manger Coco Junior",
+          "poids": "824",
+          "ref": "ludo114",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/blanc-manger-coco-junior.jpg"
+        },
+        {
+          "category": "familial",
+          "id": "268620",
+          "name": "Similo Contes",
+          "poids": "131",
+          "ref": "ludo115",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "294612",
+          "name": "Unlock7! Epic Adventures",
+          "poids": "804",
+          "ref": "ludo116",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "173090",
+          "name": "The Game edition couleur",
+          "poids": "209",
+          "ref": "ludo117",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "236461",
+          "name": "The Game Le Duel",
+          "poids": "249",
+          "ref": "ludo118",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "13",
+          "name": "Catan",
+          "poids": "952",
+          "ref": "ludo119",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "175117",
+          "name": "Celestia",
+          "poids": "596",
+          "ref": "ludo120",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "137297",
+          "name": "Augustus",
+          "poids": "632",
+          "ref": "ludo121",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "abstrait",
+          "id": "1038",
+          "name": "Tantrix",
+          "poids": "599",
+          "ref": "ludo122",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "culture",
+          "id": "254195",
+          "name": "Trivial Pursuit Harry Potter Ultimate",
+          "poids": "1288",
+          "ref": "ludo123",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "192237",
+          "name": "Specific",
+          "poids": "233",
+          "ref": "ludo124",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "escapeChateau",
+          "name": "Escape au Château",
+          "poids": "1100",
+          "ref": "ludo125",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/escape-game-au-chateau-ne.jpg"
+        },
+        {
+          "category": "ambiance",
+          "id": "130680",
+          "name": "iKnow",
+          "poids": "858",
+          "ref": "ludo126",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "274364",
+          "name": "Watergate",
+          "poids": "590",
+          "ref": "ludo127",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "204583",
+          "name": "Kingdomino",
+          "poids": "559",
+          "ref": "ludo128",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "291008",
+          "name": "Fou Fou Fou !",
+          "poids": "167",
+          "ref": "ludo129",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "204135",
+          "name": "Skyjo",
+          "poids": "350",
+          "ref": "ludo130",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "266192",
+          "name": "Wingspan",
+          "poids": "2300",
+          "ref": "ludo131",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "inclassable",
+          "id": "347505",
+          "name": "Nouvelles ContRées",
+          "poids": "595",
+          "ref": "ludo132",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "350636",
+          "name": "Unlock10!: Game adventures",
+          "poids": "850",
+          "ref": "ludo133",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "340041",
+          "name": "Kingdomino: Origins",
+          "poids": "820",
+          "ref": "ludo134",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "344427",
+          "name": "Pas vu pas pris",
+          "poids": "721",
+          "ref": "ludo135",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "300905",
+          "name": "Top Ten",
+          "poids": "482",
+          "ref": "ludo136",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enquete",
+          "id": "338834",
+          "name": "Micro Macro Crime city : Full House",
+          "poids": "488",
+          "ref": "ludo137",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "327056",
+          "name": "Unlock! Kids",
+          "poids": "785",
+          "ref": "ludo138",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "6931",
+          "name": "Gagne ton papa",
+          "poids": "792",
+          "ref": "ludo139",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "346703",
+          "name": "7 Wonders Architects",
+          "poids": "1462",
+          "ref": "ludo140",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "abstrait",
+          "id": "25669",
+          "name": "Qwirkle",
+          "poids": "924",
+          "ref": "ludo141",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "341496",
+          "name": "César",
+          "poids": "1998",
+          "ref": "ludo142",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "252530",
+          "name": "JetLag",
+          "poids": "246",
+          "ref": "ludo143",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "341178",
+          "name": "Bubble Stories",
+          "poids": "223",
+          "ref": "ludo144",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "285253",
+          "name": "Fiesta De Los Muertos",
+          "poids": "667",
+          "ref": "ludo145",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "332944",
+          "name": "Sobek",
+          "poids": "621",
+          "ref": "ludo146",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "253618",
+          "name": "5 minutes Marvel",
+          "poids": "985",
+          "ref": "ludo147",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "205398",
+          "name": "Citadelles",
+          "poids": "446",
+          "ref": "ludo148",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "266524",
+          "name": "Parks",
+          "poids": "1032",
+          "ref": "ludo149",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "33020",
+          "name": "BATA-WAFF",
+          "poids": "160",
+          "ref": "ludo15",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "coop",
+          "id": "209778",
+          "name": "Magic Maze",
+          "poids": "784",
+          "ref": "ludo150",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "300010",
+          "name": "Dragomino",
+          "poids": "592",
+          "ref": "ludo151",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "328479",
+          "name": "Living Forest",
+          "poids": "1327",
+          "ref": "ludo152",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "342942",
+          "name": "Ark Nova",
+          "poids": "2166",
+          "ref": "ludo153",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "302135",
+          "name": "Butine !",
+          "poids": "502",
+          "ref": "ludo154",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "364073",
+          "name": "Splendor duel",
+          "poids": "434",
+          "ref": "ludo155",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "319793",
+          "name": "Happy city",
+          "poids": "266",
+          "ref": "ludo156",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "116858",
+          "name": "Noé",
+          "poids": "",
+          "ref": "ludo16",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "173346",
+          "name": "7 Wonders: DUEL",
+          "poids": "487",
+          "ref": "ludo17",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "41916",
+          "name": "Le labyrinthe magique",
+          "poids": "",
+          "ref": "ludo19",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "culture",
+          "id": "100670",
+          "name": "Défis Nature",
+          "poids": "",
+          "ref": "ludo20",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "coop",
+          "id": "150658",
+          "name": "Pandémie Le remède",
+          "poids": "",
+          "ref": "ludo21",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "168168",
+          "name": "Petite Danseuse Etoile",
+          "poids": "",
+          "ref": "ludo22",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "24068",
+          "name": "Shadow Hunters",
+          "poids": "",
+          "ref": "ludo23",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "29967",
+          "name": "Tour du Dragon",
+          "poids": "",
+          "ref": "ludo25",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "174219",
+          "name": "Time's Up Kids",
+          "poids": "560",
+          "ref": "ludo26",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "67823",
+          "name": "Piou Piou",
+          "poids": "",
+          "ref": "ludo28",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "182082",
+          "name": "Carcassonne par monts et par vaux",
+          "poids": "598",
+          "ref": "ludo30",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "9441",
+          "name": "La course des tortues",
+          "poids": "528",
+          "ref": "ludo31",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "83195",
+          "name": "Bazar Bizarre",
+          "poids": "",
+          "ref": "ludo33",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "28023",
+          "name": "Jamaica",
+          "poids": "1222",
+          "ref": "ludo34",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "104780",
+          "name": "Hop! Hop! Galopons!",
+          "poids": "744",
+          "ref": "ludo35",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "191894",
+          "name": "Imagine",
+          "poids": "407",
+          "ref": "ludo36",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "132497",
+          "name": "Lift it!",
+          "poids": "",
+          "ref": "ludo37",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "175",
+          "name": "Stupide vautour",
+          "poids": "230",
+          "ref": "ludo39",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "162191",
+          "name": "Vice & Versa",
+          "poids": "",
+          "ref": "ludo40",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "165998",
+          "name": "Chef de tribu Boum -Ba- Boum",
+          "poids": "",
+          "ref": "ludo41",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "193328",
+          "name": "Blanc-Manger Coco",
+          "poids": "975",
+          "ref": "ludo42",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "158899",
+          "name": "Colt Express",
+          "poids": "960",
+          "ref": "ludo44",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "228867",
+          "name": "Unlock2 ! Mystery Adventures",
+          "poids": "701",
+          "ref": "ludo45",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "147151",
+          "name": "Concept",
+          "poids": "951",
+          "ref": "ludo46",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "176494",
+          "name": "Isle of Skye",
+          "poids": "825",
+          "ref": "ludo47",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "3955",
+          "name": "Wanted (Bang!)",
+          "poids": "345",
+          "ref": "ludo48",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "172507",
+          "name": "MMM !",
+          "poids": "480",
+          "ref": "ludo49",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "bluff",
+          "id": "11971",
+          "name": "Kakerlaken Poker (Bug Bluff)",
+          "poids": "172",
+          "ref": "ludo51",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "4522",
+          "name": "Au bal masqué des coccinelles",
+          "poids": "629",
+          "ref": "ludo52",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "23224",
+          "name": "Les monstres farceurs",
+          "poids": "182",
+          "ref": "ludo53",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "6573",
+          "name": "Petites sorcières",
+          "poids": "756",
+          "ref": "ludo54",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "abstrait",
+          "id": "2719",
+          "name": "Puissance 4 Evolution",
+          "poids": "921",
+          "ref": "ludo55",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "535591",
+          "name": "Twister",
+          "poids": "605",
+          "ref": "ludo56",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "183251",
+          "name": "Karuba",
+          "poids": "992",
+          "ref": "ludo61",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "178900",
+          "name": "Code Names",
+          "poids": "500",
+          "ref": "ludo62",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "coop",
+          "id": "65244",
+          "name": "L'île Interdite",
+          "poids": "600",
+          "ref": "ludo63",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "148228",
+          "name": "Splendor",
+          "poids": "818",
+          "ref": "ludo64",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "172358",
+          "name": "Maître Renard",
+          "poids": "420",
+          "ref": "ludo65",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "222887",
+          "name": "Twin It!",
+          "poids": "223",
+          "ref": "ludo66",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enquete",
+          "id": "146508",
+          "name": "T.I.M.E Stories",
+          "poids": "1730",
+          "ref": "ludo67",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "213460",
+          "name": "Unlock1! Escape Adventures",
+          "poids": "703",
+          "ref": "ludo68",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "235467",
+          "name": "BOOUM !",
+          "poids": "626",
+          "ref": "ludo69",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "239307",
+          "name": "Unlock3! Secret Adventures",
+          "poids": "760",
+          "ref": "ludo70",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "173389",
+          "name": "Rush Hour",
+          "poids": "366",
+          "ref": "ludo72",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "9354",
+          "name": "Privacy ?!",
+          "poids": "687",
+          "ref": "ludo73",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "244521",
+          "name": "Les Charlatans de Belcastel",
+          "poids": "1155",
+          "ref": "ludo74",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enquete",
+          "id": "2511",
+          "name": "Sherlock Holmes: Les meurtres de la Tamise",
+          "poids": "1954",
+          "ref": "ludo75",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "abstrait",
+          "id": "72644",
+          "name": "Perplexus Original",
+          "poids": "382",
+          "ref": "ludo76",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "230802",
+          "name": "Azul",
+          "poids": "1185",
+          "ref": "ludo79",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "255507",
+          "name": "Orbis",
+          "poids": "783",
+          "ref": "ludo80",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "puzzle",
+          "id": "puzzleRainbowTigger",
+          "name": "Puzzle Rainbow Tigers (1000pcs)",
+          "poids": "772",
+          "ref": "ludo81",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/rainbow-tigers.jpg"
+        },
+        {
+          "category": "puzzle",
+          "id": "puzzleZoo",
+          "name": "Puzzle Day at the Zoo (48pcs)",
+          "poids": "725",
+          "ref": "ludo82",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-une-journee-au-zoo-48-pieces.webp"
+        },
+        {
+          "category": "puzzle",
+          "id": "puzzleObsAnimaux",
+          "name": "Puzzle observation Animaux (100pcs)",
+          "poids": "730",
+          "ref": "ludo83",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-les-animaux-du-monde-livret-100-pcs.jpg"
+        },
+        {
+          "category": "familial",
+          "id": "70919",
+          "name": "TAKENOKO",
+          "poids": "930",
+          "ref": "ludo18",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "192547",
+          "name": "Kikou le Coucou",
+          "poids": "",
+          "ref": "ludo27",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "coop",
+          "id": "181304",
+          "name": "Mysterium",
+          "poids": "1396",
+          "ref": "ludo38",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "203462",
+          "name": "Aladin et la lampe merveilleuse",
+          "poids": "",
+          "ref": "ludo29",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "203420",
+          "name": "Exit: La cabane abandonnée",
+          "poids": "248",
+          "ref": "ludo43",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "31159",
+          "name": "Piratatak",
+          "poids": "210",
+          "ref": "ludo50",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "abstrait",
+          "id": "681",
+          "name": "Quarto",
+          "poids": "1140",
+          "ref": "ludo84",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "254226",
+          "name": "Unlock4! Exotic Adventures",
+          "poids": "705",
+          "ref": "ludo85",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "105593",
+          "name": "Mito - Permis de tricher",
+          "poids": "",
+          "ref": "ludo32",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "107420",
+          "name": "La Course Farfelue Des Souris Des Champs",
+          "poids": "664",
+          "ref": "ludo71",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "68448",
+          "name": "7 Wonders",
+          "poids": "1139",
+          "ref": "ludo77",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "92828",
+          "name": "Dixit Odyssey",
+          "poids": "810",
+          "ref": "ludo78",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "266121",
+          "name": "Unlock5! Heroic Adventures",
+          "poids": "722",
+          "ref": "ludo86",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "276671",
+          "name": "Sequence",
+          "poids": "971",
+          "ref": "ludo87",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "168215",
+          "name": "Saboteur Le Duel",
+          "poids": "231",
+          "ref": "ludo88",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "244992",
+          "name": "The Mind",
+          "poids": "245",
+          "ref": "ludo89",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "abstrait",
+          "id": "244948",
+          "name": "Brains: jardin Japonais",
+          "poids": "291",
+          "ref": "ludo90",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "117555",
+          "name": "ClacClac",
+          "poids": "487",
+          "ref": "ludo91",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "41010",
+          "name": "Mon Premier Carcassonne",
+          "poids": "755",
+          "ref": "ludo92",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "172931",
+          "name": "Nom d'un Renard !",
+          "poids": "703",
+          "ref": "ludo93",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "pavlovaCoco",
+          "name": "Pavlova Coco",
+          "poids": "1176",
+          "ref": "ludo94",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/pavlova-coco-jeu-hiboutatillus-boite.jpg"
+        },
+        {
+          "category": "ambiance",
+          "id": "172225",
+          "name": "Exploding Kittens",
+          "poids": "213",
+          "ref": "ludo95",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "236475",
+          "name": "Best Of Loups Garous",
+          "poids": "395",
+          "ref": "ludo96",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "duo",
+          "id": "72287",
+          "name": "Mr Jack pocket",
+          "poids": "750",
+          "ref": "ludo98",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "279613",
+          "name": "Unlock6! Timeless Adventures",
+          "poids": "754",
+          "ref": "ludo99",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "9209",
+          "name": "Les aventurier du rail",
+          "poids": "1314",
+          "ref": "STC56",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "",
+          "id": "33061",
+          "name": "Defifoo",
+          "poids": "",
+          "ref": "",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "164592",
+          "name": "CAN'T STOP",
+          "poids": "",
+          "ref": "",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "2392",
+          "name": "Mastermind",
+          "poids": "",
+          "ref": "",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enquete",
+          "id": "1294",
+          "name": "Cluedo",
+          "poids": "1038",
+          "ref": "",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "344114",
+          "name": "Chips",
+          "poids": "130",
+          "ref": "ludo157",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "familial",
+          "id": "191925",
+          "name": "Bandido",
+          "poids": "119",
+          "ref": "ludo158",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "culture",
+          "id": "258309",
+          "name": "Premier contact",
+          "poids": "680",
+          "ref": "ludo159",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "241266",
+          "name": "Little Town",
+          "poids": "569",
+          "ref": "ludo160",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "description": "Smart Game est un jeu de puzzle pour les enfants qui peuvent être joués seuls. Les joueurs doivent résoudre des énigmes en utilisant leurs compétences en logique et en résolution de problèmes pour faire avancer leur personnage à travers des niveaux variés. Les enfants peuvent utiliser leurs compétences pour déplacer des objets, sauter par-dessus des obstacles et trouver des moyens de collecter des objets pour atteindre la sortie de chaque niveau.",
+          "id": "pirateEnVue",
+          "minAge": "6",
+          "name": "Smart Game : Pirate en vue",
+          "poids": "451",
+          "ref": "ludo161",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/pirates-en-vue---p-image-74753-grande.jpg"
+        },
+        {
+          "category": "enfant",
+          "description": "Il était une ferme est un jeu de gestion de ferme pour les enfants. Les joueurs prennent le rôle d'un fermier et doivent gérer leur ferme en cultivant des cultures, en prenant soin de leurs animaux et en vendant leurs produits.\n\nLe jeu propose une variété de tâches pour les joueurs, telles que la plantation de semences, l'arrosage des plantes, la récolte des cultures et la soins des animaux. Les joueurs peuvent également construire des structures supplémentaires sur leur ferme, telles que des silos à grains, des étables pour les animaux et des bâtiments pour stocker les produits.\n\nLe jeu est conçu pour être amusant et éducatif pour les jeunes joueurs, enseignant des compétences telles que la gestion du temps, la planification et la résolution de problèmes. Les graphismes sont attrayants et les personnages adorables, ajoutant encore plus d'attrait à l'expérience de jeu.",
+          "id": "smartUneFerme",
+          "minAge": "4",
+          "name": "Smart Game : Il était une ferme",
+          "poids": "524",
+          "ref": "ludo162",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/smartgames_smartfarmer_banner_FR.jpg"
+        },
+        {
+          "category": "enfant",
+          "id": "quickCouic",
+          "name": "Quick Couic",
+          "poids": "377",
+          "ref": "ludo163",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/quick-couic.jpg"
+        },
+        {
+          "category": "familial",
+          "id": "314503",
+          "name": "Codex Naturalis",
+          "poids": "258",
+          "ref": "ludo164",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "369750",
+          "name": "Monique",
+          "poids": "607",
+          "ref": "ludo165",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "300753",
+          "name": "Mot Malin",
+          "poids": "278",
+          "ref": "ludo166",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enquete",
+          "id": "364766",
+          "name": "Micro Macro Crime city : Tricks Town",
+          "poids": "488",
+          "ref": "ludo167",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "330084",
+          "name": "Unlock 9 : Legendary Adventures",
+          "poids": "962",
+          "ref": "ludo168",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "escape",
+          "id": "302425",
+          "name": "Unlock 8 : Mythic Adventures",
+          "poids": "808",
+          "ref": "ludo169",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "ambiance",
+          "id": "262341",
+          "name": "TTMC : Tu te mets combien ?",
+          "poids": "1656",
+          "ref": "ludo170",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "191004",
+          "name": "Age de pierre Junior",
+          "poids": "928",
+          "ref": "ludo171",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "cooperation",
+          "id": "300531",
+          "name": "Paleo",
+          "poids": "1323",
+          "ref": "ludo172",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "strategie",
+          "id": "300683",
+          "name": "Meeple Land",
+          "poids": "1310",
+          "ref": "ludo173",
+          "status": "AVAILABLE"
+        },
+        {
+          "category": "enfant",
+          "id": "355947",
+          "name": "Pin Pon !",
+          "poids": "581",
+          "ref": "ludo174",
+          "status": "AVAILABLE"
+        }
+      ],
+      "library": {
+        "categories": [
+          {
+            "bg": "bubbleStories.webp",
+            "id": "enfant",
+            "name": "Jeux pour enfants",
+            "parentId": "jeuxDeSociete",
+            "prefix": "enfant",
+            "resume": "Les jeux pour enfants sont des jeux conçus pour les enfants en bas âge, souvent conçus pour les aider à développer des compétences telles que la coordination œil-main, la reconnaissance des couleurs et des formes, la résolution de problèmes et la pensée stratégique. Les exemples incluent les jeux de construction, les jeux de memory, les jeux de société simples et les puzzles."
+          },
+          {
+            "bg": "Top_ten_face_logo_BD-788x1024.jpg",
+            "id": "ambiance",
+            "name": "Jeux d'ambiance",
+            "parentId": "jeuxDeSociete",
+            "prefix": "ambiance",
+            "resume": "Un jeu d'ambiance est un jeu de société dont le but n'est pas tant de gagner que de passer un moment drôle et agréable (en famille ou entre amis).\n\nEn général, les jeux d'ambiance ont un format court, accessible et drôle."
+          },
+          {
+            "bg": "aventuriers-du-rail-europe.png",
+            "id": "familial",
+            "name": "Jeux familiaux",
+            "parentId": "jeuxDeSociete",
+            "prefix": "familial",
+            "resume": "Les jeux de société familiaux sont des jeux conçus pour être joués par des membres d'une famille ou des amis en groupe. Ils sont souvent plus simples et plus rapides que les jeux de stratégie plus complexes et peuvent être amusants pour tous les âges. Les exemples incluent les jeux de cartes, les jeux de dés, les jeux de plateau et les jeux de mots."
+          },
+          {
+            "bg": "7-wonders-duel_600Blanc.png",
+            "id": "duo",
+            "name": "Duo",
+            "parentId": "jeuxDeSociete",
+            "prefix": "duo",
+            "resume": "Envie de faire un jeu de société, mais vous n’êtes que deux ? Ne vous inquiétez pas, car de plus en plus de jeux de société sont maintenant jouables à 2 ! Donc plus besoin d’être entre amis ou en famille pour se faire des parties endiablées, car même en couple ou en tête-à-tête vous pouvez vous amuser !\n\nAlors découvrez dès maintenant tout ce qu’il faut savoir sur les jeux en duo pour profiter au maximum du bonheur de jouer même lorsqu’on est que deux !\n\n"
+          },
+          {
+            "bg": "catane.png",
+            "id": "strategie",
+            "name": "Jeux de stratégie",
+            "parentId": "jeuxDeSociete",
+            "prefix": "strategie",
+            "resume": "Les jeux de stratégie sont des jeux qui nécessitent une planification et une réflexion pour remporter la victoire. Ils peuvent impliquer de la stratégie à court ou à long terme, de la prise de décision, de la tactique, et souvent plusieurs tours de jeu. Les exemples incluent les jeux de guerre, les jeux d'échecs, les jeux de civilisation, et les jeux de gestion de ressources."
+          },
+          {
+            "bg": "puzzle.jfif",
+            "id": "puzzle",
+            "name": "Puzzle",
+            "parentId": "jeuxDeSociete",
+            "prefix": "puzzle",
+            "resume": "Un puzzle est un jeu ou un ensemble d'objets (généralement des pièces en bois ou en carton) conçus pour être assemblés pour former une image ou une forme spécifique. C'est souvent considéré comme un jeu d'intelligence qui nécessite de la patience et de la persévérance pour être résolu."
+          },
+          {
+            "bg": "unlock.png",
+            "id": "escape",
+            "name": "Escape Game",
+            "parentId": "jeuxDeSociete",
+            "prefix": "escape",
+            "resume": "Les jeux de type escape game, tels que Unlock, sont des jeux de résolution d'énigmes où les joueurs doivent utiliser leur intelligence, leur observation et leur collaboration pour résoudre des défis et s'échapper d'une pièce ou d'un environnement virtuel. Les joueurs sont souvent placés dans une situation où ils doivent trouver des indices et résoudre des énigmes pour découvrir des objets cachés, déverrouiller des portes, et finalement s'échapper. Les jeux d'escape peuvent être joués en ligne ou en personne et peuvent être conçus pour un joueur ou pour un groupe. Ils offrent une expérience stimulante et immersive qui met à l'épreuve les compétences cognitives et les capacités d'observation des joueurs.game"
+          },
+          {
+            "bg": "magic-maze-p-image-61489-grande.jpg",
+            "id": "coop",
+            "name": "Jeux coopératifs",
+            "parentId": "jeuxDeSociete",
+            "prefix": "coop",
+            "resume": "Les jeux coopératifs sont des jeux dans lesquels les joueurs travaillent ensemble pour atteindre un objectif commun plutôt que de rivaliser les uns contre les autres. Tous les joueurs gagnent ou perdent ensemble en fonction de leur performance collective. Les exemples incluent les jeux de société de type \"mission\", les jeux de sauvetage, les jeux de simulation d'équipe et les jeux de rôle."
+          },
+          {
+            "bg": "qwirkle.jfif",
+            "id": "abstrait",
+            "name": "Jeux Abstraits",
+            "parentId": "jeuxDeSociete",
+            "prefix": "abstrait",
+            "resume": "Les jeux de société abstraits sont des jeux qui se concentrent sur la stratégie pure, sans thème ni histoire. Les joueurs déplacent des pièces sur un plateau selon des règles simples, avec l'objectif de gagner en prenant le contrôle de l'espace ou en neutralisant les pièces adverses. Les exemples incluent les jeux d'échecs, les jeux de dames, les jeux de go et les jeux de réflexion spatiale."
+          },
+          {
+            "bg": "nouvelles-contrees-p-image-77125-grande.jpg",
+            "id": "inclassable",
+            "name": "Inclassable",
+            "parentId": "jeuxDeSociete",
+            "prefix": "inclassable",
+            "resume": "Les jeux inclassables sont ceux qui ne peuvent pas être facilement catégorisés dans une seule catégorie ou genre de jeux. Ils peuvent combiner des éléments de plusieurs genres différents, comme le jeu d'aventure, de stratégie, de simulation, d'action, etc. Ce sont souvent des jeux innovants et originaux qui ne ressemblent à rien de ce qui a été vu auparavant, et qui offrent une expérience de jeu unique et inattendue pour les joueurs."
+          },
+          {
+            "bg": "micromacro-1-1200x800-c-default.jpeg",
+            "id": "enquete",
+            "name": "Jeux d'enquête",
+            "parentId": "jeuxDeSociete",
+            "prefix": "enquete",
+            "resume": "Les jeux d'enquête sont des jeux de société dans lesquels les joueurs jouent le rôle d'enquêteurs et doivent résoudre une série de énigmes ou mystères pour gagner. Les joueurs peuvent collecter des indices, interroger des suspects et utiliser leur logique pour déterminer le coupable ou résoudre l'énigme. Les exemples incluent les jeux de mystère, les jeux de criminels, les jeux d'énigmes et les jeux de détective."
+          },
+          {
+            "bg": "harry-potter-trivial-pursuitjeux-de-reflexion.jpg",
+            "id": "culture",
+            "name": "Jeux culturels",
+            "parentId": "jeuxDeSociete",
+            "prefix": "culture",
+            "resume": "Les jeux culturels sont des jeux qui visent à enseigner aux joueurs des informations sur la culture, l'histoire, la géographie, la science, etc. Ils peuvent prendre la forme de quiz, de jeux de stratégie, de jeux d'aventure, etc., et peuvent être conçus pour les enfants ou les adultes. L'objectif de ces jeux est de fournir une expérience amusante tout en transmettant des connaissances utiles et précieuses. Les jeux culturels peuvent être un excellent moyen d'apprendre de nouvelles choses de manière ludique et interactive."
+          }
+        ],
+        "id": "j2s",
+        "name": "Jeux de société",
+        "path": "assets/covers/boardGames/cat",
+        "prefix": "j2s",
+        "resume": ""
+      }
+    },
+    "videoGames": {
+      "library": {
+        "categories": [
+          {
+            "bg": "switch.jfif",
+            "id": "switch",
+            "name": "Nintendo Switch",
+            "parentId": "videoGames",
+            "prefix": "switch"
+          },
+          {
+            "bg": "ps5.jpg",
+            "id": "ps5",
+            "name": "Playstation 5",
+            "parentId": "videoGames",
+            "prefix": "ps5"
+          },
+          {
+            "bg": "ps4.jpg",
+            "id": "ps4",
+            "name": "Playstation 4",
+            "parentId": "videoGames",
+            "prefix": "ps4"
+          },
+          {
+            "bg": "xbox-one-s-test__w1200.jpg",
+            "id": "xboxOne",
+            "name": "Xbox One",
+            "parentId": "videoGames",
+            "prefix": "xboxOne"
+          }
+        ],
+        "id": "videoGames",
+        "name": "Jeux vidéos",
+        "path": "assets/covers/videoGames/cat",
+        "prefix": "videoGames",
+        "resume": ""
+      }
+    }
+  }
+}
