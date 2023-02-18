@@ -1,9 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
-import {
-  MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
-  MatLegacyDialogRef as MatDialogRef
-} from '@angular/material/legacy-dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Author, Category, Series, SeriesStatus, ViewBy} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {BasicModal} from '../basic-modal';

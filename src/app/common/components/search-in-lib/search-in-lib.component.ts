@@ -2,9 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable} from 'rxjs';
 import {UntypedFormControl} from '@angular/forms';
-import {
-  MatLegacyAutocompleteSelectedEvent as MatAutocompleteSelectedEvent
-} from '@angular/material/legacy-autocomplete';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {VideoGame} from '../../../models/videoGames.model';

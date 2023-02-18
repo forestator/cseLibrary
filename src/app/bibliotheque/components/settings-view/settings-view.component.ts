@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {Category, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {AuthorModalComponent} from '../modals/author-modal/author-modal.component';
