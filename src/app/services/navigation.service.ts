@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Params, Router} from '@angular/router';
 import {BehaviorSubject, filter, map, Observable} from 'rxjs';
 import {BoardGame} from '../models/boardGame.model';
-import {VideoGame} from '../models/videoGames.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +28,7 @@ export class NavigationService {
     this.router.navigateByUrl(`/ludotheque/j2s/${boardGame.category}/${boardGame.id}`);
   }
 
-  goToVideoGame(videoGame: VideoGame, gameCat: string): void {
-    this.router.navigateByUrl(`/ludotheque/videoGames/${gameCat}/${videoGame.ref}`);
+  goToVideoGame(videoGameRef: string, gameCat: string): void {
+    this.router.navigateByUrl(`/ludotheque/videoGames/${gameCat}/${videoGameRef}`);
   }
 }

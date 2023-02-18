@@ -2,10 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Category, Library, ViewMode} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {ToolsService} from 'src/app/services/tools.service';
-import boardGamCats from '../../../assets/ludo/boardGameLib.json';
-import videoGamCats from '../../../assets/ludo/videoGamesLib.json';
+import boardGamCats from '../../../../assets/ludo/boardGameLib.json';
+import videoGamCats from '../../../../assets/ludo/videoGamesLib.json';
 import {Observable} from 'rxjs';
-import {NavigationService} from '../../services/navigation.service';
+import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
   selector: 'app-library-menu',
@@ -64,10 +64,6 @@ export class LibraryMenuComponent implements OnInit {
       this.menu = [];
       this.prefixRoute = '/';
     }
-  }
-
-  selectView(ADMIN: ViewMode, param2: any) {
-
   }
 
   private setCategories(url: string, menu: Array<{ name: string; route: string; categories?: Array<Category> }>) {

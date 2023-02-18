@@ -8,6 +8,7 @@ import boardGames from '../../assets/ludo/listeJeuxSociete.json';
 import ps4VideoGames from '../../assets/ludo/videoGames/jeuxPs4.json';
 import switchVideoGames from '../../assets/ludo/videoGames/jeuxSwitch.json';
 import ps5VideoGames from '../../assets/ludo/videoGames/jeuxPs5.json';
+import xboxOneGames from '../../assets/ludo/videoGames/jeuxXboxOne.json';
 import {BoardGame, BoardGameCategory} from '../models/boardGame.model';
 import {VideoGame, VideoGamesLibs} from '../models/videoGames.model';
 
@@ -37,7 +38,8 @@ export class DataService {
     this.videoGames = {
       switch: switchVideoGames as Array<VideoGame>,
       ps4: ps4VideoGames as Array<VideoGame>,
-      ps5: ps5VideoGames as Array<VideoGame>
+      ps5: ps5VideoGames as Array<VideoGame>,
+      xboxOne: xboxOneGames as Array<VideoGame>,
     };
 
     this.allBiblio.push(imgLib as Biblio);

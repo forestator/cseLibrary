@@ -23,9 +23,9 @@
       <ng-container
         *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.ACCESSORY  ; let index = index; trackBy: trackVideoGame">
         <div class="core-body">
-          <app-video-game-accessory-row [videoGame]="videoGame"
-                                        [selectedVideoGameId]="selectedVideoGameId">
-          </app-video-game-accessory-row>
+          <app-video-game-console-row [videoGame]="videoGame"
+                                      [selectedVideoGameId]="selectedVideoGameId">
+          </app-video-game-console-row>
         </div>
       </ng-container>
       <mat-divider></mat-divider>

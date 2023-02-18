@@ -23,7 +23,9 @@ export class VideoGamesConsoleDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.videoGamesOfConsole$ = this.navService.getRouteParams().pipe(
       map((params: Params) => {
-          return this.dataService.getVideoGamesOfCategory(params['categoryId']);
+          const cat = this.dataService.getVideoGamesOfCategory(params['categoryId']);
+          this.selectedVideoGameId = params['id'];
+          return cat;
         }
       ));
   }

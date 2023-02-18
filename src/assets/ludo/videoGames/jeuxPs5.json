@@ -1,4 +1,45 @@
 [
   {
+    "name": "Console PS5 N°1",
+    "status": "AVAILABLE",
+    "type": "CONSOLE",
+    "description":"Accompagné de deux manettes et du jeu Horizon Forbiden West",
+    "cover": "assets/covers/videoGames/PS5-console-front.webp",
+    "ref": "CONSL PS5_01"
+  },
+  {
+    "name": "Gran Turismo 7",
+    "status": "AVAILABLE",
+    "cover": "assets/covers/videoGames/gt7.webp",
+    "type": "GAME",
+    "ref": "1500"
+  },
+  {
+    "name": "SpiderMan Miles Morales",
+    "status": "AVAILABLE",
+    "cover": "assets/covers/videoGames/spidermanMilesMorales.webp",
+    "type": "GAME",
+    "ref": "1501"
+  },
+  {
+    "name": "Grand Thief Auto V",
+    "status": "AVAILABLE",
+    "cover": "assets/covers/videoGames/grand-theft-auto-v-ps3_1367404112__1200_1200__overflow.jpg",
+    "type": "GAME",
+    "ref": "1502"
+  },
+  {
+    "name": "Horizon Forbidden West (sur la PS5)",
+    "status": "AVAILABLE",
+    "cover": "assets/covers/videoGames/horizonForbidenWest.webp",
+    "type": "GAME",
+    "ref": "1503"
+  },
+  {
+    "name": "The Last Of US Part1",
+    "status": "AVAILABLE",
+    "cover": "assets/covers/videoGames/lastOfUsP1.webp",
+    "type": "GAME",
+    "ref": "1504"
   }
 ]

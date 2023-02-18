@@ -9,23 +9,30 @@
       {
         "id": "switch",
         "parentId": "videoGames",
-        "name": "Jeux Switch",
+        "name": "Nintendo Switch",
         "bg": "switch.jfif",
         "prefix": "switch"
       },
       {
         "id": "ps5",
         "parentId": "videoGames",
-        "name": "Jeux PS5",
+        "name": "Playstation 5",
         "bg": "ps5.jpg",
         "prefix": "ps5"
       },
       {
         "id": "ps4",
         "parentId": "videoGames",
-        "name": "Jeux PS4",
+        "name": "Playstation 4",
         "bg": "ps4.jpg",
         "prefix": "ps4"
+      },
+      {
+        "id": "xboxOne",
+        "parentId": "videoGames",
+        "name": "Xbox One",
+        "bg": "xbox-one-s-test__w1200.jpg",
+        "prefix": "xboxOne"
       }
     ]
   }

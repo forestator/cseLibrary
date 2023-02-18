@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/tools.service';
 
@@ -7,7 +7,7 @@ import {ToolsService} from '../../../../services/tools.service';
   templateUrl: './video-game-row.component.html',
   styleUrls: ['./video-game-row.component.scss']
 })
-export class VideoGameRowComponent implements OnInit {
+export class VideoGameRowComponent implements OnInit, OnChanges {
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
@@ -19,4 +19,9 @@ export class VideoGameRowComponent implements OnInit {
     }
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['selectedVideoGameId'] && !!changes['selectedVideoGameId'].currentValue) {
+      this.toolsService.scrollToId(changes['selectedVideoGameId'].currentValue);
+    }
+  }
 }

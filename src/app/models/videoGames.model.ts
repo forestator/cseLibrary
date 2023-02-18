@@ -1,5 +1,12 @@
 import {BoardGameStatus} from './boardGame.model';
 
+export enum Consoles {
+  switch = 'switch',
+  ps4 = 'ps4',
+  ps5 = 'ps5',
+  xboxOne = 'xboxOne'
+}
+
 export interface VideoGame {
   description?: string;
   name: string;
@@ -20,4 +27,5 @@ export interface VideoGamesLibs {
   switch: Array<VideoGame>;
   ps4: Array<VideoGame>;
   ps5: Array<VideoGame>;
+  xboxOne: Array<VideoGame>;
 }

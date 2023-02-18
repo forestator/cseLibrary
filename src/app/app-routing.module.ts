@@ -5,7 +5,7 @@ import {
   BoardGameCategoryDetailsComponent
 } from './ludotheque/components/board-games/components/board-game-category-details/board-game-category-details.component';
 import {BibliothequeComponent} from './bibliotheque/components/bibliotheque/bibliotheque.component';
-import {HomeComponent} from './common/home/home.component';
+import {HomeComponent} from './common/components/home/home.component';
 import {LibraryViewComponent} from './bibliotheque/components/library-view/library-view.component';
 import {CategoryViewComponent} from './bibliotheque/components/category-view/category-view.component';
 import {SeriesViewComponent} from './bibliotheque/components/series-view/series-view.component';
@@ -22,6 +22,7 @@ const routes: Routes = [
     {path: 'ludotheque/outsideGames', component: VideoGamesComponent},
     {path: 'ludotheque/videoGames', component: VideoGamesComponent},
     {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent},
+    {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesConsoleDetailsComponent},
     {path: 'ludotheque/j2s', component: BoardGamesComponent},
     {path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent},
     {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent},

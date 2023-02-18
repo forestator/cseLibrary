@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LibraryMenuComponent} from './library-menu/library-menu.component';
-import {SearchInLibComponent} from './search-in-lib/search-in-lib.component';
-import {BadgeComponent} from './book-badge/badge.component';
-import {HomeComponent} from './home/home.component';
+import {LibraryMenuComponent} from './components/library-menu/library-menu.component';
+import {SearchInLibComponent} from './components/search-in-lib/search-in-lib.component';
+import {BadgeComponent} from './components/book-badge/badge.component';
+import {HomeComponent} from './components/home/home.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
@@ -17,7 +17,8 @@ import {MatIconModule} from '@angular/material/icon';
     LibraryMenuComponent,
     HomeComponent,
     SearchInLibComponent,
-    BadgeComponent],
+    BadgeComponent
+  ],
   imports: [
     CommonModule,
     MatAutocompleteModule,

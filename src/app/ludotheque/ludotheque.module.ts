@@ -26,9 +26,6 @@ import {VideoGameRowComponent} from './components/video-games/video-game-row/vid
 import {
   VideoGameConsoleRowComponent
 } from './components/video-games/video-game-console-row/video-game-console-row.component';
-import {
-  VideoGameAccessoryRowComponent
-} from './components/video-games/video-game-accessory-row/video-game-accessory-row.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {FilterVideoGameByTypePipe} from './pipes/filter-video-game-by-type.pipe';
 
@@ -45,7 +42,6 @@ import {FilterVideoGameByTypePipe} from './pipes/filter-video-game-by-type.pipe'
     VideoGamesConsoleDetailsComponent,
     VideoGameRowComponent,
     VideoGameConsoleRowComponent,
-    VideoGameAccessoryRowComponent,
     FilterVideoGameByTypePipe],
   exports: [],
     imports: [

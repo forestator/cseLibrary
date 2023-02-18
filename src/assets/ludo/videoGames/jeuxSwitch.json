@@ -24,6 +24,27 @@
     "ref": "CONSL03"
   },
   {
+    "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
+    "status": "AVAILABLE",
+    "type": "ACCESSORY",
+    "cover": "assets/covers/videoGames/joyConChargeur.png",
+    "ref": "SW-MAN01"
+  },
+  {
+    "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
+    "status": "AVAILABLE",
+    "type": "ACCESSORY",
+    "cover": "assets/covers/videoGames/joyConChargeur.png",
+    "ref": "SW-MAN02"
+  },
+  {
+    "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
+    "status": "AVAILABLE",
+    "type": "ACCESSORY",
+    "cover": "assets/covers/videoGames/joyConChargeur.png",
+    "ref": "SW-MAN03"
+  },
+  {
     "name": "RingFit Adventure ( boites)",
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/ringfit.jpg",
