@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {Category, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {ToolsService} from 'src/app/services/tools.service';
-import videoGamCats from '../../../../../archivesBdd/oldJson/videoGamesLib.json';
 import {map, Observable, of} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
 import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
@@ -51,11 +50,19 @@ export class LibraryMenuComponent implements OnInit {
     } else if (url.includes('ludotheque/videoGames')) {
       this.prefixRoute = 'ludotheque/videoGames/';
       this.selectedMenu = null;
-      this.menu$ = of(videoGamCats.library.categories.map(cat => {
-        return {name: cat.name, route: this.prefixRoute + cat.id};
+      this.menu$ = this.firebaseDatabaseService.videoGamesLibrary$.pipe(map(lib => {
+        const categories = lib.categories;
+        return categories?.map((cat) => {
+          return {name: cat.name, route: this.prefixRoute + cat.id};
+        })
       }));
     } else if (url.includes('ludotheque')) {
       this.prefixRoute = '/ludotheque/';
+      this.menu$ = of([
+        {name: 'Jeux de société', route: 'ludotheque/j2s'},
+        {name: 'Jeux vidéos', route: 'ludotheque/videoGames'},
+        {name: 'Jeux de plein-air', route: 'ludotheque/outsideGames'}
+      ]);
       this.selectedMenu = null;
     } else {
       this.menu$ = of([]);
