@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Author, Category, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
@@ -14,9 +14,9 @@ import {BasicModal} from '../basic-modal';
 })
 export class AuthorModalComponent extends BasicModal implements OnInit {
 
-   public firstName = new FormControl();
-   public lastName = new FormControl();
-   public resume = new FormControl();
+   public firstName = new UntypedFormControl();
+   public lastName = new UntypedFormControl();
+   public resume = new UntypedFormControl();
 
    constructor(
       public dialogRef: MatDialogRef<SeriesModalComponent>,

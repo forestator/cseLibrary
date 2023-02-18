@@ -13,7 +13,7 @@ import {
 import {GoogleBookService} from 'src/app/services/google-book.service';
 import {map, take} from 'rxjs';
 import {SearchModalComponent} from '../search-modal/search-modal.component';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {DataService} from 'src/app/services/data.service';
 import {v4 as uuidv4} from 'uuid';
 import {BasicModal} from '../basic-modal';
@@ -29,20 +29,20 @@ export class BookModalComponent extends BasicModal implements OnInit {
 
    public allStatus: Array<string> = Object.keys(BookStatus);
 
-   public title = new FormControl();
-   public resume = new FormControl();
-   public isbn10 = new FormControl();
-   public isbn13 = new FormControl();
-   public format = new FormControl();
-   public author = new FormControl();
-   public status = new FormControl();
-   public page = new FormControl();
-   public publisher = new FormControl();
-   public publishedDate = new FormControl();
-   public ref = new FormControl();
-   public tome = new FormControl();
-   public cover = new FormControl();
-   public year = new FormControl();
+   public title = new UntypedFormControl();
+   public resume = new UntypedFormControl();
+   public isbn10 = new UntypedFormControl();
+   public isbn13 = new UntypedFormControl();
+   public format = new UntypedFormControl();
+   public author = new UntypedFormControl();
+   public status = new UntypedFormControl();
+   public page = new UntypedFormControl();
+   public publisher = new UntypedFormControl();
+   public publishedDate = new UntypedFormControl();
+   public ref = new UntypedFormControl();
+   public tome = new UntypedFormControl();
+   public cover = new UntypedFormControl();
+   public year = new UntypedFormControl();
 
    constructor(
       public dialogRef: MatDialogRef<BookModalComponent>,

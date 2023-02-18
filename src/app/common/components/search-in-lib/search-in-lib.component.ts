@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable} from 'rxjs';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
@@ -23,7 +23,7 @@ export class SearchInLibComponent implements OnInit, OnChanges {
 
   @Input() boardGames!: Array<BoardGame> | null;
   @Input() videoGames!: Array<VideoGame> | null;
-  searchText: FormControl = new FormControl('');
+  searchText: UntypedFormControl = new UntypedFormControl('');
   filteredOptions?: Observable<Array<SearchOption>>;
 
   datas: Array<{ category: string; name: string; id: string }> = [];

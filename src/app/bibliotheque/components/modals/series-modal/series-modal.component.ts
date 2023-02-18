@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Author, Category, Series, SeriesStatus, ViewBy} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
@@ -15,10 +15,10 @@ export class SeriesModalComponent extends BasicModal implements OnInit {
 
    public allStatus: Array<string> = Object.keys(SeriesStatus);
 
-   public title = new FormControl();
-   public resume = new FormControl();
-   public author = new FormControl();
-   public status = new FormControl();
+   public title = new UntypedFormControl();
+   public resume = new UntypedFormControl();
+   public author = new UntypedFormControl();
+   public status = new UntypedFormControl();
 
    constructor(
       public dialogRef: MatDialogRef<SeriesModalComponent>,

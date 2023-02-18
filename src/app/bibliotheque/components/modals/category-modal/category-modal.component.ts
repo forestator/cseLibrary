@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Category, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
@@ -13,10 +13,10 @@ import {v4 as uuidv4} from 'uuid';
 })
 export class CategoryModalComponent extends BasicModal implements OnInit {
 
-   public name = new FormControl();
-   public resume = new FormControl();
-   public visuel = new FormControl();
-   public prefix = new FormControl();
+   public name = new UntypedFormControl();
+   public resume = new UntypedFormControl();
+   public visuel = new UntypedFormControl();
+   public prefix = new UntypedFormControl();
 
    constructor(
       public dialogRef: MatDialogRef<CategoryModalComponent>,

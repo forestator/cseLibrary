@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {UntypedFormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Library, Publisher} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
@@ -13,7 +13,7 @@ import {v4 as uuidv4} from 'uuid';
 })
 export class PublisherModalComponent extends BasicModal implements OnInit {
 
-   public name = new FormControl();
+   public name = new UntypedFormControl();
 
    constructor(
       public dialogRef: MatDialogRef<PublisherModalComponent>,
