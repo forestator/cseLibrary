@@ -1,9 +1,9 @@
 <div class="library-menu" id="top" *ngIf="navService.url$ | async as url">
   <div class="library-title">
     <div class="title">
-      <div [class]="tools.adminMode?'admin actif':'admin inactif'" (click)="toggleAdminMode()">
-        <mat-icon>manage_accounts</mat-icon>
-      </div>
+<!--      <div [class]="tools.adminMode?'admin actif':'admin inactif'" (click)="toggleAdminMode()">-->
+<!--        <mat-icon>manage_accounts</mat-icon>-->
+<!--      </div>-->
       <span [routerLink]="''">{{title}}</span>
     </div>
     <ng-container *ngIf="menu$ | async as menu">
@@ -43,7 +43,7 @@
       Nouveautés
     </div>
     <ng-template #biblio>
-      <ng-container *ngIf="selectedMenu$ | async as selectedMenu">
+      <ng-container *ngIf="selectedMenu">
         <div *ngFor='let category of selectedMenu?.categories'
              class="cat-nav"
              [routerLink]="selectedMenu.route + '/' + category.id">

@@ -14,10 +14,10 @@ import {FirebaseDatabaseService} from '../../../services/firebase-database.servi
 })
 export class LibraryMenuComponent implements OnInit {
 
-  menu$?: Observable<any>;
   title: string = 'Cse';
   prefixRoute: string = '';
-  selectedMenu$: Observable<{ name: string; route: string; categories?: Array<Category> }> | undefined;
+  menu$?: Observable<Array<{ name: string; route: string; categories?: Array<Category> }> | undefined>;
+  selectedMenu?: { name: string; route: string; categories?: Array<Category> } | null;
 
   constructor(public dataService: DataService,
               public firebaseDatabaseService: FirebaseDatabaseService,
@@ -40,31 +40,40 @@ export class LibraryMenuComponent implements OnInit {
   private handleUrlChange(url: string) {
     if (url.includes('bibliotheque')) {
       this.prefixRoute = 'bibliotheque/';
-      this.menu$ = of(this.dataService.allBiblio.map((item) => {
+      const menu = this.dataService.allBiblio.map((item) => {
         return {
           name: item.library!.name,
           route: this.prefixRoute + item.library!.id!,
-          categories: item.library!.categories};
-      }));
-      // todo
-      //this.setCategories(url, this.menu);
+          categories: item.library!.categories
+        };
+      });
+      this.menu$ = of(menu);
+      this.setCategories(url, menu);
     } else if (url.includes('ludotheque/j2s')) {
       this.prefixRoute = 'ludotheque/j2s/';
-      this.menu$ = this.firebaseDatabaseService.boardGamesLibrary$?.pipe(map(library => {
-        return library?.categories?.map(cat => {
+      this.selectedMenu = null;
+      this.menu$ = this.firebaseDatabaseService.boardGamesLibrary$.pipe(map(library => {
+        return library.categories?.map(cat => {
           return {name: cat.name, route: this.prefixRoute + cat.id};
         });
       }));
     } else if (url.includes('ludotheque/videoGames')) {
       this.prefixRoute = 'ludotheque/videoGames/';
+      this.selectedMenu = null;
       this.menu$ = of(videoGamCats.library.categories.map(cat => {
         return {name: cat.name, route: this.prefixRoute + cat.id};
       }));
     } else if (url.includes('ludotheque')) {
       this.prefixRoute = '/ludotheque/';
+      this.selectedMenu = null;
     } else {
       this.menu$ = of([]);
+      this.selectedMenu = null;
       this.prefixRoute = '/';
     }
+  }
+
+  private setCategories(url: string, menu: Array<{ name: string; route: string; categories?: Array<Category> }>) {
+    this.selectedMenu = menu.find(men => url.includes(men.route.slice(13)));
   }
 }
