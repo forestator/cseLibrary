@@ -44,7 +44,7 @@
     </div>
     <ng-template #biblio>
       <ng-container *ngIf="selectedMenu">
-        <div *ngFor='let category of selectedMenu?.categories'
+        <div *ngFor='let category of selectedMenu.categories'
              class="cat-nav"
              [routerLink]="selectedMenu.route + '/' + category.id">
           {{category?.name}}

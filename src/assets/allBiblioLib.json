@@ -26973,7 +26973,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "Avant 5 ans",
           "prefix": "4",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundImg.jpg",
           "resume": "",
           "by": "BY_AUTHOR",
           "authors": [
@@ -29687,7 +29687,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "De 5 à 6 ans",
           "prefix": "5_6",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_5_6.jpg",
           "resume": "Avec cette collection, l’enfant découvrira des univers riches et différents. Du fantastique à l’humour en passant par des histoires de la vie quotidienne, l’enfant progressera dans l’apprentissage de la lecture tout en s’amusant. ¤BR¤\r\nCes premiers romans seront de très bons compagnons de lecture !",
           "by": "BY_AUTHOR",
           "authors": [
@@ -32940,7 +32940,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "De 7 à 9 ans",
           "prefix": "7_9",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_7_9.jpg",
           "resume": "La collection jeunesse aborde des thèmes variés et forts. Du fantastique, de la fantasy, de l’humour, du policier, des récits de la vie quotidienne, autant de genres pour donner l’envie de lire.",
           "by": "BY_AUTHOR",
           "authors": [
@@ -38180,7 +38180,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "De 9 à 10 ans",
           "prefix": "9_10",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_9_10.jpg",
           "resume": "Du fantastique, de la fantasy, de l’humour, du policier, des récits de la vie quotidienne, autant de genres pour donner l’envie de lire.\r\nCette collection doit s'enrichir.",
           "by": "BY_AUTHOR",
           "authors": [
@@ -38479,7 +38479,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "De 10 à 12 ans",
           "prefix": "10_12",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_10_12.jpg",
           "resume": "Des histoires et des héros à vivre, en littérature grand format ou en livre de poche. Des séries envoûtantes ,des collections passionnantes sur la  magie ou la mythologie. Beaucoup de titres pour le plaisir de la découverte",
           "by": "BY_AUTHOR",
           "authors": [
@@ -42238,7 +42238,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "A partir de 13 ans",
           "prefix": "13",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_13.jpg",
           "resume": "Le « teen novel » ou roman ado est un genre littéraire à part entière. Qu’il soit sous la forme d’un thriller, d’un roman urbain ou racontant l’errance d’un personnage, il intéresse aujourd’hui les adolescents et les jeunes adultes, car sans compromis. ¤BR¤\r\nAventure, fantastique, humour et policier, autant de thèmes que vous retrouverez dans cette catégorie. Les romans vous garantissent frissons, suspense, thriller et émotions. \r\nPartez pour l’aventure des romans Ados !",
           "by": "BY_AUTHOR",
           "authors": [
@@ -47983,7 +47983,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "Livres audio",
           "prefix": "LI AU",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_5_6.jpg",
           "resume": "",
           "by": "BY_AUTHOR",
           "authors": [
@@ -49468,7 +49468,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "Contes",
           "prefix": "CONTE",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_5_6.jpg",
           "resume": "",
           "by": "BY_AUTHOR",
           "authors": [
@@ -50502,7 +50502,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "Activités",
           "prefix": "MANU",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_5_6.jpg",
           "resume": "",
           "by": "BY_AUTHOR",
           "authors": [
@@ -52498,7 +52498,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "Culture",
           "prefix": "CULTURE",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_5_6.jpg",
           "resume": "",
           "by": "BY_AUTHOR",
           "authors": [
@@ -55249,7 +55249,7 @@
           "libraryId": "2423fd49-481e-4e4a-905e-8913d8a67e19",
           "name": "Science",
           "prefix": "SCIENCE",
-          "bg": "backgroundKIDS.jpg",
+          "bg": "backgroundKIDS_5_6.jpg",
           "resume": "",
           "by": "BY_AUTHOR",
           "authors": [

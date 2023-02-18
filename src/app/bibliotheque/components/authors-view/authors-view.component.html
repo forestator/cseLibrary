@@ -12,6 +12,7 @@
         <app-author-row
             *ngFor="let author of authors"
             [author]="author"
+            [library]="library"
             (sendView)="select($event)">
         </app-author-row>
     </div>

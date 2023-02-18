@@ -32,6 +32,7 @@
         <app-author-row
             *ngFor="let author of filterAuthors(category.authors)"
             [author]="author"
+            [library]="library$ | async"
             (sendView)="selectAuthor($event)">
         </app-author-row>
     </div>

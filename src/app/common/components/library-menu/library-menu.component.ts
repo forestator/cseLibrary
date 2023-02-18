@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Category} from 'src/app/models/author.model';
+import {Category, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {ToolsService} from 'src/app/services/tools.service';
 import videoGamCats from '../../../../../archivesBdd/oldJson/videoGamesLib.json';
@@ -39,16 +39,7 @@ export class LibraryMenuComponent implements OnInit {
 
   private handleUrlChange(url: string) {
     if (url.includes('bibliotheque')) {
-      this.prefixRoute = 'bibliotheque/';
-      const menu = this.dataService.allBiblio.map((item) => {
-        return {
-          name: item.library!.name,
-          route: this.prefixRoute + item.library!.id!,
-          categories: item.library!.categories
-        };
-      });
-      this.menu$ = of(menu);
-      this.setCategories(url, menu);
+      this.setInformationsForBibliotheque();
     } else if (url.includes('ludotheque/j2s')) {
       this.prefixRoute = 'ludotheque/j2s/';
       this.selectedMenu = null;
@@ -73,7 +64,20 @@ export class LibraryMenuComponent implements OnInit {
     }
   }
 
-  private setCategories(url: string, menu: Array<{ name: string; route: string; categories?: Array<Category> }>) {
-    this.selectedMenu = menu.find(men => url.includes(men.route.slice(13)));
+  private setInformationsForBibliotheque() {
+    this.prefixRoute = 'bibliotheque/';
+    this.menu$ = this.firebaseDatabaseService.bibliotheque$.pipe(map((item) => {
+      const currentLib: Library | undefined
+        = item.find(biblio => biblio.library?.id === this.dataService.selectedLib?.library?.id)!.library;
+      const menus = item.map(biblio => {
+        return {
+          name: biblio.library!.name,
+          route: this.prefixRoute + biblio.library!.id!,
+          categories: biblio.library!.categories
+        };
+      });
+      this.selectedMenu = menus.find(menu => menu.name === currentLib?.name);
+      return menus;
+    }));
   }
 }
