@@ -4,11 +4,6 @@ import imgLib from '../../assets/imgLib.json';
 import romLib from '../../assets/romLib.json';
 import kidsLib from '../../assets/kidsLib.json';
 import incLib from '../../assets/incLib.json';
-import ps4VideoGames from '../../assets/ludo/videoGames/jeuxPs4.json';
-import switchVideoGames from '../../assets/ludo/videoGames/jeuxSwitch.json';
-import ps5VideoGames from '../../assets/ludo/videoGames/jeuxPs5.json';
-import xboxOneGames from '../../assets/ludo/videoGames/jeuxXboxOne.json';
-import {VideoGame, VideoGamesLibs} from '../models/videoGames.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +11,6 @@ import {VideoGame, VideoGamesLibs} from '../models/videoGames.model';
 export class DataService {
   public allBiblio: Array<Biblio>;
   public selectedLib!: Biblio | undefined;
-  public videoGames: VideoGamesLibs;
 
   constructor() {
     this.allBiblio = [];
@@ -29,13 +23,6 @@ export class DataService {
     //    item.by = tmp.library?.by;
     // })
     // console.log('tmp', tmp);
-
-    this.videoGames = {
-      switch: switchVideoGames as Array<VideoGame>,
-      ps4: ps4VideoGames as Array<VideoGame>,
-      ps5: ps5VideoGames as Array<VideoGame>,
-      xboxOne: xboxOneGames as Array<VideoGame>,
-    };
 
     this.allBiblio.push(imgLib as Biblio);
     this.allBiblio.push(romLib as Biblio);
@@ -103,11 +90,6 @@ export class DataService {
       })
     }
     console.log('LOG:', this.selectedLib);
-  }
-
-  getVideoGamesOfCategory(consoleId: string): Array<VideoGame> {
-    // @ts-ignore
-    return this.videoGames[consoleId] as Array<VideoGame>;
   }
 }
 

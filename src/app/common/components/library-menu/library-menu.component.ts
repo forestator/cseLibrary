@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {ToolsService} from 'src/app/services/tools.service';
-import videoGamCats from '../../../../assets/ludo/videoGamesLib.json';
+import videoGamCats from '../../../../../archivesBdd/oldJson/videoGamesLib.json';
 import {map, Observable, of} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
 import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
@@ -61,14 +61,10 @@ export class LibraryMenuComponent implements OnInit {
         return {name: cat.name, route: this.prefixRoute + cat.id};
       }));
     } else if (url.includes('ludotheque')) {
-      this.prefixRoute = '/ludotheque';
+      this.prefixRoute = '/ludotheque/';
     } else {
       this.menu$ = of([]);
       this.prefixRoute = '/';
     }
   }
-
-  // private setCategories(url: string, menu: Observable<Array<{ name: string; route: string; categories?: Array<Category> }>>) {
-  //   this.selectedMenu$ = menu.pipe(filter((menus) => menus.find(men => url.includes(men.route.slice(13))));
-  // }
 }

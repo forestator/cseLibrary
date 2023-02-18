@@ -17,8 +17,10 @@ export class BoardGameCategoryDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.boardGames$ = this.route.data.pipe(map((datas) =>
-      (datas as any).boardGames
+    this.boardGames$ = this.route.data.pipe(map((datas) => {
+        this.selectedBoardGameId = datas['boardGamesCategoryDatas']['selectedId'];
+        return datas['boardGamesCategoryDatas']['boardGames'];
+      }
     ));
   }
 

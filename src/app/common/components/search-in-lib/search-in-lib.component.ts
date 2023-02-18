@@ -5,7 +5,7 @@ import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
-import {Consoles, VideoGame, VideoGamesLibs} from '../../../models/videoGames.model';
+import {VideoGame} from '../../../models/videoGames.model';
 import {DataService} from '../../../services/data.service';
 
 interface SearchOption {
@@ -22,7 +22,7 @@ interface SearchOption {
 export class SearchInLibComponent implements OnInit, OnChanges {
 
   @Input() boardGames!: Array<BoardGame> | null;
-  @Input() videoGames!: VideoGamesLibs;
+  @Input() videoGames!: Array<VideoGame> | null;
   searchText: FormControl = new FormControl('');
   filteredOptions?: Observable<Array<SearchOption>>;
 
@@ -43,7 +43,7 @@ export class SearchInLibComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.currentUrl) {
-      this.setDatasToSeachIn(this.currentUrl);
+      this.datas = this.setDatasToSeachIn(this.currentUrl);
     }
   }
 
@@ -64,24 +64,16 @@ export class SearchInLibComponent implements OnInit, OnChanges {
     }
   }
 
-  // todo a réparer
   private setDatasToSeachIn(url: string): Array<SearchOption> {
     this.currentUrl = url;
     if (this.boardGames && url.includes('j2s')) {
       return this.boardGames;
+    } else if (this.videoGames) {
+      return this.videoGames.map((vg) => {
+        return {id: vg.ref, category: vg.category, name: vg.name};
+      });
     } else {
-      return [
-        ...this.videoGamesToSearchOption(this.videoGames.switch, Consoles.switch),
-        ...this.videoGamesToSearchOption(this.videoGames.ps4, Consoles.ps4),
-        ...this.videoGamesToSearchOption(this.videoGames.ps5, Consoles.ps5),
-        ...this.videoGamesToSearchOption(this.videoGames.xboxOne, Consoles.xboxOne),
-      ];
+      return [];
     }
-  }
-
-  private videoGamesToSearchOption(videoGames: VideoGame[], console: string): Array<SearchOption> {
-    return videoGames.map(videoGame => {
-      return {name: videoGame.name, id: videoGame.ref, category: console};
-    })
   }
 }

@@ -1,6 +1,7 @@
 import {Component, Inject} from '@angular/core';
-import {BoardGame, BoardGameStatus} from '../../../models/boardGame.model';
+import {BoardGame} from '../../../models/boardGame.model';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {LudoStatus} from '../../../models/common.model';
 
 @Component({
   selector: 'app-change-borrow-status',
@@ -11,14 +12,14 @@ export class ChangeBorrowStatusComponent {
   employee?: string;
 
   statusOptions: Array<string>;
-  newStatus: BoardGameStatus;
+  newStatus: LudoStatus;
   constructor(
     public dialogRef: MatDialogRef<ChangeBorrowStatusComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { boardGame: BoardGame },
   ) {
-    this.statusOptions = Object.values(BoardGameStatus);
-    this.newStatus = this.data.boardGame.status === BoardGameStatus.AVAILABLE ?
-      BoardGameStatus.EMPRUNTE : BoardGameStatus.AVAILABLE;
+    this.statusOptions = Object.values(LudoStatus);
+    this.newStatus = this.data.boardGame.status === LudoStatus.AVAILABLE ?
+      LudoStatus.EMPRUNTE : LudoStatus.AVAILABLE;
   }
 
   cancel(): void {

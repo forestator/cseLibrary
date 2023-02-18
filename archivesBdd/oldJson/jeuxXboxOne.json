@@ -5,6 +5,7 @@
     "type": "CONSOLE",
     "description":"Accompagné de une manette",
     "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
+    "category": "xboxOne",
     "ref": "CONSL PS5_01"
   },
   {
@@ -12,6 +13,7 @@
     "status": "AVAILABLE",
     "type": "ACCESSORY",
     "description":"Manette supplémentaire",
+    "category": "xboxOne",
     "ref": "MAN01"
   },
   {
@@ -19,6 +21,7 @@
     "status": "AVAILABLE",
     "type": "ACCESSORY",
     "description":"Manette supplémentaire",
+    "category": "xboxOne",
     "ref": "MAN02"
   },
   {
@@ -26,6 +29,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "987"
   },
   {
@@ -33,6 +37,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "986"
   },
   {
@@ -40,6 +45,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "985"
   },
   {
@@ -47,6 +53,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "984"
   },
   {
@@ -54,6 +61,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "983"
   },
   {
@@ -61,6 +69,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "982"
   },
   {
@@ -68,6 +77,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "981"
   },
   {
@@ -75,6 +85,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "980"
   },
   {
@@ -82,6 +93,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "979"
   },
   {
@@ -89,6 +101,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "978"
   },
   {
@@ -96,6 +109,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "977"
   },
   {
@@ -103,6 +117,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "976"
   },
   {
@@ -110,6 +125,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "975"
   },
   {
@@ -117,6 +133,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "974"
   },
   {
@@ -124,6 +141,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "973"
   },
   {
@@ -131,6 +149,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "972"
   },
   {
@@ -138,6 +157,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "971"
   },
   {
@@ -145,6 +165,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "970"
   },
   {
@@ -152,6 +173,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "969"
   },
   {
@@ -159,6 +181,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "968"
   },
   {
@@ -166,6 +189,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "967"
   },
   {
@@ -173,6 +197,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "966"
   },
   {
@@ -180,6 +205,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "965"
   },
   {
@@ -187,6 +213,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "964"
   },
   {
@@ -194,6 +221,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "963"
   },
   {
@@ -201,6 +229,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "962"
   },
   {
@@ -208,6 +237,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "961"
   },
   {
@@ -215,6 +245,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "960"
   },
   {
@@ -222,6 +253,7 @@
     "status": "MISSING",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "959"
   },
   {
@@ -229,6 +261,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "958"
   },
   {
@@ -236,6 +269,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "957"
   },
   {
@@ -243,6 +277,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "956"
   },
   {
@@ -250,6 +285,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "955"
   },
   {
@@ -257,6 +293,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "954"
   },
   {
@@ -264,6 +301,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "953"
   },
   {
@@ -271,6 +309,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "952"
   },
   {
@@ -278,6 +317,7 @@
     "status": "MISSING",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "951"
   },
   {
@@ -285,6 +325,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/WIP.png",
     "type": "GAME",
+    "category": "xboxOne",
     "ref": "950"
   }
 ]

@@ -1439,6 +1439,1215 @@
       }
     },
     "videoGames": {
+      "games": [
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/ps4.jpg",
+          "description": "Accompagné de deux manettes (Malettes)",
+          "name": "Console PS4 N°1",
+          "ref": "CONSL 01",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/ps4.jpg",
+          "description": "Accompagné de deux manettes (Malettes)",
+          "name": "Console PS4 N°2",
+          "ref": "CONSL 02",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/ps4Cam.jpg",
+          "name": "Playstation Camera",
+          "ref": "PS4-CAM01",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/ps4VR.jpg",
+          "name": "Casque VR (nécessite la caméra)",
+          "ref": "PS4-VR01",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/tracer-volant-roadster-avec-boite-de-vitesse-et-pe.webp",
+          "name": "Volant pour PS4-XB1-PC-PS3",
+          "ref": "All-Volant01",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "DOOM Eternal",
+          "ref": "1207",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Resident Evil Village",
+          "ref": "1206",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "It Takes Two",
+          "ref": "1205",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Crash Bandicoot 4: It's About Time!",
+          "ref": "1204",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Grand Thief Auto V",
+          "ref": "1203",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "NHL 21",
+          "ref": "1202",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Wreckfest",
+          "ref": "1201",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Death Stranding",
+          "ref": "1200",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Last of Us Part II",
+          "ref": "1199",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Wolfenstein Youngblood Edition Deluxe",
+          "ref": "1198",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Call of Duty: Modern Warfare",
+          "ref": "1197",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Days Gone",
+          "ref": "1196",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CTR: Crash team Racing Nitro Fueled",
+          "ref": "1195",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Borderlands 3",
+          "ref": "1194",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Unity",
+          "ref": "1193",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Monster Hunter World",
+          "ref": "1192",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FARCRY: New Dawn",
+          "ref": "1191",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Lara Croft and The Temple of Osiris",
+          "ref": "1190",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Ace Combat 7: Skies Unknown",
+          "ref": "1189",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Astro Bot: Rescue Mission",
+          "ref": "1188",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Odyssey",
+          "ref": "1187",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Shadow Of the Tomb Raider",
+          "ref": "1186",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Injustice 2",
+          "ref": "1185",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "PES2019",
+          "ref": "1184",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Gran Turismo Sport",
+          "ref": "1183",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "RAYMAN LEGENDS",
+          "ref": "1182",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FOR HONOR",
+          "ref": "1181",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "GOD OF WAR",
+          "ref": "1180",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Origins",
+          "ref": "1179",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fifa 18",
+          "ref": "1178",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Wolfenstein II: The New Colossus Welcome to America",
+          "ref": "1177",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Eve Valkyrie",
+          "ref": "1176",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Resident Evil VII",
+          "ref": "1175",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Until Down: Rush of Blood",
+          "ref": "1174",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Driveclub VR",
+          "ref": "1173",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Witcher III : Wild Hunt",
+          "ref": "1172",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO Dimensions (Grosse Boite)",
+          "ref": "1171",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rise of Tomb Raider",
+          "ref": "1170",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "World of Final Fantasy",
+          "ref": "1169",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Warhammer the end of time Vermintide",
+          "ref": "1168",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assetto Corsa",
+          "ref": "1167",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FIFA 17",
+          "ref": "1166",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Far Cry 4 Edition limitée",
+          "ref": "1165",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Far Cry PRIMAL",
+          "ref": "1164",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Uncharted 4 - A thiefs end",
+          "ref": "1163",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Giana Sisters Twisted dreams-Director's Cut",
+          "ref": "1162",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Battlefront",
+          "ref": "1161",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FIFA 16",
+          "ref": "1160",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO Jurassic Wold",
+          "ref": "1159",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO MARVEL Super Heroes",
+          "ref": "1158",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "DESTINY",
+          "ref": "1157",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The walking dead",
+          "ref": "1156",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Watchdogs",
+          "ref": "1155",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "UFC ",
+          "ref": "1154",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Need For Speed Rivals",
+          "ref": "1153",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Infamous Second Son",
+          "ref": "1152",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Killzone Shadow fall",
+          "ref": "1151",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin s CREED IV Black Flag",
+          "ref": "1150",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/PS5-console-front.webp",
+          "description": "Accompagné de deux manettes et du jeu Horizon Forbiden West",
+          "name": "Console PS5 N°1",
+          "ref": "CONSL PS5_01",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/gt7.webp",
+          "name": "Gran Turismo 7",
+          "ref": "1500",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/spidermanMilesMorales.webp",
+          "name": "SpiderMan Miles Morales",
+          "ref": "1501",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/grand-theft-auto-v-ps3_1367404112__1200_1200__overflow.jpg",
+          "name": "Grand Thief Auto V",
+          "ref": "1502",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/horizonForbidenWest.webp",
+          "name": "Horizon Forbidden West (sur la PS5)",
+          "ref": "1503",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/lastOfUsP1.webp",
+          "name": "The Last Of US Part1",
+          "ref": "1504",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 1",
+          "ref": "CONSL01",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 2",
+          "ref": "CONSL02",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 3",
+          "ref": "CONSL03",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/joyConChargeur.png",
+          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
+          "ref": "SW-MAN01",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/joyConChargeur.png",
+          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
+          "ref": "SW-MAN02",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/joyConChargeur.png",
+          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
+          "ref": "SW-MAN03",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/ringfit.jpg",
+          "name": "RingFit Adventure ( boites)",
+          "ref": "1287",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/fastAndFuriousSpyRacers.jpg",
+          "name": "Fast & Furious Spy Racers",
+          "ref": "1286",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/justDance2022.jpg",
+          "name": "Just Dance 2022",
+          "ref": "1285",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/jurassicWorldLEgo.jpg",
+          "name": "Jurassic World Légo",
+          "ref": "1284",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Party Superstars",
+          "ref": "1283",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Roller Cosater Tyccon Adventures",
+          "ref": "1282",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Go Vacation",
+          "ref": "1281",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fort Boyard - Edition 2020",
+          "ref": "1280",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Pokémon: Let's Go, Pikachu!",
+          "ref": "1279",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "51 Worlwide Games",
+          "ref": "1278",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Minecraft",
+          "ref": "1277",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Luigi's Mansion 3",
+          "ref": "1276",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CTR Nitro Fueled",
+          "ref": "1275",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Super Mario Party",
+          "ref": "1274",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "WRC 8",
+          "ref": "1273",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Programme d'Entraînement Cérébral",
+          "ref": "1272",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "L'aventure Layton : Katrielle",
+          "ref": "1271",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario + the Lapins Cretins : Kingdom Battle",
+          "ref": "1270",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Tennis Aces",
+          "ref": "1269",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Super Smash Bros Ultimate",
+          "ref": "1268",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Zelda : Link's Awakening",
+          "ref": "1267",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fifa 20",
+          "ref": "1266",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rocket League",
+          "ref": "1265",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Kart Deluxe 8",
+          "ref": "1264",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Overcooked 2",
+          "ref": "1263",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "DONKEY KONG COUNTRY Tropical Freeze",
+          "ref": "1262",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Overcooked",
+          "ref": "1261",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "SNIPPERCLIPS PLUS les Deux font la Paire",
+          "ref": "1260",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rayman Legends Definitive Edition",
+          "ref": "1259",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Just Dance 2018",
+          "ref": "1258",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Super Mario Odyssey",
+          "ref": "1257",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Splatoon 2",
+          "ref": "1256",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Kart Deluxe 8",
+          "ref": "1255",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Legend of Zelda : Breath of the wild",
+          "ref": "1254",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
+          "description": "Accompagné de une manette",
+          "name": "Console XBOX ONE N°1",
+          "ref": "CONSL PS5_01",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        {
+          "category": "xboxOne",
+          "description": "Manette supplémentaire",
+          "name": "Manette 1",
+          "ref": "MAN01",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "xboxOne",
+          "description": "Manette supplémentaire",
+          "name": "Manette 2",
+          "ref": "MAN02",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Grand Theft Auto V",
+          "ref": "987",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Tom Clancy's Ghost Recon Breakpoint",
+          "ref": "986",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Farming Simulator 19 : Edition Platinum",
+          "ref": "985",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CTR: Crash team Racing Nitro Fueled",
+          "ref": "984",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Forza Horizon4",
+          "ref": "983",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Odyssey",
+          "ref": "982",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fifa19",
+          "ref": "981",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FAR CRY 5",
+          "ref": "980",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Ghost Recon Wildlands",
+          "ref": "979",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Forza Motorsport 7",
+          "ref": "978",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "NBA 2K17",
+          "ref": "977",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Evil Within",
+          "ref": "976",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Battlefield 1",
+          "ref": "975",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "WatchDog 2",
+          "ref": "974",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rocket League",
+          "ref": "973",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mount & Blade WARBAND",
+          "ref": "972",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Quantum BREAK",
+          "ref": "971",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Tom Clancy's DIVISION",
+          "ref": "970",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FORZA Horizon3",
+          "ref": "969",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Handball 2017",
+          "ref": "968",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "MR4  motor racer",
+          "ref": "967",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Gears of WAR4",
+          "ref": "966",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Just dance 2017",
+          "ref": "965",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO JURASSIC WORLD",
+          "ref": "964",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "PES2016",
+          "ref": "963",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CALL OF DUTY - BLACK OPS III",
+          "ref": "962",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "STARWARS BATTLEFRONT",
+          "ref": "961",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "MINECRAFT",
+          "ref": "960",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "INFINITY 3.0 STAR WARS",
+          "ref": "959",
+          "status": "MISSING",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FANTASIA",
+          "ref": "958",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assasin's CREED UNITY",
+          "ref": "957",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "JUST dance 2015",
+          "ref": "956",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "WOLFENSTEIN",
+          "ref": "955",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "TOMB  RAIDER  DEFINITIVE EDITION ",
+          "ref": "954",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "JUST  DANCE  2014 ",
+          "ref": "953",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "RIVALS   KINECT  SPORTS ",
+          "ref": "952",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FORZA 5",
+          "ref": "951",
+          "status": "MISSING",
+          "type": "GAME"
+        },
+        {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "NBA2K14",
+          "ref": "950",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        }
+      ],
       "library": {
         "categories": [
           {

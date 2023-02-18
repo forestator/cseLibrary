@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {Library} from '../../../models/author.model';
-import videoGames from '../../../../assets/ludo/videoGamesLib.json';
+import {Observable} from 'rxjs';
+import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
 
 @Component({
   selector: 'app-video-games',
@@ -8,8 +9,6 @@ import videoGames from '../../../../assets/ludo/videoGamesLib.json';
   styleUrls: ['./video-games.component.scss']
 })
 export class VideoGamesComponent {
-
-  library: Library = videoGames.library as Library;
-
-  constructor() { }
+  library$: Observable<Library> = this.firebaseDatabase.videoGamesLibrary$;
+  constructor(private firebaseDatabase: FirebaseDatabaseService) { }
 }

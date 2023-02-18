@@ -1,3 +1,5 @@
+import {LudoStatus} from './common.model';
+
 export interface Attributes {
   type: string;
   id?: string;
@@ -15,14 +17,8 @@ export interface Thing {
   text?: string;
 }
 
-export enum BoardGameStatus {
-  AVAILABLE = 'AVAILABLE',
-  EMPRUNTE = 'EMPRUNTE',
-  MISSING = 'MISSING',
-}
-
 export interface BoardGame {
-  status: BoardGameStatus;
+  status: LudoStatus;
   id: string,
   category:  BoardGameCategory,
   name: string,

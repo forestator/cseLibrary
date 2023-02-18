@@ -8,15 +8,18 @@ import {catchError} from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class BoardGameOfCategoryResolver implements Resolve<Observable<BoardGame[]>> {
+export class BoardGameOfCategoryResolver implements Resolve<Observable<{ boardGames: BoardGame[], selectedId: string | null }>> {
 
   constructor(private firebaseDatabaseService: FirebaseDatabaseService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<BoardGame[]> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{ boardGames: BoardGame[], selectedId: string | null }> {
     const categoryId = <string>route.paramMap.get('categoryId');
     return this.firebaseDatabaseService.boardGames$.pipe(
       map(boardGames => boardGames.filter(bg => bg.category === categoryId)),
+      map(boardGames => {
+        return {boardGames: boardGames, selectedId: route.paramMap.get('id')};
+      }),
       catchError(() => EMPTY)
     );
   }

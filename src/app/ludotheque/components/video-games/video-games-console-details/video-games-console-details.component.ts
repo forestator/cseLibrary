@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {map, Observable} from 'rxjs';
-import {Params} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {NavigationService} from '../../../../services/navigation.service';
-import {DataService} from '../../../../services/data.service';
 import {VideoGame, VideoGameType} from '../../../../models/videoGames.model';
 
 @Component({
@@ -17,17 +16,15 @@ export class VideoGamesConsoleDetailsComponent implements OnInit {
   selectedVideoGameId?: string;
 
   constructor(private navService: NavigationService,
-              private dataService: DataService) {
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.videoGamesOfConsole$ = this.navService.getRouteParams().pipe(
-      map((params: Params) => {
-          const cat = this.dataService.getVideoGamesOfCategory(params['categoryId']);
-          this.selectedVideoGameId = params['id'];
-          return cat;
-        }
-      ));
+    this.videoGamesOfConsole$ = this.route.data.pipe(map((datas) => {
+        this.selectedVideoGameId = datas['videoGamesCategoryDatas']['selectedId'];
+        return datas['videoGamesCategoryDatas']['videoGames'];
+      }
+    ));
   }
 
   trackVideoGame(index: number, item: VideoGame) {

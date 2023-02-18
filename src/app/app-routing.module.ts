@@ -17,27 +17,34 @@ import {
 } from './ludotheque/components/video-games/video-games-console-details/video-games-console-details.component';
 import {SettingsViewComponent} from './bibliotheque/components/settings-view/settings-view.component';
 import {BoardGameOfCategoryResolver} from './resolvers/board-game-of-category.resolver';
+import {GamesOfConcolesResolver} from './resolvers/games-of-concoles.resolver';
 
 const routes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
   {path: 'ludotheque/outsideGames', component: VideoGamesComponent},
   {path: 'ludotheque/videoGames', component: VideoGamesComponent},
-  {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent},
-  {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesConsoleDetailsComponent},
+  {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent,
+    resolve: {
+      videoGamesCategoryDatas: GamesOfConcolesResolver
+    }},
+  {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesConsoleDetailsComponent,
+    resolve: {
+      videoGamesCategoryDatas: GamesOfConcolesResolver
+    }},
   {path: 'ludotheque/j2s', component: BoardGamesComponent},
   {
     path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent,
     resolve: {
-      boardGames: BoardGameOfCategoryResolver
+      boardGamesCategoryDatas: BoardGameOfCategoryResolver
     }
   },
   {
     path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent,
     resolve: {
-      boardGames: BoardGameOfCategoryResolver
+      boardGamesCategoryDatas: BoardGameOfCategoryResolver
     }
   },
-  {path: 'ludotheque/new', component: BoardGameCategoryDetailsComponent},
+  {path: 'ludotheque/new', component: NewViewComponent},
   {path: 'bibliotheque', component: BibliothequeComponent},
   {path: 'bibliotheque/new', component: NewViewComponent},
   {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},

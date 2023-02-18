@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BookStatus} from 'src/app/models/author.model';
-import {BoardGameCategory, BoardGameStatus} from '../../../models/boardGame.model';
+import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
+import {LudoStatus} from '../../../models/common.model';
 
 @Component({
   selector: 'app-badge',
@@ -54,9 +55,9 @@ export class BadgeComponent implements OnInit {
           this.fg = 'black';
           break;
       }
-    } else if (this.status in BoardGameStatus) {
+    } else if (this.status in LudoStatus) {
       switch (this.status) {
-        case BoardGameStatus.EMPRUNTE:
+        case LudoStatus.EMPRUNTE:
           this.txt = 'EMPRUNTE';
           this.bg = 'darkorange';
           this.fg = 'white';

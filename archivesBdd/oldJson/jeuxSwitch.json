@@ -5,6 +5,7 @@
     "type": "CONSOLE",
     "description":"La console est accompagnée de deux JoyCon et un chargeur",
     "cover": "assets/covers/videoGames/NSwitchTop.png",
+    "category": "switch",
     "ref": "CONSL01"
   },
   {
@@ -13,6 +14,7 @@
     "type": "CONSOLE",
     "description": "La console est accompagnée de deux JoyCon et un chargeur",
     "cover": "assets/covers/videoGames/NSwitchTop.png",
+    "category": "switch",
     "ref": "CONSL02"
   },
   {
@@ -21,6 +23,7 @@
     "type": "CONSOLE",
     "description": "La console est accompagnée de deux JoyCon et un chargeur",
     "cover": "assets/covers/videoGames/NSwitchTop.png",
+    "category": "switch",
     "ref": "CONSL03"
   },
   {
@@ -28,6 +31,7 @@
     "status": "AVAILABLE",
     "type": "ACCESSORY",
     "cover": "assets/covers/videoGames/joyConChargeur.png",
+    "category": "switch",
     "ref": "SW-MAN01"
   },
   {
@@ -35,6 +39,7 @@
     "status": "AVAILABLE",
     "type": "ACCESSORY",
     "cover": "assets/covers/videoGames/joyConChargeur.png",
+    "category": "switch",
     "ref": "SW-MAN02"
   },
   {
@@ -42,6 +47,7 @@
     "status": "AVAILABLE",
     "type": "ACCESSORY",
     "cover": "assets/covers/videoGames/joyConChargeur.png",
+    "category": "switch",
     "ref": "SW-MAN03"
   },
   {
@@ -49,6 +55,7 @@
     "status": "AVAILABLE",
     "cover": "assets/covers/videoGames/ringfit.jpg",
     "type": "GAME",
+    "category": "switch",
     "ref": "1287"
   },
   {
@@ -56,6 +63,7 @@
     "status": "AVAILABLE",
     "cover" :"assets/covers/videoGames/fastAndFuriousSpyRacers.jpg",
     "type": "GAME",
+    "category": "switch",
     "ref": "1286"
   },
   {
@@ -63,6 +71,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/justDance2022.jpg",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1285"
   },
   {
@@ -70,6 +79,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/jurassicWorldLEgo.jpg",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1284"
   },
   {
@@ -77,6 +87,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1283"
   },
   {
@@ -84,6 +95,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1282"
   },
   {
@@ -91,6 +103,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1281"
   },
   {
@@ -98,6 +111,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1280"
   },
   {
@@ -105,6 +119,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1279"
   },
   {
@@ -112,6 +127,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1278"
   },
   {
@@ -119,6 +135,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1277"
   },
   {
@@ -126,6 +143,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1276"
   },
   {
@@ -133,6 +151,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1275"
   },
   {
@@ -140,6 +159,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1274"
   },
   {
@@ -147,6 +167,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1273"
   },
   {
@@ -154,6 +175,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1272"
   },
   {
@@ -161,6 +183,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1271"
   },
   {
@@ -168,6 +191,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1270"
   },
   {
@@ -175,6 +199,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1269"
   },
   {
@@ -182,6 +207,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1268"
   },
   {
@@ -189,6 +215,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1267"
   },
   {
@@ -196,6 +223,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1266"
   },
   {
@@ -203,6 +231,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1265"
   },
   {
@@ -210,6 +239,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1264"
   },
   {
@@ -217,6 +247,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1263"
   },
   {
@@ -224,6 +255,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1262"
   },
   {
@@ -231,6 +263,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1261"
   },
   {
@@ -238,6 +271,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1260"
   },
   {
@@ -245,6 +279,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1259"
   },
   {
@@ -252,6 +287,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1258"
   },
   {
@@ -259,6 +295,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1257"
   },
   {
@@ -266,6 +303,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1256"
   },
   {
@@ -273,6 +311,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1255"
   },
   {
@@ -280,6 +319,7 @@
     "status": "AVAILABLE",
     "cover" : "assets/covers/videoGames/WIP.png",
     "type":  "GAME",
+    "category": "switch",
     "ref": "1254"
   }
 ]
