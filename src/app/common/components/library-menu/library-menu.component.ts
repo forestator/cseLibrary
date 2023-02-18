@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Category, Library, ViewMode} from 'src/app/models/author.model';
+import {Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/data.service';
 import {ToolsService} from 'src/app/services/tools.service';
 import videoGamCats from '../../../../assets/ludo/videoGamesLib.json';
-import {filter, map, Observable, of} from 'rxjs';
+import {map, Observable, of} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
 import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
 
