@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Series} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/tools.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {SeriesModalComponent} from '../../../modals/series-modal/series-modal.component';
 import {BookModalComponent} from '../../../modals/book-modal/book-modal.component';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';

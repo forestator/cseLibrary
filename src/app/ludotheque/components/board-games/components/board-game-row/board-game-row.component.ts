@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/tools.service';
 import {ChangeBorrowStatusComponent} from '../../../change-borrow-status/change-borrow-status.component';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {take} from 'rxjs';
 
 @Component({

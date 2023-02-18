@@ -1,14 +1,18 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {
-    Author,
-    Book,
-    BookStatus,
-    Publisher,
-    SearchBookResult,
-    Series,
-    SeriesStatus,
-    ViewBy
+  MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA,
+  MatLegacyDialog as MatDialog,
+  MatLegacyDialogRef as MatDialogRef
+} from '@angular/material/legacy-dialog';
+import {
+  Author,
+  Book,
+  BookStatus,
+  Publisher,
+  SearchBookResult,
+  Series,
+  SeriesStatus,
+  ViewBy
 } from 'src/app/models/author.model';
 import {GoogleBookService} from 'src/app/services/google-book.service';
 import {map, take} from 'rxjs';

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {Category, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
 import {CategoryModalComponent} from '../../modals/category-modal/category-modal.component';

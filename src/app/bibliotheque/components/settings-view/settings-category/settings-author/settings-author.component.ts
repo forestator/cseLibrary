@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import {MatLegacyDialog as MatDialog} from '@angular/material/legacy-dialog';
 import {AuthorModalComponent} from 'src/app/bibliotheque/components/modals/author-modal/author-modal.component';
 import {BookModalComponent} from 'src/app/bibliotheque/components/modals/book-modal/book-modal.component';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
