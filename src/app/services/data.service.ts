@@ -1,9 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Author, Biblio, SeriesStatus, ViewBy} from '../models/author.model';
-import imgLib from '../../assets/imgLib.json';
-import romLib from '../../assets/romLib.json';
-import kidsLib from '../../assets/kidsLib.json';
-import incLib from '../../assets/incLib.json';
+import {FirebaseDatabaseService} from './firebase-database.service';
+import {take} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,52 +10,15 @@ export class DataService {
   public allBiblio: Array<Biblio>;
   public selectedLib!: Biblio | undefined;
 
-  constructor() {
+  constructor(private firebaseDatabaseService: FirebaseDatabaseService) {
     this.allBiblio = [];
-
-    // let tmp: Biblio = imgLib as Biblio;
-    // tmp.publishers?.forEach(item => {
-    //    item.by = tmp.library?.by;
-    // })
-    // tmp.authors?.forEach(item => {
-    //    item.by = tmp.library?.by;
-    // })
-    // console.log('tmp', tmp);
-
-    this.allBiblio.push(imgLib as Biblio);
-    this.allBiblio.push(romLib as Biblio);
-    this.allBiblio.push(kidsLib as Biblio);
-    this.allBiblio.push(incLib as Biblio);
-    this.selectedLib = this.allBiblio[0];
-    this.log();
+    this.firebaseDatabaseService.bibliotheque$.pipe(take(1)).subscribe(allBiblio => {
+      this.allBiblio = allBiblio;
+      this.selectedLib = this.allBiblio[0];
+      this.log();
+    });
   }
 
-  public selectLibrary(id: string | undefined) {
-    this.selectedLib = this.allBiblio.find(item => item.library?.id === id);
-    return this.selectedLib;
-  }
-
-  // public filterLib(lib: Biblio): Biblio {
-  //    let filteredLib: Biblio = {};
-  //    if (this.tools.adminMode) {
-  //       filteredLib = lib;
-  //    } else {
-  //       filteredLib = {
-  //          authors: lib.authors,
-  //          publishers: lib.publishers,
-  //          library: lib.library
-  //       };
-
-  //       lib.library?.categories?.forEach(c => {
-  //          c.series?.forEach(s => {
-  //             s.books?.forEach(b => {
-
-  //             })
-  //          })
-  //       })
-  //    }
-  //    return filteredLib;
-  // }
   public getAuthors(authorIds: Array<string>): Array<Author> {
     let authors: Array<Author> = [];
     authorIds?.forEach(authorId => {

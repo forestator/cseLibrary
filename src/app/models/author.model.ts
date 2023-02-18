@@ -1,5 +1,3 @@
-import { By } from "@angular/platform-browser";
-
 export interface Biblio {
     authors?: Array<Author>;
     publishers?: Array<Publisher>;
@@ -9,7 +7,7 @@ export interface BookPath {
     category: Category;
     series: Series;
     book: Book;
-} 
+}
 export interface Author {
     id?: string;
     firstName: string;
