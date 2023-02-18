@@ -19,38 +19,42 @@ import {SettingsViewComponent} from './bibliotheque/components/settings-view/set
 import {BoardGameOfCategoryResolver} from './resolvers/board-game-of-category.resolver';
 import {GamesOfConcolesResolver} from './resolvers/games-of-concoles.resolver';
 
-const routes: Routes = [
+const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
   {path: 'ludotheque/outsideGames', component: VideoGamesComponent},
   {path: 'ludotheque/videoGames', component: VideoGamesComponent},
-  {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent,
-    resolve: {
-      videoGamesCategoryDatas: GamesOfConcolesResolver
-    }},
-  {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesConsoleDetailsComponent,
-    resolve: {
-      videoGamesCategoryDatas: GamesOfConcolesResolver
-    }},
+  {
+    path: 'ludotheque/videoGames/:categoryId', component: VideoGamesConsoleDetailsComponent,
+    resolve: {videoGamesCategoryDatas: GamesOfConcolesResolver}
+  },
+  {
+    path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesConsoleDetailsComponent,
+    resolve: {videoGamesCategoryDatas: GamesOfConcolesResolver}
+  },
   {path: 'ludotheque/j2s', component: BoardGamesComponent},
   {
     path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent,
-    resolve: {
-      boardGamesCategoryDatas: BoardGameOfCategoryResolver
-    }
+    resolve: {boardGamesCategoryDatas: BoardGameOfCategoryResolver}
   },
   {
     path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent,
-    resolve: {
-      boardGamesCategoryDatas: BoardGameOfCategoryResolver
-    }
+    resolve: {boardGamesCategoryDatas: BoardGameOfCategoryResolver}
   },
-  {path: 'ludotheque/new', component: NewViewComponent},
+  {path: 'ludotheque/new', component: NewViewComponent}
+];
+
+const biblioRoutes: Routes = [
   {path: 'bibliotheque', component: BibliothequeComponent},
   {path: 'bibliotheque/new', component: NewViewComponent},
   {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
   {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
   {path: 'bibliotheque/:libraryId/:catId/settings', component: SettingsViewComponent},
   {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
+];
+
+const routes: Routes = [
+  ...ludoRoutes,
+  ...biblioRoutes,
   {path: '', component: HomeComponent},
   {path: '**', component: HomeComponent},
 ];
