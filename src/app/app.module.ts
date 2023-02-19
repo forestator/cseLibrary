@@ -17,6 +17,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppCommonModule} from './common/app-common.module';
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
+import {AdminModule} from './admin/admin.module';
+import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDK-byU9NpioO3Lve34_Y4QvxvOviDCKFY",
@@ -28,6 +30,22 @@ const firebaseConfig = {
   appId: "1:380057552327:web:6f48c47bb21f44fd32c5e2"
 };
 
+const firebaseUiAuthConfig: firebaseui.auth.Config = {
+  signInFlow: 'popup',
+  signInOptions: [
+    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+    firebase.auth.GithubAuthProvider.PROVIDER_ID,
+    {
+      requireDisplayName: false,
+      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
+    },
+  ],
+  tosUrl: '<your-tos-link>',
+  privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
+  credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
+};
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +55,10 @@ const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     LudothequeModule,
     BibliothequeModule,
+    AdminModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,

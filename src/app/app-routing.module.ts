@@ -19,6 +19,7 @@ import {SettingsViewComponent} from './bibliotheque/components/settings-view/set
 import {BoardGameOfCategoryResolver} from './resolvers/board-game-of-category.resolver';
 import {GamesOfConcolesResolver} from './resolvers/games-of-concoles.resolver';
 import {OutsideGamesComponent} from './ludotheque/components/outside-games/outside-games.component';
+import {AdminHomeComponent} from './admin/components/admin-home/admin-home.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -56,6 +57,7 @@ const biblioRoutes: Routes = [
 const routes: Routes = [
   ...ludoRoutes,
   ...biblioRoutes,
+  {path: 'iWantToConfigureThisAwesomeApp', component: AdminHomeComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: HomeComponent},
 ];

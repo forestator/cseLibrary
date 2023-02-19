@@ -16,7 +16,7 @@ export class ToolsService {
   getAuthors(authorIds: Array<string | undefined>): Observable<string> {
     return new Observable<string>(observer => {
       const ids: Array<string> = [];
-      authorIds.forEach(item => {
+      authorIds?.forEach(item => {
         if (item) {
           ids.push(item);
         }
