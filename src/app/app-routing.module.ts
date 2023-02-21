@@ -19,6 +19,7 @@ import {SettingsViewComponent} from './bibliotheque/components/settings-view/set
 import {GamesOfConcolesResolver} from './resolvers/games-of-concoles.resolver';
 import {OutsideGamesComponent} from './ludotheque/components/outside-games/outside-games.component';
 import {AdminHomeComponent} from './admin/components/admin-home/admin-home.component';
+import {BoardGameOfCategoryResolver} from './resolvers/board-game-of-category.resolver';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -33,8 +34,14 @@ const ludoRoutes: Routes = [
     resolve: {videoGamesCategoryDatas: GamesOfConcolesResolver}
   },
   {path: 'ludotheque/j2s', component: BoardGamesComponent},
-  {path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent},
-  {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent},
+  {
+    path: 'ludotheque/j2s/:categoryId', component: BoardGameCategoryDetailsComponent,
+    resolve: {boardGamesCategoryDatas: BoardGameOfCategoryResolver}
+  },
+  {
+    path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameCategoryDetailsComponent,
+    resolve: {boardGamesCategoryDatas: BoardGameOfCategoryResolver}
+  },
   {path: 'ludotheque/new', component: NewViewComponent}
 ];
 

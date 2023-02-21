@@ -1,6 +1,8 @@
-import {BddBoardGames, BoardGame, Thing} from './boardGame.model';
+import {BddGame, BoardGame, Thing} from './boardGame.model';
+import {VideoGame} from './videoGames.model';
+import {OutsideGame} from './outsideGames.model';
 
-export class BoardGameConvert {
+export class Game {
   static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
     if (boardGameWithDetails) {
       const elements = boardGameWithDetails.elements;
@@ -28,10 +30,10 @@ export class BoardGameConvert {
     }
   }
 
-  static bddBoardGameToBoardGame(bddBoardGames: BddBoardGames | null): Array<BoardGame> {
-    if (bddBoardGames) {
-      return Object.keys(bddBoardGames).map(
-        (key) => Object.assign({ref: key}, bddBoardGames[key])
+  static bddGameToLudoGame(bddGame: BddGame | null): Array<BoardGame | VideoGame | OutsideGame> {
+    if (bddGame) {
+      return Object.keys(bddGame).map(
+        (key) => Object.assign({ref: key}, bddGame[key])
       );
     } else {
       return [];

@@ -15,10 +15,10 @@ export class GamesOfConcolesResolver implements Resolve<Observable<{ videoGames:
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{ videoGames: VideoGame[], selectedId: string | null }> {
     const categoryId = <string>route.paramMap.get('categoryId');
-    return this.firebaseDatabaseService.videoGames$.pipe(
+    return this.firebaseDatabaseService.videoGamesOneShot$.pipe(
       map(videoGames => videoGames.filter(bg => bg.category === categoryId)),
       map(videoGames => {
-        return {videoGames: videoGames, selectedId: route.paramMap.get('id')};
+        return {videoGames: videoGames, selectedId: route.paramMap.get('id'), categoryId: categoryId};
       }),
       catchError(() => EMPTY)
     );

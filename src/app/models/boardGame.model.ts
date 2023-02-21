@@ -1,4 +1,6 @@
 import {LudoStatus} from './common.model';
+import {VideoGame} from './videoGames.model';
+import {OutsideGame} from './outsideGames.model';
 
 export interface Attributes {
   type: string;
@@ -51,6 +53,6 @@ export enum BoardGameCategory {
   coop = 'coop',
 }
 
-export interface BddBoardGames {
-  [ref: string]: BoardGame;
+export interface BddGame {
+  [ref: string]: BoardGame | VideoGame | OutsideGame;
 }

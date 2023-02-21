@@ -1,33 +1,43 @@
-import {Component, OnInit} from '@angular/core';
-import {map, Observable} from 'rxjs';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Subscription, take} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {NavigationService} from '../../../../services/navigation.service';
-import {VideoGame, VideoGameType} from '../../../../models/videoGames.model';
+import {Consoles, VideoGame, VideoGameType} from '../../../../models/videoGames.model';
+import {FirebaseDatabaseService} from '../../../../services/firebase-database.service';
 
 @Component({
   selector: 'app-video-games-console-details',
   templateUrl: './video-games-console-details.component.html',
   styleUrls: ['./video-games-console-details.component.scss']
 })
-export class VideoGamesConsoleDetailsComponent implements OnInit {
-  videoGamesOfConsole$?: Observable<Array<VideoGame>>;
-
+export class VideoGamesConsoleDetailsComponent implements OnInit, OnDestroy {
   videoGameType = VideoGameType;
   selectedVideoGameId?: string;
+  consoleId?: Consoles;
+  videoGames: Array<VideoGame> = [];
+  private videoGamesSub?: Subscription;
 
   constructor(private navService: NavigationService,
-              private route: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private firebaseDatabaseService: FirebaseDatabaseService) {
   }
 
   ngOnInit(): void {
-    this.videoGamesOfConsole$ = this.route.data.pipe(map((datas) => {
-        this.selectedVideoGameId = datas['videoGamesCategoryDatas']['selectedId'];
-        return datas['videoGamesCategoryDatas']['videoGames'];
-      }
-    ));
+    this.activatedRoute.data.pipe(take(1)).subscribe((datas) => {
+      this.selectedVideoGameId = datas['videoGamesCategoryDatas']['selectedId'];
+      this.consoleId = datas['videoGamesCategoryDatas']['categoryId'];
+      this.videoGames = datas['videoGamesCategoryDatas']['videoGames'];
+    });
+    this.videoGamesSub = this.firebaseDatabaseService.videoGames$.subscribe(videoGames => {
+      this.videoGames = videoGames.filter(vg => vg.category === this.consoleId)
+    });
+  }
+
+  ngOnDestroy() {
+    this.videoGamesSub?.unsubscribe();
   }
 
   trackVideoGame(index: number, item: VideoGame) {
-    return item.ref;
+    return item.ref + item.status;
   }
 }
