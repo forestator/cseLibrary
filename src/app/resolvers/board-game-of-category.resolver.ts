@@ -15,10 +15,10 @@ export class BoardGameOfCategoryResolver implements Resolve<Observable<{ boardGa
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<{ boardGames: BoardGame[], selectedId: string | null }> {
     const categoryId = <string>route.paramMap.get('categoryId');
-    return this.firebaseDatabaseService.boardGames$.pipe(
+    return this.firebaseDatabaseService.boardGamesSnapshot$.pipe(
       map(boardGames => boardGames.filter(bg => bg.category === categoryId)),
       map(boardGames => {
-        return {boardGames: boardGames, selectedId: route.paramMap.get('id')};
+        return {boardGames: boardGames, selectedId: route.paramMap.get('id'), categoryId: categoryId};
       }),
       catchError(() => EMPTY)
     );

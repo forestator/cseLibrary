@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
-import {map, Observable, take} from 'rxjs';
+import {map, mergeMap, Observable, take} from 'rxjs';
 import {Biblio, Library} from '../models/author.model';
 import {BoardGame} from '../models/boardGame.model';
-import {Ludotheque} from '../models/common.model';
+import {LudoStatus, Ludotheque} from '../models/common.model';
 import {VideoGame} from '../models/videoGames.model';
 import {OutsideGame} from '../models/outsideGames.model';
 
@@ -14,7 +14,8 @@ export class FirebaseDatabaseService {
 
   public bibliotheque$: Observable<Array<Biblio>>;
   public ludotheque$: Observable<Ludotheque>;
-  public boardGames$: Observable<Array<BoardGame>>
+  public boardGamesSnapshot$: Observable<Array<BoardGame>>
+  public boardGamesNotifyChanges$: Observable<Array<BoardGame>>
   public boardGamesLibrary$: Observable<Library>;
   public videoGames$: Observable<Array<VideoGame>>
   public videoGamesLibrary$: Observable<Library>;
@@ -26,7 +27,7 @@ export class FirebaseDatabaseService {
       .pipe(take(1), map(res => res.payload.val() as Ludotheque));
     this.bibliotheque$ = this.db.object('bibliotheque').snapshotChanges()
       .pipe(take(1), map(res => res.payload.val() as Array<Biblio>));
-    this.boardGames$ = this.db.object('ludotheque/boardGames/games').snapshotChanges()
+    this.boardGamesSnapshot$ = this.db.object('ludotheque/boardGames/games').snapshotChanges()
       .pipe(take(1), map(res => res.payload.val() as Array<BoardGame>));
     this.boardGamesLibrary$ = this.db.object('ludotheque/boardGames/library').snapshotChanges()
       .pipe(take(1), map(res => res.payload.val() as Library));
@@ -38,5 +39,23 @@ export class FirebaseDatabaseService {
       .pipe(take(1), map(res => res.payload.val() as Array<VideoGame>));
     this.outsideGamesLibrary$ = this.db.object('ludotheque/outsideGames/library').snapshotChanges()
       .pipe(take(1), map(res => res.payload.val() as Library));
+
+    this.boardGamesNotifyChanges$ = this.db.list<BoardGame>('ludotheque/boardGames/games').valueChanges();
+  }
+
+  updateBoardGame(boardGame: BoardGame | null, newStatus: LudoStatus, employee: string): void {
+    if (boardGame) {
+      this.boardGamesNotifyChanges$.pipe(
+        take(1),
+        map((boardGames) => {
+          const boardGameToupdate = boardGames.find(bg => bg.id == boardGame.id && bg.ref === boardGame.ref)!;
+          boardGameToupdate.status = newStatus;
+          return boardGames;
+        }),
+        mergeMap((boardGames) => {
+          return this.db.list('ludotheque/boardGames').set('games', boardGames);
+        })
+      ).subscribe();
+    }
   }
 }

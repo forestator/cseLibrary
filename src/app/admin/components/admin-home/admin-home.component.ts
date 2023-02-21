@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthentificationService} from '../../../services/authentification.service';
 
 @Component({
   selector: 'app-admin-home',
@@ -6,4 +7,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./admin-home.component.scss']
 })
 export class AdminHomeComponent {
+
+  constructor(public auth: AuthentificationService) {
+  }
 }

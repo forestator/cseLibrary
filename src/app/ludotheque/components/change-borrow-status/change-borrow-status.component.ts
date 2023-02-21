@@ -10,7 +10,6 @@ import {LudoStatus} from '../../../models/common.model';
 })
 export class ChangeBorrowStatusComponent {
   employee?: string;
-
   statusOptions: Array<string>;
   newStatus: LudoStatus;
   constructor(

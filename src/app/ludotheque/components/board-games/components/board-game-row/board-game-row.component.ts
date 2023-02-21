@@ -4,6 +4,9 @@ import {ToolsService} from '../../../../../services/tools.service';
 import {ChangeBorrowStatusComponent} from '../../../change-borrow-status/change-borrow-status.component';
 import {MatDialog} from '@angular/material/dialog';
 import {take} from 'rxjs';
+import {AuthentificationService} from '../../../../../services/authentification.service';
+import {FirebaseDatabaseService} from '../../../../../services/firebase-database.service';
+import {LudoStatus} from '../../../../../models/common.model';
 
 @Component({
   selector: 'app-board-game-row',
@@ -18,7 +21,10 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
 
   parity!: boolean;
 
-  constructor(public toolsService: ToolsService, private dialog: MatDialog) { }
+  constructor(public toolsService: ToolsService,
+              public auth: AuthentificationService,
+              public firebaseDatabaseService: FirebaseDatabaseService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.parity = this.index % 2 === 0;
@@ -38,8 +44,8 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
       data: {boardGame},
     });
 
-    dialogRef.afterClosed().pipe(take(1)).subscribe((newDatas: {newStatus: boolean, employee: string}) => {
-      console.log('The dialog was closed, change status of bg with informations : ' + JSON.stringify(newDatas));
+    dialogRef.afterClosed().pipe(take(1)).subscribe((newDatas: {newStatus: LudoStatus, employee: string}) => {
+      this.firebaseDatabaseService.updateBoardGame(this.boardGame, newDatas.newStatus, newDatas.employee);
     });
   }
 }
