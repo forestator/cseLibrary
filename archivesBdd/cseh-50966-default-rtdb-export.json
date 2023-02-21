@@ -97031,1337 +97031,1173 @@
   ],
   "ludotheque": {
     "boardGames": {
-      "games": [
-        {
-          "category": "culture",
-          "id": "321210",
-          "name": "Quizz pays de Rennes",
-          "poids": "",
-          "ref": "",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "15139",
-          "name": "RapidCroco",
-          "poids": "",
-          "ref": "",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "30966",
-          "name": "Tempête sur l'échiquier",
-          "poids": "",
-          "ref": "",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "255674",
-          "name": "Imhotep Le Duel",
-          "poids": "346",
-          "ref": "l",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "268586",
-          "name": "6 qui prend",
-          "poids": "250",
-          "ref": "ludo 14",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "273477",
-          "name": "Obscurio",
-          "poids": "1356",
-          "ref": "ludo100",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "puzzle",
-          "id": "unicornPuzzle",
-          "name": "Puzzle Unicorn Garden (500pcs)",
-          "poids": "855",
-          "ref": "ludo101",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/puzzle/unicorn-garden-500-pcs-djeco_OA.jpg"
-        },
-        {
-          "category": "puzzle",
-          "id": "puzzleLandAndSea",
-          "name": "Puzzle Land & Sea (1000pcs)",
-          "poids": "755",
-          "ref": "ludo102",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/puzzle/p2_FULL.jpg"
-        },
-        {
-          "category": "ambiance",
-          "id": "18803",
-          "name": "Black Stories",
-          "poids": "200",
-          "ref": "ludo103",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "231748",
-          "name": "Time Bomb",
-          "poids": "184",
-          "ref": "ludo104",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "246203",
-          "name": "Speed Mandala",
-          "poids": "157",
-          "ref": "ludo105",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "4550",
-          "name": "Blank",
-          "poids": "284",
-          "ref": "ludo106",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "289985",
-          "name": "Rêve de Trésor",
-          "poids": "646",
-          "ref": "ludo107",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "269526",
-          "name": "La Vallée des Vikings",
-          "poids": "934",
-          "ref": "ludo108",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "248900",
-          "name": "Ceylan",
-          "poids": "1556",
-          "ref": "ludo109",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "puzzle",
-          "id": "puzzleTourMonde",
-          "name": "Puzzle observation Tour Du Monde (200pcs)",
-          "poids": "756",
-          "ref": "ludo110",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-tour-du-monde-200-pcs-djeco-7412.jpg"
-        },
-        {
-          "category": "puzzle",
-          "id": "puzzleCameleon",
-          "name": "Puzzle art Cameléon (150pcs)",
-          "poids": "582",
-          "ref": "ludo111",
-          "status": "EMPRUNTE",
-          "thumbnail": "assets/covers/boardGames/covers/puzzle/Puzzle-Cameleon-(150pcs).jpg"
-        },
-        {
-          "category": "enfant",
-          "id": "24209",
-          "name": "Kaleidos Junior",
-          "poids": "1013",
-          "ref": "ludo112",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "abstrait",
-          "id": "204498",
-          "name": "Déblock",
-          "poids": "786",
-          "ref": "ludo113",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "blcMangerCocoJunior",
-          "name": "Blanc-Manger Coco Junior",
-          "poids": "824",
-          "ref": "ludo114",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/j2s/blanc-manger-coco-junior.jpg"
-        },
-        {
-          "category": "familial",
-          "id": "268620",
-          "name": "Similo Contes",
-          "poids": "131",
-          "ref": "ludo115",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "294612",
-          "name": "Unlock7! Epic Adventures",
-          "poids": "804",
-          "ref": "ludo116",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "173090",
-          "name": "The Game edition couleur",
-          "poids": "209",
-          "ref": "ludo117",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "236461",
-          "name": "The Game Le Duel",
-          "poids": "249",
-          "ref": "ludo118",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "13",
-          "name": "Catan",
-          "poids": "952",
-          "ref": "ludo119",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "175117",
-          "name": "Celestia",
-          "poids": "596",
-          "ref": "ludo120",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "137297",
-          "name": "Augustus",
-          "poids": "632",
-          "ref": "ludo121",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "abstrait",
-          "id": "1038",
-          "name": "Tantrix",
-          "poids": "599",
-          "ref": "ludo122",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "culture",
-          "id": "254195",
-          "name": "Trivial Pursuit Harry Potter Ultimate",
-          "poids": "1288",
-          "ref": "ludo123",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "192237",
-          "name": "Specific",
-          "poids": "233",
-          "ref": "ludo124",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "escapeChateau",
-          "name": "Escape au Château",
-          "poids": "1100",
-          "ref": "ludo125",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/j2s/escape-game-au-chateau-ne.jpg"
-        },
-        {
-          "category": "ambiance",
-          "id": "130680",
-          "name": "iKnow",
-          "poids": "858",
-          "ref": "ludo126",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "274364",
-          "name": "Watergate",
-          "poids": "590",
-          "ref": "ludo127",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "204583",
-          "name": "Kingdomino",
-          "poids": "559",
-          "ref": "ludo128",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "291008",
-          "name": "Fou Fou Fou !",
-          "poids": "167",
-          "ref": "ludo129",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "204135",
-          "name": "Skyjo",
-          "poids": "350",
-          "ref": "ludo130",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "266192",
-          "name": "Wingspan",
-          "poids": "2300",
-          "ref": "ludo131",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "inclassable",
-          "id": "347505",
-          "name": "Nouvelles ContRées",
-          "poids": "595",
-          "ref": "ludo132",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "350636",
-          "name": "Unlock10!: Game adventures",
-          "poids": "850",
-          "ref": "ludo133",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "340041",
-          "name": "Kingdomino: Origins",
-          "poids": "820",
-          "ref": "ludo134",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "344427",
-          "name": "Pas vu pas pris",
-          "poids": "721",
-          "ref": "ludo135",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "300905",
-          "name": "Top Ten",
-          "poids": "482",
-          "ref": "ludo136",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enquete",
-          "id": "338834",
-          "name": "Micro Macro Crime city : Full House",
-          "poids": "488",
-          "ref": "ludo137",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "327056",
-          "name": "Unlock! Kids",
-          "poids": "785",
-          "ref": "ludo138",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "6931",
-          "name": "Gagne ton papa",
-          "poids": "792",
-          "ref": "ludo139",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "346703",
-          "name": "7 Wonders Architects",
-          "poids": "1462",
-          "ref": "ludo140",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "abstrait",
-          "id": "25669",
-          "name": "Qwirkle",
-          "poids": "924",
-          "ref": "ludo141",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "341496",
-          "name": "César",
-          "poids": "1998",
-          "ref": "ludo142",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "252530",
-          "name": "JetLag",
-          "poids": "246",
-          "ref": "ludo143",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "341178",
-          "name": "Bubble Stories",
-          "poids": "223",
-          "ref": "ludo144",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "285253",
-          "name": "Fiesta De Los Muertos",
-          "poids": "667",
-          "ref": "ludo145",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "332944",
-          "name": "Sobek",
-          "poids": "621",
-          "ref": "ludo146",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "253618",
-          "name": "5 minutes Marvel",
-          "poids": "985",
-          "ref": "ludo147",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "205398",
-          "name": "Citadelles",
-          "poids": "446",
-          "ref": "ludo148",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "266524",
-          "name": "Parks",
-          "poids": "1032",
-          "ref": "ludo149",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "33020",
-          "name": "BATA-WAFF",
-          "poids": "160",
-          "ref": "ludo15",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "coop",
-          "id": "209778",
-          "name": "Magic Maze",
-          "poids": "784",
-          "ref": "ludo150",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "300010",
-          "name": "Dragomino",
-          "poids": "592",
-          "ref": "ludo151",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "328479",
-          "name": "Living Forest",
-          "poids": "1327",
-          "ref": "ludo152",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "342942",
-          "name": "Ark Nova",
-          "poids": "2166",
-          "ref": "ludo153",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "302135",
-          "name": "Butine !",
-          "poids": "502",
-          "ref": "ludo154",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "364073",
-          "name": "Splendor duel",
-          "poids": "434",
-          "ref": "ludo155",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "319793",
-          "name": "Happy city",
-          "poids": "266",
-          "ref": "ludo156",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "116858",
-          "name": "Noé",
-          "poids": "",
-          "ref": "ludo16",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "173346",
-          "name": "7 Wonders: DUEL",
-          "poids": "487",
-          "ref": "ludo17",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "41916",
-          "name": "Le labyrinthe magique",
-          "poids": "",
-          "ref": "ludo19",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "culture",
-          "id": "100670",
-          "name": "Défis Nature",
-          "poids": "",
-          "ref": "ludo20",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "coop",
-          "id": "150658",
-          "name": "Pandémie Le remède",
-          "poids": "",
-          "ref": "ludo21",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "168168",
-          "name": "Petite Danseuse Etoile",
-          "poids": "",
-          "ref": "ludo22",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "24068",
-          "name": "Shadow Hunters",
-          "poids": "",
-          "ref": "ludo23",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "29967",
-          "name": "Tour du Dragon",
-          "poids": "",
-          "ref": "ludo25",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "174219",
-          "name": "Time's Up Kids",
-          "poids": "560",
-          "ref": "ludo26",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "67823",
-          "name": "Piou Piou",
-          "poids": "",
-          "ref": "ludo28",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "182082",
-          "name": "Carcassonne par monts et par vaux",
-          "poids": "598",
-          "ref": "ludo30",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "9441",
-          "name": "La course des tortues",
-          "poids": "528",
-          "ref": "ludo31",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "83195",
-          "name": "Bazar Bizarre",
-          "poids": "",
-          "ref": "ludo33",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "28023",
-          "name": "Jamaica",
-          "poids": "1222",
-          "ref": "ludo34",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "104780",
-          "name": "Hop! Hop! Galopons!",
-          "poids": "744",
-          "ref": "ludo35",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "191894",
-          "name": "Imagine",
-          "poids": "407",
-          "ref": "ludo36",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "132497",
-          "name": "Lift it!",
-          "poids": "",
-          "ref": "ludo37",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "175",
-          "name": "Stupide vautour",
-          "poids": "230",
-          "ref": "ludo39",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "162191",
-          "name": "Vice & Versa",
-          "poids": "",
-          "ref": "ludo40",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "165998",
-          "name": "Chef de tribu Boum -Ba- Boum",
-          "poids": "",
-          "ref": "ludo41",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "193328",
-          "name": "Blanc-Manger Coco",
-          "poids": "975",
-          "ref": "ludo42",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "158899",
-          "name": "Colt Express",
-          "poids": "960",
-          "ref": "ludo44",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "228867",
-          "name": "Unlock2 ! Mystery Adventures",
-          "poids": "701",
-          "ref": "ludo45",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "147151",
-          "name": "Concept",
-          "poids": "951",
-          "ref": "ludo46",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "176494",
-          "name": "Isle of Skye",
-          "poids": "825",
-          "ref": "ludo47",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "3955",
-          "name": "Wanted (Bang!)",
-          "poids": "345",
-          "ref": "ludo48",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "172507",
-          "name": "MMM !",
-          "poids": "480",
-          "ref": "ludo49",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "bluff",
-          "id": "11971",
-          "name": "Kakerlaken Poker (Bug Bluff)",
-          "poids": "172",
-          "ref": "ludo51",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "4522",
-          "name": "Au bal masqué des coccinelles",
-          "poids": "629",
-          "ref": "ludo52",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "23224",
-          "name": "Les monstres farceurs",
-          "poids": "182",
-          "ref": "ludo53",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "6573",
-          "name": "Petites sorcières",
-          "poids": "756",
-          "ref": "ludo54",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "abstrait",
-          "id": "2719",
-          "name": "Puissance 4 Evolution",
-          "poids": "921",
-          "ref": "ludo55",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "535591",
-          "name": "Twister",
-          "poids": "605",
-          "ref": "ludo56",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "183251",
-          "name": "Karuba",
-          "poids": "992",
-          "ref": "ludo61",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "178900",
-          "name": "Code Names",
-          "poids": "500",
-          "ref": "ludo62",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "coop",
-          "id": "65244",
-          "name": "L'île Interdite",
-          "poids": "600",
-          "ref": "ludo63",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "148228",
-          "name": "Splendor",
-          "poids": "818",
-          "ref": "ludo64",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "172358",
-          "name": "Maître Renard",
-          "poids": "420",
-          "ref": "ludo65",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "222887",
-          "name": "Twin It!",
-          "poids": "223",
-          "ref": "ludo66",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enquete",
-          "id": "146508",
-          "name": "T.I.M.E Stories",
-          "poids": "1730",
-          "ref": "ludo67",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "213460",
-          "name": "Unlock1! Escape Adventures",
-          "poids": "703",
-          "ref": "ludo68",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "235467",
-          "name": "BOOUM !",
-          "poids": "626",
-          "ref": "ludo69",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "239307",
-          "name": "Unlock3! Secret Adventures",
-          "poids": "760",
-          "ref": "ludo70",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "173389",
-          "name": "Rush Hour",
-          "poids": "366",
-          "ref": "ludo72",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "9354",
-          "name": "Privacy ?!",
-          "poids": "687",
-          "ref": "ludo73",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "244521",
-          "name": "Les Charlatans de Belcastel",
-          "poids": "1155",
-          "ref": "ludo74",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enquete",
-          "id": "2511",
-          "name": "Sherlock Holmes: Les meurtres de la Tamise",
-          "poids": "1954",
-          "ref": "ludo75",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "abstrait",
-          "id": "72644",
-          "name": "Perplexus Original",
-          "poids": "382",
-          "ref": "ludo76",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "230802",
-          "name": "Azul",
-          "poids": "1185",
-          "ref": "ludo79",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "255507",
-          "name": "Orbis",
-          "poids": "783",
-          "ref": "ludo80",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "puzzle",
-          "id": "puzzleRainbowTigger",
-          "name": "Puzzle Rainbow Tigers (1000pcs)",
-          "poids": "772",
-          "ref": "ludo81",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/puzzle/rainbow-tigers.jpg"
-        },
-        {
-          "category": "puzzle",
-          "id": "puzzleZoo",
-          "name": "Puzzle Day at the Zoo (48pcs)",
-          "poids": "725",
-          "ref": "ludo82",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-une-journee-au-zoo-48-pieces.webp"
-        },
-        {
-          "category": "puzzle",
-          "id": "puzzleObsAnimaux",
-          "name": "Puzzle observation Animaux (100pcs)",
-          "poids": "730",
-          "ref": "ludo83",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-les-animaux-du-monde-livret-100-pcs.jpg"
-        },
-        {
-          "category": "familial",
-          "id": "70919",
-          "name": "TAKENOKO",
-          "poids": "930",
-          "ref": "ludo18",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "192547",
-          "name": "Kikou le Coucou",
-          "poids": "",
-          "ref": "ludo27",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "coop",
-          "id": "181304",
-          "name": "Mysterium",
-          "poids": "1396",
-          "ref": "ludo38",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "203462",
-          "name": "Aladin et la lampe merveilleuse",
-          "poids": "",
-          "ref": "ludo29",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "203420",
-          "name": "Exit: La cabane abandonnée",
-          "poids": "248",
-          "ref": "ludo43",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "31159",
-          "name": "Piratatak",
-          "poids": "210",
-          "ref": "ludo50",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "abstrait",
-          "id": "681",
-          "name": "Quarto",
-          "poids": "1140",
-          "ref": "ludo84",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "254226",
-          "name": "Unlock4! Exotic Adventures",
-          "poids": "705",
-          "ref": "ludo85",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "105593",
-          "name": "Mito - Permis de tricher",
-          "poids": "",
-          "ref": "ludo32",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "107420",
-          "name": "La Course Farfelue Des Souris Des Champs",
-          "poids": "664",
-          "ref": "ludo71",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "strategie",
-          "id": "68448",
-          "name": "7 Wonders",
-          "poids": "1139",
-          "ref": "ludo77",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "92828",
-          "name": "Dixit Odyssey",
-          "poids": "810",
-          "ref": "ludo78",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "266121",
-          "name": "Unlock5! Heroic Adventures",
-          "poids": "722",
-          "ref": "ludo86",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "familial",
-          "id": "276671",
-          "name": "Sequence",
-          "poids": "971",
-          "ref": "ludo87",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "168215",
-          "name": "Saboteur Le Duel",
-          "poids": "231",
-          "ref": "ludo88",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "244992",
-          "name": "The Mind",
-          "poids": "245",
-          "ref": "ludo89",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "abstrait",
-          "id": "244948",
-          "name": "Brains: jardin Japonais",
-          "poids": "291",
-          "ref": "ludo90",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "117555",
-          "name": "ClacClac",
-          "poids": "487",
-          "ref": "ludo91",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "41010",
-          "name": "Mon Premier Carcassonne",
-          "poids": "755",
-          "ref": "ludo92",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "enfant",
-          "id": "172931",
-          "name": "Nom d'un Renard !",
-          "poids": "703",
-          "ref": "ludo93",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "pavlovaCoco",
-          "name": "Pavlova Coco",
-          "poids": "1176",
-          "ref": "ludo94",
-          "status": "AVAILABLE",
-          "thumbnail": "assets/covers/boardGames/covers/j2s/pavlova-coco-jeu-hiboutatillus-boite.jpg"
-        },
-        {
-          "category": "ambiance",
-          "id": "172225",
-          "name": "Exploding Kittens",
-          "poids": "213",
-          "ref": "ludo95",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "ambiance",
-          "id": "236475",
-          "name": "Best Of Loups Garous",
-          "poids": "395",
-          "ref": "ludo96",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "duo",
-          "id": "72287",
-          "name": "Mr Jack pocket",
-          "poids": "750",
-          "ref": "ludo98",
-          "status": "AVAILABLE"
-        },
-        {
-          "category": "escape",
-          "id": "279613",
-          "name": "Unlock6! Timeless Adventures",
-          "poids": "754",
-          "ref": "ludo99",
-          "status": "AVAILABLE"
-        },
-        {
+      "games": {
+        "STC56": {
           "category": "familial",
           "id": "9209",
           "name": "Les aventurier du rail",
           "poids": "1314",
-          "ref": "STC56",
           "status": "AVAILABLE"
         },
-        {
-          "category": "",
-          "id": "33061",
-          "name": "Defifoo",
-          "poids": "",
-          "ref": "",
+        "ludo 14": {
+          "category": "ambiance",
+          "id": "268586",
+          "name": "6 qui prend",
+          "poids": "250",
           "status": "AVAILABLE"
         },
-        {
+        "ludo100": {
           "category": "familial",
-          "id": "164592",
-          "name": "CAN'T STOP",
-          "poids": "",
-          "ref": "",
+          "id": "273477",
+          "name": "Obscurio",
+          "poids": "1356",
           "status": "AVAILABLE"
         },
-        {
+        "ludo101": {
+          "category": "puzzle",
+          "id": "unicornPuzzle",
+          "name": "Puzzle Unicorn Garden (500pcs)",
+          "poids": "855",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/unicorn-garden-500-pcs-djeco_OA.jpg"
+        },
+        "ludo102": {
+          "category": "puzzle",
+          "id": "puzzleLandAndSea",
+          "name": "Puzzle Land & Sea (1000pcs)",
+          "poids": "755",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/p2_FULL.jpg"
+        },
+        "ludo103": {
+          "category": "ambiance",
+          "id": "18803",
+          "name": "Black Stories",
+          "poids": "200",
+          "status": "AVAILABLE"
+        },
+        "ludo104": {
+          "category": "ambiance",
+          "id": "231748",
+          "name": "Time Bomb",
+          "poids": "184",
+          "status": "AVAILABLE"
+        },
+        "ludo105": {
+          "category": "ambiance",
+          "id": "246203",
+          "name": "Speed Mandala",
+          "poids": "157",
+          "status": "AVAILABLE"
+        },
+        "ludo106": {
+          "category": "ambiance",
+          "id": "4550",
+          "name": "Blank",
+          "poids": "284",
+          "status": "AVAILABLE"
+        },
+        "ludo107": {
+          "category": "enfant",
+          "id": "289985",
+          "name": "Rêve de Trésor",
+          "poids": "646",
+          "status": "EMPRUNTE"
+        },
+        "ludo108": {
+          "category": "enfant",
+          "id": "269526",
+          "name": "La Vallée des Vikings",
+          "poids": "934",
+          "status": "AVAILABLE"
+        },
+        "ludo109": {
+          "category": "strategie",
+          "id": "248900",
+          "name": "Ceylan",
+          "poids": "1556",
+          "status": "AVAILABLE"
+        },
+        "ludo110": {
+          "category": "puzzle",
+          "id": "puzzleTourMonde",
+          "name": "Puzzle observation Tour Du Monde (200pcs)",
+          "poids": "756",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-tour-du-monde-200-pcs-djeco-7412.jpg"
+        },
+        "ludo111": {
+          "category": "puzzle",
+          "id": "puzzleCameleon",
+          "name": "Puzzle art Cameléon (150pcs)",
+          "poids": "582",
+          "status": "EMPRUNTE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/Puzzle-Cameleon-(150pcs).jpg"
+        },
+        "ludo112": {
+          "category": "enfant",
+          "id": "24209",
+          "name": "Kaleidos Junior",
+          "poids": "1013",
+          "status": "AVAILABLE"
+        },
+        "ludo113": {
+          "category": "abstrait",
+          "id": "204498",
+          "name": "Déblock",
+          "poids": "786",
+          "status": "AVAILABLE"
+        },
+        "ludo114": {
+          "category": "ambiance",
+          "id": "blcMangerCocoJunior",
+          "name": "Blanc-Manger Coco Junior",
+          "poids": "824",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/blanc-manger-coco-junior.jpg"
+        },
+        "ludo115": {
           "category": "familial",
-          "id": "2392",
-          "name": "Mastermind",
-          "poids": "",
-          "ref": "",
+          "id": "268620",
+          "name": "Similo Contes",
+          "poids": "131",
           "status": "AVAILABLE"
         },
-        {
+        "ludo116": {
+          "category": "escape",
+          "id": "294612",
+          "name": "Unlock7! Epic Adventures",
+          "poids": "804",
+          "status": "AVAILABLE"
+        },
+        "ludo117": {
+          "category": "familial",
+          "id": "173090",
+          "name": "The Game edition couleur",
+          "poids": "209",
+          "status": "AVAILABLE"
+        },
+        "ludo118": {
+          "category": "duo",
+          "id": "236461",
+          "name": "The Game Le Duel",
+          "poids": "249",
+          "status": "AVAILABLE"
+        },
+        "ludo119": {
+          "category": "strategie",
+          "id": "13",
+          "name": "Catan",
+          "poids": "952",
+          "status": "AVAILABLE"
+        },
+        "ludo120": {
+          "category": "familial",
+          "id": "175117",
+          "name": "Celestia",
+          "poids": "596",
+          "status": "AVAILABLE"
+        },
+        "ludo121": {
+          "category": "strategie",
+          "id": "137297",
+          "name": "Augustus",
+          "poids": "632",
+          "status": "AVAILABLE"
+        },
+        "ludo122": {
+          "category": "abstrait",
+          "id": "1038",
+          "name": "Tantrix",
+          "poids": "599",
+          "status": "AVAILABLE"
+        },
+        "ludo123": {
+          "category": "culture",
+          "id": "254195",
+          "name": "Trivial Pursuit Harry Potter Ultimate",
+          "poids": "1288",
+          "status": "AVAILABLE"
+        },
+        "ludo124": {
+          "category": "enfant",
+          "id": "192237",
+          "name": "Specific",
+          "poids": "233",
+          "status": "AVAILABLE"
+        },
+        "ludo125": {
+          "category": "escape",
+          "id": "escapeChateau",
+          "name": "Escape au Château",
+          "poids": "1100",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/escape-game-au-chateau-ne.jpg"
+        },
+        "ludo126": {
+          "category": "ambiance",
+          "id": "130680",
+          "name": "iKnow",
+          "poids": "858",
+          "status": "AVAILABLE"
+        },
+        "ludo127": {
+          "category": "duo",
+          "id": "274364",
+          "name": "Watergate",
+          "poids": "590",
+          "status": "AVAILABLE"
+        },
+        "ludo128": {
+          "category": "familial",
+          "id": "204583",
+          "name": "Kingdomino",
+          "poids": "559",
+          "status": "AVAILABLE"
+        },
+        "ludo129": {
+          "category": "ambiance",
+          "id": "291008",
+          "name": "Fou Fou Fou !",
+          "poids": "167",
+          "status": "AVAILABLE"
+        },
+        "ludo130": {
+          "category": "familial",
+          "id": "204135",
+          "name": "Skyjo",
+          "poids": "350",
+          "status": "AVAILABLE"
+        },
+        "ludo131": {
+          "category": "strategie",
+          "id": "266192",
+          "name": "Wingspan",
+          "poids": "2300",
+          "status": "AVAILABLE"
+        },
+        "ludo132": {
+          "category": "inclassable",
+          "id": "347505",
+          "name": "Nouvelles ContRées",
+          "poids": "595",
+          "status": "AVAILABLE"
+        },
+        "ludo133": {
+          "category": "escape",
+          "id": "350636",
+          "name": "Unlock10!: Game adventures",
+          "poids": "850",
+          "status": "AVAILABLE"
+        },
+        "ludo134": {
+          "category": "familial",
+          "id": "340041",
+          "name": "Kingdomino: Origins",
+          "poids": "820",
+          "status": "AVAILABLE"
+        },
+        "ludo135": {
+          "category": "enfant",
+          "id": "344427",
+          "name": "Pas vu pas pris",
+          "poids": "721",
+          "status": "AVAILABLE"
+        },
+        "ludo136": {
+          "category": "ambiance",
+          "id": "300905",
+          "name": "Top Ten",
+          "poids": "482",
+          "status": "AVAILABLE"
+        },
+        "ludo137": {
           "category": "enquete",
-          "id": "1294",
-          "name": "Cluedo",
-          "poids": "1038",
-          "ref": "",
+          "id": "338834",
+          "name": "Micro Macro Crime city : Full House",
+          "poids": "488",
           "status": "AVAILABLE"
         },
-        {
+        "ludo138": {
+          "category": "escape",
+          "id": "327056",
+          "name": "Unlock! Kids",
+          "poids": "785",
+          "status": "AVAILABLE"
+        },
+        "ludo139": {
+          "category": "enfant",
+          "id": "6931",
+          "name": "Gagne ton papa",
+          "poids": "792",
+          "status": "AVAILABLE"
+        },
+        "ludo140": {
+          "category": "familial",
+          "id": "346703",
+          "name": "7 Wonders Architects",
+          "poids": "1462",
+          "status": "AVAILABLE"
+        },
+        "ludo141": {
+          "category": "abstrait",
+          "id": "25669",
+          "name": "Qwirkle",
+          "poids": "924",
+          "status": "AVAILABLE"
+        },
+        "ludo142": {
+          "category": "familial",
+          "id": "341496",
+          "name": "César",
+          "poids": "1998",
+          "status": "AVAILABLE"
+        },
+        "ludo143": {
+          "category": "ambiance",
+          "id": "252530",
+          "name": "JetLag",
+          "poids": "246",
+          "status": "AVAILABLE"
+        },
+        "ludo144": {
+          "category": "enfant",
+          "id": "341178",
+          "name": "Bubble Stories",
+          "poids": "223",
+          "status": "AVAILABLE"
+        },
+        "ludo145": {
+          "category": "ambiance",
+          "id": "285253",
+          "name": "Fiesta De Los Muertos",
+          "poids": "667",
+          "status": "AVAILABLE"
+        },
+        "ludo146": {
+          "category": "duo",
+          "id": "332944",
+          "name": "Sobek",
+          "poids": "621",
+          "status": "AVAILABLE"
+        },
+        "ludo147": {
+          "category": "familial",
+          "id": "253618",
+          "name": "5 minutes Marvel",
+          "poids": "985",
+          "status": "AVAILABLE"
+        },
+        "ludo148": {
+          "category": "ambiance",
+          "id": "205398",
+          "name": "Citadelles",
+          "poids": "446",
+          "status": "AVAILABLE"
+        },
+        "ludo149": {
+          "category": "strategie",
+          "id": "266524",
+          "name": "Parks",
+          "poids": "1032",
+          "status": "AVAILABLE"
+        },
+        "ludo15": {
+          "category": "enfant",
+          "id": "33020",
+          "name": "BATA-WAFF",
+          "poids": "160",
+          "status": "AVAILABLE"
+        },
+        "ludo150": {
+          "category": "coop",
+          "id": "209778",
+          "name": "Magic Maze",
+          "poids": "784",
+          "status": "AVAILABLE"
+        },
+        "ludo151": {
+          "category": "enfant",
+          "id": "300010",
+          "name": "Dragomino",
+          "poids": "592",
+          "status": "AVAILABLE"
+        },
+        "ludo152": {
+          "category": "familial",
+          "id": "328479",
+          "name": "Living Forest",
+          "poids": "1327",
+          "status": "AVAILABLE"
+        },
+        "ludo153": {
+          "category": "strategie",
+          "id": "342942",
+          "name": "Ark Nova",
+          "poids": "2166",
+          "status": "AVAILABLE"
+        },
+        "ludo154": {
+          "category": "enfant",
+          "id": "302135",
+          "name": "Butine !",
+          "poids": "502",
+          "status": "AVAILABLE"
+        },
+        "ludo155": {
+          "category": "duo",
+          "id": "364073",
+          "name": "Splendor duel",
+          "poids": "434",
+          "status": "AVAILABLE"
+        },
+        "ludo156": {
+          "category": "familial",
+          "id": "319793",
+          "name": "Happy city",
+          "poids": "266",
+          "status": "AVAILABLE"
+        },
+        "ludo157": {
           "category": "ambiance",
           "id": "344114",
           "name": "Chips",
           "poids": "130",
-          "ref": "ludo157",
           "status": "AVAILABLE"
         },
-        {
+        "ludo158": {
           "category": "familial",
           "id": "191925",
           "name": "Bandido",
           "poids": "119",
-          "ref": "ludo158",
           "status": "AVAILABLE"
         },
-        {
+        "ludo159": {
           "category": "culture",
           "id": "258309",
           "name": "Premier contact",
           "poids": "680",
-          "ref": "ludo159",
           "status": "AVAILABLE"
         },
-        {
+        "ludo16": {
+          "category": "enfant",
+          "id": "116858",
+          "name": "Noé",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo160": {
           "category": "strategie",
           "id": "241266",
           "name": "Little Town",
           "poids": "569",
-          "ref": "ludo160",
           "status": "AVAILABLE"
         },
-        {
+        "ludo161": {
           "category": "enfant",
           "description": "Smart Game est un jeu de puzzle pour les enfants qui peuvent être joués seuls. Les joueurs doivent résoudre des énigmes en utilisant leurs compétences en logique et en résolution de problèmes pour faire avancer leur personnage à travers des niveaux variés. Les enfants peuvent utiliser leurs compétences pour déplacer des objets, sauter par-dessus des obstacles et trouver des moyens de collecter des objets pour atteindre la sortie de chaque niveau.",
           "id": "pirateEnVue",
           "minAge": "6",
           "name": "Smart Game : Pirate en vue",
           "poids": "451",
-          "ref": "ludo161",
           "status": "AVAILABLE",
           "thumbnail": "assets/covers/boardGames/covers/j2s/pirates-en-vue---p-image-74753-grande.jpg"
         },
-        {
+        "ludo162": {
           "category": "enfant",
           "description": "Il était une ferme est un jeu de gestion de ferme pour les enfants. Les joueurs prennent le rôle d'un fermier et doivent gérer leur ferme en cultivant des cultures, en prenant soin de leurs animaux et en vendant leurs produits.\n\nLe jeu propose une variété de tâches pour les joueurs, telles que la plantation de semences, l'arrosage des plantes, la récolte des cultures et la soins des animaux. Les joueurs peuvent également construire des structures supplémentaires sur leur ferme, telles que des silos à grains, des étables pour les animaux et des bâtiments pour stocker les produits.\n\nLe jeu est conçu pour être amusant et éducatif pour les jeunes joueurs, enseignant des compétences telles que la gestion du temps, la planification et la résolution de problèmes. Les graphismes sont attrayants et les personnages adorables, ajoutant encore plus d'attrait à l'expérience de jeu.",
           "id": "smartUneFerme",
           "minAge": "4",
           "name": "Smart Game : Il était une ferme",
           "poids": "524",
-          "ref": "ludo162",
           "status": "AVAILABLE",
           "thumbnail": "assets/covers/boardGames/covers/j2s/smartgames_smartfarmer_banner_FR.jpg"
         },
-        {
+        "ludo163": {
           "category": "enfant",
           "id": "quickCouic",
           "name": "Quick Couic",
           "poids": "377",
-          "ref": "ludo163",
           "status": "AVAILABLE",
           "thumbnail": "assets/covers/boardGames/covers/j2s/quick-couic.jpg"
         },
-        {
+        "ludo164": {
           "category": "familial",
           "id": "314503",
           "name": "Codex Naturalis",
           "poids": "258",
-          "ref": "ludo164",
           "status": "AVAILABLE"
         },
-        {
+        "ludo165": {
           "category": "ambiance",
           "id": "369750",
           "name": "Monique",
           "poids": "607",
-          "ref": "ludo165",
           "status": "AVAILABLE"
         },
-        {
+        "ludo166": {
           "category": "ambiance",
           "id": "300753",
           "name": "Mot Malin",
           "poids": "278",
-          "ref": "ludo166",
           "status": "AVAILABLE"
         },
-        {
+        "ludo167": {
           "category": "enquete",
           "id": "364766",
           "name": "Micro Macro Crime city : Tricks Town",
           "poids": "488",
-          "ref": "ludo167",
           "status": "AVAILABLE"
         },
-        {
+        "ludo168": {
           "category": "escape",
           "id": "330084",
           "name": "Unlock 9 : Legendary Adventures",
           "poids": "962",
-          "ref": "ludo168",
           "status": "AVAILABLE"
         },
-        {
+        "ludo169": {
           "category": "escape",
           "id": "302425",
           "name": "Unlock 8 : Mythic Adventures",
           "poids": "808",
-          "ref": "ludo169",
           "status": "AVAILABLE"
         },
-        {
+        "ludo17": {
+          "category": "duo",
+          "id": "173346",
+          "name": "7 Wonders: DUEL",
+          "poids": "487",
+          "status": "AVAILABLE"
+        },
+        "ludo170": {
           "category": "ambiance",
           "id": "262341",
           "name": "TTMC : Tu te mets combien ?",
           "poids": "1656",
-          "ref": "ludo170",
           "status": "AVAILABLE"
         },
-        {
+        "ludo171": {
           "category": "enfant",
           "id": "191004",
           "name": "Age de pierre Junior",
           "poids": "928",
-          "ref": "ludo171",
           "status": "AVAILABLE"
         },
-        {
+        "ludo172": {
           "category": "cooperation",
           "id": "300531",
           "name": "Paleo",
           "poids": "1323",
-          "ref": "ludo172",
           "status": "AVAILABLE"
         },
-        {
+        "ludo173": {
           "category": "strategie",
           "id": "300683",
           "name": "Meeple Land",
           "poids": "1310",
-          "ref": "ludo173",
           "status": "AVAILABLE"
         },
-        {
+        "ludo174": {
           "category": "enfant",
           "id": "355947",
           "name": "Pin Pon !",
           "poids": "581",
-          "ref": "ludo174",
+          "status": "AVAILABLE"
+        },
+        "ludo18": {
+          "category": "familial",
+          "id": "70919",
+          "name": "TAKENOKO",
+          "poids": "930",
+          "status": "AVAILABLE"
+        },
+        "ludo19": {
+          "category": "enfant",
+          "id": "41916",
+          "name": "Le labyrinthe magique",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo20": {
+          "category": "culture",
+          "id": "100670",
+          "name": "Défis Nature",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo21": {
+          "category": "coop",
+          "id": "150658",
+          "name": "Pandémie Le remède",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo22": {
+          "category": "enfant",
+          "id": "168168",
+          "name": "Petite Danseuse Etoile",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo23": {
+          "category": "ambiance",
+          "id": "24068",
+          "name": "Shadow Hunters",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo25": {
+          "category": "enfant",
+          "id": "29967",
+          "name": "Tour du Dragon",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo26": {
+          "category": "enfant",
+          "id": "174219",
+          "name": "Time's Up Kids",
+          "poids": "560",
+          "status": "AVAILABLE"
+        },
+        "ludo27": {
+          "category": "enfant",
+          "id": "192547",
+          "name": "Kikou le Coucou",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo28": {
+          "category": "enfant",
+          "id": "67823",
+          "name": "Piou Piou",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo29": {
+          "category": "enfant",
+          "id": "203462",
+          "name": "Aladin et la lampe merveilleuse",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo30": {
+          "category": "familial",
+          "id": "182082",
+          "name": "Carcassonne par monts et par vaux",
+          "poids": "598",
+          "status": "AVAILABLE"
+        },
+        "ludo31": {
+          "category": "enfant",
+          "id": "9441",
+          "name": "La course des tortues",
+          "poids": "528",
+          "status": "AVAILABLE"
+        },
+        "ludo32": {
+          "category": "ambiance",
+          "id": "105593",
+          "name": "Mito - Permis de tricher",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo33": {
+          "category": "enfant",
+          "id": "83195",
+          "name": "Bazar Bizarre",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo34": {
+          "category": "strategie",
+          "id": "28023",
+          "name": "Jamaica",
+          "poids": "1222",
+          "status": "AVAILABLE"
+        },
+        "ludo35": {
+          "category": "enfant",
+          "id": "104780",
+          "name": "Hop! Hop! Galopons!",
+          "poids": "744",
+          "status": "AVAILABLE"
+        },
+        "ludo36": {
+          "category": "ambiance",
+          "id": "191894",
+          "name": "Imagine",
+          "poids": "407",
+          "status": "AVAILABLE"
+        },
+        "ludo37": {
+          "category": "familial",
+          "id": "132497",
+          "name": "Lift it!",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo38": {
+          "category": "coop",
+          "id": "181304",
+          "name": "Mysterium",
+          "poids": "1396",
+          "status": "AVAILABLE"
+        },
+        "ludo39": {
+          "category": "familial",
+          "id": "175",
+          "name": "Stupide vautour",
+          "poids": "230",
+          "status": "AVAILABLE"
+        },
+        "ludo40": {
+          "category": "enfant",
+          "id": "162191",
+          "name": "Vice & Versa",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo41": {
+          "category": "ambiance",
+          "id": "165998",
+          "name": "Chef de tribu Boum -Ba- Boum",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludo42": {
+          "category": "ambiance",
+          "id": "193328",
+          "name": "Blanc-Manger Coco",
+          "poids": "975",
+          "status": "AVAILABLE"
+        },
+        "ludo43": {
+          "category": "escape",
+          "id": "203420",
+          "name": "Exit: La cabane abandonnée",
+          "poids": "248",
+          "status": "AVAILABLE"
+        },
+        "ludo44": {
+          "category": "familial",
+          "id": "158899",
+          "name": "Colt Express",
+          "poids": "960",
+          "status": "AVAILABLE"
+        },
+        "ludo45": {
+          "category": "escape",
+          "id": "228867",
+          "name": "Unlock2 ! Mystery Adventures",
+          "poids": "701",
+          "status": "AVAILABLE"
+        },
+        "ludo46": {
+          "category": "ambiance",
+          "id": "147151",
+          "name": "Concept",
+          "poids": "951",
+          "status": "AVAILABLE"
+        },
+        "ludo47": {
+          "category": "strategie",
+          "id": "176494",
+          "name": "Isle of Skye",
+          "poids": "825",
+          "status": "AVAILABLE"
+        },
+        "ludo48": {
+          "category": "ambiance",
+          "id": "3955",
+          "name": "Wanted (Bang!)",
+          "poids": "345",
+          "status": "AVAILABLE"
+        },
+        "ludo49": {
+          "category": "enfant",
+          "id": "172507",
+          "name": "MMM !",
+          "poids": "480",
+          "status": "AVAILABLE"
+        },
+        "ludo50": {
+          "category": "enfant",
+          "id": "31159",
+          "name": "Piratatak",
+          "poids": "210",
+          "status": "AVAILABLE"
+        },
+        "ludo51": {
+          "category": "bluff",
+          "id": "11971",
+          "name": "Kakerlaken Poker (Bug Bluff)",
+          "poids": "172",
+          "status": "AVAILABLE"
+        },
+        "ludo52": {
+          "category": "enfant",
+          "id": "4522",
+          "name": "Au bal masqué des coccinelles",
+          "poids": "629",
+          "status": "AVAILABLE"
+        },
+        "ludo53": {
+          "category": "ambiance",
+          "id": "23224",
+          "name": "Les monstres farceurs",
+          "poids": "182",
+          "status": "AVAILABLE"
+        },
+        "ludo54": {
+          "category": "enfant",
+          "id": "6573",
+          "name": "Petites sorcières",
+          "poids": "756",
+          "status": "AVAILABLE"
+        },
+        "ludo55": {
+          "category": "abstrait",
+          "id": "2719",
+          "name": "Puissance 4 Evolution",
+          "poids": "921",
+          "status": "AVAILABLE"
+        },
+        "ludo56": {
+          "category": "ambiance",
+          "id": "535591",
+          "name": "Twister",
+          "poids": "605",
+          "status": "AVAILABLE"
+        },
+        "ludo61": {
+          "category": "strategie",
+          "id": "183251",
+          "name": "Karuba",
+          "poids": "992",
+          "status": "AVAILABLE"
+        },
+        "ludo62": {
+          "category": "ambiance",
+          "id": "178900",
+          "name": "Code Names",
+          "poids": "500",
+          "status": "AVAILABLE"
+        },
+        "ludo63": {
+          "category": "coop",
+          "id": "65244",
+          "name": "L'île Interdite",
+          "poids": "600",
+          "status": "AVAILABLE"
+        },
+        "ludo64": {
+          "category": "familial",
+          "id": "148228",
+          "name": "Splendor",
+          "poids": "818",
+          "status": "EMPRUNTE"
+        },
+        "ludo65": {
+          "category": "enfant",
+          "id": "172358",
+          "name": "Maître Renard",
+          "poids": "420",
+          "status": "AVAILABLE"
+        },
+        "ludo66": {
+          "category": "familial",
+          "id": "222887",
+          "name": "Twin It!",
+          "poids": "223",
+          "status": "AVAILABLE"
+        },
+        "ludo67": {
+          "category": "enquete",
+          "id": "146508",
+          "name": "T.I.M.E Stories",
+          "poids": "1730",
+          "status": "AVAILABLE"
+        },
+        "ludo68": {
+          "category": "escape",
+          "id": "213460",
+          "name": "Unlock1! Escape Adventures",
+          "poids": "703",
+          "status": "AVAILABLE"
+        },
+        "ludo69": {
+          "category": "ambiance",
+          "id": "235467",
+          "name": "BOOUM !",
+          "poids": "626",
+          "status": "AVAILABLE"
+        },
+        "ludo70": {
+          "category": "escape",
+          "id": "239307",
+          "name": "Unlock3! Secret Adventures",
+          "poids": "760",
+          "status": "AVAILABLE"
+        },
+        "ludo71": {
+          "category": "enfant",
+          "id": "107420",
+          "name": "La Course Farfelue Des Souris Des Champs",
+          "poids": "664",
+          "status": "AVAILABLE"
+        },
+        "ludo72": {
+          "category": "enfant",
+          "id": "173389",
+          "name": "Rush Hour",
+          "poids": "366",
+          "status": "AVAILABLE"
+        },
+        "ludo73": {
+          "category": "ambiance",
+          "id": "9354",
+          "name": "Privacy ?!",
+          "poids": "687",
+          "status": "AVAILABLE"
+        },
+        "ludo74": {
+          "category": "ambiance",
+          "id": "244521",
+          "name": "Les Charlatans de Belcastel",
+          "poids": "1155",
+          "status": "AVAILABLE"
+        },
+        "ludo75": {
+          "category": "enquete",
+          "id": "2511",
+          "name": "Sherlock Holmes: Les meurtres de la Tamise",
+          "poids": "1954",
+          "status": "AVAILABLE"
+        },
+        "ludo76": {
+          "category": "abstrait",
+          "id": "72644",
+          "name": "Perplexus Original",
+          "poids": "382",
+          "status": "AVAILABLE"
+        },
+        "ludo77": {
+          "category": "strategie",
+          "id": "68448",
+          "name": "7 Wonders",
+          "poids": "1139",
+          "status": "AVAILABLE"
+        },
+        "ludo78": {
+          "category": "ambiance",
+          "id": "92828",
+          "name": "Dixit Odyssey",
+          "poids": "810",
+          "status": "AVAILABLE"
+        },
+        "ludo79": {
+          "category": "familial",
+          "id": "230802",
+          "name": "Azul",
+          "poids": "1185",
+          "status": "AVAILABLE"
+        },
+        "ludo80": {
+          "category": "strategie",
+          "id": "255507",
+          "name": "Orbis",
+          "poids": "783",
+          "status": "AVAILABLE"
+        },
+        "ludo81": {
+          "category": "puzzle",
+          "id": "puzzleRainbowTigger",
+          "name": "Puzzle Rainbow Tigers (1000pcs)",
+          "poids": "772",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/rainbow-tigers.jpg"
+        },
+        "ludo82": {
+          "category": "puzzle",
+          "id": "puzzleZoo",
+          "name": "Puzzle Day at the Zoo (48pcs)",
+          "poids": "725",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-une-journee-au-zoo-48-pieces.webp"
+        },
+        "ludo83": {
+          "category": "puzzle",
+          "id": "puzzleObsAnimaux",
+          "name": "Puzzle observation Animaux (100pcs)",
+          "poids": "730",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/puzzle/puzzle-observation-les-animaux-du-monde-livret-100-pcs.jpg"
+        },
+        "ludo84": {
+          "category": "abstrait",
+          "id": "681",
+          "name": "Quarto",
+          "poids": "1140",
+          "status": "AVAILABLE"
+        },
+        "ludo85": {
+          "category": "escape",
+          "id": "254226",
+          "name": "Unlock4! Exotic Adventures",
+          "poids": "705",
+          "status": "AVAILABLE"
+        },
+        "ludo86": {
+          "category": "escape",
+          "id": "266121",
+          "name": "Unlock5! Heroic Adventures",
+          "poids": "722",
+          "status": "AVAILABLE"
+        },
+        "ludo87": {
+          "category": "familial",
+          "id": "276671",
+          "name": "Sequence",
+          "poids": "971",
+          "status": "AVAILABLE"
+        },
+        "ludo88": {
+          "category": "duo",
+          "id": "168215",
+          "name": "Saboteur Le Duel",
+          "poids": "231",
+          "status": "AVAILABLE"
+        },
+        "ludo89": {
+          "category": "ambiance",
+          "id": "244992",
+          "name": "The Mind",
+          "poids": "245",
+          "status": "AVAILABLE"
+        },
+        "ludo90": {
+          "category": "abstrait",
+          "id": "244948",
+          "name": "Brains: jardin Japonais",
+          "poids": "291",
+          "status": "AVAILABLE"
+        },
+        "ludo91": {
+          "category": "enfant",
+          "id": "117555",
+          "name": "ClacClac",
+          "poids": "487",
+          "status": "AVAILABLE"
+        },
+        "ludo92": {
+          "category": "enfant",
+          "id": "41010",
+          "name": "Mon Premier Carcassonne",
+          "poids": "755",
+          "status": "AVAILABLE"
+        },
+        "ludo93": {
+          "category": "enfant",
+          "id": "172931",
+          "name": "Nom d'un Renard !",
+          "poids": "703",
+          "status": "AVAILABLE"
+        },
+        "ludo94": {
+          "category": "ambiance",
+          "id": "pavlovaCoco",
+          "name": "Pavlova Coco",
+          "poids": "1176",
+          "status": "AVAILABLE",
+          "thumbnail": "assets/covers/boardGames/covers/j2s/pavlova-coco-jeu-hiboutatillus-boite.jpg"
+        },
+        "ludo95": {
+          "category": "ambiance",
+          "id": "172225",
+          "name": "Exploding Kittens",
+          "poids": "213",
+          "status": "AVAILABLE"
+        },
+        "ludo96": {
+          "category": "ambiance",
+          "id": "236475",
+          "name": "Best Of Loups Garous",
+          "poids": "395",
+          "status": "AVAILABLE"
+        },
+        "ludo98": {
+          "category": "duo",
+          "id": "72287",
+          "name": "Mr Jack pocket",
+          "poids": "750",
+          "status": "AVAILABLE"
+        },
+        "ludo99": {
+          "category": "escape",
+          "id": "279613",
+          "name": "Unlock6! Timeless Adventures",
+          "poids": "754",
+          "status": "AVAILABLE"
+        },
+        "ludoCantStop": {
+          "category": "familial",
+          "id": "164592",
+          "name": "CAN'T STOP",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludoCluedo": {
+          "category": "enquete",
+          "id": "1294",
+          "name": "Cluedo",
+          "poids": "1038",
+          "status": "AVAILABLE"
+        },
+        "ludoDefifoo": {
+          "category": "",
+          "id": "33061",
+          "name": "Defifoo",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludoImmotepDuel": {
+          "category": "duo",
+          "id": "255674",
+          "name": "Imhotep Le Duel",
+          "poids": "346",
+          "status": "AVAILABLE"
+        },
+        "ludoMastermind": {
+          "category": "familial",
+          "id": "2392",
+          "name": "Mastermind",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludoQuizzRennes": {
+          "category": "culture",
+          "id": "321210",
+          "name": "Quizz pays de Rennes",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludoRapidCroco": {
+          "category": "familial",
+          "id": "15139",
+          "name": "RapidCroco",
+          "poids": "",
+          "status": "AVAILABLE"
+        },
+        "ludoTempeteEchiquier": {
+          "category": "strategie",
+          "id": "30966",
+          "name": "Tempête sur l'échiquier",
+          "poids": "",
           "status": "AVAILABLE"
         }
-      ],
+      },
       "library": {
         "categories": [
           {
@@ -98670,1215 +98506,1057 @@
       }
     },
     "videoGames": {
-      "games": [
-        {
+      "games": {
+        "950": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "NBA2K14",
+          "status": "MISSING",
+          "type": "GAME"
+        },
+        "951": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FORZA 5",
+          "status": "MISSING",
+          "type": "GAME"
+        },
+        "952": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "RIVALS   KINECT  SPORTS ",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "953": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "JUST  DANCE  2014 ",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "954": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "TOMB  RAIDER  DEFINITIVE EDITION ",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "955": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "WOLFENSTEIN",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "956": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "JUST dance 2015",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "957": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assasin's CREED UNITY",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "958": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FANTASIA",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "959": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "INFINITY 3.0 STAR WARS",
+          "status": "MISSING",
+          "type": "GAME"
+        },
+        "960": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "MINECRAFT",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "961": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "STARWARS BATTLEFRONT",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "962": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CALL OF DUTY - BLACK OPS III",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "963": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "PES2016",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "964": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO JURASSIC WORLD",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "965": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Just dance 2017",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "966": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Gears of WAR4",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "967": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "MR4  motor racer",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "968": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Handball 2017",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "969": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FORZA Horizon3",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "970": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Tom Clancy's DIVISION",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "971": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Quantum BREAK",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "972": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mount & Blade WARBAND",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "973": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rocket League",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "974": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "WatchDog 2",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "975": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Battlefield 1",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "976": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Evil Within",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "977": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "NBA 2K17",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "978": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Forza Motorsport 7",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "979": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Ghost Recon Wildlands",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "980": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FAR CRY 5",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "981": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fifa19",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "982": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Odyssey",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "983": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Forza Horizon4",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "984": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CTR: Crash team Racing Nitro Fueled",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "985": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Farming Simulator 19 : Edition Platinum",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "986": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Tom Clancy's Ghost Recon Breakpoint",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "987": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Grand Theft Auto V",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1150": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin s CREED IV Black Flag",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1151": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Killzone Shadow fall",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1152": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Infamous Second Son",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1153": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Need For Speed Rivals",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1154": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "UFC ",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1155": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Watchdogs",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1156": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The walking dead",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1157": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "DESTINY",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1158": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO MARVEL Super Heroes",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1159": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO Jurassic Wold",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1160": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FIFA 16",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1161": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Battlefront",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1162": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Giana Sisters Twisted dreams-Director's Cut",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1163": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Uncharted 4 - A thiefs end",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1164": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Far Cry PRIMAL",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1165": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Far Cry 4 Edition limitée",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1166": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FIFA 17",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1167": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assetto Corsa",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1168": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Warhammer the end of time Vermintide",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1169": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "World of Final Fantasy",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1170": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rise of Tomb Raider",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1171": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "LEGO Dimensions (Grosse Boite)",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1172": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Witcher III : Wild Hunt",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1173": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Driveclub VR",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1174": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Until Down: Rush of Blood",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1175": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Resident Evil VII",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1176": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "VR - Eve Valkyrie",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1177": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Wolfenstein II: The New Colossus Welcome to America",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1178": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fifa 18",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1179": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Origins",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1180": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "GOD OF WAR",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1181": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FOR HONOR",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1182": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "RAYMAN LEGENDS",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1183": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Gran Turismo Sport",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1184": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "PES2019",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1185": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Injustice 2",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1186": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Shadow Of the Tomb Raider",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1187": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Odyssey",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1188": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Astro Bot: Rescue Mission",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1189": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Ace Combat 7: Skies Unknown",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1190": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Lara Croft and The Temple of Osiris",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1191": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "FARCRY: New Dawn",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1192": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Monster Hunter World",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1193": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Assassin's Creed Unity",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1194": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Borderlands 3",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1195": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CTR: Crash team Racing Nitro Fueled",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1196": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Days Gone",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1197": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Call of Duty: Modern Warfare",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1198": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Wolfenstein Youngblood Edition Deluxe",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1199": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Last of Us Part II",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1200": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Death Stranding",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1201": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Wreckfest",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1202": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "NHL 21",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1203": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Grand Thief Auto V",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1204": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Crash Bandicoot 4: It's About Time!",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1205": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "It Takes Two",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1206": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Resident Evil Village",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1207": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "DOOM Eternal",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1254": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "The Legend of Zelda : Breath of the wild",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1255": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Kart Deluxe 8",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1256": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Splatoon 2",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1257": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Super Mario Odyssey",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1258": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Just Dance 2018",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1259": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rayman Legends Definitive Edition",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1260": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "SNIPPERCLIPS PLUS les Deux font la Paire",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1261": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Overcooked",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1262": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "DONKEY KONG COUNTRY Tropical Freeze",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1263": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Overcooked 2",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1264": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Kart Deluxe 8",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1265": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Rocket League",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1266": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fifa 20",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1267": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Zelda : Link's Awakening",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1268": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Super Smash Bros Ultimate",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1269": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Tennis Aces",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1270": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario + the Lapins Cretins : Kingdom Battle",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1271": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "L'aventure Layton : Katrielle",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1272": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Programme d'Entraînement Cérébral",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1273": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "WRC 8",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1274": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Super Mario Party",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1275": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "CTR Nitro Fueled",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1276": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Luigi's Mansion 3",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1277": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Minecraft",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1278": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "51 Worlwide Games",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1279": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Pokémon: Let's Go, Pikachu!",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1280": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Fort Boyard - Edition 2020",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1281": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Go Vacation",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1282": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Roller Cosater Tyccon Adventures",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1283": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/WIP.png",
+          "name": "Mario Party Superstars",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1284": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/jurassicWorldLEgo.jpg",
+          "name": "Jurassic World Légo",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1285": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/justDance2022.jpg",
+          "name": "Just Dance 2022",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1286": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/fastAndFuriousSpyRacers.jpg",
+          "name": "Fast & Furious Spy Racers",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1287": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/ringfit.jpg",
+          "name": "RingFit Adventure ( boites)",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1500": {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/gt7.webp",
+          "name": "Gran Turismo 7",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1501": {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/spidermanMilesMorales.webp",
+          "name": "SpiderMan Miles Morales",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1502": {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/grand-theft-auto-v-ps3_1367404112__1200_1200__overflow.jpg",
+          "name": "Grand Thief Auto V",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1503": {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/horizonForbidenWest.webp",
+          "name": "Horizon Forbidden West (sur la PS5)",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "1504": {
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/lastOfUsP1.webp",
+          "name": "The Last Of US Part1",
+          "status": "AVAILABLE",
+          "type": "GAME"
+        },
+        "All-Volant01": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/tracer-volant-roadster-avec-boite-de-vitesse-et-pe.webp",
+          "name": "Volant pour PS4-XB1-PC-PS3",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        "CONSL 01": {
           "category": "ps4",
           "cover": "assets/covers/videoGames/ps4.jpg",
           "description": "Accompagné de deux manettes (Malettes)",
           "name": "Console PS4 N°1",
-          "ref": "CONSL 01",
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
-        {
+        "CONSL 02": {
           "category": "ps4",
           "cover": "assets/covers/videoGames/ps4.jpg",
           "description": "Accompagné de deux manettes (Malettes)",
           "name": "Console PS4 N°2",
-          "ref": "CONSL 02",
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/ps4Cam.jpg",
-          "name": "Playstation Camera",
-          "ref": "PS4-CAM01",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/ps4VR.jpg",
-          "name": "Casque VR (nécessite la caméra)",
-          "ref": "PS4-VR01",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/tracer-volant-roadster-avec-boite-de-vitesse-et-pe.webp",
-          "name": "Volant pour PS4-XB1-PC-PS3",
-          "ref": "All-Volant01",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "DOOM Eternal",
-          "ref": "1207",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Resident Evil Village",
-          "ref": "1206",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "It Takes Two",
-          "ref": "1205",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Crash Bandicoot 4: It's About Time!",
-          "ref": "1204",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Grand Thief Auto V",
-          "ref": "1203",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "NHL 21",
-          "ref": "1202",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Wreckfest",
-          "ref": "1201",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Death Stranding",
-          "ref": "1200",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "The Last of Us Part II",
-          "ref": "1199",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Wolfenstein Youngblood Edition Deluxe",
-          "ref": "1198",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Call of Duty: Modern Warfare",
-          "ref": "1197",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Days Gone",
-          "ref": "1196",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "CTR: Crash team Racing Nitro Fueled",
-          "ref": "1195",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Borderlands 3",
-          "ref": "1194",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Assassin's Creed Unity",
-          "ref": "1193",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Monster Hunter World",
-          "ref": "1192",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FARCRY: New Dawn",
-          "ref": "1191",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Lara Croft and The Temple of Osiris",
-          "ref": "1190",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Ace Combat 7: Skies Unknown",
-          "ref": "1189",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Astro Bot: Rescue Mission",
-          "ref": "1188",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Assassin's Creed Odyssey",
-          "ref": "1187",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Shadow Of the Tomb Raider",
-          "ref": "1186",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Injustice 2",
-          "ref": "1185",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "PES2019",
-          "ref": "1184",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Gran Turismo Sport",
-          "ref": "1183",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "RAYMAN LEGENDS",
-          "ref": "1182",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FOR HONOR",
-          "ref": "1181",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "GOD OF WAR",
-          "ref": "1180",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Assassin's Creed Origins",
-          "ref": "1179",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Fifa 18",
-          "ref": "1178",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Wolfenstein II: The New Colossus Welcome to America",
-          "ref": "1177",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "VR - Eve Valkyrie",
-          "ref": "1176",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "VR - Resident Evil VII",
-          "ref": "1175",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "VR - Until Down: Rush of Blood",
-          "ref": "1174",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "VR - Driveclub VR",
-          "ref": "1173",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "The Witcher III : Wild Hunt",
-          "ref": "1172",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "LEGO Dimensions (Grosse Boite)",
-          "ref": "1171",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Rise of Tomb Raider",
-          "ref": "1170",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "World of Final Fantasy",
-          "ref": "1169",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Warhammer the end of time Vermintide",
-          "ref": "1168",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Assetto Corsa",
-          "ref": "1167",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FIFA 17",
-          "ref": "1166",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Far Cry 4 Edition limitée",
-          "ref": "1165",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Far Cry PRIMAL",
-          "ref": "1164",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Uncharted 4 - A thiefs end",
-          "ref": "1163",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Giana Sisters Twisted dreams-Director's Cut",
-          "ref": "1162",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Battlefront",
-          "ref": "1161",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FIFA 16",
-          "ref": "1160",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "LEGO Jurassic Wold",
-          "ref": "1159",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "LEGO MARVEL Super Heroes",
-          "ref": "1158",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "DESTINY",
-          "ref": "1157",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "The walking dead",
-          "ref": "1156",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Watchdogs",
-          "ref": "1155",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "UFC ",
-          "ref": "1154",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Need For Speed Rivals",
-          "ref": "1153",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Infamous Second Son",
-          "ref": "1152",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Killzone Shadow fall",
-          "ref": "1151",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps4",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Assassin s CREED IV Black Flag",
-          "ref": "1150",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps5",
-          "cover": "assets/covers/videoGames/PS5-console-front.webp",
-          "description": "Accompagné de deux manettes et du jeu Horizon Forbiden West",
-          "name": "Console PS5 N°1",
-          "ref": "CONSL PS5_01",
-          "status": "AVAILABLE",
-          "type": "CONSOLE"
-        },
-        {
-          "category": "ps5",
-          "cover": "assets/covers/videoGames/gt7.webp",
-          "name": "Gran Turismo 7",
-          "ref": "1500",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps5",
-          "cover": "assets/covers/videoGames/spidermanMilesMorales.webp",
-          "name": "SpiderMan Miles Morales",
-          "ref": "1501",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps5",
-          "cover": "assets/covers/videoGames/grand-theft-auto-v-ps3_1367404112__1200_1200__overflow.jpg",
-          "name": "Grand Thief Auto V",
-          "ref": "1502",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps5",
-          "cover": "assets/covers/videoGames/horizonForbidenWest.webp",
-          "name": "Horizon Forbidden West (sur la PS5)",
-          "ref": "1503",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "ps5",
-          "cover": "assets/covers/videoGames/lastOfUsP1.webp",
-          "name": "The Last Of US Part1",
-          "ref": "1504",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/NSwitchTop.png",
-          "description": "La console est accompagnée de deux JoyCon et un chargeur",
-          "name": "Console switch 1",
-          "ref": "CONSL01",
-          "status": "AVAILABLE",
-          "type": "CONSOLE"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/NSwitchTop.png",
-          "description": "La console est accompagnée de deux JoyCon et un chargeur",
-          "name": "Console switch 2",
-          "ref": "CONSL02",
-          "status": "AVAILABLE",
-          "type": "CONSOLE"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/NSwitchTop.png",
-          "description": "La console est accompagnée de deux JoyCon et un chargeur",
-          "name": "Console switch 3",
-          "ref": "CONSL03",
-          "status": "AVAILABLE",
-          "type": "CONSOLE"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/joyConChargeur.png",
-          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
-          "ref": "SW-MAN01",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/joyConChargeur.png",
-          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
-          "ref": "SW-MAN02",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/joyConChargeur.png",
-          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
-          "ref": "SW-MAN03",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/ringfit.jpg",
-          "name": "RingFit Adventure ( boites)",
-          "ref": "1287",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/fastAndFuriousSpyRacers.jpg",
-          "name": "Fast & Furious Spy Racers",
-          "ref": "1286",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/justDance2022.jpg",
-          "name": "Just Dance 2022",
-          "ref": "1285",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/jurassicWorldLEgo.jpg",
-          "name": "Jurassic World Légo",
-          "ref": "1284",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Mario Party Superstars",
-          "ref": "1283",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Roller Cosater Tyccon Adventures",
-          "ref": "1282",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Go Vacation",
-          "ref": "1281",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Fort Boyard - Edition 2020",
-          "ref": "1280",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Pokémon: Let's Go, Pikachu!",
-          "ref": "1279",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "51 Worlwide Games",
-          "ref": "1278",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Minecraft",
-          "ref": "1277",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Luigi's Mansion 3",
-          "ref": "1276",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "CTR Nitro Fueled",
-          "ref": "1275",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Super Mario Party",
-          "ref": "1274",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "WRC 8",
-          "ref": "1273",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Programme d'Entraînement Cérébral",
-          "ref": "1272",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "L'aventure Layton : Katrielle",
-          "ref": "1271",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Mario + the Lapins Cretins : Kingdom Battle",
-          "ref": "1270",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Mario Tennis Aces",
-          "ref": "1269",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Super Smash Bros Ultimate",
-          "ref": "1268",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Zelda : Link's Awakening",
-          "ref": "1267",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Fifa 20",
-          "ref": "1266",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Rocket League",
-          "ref": "1265",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Mario Kart Deluxe 8",
-          "ref": "1264",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Overcooked 2",
-          "ref": "1263",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "DONKEY KONG COUNTRY Tropical Freeze",
-          "ref": "1262",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Overcooked",
-          "ref": "1261",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "SNIPPERCLIPS PLUS les Deux font la Paire",
-          "ref": "1260",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Rayman Legends Definitive Edition",
-          "ref": "1259",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Just Dance 2018",
-          "ref": "1258",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Super Mario Odyssey",
-          "ref": "1257",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Splatoon 2",
-          "ref": "1256",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Mario Kart Deluxe 8",
-          "ref": "1255",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "The Legend of Zelda : Breath of the wild",
-          "ref": "1254",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
+        "CONSL PS5_01": {
           "category": "xboxOne",
           "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
           "description": "Accompagné de une manette",
           "name": "Console XBOX ONE N°1",
-          "ref": "CONSL PS5_01",
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
-        {
+        "CONSL01": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 1",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        "CONSL02": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 2",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        "CONSL03": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 3",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        "MAN01": {
           "category": "xboxOne",
           "description": "Manette supplémentaire",
           "name": "Manette 1",
-          "ref": "MAN01",
           "status": "AVAILABLE",
           "type": "ACCESSORY"
         },
-        {
+        "MAN02": {
           "category": "xboxOne",
           "description": "Manette supplémentaire",
           "name": "Manette 2",
-          "ref": "MAN02",
           "status": "AVAILABLE",
           "type": "ACCESSORY"
         },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Grand Theft Auto V",
-          "ref": "987",
+        "PS4-CAM01": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/ps4Cam.jpg",
+          "name": "Playstation Camera",
           "status": "AVAILABLE",
-          "type": "GAME"
+          "type": "ACCESSORY"
         },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Tom Clancy's Ghost Recon Breakpoint",
-          "ref": "986",
+        "PS4-VR01": {
+          "category": "ps4",
+          "cover": "assets/covers/videoGames/ps4VR.jpg",
+          "name": "Casque VR (nécessite la caméra)",
           "status": "AVAILABLE",
-          "type": "GAME"
+          "type": "ACCESSORY"
         },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Farming Simulator 19 : Edition Platinum",
-          "ref": "985",
+        "SW-MAN01": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/joyConChargeur.png",
+          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
           "status": "AVAILABLE",
-          "type": "GAME"
+          "type": "ACCESSORY"
         },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "CTR: Crash team Racing Nitro Fueled",
-          "ref": "984",
+        "SW-MAN02": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/joyConChargeur.png",
+          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
           "status": "AVAILABLE",
-          "type": "GAME"
+          "type": "ACCESSORY"
         },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Forza Horizon4",
-          "ref": "983",
+        "SW-MAN03": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/joyConChargeur.png",
+          "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
           "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Assassin's Creed Odyssey",
-          "ref": "982",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Fifa19",
-          "ref": "981",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FAR CRY 5",
-          "ref": "980",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Ghost Recon Wildlands",
-          "ref": "979",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Forza Motorsport 7",
-          "ref": "978",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "NBA 2K17",
-          "ref": "977",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "The Evil Within",
-          "ref": "976",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Battlefield 1",
-          "ref": "975",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "WatchDog 2",
-          "ref": "974",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Rocket League",
-          "ref": "973",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Mount & Blade WARBAND",
-          "ref": "972",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Quantum BREAK",
-          "ref": "971",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Tom Clancy's DIVISION",
-          "ref": "970",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FORZA Horizon3",
-          "ref": "969",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Handball 2017",
-          "ref": "968",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "MR4  motor racer",
-          "ref": "967",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Gears of WAR4",
-          "ref": "966",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Just dance 2017",
-          "ref": "965",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "LEGO JURASSIC WORLD",
-          "ref": "964",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "PES2016",
-          "ref": "963",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "CALL OF DUTY - BLACK OPS III",
-          "ref": "962",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "STARWARS BATTLEFRONT",
-          "ref": "961",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "MINECRAFT",
-          "ref": "960",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "INFINITY 3.0 STAR WARS",
-          "ref": "959",
-          "status": "MISSING",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FANTASIA",
-          "ref": "958",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "Assasin's CREED UNITY",
-          "ref": "957",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "JUST dance 2015",
-          "ref": "956",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "WOLFENSTEIN",
-          "ref": "955",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "TOMB  RAIDER  DEFINITIVE EDITION ",
-          "ref": "954",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "JUST  DANCE  2014 ",
-          "ref": "953",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "RIVALS   KINECT  SPORTS ",
-          "ref": "952",
-          "status": "AVAILABLE",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "FORZA 5",
-          "ref": "951",
-          "status": "MISSING",
-          "type": "GAME"
-        },
-        {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/WIP.png",
-          "name": "NBA2K14",
-          "ref": "950",
-          "status": "AVAILABLE",
-          "type": "GAME"
+          "type": "ACCESSORY"
         }
-      ],
+      },
       "library": {
         "categories": [
           {
