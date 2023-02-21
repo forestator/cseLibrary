@@ -4,7 +4,7 @@ import {map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 import * as convert from 'xml-js';
 import {BoardGame, Thing} from '../../models/boardGame.model';
-import {ThingToBoardgame} from '../../models/thingToBoardgame';
+import {BoardGameConvert} from '../../models/boardGameConvert';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +37,10 @@ export class BGGService {
       const url = `${this.bggUrl}/thing?id=${ludoGame.id}`;
       return this.send(url).pipe(map(rep => {
         const detailsFromApi: Thing | null = rep ? rep[0] : null;
-        return ThingToBoardgame.convertGameDetailsThingToBoardGame(ludoGame, detailsFromApi);
+        return BoardGameConvert.convertGameDetailsThingToBoardGame(ludoGame, detailsFromApi);
       }));
     } else {
-      return of(ThingToBoardgame.convertGameDetailsThingToBoardGame(ludoGame, null));
+      return of(BoardGameConvert.convertGameDetailsThingToBoardGame(ludoGame, null));
     }
   }
 }

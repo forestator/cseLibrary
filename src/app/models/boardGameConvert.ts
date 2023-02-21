@@ -1,6 +1,6 @@
-import {BoardGame, Thing} from './boardGame.model';
+import {BddBoardGames, BoardGame, Thing} from './boardGame.model';
 
-export class ThingToBoardgame {
+export class BoardGameConvert {
   static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
     if (boardGameWithDetails) {
       const elements = boardGameWithDetails.elements;
@@ -25,6 +25,16 @@ export class ThingToBoardgame {
       };
     } else {
       return ludoGame;
+    }
+  }
+
+  static bddBoardGameToBoardGame(bddBoardGames: BddBoardGames | null): Array<BoardGame> {
+    if (bddBoardGames) {
+      return Object.keys(bddBoardGames).map(
+        (key) => Object.assign({ref: key}, bddBoardGames[key])
+      );
+    } else {
+      return [];
     }
   }
 

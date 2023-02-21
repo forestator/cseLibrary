@@ -50,3 +50,7 @@ export enum BoardGameCategory {
   enquete = 'enquete',
   coop = 'coop',
 }
+
+export interface BddBoardGames {
+  [ref: string]: BoardGame;
+}
