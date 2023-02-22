@@ -31,7 +31,6 @@ export class Game {
   }
 
   static bddGameToLudoGame(bddGame: BddGame | null): Array<BoardGame | VideoGame | OutsideGame> {
-    console.log(bddGame);
     if (bddGame) {
       return Object.keys(bddGame).map(
         (key) => Object.assign({ref: key}, bddGame[key])

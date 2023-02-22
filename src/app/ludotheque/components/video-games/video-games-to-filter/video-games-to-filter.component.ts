@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FirebaseDatabaseService} from '../../../../services/firebase-database.service';
 import {NavigationService} from '../../../../services/navigation.service';
-import {map, Observable, take} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {Consoles, VideoGame} from '../../../../models/videoGames.model';
 
 @Component({
@@ -11,9 +11,7 @@ import {Consoles, VideoGame} from '../../../../models/videoGames.model';
 })
 export class VideoGamesToFilterComponent implements OnInit {
 
-  videoGames$: Observable<Array<VideoGame>> = this.firebaseDb.videoGames$.pipe(
-    map((videoGames) => videoGames.filter(vg => vg.category === this.consoleId))
-  );
+  videoGames$?: Observable<Array<VideoGame>>;
   selectedVideoGameId?: string;
   consoleId?: Consoles;
 
@@ -22,9 +20,12 @@ export class VideoGamesToFilterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.navigationService.getRouteParams().pipe(take(1)).subscribe((params) => {
+    this.navigationService.getRouteParams().subscribe((params) => {
       this.selectedVideoGameId = params['id'];
       this.consoleId = params['categoryId'];
+      this.videoGames$ = this.firebaseDb.videoGames$.pipe(
+        map((videoGames) => videoGames.filter(vg => vg.category === this.consoleId))
+      );
     });
   }
 }
