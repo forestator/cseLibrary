@@ -51,6 +51,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTableModule} from '@angular/material/table';
 import {RouterModule} from '@angular/router';
 import {AppCommonModule} from '../common/app-common.module';
+import {LibraryMenuComponent} from './components/library-menu/library-menu.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import {AppCommonModule} from '../common/app-common.module';
     SeriesViewComponent,
     SeriesBadgeComponent,
     BookRowComponent,
+    LibraryMenuComponent,
     SettingsViewComponent,
     SettingsCategoryComponent,
     SettingsSeriesComponent,
@@ -100,7 +102,8 @@ import {AppCommonModule} from '../common/app-common.module';
     RouterModule,
     AppCommonModule
   ],
-  providers: [BookFilterPipe]
+  providers: [BookFilterPipe],
+  exports: [LibraryMenuComponent]
 })
 export class BibliothequeModule {
 }

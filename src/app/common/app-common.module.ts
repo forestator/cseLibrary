@@ -1,7 +1,5 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {LibraryMenuComponent} from './components/library-menu/library-menu.component';
-import {SearchInLibComponent} from './components/search-in-lib/search-in-lib.component';
 import {BadgeComponent} from './components/book-badge/badge.component';
 import {HomeComponent} from './components/home/home.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -14,9 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
-    LibraryMenuComponent,
     HomeComponent,
-    SearchInLibComponent,
     BadgeComponent
   ],
   imports: [
@@ -30,9 +26,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatIconModule
   ],
   exports: [
-    LibraryMenuComponent,
     HomeComponent,
-    SearchInLibComponent,
     BadgeComponent
   ]
 })

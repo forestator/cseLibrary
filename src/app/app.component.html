@@ -1,7 +1,18 @@
-<app-library-menu
+<app-library-menu *ngIf="showBibliothequeMenu"
   id="top">
 </app-library-menu>
-<ng-container *ngIf="firebaseDatabaseService.ludotheque$ | async">
+<app-ludo-menu *ngIf="showLudothequeMenu"
+  id="top">
+</app-ludo-menu>
+<div class="library-menu" id="top" *ngIf="!showLudothequeMenu && ! showBibliothequeMenu">
+  <div class="library-title">
+    <div class="title">
+      <span [routerLink]="''">{{title}}</span>
+    </div>
+  </div>
+</div>
+
+    <ng-container *ngIf="(firebaseDatabaseService.bibliotheque$ | async) && (firebaseDatabaseService.ludotheque$ | async)">
   <router-outlet></router-outlet>
 <!-- TODO <div class="go-top bloc-link">-->
 <!--    <div (click)="scrollToTop()" class="go-top-link">-->

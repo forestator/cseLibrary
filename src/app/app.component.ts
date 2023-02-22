@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ToolsService} from './services/biblio/tools.service';
 import {FirebaseDatabaseService} from './services/firebase/firebase-database.service';
+import {NavigationService} from './services/navigation.service';
 
 
 @Component({
@@ -8,12 +9,22 @@ import {FirebaseDatabaseService} from './services/firebase/firebase-database.ser
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Cse';
+  showLudothequeMenu?: boolean;
+  showBibliothequeMenu?: boolean;
 
   constructor(
     public firebaseDatabaseService: FirebaseDatabaseService,
+    private navigationService: NavigationService,
     private toolService: ToolsService) {
+  }
+
+  ngOnInit() {
+    this.navigationService.url$.subscribe(url => {
+        this.showLudothequeMenu = url.includes('ludotheque');
+        this.showBibliothequeMenu = url.includes('bibliotheque');
+    });
   }
 
   scrollToTop() {

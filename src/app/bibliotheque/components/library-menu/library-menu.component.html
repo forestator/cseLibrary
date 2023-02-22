@@ -1,0 +1,42 @@
+<div class="library-menu" id="top">
+  <div class="library-title">
+    <div class="title">
+      <span [routerLink]="''">Cse</span>
+    </div>
+    <ng-container *ngIf="menu$ | async as menu">
+      <div class="menu" *ngIf="menu.length > 0">
+        <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+          <mat-icon>view_headline</mat-icon>
+        </button>
+        <mat-menu #mainMenu="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let item of menu"
+            [routerLink]="prefixRoute + item.library?.id">
+            <span class="popup-menu-label">{{item.library?.name}}</span>
+          </button>
+          <button
+            *ngIf="tools.adminMode"
+            mat-menu-item>
+            <span class="popup-menu-label">
+              <mat-icon>settings</mat-icon>
+              Administration</span>
+          </button>
+        </mat-menu>
+      </div>
+    </ng-container>
+  </div>
+  <div class="category-menu">
+    <div class="cat-nav" *ngIf="prefixRoute !== '/'"
+         [routerLink]="prefixRoute + 'new'">
+      Nouveautés
+    </div>
+    <ng-container *ngIf="selectedBiblio$ | async as currentBiblio">
+      <div *ngFor='let category of currentBiblio.library?.categories'
+           class="cat-nav"
+           [routerLink]="prefixRoute + currentBiblio.library?.id + '/' + category.id">
+        {{category?.name}}
+      </div>
+    </ng-container>
+  </div>
+</div>

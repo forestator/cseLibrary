@@ -12,16 +12,6 @@ export class UserService {
   userList$: Observable<Array<CseUser>>;
 
   constructor(private db: AngularFireDatabase) {
-
-    // const users = {
-    //   '1': {firstName: 'Maximilien', lastName: 'Forêt', email: 'maximilien.foret@harmonicinc.com'},
-    //   '2': {firstName: 'Fabrice', lastName: 'Templon', email: 'fabrice.templon@harmonicinc.com'},
-    //   '3': {firstName: 'Thibault', lastName: 'Riou', email: 'thibault.riou@harmonicinc.com'},
-    //   '4': {firstName: 'Veronique', lastName: 'EsnaultLunel', email: 'veronique.esnaultlunel@harmonicinc.com'},
-    // };
-    //
-    // this.db.object('users').set(users);
-
     this.userList$ = this.db.object<BddUsers>('users').valueChanges().pipe(
       map((users) => {
         if (users) {

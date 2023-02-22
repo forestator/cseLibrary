@@ -36,6 +36,9 @@ import {
   BoardGameToFilterComponent
 } from './components/board-games/components/board-game-to-filter/board-game-to-filter.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {LudoMenuComponent} from './components/ludo-menu/ludo-menu.component';
+import {SearchInLibComponent} from './components/search-in-lib/search-in-lib.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     BoardGameDetailsPipe,
     LudothequeComponent,
     ChangeBorrowStatusComponent,
+    SearchInLibComponent,
     BoardGamesComponent,
     VideoGamesComponent,
     OutsideGamesComponent,
@@ -53,8 +57,9 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FilterVideoGameByTypePipe,
     OutsideGameRowComponent,
     VideoGamesToFilterComponent,
-    BoardGameToFilterComponent],
-  exports: [],
+    BoardGameToFilterComponent,
+    LudoMenuComponent],
+  exports: [LudoMenuComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -68,7 +73,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatButtonToggleModule,
     MatDividerModule,
     MatAutocompleteModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule
   ]
 })
 export class LudothequeModule {

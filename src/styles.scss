@@ -1,11 +1,125 @@
 /* You can add global styles to this file, and also import other style files */
 html {
-    font-family: 'Courier Prime', monospace;
-    background-image: url("./assets/background.jpg");
-    background-attachment: fixed;
+  font-family: 'Courier Prime', monospace;
+  background-image: url("./assets/background.jpg");
+  background-attachment: fixed;
 }
-html { height: 100%; }
+
+html {
+  height: 100%;
+}
 
 * {
-    font-family: 'Courier Prime', monospace;
+  font-family: 'Courier Prime', monospace;
+}
+
+.library-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  //line-height: 20px;
+
+  max-width: 1400px;
+  min-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  border-bottom: 2px solid darkgrey;
+
+  .library-title {
+    flex: 2;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    line-height: 40px;
+
+    .title {
+      display: flex;
+      font-size: 30px;
+      font-weight: bold;
+      color: darkgrey;
+      text-transform: uppercase;
+      justify-content: left;
+      align-items: center;
+      line-height: 40px;
+
+      .admin {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 40px;
+        line-height: 40px;
+        margin-top: -12px;
+        cursor: pointer;
+
+        mat-icon {
+          font-size: 30px !important;
+        }
+
+        mat-icon:hover {
+          color: red;
+        }
+
+        &.actif {
+          color: red;
+        }
+
+        &.inactif {
+          color: darkgrey;
+        }
+      }
+    }
+
+    .menu {
+      margin-top: -6px;
+      color: darkgrey;
+
+      button {
+        mat-icon {
+          font-size: 30px !important;
+        }
+      }
+    }
+
+    .popup-menu-label {
+      font-family: 'Courier Prime', monospace;
+    }
+  }
+
+  .category-menu {
+    flex: 3;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .search {
+      min-width: 150px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .cat-nav {
+      display: flex;
+      font-size: 16px;
+      width: 150px;
+      text-transform: uppercase;
+      justify-content: center;
+      cursor: pointer;
+      color: darkgrey;
+
+      &:hover {
+        background-color: darkgrey;
+        color: white;
+      }
+
+      &.admin {
+        width: 30px;
+        font-size: small;
+      }
+    }
+  }
 }
