@@ -13,7 +13,7 @@ import {ChangeBorrowStatusComponent} from './components/change-borrow-status/cha
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {BoardGamesComponent} from './components/board-games/board-games.component';
@@ -35,6 +35,7 @@ import {
 import {
   BoardGameToFilterComponent
 } from './components/board-games/components/board-game-to-filter/board-game-to-filter.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -54,19 +55,21 @@ import {
     VideoGamesToFilterComponent,
     BoardGameToFilterComponent],
   exports: [],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        RouterModule,
-        AppCommonModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatDividerModule
-    ]
+  imports: [
+    CommonModule,
+    MatIconModule,
+    RouterModule,
+    AppCommonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatDividerModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule
+  ]
 })
 export class LudothequeModule {
 }

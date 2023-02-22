@@ -10,7 +10,7 @@ import {OutsideGame} from '../../../models/outsideGames.model';
   styleUrls: ['./outside-games.component.scss']
 })
 export class OutsideGamesComponent {
-  library$: Observable<Library> = this.firebaseDatabase.outsideGamesLibrary$;
-  games$: Observable<Array<OutsideGame>> = this.firebaseDatabase.outsideGames$;
+  library$: Observable<Library | null> = this.firebaseDatabase.outsideGamesLibrary$;
+  games$: Observable<Array<OutsideGame> | null> = this.firebaseDatabase.outsideGames$;
   constructor(private firebaseDatabase: FirebaseDatabaseService) { }
 }

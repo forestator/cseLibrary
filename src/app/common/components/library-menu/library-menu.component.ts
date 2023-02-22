@@ -43,7 +43,7 @@ export class LibraryMenuComponent implements OnInit {
       this.prefixRoute = 'ludotheque/j2s/';
       this.selectedMenu = null;
       this.menu$ = this.firebaseDatabaseService.boardGamesLibrary$.pipe(map(library => {
-        return library.categories?.map(cat => {
+        return library?.categories?.map(cat => {
           return {name: cat.name, route: this.prefixRoute + cat.id};
         });
       }));
@@ -51,7 +51,7 @@ export class LibraryMenuComponent implements OnInit {
       this.prefixRoute = 'ludotheque/videoGames/';
       this.selectedMenu = null;
       this.menu$ = this.firebaseDatabaseService.videoGamesLibrary$.pipe(map(lib => {
-        const categories = lib.categories;
+        const categories = lib?.categories;
         return categories?.map((cat) => {
           return {name: cat.name, route: this.prefixRoute + cat.id};
         })
@@ -75,15 +75,15 @@ export class LibraryMenuComponent implements OnInit {
     this.prefixRoute = 'bibliotheque/';
     this.menu$ = this.firebaseDatabaseService.bibliotheque$.pipe(map((item) => {
       const currentLib: Library | undefined
-        = item.find(biblio => biblio.library?.id === this.dataService.selectedLib?.library?.id)!.library;
-      const menus = item.map(biblio => {
+        = item?.find(biblio => biblio.library?.id === this.dataService.selectedLib?.library?.id)!.library;
+      const menus = item?.map(biblio => {
         return {
           name: biblio.library!.name,
           route: this.prefixRoute + biblio.library!.id!,
           categories: biblio.library!.categories
         };
       });
-      this.selectedMenu = menus.find(menu => menu.name === currentLib?.name);
+      this.selectedMenu = menus?.find(menu => menu.name === currentLib?.name);
       return menus;
     }));
   }

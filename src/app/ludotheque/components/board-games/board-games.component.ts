@@ -9,6 +9,6 @@ import {Observable} from 'rxjs';
   styleUrls: ['./board-games.component.scss']
 })
 export class BoardGamesComponent {
-  library$: Observable<Library> = this.firebaseDatabase.boardGamesLibrary$;
+  library$: Observable<Library | null> = this.firebaseDatabase.boardGamesLibrary$;
   constructor(private firebaseDatabase: FirebaseDatabaseService) { }
 }

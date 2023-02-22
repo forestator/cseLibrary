@@ -3,10 +3,8 @@ import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {ChangeBorrowStatusComponent} from '../../../change-borrow-status/change-borrow-status.component';
 import {MatDialog} from '@angular/material/dialog';
-import {take} from 'rxjs';
 import {AuthentificationService} from '../../../../../services/firebase/authentification.service';
 import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
-import {LudoStatus} from '../../../../../models/common.model';
 
 @Component({
   selector: 'app-board-game-row',
@@ -40,12 +38,8 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
   }
 
   openBorrowModal(boardGame: BoardGame) {
-    const dialogRef = this.dialog.open(ChangeBorrowStatusComponent, {
+   this.dialog.open(ChangeBorrowStatusComponent, {
       data: {boardGame},
-    });
-
-    dialogRef.afterClosed().pipe(take(1)).subscribe((newDatas: {newStatus: LudoStatus, employee: string}) => {
-      this.firebaseDatabaseService.updateBoardGame(this.boardGame, newDatas.newStatus, newDatas.employee);
     });
   }
 }

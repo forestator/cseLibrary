@@ -24,7 +24,7 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   @Input() boardGames!: Array<BoardGame> | null;
   @Input() videoGames!: Array<VideoGame> | null;
   searchText: UntypedFormControl = new UntypedFormControl('');
-  filteredOptions?: Observable<Array<SearchOption>>;
+  filteredOptions$?: Observable<Array<SearchOption>>;
 
   datas: Array<{ category: string; name: string; id: string }> = [];
   private currentUrl?: string;
@@ -35,7 +35,7 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.filteredOptions = this.searchText.valueChanges.pipe(
+    this.filteredOptions$ = this.searchText.valueChanges.pipe(
       map(value => this._filter(value || '')),
     );
     this.navigateService.url$.subscribe(url => this.datas = this.setDatasToSeachIn(url));

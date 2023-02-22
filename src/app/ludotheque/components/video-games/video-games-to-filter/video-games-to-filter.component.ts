@@ -11,7 +11,7 @@ import {Consoles, VideoGame} from '../../../../models/videoGames.model';
 })
 export class VideoGamesToFilterComponent implements OnInit, OnDestroy {
 
-  videoGames$?: Observable<Array<VideoGame>>;
+  videoGames$?: Observable<Array<VideoGame> | undefined>;
   selectedVideoGameId?: string;
   consoleId?: Consoles;
   private sub?: Subscription;
@@ -24,7 +24,7 @@ export class VideoGamesToFilterComponent implements OnInit, OnDestroy {
    this.sub = this.navigationService.getRouteParams().subscribe((params) => {
       if (params['categoryId'] !== this.consoleId) {
         this.videoGames$ = this.firebaseDb.videoGames$.pipe(
-          map((videoGames) => videoGames.filter(vg => vg.category === params['categoryId']))
+          map((videoGames) => videoGames?.filter(vg => vg.category === params['categoryId']))
         );
       }
       this.selectedVideoGameId = params['id'];

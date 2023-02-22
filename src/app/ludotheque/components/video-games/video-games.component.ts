@@ -9,6 +9,6 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
   styleUrls: ['./video-games.component.scss']
 })
 export class VideoGamesComponent {
-  library$: Observable<Library> = this.firebaseDatabase.videoGamesLibrary$;
+  library$: Observable<Library | null> = this.firebaseDatabase.videoGamesLibrary$;
   constructor(private firebaseDatabase: FirebaseDatabaseService) { }
 }

@@ -1,6 +1,7 @@
-import {BddGame, BoardGame, Thing} from './boardGame.model';
+import {BoardGame, Thing} from './boardGame.model';
 import {VideoGame} from './videoGames.model';
 import {OutsideGame} from './outsideGames.model';
+import {BddGame} from './common.model';
 
 export class Game {
   static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {

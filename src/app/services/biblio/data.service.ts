@@ -13,7 +13,7 @@ export class DataService {
   constructor(private firebaseDatabaseService: FirebaseDatabaseService) {
     this.allBiblio = [];
     this.firebaseDatabaseService.bibliotheque$.pipe(take(1)).subscribe(allBiblio => {
-      this.allBiblio = allBiblio;
+      this.allBiblio = allBiblio ?? [];
       this.selectedLib = this.allBiblio[0];
       this.log();
     });

@@ -11,7 +11,7 @@ import {BoardGame, BoardGameCategory} from '../../../../../models/boardGame.mode
 })
 export class BoardGameToFilterComponent implements OnInit, OnDestroy {
 
-  boardGames$?: Observable<Array<BoardGame>>;
+  boardGames$?: Observable<Array<BoardGame> | undefined>;
   selectedBoardGameId?: string;
   categoryId?: BoardGameCategory;
   private sub?: Subscription;
@@ -24,7 +24,7 @@ export class BoardGameToFilterComponent implements OnInit, OnDestroy {
     this.sub = this.navigationService.getRouteParams().subscribe((params) => {
       if (this.categoryId !== params['categoryId']) {
         this.boardGames$ = this.firebaseDb.boardGames$.pipe(
-          map((boardGames) => boardGames.filter(bg => bg.category === params['categoryId']))
+          map((boardGames) => boardGames?.filter(bg => bg.category === params['categoryId']))
         );
       }
       this.categoryId = params['categoryId'];
