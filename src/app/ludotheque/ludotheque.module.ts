@@ -29,6 +29,12 @@ import {
 import {MatDividerModule} from '@angular/material/divider';
 import {FilterVideoGameByTypePipe} from './pipes/filter-video-game-by-type.pipe';
 import {OutsideGameRowComponent} from './components/outside-games/outside-game-row/outside-game-row.component';
+import {
+  VideoGamesToFilterComponent
+} from './components/video-games/video-games-to-filter/video-games-to-filter.component';
+import {
+  BoardGameToFilterComponent
+} from './components/board-games/components/board-game-to-filter/board-game-to-filter.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +50,9 @@ import {OutsideGameRowComponent} from './components/outside-games/outside-game-r
     VideoGameRowComponent,
     VideoGameConsoleRowComponent,
     FilterVideoGameByTypePipe,
-    OutsideGameRowComponent],
+    OutsideGameRowComponent,
+    VideoGamesToFilterComponent,
+    BoardGameToFilterComponent],
   exports: [],
     imports: [
         CommonModule,

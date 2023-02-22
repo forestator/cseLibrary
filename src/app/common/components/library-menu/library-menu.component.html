@@ -33,8 +33,8 @@
     <ng-container *ngIf="url?.includes('j2s') || url?.includes('videoGame'); else biblio">
       <div class="search">
         <app-search-in-lib
-          [videoGames]="firebaseDatabaseService.videoGames$ | async"
-          [boardGames]="firebaseDatabaseService.boardGames$ | async">
+          [videoGames]="firebaseDatabaseService.videoGamesOneShot$ | async"
+          [boardGames]="firebaseDatabaseService.boardGamesOneShot$ | async">
         </app-search-in-lib>
       </div>
     </ng-container>

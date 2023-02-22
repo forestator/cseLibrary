@@ -1,42 +1,19 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription, take} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
-import {NavigationService} from '../../../../services/navigation.service';
+import {Component, Input} from '@angular/core';
 import {Consoles, VideoGame, VideoGameType} from '../../../../models/videoGames.model';
-import {FirebaseDatabaseService} from '../../../../services/firebase-database.service';
 
 @Component({
   selector: 'app-video-games-console-details',
   templateUrl: './video-games-console-details.component.html',
   styleUrls: ['./video-games-console-details.component.scss']
 })
-export class VideoGamesConsoleDetailsComponent implements OnInit, OnDestroy {
+export class VideoGamesConsoleDetailsComponent {
   videoGameType = VideoGameType;
-  selectedVideoGameId?: string;
-  consoleId?: Consoles;
-  videoGames: Array<VideoGame> = [];
-  private videoGamesSub?: Subscription;
+  @Input() selectedVideoGameId?: string;
+  @Input() consoleId?: Consoles;
+  @Input() videoGames?: Array<VideoGame> | null;
 
-  constructor(private navService: NavigationService,
-              private activatedRoute: ActivatedRoute,
-              private firebaseDatabaseService: FirebaseDatabaseService) {
+  constructor() {
   }
-
-  ngOnInit(): void {
-    this.activatedRoute.data.pipe(take(1)).subscribe((datas) => {
-      this.selectedVideoGameId = datas['videoGamesCategoryDatas']['selectedId'];
-      this.consoleId = datas['videoGamesCategoryDatas']['categoryId'];
-      this.videoGames = datas['videoGamesCategoryDatas']['videoGames'];
-    });
-    this.videoGamesSub = this.firebaseDatabaseService.videoGames$.subscribe(videoGames => {
-      this.videoGames = videoGames.filter(vg => vg.category === this.consoleId)
-    });
-  }
-
-  ngOnDestroy() {
-    this.videoGamesSub?.unsubscribe();
-  }
-
   trackVideoGame(index: number, item: VideoGame) {
     return item.ref + item.status;
   }

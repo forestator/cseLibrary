@@ -55,10 +55,10 @@ export class FirebaseDatabaseService {
     this.videoGamesLibrary$ = this.db.object('ludotheque/videoGames/library').snapshotChanges()
       .pipe(take(1), map(res => res.payload.val() as Library));
 
-    this.outsideGames$ = this.db.object('ludotheque/outsideGames/games').snapshotChanges()
-      .pipe(take(1), map(res => res.payload.val() as Array<VideoGame>));
-    this.outsideGamesLibrary$ = this.db.object('ludotheque/outsideGames/library').snapshotChanges()
-      .pipe(take(1), map(res => res.payload.val() as Library));
+    this.outsideGames$ = this.db.object<Array<OutsideGame>>('ludotheque/outsideGames/games').valueChanges()
+      .pipe(map(res => res as Array<OutsideGame>));
+    this.outsideGamesLibrary$ = this.db.object('ludotheque/outsideGames/library').valueChanges()
+      .pipe(map(res => res as Library));
 
   }
 
