@@ -2,7 +2,7 @@
   <ng-container [ngTemplateOutlet]="image" *ngIf="parity"></ng-container>
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
-      <app-badge class="badge" [status]="boardGame.status"></app-badge>
+      <app-badge class="badge" [id]="boardGame.name" [status]="boardGame.status"></app-badge>
       <ng-container *ngIf="auth.userAllowedToWrite$ | async">
         <button mat-button (click)="openBorrowModal(boardGame)">Changer status</button>
       </ng-container>

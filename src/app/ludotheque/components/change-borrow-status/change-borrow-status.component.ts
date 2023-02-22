@@ -17,7 +17,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 export class ChangeBorrowStatusComponent implements OnInit {
   employeeFomControl: FormControl<string | null> = new FormControl<string>('');
   statusOptions: Array<string>;
-  newStatus: LudoStatus;
+  newStatus: LudoStatus.EMPRUNTE | LudoStatus.AVAILABLE;
   filterUserAutocomplete$?: Observable<Array<CseUser>>;
   selectedEmployee?: CseUser;
 
@@ -27,7 +27,7 @@ export class ChangeBorrowStatusComponent implements OnInit {
     public firebaseDatabaseService: FirebaseDatabaseService,
     @Inject(MAT_DIALOG_DATA) public data: { boardGame: BoardGame },
   ) {
-    this.statusOptions = Object.values(LudoStatus);
+    this.statusOptions = [LudoStatus.EMPRUNTE, LudoStatus.AVAILABLE];
     this.newStatus = this.data.boardGame.status === LudoStatus.AVAILABLE ?
       LudoStatus.EMPRUNTE : LudoStatus.AVAILABLE;
   }

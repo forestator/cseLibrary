@@ -12,9 +12,6 @@ export class BoardGameCategoryDetailsComponent {
   @Input() selectedBoardGameId?: string;
   @Input() categoryId?: string;
 
-  constructor() {
-  }
-
   trackBoardGame(index: number, item: BoardGame) {
     return item.id + item.name + item.status;
   }

@@ -37,6 +37,7 @@ export class BGGService {
   gameDetails(ludoGame: BoardGame): Observable<BoardGame> {
     const gameInCache = this.cache.find(game => game.bgId === +ludoGame.id);
     if (gameInCache) {
+      gameInCache.bg.status = ludoGame.status;
       return of(gameInCache.bg);
     } else if (typeof +ludoGame.id === 'number') {
       const url = `${this.bggUrl}/thing?id=${ludoGame.id}`;

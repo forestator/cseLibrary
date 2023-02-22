@@ -4,7 +4,6 @@ import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {ChangeBorrowStatusComponent} from '../../../change-borrow-status/change-borrow-status.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthentificationService} from '../../../../../services/firebase/authentification.service';
-import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 
 @Component({
   selector: 'app-board-game-row',
@@ -21,7 +20,6 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
 
   constructor(public toolsService: ToolsService,
               public auth: AuthentificationService,
-              public firebaseDatabaseService: FirebaseDatabaseService,
               private dialog: MatDialog) { }
 
   ngOnInit(): void {

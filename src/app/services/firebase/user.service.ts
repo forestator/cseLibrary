@@ -25,9 +25,9 @@ export class UserService {
     this.userList$ = this.db.object<BddUsers>('users').valueChanges().pipe(
       map((users) => {
         if (users) {
-        return Object.keys(users).map(
-          (key) => Object.assign({id: key}, users[key])
-        );
+          return Object.keys(users).map(
+            (key) => Object.assign({id: key}, users[key])
+          );
         } else {
           return [];
         }
@@ -35,8 +35,13 @@ export class UserService {
     );
   }
 
-  setBorrowedGameToUser(employee: CseUser, boardGame: BoardGame): void {
-    const borrowedGames = employee?.borrowedGame ? [...employee.borrowedGame, boardGame.ref] : [boardGame.ref];
+  setBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
+    const borrowedGames = employee?.borrowedGames ? [...employee.borrowedGames, boardGame.ref] : [boardGame.ref];
+    this.db.object(`users/${employee.id}`).update({borrowedGames});
+  }
+
+  removeBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
+    const borrowedGames = employee!.borrowedGames!.filter(gameRef => gameRef !== boardGame.ref);
     this.db.object(`users/${employee.id}`).update({borrowedGames});
   }
 }

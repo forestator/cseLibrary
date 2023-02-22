@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BookStatus} from 'src/app/models/author.model';
 import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
@@ -9,8 +9,9 @@ import {LudoStatus} from '../../../models/common.model';
   templateUrl: './badge.component.html',
   styleUrls: ['./badge.component.scss']
 })
-export class BadgeComponent implements OnInit {
+export class BadgeComponent implements OnInit, OnChanges {
 
+  @Input() id?: string;
   @Input() status!: string;
   @Input() display: string = 'normal';
 
@@ -22,6 +23,16 @@ export class BadgeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setup();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['status']) {
+      this.setup();
+    }
+  }
+
+  private setup() {
     if (this.status in BookStatus) {
       switch (this.status) {
         case BookStatus.NEW:
@@ -140,5 +151,4 @@ export class BadgeComponent implements OnInit {
       this.fg = 'black';
     }
   }
-
 }

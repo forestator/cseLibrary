@@ -63,10 +63,12 @@ export class FirebaseDatabaseService {
 
   }
 
-  updateBoardGame(boardGame: BoardGame | null, newStatus: LudoStatus, employee: CseUser): void {
+  updateBoardGame(boardGame: BoardGame | null, newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE, employee: CseUser): void {
     if (boardGame) {
       this.db.object(`ludotheque/boardGames/games/${boardGame.ref}`).update({status: newStatus});
-      this.userService.setBorrowedGameToUser(employee, boardGame);
+      newStatus === LudoStatus.EMPRUNTE ?
+      this.userService.setBorrowedGameOfUser(employee, boardGame) :
+      this.userService.removeBorrowedGameOfUser(employee, boardGame);
     }
   }
 }

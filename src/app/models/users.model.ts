@@ -3,7 +3,7 @@ export interface CseUser {
   firstName: string;
   lastName: string;
   email: string;
-  borrowedGame?: Array<string>;
+  borrowedGames?: Array<string>;
 }
 
 export interface BddUsers {
