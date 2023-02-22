@@ -97102,7 +97102,7 @@
           "id": "289985",
           "name": "Rêve de Trésor",
           "poids": "646",
-          "status": "EMPRUNTE"
+          "status": "AVAILABLE"
         },
         "ludo108": {
           "category": "enfant",
@@ -98502,7 +98502,7 @@
         "name": "Jeux de plein air et grand jeux",
         "path": "todo",
         "prefix": "outsideGames",
-        "resume": ""
+        "resume": "Photos non contractuelles !"
       }
     },
     "videoGames": {
@@ -99476,26 +99476,26 @@
           "type": "CONSOLE"
         },
         "CONSL PS5_01": {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
-          "description": "Accompagné de une manette",
-          "name": "Console XBOX ONE N°1",
+          "category": "ps5",
+          "cover": "assets/covers/videoGames/cat/ps5.jpg",
+          "description": "Accompagné du jeu Horizon Forbiden West et d'une manette",
+          "name": "Console PS5 N°1",
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
         "CONSL01": {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/NSwitchTop.png",
-          "description": "La console est accompagnée de deux JoyCon et un chargeur",
-          "name": "Console switch 1",
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
+          "description": "Console avec une manette",
+          "name": "Console 1",
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
         "CONSL02": {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/NSwitchTop.png",
-          "description": "La console est accompagnée de deux JoyCon et un chargeur",
-          "name": "Console switch 2",
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
+          "description": "Console avec une manette",
+          "name": "Console 2",
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
