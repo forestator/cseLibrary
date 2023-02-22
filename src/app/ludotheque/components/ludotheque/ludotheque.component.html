@@ -26,4 +26,16 @@
       Pas forcément jeux pour grands !
     </div>
   </div>
+  <div class="core-header"
+       *ngIf="authService.userAllowedToWrite$ | async">
+    <div class="core-title">
+      <div class="primary">Administration ludotheque</div>
+    </div>
+    <div class="core-body" [routerLink]="'admin/emprunts'">
+      Emprunts
+    </div>
+    <div class="core-body" [routerLink]="'admin/games'">
+      Gestion des jeux
+    </div>
+  </div>
 </div>

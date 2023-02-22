@@ -11,7 +11,6 @@ import {LudoStatus} from '../../../models/common.model';
 })
 export class BadgeComponent implements OnInit, OnChanges {
 
-  @Input() id?: string;
   @Input() status!: string;
   @Input() display: string = 'normal';
 

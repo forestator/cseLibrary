@@ -18,6 +18,8 @@ import {
 import {
   BoardGameToFilterComponent
 } from './ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component';
+import {AdminGamesComponent} from './ludotheque/components/admin/admin-games/admin-games.component';
+import {BorrowGamesComponent} from './ludotheque/components/admin/borrow-games/borrow-games.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -28,7 +30,9 @@ const ludoRoutes: Routes = [
   {path: 'ludotheque/j2s', component: BoardGamesComponent},
   {path: 'ludotheque/j2s/:categoryId', component: BoardGameToFilterComponent},
   {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameToFilterComponent},
-  {path: 'ludotheque/new', component: NewViewComponent}
+  {path: 'ludotheque/new', component: NewViewComponent},
+  {path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent},
+  {path: 'ludotheque/admin/games', component: AdminGamesComponent},
 ];
 
 const biblioRoutes: Routes = [

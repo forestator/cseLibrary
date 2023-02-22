@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {AuthentificationService} from '../../../services/firebase/authentification.service';
 
 @Component({
     selector: 'app-ludotheque',
@@ -7,6 +8,6 @@ import {Component} from '@angular/core';
 })
 export class LudothequeComponent {
 
-    constructor() {
+    constructor(public authService: AuthentificationService) {
     }
 }

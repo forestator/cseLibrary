@@ -17,11 +17,11 @@ export class FirebaseDatabaseService {
 
   public bibliotheque$: Observable<Array<Biblio> | null>;
   public ludotheque$: Observable<Ludotheque | null>;
-  public boardGames$: Observable<Array<BoardGame> | null>;
+  public boardGames$: Observable<Array<BoardGame>>;
   public boardGamesOneShot$: Observable<Array<BoardGame> | null>;
   public boardGamesLibrary$: Observable<Library | null>;
-  public videoGames$: Observable<Array<VideoGame> | null>;
-  public videoGamesOneShot$: Observable<Array<VideoGame> | null>;
+  public videoGames$: Observable<Array<VideoGame>>;
+  public videoGamesOneShot$: Observable<Array<VideoGame>>;
   public videoGamesLibrary$: Observable<Library | null>;
   public outsideGames$: Observable<Array<OutsideGame> | null>;
   public outsideGamesLibrary$: Observable<Library | null>;
