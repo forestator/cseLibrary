@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Biblio} from '../../../models/author.model';
-import {XmlParserService} from '../../../services/xml-parser.service';
-import {DataService} from '../../../services/data.service';
+import {XmlParserService} from '../../../services/biblio/xml-parser.service';
+import {DataService} from '../../../services/biblio/data.service';
 
 @Component({
     selector: 'app-bibliotheque',

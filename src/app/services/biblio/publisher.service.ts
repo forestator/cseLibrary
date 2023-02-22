@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, from } from 'rxjs';
-import { Publisher } from '../models/author.model';
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {from, Observable} from 'rxjs';
+import {Publisher} from '../../models/author.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Publisher } from '../models/author.model';
 export class PublisherService {
 
   public publishers: Array<Publisher>;
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore) {
     this.publishers = [];
   }
 

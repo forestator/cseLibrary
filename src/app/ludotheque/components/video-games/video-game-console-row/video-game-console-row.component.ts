@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
-import {ToolsService} from '../../../../services/tools.service';
+import {ToolsService} from '../../../../services/biblio/tools.service';
 
 @Component({
   selector: 'app-video-game-console-row',

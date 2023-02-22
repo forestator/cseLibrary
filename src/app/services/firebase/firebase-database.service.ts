@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable, take} from 'rxjs';
-import {Biblio, Library} from '../models/author.model';
-import {BddGame, BoardGame} from '../models/boardGame.model';
-import {LudoStatus, Ludotheque} from '../models/common.model';
-import {VideoGame} from '../models/videoGames.model';
-import {OutsideGame} from '../models/outsideGames.model';
-import {Game} from '../models/game';
+import {Biblio, Library} from '../../models/author.model';
+import {BddGame, BoardGame} from '../../models/boardGame.model';
+import {LudoStatus, Ludotheque} from '../../models/common.model';
+import {VideoGame} from '../../models/videoGames.model';
+import {OutsideGame} from '../../models/outsideGames.model';
+import {Game} from '../../models/game';
 
 @Injectable({
   providedIn: 'root'

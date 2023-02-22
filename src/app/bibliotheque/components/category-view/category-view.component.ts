@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Author, Category, Library, SelectorView, ViewBy} from 'src/app/models/author.model';
-import {ToolsService} from 'src/app/services/tools.service';
-import {DataService} from '../../../services/data.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
+import {DataService} from '../../../services/biblio/data.service';
 import {map, Observable} from 'rxjs';
 import {Params} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';

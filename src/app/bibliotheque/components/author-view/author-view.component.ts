@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Author, Book, BookStatus, Category, Library, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
-import {ToolsService} from 'src/app/services/tools.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
   selector: 'app-author-view',

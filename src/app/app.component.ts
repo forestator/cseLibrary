@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {ToolsService} from './services/tools.service';
-import {FirebaseDatabaseService} from './services/firebase-database.service';
+import {ToolsService} from './services/biblio/tools.service';
+import {FirebaseDatabaseService} from './services/firebase/firebase-database.service';
 
 
 @Component({

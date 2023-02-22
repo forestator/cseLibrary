@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Book, Category, Library, Series, SeriesStatus} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
-import {ToolsService} from 'src/app/services/tools.service';
+import {DataService} from 'src/app/services/biblio/data.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {map, Observable} from 'rxjs';
 import {Params, Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';

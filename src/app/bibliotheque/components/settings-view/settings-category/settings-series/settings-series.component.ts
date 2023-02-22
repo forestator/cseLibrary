@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Series} from 'src/app/models/author.model';
-import {ToolsService} from 'src/app/services/tools.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SeriesModalComponent} from '../../../modals/series-modal/series-modal.component';
 import {BookModalComponent} from '../../../modals/book-modal/book-modal.component';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
-import {DataService} from 'src/app/services/data.service';
+import {DataService} from 'src/app/services/biblio/data.service';
 
 @Component({
    selector: 'app-settings-series',

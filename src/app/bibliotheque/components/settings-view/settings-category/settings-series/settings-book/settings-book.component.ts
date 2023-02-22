@@ -2,8 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {Book} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
-import {ToolsService} from 'src/app/services/tools.service';
+import {DataService} from 'src/app/services/biblio/data.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {BookModalComponent} from '../../../../modals/book-modal/book-modal.component';
 
 @Component({

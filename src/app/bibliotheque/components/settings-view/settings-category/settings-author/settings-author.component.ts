@@ -5,8 +5,8 @@ import {BookModalComponent} from 'src/app/bibliotheque/components/modals/book-mo
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {SeriesModalComponent} from 'src/app/bibliotheque/components/modals/series-modal/series-modal.component';
 import {Author} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
-import {ToolsService} from 'src/app/services/tools.service';
+import {DataService} from 'src/app/services/biblio/data.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
    selector: 'app-settings-author',

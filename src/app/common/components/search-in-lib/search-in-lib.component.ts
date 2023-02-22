@@ -6,7 +6,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {VideoGame} from '../../../models/videoGames.model';
-import {DataService} from '../../../services/data.service';
+import {DataService} from '../../../services/biblio/data.service';
 
 interface SearchOption {
   category: string;

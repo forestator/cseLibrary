@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Library} from 'src/app/models/author.model';
 import {map, Observable} from 'rxjs';
 import {Params} from '@angular/router';
-import {DataService} from '../../../services/data.service';
+import {DataService} from '../../../services/biblio/data.service';
 import {NavigationService} from '../../../services/navigation.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Author, Biblio, SeriesStatus, ViewBy} from '../models/author.model';
-import {FirebaseDatabaseService} from './firebase-database.service';
+import {Author, Biblio, SeriesStatus, ViewBy} from '../../models/author.model';
+import {FirebaseDatabaseService} from '../firebase/firebase-database.service';
 import {take} from 'rxjs';
 
 @Injectable({

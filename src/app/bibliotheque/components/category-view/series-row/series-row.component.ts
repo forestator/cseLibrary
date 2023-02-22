@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Series} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
-import {ToolsService} from 'src/app/services/tools.service';
+import {DataService} from 'src/app/services/biblio/data.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
   selector: 'app-series-row',

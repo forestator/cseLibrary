@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Library, Publisher} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
+import {DataService} from 'src/app/services/biblio/data.service';
 import {BasicModal} from '../basic-modal';
 import {v4 as uuidv4} from 'uuid';
 

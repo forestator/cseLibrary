@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { from, Observable } from 'rxjs';
-import { Category, Library } from '../models/author.model';
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {from, Observable} from 'rxjs';
+import {Category, Library} from '../../models/author.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Category, Library } from '../models/author.model';
 export class CategoryService {
   private readonly BD_CATEGORY_IDENTIFIER: string = 'categories';
   public categories: Array<Category>;
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore) {
     this.categories = [];
   }
 

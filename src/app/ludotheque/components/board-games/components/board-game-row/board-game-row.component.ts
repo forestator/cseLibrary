@@ -1,11 +1,11 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
-import {ToolsService} from '../../../../../services/tools.service';
+import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {ChangeBorrowStatusComponent} from '../../../change-borrow-status/change-borrow-status.component';
 import {MatDialog} from '@angular/material/dialog';
 import {take} from 'rxjs';
-import {AuthentificationService} from '../../../../../services/authentification.service';
-import {FirebaseDatabaseService} from '../../../../../services/firebase-database.service';
+import {AuthentificationService} from '../../../../../services/firebase/authentification.service';
+import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 import {LudoStatus} from '../../../../../models/common.model';
 
 @Component({

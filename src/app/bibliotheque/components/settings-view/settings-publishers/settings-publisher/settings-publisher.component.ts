@@ -5,8 +5,8 @@ import {
   PublisherModalComponent
 } from 'src/app/bibliotheque/components/modals/publisher-modal/publisher-modal.component';
 import {Publisher} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
-import {ToolsService} from 'src/app/services/tools.service';
+import {DataService} from 'src/app/services/biblio/data.service';
+import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
    selector: 'app-settings-publisher',

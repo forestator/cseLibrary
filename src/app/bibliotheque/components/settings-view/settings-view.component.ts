@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Category, Library} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
+import {DataService} from 'src/app/services/biblio/data.service';
 import {AuthorModalComponent} from '../modals/author-modal/author-modal.component';
 import {CategoryModalComponent} from '../modals/category-modal/category-modal.component';
 import {PublisherModalComponent} from '../modals/publisher-modal/publisher-modal.component';

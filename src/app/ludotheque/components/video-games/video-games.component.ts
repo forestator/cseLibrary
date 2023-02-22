@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Library} from '../../../models/author.model';
 import {Observable} from 'rxjs';
-import {FirebaseDatabaseService} from '../../../services/firebase-database.service';
+import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 
 @Component({
   selector: 'app-video-games',

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthentificationService} from '../../../services/authentification.service';
+import {AuthentificationService} from '../../../services/firebase/authentification.service';
 
 @Component({
   selector: 'app-admin-home',

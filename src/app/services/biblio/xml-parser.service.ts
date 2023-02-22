@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {Author, Biblio, Book, Category, Library, Publisher, Series, ViewBy} from '../models/author.model';
+import {Author, Biblio, Book, Category, Library, Publisher, Series, ViewBy} from '../../models/author.model';
 import * as xml2js from 'xml2js';
 import {v4 as uuidv4} from 'uuid';
 import {DataService} from './data.service';

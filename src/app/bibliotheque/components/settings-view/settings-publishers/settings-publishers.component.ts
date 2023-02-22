@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Publisher} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/data.service';
+import {DataService} from 'src/app/services/biblio/data.service';
 
 @Component({
    selector: 'app-settings-publishers',

@@ -4,7 +4,7 @@ import {Category, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
 import {CategoryModalComponent} from '../../modals/category-modal/category-modal.component';
 import {DeleteModalComponent} from '../../modals/delete-modal/delete-modal.component';
-import {DataService} from 'src/app/services/data.service';
+import {DataService} from 'src/app/services/biblio/data.service';
 import {AuthorModalComponent} from '../../modals/author-modal/author-modal.component';
 
 @Component({

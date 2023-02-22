@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, from } from 'rxjs';
-import { Author } from 'src/app/models/author.model';
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {from, Observable} from 'rxjs';
+import {Author} from 'src/app/models/author.model';
 
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Author } from 'src/app/models/author.model';
 export class AuthorService {
 
   public authors: Array<Author>;
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore) {
     this.authors = [];
   }
 

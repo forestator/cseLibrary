@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { from, Observable } from 'rxjs';
-import { Library } from '../models/author.model';
+import {Injectable} from '@angular/core';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {from, Observable} from 'rxjs';
+import {Library} from '../../models/author.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class LibraryService {
 
   private readonly BD_LIBRARY_IDENTIFIER: string = 'libraries';
   public libraries: Array<Library>;
-  constructor(private db: AngularFirestore) { 
+  constructor(private db: AngularFirestore) {
     this.libraries = [];
   }
 

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {map, Observable, Subscription} from 'rxjs';
-import {FirebaseDatabaseService} from '../../../../../services/firebase-database.service';
+import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 import {NavigationService} from '../../../../../services/navigation.service';
 import {BoardGame, BoardGameCategory} from '../../../../../models/boardGame.model';
 
