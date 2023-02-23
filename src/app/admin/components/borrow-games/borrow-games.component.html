@@ -3,29 +3,35 @@
   <input matInput placeholder="filtre" [(ngModel)]="search">
 </mat-form-field>
 <mat-accordion>
-  <mat-expansion-panel>
+  <mat-expansion-panel (opened)="boardGamePanelOpen = true"
+                       (closed)="boardGamePanelOpen = false">
     <mat-expansion-panel-header>
       <mat-panel-title>BoardGames</mat-panel-title>
     </mat-expansion-panel-header>
-    <app-ludo-borrow-table [games]="firebaseDatabaseService.boardGames$ | async"
+    <app-ludo-borrow-table *ngIf="boardGamePanelOpen"
+                           [games]="firebaseDatabaseService.boardGames$ | async"
                            [filterBy]="search"
                            [displayedColumns]="displayedColumnsBoardGames"></app-ludo-borrow-table>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel (opened)="videoGamePanelOpen = true"
+                       (closed)="videoGamePanelOpen = false">
     <mat-expansion-panel-header>
       <mat-panel-title>VideoGames</mat-panel-title>
     </mat-expansion-panel-header>
-    <app-ludo-borrow-table [games]="firebaseDatabaseService.videoGames$ | async"
+    <app-ludo-borrow-table *ngIf="videoGamePanelOpen"
+                           [games]="firebaseDatabaseService.videoGames$ | async"
                            [filterBy]="search"
                            [displayedColumns]="displayedColumnsVideoGame"></app-ludo-borrow-table>
   </mat-expansion-panel>
 
-  <mat-expansion-panel>
+  <mat-expansion-panel (opened)="outsideGamePanelOpen = true"
+                       (closed)="outsideGamePanelOpen = false">
     <mat-expansion-panel-header>
       <mat-panel-title>OutsideGames</mat-panel-title>
     </mat-expansion-panel-header>
-    <app-ludo-borrow-table [games]="firebaseDatabaseService.outsideGames$ | async"
+    <app-ludo-borrow-table *ngIf="outsideGamePanelOpen"
+                           [games]="firebaseDatabaseService.outsideGames$ | async"
                            [filterBy]="search"
                            [displayedColumns]="displayedColumnsOutsideGame"></app-ludo-borrow-table>
   </mat-expansion-panel>

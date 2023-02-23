@@ -25,9 +25,8 @@ export class LudoBorrowTableComponent implements OnInit, OnChanges {
 
   private setDatasource(games: Array<BoardGame | VideoGame | OutsideGame>) {
     if (this.filterBy) {
-      console.log(games);
-      console.log(games.filter(game => game.name.includes(this.filterBy ?? '')));
-      this.dataSource = new MatTableDataSource(games.filter(game => game.name.includes(this.filterBy ?? '')));
+      this.dataSource = new MatTableDataSource(games.filter(game =>
+        game.name.toLowerCase().includes(this.filterBy?.toLowerCase() ?? '')));
     } else {
       this.dataSource = new MatTableDataSource(games);
     }

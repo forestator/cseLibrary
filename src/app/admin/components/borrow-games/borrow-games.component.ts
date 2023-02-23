@@ -16,6 +16,9 @@ export class BorrowGamesComponent {
   @ViewChild(MatSort) sort?: MatSort;
   boardGamesSource$: Observable<Array<BoardGame>> = this.firebaseDatabaseService.boardGames$;
   search: string = '';
+  boardGamePanelOpen: boolean = false;
+  videoGamePanelOpen: boolean = false;
+  outsideGamePanelOpen: boolean = false;
 
   constructor(public firebaseDatabaseService: FirebaseDatabaseService) {
   }
