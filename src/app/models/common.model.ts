@@ -9,6 +9,7 @@ export interface Ludotheque {
 }
 
 export interface LudothequeDetails {
+  //todo not good
   games: Array<VideoGame | BoardGame>;
   library: Library;
 }
@@ -17,6 +18,13 @@ export enum LudoStatus {
   AVAILABLE = 'AVAILABLE',
   EMPRUNTE = 'EMPRUNTE',
   MISSING = 'MISSING',
+}
+
+export interface Game {
+  ref: string;
+  name: string;
+  status: LudoStatus;
+  category?: string;
 }
 
 export interface BddGame {

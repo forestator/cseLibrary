@@ -1,4 +1,4 @@
-import {LudoStatus} from './common.model';
+import {Game} from './common.model';
 
 export interface Attributes {
   type: string;
@@ -17,13 +17,10 @@ export interface Thing {
   text?: string;
 }
 
-export interface BoardGame {
-  status: LudoStatus;
+export interface BoardGame extends Game {
   id: string,
   category:  BoardGameCategory,
-  name: string,
   poids: string,
-  ref: string
   thumbnail?: string;
   fullImage?: string;
   description?: string;

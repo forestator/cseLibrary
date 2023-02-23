@@ -1,0 +1,32 @@
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput placeholder="filtre" [(ngModel)]="search">
+</mat-form-field>
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>BoardGames</mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-ludo-borrow-table [games]="firebaseDatabaseService.boardGames$ | async"
+                           [filterBy]="search"
+                           [displayedColumns]="displayedColumnsBoardGames"></app-ludo-borrow-table>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>VideoGames</mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-ludo-borrow-table [games]="firebaseDatabaseService.videoGames$ | async"
+                           [filterBy]="search"
+                           [displayedColumns]="displayedColumnsVideoGame"></app-ludo-borrow-table>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>OutsideGames</mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-ludo-borrow-table [games]="firebaseDatabaseService.outsideGames$ | async"
+                           [filterBy]="search"
+                           [displayedColumns]="displayedColumnsOutsideGame"></app-ludo-borrow-table>
+  </mat-expansion-panel>
+</mat-accordion>

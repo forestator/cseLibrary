@@ -1,4 +1,4 @@
-import {LudoStatus} from './common.model';
+import {Game} from './common.model';
 
 export enum Consoles {
   switch = 'switch',
@@ -7,11 +7,8 @@ export enum Consoles {
   xboxOne = 'xboxOne'
 }
 
-export interface VideoGame {
+export interface VideoGame extends Game {
   description?: string;
-  name: string;
-  ref: string;
-  status: LudoStatus;
   type?: VideoGameType;
   cover?: string;
   category: Consoles;

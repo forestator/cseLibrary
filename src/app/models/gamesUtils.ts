@@ -3,7 +3,7 @@ import {VideoGame} from './videoGames.model';
 import {OutsideGame} from './outsideGames.model';
 import {BddGame} from './common.model';
 
-export class Game {
+export class GamesUtils {
   static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
     if (boardGameWithDetails) {
       const elements = boardGameWithDetails.elements;

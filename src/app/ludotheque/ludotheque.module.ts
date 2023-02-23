@@ -39,8 +39,6 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {LudoMenuComponent} from './components/ludo-menu/ludo-menu.component';
 import {SearchInLibComponent} from './components/search-in-lib/search-in-lib.component';
 import {MatMenuModule} from '@angular/material/menu';
-import {AdminGamesComponent} from './components/admin/admin-games/admin-games.component';
-import {BorrowGamesComponent} from './components/admin/borrow-games/borrow-games.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
@@ -63,9 +61,7 @@ import {MatSortModule} from '@angular/material/sort';
     OutsideGameRowComponent,
     VideoGamesToFilterComponent,
     BoardGameToFilterComponent,
-    LudoMenuComponent,
-    AdminGamesComponent,
-    BorrowGamesComponent],
+    LudoMenuComponent],
   exports: [LudoMenuComponent],
   imports: [
     CommonModule,

@@ -1,8 +1,5 @@
-import {LudoStatus} from './common.model';
+import {Game} from './common.model';
 
-export interface OutsideGame {
-  name: string;
-  ref: string;
-  status: LudoStatus;
+export interface OutsideGame extends Game {
   cover?: string;
 }

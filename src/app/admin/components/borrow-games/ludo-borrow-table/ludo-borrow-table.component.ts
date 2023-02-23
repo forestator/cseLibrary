@@ -1,0 +1,40 @@
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {BoardGame} from '../../../../models/boardGame.model';
+import {VideoGame} from '../../../../models/videoGames.model';
+import {OutsideGame} from '../../../../models/outsideGames.model';
+import {MatSort} from '@angular/material/sort';
+import {MatTableDataSource} from '@angular/material/table';
+
+@Component({
+  selector: 'app-ludo-borrow-table',
+  templateUrl: './ludo-borrow-table.component.html',
+  styleUrls: ['./ludo-borrow-table.component.scss']
+})
+export class LudoBorrowTableComponent implements OnInit, OnChanges {
+  @Input() games!: Array<BoardGame | VideoGame | OutsideGame> | null;
+  @Input() displayedColumns!: Array<string>;
+  @Input() filterBy?: string;
+  dataSource?: MatTableDataSource<BoardGame | VideoGame | OutsideGame>;
+  @ViewChild(MatSort) sort!: MatSort;
+
+  ngOnInit() {
+    if (this.games) {
+      this.setDatasource(this.games);
+    }
+  }
+
+  private setDatasource(games: Array<BoardGame | VideoGame | OutsideGame>) {
+    if (this.filterBy) {
+      console.log(games);
+      console.log(games.filter(game => game.name.includes(this.filterBy ?? '')));
+      this.dataSource = new MatTableDataSource(games.filter(game => game.name.includes(this.filterBy ?? '')));
+    } else {
+      this.dataSource = new MatTableDataSource(games);
+    }
+    this.dataSource.sort = this.sort;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (this.games) this.setDatasource(this.games);
+  }
+}

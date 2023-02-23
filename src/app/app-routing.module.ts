@@ -18,8 +18,9 @@ import {
 import {
   BoardGameToFilterComponent
 } from './ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component';
-import {AdminGamesComponent} from './ludotheque/components/admin/admin-games/admin-games.component';
-import {BorrowGamesComponent} from './ludotheque/components/admin/borrow-games/borrow-games.component';
+import {AdminGamesComponent} from './admin/components/admin-games/admin-games.component';
+import {BorrowGamesComponent} from './admin/components/borrow-games/borrow-games.component';
+import {IsAllowedToWriteGuard} from './guard/is-allowed-to-write.guard';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -31,8 +32,8 @@ const ludoRoutes: Routes = [
   {path: 'ludotheque/j2s/:categoryId', component: BoardGameToFilterComponent},
   {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameToFilterComponent},
   {path: 'ludotheque/new', component: NewViewComponent},
-  {path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent},
-  {path: 'ludotheque/admin/games', component: AdminGamesComponent},
+  {path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent, canActivate: [IsAllowedToWriteGuard]},
+  {path: 'ludotheque/admin/games', component: AdminGamesComponent, canActivate: [IsAllowedToWriteGuard]},
 ];
 
 const biblioRoutes: Routes = [

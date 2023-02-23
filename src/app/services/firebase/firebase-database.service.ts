@@ -6,7 +6,7 @@ import {BoardGame} from '../../models/boardGame.model';
 import {BddGame, LudoStatus, Ludotheque} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {OutsideGame} from '../../models/outsideGames.model';
-import {Game} from '../../models/game';
+import {GamesUtils} from '../../models/gamesUtils';
 import {CseUser} from '../../models/users.model';
 import {UserService} from './user.service';
 
@@ -35,24 +35,24 @@ export class FirebaseDatabaseService {
 
     this.boardGames$ = this.db.object<BddGame>('ludotheque/boardGames/games')
       .valueChanges().pipe(
-        map((boardGamesBdd) => Game.bddGameToLudoGame(boardGamesBdd) as Array<BoardGame>)
+        map((boardGamesBdd) => GamesUtils.bddGameToLudoGame(boardGamesBdd) as Array<BoardGame>)
       );
     this.boardGamesOneShot$ = this.db.object<BddGame>('ludotheque/boardGames/games')
       .valueChanges().pipe(
         take(1),
-        map((boardGamesBdd) => Game.bddGameToLudoGame(boardGamesBdd) as Array<BoardGame>)
+        map((boardGamesBdd) => GamesUtils.bddGameToLudoGame(boardGamesBdd) as Array<BoardGame>)
       );
     this.boardGamesLibrary$ = this.db.object<Library>('ludotheque/boardGames/library').valueChanges()
       .pipe(take(1));
 
     this.videoGames$ =  this.db.object<BddGame>('ludotheque/videoGames/games')
       .valueChanges().pipe(
-        map((videoGameBdd) => Game.bddGameToLudoGame(videoGameBdd) as Array<VideoGame>)
+        map((videoGameBdd) => GamesUtils.bddGameToLudoGame(videoGameBdd) as Array<VideoGame>)
       );
     this.videoGamesOneShot$ =  this.db.object<BddGame>('ludotheque/videoGames/games')
       .valueChanges().pipe(
         take(1),
-        map((videoGameBdd) => Game.bddGameToLudoGame(videoGameBdd) as Array<VideoGame>)
+        map((videoGameBdd) => GamesUtils.bddGameToLudoGame(videoGameBdd) as Array<VideoGame>)
       );
     this.videoGamesLibrary$ = this.db.object<Library>('ludotheque/videoGames/library').valueChanges()
       .pipe(take(1));
