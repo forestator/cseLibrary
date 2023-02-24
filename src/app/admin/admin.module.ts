@@ -16,6 +16,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {AddEmployeeDialogComponent} from './components/add-employee-dialog/add-employee-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {AdminMenuComponent} from './components/admin-menu/admin-menu.component';
+import {RouterLink} from '@angular/router';
 
 
 @NgModule({
@@ -24,7 +26,11 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AdminGamesComponent,
     BorrowGamesComponent,
     LudoBorrowTableComponent,
-    AddEmployeeDialogComponent
+    AddEmployeeDialogComponent,
+    AdminMenuComponent
+  ],
+  exports: [
+    AdminMenuComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +45,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatButtonModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    RouterLink
   ]
 })
 export class AdminModule { }

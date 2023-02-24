@@ -3,6 +3,7 @@ import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable} from 'rxjs';
 import {BddUsers, CseUser} from '../../models/users.model';
 import {BoardGame} from '../../models/boardGame.model';
+import moment from 'moment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,13 +18,14 @@ export class UserService {
   }
 
   setBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
-    const borrowedGames = employee?.borrowedGames ? [...employee.borrowedGames, boardGame.ref] : [boardGame.ref];
-    this.db.object(`users/${employee.id}`).update({borrowedGames});
+    this.db.object(`users/${employee.id}/borrowedGames/${boardGame.ref}`).set({
+      ref: boardGame.ref,
+      date: moment().format('L')
+    });
   }
 
   removeBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
-    const borrowedGames = employee!.borrowedGames!.filter(gameRef => gameRef !== boardGame.ref);
-    this.db.object(`users/${employee.id}`).update({borrowedGames});
+    this.db.object(`users/${employee.id}/borrowedGames/${boardGame.ref}`).remove();
   }
 
   addUser(newUSer: CseUser): void {

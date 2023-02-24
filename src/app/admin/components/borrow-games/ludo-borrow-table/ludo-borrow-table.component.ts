@@ -4,6 +4,7 @@ import {VideoGame} from '../../../../models/videoGames.model';
 import {OutsideGame} from '../../../../models/outsideGames.model';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
+import {CseUser} from '../../../../models/users.model';
 
 @Component({
   selector: 'app-ludo-borrow-table',
@@ -13,6 +14,7 @@ import {MatTableDataSource} from '@angular/material/table';
 export class LudoBorrowTableComponent implements OnInit, OnChanges {
   @Input() games!: Array<BoardGame | VideoGame | OutsideGame> | null;
   @Input() displayedColumns!: Array<string>;
+  @Input() users?: Array<CseUser>;
   @Input() filterBy?: string;
   dataSource?: MatTableDataSource<BoardGame | VideoGame | OutsideGame>;
   @ViewChild(MatSort) sort!: MatSort;

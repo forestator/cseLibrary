@@ -9,11 +9,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
+import {BorrowedByUserPipe} from './pipe/borrowed-by-user.pipe';
 
 @NgModule({
   declarations: [
     HomeComponent,
-    BadgeComponent
+    BadgeComponent,
+    BorrowedByUserPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
   ],
   exports: [
     HomeComponent,
-    BadgeComponent
+    BadgeComponent,
+    BorrowedByUserPipe
   ]
 })
 export class AppCommonModule {

@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   title = 'Cse';
   showLudothequeMenu?: boolean;
   showBibliothequeMenu?: boolean;
+  showAdmin?: boolean;
 
   constructor(
     public firebaseDatabaseService: FirebaseDatabaseService,
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
     this.navigationService.url$.subscribe(url => {
         this.showLudothequeMenu = url.includes('ludotheque');
         this.showBibliothequeMenu = url.includes('bibliotheque');
+        this.showAdmin = url.includes('admin');
     });
   }
 
