@@ -1,5 +1,5 @@
-<h1 mat-dialog-title>Changer le status du jeu {{data.boardGame.name}}</h1>
-<div mat-dialog-content class="modal-container">
+<h1 mat-dialog-title>Changer le status du jeu {{data.game.name}}</h1>
+<div mat-dialog-content class="modal-container" *ngIf="newStatus === 'EMPRUNTE'">
   <mat-form-field appearance="fill">
     <mat-label>Employé ?</mat-label>
     <input type="text" matInput
@@ -14,23 +14,13 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <div class="status">
-    <mat-label>New Status</mat-label>
-    <mat-button-toggle-group [(ngModel)]="newStatus" aria-label="Status">
-      <mat-button-toggle *ngFor="let status of statusOptions" [value]="status">{{status}}</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="cancel()">Cancel</button>
-  <button [disabled]="!selectedEmployee || newStatus === data.boardGame.status"
+  <button [disabled]="!selectedEmployee"
           mat-button
           (click)="borrowGame()"
           cdkFocusInitial>
-    Valid
-  </button>
-  <button mat-button
-          (click)="addNewEmployee()">
-    Ajouter un nouvel employé
+    Confirm
   </button>
 </div>

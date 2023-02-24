@@ -7,7 +7,7 @@ import {BddGame, LudoStatus, Ludotheque} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {OutsideGame} from '../../models/outsideGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
-import {CseUser} from '../../models/users.model';
+import {BorrowStatus, CseUser} from '../../models/users.model';
 import {UserService} from './user.service';
 
 @Injectable({
@@ -63,12 +63,13 @@ export class FirebaseDatabaseService {
 
   }
 
-  updateBoardGame(boardGame: BoardGame | null, newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE, employee: CseUser): void {
-    if (boardGame) {
-      this.db.object(`ludotheque/boardGames/games/${boardGame.ref}`).update({status: newStatus});
-      newStatus === LudoStatus.EMPRUNTE ?
-      this.userService.setBorrowedGameOfUser(employee, boardGame) :
-      this.userService.removeBorrowedGameOfUser(employee, boardGame);
+  updateBoardGame(game: BoardGame | VideoGame | OutsideGame | BorrowStatus,
+                  newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE, employee: CseUser): void {
+    this.db.object(`ludotheque/boardGames/games/${game.ref}`).update({status: newStatus});
+    if (game instanceof BorrowStatus) {
+      this.userService.removeBorrowedGameOfUser(employee, game.ref);
+    } else {
+      this.userService.setBorrowedGameOfUser(employee, game)
     }
   }
 }

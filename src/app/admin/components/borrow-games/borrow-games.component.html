@@ -1,43 +1,68 @@
-<div class="borrow-header">
-  <mat-form-field>
-    <mat-label>Search game name</mat-label>
-    <input matInput placeholder="Splendor" [(ngModel)]="search">
-  </mat-form-field>
+<div class="by-user">
+  <form class="search-for-user">
+    <mat-form-field appearance="fill">
+      <mat-label>Employe recherche</mat-label>
+      <input type="text" matInput [formControl]="employeeSearch" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+                        (optionSelected)="selectEmployee($event)"
+                        [displayWith]="displayUser">
+        <mat-option *ngFor="let option of filteredOptions$ | async"
+                    [value]="option">
+          {{displayUser(option)}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
+  <app-ludo-borrow-table [games]="gamesOfUser"
+                         [users]="users"
+                         [returnForUser]="selectedUser"
+                         [displayedColumns]="displayedColumnsGameOfUser">
+  </app-ludo-borrow-table>
 </div>
-<mat-accordion>
-  <mat-expansion-panel (opened)="boardGamePanelOpen = true"
-                       (closed)="boardGamePanelOpen = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>BoardGames</mat-panel-title>
-    </mat-expansion-panel-header>
-    <app-ludo-borrow-table *ngIf="boardGamePanelOpen"
-                           [games]="firebaseDatabaseService.boardGames$ | async"
-                           [filterBy]="search"
-                           [users]="userService.userList$ | async"
-                           [displayedColumns]="displayedColumnsBoardGames"></app-ludo-borrow-table>
-  </mat-expansion-panel>
+<mat-divider></mat-divider>
+<div class="by-game-list">
+  <div class="borrow-header">
+    <mat-form-field>
+      <mat-label>Chercher un jeu</mat-label>
+      <input matInput placeholder="Splendor" [(ngModel)]="search">
+    </mat-form-field>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel (opened)="boardGamePanelOpen = true"
+                         (closed)="boardGamePanelOpen = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>BoardGames</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-ludo-borrow-table *ngIf="boardGamePanelOpen"
+                             [games]="firebaseDatabaseService.boardGames$ | async"
+                             [filterBy]="search"
+                             [users]="users"
+                             [displayedColumns]="displayedColumnsBoardGames"></app-ludo-borrow-table>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel (opened)="videoGamePanelOpen = true"
-                       (closed)="videoGamePanelOpen = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>VideoGames</mat-panel-title>
-    </mat-expansion-panel-header>
-    <app-ludo-borrow-table *ngIf="videoGamePanelOpen"
-                           [games]="firebaseDatabaseService.videoGames$ | async"
-                           [filterBy]="search"
-                           [users]="userService.userList$ | async"
-                           [displayedColumns]="displayedColumnsVideoGame"></app-ludo-borrow-table>
-  </mat-expansion-panel>
+    <mat-expansion-panel (opened)="videoGamePanelOpen = true"
+                         (closed)="videoGamePanelOpen = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>VideoGames</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-ludo-borrow-table *ngIf="videoGamePanelOpen"
+                             [games]="firebaseDatabaseService.videoGames$ | async"
+                             [filterBy]="search"
+                             [users]="users"
+                             [displayedColumns]="displayedColumnsVideoGame"></app-ludo-borrow-table>
+    </mat-expansion-panel>
 
-  <mat-expansion-panel (opened)="outsideGamePanelOpen = true"
-                       (closed)="outsideGamePanelOpen = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>OutsideGames</mat-panel-title>
-    </mat-expansion-panel-header>
-    <app-ludo-borrow-table *ngIf="outsideGamePanelOpen"
-                           [games]="firebaseDatabaseService.outsideGames$ | async"
-                           [filterBy]="search"
-                           [users]="userService.userList$ | async"
-                           [displayedColumns]="displayedColumnsOutsideGame"></app-ludo-borrow-table>
-  </mat-expansion-panel>
-</mat-accordion>
+    <mat-expansion-panel (opened)="outsideGamePanelOpen = true"
+                         (closed)="outsideGamePanelOpen = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>OutsideGames</mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-ludo-borrow-table *ngIf="outsideGamePanelOpen"
+                             [games]="firebaseDatabaseService.outsideGames$ | async"
+                             [filterBy]="search"
+                             [users]="users"
+                             [displayedColumns]="displayedColumnsOutsideGame"></app-ludo-borrow-table>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

@@ -18,6 +18,12 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {AdminMenuComponent} from './components/admin-menu/admin-menu.component';
 import {RouterLink} from '@angular/router';
+import {MatListModule} from '@angular/material/list';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {
+  ChangeBorrowStatusModalComponent
+} from './components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 @NgModule({
@@ -27,6 +33,7 @@ import {RouterLink} from '@angular/router';
     BorrowGamesComponent,
     LudoBorrowTableComponent,
     AddEmployeeDialogComponent,
+    ChangeBorrowStatusModalComponent,
     AdminMenuComponent
   ],
   exports: [
@@ -46,7 +53,10 @@ import {RouterLink} from '@angular/router';
     MatDialogModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    RouterLink
+    RouterLink,
+    MatListModule,
+    MatAutocompleteModule,
+    MatButtonToggleModule
   ]
 })
 export class AdminModule { }

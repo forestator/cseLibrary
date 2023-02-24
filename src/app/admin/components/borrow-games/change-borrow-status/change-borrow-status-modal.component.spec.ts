@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ChangeBorrowStatusComponent} from './change-borrow-status.component';
+import {ChangeBorrowStatusModalComponent} from './change-borrow-status-modal.component';
 
 describe('ChangeBorrowStatusComponent', () => {
-  let component: ChangeBorrowStatusComponent;
-  let fixture: ComponentFixture<ChangeBorrowStatusComponent>;
+  let component: ChangeBorrowStatusModalComponent;
+  let fixture: ComponentFixture<ChangeBorrowStatusModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChangeBorrowStatusComponent ]
+      declarations: [ ChangeBorrowStatusModalComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChangeBorrowStatusComponent);
+    fixture = TestBed.createComponent(ChangeBorrowStatusModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

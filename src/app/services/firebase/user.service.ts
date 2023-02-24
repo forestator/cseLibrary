@@ -4,6 +4,8 @@ import {map, Observable} from 'rxjs';
 import {BddUsers, CseUser} from '../../models/users.model';
 import {BoardGame} from '../../models/boardGame.model';
 import moment from 'moment';
+import {VideoGame} from '../../models/videoGames.model';
+import {OutsideGame} from '../../models/outsideGames.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +19,16 @@ export class UserService {
       map((users) => Object.values(users)));
   }
 
-  setBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
+  setBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame | VideoGame | OutsideGame): void {
     this.db.object(`users/${employee.id}/borrowedGames/${boardGame.ref}`).set({
       ref: boardGame.ref,
+      name: boardGame.name,
       date: moment().format('L')
     });
   }
 
-  removeBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
-    this.db.object(`users/${employee.id}/borrowedGames/${boardGame.ref}`).remove();
+  removeBorrowedGameOfUser(employee: CseUser, ref: string): void {
+    this.db.object(`users/${employee.id}/borrowedGames/${ref}`).remove();
   }
 
   addUser(newUSer: CseUser): void {

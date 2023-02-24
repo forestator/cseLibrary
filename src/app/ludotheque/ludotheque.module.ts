@@ -9,7 +9,6 @@ import {LudothequeComponent} from './components/ludotheque/ludotheque.component'
 import {MatIconModule} from '@angular/material/icon';
 import {RouterModule} from '@angular/router';
 import {AppCommonModule} from '../common/app-common.module';
-import {ChangeBorrowStatusComponent} from './components/change-borrow-status/change-borrow-status.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -49,7 +48,6 @@ import {MatSortModule} from '@angular/material/sort';
     BoardGameRowComponent,
     BoardGameDetailsPipe,
     LudothequeComponent,
-    ChangeBorrowStatusComponent,
     SearchInLibComponent,
     BoardGamesComponent,
     VideoGamesComponent,

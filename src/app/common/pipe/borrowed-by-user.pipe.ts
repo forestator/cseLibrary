@@ -7,7 +7,8 @@ import {CseUser} from '../../models/users.model';
 export class BorrowedByUserPipe implements PipeTransform {
 
   transform(ref: string, userList: Array<CseUser>): string {
-    const user = userList.find(user => user?.borrowedGames[ref]);
+    console.log(userList);
+    const user = userList.find(user => user.borrowedGames && user.borrowedGames[ref]);
     return user ? `${user.firstName} ${user.lastName}` : '???';
   }
 

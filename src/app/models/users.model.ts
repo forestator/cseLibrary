@@ -1,5 +1,6 @@
 export class BorrowStatus {
   ref: string;
+  name: string;
   date: Date;
 }
 

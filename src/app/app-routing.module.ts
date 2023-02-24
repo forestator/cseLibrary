@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {inject, NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {LudothequeComponent} from './ludotheque/components/ludotheque/ludotheque.component';
 import {BibliothequeComponent} from './bibliotheque/components/bibliotheque/bibliotheque.component';
@@ -21,6 +21,7 @@ import {
 import {AdminGamesComponent} from './admin/components/admin-games/admin-games.component';
 import {BorrowGamesComponent} from './admin/components/borrow-games/borrow-games.component';
 import {IsAllowedToWriteGuard} from './guard/is-allowed-to-write.guard';
+import {UserService} from './services/firebase/user.service';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -32,8 +33,15 @@ const ludoRoutes: Routes = [
   {path: 'ludotheque/j2s/:categoryId', component: BoardGameToFilterComponent},
   {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameToFilterComponent},
   {path: 'ludotheque/new', component: NewViewComponent},
-  {path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent, canActivate: [IsAllowedToWriteGuard]},
-  {path: 'ludotheque/admin/games', component: AdminGamesComponent, canActivate: [IsAllowedToWriteGuard]},
+  {
+    path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent,
+    canActivate: [IsAllowedToWriteGuard],
+    resolve: {'users': () => inject(UserService).userList$}
+  },
+  {
+    path: 'ludotheque/admin/games', component: AdminGamesComponent,
+    canActivate: [IsAllowedToWriteGuard]
+  },
 ];
 
 const biblioRoutes: Routes = [

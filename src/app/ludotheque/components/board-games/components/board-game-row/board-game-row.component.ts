@@ -1,7 +1,9 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
-import {ChangeBorrowStatusComponent} from '../../../change-borrow-status/change-borrow-status.component';
+import {
+  ChangeBorrowStatusModalComponent
+} from '../../../../../admin/components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthentificationService} from '../../../../../services/firebase/authentification.service';
 
@@ -36,7 +38,7 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
   }
 
   openBorrowModal(boardGame: BoardGame) {
-   this.dialog.open(ChangeBorrowStatusComponent, {
+   this.dialog.open(ChangeBorrowStatusModalComponent, {
       data: {boardGame},
     });
   }

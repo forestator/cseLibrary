@@ -5,7 +5,8 @@
          [formControl]="searchText"
          [matAutocomplete]="auto">
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="goToSelectedItem($event)">
-    <mat-option *ngFor="let option of filteredOptions$ | async" [value]="option.name">
+    <mat-option *ngFor="let option of
+    filteredOptions$ | async" [value]="option.name">
       <app-badge class="badge" [status]="option.category"></app-badge>{{option.name}}
     </mat-option>
   </mat-autocomplete>
