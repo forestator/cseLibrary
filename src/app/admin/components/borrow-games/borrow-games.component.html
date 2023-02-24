@@ -1,7 +1,10 @@
-<mat-form-field>
-  <mat-label>Search</mat-label>
-  <input matInput placeholder="filtre" [(ngModel)]="search">
-</mat-form-field>
+<div class="borrow-header">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput placeholder="Splendor" [(ngModel)]="search">
+  </mat-form-field>
+  <button mat-button (click)="addEmployee()">Ajouter un employé</button>
+</div>
 <mat-accordion>
   <mat-expansion-panel (opened)="boardGamePanelOpen = true"
                        (closed)="boardGamePanelOpen = false">

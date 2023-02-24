@@ -11,7 +11,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {AppCommonModule} from '../common/app-common.module';
 import {LudoBorrowTableComponent} from './components/borrow-games/ludo-borrow-table/ludo-borrow-table.component';
 import {MatInputModule} from '@angular/material/input';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatButtonModule} from '@angular/material/button';
+import {AddEmployeeDialogComponent} from './components/add-employee-dialog/add-employee-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -19,7 +23,8 @@ import {FormsModule} from '@angular/forms';
     AdminHomeComponent,
     AdminGamesComponent,
     BorrowGamesComponent,
-    LudoBorrowTableComponent
+    LudoBorrowTableComponent,
+    AddEmployeeDialogComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +35,11 @@ import {FormsModule} from '@angular/forms';
     MatExpansionModule,
     AppCommonModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSnackBarModule
   ]
 })
 export class AdminModule { }

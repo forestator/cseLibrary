@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Ajouter un nouvel utilisateur</h1>
+<form [formGroup]="userFormGroup" class="dialog-container" mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Prénom</mat-label>
+    <input matInput formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="prenom.nom@harmonicinc.com" formControlName="email">
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [disabled]="userFormGroup.invalid"
+          [mat-dialog-close]="userFormGroup.value" cdkFocusInitial>Add</button>
+</div>

@@ -13,16 +13,7 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase) {
     this.userList$ = this.db.object<BddUsers>('users').valueChanges().pipe(
-      map((users) => {
-        if (users) {
-          return Object.keys(users).map(
-            (key) => Object.assign({id: key}, users[key])
-          );
-        } else {
-          return [];
-        }
-      })
-    );
+      map((users) => Object.values(users)));
   }
 
   setBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
@@ -33,5 +24,9 @@ export class UserService {
   removeBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame): void {
     const borrowedGames = employee!.borrowedGames!.filter(gameRef => gameRef !== boardGame.ref);
     this.db.object(`users/${employee.id}`).update({borrowedGames});
+  }
+
+  addUser(newUSer: CseUser): void {
+    this.db.object(`users/${newUSer.id}`).set(newUSer);
   }
 }
