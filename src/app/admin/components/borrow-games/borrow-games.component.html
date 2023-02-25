@@ -38,6 +38,7 @@
                              [games]="firebaseDatabaseService.boardGames$ | async"
                              [filterBy]="search"
                              [users]="users"
+                             [returnForUser]="selectedUser"
                              [displayedColumns]="displayedColumnsBoardGames"></app-ludo-borrow-table>
     </mat-expansion-panel>
 
@@ -49,6 +50,7 @@
       <app-ludo-borrow-table *ngIf="videoGamePanelOpen"
                              [games]="firebaseDatabaseService.videoGames$ | async"
                              [filterBy]="search"
+                             [returnForUser]="selectedUser"
                              [users]="users"
                              [displayedColumns]="displayedColumnsVideoGame"></app-ludo-borrow-table>
     </mat-expansion-panel>
@@ -61,6 +63,7 @@
       <app-ludo-borrow-table *ngIf="outsideGamePanelOpen"
                              [games]="firebaseDatabaseService.outsideGames$ | async"
                              [filterBy]="search"
+                             [returnForUser]="selectedUser"
                              [users]="users"
                              [displayedColumns]="displayedColumnsOutsideGame"></app-ludo-borrow-table>
     </mat-expansion-panel>

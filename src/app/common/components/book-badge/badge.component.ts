@@ -145,7 +145,7 @@ export class BadgeComponent implements OnInit, OnChanges {
           break;
       }
     } else {
-      this.txt = this.status.toString();
+      this.txt = this.status?.toString();
       this.bg = 'gray';
       this.fg = 'black';
     }

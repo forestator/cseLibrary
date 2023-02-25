@@ -17,7 +17,7 @@ import {OutsideGame} from '../../../../models/outsideGames.model';
   styleUrls: ['./change-borrow-status-modal.component.scss']
 })
 export class ChangeBorrowStatusModalComponent implements OnInit {
-  employeeFomControl: FormControl<string | null> = new FormControl<string>('');
+  employeeFomControl: FormControl<string | CseUser>;
   statusOptions: Array<string>;
   newStatus: LudoStatus.EMPRUNTE | LudoStatus.AVAILABLE;
   filterUserAutocomplete$?: Observable<Array<CseUser>>;
@@ -29,7 +29,7 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
     public firebaseDatabaseService: FirebaseDatabaseService,
     @Inject(MAT_DIALOG_DATA) public data: {
       users: Array<CseUser>,
-      game: BoardGame | VideoGame | OutsideGame | BorrowStatus
+      game: BoardGame | VideoGame | OutsideGame
       returnForUser?: CseUser
     },
   ) {
@@ -40,6 +40,7 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
       this.newStatus = this.data.game.status === LudoStatus.AVAILABLE ?
         LudoStatus.EMPRUNTE : LudoStatus.AVAILABLE;
     }
+    this.employeeFomControl = new FormControl<string | CseUser>(this.data.returnForUser ?? '');
     this.selectedEmployee = this.data.returnForUser;
   }
 
@@ -76,7 +77,11 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
   }
 
   borrowGame() {
-    this.firebaseDatabaseService.updateBoardGame(this.data.game, this.newStatus, this.selectedEmployee!);
+    if (this.newStatus === LudoStatus.EMPRUNTE) {
+      this.firebaseDatabaseService.setNewBorrowForUser(this.data.game, this.selectedEmployee);
+    } else {
+      this.firebaseDatabaseService.removeBorrowForUser(this.data.game, this.selectedEmployee);
+    }
     this.cancel();
   }
 }

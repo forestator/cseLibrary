@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable, take} from 'rxjs';
 import {Biblio, Library} from '../../models/author.model';
-import {BoardGame} from '../../models/boardGame.model';
+import {BoardGame, BoardGameCategory} from '../../models/boardGame.model';
 import {BddGame, LudoStatus, Ludotheque} from '../../models/common.model';
-import {VideoGame} from '../../models/videoGames.model';
+import {Consoles, VideoGame} from '../../models/videoGames.model';
 import {OutsideGame} from '../../models/outsideGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
 import {BorrowStatus, CseUser} from '../../models/users.model';
@@ -45,11 +45,11 @@ export class FirebaseDatabaseService {
     this.boardGamesLibrary$ = this.db.object<Library>('ludotheque/boardGames/library').valueChanges()
       .pipe(take(1));
 
-    this.videoGames$ =  this.db.object<BddGame>('ludotheque/videoGames/games')
+    this.videoGames$ = this.db.object<BddGame>('ludotheque/videoGames/games')
       .valueChanges().pipe(
         map((videoGameBdd) => GamesUtils.bddGameToLudoGame(videoGameBdd) as Array<VideoGame>)
       );
-    this.videoGamesOneShot$ =  this.db.object<BddGame>('ludotheque/videoGames/games')
+    this.videoGamesOneShot$ = this.db.object<BddGame>('ludotheque/videoGames/games')
       .valueChanges().pipe(
         take(1),
         map((videoGameBdd) => GamesUtils.bddGameToLudoGame(videoGameBdd) as Array<VideoGame>)
@@ -57,19 +57,36 @@ export class FirebaseDatabaseService {
     this.videoGamesLibrary$ = this.db.object<Library>('ludotheque/videoGames/library').valueChanges()
       .pipe(take(1));
 
-    this.outsideGames$ = this.db.object<Array<OutsideGame>>('ludotheque/outsideGames/games').valueChanges();
+    this.outsideGames$ = this.db.object<BddGame>('ludotheque/outsideGames/games')
+      .valueChanges().pipe(
+        map((outsideGameBdd) => GamesUtils.bddGameToLudoGame(outsideGameBdd) as Array<OutsideGame>)
+      );
     this.outsideGamesLibrary$ = this.db.object<Library>('ludotheque/outsideGames/library').valueChanges()
       .pipe(take(1));
 
   }
 
-  updateBoardGame(game: BoardGame | VideoGame | OutsideGame | BorrowStatus,
-                  newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE, employee: CseUser): void {
-    this.db.object(`ludotheque/boardGames/games/${game.ref}`).update({status: newStatus});
-    if (game instanceof BorrowStatus) {
-      this.userService.removeBorrowedGameOfUser(employee, game.ref);
+  setNewBorrowForUser(game: BoardGame | VideoGame | OutsideGame, employee: CseUser): void {
+    this.updateGame(game, LudoStatus.EMPRUNTE);
+    this.userService.setBorrowedGameOfUser(employee, game);
+  }
+
+  removeBorrowForUser(game: BoardGame | VideoGame | OutsideGame, employee: CseUser): void {
+    this.updateGame(game, LudoStatus.AVAILABLE);
+    this.userService.removeBorrowedGameOfUser(employee, game.ref);
+  }
+
+  private updateGame(game: BoardGame | VideoGame | OutsideGame | BorrowStatus, newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE) {
+    let library: string;
+    if (('category' in game) && game.category in BoardGameCategory) {
+      library = 'boardGames';
+    } else if (('category' in game) && game.category in Consoles) {
+      library = 'videoGames';
+    } else if ('libraryId' in game) {
+      library = game.libraryId;
     } else {
-      this.userService.setBorrowedGameOfUser(employee, game)
+      library = 'outsideGames';
     }
+    this.db.object(`ludotheque/${library}/games/${game.ref}`).update({status: newStatus});
   }
 }

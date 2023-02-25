@@ -3,7 +3,7 @@
        class="mat-elevation-z8">
 
   <ng-container matColumnDef="borrow" >
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Emprunter ce jeu</th>
+    <th mat-header-cell *matHeaderCellDef> Emprunter ce jeu</th>
     <td mat-cell *matCellDef="let element">
       <button mat-button color="primary" (click)="borrowGame(element)">
         {{element.status === 'AVAILABLE' ? 'Emprunter' : 'Retour'}}

@@ -2,6 +2,7 @@ export class BorrowStatus {
   ref: string;
   name: string;
   date: Date;
+  libraryId: string;
 }
 
 export interface BddBorrowStatus {

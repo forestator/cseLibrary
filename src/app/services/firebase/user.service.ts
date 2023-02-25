@@ -23,7 +23,8 @@ export class UserService {
     this.db.object(`users/${employee.id}/borrowedGames/${boardGame.ref}`).set({
       ref: boardGame.ref,
       name: boardGame.name,
-      date: moment().format('L')
+      date: moment().format('L'),
+      libraryId: boardGame.category
     });
   }
 
