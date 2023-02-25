@@ -1,19 +1,21 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {BoardGame} from '../../../../models/boardGame.model';
-import {VideoGame} from '../../../../models/videoGames.model';
-import {OutsideGame} from '../../../../models/outsideGames.model';
+import {BoardGame} from '../../../models/boardGame.model';
+import {VideoGame} from '../../../models/videoGames.model';
+import {OutsideGame} from '../../../models/outsideGames.model';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {BorrowStatus, CseUser} from '../../../../models/users.model';
-import {ChangeBorrowStatusModalComponent} from '../change-borrow-status/change-borrow-status-modal.component';
+import {BorrowStatus, CseUser} from '../../../models/users.model';
+import {
+  ChangeBorrowStatusModalComponent
+} from '../borrow-games/change-borrow-status/change-borrow-status-modal.component';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-ludo-borrow-table',
-  templateUrl: './ludo-borrow-table.component.html',
-  styleUrls: ['./ludo-borrow-table.component.scss']
+  selector: 'app-ludo-table',
+  templateUrl: './ludo-table.component.html',
+  styleUrls: ['./ludo-table.component.scss']
 })
-export class LudoBorrowTableComponent implements OnInit, OnChanges {
+export class LudoTableComponent implements OnInit, OnChanges {
   @Input() games?: Array<BoardGame | VideoGame | OutsideGame | BorrowStatus> | null;
   @Input() displayedColumns!: Array<string>;
   @Input() users?: Array<CseUser>;

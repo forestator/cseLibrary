@@ -1,6 +1,5 @@
-import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
-import {MatSort} from '@angular/material/sort';
 import {map, Observable, Subscription} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {BorrowStatus, CseUser} from '../../../models/users.model';
@@ -18,7 +17,6 @@ export class BorrowGamesComponent implements OnInit, OnDestroy {
   displayedColumnsVideoGame = ['borrow', 'status', 'borrowedBy', 'category', 'name', 'ref'];
   displayedColumnsOutsideGame = ['borrow', 'status', 'borrowedBy', 'name', 'ref'];
   displayedColumnsGameOfUser = ['borrow', 'date', 'name', 'ref'];
-  @ViewChild(MatSort) sort?: MatSort;
   search: string = '';
   boardGamePanelOpen: boolean = false;
   videoGamePanelOpen: boolean = false;
@@ -41,21 +39,12 @@ export class BorrowGamesComponent implements OnInit, OnDestroy {
       map((value) => this._filter(value || '', this.users)),
     );
     this.usersSub = this.userService.userList$.subscribe(userList => {
-        this.users = userList;
-        if (this.selectedUser) {
-          const updatedUser = userList.find(user => user.id === this.selectedUser.id);
-          this.selectEmployee({option: {value: updatedUser}} as MatAutocompleteSelectedEvent);
-        }
+      this.users = userList;
+      if (this.selectedUser) {
+        const updatedUser = userList.find(user => user.id === this.selectedUser.id);
+        this.selectEmployee({option: {value: updatedUser}} as MatAutocompleteSelectedEvent);
+      }
     })
-  }
-
-  private _filter(value: string | CseUser, userList: Array<CseUser>): Array<CseUser> {
-    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.firstName.toLowerCase();
-    return userList.filter((item) => {
-      const matchFirstName: boolean = item.firstName.toLowerCase().includes(filterValue);
-      const matchLastName: boolean = item.firstName.toLowerCase().includes(filterValue);
-      return matchFirstName || matchLastName;
-    });
   }
 
   displayUser(user: CseUser): string {
@@ -70,5 +59,14 @@ export class BorrowGamesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.usersSub.unsubscribe();
+  }
+
+  private _filter(value: string | CseUser, userList: Array<CseUser>): Array<CseUser> {
+    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.firstName.toLowerCase();
+    return userList.filter((item) => {
+      const matchFirstName: boolean = item.firstName.toLowerCase().includes(filterValue);
+      const matchLastName: boolean = item.firstName.toLowerCase().includes(filterValue);
+      return matchFirstName || matchLastName;
+    });
   }
 }

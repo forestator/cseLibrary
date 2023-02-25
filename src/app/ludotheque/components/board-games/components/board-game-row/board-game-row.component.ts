@@ -5,7 +5,6 @@ import {
   ChangeBorrowStatusModalComponent
 } from '../../../../../admin/components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
 import {MatDialog} from '@angular/material/dialog';
-import {AuthentificationService} from '../../../../../services/firebase/authentification.service';
 
 @Component({
   selector: 'app-board-game-row',
@@ -21,7 +20,6 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
   parity!: boolean;
 
   constructor(public toolsService: ToolsService,
-              public auth: AuthentificationService,
               private dialog: MatDialog) { }
 
   ngOnInit(): void {

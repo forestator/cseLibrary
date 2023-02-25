@@ -20,8 +20,8 @@ import {
 } from './ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component';
 import {AdminGamesComponent} from './admin/components/admin-games/admin-games.component';
 import {BorrowGamesComponent} from './admin/components/borrow-games/borrow-games.component';
-import {IsAllowedToWriteGuard} from './guard/is-allowed-to-write.guard';
 import {UserService} from './services/firebase/user.service';
+import {AuthentificationService} from './services/firebase/authentification.service';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -35,12 +35,12 @@ const ludoRoutes: Routes = [
   {path: 'ludotheque/new', component: NewViewComponent},
   {
     path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent,
-    canActivate: [IsAllowedToWriteGuard],
+    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$],
     resolve: {'users': () => inject(UserService).userList$}
   },
   {
     path: 'ludotheque/admin/games', component: AdminGamesComponent,
-    canActivate: [IsAllowedToWriteGuard]
+    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$]
   },
 ];
 

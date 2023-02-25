@@ -1,13 +1,13 @@
 <h1 mat-dialog-title>Changer le status du jeu {{data.game.name}}</h1>
-<div mat-dialog-content class="modal-container">
+<div class="modal-container" mat-dialog-content>
   <mat-form-field appearance="fill">
     <mat-label>Employé ?</mat-label>
-    <input type="text" matInput
-           [formControl]="employeeFomControl"
-           [matAutocomplete]="auto">
-    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
-                      (optionSelected)="selectEmployee($event)"
-                      [displayWith]="displayUser">
+    <input [formControl]="employeeFomControl" [matAutocomplete]="auto"
+           matInput
+           type="text">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectEmployee($event)"
+                      [displayWith]="displayUser"
+                      autoActiveFirstOption>
       <mat-option *ngFor="let option of filterUserAutocomplete$ | async"
                   [value]="option">
         {{displayUser(option)}}
@@ -16,11 +16,11 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="cancel()">Cancel</button>
-  <button [disabled]="!selectedEmployee"
-          mat-button
-          (click)="borrowGame()"
-          cdkFocusInitial>
+  <button (click)="cancel()" mat-button>Cancel</button>
+  <button (click)="borrowGame()"
+          [disabled]="!selectedEmployee"
+          cdkFocusInitial
+          mat-button>
     Confirm
   </button>
 </div>

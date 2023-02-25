@@ -6,11 +6,11 @@ import {OutsideGame} from './outsideGames.model';
 export interface Ludotheque {
   boardGames: LudothequeDetails;
   videoGames: LudothequeDetails;
+  outsideGames: LudothequeDetails;
 }
 
 export interface LudothequeDetails {
-  //todo not good
-  games: Array<VideoGame | BoardGame>;
+  games: BddGame;
   library: Library;
 }
 

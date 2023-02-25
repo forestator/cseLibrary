@@ -2,10 +2,9 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable} from 'rxjs';
 import {BddUsers, CseUser} from '../../models/users.model';
-import {BoardGame} from '../../models/boardGame.model';
 import moment from 'moment';
-import {VideoGame} from '../../models/videoGames.model';
-import {OutsideGame} from '../../models/outsideGames.model';
+import {Game} from '../../models/common.model';
+import {GamesUtils} from '../../models/gamesUtils';
 
 @Injectable({
   providedIn: 'root'
@@ -19,12 +18,12 @@ export class UserService {
       map((users) => Object.values(users)));
   }
 
-  setBorrowedGameOfUser(employee: CseUser, boardGame: BoardGame | VideoGame | OutsideGame): void {
-    this.db.object(`users/${employee.id}/borrowedGames/${boardGame.ref}`).set({
-      ref: boardGame.ref,
-      name: boardGame.name,
+  setBorrowedGameOfUser(employee: CseUser, game: Game): void {
+    this.db.object(`users/${employee.id}/borrowedGames/${game.ref}`).set({
+      ref: game.ref,
+      name: game.name,
       date: moment().format('L'),
-      libraryId: boardGame.category
+      libraryId: GamesUtils.libraryIdOfGame(game)
     });
   }
 

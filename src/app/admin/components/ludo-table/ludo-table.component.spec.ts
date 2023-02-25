@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {LudoBorrowTableComponent} from './ludo-borrow-table.component';
+import {LudoTableComponent} from './ludo-table.component';
 
 describe('LudoBorrowTableComponent', () => {
-  let component: LudoBorrowTableComponent;
-  let fixture: ComponentFixture<LudoBorrowTableComponent>;
+  let component: LudoTableComponent;
+  let fixture: ComponentFixture<LudoTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LudoBorrowTableComponent ]
+      declarations: [ LudoTableComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LudoBorrowTableComponent);
+    fixture = TestBed.createComponent(LudoTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -3,9 +3,6 @@
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
       <app-badge class="badge" [id]="boardGame.name" [status]="boardGame.status"></app-badge>
-      <ng-container *ngIf="auth.userAllowedToWrite$ | async">
-        <button mat-button (click)="openBorrowModal(boardGame)">Changer status</button>
-      </ng-container>
     </div>
     <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
     <div class="book-info" *ngIf="boardGame.poids">Poids: {{boardGame.poids}}g</div>

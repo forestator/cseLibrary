@@ -54,20 +54,6 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  private _filter(value: string | CseUser, userList: Array<CseUser> | null): Array<CseUser> {
-    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.firstName.toLowerCase();
-    if (userList) {
-      return userList.filter((item) => {
-          const matchFirstName: boolean = item.firstName.toLowerCase().includes(filterValue);
-          const matchLastName: boolean = item.firstName.toLowerCase().includes(filterValue);
-          return matchFirstName || matchLastName;
-        }
-      );
-    } else {
-      return [];
-    }
-  }
-
   displayUser(user: CseUser): string {
     return user ? `${user.firstName} ${user.lastName}` : '';
   }
@@ -83,5 +69,19 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
       this.firebaseDatabaseService.removeBorrowForUser(this.data.game, this.selectedEmployee);
     }
     this.cancel();
+  }
+
+  private _filter(value: string | CseUser, userList: Array<CseUser> | null): Array<CseUser> {
+    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.firstName.toLowerCase();
+    if (userList) {
+      return userList.filter((item) => {
+          const matchFirstName: boolean = item.firstName.toLowerCase().includes(filterValue);
+          const matchLastName: boolean = item.firstName.toLowerCase().includes(filterValue);
+          return matchFirstName || matchLastName;
+        }
+      );
+    } else {
+      return [];
+    }
   }
 }

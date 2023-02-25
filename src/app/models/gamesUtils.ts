@@ -1,7 +1,8 @@
-import {BoardGame, Thing} from './boardGame.model';
-import {VideoGame} from './videoGames.model';
+import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
+import {Consoles, VideoGame} from './videoGames.model';
 import {OutsideGame} from './outsideGames.model';
-import {BddGame} from './common.model';
+import {BddGame, Game} from './common.model';
+import {BorrowStatus} from './users.model';
 
 export class GamesUtils {
   static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
@@ -12,18 +13,12 @@ export class GamesUtils {
         thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail') ?? '',
         fullImage: this.getAttributeFirstElementText(elements, 'image') ?? '',
         description: this.getAttributeFirstElementText(elements, 'description'),
-        // @ts-ignore
         yearPublished: +this.getAttributeValue(elements, 'yearpublished'),
-        // @ts-ignore
         minPlayers: +this.getAttributeValue(elements, 'minplayers'),
-        // @ts-ignore
         maxPlayers: +this.getAttributeValue(elements, 'maxplayers'),
-        // @ts-ignore
         playingTime: +this.getAttributeValue(elements, 'playingtime'),
-        // @ts-ignore
         minAge: +this.getAttributeValue(elements, 'minage'),
         suggestedPlayAge: this.getSuggestedPlayAge(elements),
-        // @ts-ignore
         themes: this.getAllAttributesOfType(elements, 'boardgamecategory')
       };
     } else {
@@ -75,5 +70,22 @@ export class GamesUtils {
 
   static getAllAttributesOfType(elements: Thing[], attribute: string): Array<string | undefined> {
     return elements.filter(el => el.attributes?.type === attribute).map(el => el.attributes.value);
+  }
+
+  static libraryIdOfGame(game: Game | BorrowStatus): string {
+    let library;
+    if (('category' in game) && game.category in BoardGameCategory) {
+      library = 'boardGames';
+    }
+    if (('category' in game) && game.category in Consoles) {
+      library = 'videoGames';
+    }
+    if (('category' in game) && game.category === 'outsideGames') {
+      library = 'outsideGames';
+    }
+    if ('libraryId' in game) {
+      library = game.libraryId;
+    }
+    return library;
   }
 }

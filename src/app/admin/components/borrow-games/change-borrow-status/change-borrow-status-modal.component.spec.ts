@@ -8,9 +8,9 @@ describe('ChangeBorrowStatusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChangeBorrowStatusModalComponent ]
+      declarations: [ChangeBorrowStatusModalComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

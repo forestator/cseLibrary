@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable, take} from 'rxjs';
 import {Biblio, Library} from '../../models/author.model';
-import {BoardGame, BoardGameCategory} from '../../models/boardGame.model';
+import {BoardGame} from '../../models/boardGame.model';
 import {BddGame, LudoStatus, Ludotheque} from '../../models/common.model';
-import {Consoles, VideoGame} from '../../models/videoGames.model';
+import {VideoGame} from '../../models/videoGames.model';
 import {OutsideGame} from '../../models/outsideGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
 import {BorrowStatus, CseUser} from '../../models/users.model';
@@ -76,17 +76,9 @@ export class FirebaseDatabaseService {
     this.userService.removeBorrowedGameOfUser(employee, game.ref);
   }
 
-  private updateGame(game: BoardGame | VideoGame | OutsideGame | BorrowStatus, newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE) {
-    let library: string;
-    if (('category' in game) && game.category in BoardGameCategory) {
-      library = 'boardGames';
-    } else if (('category' in game) && game.category in Consoles) {
-      library = 'videoGames';
-    } else if ('libraryId' in game) {
-      library = game.libraryId;
-    } else {
-      library = 'outsideGames';
-    }
-    this.db.object(`ludotheque/${library}/games/${game.ref}`).update({status: newStatus});
+  private updateGame(game: BoardGame | VideoGame | OutsideGame | BorrowStatus,
+                     newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE) {
+    this.db.object(`ludotheque/${ GamesUtils.libraryIdOfGame(game)}/games/${game.ref}`)
+      .update({status: newStatus});
   }
 }

@@ -9,7 +9,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AppCommonModule} from '../common/app-common.module';
-import {LudoBorrowTableComponent} from './components/borrow-games/ludo-borrow-table/ludo-borrow-table.component';
+import {LudoTableComponent} from './components/ludo-table/ludo-table.component';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -24,6 +24,7 @@ import {
   ChangeBorrowStatusModalComponent
 } from './components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     AdminHomeComponent,
     AdminGamesComponent,
     BorrowGamesComponent,
-    LudoBorrowTableComponent,
+    LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
     AdminMenuComponent
@@ -56,7 +57,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     RouterLink,
     MatListModule,
     MatAutocompleteModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSelectModule
   ]
 })
 export class AdminModule { }
