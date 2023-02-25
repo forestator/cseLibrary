@@ -97131,7 +97131,7 @@
           "id": "puzzleCameleon",
           "name": "Puzzle art Cameléon (150pcs)",
           "poids": "582",
-          "status": "EMPRUNTE",
+          "status": "AVAILABLE",
           "thumbnail": "assets/covers/boardGames/covers/puzzle/Puzzle-Cameleon-(150pcs).jpg"
         },
         "ludo112": {
@@ -97897,7 +97897,7 @@
           "id": "148228",
           "name": "Splendor",
           "poids": "818",
-          "status": "EMPRUNTE"
+          "status": "AVAILABLE"
         },
         "ludo65": {
           "category": "enfant",
@@ -98305,198 +98305,207 @@
       }
     },
     "outsideGames": {
-      "games": [
-        {
-          "cover": "assets/covers/outsideGames/hape-quadrilla-wooden-marble-run-construction-cyclone-1242127374_ML.avif",
-          "name": "Quadrilla- Marble Run Construction",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/crazyCoordinationGame.jpg",
-          "name": "Crazy Coordination Game",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/kit-dequilibre-baby-gym-2-6-ans.avif",
-          "name": "Kit équilibre enfant",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/figabol.jfif",
-          "name": "Fingabol",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/tunnel-de-motricite.jpg",
-          "name": "Tunnel de motricité",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/multidefis-everest.jpg",
-          "name": "Mount everest (planche à trou)",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/detanque.jpg",
-          "name": "LA DETANQUE",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/flipper-foot.jpg.crdownload",
-          "name": "FLIPPER FOOT",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/mikado.jpg",
-          "name": "MIKADO GEANT",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/4013594400596-jeu-de-lancer-d-anneaux_P1.avif",
-          "name": "LANCER D'ANNEAUX",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/WeyKick-Stadion-Football-1-lg.jpg",
-          "name": "WEYKICK STADION",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/billard-hollandais.png",
-          "name": "BILLARD HOLLANDAIS",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/birdy-wall-pieces-tombees-face-300x300.png",
-          "name": "BIRDY WALL",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/arcventouse.jpg",
-          "name": "Arc et fléches ventouses",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/boomerang-en-bois-fait-a-la-main-30cm.jpg",
-          "name": "BOOMERANG",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
+      "games": {
+        "510049": {
+          "category": "outsideGames",
           "cover": "assets/covers/outsideGames/echasses-adultes-190-cm-fabrication-francaise.jpg",
           "name": "ECHASSES ADULTES",
-          "ref": "PLN-R",
           "status": "AVAILABLE"
         },
-        {
+        "510050": {
+          "category": "outsideGames",
           "cover": "assets/covers/outsideGames/echasses-reglables-enfant.jpg",
           "name": "ECHASSES ENFANTS",
-          "ref": "PLN-R",
           "status": "AVAILABLE"
         },
-        {
-          "cover": "assets/covers/outsideGames/jeuxDuRoi.jpg",
-          "name": "JEU DU ROI (>  4 ans)",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/mikabille.jfif",
-          "name": "MIKABILLE (>  4 ans)",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/pass-trappe-mini.webp",
-          "name": "PASSE TRAPPE (>  4 ans)",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/800px-Palets.jfif",
-          "name": "PLANCHE À PALETS + PALETS",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/toucher-trapenum.jpg",
-          "name": "TRAPENUM  (>  5 ans)",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/skate.jpg",
-          "name": "SKATE BOARD",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "name": "VILLA PALETTI (>  5 ans)",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
-          "cover": "assets/covers/outsideGames/jeu-de-quilles-molkky-luxe.avif",
-          "name": "Molkky",
-          "ref": "PLN-R",
-          "status": "AVAILABLE"
-        },
-        {
+        "551958": {
+          "category": "outsideGames",
           "cover": "assets/covers/outsideGames/Renard-et-Poule.jpg",
           "name": "JEU DE LA POULE (>  4 ans)",
-          "ref": "PLN-R",
           "status": "AVAILABLE"
         },
-        {
+        "551960": {
+          "category": "outsideGames",
           "cover": "assets/covers/outsideGames/xplus.jpg",
           "name": "X PLUS (>  7 ans)",
-          "ref": "PLN-R",
           "status": "AVAILABLE"
         },
-        {
-          "cover": "assets/covers/outsideGames/quoridor.jpg",
-          "name": "QUORIDOR DE LUXE (>  6 ans)",
-          "ref": "PLN-R",
+        "553029": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/mikabille.jfif",
+          "name": "MIKABILLE (>  4 ans)",
+          "ref": "553029",
           "status": "AVAILABLE"
         },
-        {
+        "559716": {
+          "category": "outsideGames",
           "cover": "assets/covers/outsideGames/batik.jpg",
           "name": "BATIK (>  6 ans)",
-          "ref": "PLN-R",
           "status": "AVAILABLE"
         },
-        {
-          "name": "TAM FOOT (>  4 ans)",
-          "ref": "PLN-R",
+        "97650027": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/mikado.jpg",
+          "name": "MIKADO GEANT",
           "status": "AVAILABLE"
         },
-        {
+        "97650096": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/multidefis-everest.jpg",
+          "name": "Mount everest (planche à trou)",
+          "status": "AVAILABLE"
+        },
+        "3770007317056": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/figabol.jfif",
+          "name": "Fingabol",
+          "status": "AVAILABLE"
+        },
+        "71171986203": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/arcventouse.jpg",
+          "name": "Arc et fléches ventouses",
+          "status": "AVAILABLE"
+        },
+        "8717775442042": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/crazyCoordinationGame.jpg",
+          "name": "Crazy Coordination Game",
+          "status": "AVAILABLE"
+        },
+        "9780201356878": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/billard-hollandais.png",
+          "name": "BILLARD HOLLANDAIS",
+          "status": "AVAILABLE"
+        },
+        "Detanque PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/detanque.jpg",
+          "name": "LA DETANQUE",
+          "status": "AVAILABLE"
+        },
+        "Flipper foot PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/flipper-foot.jpg.crdownload",
+          "name": "FLIPPER FOOT",
+          "status": "AVAILABLE"
+        },
+        "Kit Equilibre PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/kit-dequilibre-baby-gym-2-6-ans.avif",
+          "name": "Kit équilibre enfant",
+          "status": "AVAILABLE"
+        },
+        "Quadrilla PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/hape-quadrilla-wooden-marble-run-construction-cyclone-1242127374_ML.avif",
+          "name": "Quadrilla- Marble Run Construction",
+          "status": "AVAILABLE"
+        },
+        "STC56": {
+          "category": "outsideGames",
+          "status": "AVAILABLE"
+        },
+        "Tunnel Motricite PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/tunnel-de-motricite.jpg",
+          "name": "Tunnel de motricité",
+          "status": "AVAILABLE"
+        },
+        "birdy wall PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/birdy-wall-pieces-tombees-face-300x300.png",
+          "name": "BIRDY WALL",
+          "status": "AVAILABLE"
+        },
+        "boomerang PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/boomerang-en-bois-fait-a-la-main-30cm.jpg",
+          "name": "BOOMERANG",
+          "status": "AVAILABLE"
+        },
+        "jeu du roi PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/jeuxDuRoi.jpg",
+          "name": "JEU DU ROI (>  4 ans)",
+          "status": "AVAILABLE"
+        },
+        "kapla bleu PLN-R": {
+          "category": "outsideGames",
           "cover": "assets/covers/outsideGames/baril-hiver-de-200-kapla.webp",
           "name": "Baril Kapla + bleu (livres modèles disponibles)",
-          "ref": "PLN-R",
           "status": "AVAILABLE"
         },
-        {
+        "kapla rouge PLN-R": {
+          "category": "outsideGames",
           "cover": "assets/covers/outsideGames/kapla-baril-200-planchettes.webp",
           "name": "Baril Kapla + Rouge (livres modèles disponibles)",
-          "ref": "PLN-R",
+          "status": "AVAILABLE"
+        },
+        "lancer anneaux PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/4013594400596-jeu-de-lancer-d-anneaux_P1.avif",
+          "name": "LANCER D'ANNEAUX",
+          "status": "AVAILABLE"
+        },
+        "ludo100": {
+          "category": "outsideGames",
+          "status": "AVAILABLE"
+        },
+        "molkky PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/jeu-de-quilles-molkky-luxe.avif",
+          "name": "Molkky",
+          "status": "AVAILABLE"
+        },
+        "passe trappe PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/pass-trappe-mini.webp",
+          "name": "PASSE TRAPPE (>  4 ans)",
+          "status": "AVAILABLE"
+        },
+        "planche palets PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/800px-Palets.jfif",
+          "name": "PLANCHE À PALETS + PALETS",
+          "status": "AVAILABLE"
+        },
+        "quoridor PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/quoridor.jpg",
+          "name": "QUORIDOR DE LUXE (>  6 ans)",
+          "status": "AVAILABLE"
+        },
+        "skate PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/skate.jpg",
+          "name": "SKATE BOARD",
+          "status": "AVAILABLE"
+        },
+        "tam foot PLN-R": {
+          "category": "outsideGames",
+          "name": "TAM FOOT (>  4 ans)",
+          "status": "AVAILABLE"
+        },
+        "trapenum PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/toucher-trapenum.jpg",
+          "name": "TRAPENUM  (>  5 ans)",
+          "status": "AVAILABLE"
+        },
+        "villa PLN-R": {
+          "category": "outsideGames",
+          "name": "VILLA PALETTI (>  5 ans)",
+          "status": "AVAILABLE"
+        },
+        "weykick PLN-R": {
+          "category": "outsideGames",
+          "cover": "assets/covers/outsideGames/WeyKick-Stadion-Football-1-lg.jpg",
+          "name": "WEYKICK STADION",
           "status": "AVAILABLE"
         }
-      ],
+      },
       "library": {
         "id": "outsideGames",
         "name": "Jeux de plein air et grand jeux",
@@ -99459,7 +99468,7 @@
           "status": "AVAILABLE",
           "type": "ACCESSORY"
         },
-        "CONSL 01": {
+        "CONSL PS4_01": {
           "category": "ps4",
           "cover": "assets/covers/videoGames/ps4.jpg",
           "description": "Accompagné de deux manettes (Malettes)",
@@ -99467,7 +99476,7 @@
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
-        "CONSL 02": {
+        "CONSL PS4_02": {
           "category": "ps4",
           "cover": "assets/covers/videoGames/ps4.jpg",
           "description": "Accompagné de deux manettes (Malettes)",
@@ -99483,44 +99492,6 @@
           "status": "AVAILABLE",
           "type": "CONSOLE"
         },
-        "CONSL01": {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
-          "description": "Console avec une manette",
-          "name": "Console 1",
-          "status": "AVAILABLE",
-          "type": "CONSOLE"
-        },
-        "CONSL02": {
-          "category": "xboxOne",
-          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
-          "description": "Console avec une manette",
-          "name": "Console 2",
-          "status": "AVAILABLE",
-          "type": "CONSOLE"
-        },
-        "CONSL03": {
-          "category": "switch",
-          "cover": "assets/covers/videoGames/NSwitchTop.png",
-          "description": "La console est accompagnée de deux JoyCon et un chargeur",
-          "name": "Console switch 3",
-          "status": "AVAILABLE",
-          "type": "CONSOLE"
-        },
-        "MAN01": {
-          "category": "xboxOne",
-          "description": "Manette supplémentaire",
-          "name": "Manette 1",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
-        "MAN02": {
-          "category": "xboxOne",
-          "description": "Manette supplémentaire",
-          "name": "Manette 2",
-          "status": "AVAILABLE",
-          "type": "ACCESSORY"
-        },
         "PS4-CAM01": {
           "category": "ps4",
           "cover": "assets/covers/videoGames/ps4Cam.jpg",
@@ -99534,6 +99505,30 @@
           "name": "Casque VR (nécessite la caméra)",
           "status": "AVAILABLE",
           "type": "ACCESSORY"
+        },
+        "SW-CONSL01": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 1",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        "SW-CONSL02": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 2",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        "SW-CONSL03": {
+          "category": "switch",
+          "cover": "assets/covers/videoGames/NSwitchTop.png",
+          "description": "La console est accompagnée de deux JoyCon et un chargeur",
+          "name": "Console switch 3",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
         },
         "SW-MAN01": {
           "category": "switch",
@@ -99553,6 +99548,36 @@
           "category": "switch",
           "cover": "assets/covers/videoGames/joyConChargeur.png",
           "name": "Accessoire Switch : 2 Joy-Con + chargeur 4 Joy-Con",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        "XBX1-CONSL01": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
+          "description": "Console avec une manette",
+          "name": "Console 1",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        "XBX1-CONSL02": {
+          "category": "xboxOne",
+          "cover": "assets/covers/videoGames/cat/xbox-one-s-test__w1200.jpg",
+          "description": "Console avec une manette",
+          "name": "Console 2",
+          "status": "AVAILABLE",
+          "type": "CONSOLE"
+        },
+        "XBX1-MAN01": {
+          "category": "xboxOne",
+          "description": "Manette supplémentaire",
+          "name": "Manette 1",
+          "status": "AVAILABLE",
+          "type": "ACCESSORY"
+        },
+        "XBX1-MAN02": {
+          "category": "xboxOne",
+          "description": "Manette supplémentaire",
+          "name": "Manette 2",
           "status": "AVAILABLE",
           "type": "ACCESSORY"
         }
@@ -99595,5 +99620,37 @@
         "resume": ""
       }
     }
-  }
+  },
+  "users": [
+    {
+      "email": "maximilien.foret@harmonicinc.com",
+      "firstName": "Maximilien",
+      "id": 0,
+      "lastName": "Forêt"
+    },
+    {
+      "email": "fabrice.templon@harmonicinc.com",
+      "firstName": "Fabrice",
+      "id": 1,
+      "lastName": "Templon"
+    },
+    {
+      "email": "thibault.riou@harmonicinc.com",
+      "firstName": "Thibault",
+      "id": 2,
+      "lastName": "Riou"
+    },
+    {
+      "email": "veronique.esnaultlunel@harmonicinc.com",
+      "firstName": "Veronique",
+      "id": 3,
+      "lastName": "EsnaultLunel"
+    },
+    {
+      "email": "pasca.malnoe@harmonicinc.com",
+      "firstName": "Pascal",
+      "id": 4,
+      "lastName": "Malnoe"
+    }
+  ]
 }
