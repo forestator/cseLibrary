@@ -81,4 +81,8 @@ export class FirebaseDatabaseService {
     this.db.object(`ludotheque/${ GamesUtils.libraryIdOfGame(game)}/games/${game.ref}`)
       .update({status: newStatus});
   }
+
+  addGame(game: BoardGame | VideoGame | OutsideGame, libraryId: string): Promise<void> {
+    return this.db.object(`ludotheque/${libraryId}/games/${game.ref}`).set(game);
+  }
 }
