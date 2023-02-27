@@ -8,10 +8,8 @@ export enum Consoles {
 }
 
 export interface VideoGame extends Game {
-  description?: string;
   type?: VideoGameType;
   cover?: string;
-  category: Consoles;
 }
 
 export enum VideoGameType {

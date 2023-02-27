@@ -1,5 +1,5 @@
-import {VideoGame} from './videoGames.model';
-import {BoardGame} from './boardGame.model';
+import {Consoles, VideoGame} from './videoGames.model';
+import {BoardGame, BoardGameCategory} from './boardGame.model';
 import {Library} from './author.model';
 import {OutsideGame} from './outsideGames.model';
 
@@ -24,7 +24,8 @@ export interface Game {
   ref: string;
   name: string;
   status: LudoStatus;
-  category?: string;
+  category?: BoardGameCategory | Consoles | string;
+  description?: string;
 }
 
 export interface BddGame {

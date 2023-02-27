@@ -25,6 +25,7 @@ export class FirebaseDatabaseService {
   public videoGamesLibrary$: Observable<Library | null>;
   public outsideGames$: Observable<Array<OutsideGame> | null>;
   public outsideGamesLibrary$: Observable<Library | null>;
+  public outsideGamesOneShot$: Observable<Array<OutsideGame> | null>;
 
   constructor(private db: AngularFireDatabase, private userService: UserService) {
     this.ludotheque$ = this.db.object<Ludotheque>('ludotheque').valueChanges()
@@ -59,6 +60,11 @@ export class FirebaseDatabaseService {
 
     this.outsideGames$ = this.db.object<BddGame>('ludotheque/outsideGames/games')
       .valueChanges().pipe(
+        map((outsideGameBdd) => GamesUtils.bddGameToLudoGame(outsideGameBdd) as Array<OutsideGame>)
+      );
+    this.outsideGamesOneShot$ = this.db.object<BddGame>('ludotheque/outsideGames/games')
+      .valueChanges().pipe(
+        take(1),
         map((outsideGameBdd) => GamesUtils.bddGameToLudoGame(outsideGameBdd) as Array<OutsideGame>)
       );
     this.outsideGamesLibrary$ = this.db.object<Library>('ludotheque/outsideGames/library').valueChanges()

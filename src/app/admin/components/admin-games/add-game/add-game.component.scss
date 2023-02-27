@@ -1,0 +1,21 @@
+.game-controls {
+  display: flex;
+
+  .game-control-header-container {
+    flex: 1;
+    padding: 20px;
+
+    &.search {
+      height: fit-content;
+    }
+
+    &.game-form {
+      display: flex;
+      flex-direction: column;
+
+      .select-library {
+        margin-bottom: 22px;
+      }
+    }
+  }
+}

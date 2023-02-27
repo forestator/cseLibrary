@@ -18,9 +18,9 @@ export interface Thing {
 }
 
 export interface BoardGame extends Game {
-  id: string,
-  category:  BoardGameCategory,
-  poids: string,
+  id: string;
+  category:  BoardGameCategory;
+  poids: string;
   thumbnail?: string;
   fullImage?: string;
   description?: string;

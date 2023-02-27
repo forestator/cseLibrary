@@ -1,25 +1,3 @@
-.game-controls {
-  display: flex;
-  justify-content: space-between;
-
-  .game-control-header-container {
-    padding: 5px;
-
-    &.search {
-      height: fit-content;
-    }
-
-    &.game-form {
-      display: flex;
-      flex-direction: column;
-
-      .select-library {
-        margin-bottom: 22px;
-      }
-    }
-  }
-}
-
 mat-divider {
   margin: 20px 10px;
 }

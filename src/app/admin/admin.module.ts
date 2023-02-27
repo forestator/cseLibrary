@@ -25,6 +25,7 @@ import {
 } from './components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
+import {AddGameComponent} from './components/admin-games/add-game/add-game.component';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent
+    AdminMenuComponent, AddGameComponent
   ],
   exports: [
     AdminMenuComponent
@@ -61,4 +62,5 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}
