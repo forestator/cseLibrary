@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {FileUpload} from '../../../models/fileUpload.model';
-import {StorageUploadService} from '../../../services/storage-upload.service';
+import {StorageUploadService} from '../../../services/firebase/storage-upload.service';
 
 @Component({
   selector: 'app-upload-form',

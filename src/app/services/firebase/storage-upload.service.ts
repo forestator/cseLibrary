@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {finalize, Observable} from 'rxjs';
 import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/compat/storage';
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/compat/database';
-import {FileUpload} from '../models/fileUpload.model';
-import {VideoGame} from '../models/videoGames.model';
-import {OutsideGame} from '../models/outsideGames.model';
-import {BoardGame} from '../models/boardGame.model';
-import {FirebaseDatabaseService} from './firebase/firebase-database.service';
-import {GamesUtils} from '../models/gamesUtils';
+import {FileUpload} from '../../models/fileUpload.model';
+import {VideoGame} from '../../models/videoGames.model';
+import {OutsideGame} from '../../models/outsideGames.model';
+import {BoardGame} from '../../models/boardGame.model';
+import {FirebaseDatabaseService} from './firebase-database.service';
+import {GamesUtils} from '../../models/gamesUtils';
 
 @Injectable({
   providedIn: 'root'

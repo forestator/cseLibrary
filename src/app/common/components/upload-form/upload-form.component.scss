@@ -1,10 +1,17 @@
-img {
-  margin-top: 20px;
-}
+.upload-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-.upload-btn {
+  img {
+    margin: 20px 0;
+  }
 
-  .progress {
-    margin-left: 5px;
+  .upload-btn {
+
+    .progress {
+      margin-left: 5px;
+    }
   }
 }
