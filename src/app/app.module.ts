@@ -19,6 +19,7 @@ import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {AdminModule} from './admin/admin.module';
 import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
+import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDK-byU9NpioO3Lve34_Y4QvxvOviDCKFY",
@@ -53,6 +54,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
+    AngularFireStorageModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     LudothequeModule,
     BibliothequeModule,

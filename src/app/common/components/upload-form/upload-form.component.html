@@ -1,0 +1,31 @@
+<div>
+  <button type="button" mat-raised-button (click)="fileInput.click()">Changer l'image</button>
+  <input hidden (change)="selectFile($event)" #fileInput type="file"
+         [multiple]="false"
+         accept="image/png, image/jpeg">
+
+  <img [width]="250"
+       [src]="previewImage ?? selectedGame.cover ?? selectedGame.thumbnail"/>
+
+  <div class="upload-btn">
+    <button
+      color="primary"
+      mat-raised-button
+      [disabled]="!selectedFile"
+      (click)="upload()">
+      Upload
+    </button>
+    <span *ngIf="currentFileUpload" class="progress">
+      <div
+        class="progress-bar progress-bar-info"
+        role="progressbar"
+        attr.aria-valuenow="{{ percentage }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: percentage + '%' }"
+      >
+        {{ percentage }}%
+      </div>
+    </span>
+  </div>
+</div>

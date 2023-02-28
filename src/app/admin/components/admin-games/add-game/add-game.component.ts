@@ -24,6 +24,9 @@ export class AddGameComponent implements OnInit, OnChanges {
   allGames: Game[];
   filteredOptions$: Observable<Array<Game>>;
   searchText: FormControl<string>;
+  selectedGame: any;
+  fileToUpload: string | ArrayBuffer;
+
   constructor(private fb: FormBuilder, private firebaseDatabaseService: FirebaseDatabaseService) {
     this.gameForm = this.initForm();
     this.modifyGameForm = this.initForm();
@@ -96,18 +99,19 @@ export class AddGameComponent implements OnInit, OnChanges {
   }
 
   selectGameToModify($event: MatAutocompleteSelectedEvent) {
-    const selectedGame = $event.option.value;
+    this.selectedGame = $event.option.value;
     this.modifyGameForm.setValue({
-      ref: selectedGame.ref,
-      name: selectedGame.name,
-      categoryId: selectedGame.category,
-      libraryId: GamesUtils.libraryIdOfGame(selectedGame),
-      weight: selectedGame?.poids ?? 0,
-      id: selectedGame?.id ?? ''
+      ref: $event.option.value.ref,
+      name: $event.option.value.name,
+      categoryId: $event.option.value.category,
+      libraryId: GamesUtils.libraryIdOfGame($event.option.value),
+      weight: $event.option.value?.poids ?? 0,
+      id: $event.option.value?.id ?? ''
     });
   }
 
   updateGame() {
     console.log(this.modifyGameForm.value);
+    console.log(this.fileToUpload);
   }
 }

@@ -9,6 +9,7 @@ import {OutsideGame} from '../../models/outsideGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
 import {BorrowStatus, CseUser} from '../../models/users.model';
 import {UserService} from './user.service';
+import {FileUpload} from '../../models/fileUpload.model';
 
 @Injectable({
   providedIn: 'root'
@@ -73,19 +74,36 @@ export class FirebaseDatabaseService {
   }
 
   setNewBorrowForUser(game: BoardGame | VideoGame | OutsideGame, employee: CseUser): void {
-    this.updateGame(game, LudoStatus.EMPRUNTE);
+    this.updateGameStatus(game, LudoStatus.EMPRUNTE);
     this.userService.setBorrowedGameOfUser(employee, game);
   }
 
   removeBorrowForUser(game: BoardGame | VideoGame | OutsideGame, employee: CseUser): void {
-    this.updateGame(game, LudoStatus.AVAILABLE);
+    this.updateGameStatus(game, LudoStatus.AVAILABLE);
     this.userService.removeBorrowedGameOfUser(employee, game.ref);
   }
 
-  private updateGame(game: BoardGame | VideoGame | OutsideGame | BorrowStatus,
-                     newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE) {
-    this.db.object(`ludotheque/${ GamesUtils.libraryIdOfGame(game)}/games/${game.ref}`)
+  private updateGameStatus(game: BoardGame | VideoGame | OutsideGame | BorrowStatus,
+                           newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE) {
+    this.db.object(`ludotheque/${GamesUtils.libraryIdOfGame(game)}/games/${game.ref}`)
       .update({status: newStatus});
+  }
+
+  public updateGameImage(game: BoardGame | VideoGame | OutsideGame,
+                         newCover: FileUpload) {
+    const libraryIdOfGame = GamesUtils.libraryIdOfGame(game);
+    let update;
+    switch (libraryIdOfGame) {
+      case 'boardGames':
+        update = {thumbnail: newCover.url};
+        break;
+      case 'videoGames':
+      case 'outsideGames':
+        update = {cover: newCover.url};
+        break;
+    }
+    this.db.object(`ludotheque/${libraryIdOfGame}/games/${game.ref}`)
+      .update(update);
   }
 
   addGame(game: BoardGame | VideoGame | OutsideGame, libraryId: string): Promise<void> {
