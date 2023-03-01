@@ -1,6 +1,5 @@
 import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
 import {Consoles, VideoGame} from './videoGames.model';
-import {OutsideGame} from './outsideGames.model';
 import {BddGame, Game} from './common.model';
 import {BorrowStatus} from './users.model';
 
@@ -10,8 +9,7 @@ export class GamesUtils {
       const elements = boardGameWithDetails.elements;
       return {
         ...ludoGame,
-        thumbnail: this.getAttributeFirstElementText(elements, 'thumbnail') ?? '',
-        fullImage: this.getAttributeFirstElementText(elements, 'image') ?? '',
+        cover: ludoGame?.cover ?? this.getAttributeFirstElementText(elements, 'image'),
         description: this.getAttributeFirstElementText(elements, 'description'),
         yearPublished: +this.getAttributeValue(elements, 'yearpublished'),
         minPlayers: +this.getAttributeValue(elements, 'minplayers'),
@@ -26,7 +24,7 @@ export class GamesUtils {
     }
   }
 
-  static bddGameToLudoGame(bddGame: BddGame | null): Array<BoardGame | VideoGame | OutsideGame> {
+  static bddGameToLudoGame(bddGame: BddGame | null): Array<BoardGame | VideoGame | Game> {
     if (bddGame) {
       return Object.keys(bddGame).map(
         (key) => Object.assign({ref: key}, bddGame[key])

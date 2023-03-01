@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {BoardGame} from '../../../../models/boardGame.model';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {LudoStatus} from '../../../../models/common.model';
+import {Game, LudoStatus} from '../../../../models/common.model';
 import {UserService} from '../../../../services/firebase/user.service';
 import {map, Observable} from 'rxjs';
 import {BorrowStatus, CseUser} from '../../../../models/users.model';
@@ -9,7 +9,6 @@ import {FormControl} from '@angular/forms';
 import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {VideoGame} from '../../../../models/videoGames.model';
-import {OutsideGame} from '../../../../models/outsideGames.model';
 
 @Component({
   selector: 'app-change-borrow-status',
@@ -29,7 +28,7 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
     public firebaseDatabaseService: FirebaseDatabaseService,
     @Inject(MAT_DIALOG_DATA) public data: {
       users: Array<CseUser>,
-      game: BoardGame | VideoGame | OutsideGame
+      game: BoardGame | VideoGame | Game
       returnForUser?: CseUser
     },
   ) {

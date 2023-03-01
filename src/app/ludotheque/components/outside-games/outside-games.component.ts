@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Library} from '../../../models/author.model';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
-import {OutsideGame} from '../../../models/outsideGames.model';
+import {Game} from '../../../models/common.model';
 
 @Component({
   selector: 'app-outside-games',
@@ -11,6 +11,6 @@ import {OutsideGame} from '../../../models/outsideGames.model';
 })
 export class OutsideGamesComponent {
   library$: Observable<Library | null> = this.firebaseDatabase.outsideGamesLibrary$;
-  games$: Observable<Array<OutsideGame> | null> = this.firebaseDatabase.outsideGames$;
+  games$: Observable<Array<Game> | null> = this.firebaseDatabase.outsideGames$;
   constructor(private firebaseDatabase: FirebaseDatabaseService) { }
 }

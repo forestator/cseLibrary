@@ -2,7 +2,6 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {BoardGame, BoardGameCategory} from '../../../../models/boardGame.model';
 import {Consoles, VideoGame} from '../../../../models/videoGames.model';
-import {OutsideGame} from '../../../../models/outsideGames.model';
 import {Game, LudoStatus} from '../../../../models/common.model';
 import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {map, Observable} from 'rxjs';
@@ -79,7 +78,7 @@ export class AddGameComponent implements OnInit, OnChanges {
   async addGame() {
     if (this.gameForm.valid) {
       const {id, ref, name, categoryId, libraryId, weight} = this.gameForm.value;
-      const game: BoardGame | VideoGame | OutsideGame =
+      const game: BoardGame | VideoGame | Game =
         {ref, name, category: categoryId, poids: weight, id, status: LudoStatus.AVAILABLE};
       try {
         await this.firebaseDatabaseService.addGame(game, libraryId);

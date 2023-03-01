@@ -1,5 +1,5 @@
 <div [id]="boardGame.id" *ngIf="boardGame" class="book-core">
-  <ng-container [ngTemplateOutlet]="image" *ngIf="parity"></ng-container>
+  <ng-container [ngTemplateOutlet]="image" *ngIf="parity && boardGame.cover"></ng-container>
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
       <app-badge class="badge" [id]="boardGame.name" [status]="boardGame.status"></app-badge>
@@ -19,14 +19,11 @@
     </div>
     <div class="book-resume" [innerHTML]="boardGame.description"></div>
   </div>
-  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity"></ng-container>
+  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && boardGame.cover"></ng-container>
 </div>
 
 <ng-template #image>
-  <div class="book-cover" *ngIf="boardGame!.fullImage || boardGame!.thumbnail">
-    <img width="400" height="400" *ngIf="boardGame!.fullImage;else thumbnail" [src]="boardGame!.fullImage" alt=""/>
-    <ng-template #thumbnail>
-      <img width="400" height="400" *ngIf="boardGame!.thumbnail" [src]="boardGame!.thumbnail" alt=""/>
-    </ng-template>
+  <div class="book-cover">
+    <img width="400" height="400" [src]="boardGame!.cover" [alt]="boardGame.name"/>
   </div>
 </ng-template>

@@ -4,10 +4,10 @@ import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/compat/st
 import {AngularFireDatabase, AngularFireList} from '@angular/fire/compat/database';
 import {FileUpload} from '../../models/fileUpload.model';
 import {VideoGame} from '../../models/videoGames.model';
-import {OutsideGame} from '../../models/outsideGames.model';
 import {BoardGame} from '../../models/boardGame.model';
 import {FirebaseDatabaseService} from './firebase-database.service';
 import {GamesUtils} from '../../models/gamesUtils';
+import {Game} from '../../models/common.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class StorageUploadService {
               private firebaseDatabaseService: FirebaseDatabaseService,
               private storage: AngularFireStorage) { }
 
-  pushFileToStorage(fileUpload: FileUpload, gameToUpdate: VideoGame | OutsideGame | BoardGame): Observable<number> {
+  pushFileToStorage(fileUpload: FileUpload, gameToUpdate: VideoGame | Game | BoardGame): Observable<number> {
     const libraryId: string = GamesUtils.libraryIdOfGame(gameToUpdate);
     const fileExtension: string = fileUpload.name.split('.').pop();
     const filePath: string = `${this.basePath}/${libraryId}/${gameToUpdate.name}.${fileExtension}`;
@@ -39,7 +39,7 @@ export class StorageUploadService {
     return uploadTask.percentageChanges();
   }
 
-  private saveFileData(gameToUpdate: VideoGame | OutsideGame | BoardGame, fileUpload: FileUpload): void {
+  private saveFileData(gameToUpdate: VideoGame | Game | BoardGame, fileUpload: FileUpload): void {
     this.firebaseDatabaseService.updateGameImage(gameToUpdate, fileUpload);
   }
 

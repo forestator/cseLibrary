@@ -3,9 +3,8 @@ import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable, take} from 'rxjs';
 import {Biblio, Library} from '../../models/author.model';
 import {BoardGame} from '../../models/boardGame.model';
-import {BddGame, LudoStatus, Ludotheque} from '../../models/common.model';
+import {BddGame, Game, LudoStatus, Ludotheque} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
-import {OutsideGame} from '../../models/outsideGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
 import {BorrowStatus, CseUser} from '../../models/users.model';
 import {UserService} from './user.service';
@@ -24,9 +23,9 @@ export class FirebaseDatabaseService {
   public videoGames$: Observable<Array<VideoGame>>;
   public videoGamesOneShot$: Observable<Array<VideoGame>>;
   public videoGamesLibrary$: Observable<Library | null>;
-  public outsideGames$: Observable<Array<OutsideGame> | null>;
+  public outsideGames$: Observable<Array<Game> | null>;
   public outsideGamesLibrary$: Observable<Library | null>;
-  public outsideGamesOneShot$: Observable<Array<OutsideGame> | null>;
+  public outsideGamesOneShot$: Observable<Array<Game> | null>;
 
   constructor(private db: AngularFireDatabase, private userService: UserService) {
     this.ludotheque$ = this.db.object<Ludotheque>('ludotheque').valueChanges()
@@ -61,35 +60,35 @@ export class FirebaseDatabaseService {
 
     this.outsideGames$ = this.db.object<BddGame>('ludotheque/outsideGames/games')
       .valueChanges().pipe(
-        map((outsideGameBdd) => GamesUtils.bddGameToLudoGame(outsideGameBdd) as Array<OutsideGame>)
+        map((outsideGameBdd) => GamesUtils.bddGameToLudoGame(outsideGameBdd) as Array<Game>)
       );
     this.outsideGamesOneShot$ = this.db.object<BddGame>('ludotheque/outsideGames/games')
       .valueChanges().pipe(
         take(1),
-        map((outsideGameBdd) => GamesUtils.bddGameToLudoGame(outsideGameBdd) as Array<OutsideGame>)
+        map((outsideGameBdd) => GamesUtils.bddGameToLudoGame(outsideGameBdd) as Array<Game>)
       );
     this.outsideGamesLibrary$ = this.db.object<Library>('ludotheque/outsideGames/library').valueChanges()
       .pipe(take(1));
 
   }
 
-  setNewBorrowForUser(game: BoardGame | VideoGame | OutsideGame, employee: CseUser): void {
+  setNewBorrowForUser(game: BoardGame | VideoGame | Game, employee: CseUser): void {
     this.updateGameStatus(game, LudoStatus.EMPRUNTE);
     this.userService.setBorrowedGameOfUser(employee, game);
   }
 
-  removeBorrowForUser(game: BoardGame | VideoGame | OutsideGame, employee: CseUser): void {
+  removeBorrowForUser(game: BoardGame | VideoGame | Game, employee: CseUser): void {
     this.updateGameStatus(game, LudoStatus.AVAILABLE);
     this.userService.removeBorrowedGameOfUser(employee, game.ref);
   }
 
-  private updateGameStatus(game: BoardGame | VideoGame | OutsideGame | BorrowStatus,
+  private updateGameStatus(game: BoardGame | VideoGame | Game | BorrowStatus,
                            newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE) {
     this.db.object(`ludotheque/${GamesUtils.libraryIdOfGame(game)}/games/${game.ref}`)
       .update({status: newStatus});
   }
 
-  public updateGameImage(game: BoardGame | VideoGame | OutsideGame,
+  public updateGameImage(game: BoardGame | VideoGame | Game,
                          newCover: FileUpload) {
     const libraryIdOfGame = GamesUtils.libraryIdOfGame(game);
     let update;
@@ -106,7 +105,7 @@ export class FirebaseDatabaseService {
       .update(update);
   }
 
-  addGame(game: BoardGame | VideoGame | OutsideGame, libraryId: string): Promise<void> {
+  addGame(game: BoardGame | VideoGame | Game, libraryId: string): Promise<void> {
     return this.db.object(`ludotheque/${libraryId}/games/${game.ref}`).set(game);
   }
 }

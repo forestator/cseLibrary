@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {OutsideGame} from '../../../../models/outsideGames.model';
+import {Game} from '../../../../models/common.model';
 
 @Component({
   selector: 'app-outside-game-row',
@@ -8,7 +8,7 @@ import {OutsideGame} from '../../../../models/outsideGames.model';
 })
 export class OutsideGameRowComponent implements OnInit {
 
-  @Input() game!: OutsideGame;
+  @Input() game!: Game;
   @Input() index!: number;
 
   parity!: boolean;

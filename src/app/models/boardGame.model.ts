@@ -21,8 +21,6 @@ export interface BoardGame extends Game {
   id: string;
   category:  BoardGameCategory;
   poids: string;
-  thumbnail?: string;
-  fullImage?: string;
   description?: string;
   yearPublished?: number;
   minPlayers?: number;
