@@ -10,7 +10,7 @@ export class GamesUtils {
       return {
         ...ludoGame,
         cover: ludoGame?.cover ?? this.getAttributeFirstElementText(elements, 'image'),
-        description: this.getAttributeFirstElementText(elements, 'description'),
+        description: ludoGame?.description ??  this.getAttributeFirstElementText(elements, 'description'),
         yearPublished: +this.getAttributeValue(elements, 'yearpublished'),
         minPlayers: +this.getAttributeValue(elements, 'minplayers'),
         maxPlayers: +this.getAttributeValue(elements, 'maxplayers'),

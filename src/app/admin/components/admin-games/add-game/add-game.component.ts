@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {BoardGame, BoardGameCategory} from '../../../../models/boardGame.model';
-import {Consoles, VideoGame} from '../../../../models/videoGames.model';
+import {BoardGame} from '../../../../models/boardGame.model';
+import {VideoGame} from '../../../../models/videoGames.model';
 import {Game, LudoStatus} from '../../../../models/common.model';
 import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {map, Observable} from 'rxjs';
@@ -19,7 +19,6 @@ export class AddGameComponent implements OnInit, OnChanges {
   @Input() outsideGames: Array<Game> | null;
   gameForm: FormGroup;
   modifyGameForm: FormGroup;
-  categoryOptions: Array<{ id: string; name: string }> = [];
   allGames: Game[];
   filteredOptions$: Observable<Array<Game>>;
   searchText: FormControl<string>;
@@ -29,7 +28,6 @@ export class AddGameComponent implements OnInit, OnChanges {
   constructor(private fb: FormBuilder, private firebaseDatabaseService: FirebaseDatabaseService) {
     this.gameForm = this.initForm();
     this.modifyGameForm = this.initForm();
-    this.setCategoryOptions('boardGames');
     this.searchText = new FormControl('');
     this.allGames = [];
   }
@@ -38,6 +36,7 @@ export class AddGameComponent implements OnInit, OnChanges {
     return this.fb.group({
       ref: this.fb.control('', Validators.required),
       name: this.fb.control('', Validators.required),
+      description: this.fb.control(null),
       categoryId: this.fb.control('', Validators.required),
       libraryId: this.fb.control('boardGames', Validators.required),
       weight: this.fb.control(null),
@@ -54,24 +53,6 @@ export class AddGameComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (this.boardGames && this.videoGames && this.outsideGames) {
       this.allGames = [...this.boardGames, ...this.videoGames, ...this.outsideGames];
-    }
-  }
-
-  public setCategoryOptions(category: 'boardGames' | 'videoGames' | 'outsideGames') {
-    switch (category) {
-      case 'boardGames':
-        this.categoryOptions = Object.values(BoardGameCategory).map(bgCat => {
-          return {id: bgCat, name: bgCat};
-        });
-        break;
-      case 'videoGames':
-        this.categoryOptions = Object.values(Consoles).map(vgCat => {
-          return {id: vgCat, name: vgCat};
-        });
-        break;
-      case 'outsideGames':
-        this.categoryOptions = [{id: category, name: 'Jeu plein air'}];
-        break;
     }
   }
 
@@ -99,13 +80,14 @@ export class AddGameComponent implements OnInit, OnChanges {
 
   selectGameToModify($event: MatAutocompleteSelectedEvent) {
     this.selectedGame = $event.option.value;
-    this.modifyGameForm.setValue({
-      ref: $event.option.value.ref,
-      name: $event.option.value.name,
-      categoryId: $event.option.value.category,
-      libraryId: GamesUtils.libraryIdOfGame($event.option.value),
-      weight: $event.option.value?.poids ?? 0,
-      id: $event.option.value?.id ?? ''
+    this.modifyGameForm = this.fb.group({
+        ref: $event.option.value.ref,
+        name: $event.option.value.name,
+        description: $event.option.value.description,
+        categoryId: $event.option.value.category,
+        libraryId: GamesUtils.libraryIdOfGame($event.option.value),
+        weight: $event.option.value?.poids ?? 0,
+        id: $event.option.value?.id ?? ''
     });
   }
 

@@ -2,6 +2,10 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {FileUpload} from '../../../models/fileUpload.model';
 import {StorageUploadService} from '../../../services/firebase/storage-upload.service';
 import {Game} from '../../../models/common.model';
+import {GamesUtils} from '../../../models/gamesUtils';
+import {BoardGame} from '../../../models/boardGame.model';
+import {BGGService} from '../../../ludotheque/services/bgg.service';
+import {take} from 'rxjs';
 
 @Component({
   selector: 'app-upload-form',
@@ -15,12 +19,21 @@ export class UploadFormComponent implements OnChanges {
   percentage?: number;
   previewImage?: string | ArrayBuffer;
 
-  constructor(private uploadService: StorageUploadService) {
+  constructor(private uploadService: StorageUploadService,
+              private bgg: BGGService) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
     this.previewImage = null;
     this.currentFileUpload = null;
+    if (GamesUtils.libraryIdOfGame(this.selectedGame) === 'boardGames') {
+      const selectedBoardGame = this.selectedGame as BoardGame;
+      if (selectedBoardGame.id) {
+        this.bgg.gameDetails(selectedBoardGame).pipe(take(1)).subscribe(rep => {
+            this.selectedGame.cover = rep.cover;
+        });
+      }
+    }
   }
 
   selectFile(event: any): void {

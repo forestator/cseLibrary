@@ -26,6 +26,7 @@ import {
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {AddGameComponent} from './components/admin-games/add-game/add-game.component';
+import {AddGameFormComponent} from './components/admin-games/add-game/add-game-form/add-game-form.component';
 
 
 @NgModule({
@@ -36,7 +37,7 @@ import {AddGameComponent} from './components/admin-games/add-game/add-game.compo
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameComponent
+    AdminMenuComponent, AddGameComponent, AddGameFormComponent
   ],
   exports: [
     AdminMenuComponent

@@ -24,7 +24,7 @@ export interface Game {
   name: string;
   status: LudoStatus;
   cover?: string;
-  category?: BoardGameCategory | Consoles | string;
+  category: BoardGameCategory | Consoles | string;
   description?: string;
 }
 

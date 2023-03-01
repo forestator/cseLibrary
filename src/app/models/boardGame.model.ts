@@ -19,9 +19,7 @@ export interface Thing {
 
 export interface BoardGame extends Game {
   id: string;
-  category:  BoardGameCategory;
   poids: string;
-  description?: string;
   yearPublished?: number;
   minPlayers?: number;
   maxPlayers?: number;
