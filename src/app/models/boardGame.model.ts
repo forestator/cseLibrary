@@ -19,7 +19,7 @@ export interface Thing {
 
 export interface BoardGame extends Game {
   id: string;
-  poids: string;
+  weight: string;
   yearPublished?: number;
   minPlayers?: number;
   maxPlayers?: number;

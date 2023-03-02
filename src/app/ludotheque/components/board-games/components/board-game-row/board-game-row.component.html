@@ -5,7 +5,7 @@
       <app-badge class="badge" [id]="boardGame.name" [status]="boardGame.status"></app-badge>
     </div>
     <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
-    <div class="book-info" *ngIf="boardGame.poids">Poids: {{boardGame.poids}}g</div>
+    <div class="book-info" *ngIf="boardGame.weight">Poids: {{boardGame.weight}}g</div>
     <div class="book-info" *ngIf="boardGame.minPlayers">Min players: {{boardGame.minPlayers}}</div>
     <div class="book-info" *ngIf="boardGame.maxPlayers">Max players: {{boardGame.maxPlayers}}</div>
     <div class="book-info" *ngIf="boardGame.minAge">Min age: {{boardGame.suggestedPlayAge}}</div>

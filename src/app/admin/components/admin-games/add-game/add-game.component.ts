@@ -39,9 +39,9 @@ export class AddGameComponent implements OnInit, OnChanges {
       name: this.fb.control(game?.name, Validators.required),
       description: this.fb.control(game?.description),
       isNew: this.fb.control(game?.isNew),
-      categoryId: this.fb.control(game?.category, Validators.required),
+      category: this.fb.control(game?.category, Validators.required),
       libraryId: this.fb.control(game ? GamesUtils.libraryIdOfGame(game) : 'boardGames', Validators.required),
-      weight: this.fb.control(game?.poids),
+      weight: this.fb.control(game?.weight),
       id: this.fb.control(game?.id)
     });
   }
@@ -62,7 +62,7 @@ export class AddGameComponent implements OnInit, OnChanges {
     if (this.gameForm.valid) {
       const {id, ref, name, categoryId, libraryId, weight} = this.gameForm.value;
       const game: BoardGame | VideoGame | Game =
-        {ref, name, category: categoryId, poids: weight, id, status: LudoStatus.AVAILABLE};
+        {ref, name, category: categoryId, weight: weight, id, status: LudoStatus.AVAILABLE};
       try {
         await this.firebaseDatabaseService.addGame(game, libraryId);
       } catch (e) {
@@ -86,14 +86,8 @@ export class AddGameComponent implements OnInit, OnChanges {
   }
 
   updateGame() {
-   const gameToUpdate = this.modifyGameForm.value;
-   Object.assign(gameToUpdate, {
-     category: gameToUpdate.categoryId,
-     poids: gameToUpdate?.weight,
-   });
-   delete gameToUpdate.categoryId;
-   delete gameToUpdate.libraryId;
-   delete gameToUpdate.weight;
+    const gameToUpdate = this.modifyGameForm.value;
+    delete gameToUpdate.libraryId;
     this.firebaseDatabaseService.updateGame(gameToUpdate, GamesUtils.libraryIdOfGame(gameToUpdate));
   }
 }
