@@ -28,6 +28,10 @@
     <textarea matInput placeholder="le meilleur jeu du monde" formControlName="description">
   </textarea>
   </mat-form-field>
+  <div>
+    <mat-label>Nouveauté ?</mat-label>
+    <mat-checkbox formControlName="isNew"></mat-checkbox>
+  </div>
   <ng-container *ngIf="gameForm.get('libraryId').value === 'boardGames'">
     <mat-form-field appearance="fill">
       <mat-label>BoardGameGeek Id</mat-label>

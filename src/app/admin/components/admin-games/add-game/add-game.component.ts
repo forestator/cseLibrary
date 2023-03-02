@@ -32,15 +32,17 @@ export class AddGameComponent implements OnInit, OnChanges {
     this.allGames = [];
   }
 
-  private initForm() {
+  // todo fix type
+  private initForm(game?: BoardGame): FormGroup {
     return this.fb.group({
-      ref: this.fb.control('', Validators.required),
-      name: this.fb.control('', Validators.required),
-      description: this.fb.control(null),
-      categoryId: this.fb.control('', Validators.required),
-      libraryId: this.fb.control('boardGames', Validators.required),
-      weight: this.fb.control(null),
-      id: this.fb.control(null)
+      ref: this.fb.control(game?.ref, Validators.required),
+      name: this.fb.control(game?.name, Validators.required),
+      description: this.fb.control(game?.description),
+      isNew: this.fb.control(game?.isNew),
+      categoryId: this.fb.control(game?.category, Validators.required),
+      libraryId: this.fb.control(game ? GamesUtils.libraryIdOfGame(game) : 'boardGames', Validators.required),
+      weight: this.fb.control(game?.poids),
+      id: this.fb.control(game?.id)
     });
   }
 
@@ -80,19 +82,18 @@ export class AddGameComponent implements OnInit, OnChanges {
 
   selectGameToModify($event: MatAutocompleteSelectedEvent) {
     this.selectedGame = $event.option.value;
-    this.modifyGameForm = this.fb.group({
-        ref: $event.option.value.ref,
-        name: $event.option.value.name,
-        description: $event.option.value.description,
-        categoryId: $event.option.value.category,
-        libraryId: GamesUtils.libraryIdOfGame($event.option.value),
-        weight: $event.option.value?.poids ?? 0,
-        id: $event.option.value?.id ?? ''
-    });
+    this.modifyGameForm = this.initForm($event.option.value);
   }
 
   updateGame() {
-    console.log(this.modifyGameForm.value);
-    console.log(this.fileToUpload);
+   const gameToUpdate = this.modifyGameForm.value;
+   Object.assign(gameToUpdate, {
+     category: gameToUpdate.categoryId,
+     poids: gameToUpdate?.weight,
+   });
+   delete gameToUpdate.categoryId;
+   delete gameToUpdate.libraryId;
+   delete gameToUpdate.weight;
+    this.firebaseDatabaseService.updateGame(gameToUpdate, GamesUtils.libraryIdOfGame(gameToUpdate));
   }
 }

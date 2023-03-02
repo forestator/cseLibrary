@@ -27,6 +27,7 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {AddGameComponent} from './components/admin-games/add-game/add-game.component';
 import {AddGameFormComponent} from './components/admin-games/add-game/add-game-form/add-game-form.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -42,26 +43,27 @@ import {AddGameFormComponent} from './components/admin-games/add-game/add-game-f
   exports: [
     AdminMenuComponent
   ],
-  imports: [
-    CommonModule,
-    AngularFireAuthModule,
-    FirebaseUIModule,
-    MatSortModule,
-    MatTableModule,
-    MatExpansionModule,
-    AppCommonModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatSnackBarModule,
-    RouterLink,
-    MatListModule,
-    MatAutocompleteModule,
-    MatButtonToggleModule,
-    MatSelectModule
-  ]
+    imports: [
+        CommonModule,
+        AngularFireAuthModule,
+        FirebaseUIModule,
+        MatSortModule,
+        MatTableModule,
+        MatExpansionModule,
+        AppCommonModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatSnackBarModule,
+        RouterLink,
+        MatListModule,
+        MatAutocompleteModule,
+        MatButtonToggleModule,
+        MatSelectModule,
+        MatCheckboxModule
+    ]
 })
 export class AdminModule {
 }

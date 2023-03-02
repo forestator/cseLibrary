@@ -106,6 +106,10 @@ export class FirebaseDatabaseService {
   }
 
   addGame(game: BoardGame | VideoGame | Game, libraryId: string): Promise<void> {
-    return this.db.object(`ludotheque/${libraryId}/games/${game.ref}`).set(game);
+    return this.db.object<Game>(`ludotheque/${libraryId}/games/${game.ref}`).set(game);
+  }
+
+  updateGame(game: BoardGame | VideoGame | Game, libraryId: string): Promise<void> {
+    return this.db.object<Game>(`ludotheque/${libraryId}/games/${game.ref}`).update(game);
   }
 }

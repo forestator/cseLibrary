@@ -70,8 +70,8 @@ export class GamesUtils {
     return elements.filter(el => el.attributes?.type === attribute).map(el => el.attributes.value);
   }
 
-  static libraryIdOfGame(game: Game | BorrowStatus): string {
-    let library;
+  static libraryIdOfGame(game: Game | BorrowStatus): string | null {
+    let library = null;
     if (('category' in game) && game.category in BoardGameCategory) {
       library = 'boardGames';
     }

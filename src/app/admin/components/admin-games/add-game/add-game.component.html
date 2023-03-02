@@ -25,7 +25,8 @@
     <app-add-game-form [gameForm]="modifyGameForm"></app-add-game-form>
     <mat-error *ngIf="ngForm.submitted && modifyGameForm.invalid && modifyGameForm.touched">Formulaire invalid
     </mat-error>
-    <button [disabled]="modifyGameForm.untouched" mat-raised-button type="submit" (click)="updateGame()">
+    <button [disabled]="modifyGameForm.untouched || modifyGameForm.invalid"
+            mat-raised-button type="submit" (click)="updateGame()">
       Mettre à jour le jeu
     </button>
   </form>
@@ -35,7 +36,7 @@
     <app-add-game-form [gameForm]="gameForm"></app-add-game-form>
     <mat-error *ngIf="ngForm.submitted && gameForm.invalid && gameForm.touched">Formulaire invalid</mat-error>
     <button mat-raised-button
-            [disabled]="gameForm.untouched"
+            [disabled]="gameForm.untouched|| gameForm.invalid"
             type="submit" (click)="addGame()">
       Ajouter le jeu
     </button>
