@@ -27,15 +27,14 @@ import {LudoNewComponent} from './ludotheque/components/ludo-new/ludo-new.compon
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
   {path: 'ludotheque/outsideGames', component: GameComponent},
+  {path: 'ludotheque/outsideGames/:id', component: GameComponent},
   {path: 'ludotheque/videoGames', component: VideoGamesComponent},
   {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesToFilterComponent},
   {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesToFilterComponent},
-  {path: 'ludotheque/j2s', component: BoardGamesComponent},
-  {path: 'ludotheque/j2s/:categoryId', component: BoardGameToFilterComponent},
-  {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameToFilterComponent},
-  {
-    path: 'ludotheque/new', component: LudoNewComponent
-  },
+  {path: 'ludotheque/boardGames', component: BoardGamesComponent},
+  {path: 'ludotheque/boardGames/:categoryId', component: BoardGameToFilterComponent},
+  {path: 'ludotheque/boardGames/:categoryId/:id', component: BoardGameToFilterComponent},
+  {path: 'ludotheque/new', component: LudoNewComponent},
   {
     path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent,
     canActivate: [() => inject(AuthentificationService).userAllowedToWrite$],

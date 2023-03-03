@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Params, Router} from '@angular/router';
 import {BehaviorSubject, filter, map, Observable} from 'rxjs';
 import {BoardGame} from '../models/boardGame.model';
+import {GamesUtils} from '../models/gamesUtils';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import {BoardGame} from '../models/boardGame.model';
 export class NavigationService {
 
   public url$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
@@ -24,15 +26,12 @@ export class NavigationService {
     this.router.navigateByUrl(`/${comissionName}`);
   }
 
-  goToBoardGameCategory(categoryId: string) {
-    this.router.navigateByUrl(`/ludotheque/j2s/${categoryId}}`);
-  }
-
-  goToBoardGame(boardGame: BoardGame): void {
-    this.router.navigateByUrl(`/ludotheque/j2s/${boardGame.category}/${boardGame.id}`);
-  }
-
-  goToVideoGame(videoGameRef: string, gameCat: string): void {
-    this.router.navigateByUrl(`/ludotheque/videoGames/${gameCat}/${videoGameRef}`);
+  goToGame(game: BoardGame): void {
+    const gameCat = GamesUtils.libraryIdOfGame(game);
+    if (gameCat === 'outsideGames') {
+      this.router.navigateByUrl(`/ludotheque/${gameCat}/${game.id}`);
+    } else {
+      this.router.navigateByUrl(`/ludotheque/${gameCat}/${game.category}/${game.id}`);
+    }
   }
 }

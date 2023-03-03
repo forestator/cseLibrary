@@ -7,8 +7,9 @@ import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {VideoGame} from '../../../models/videoGames.model';
 import {DataService} from '../../../services/biblio/data.service';
+import {Game} from '../../../models/common.model';
 
-interface SearchOption {
+export interface SearchOption {
   category: string;
   name: string;
   id: string
@@ -23,6 +24,7 @@ export class SearchInLibComponent implements OnInit, OnChanges {
 
   @Input() boardGames!: Array<BoardGame> | null;
   @Input() videoGames!: Array<VideoGame> | null;
+  @Input() outsideGames!: Array<Game> | null;
   searchText: UntypedFormControl = new UntypedFormControl('');
   filteredOptions$?: Observable<Array<SearchOption>>;
 
@@ -47,33 +49,49 @@ export class SearchInLibComponent implements OnInit, OnChanges {
     }
   }
 
-  private _filter(value: string): { category: string; name: string; id: string }[] {
-    const filterValue = value.toLowerCase();
+  private _filter(value: string | Game): { category: string; name: string; id: string }[] {
+    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
     return this.datas.filter((item) =>
       item.name?.toLowerCase().includes(filterValue)
     );
   }
 
   goToSelectedItem(matAutocompleteSelectedEvent: MatAutocompleteSelectedEvent) {
-    const optValue: SearchOption = this.datas.find(data => data.name === matAutocompleteSelectedEvent.option.value)!;
-    const boardGame: BoardGame | undefined = this.boardGames?.find(bg => bg.id === optValue.id);
-    if (boardGame) {
-      this.navigateService.goToBoardGame(boardGame);
-    } else {
-      this.navigateService.goToVideoGame(optValue.id, optValue.category);
-    }
+    this.navigateService.goToGame(matAutocompleteSelectedEvent.option.value);
   }
 
   private setDatasToSeachIn(url: string): Array<SearchOption> {
     this.currentUrl = url;
-    if (this.boardGames && url.includes('j2s')) {
+    if (this.boardGames && url.includes('boardGames')) {
       return this.boardGames;
-    } else if (this.videoGames) {
+    } else if (this.videoGames && url.includes('videoGames')) {
       return this.videoGames.map((vg) => {
         return {id: vg.ref, category: vg.category, name: vg.name};
       });
+    } else if (this.outsideGames && url.includes('outsideGames')) {
+      return this.outsideGames.map((game) => {
+        return {id: game.ref, category: game.category, name: game.name};
+      });
     } else {
-      return [];
+      const defaultSearch: Array<SearchOption> = [];
+      if (this.boardGames) {
+        defaultSearch.push(...this.boardGames);
+      }
+      if (this.videoGames) {
+        this.videoGames.forEach((vg) => {
+          defaultSearch.push({id: vg.ref, category: vg.category, name: vg.name});
+        });
+      }
+      if (this.outsideGames) {
+        this.outsideGames.forEach((outsideG) => {
+          defaultSearch.push({id: outsideG.ref, category: outsideG.category, name: outsideG.name});
+        });
+      }
+      return defaultSearch;
     }
+  }
+
+  displayGame(game?: Game): string {
+    return game ? `${game.name}` : '';
   }
 }
