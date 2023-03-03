@@ -1,0 +1,30 @@
+<div class="new-page fadein">
+  <div id="new">
+    <div class="title">
+      Nouveautés
+      <!-- <mat-icon (click)="exportNewsAsPDF()">picture_as_pdf</mat-icon> -->
+    </div>
+    <div class="core-page">
+      <div class="core-header">
+        <div class="core-title">
+          <div class="primary">Nouveaux Jeux de société</div>
+        </div>
+      </div>
+      <app-board-game-category-details [boardGames]="boardGames$ | async"></app-board-game-category-details>
+      <div class="core-header">
+        <div class="core-title">
+          <div class="primary">Nouveaux Jeux vidéos</div>
+        </div>
+      </div>
+      <app-video-games-console-details class="core-body" [videoGames]="videoGames$ | async"></app-video-games-console-details>
+      <div class="core-header">
+        <div class="core-title">
+          <div class="primary">Nouveaux Jeux Grands jeux</div>
+        </div>
+      </div>
+      <div *ngFor="let game of otherGames$ | async; let index = index" class="core-body">
+        <app-game-row [game]="game" [index]="index"></app-game-row>
+      </div>
+    </div>
+  </div>
+</div>

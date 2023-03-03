@@ -10,7 +10,7 @@ import {NewViewComponent} from './bibliotheque/components/new-view/new-view.comp
 import {BoardGamesComponent} from './ludotheque/components/board-games/board-games.component';
 import {VideoGamesComponent} from './ludotheque/components/video-games/video-games.component';
 import {SettingsViewComponent} from './bibliotheque/components/settings-view/settings-view.component';
-import {OutsideGamesComponent} from './ludotheque/components/outside-games/outside-games.component';
+import {GameComponent} from './ludotheque/components/outside-games/game.component';
 import {AdminHomeComponent} from './admin/components/admin-home/admin-home.component';
 import {
   VideoGamesToFilterComponent
@@ -22,17 +22,20 @@ import {AdminGamesComponent} from './admin/components/admin-games/admin-games.co
 import {BorrowGamesComponent} from './admin/components/borrow-games/borrow-games.component';
 import {UserService} from './services/firebase/user.service';
 import {AuthentificationService} from './services/firebase/authentification.service';
+import {LudoNewComponent} from './ludotheque/components/ludo-new/ludo-new.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
-  {path: 'ludotheque/outsideGames', component: OutsideGamesComponent},
+  {path: 'ludotheque/outsideGames', component: GameComponent},
   {path: 'ludotheque/videoGames', component: VideoGamesComponent},
   {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesToFilterComponent},
   {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesToFilterComponent},
   {path: 'ludotheque/j2s', component: BoardGamesComponent},
   {path: 'ludotheque/j2s/:categoryId', component: BoardGameToFilterComponent},
   {path: 'ludotheque/j2s/:categoryId/:id', component: BoardGameToFilterComponent},
-  {path: 'ludotheque/new', component: NewViewComponent},
+  {
+    path: 'ludotheque/new', component: LudoNewComponent
+  },
   {
     path: 'ludotheque/admin/emprunts', component: BorrowGamesComponent,
     canActivate: [() => inject(AuthentificationService).userAllowedToWrite$],

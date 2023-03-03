@@ -1,16 +1,16 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Library} from '../../../models/author.model';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 import {Game} from '../../../models/common.model';
 
 @Component({
-  selector: 'app-outside-games',
-  templateUrl: './outside-games.component.html',
-  styleUrls: ['./outside-games.component.scss']
+  selector: 'app-games-list',
+  templateUrl: './game.component.html',
+  styleUrls: ['./game.component.scss']
 })
-export class OutsideGamesComponent {
+export class GameComponent {
   library$: Observable<Library | null> = this.firebaseDatabase.outsideGamesLibrary$;
-  games$: Observable<Array<Game> | null> = this.firebaseDatabase.outsideGames$;
+  @Input() games$: Observable<Array<Game> | null> = this.firebaseDatabase.outsideGames$;
   constructor(private firebaseDatabase: FirebaseDatabaseService) { }
 }

@@ -1,23 +1,25 @@
 <ng-container *ngIf="videoGames">
   <div class="core-page">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Consoles</div>
+    <ng-container *ngIf="(videoGames | filterVideoGameByType: videoGameType.CONSOLE).length > 0">
+      <div class="core-header">
+        <div class="core-title">
+          <div class="primary">Consoles</div>
+        </div>
       </div>
-    </div>
-    <ng-container
-      *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.CONSOLE; let index = index; trackBy: trackVideoGame">
-      <div class="core-body">
-        <app-video-game-console-row [videoGame]="videoGame"
-                                    [selectedVideoGameId]="selectedVideoGameId">
-        </app-video-game-console-row>
-      </div>
+      <ng-container
+        *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.CONSOLE; let index = index; trackBy: trackVideoGame">
+        <div class="core-body">
+          <app-video-game-console-row [videoGame]="videoGame"
+                                      [selectedVideoGameId]="selectedVideoGameId">
+          </app-video-game-console-row>
+        </div>
+      </ng-container>
+      <mat-divider></mat-divider>
     </ng-container>
-    <mat-divider></mat-divider>
     <ng-container *ngIf="(videoGames | filterVideoGameByType: videoGameType.ACCESSORY).length > 0">
       <div class="core-header">
         <div class="core-title">
-          <div class="primary">Accessories</div>
+          <div class="primary">Accessoires</div>
         </div>
       </div>
       <ng-container
@@ -32,7 +34,7 @@
     </ng-container>
     <div class="core-header">
       <div class="core-title">
-        <div class="primary">Games</div>
+        <div class="primary">Jeux</div>
       </div>
     </div>
     <div class="core-body video-game-row">

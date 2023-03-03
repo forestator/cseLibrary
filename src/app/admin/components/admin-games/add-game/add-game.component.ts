@@ -7,6 +7,7 @@ import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-da
 import {map, Observable} from 'rxjs';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {GamesUtils} from '../../../../models/gamesUtils';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-game',
@@ -25,7 +26,9 @@ export class AddGameComponent implements OnInit, OnChanges {
   selectedGame: any;
   fileToUpload: string | ArrayBuffer;
 
-  constructor(private fb: FormBuilder, private firebaseDatabaseService: FirebaseDatabaseService) {
+  constructor(private fb: FormBuilder,
+              private snackBar: MatSnackBar,
+              private firebaseDatabaseService: FirebaseDatabaseService) {
     this.gameForm = this.initForm();
     this.modifyGameForm = this.initForm();
     this.searchText = new FormControl('');
@@ -88,6 +91,9 @@ export class AddGameComponent implements OnInit, OnChanges {
   updateGame() {
     const gameToUpdate = this.modifyGameForm.value;
     delete gameToUpdate.libraryId;
-    this.firebaseDatabaseService.updateGame(gameToUpdate, GamesUtils.libraryIdOfGame(gameToUpdate));
+    this.firebaseDatabaseService.updateGame(gameToUpdate, GamesUtils.libraryIdOfGame(gameToUpdate)).then(
+      () =>
+        this.snackBar.open(`${gameToUpdate.name} bien mis à jour`, 'Ok')
+    );
   }
 }

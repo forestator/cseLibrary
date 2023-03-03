@@ -17,7 +17,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {BoardGamesComponent} from './components/board-games/board-games.component';
 import {VideoGamesComponent} from './components/video-games/video-games.component';
-import {OutsideGamesComponent} from './components/outside-games/outside-games.component';
+import {GameComponent} from './components/outside-games/game.component';
 import {
   VideoGamesConsoleDetailsComponent
 } from './components/video-games/video-games-console-details/video-games-console-details.component';
@@ -27,7 +27,7 @@ import {
 } from './components/video-games/video-game-console-row/video-game-console-row.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {FilterVideoGameByTypePipe} from './pipes/filter-video-game-by-type.pipe';
-import {OutsideGameRowComponent} from './components/outside-games/outside-game-row/outside-game-row.component';
+import {GameRowComponent} from './components/outside-games/game-row/game-row.component';
 import {
   VideoGamesToFilterComponent
 } from './components/video-games/video-games-to-filter/video-games-to-filter.component';
@@ -41,6 +41,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import {LudoNewComponent} from './components/ludo-new/ludo-new.component';
 
 @NgModule({
   declarations: [
@@ -51,15 +52,16 @@ import {MatSortModule} from '@angular/material/sort';
     SearchInLibComponent,
     BoardGamesComponent,
     VideoGamesComponent,
-    OutsideGamesComponent,
+    GameComponent,
     VideoGamesConsoleDetailsComponent,
     VideoGameRowComponent,
     VideoGameConsoleRowComponent,
     FilterVideoGameByTypePipe,
-    OutsideGameRowComponent,
+    GameRowComponent,
     VideoGamesToFilterComponent,
     BoardGameToFilterComponent,
-    LudoMenuComponent],
+    LudoMenuComponent,
+    LudoNewComponent],
   exports: [LudoMenuComponent],
   imports: [
     CommonModule,

@@ -1,11 +1,11 @@
 <app-library-menu *ngIf="showBibliothequeMenu && !showAdmin"
-  id="top">
+                  id="top">
 </app-library-menu>
 <app-ludo-menu *ngIf="showLudothequeMenu && !showAdmin"
-  id="top">
+               id="top">
 </app-ludo-menu>
 <app-admin-menu *ngIf="showAdmin"
-  id="top">
+                id="top">
 </app-admin-menu>
 <div class="library-menu" id="top" *ngIf="!showLudothequeMenu && !showBibliothequeMenu && !showAdmin">
   <div class="library-title">
@@ -15,11 +15,12 @@
   </div>
 </div>
 
-    <ng-container *ngIf="(firebaseDatabaseService.bibliotheque$ | async) && (firebaseDatabaseService.ludotheque$ | async)">
+<ng-container *ngIf="(firebaseDatabaseService.bibliotheque$ | async) && (firebaseDatabaseService.ludotheque$ | async)">
   <router-outlet></router-outlet>
-<!-- TODO <div class="go-top bloc-link">-->
-<!--    <div (click)="scrollToTop()" class="go-top-link">-->
-<!--      <mat-icon class="go-top-link">keyboard_arrow_up</mat-icon>-->
-<!--    </div>-->
-<!--  </div>-->
 </ng-container>
+
+<div class="go-top bloc-link">
+  <div (click)="scrollToTop()" class="go-top-link">
+    <mat-icon class="icon">keyboard_arrow_up</mat-icon>
+  </div>
+</div>

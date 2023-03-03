@@ -4,6 +4,7 @@
     <div class="video-game-title">{{videoGame.name}}</div>
     <app-badge class="badge" [status]="videoGame.status"></app-badge>
     <div class="" *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
+    <div class="" *ngIf="videoGame.category">Console: {{videoGame.category}}</div>
   </div>
 </div>
 <ng-template #image>

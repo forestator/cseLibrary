@@ -1,18 +1,18 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {OutsideGameRowComponent} from './outside-game-row.component';
+import {GameRowComponent} from './game-row.component';
 
 describe('OutsideGameRowComponent', () => {
-  let component: OutsideGameRowComponent;
-  let fixture: ComponentFixture<OutsideGameRowComponent>;
+  let component: GameRowComponent;
+  let fixture: ComponentFixture<GameRowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OutsideGameRowComponent ]
+      declarations: [ GameRowComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OutsideGameRowComponent);
+    fixture = TestBed.createComponent(GameRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
