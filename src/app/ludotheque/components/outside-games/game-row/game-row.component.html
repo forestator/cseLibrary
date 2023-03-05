@@ -5,6 +5,9 @@
       <app-badge class="badge" [status]="game.status"></app-badge>
     </div>
     <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
+    <div>
+      <button mat-raised-button (click)="borrowGame(game)">Réserver</button>
+    </div>
   </div>
   <ng-container [ngTemplateOutlet]="image" *ngIf="!parity"></ng-container>
 </div>

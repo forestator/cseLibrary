@@ -21,6 +21,7 @@ import {AdminModule} from './admin/admin.module';
 import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
 import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import {AngularFireAnalyticsModule} from '@angular/fire/compat/analytics';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDK-byU9NpioO3Lve34_Y4QvxvOviDCKFY",
@@ -72,7 +73,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ReactiveFormsModule,
     AppCommonModule
   ],
-  providers: [],
+  providers: [{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

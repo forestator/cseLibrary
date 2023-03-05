@@ -16,7 +16,14 @@ export interface LudothequeDetails {
 export enum LudoStatus {
   AVAILABLE = 'AVAILABLE',
   EMPRUNTE = 'EMPRUNTE',
+  RESERVED = 'RESERVE',
   MISSING = 'MISSING',
+}
+
+interface BorrowInfo {
+  userId: string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface Game {
@@ -27,6 +34,7 @@ export interface Game {
   cover?: string;
   category: BoardGameCategory | Consoles | string;
   description?: string;
+  borrowList?: Array<BorrowInfo>;
 }
 
 export interface BddGame {

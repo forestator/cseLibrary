@@ -2,13 +2,14 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {BoardGame} from '../../../../models/boardGame.model';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Game, LudoStatus} from '../../../../models/common.model';
-import {UserService} from '../../../../services/firebase/user.service';
 import {map, Observable} from 'rxjs';
 import {BorrowStatus, CseUser} from '../../../../models/users.model';
-import {FormControl} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {VideoGame} from '../../../../models/videoGames.model';
+import moment, {Moment} from 'moment';
+import {DateFilterFn} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-change-borrow-status',
@@ -18,13 +19,15 @@ import {VideoGame} from '../../../../models/videoGames.model';
 export class ChangeBorrowStatusModalComponent implements OnInit {
   employeeFomControl: FormControl<string | CseUser>;
   statusOptions: Array<string>;
-  newStatus: LudoStatus.EMPRUNTE | LudoStatus.AVAILABLE;
+  newStatus: LudoStatus;
   filterUserAutocomplete$?: Observable<Array<CseUser>>;
   selectedEmployee?: CseUser;
+  range: FormGroup;
+  dateFilter: DateFilterFn<Date>;
+
 
   constructor(
     public dialogRef: MatDialogRef<ChangeBorrowStatusModalComponent>,
-    public userService: UserService,
     public firebaseDatabaseService: FirebaseDatabaseService,
     @Inject(MAT_DIALOG_DATA) public data: {
       users: Array<CseUser>,
@@ -41,6 +44,7 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
     }
     this.employeeFomControl = new FormControl<string | CseUser>(this.data.returnForUser ?? '');
     this.selectedEmployee = this.data.returnForUser;
+    this.initDateFormGroup();
   }
 
   ngOnInit() {
@@ -82,5 +86,35 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
     } else {
       return [];
     }
+  }
+
+  private initDateFormGroup(): void {
+    this.dateFilter = (d: Date | null): boolean => {
+      const day = (moment(d) || moment()).day();
+      const week = (moment(d) || moment()).week();
+      return (day === 2 || day === 4) && (week % 2 === 0);
+    };
+
+    const currentDate: Moment = moment();
+    if (currentDate.day() !== 2 || currentDate.day() !== 4) {
+      currentDate.day(currentDate.day() === 3 ? 4 : 2);
+    }
+    if (currentDate.week() % 2 !== 0) {
+      currentDate.add(1, 'week');
+    }
+
+    const validRange: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+      const start = control.get('start').value;
+      const end = control.get('end').value;
+      const duration = moment.duration(moment(end).diff(moment(start)));
+      const days = duration.asDays();
+      const forbidden = days > 30;
+      return forbidden ? {tooLongRange: {value: days}} : null;
+    };
+
+    this.range = new FormGroup({
+      start: new FormControl<Date | null>(currentDate.toDate()),
+      end: new FormControl<Date | null>(currentDate.add(14, 'days').toDate()),
+    }, {validators: validRange});
   }
 }

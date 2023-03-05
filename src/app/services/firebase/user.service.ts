@@ -22,7 +22,7 @@ export class UserService {
     this.db.object(`users/${employee.id}/borrowedGames/${game.ref}`).set({
       ref: game.ref,
       name: game.name,
-      date: moment().format('L'),
+      date: moment().locale('fr').format('L'),
       libraryId: GamesUtils.libraryIdOfGame(game)
     });
   }

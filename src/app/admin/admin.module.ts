@@ -28,6 +28,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {AddGameComponent} from './components/admin-games/add-game/add-game.component';
 import {AddGameFormComponent} from './components/admin-games/add-game/add-game-form/add-game-form.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -43,27 +45,29 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
   exports: [
     AdminMenuComponent
   ],
-    imports: [
-        CommonModule,
-        AngularFireAuthModule,
-        FirebaseUIModule,
-        MatSortModule,
-        MatTableModule,
-        MatExpansionModule,
-        AppCommonModule,
-        MatInputModule,
-        FormsModule,
-        MatButtonModule,
-        MatDialogModule,
-        ReactiveFormsModule,
-        MatSnackBarModule,
-        RouterLink,
-        MatListModule,
-        MatAutocompleteModule,
-        MatButtonToggleModule,
-        MatSelectModule,
-        MatCheckboxModule
-    ]
+  imports: [
+    CommonModule,
+    AngularFireAuthModule,
+    FirebaseUIModule,
+    MatSortModule,
+    MatTableModule,
+    MatExpansionModule,
+    AppCommonModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    RouterLink,
+    MatListModule,
+    MatAutocompleteModule,
+    MatButtonToggleModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+  ]
 })
 export class AdminModule {
 }

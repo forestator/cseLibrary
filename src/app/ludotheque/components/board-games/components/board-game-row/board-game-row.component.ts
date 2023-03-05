@@ -1,10 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
-import {
-  ChangeBorrowStatusModalComponent
-} from '../../../../../admin/components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
-import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-board-game-row',
@@ -19,8 +15,7 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
 
   parity!: boolean;
 
-  constructor(public toolsService: ToolsService,
-              private dialog: MatDialog) { }
+  constructor(public toolsService: ToolsService) { }
 
   ngOnInit(): void {
     this.parity = this.index % 2 === 0;
@@ -33,11 +28,5 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
     if (changes['selectedBoardGameId'] && !!changes['selectedBoardGameId'].currentValue) {
       this.toolsService.scrollToId(changes['selectedBoardGameId'].currentValue);
     }
-  }
-
-  openBorrowModal(boardGame: BoardGame) {
-   this.dialog.open(ChangeBorrowStatusModalComponent, {
-      data: {boardGame},
-    });
   }
 }

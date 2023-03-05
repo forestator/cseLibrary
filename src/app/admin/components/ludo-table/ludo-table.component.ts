@@ -48,7 +48,7 @@ export class LudoTableComponent implements OnInit, OnChanges {
   }
 
   borrowGame(game: BoardGame | VideoGame | Game | BorrowStatus) {
-    const dialogRef = this.dialog.open(ChangeBorrowStatusModalComponent, {
+    this.dialog.open(ChangeBorrowStatusModalComponent, {
       data: {users: this.users, game: game, returnForUser: this.returnForUser},
     });
   }
