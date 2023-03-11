@@ -72,6 +72,11 @@ export class BadgeComponent implements OnInit, OnChanges {
           this.bg = 'darkorange';
           this.fg = 'white';
           break;
+        case LudoStatus.RESERVED:
+          this.txt = 'RESERVE';
+          this.bg = '#5d97e0';
+          this.fg = 'white';
+          break;
       }
     } else if (this.status in Consoles) {
       switch (this.status) {

@@ -16,6 +16,7 @@
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Période d'emprunt</mat-label>
+    <!--suppress TypeScriptValidateTypes -->
     <mat-date-range-input
       [dateFilter]="dateFilter" [formGroup]="range" [rangePicker]="picker">
       <input matStartDate [readonly]="true"
@@ -29,8 +30,11 @@
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-  <mat-error *ngIf="range.invalid">
+  <mat-error *ngIf="range.errors">
     Impossible de réserver plus d'un mois
+  </mat-error>
+  <mat-error *ngIf="range.get('start').errors || range.get('end').errors">
+    Déjà réservé sur ces dates
   </mat-error>
 </div>
 <div mat-dialog-actions>

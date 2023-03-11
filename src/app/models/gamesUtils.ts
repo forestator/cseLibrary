@@ -1,7 +1,8 @@
 import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
 import {Consoles, VideoGame} from './videoGames.model';
-import {BddGame, Game} from './common.model';
+import {BddGame, BorrowInfo, Game} from './common.model';
 import {BorrowStatus} from './users.model';
+import moment, {Moment} from 'moment';
 
 export class GamesUtils {
   static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
@@ -10,7 +11,7 @@ export class GamesUtils {
       return {
         ...ludoGame,
         cover: ludoGame?.cover ?? this.getAttributeFirstElementText(elements, 'image'),
-        description: ludoGame?.description ??  this.getAttributeFirstElementText(elements, 'description'),
+        description: ludoGame?.description ?? this.getAttributeFirstElementText(elements, 'description'),
         yearPublished: +this.getAttributeValue(elements, 'yearpublished'),
         minPlayers: +this.getAttributeValue(elements, 'minplayers'),
         maxPlayers: +this.getAttributeValue(elements, 'maxplayers'),
@@ -85,5 +86,48 @@ export class GamesUtils {
       library = game.libraryId;
     }
     return library;
+  }
+
+  static gameIsReservedOrEmprunte(
+    borrowList: Array<BorrowInfo>, date: Date, includeStartEndDates?: boolean): BorrowInfo | undefined {
+    return borrowList.find(borrow => {
+      const compareDate = moment(date, 'DD/MM/YYYY');
+      const startDate = moment(borrow.startDate, 'DD/MM/YYYY');
+      const endDate = moment(borrow.endDate, 'DD/MM/YYYY');
+      if (includeStartEndDates) {
+        return compareDate.isBetween(startDate, endDate) ||
+          compareDate.isSame(startDate) ||
+          compareDate.isSame(endDate);
+      } else {
+        return compareDate.isBetween(startDate, endDate) &&
+          !(compareDate.isSame(startDate) && compareDate.isSame(endDate));
+      }
+    });
+  }
+
+  static reservedForNextSession(borrowList: Array<BorrowInfo>): boolean {
+    return borrowList.some(borrow => {
+      const nextSessionDay: Moment = this.getNextLudothequeOpening();
+      return this.daysRemaining(borrow.startDate, nextSessionDay) < 14;
+    });
+  }
+
+  private static daysRemaining(startDate: string, nextSessionDay: Moment): number {
+    const startDateMoment: Moment = moment(startDate, 'DD/MM/YYYY');
+    return nextSessionDay.diff(startDateMoment, 'days');
+  }
+
+  static getNextLudothequeOpening(): Moment {
+    const currentDate: Moment = moment();
+    if (currentDate.week() % 2 !== 0) {
+      currentDate.add(1, 'week');
+    }
+    if (currentDate.week() % 2 === 0 && currentDate.day() > 4) {
+      currentDate.day(2);
+      currentDate.add(2, 'week');
+    } else if (currentDate.day() !== 2 || currentDate.day() !== 4) {
+      currentDate.day(currentDate.day() === 3 ? 4 : 2);
+    }
+    return currentDate;
   }
 }

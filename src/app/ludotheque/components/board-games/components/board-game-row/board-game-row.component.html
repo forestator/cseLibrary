@@ -2,7 +2,8 @@
   <ng-container [ngTemplateOutlet]="image" *ngIf="parity && boardGame.cover"></ng-container>
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
-      <app-badge class="badge" [id]="boardGame.name" [status]="boardGame.status"></app-badge>
+      <app-game-status class="badge" [game]="boardGame"></app-game-status>
+      <button mat-raised-button (click)="borrowGame(boardGame)">Réserver</button>
     </div>
     <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
     <div class="book-info" *ngIf="boardGame.weight">Poids: {{boardGame.weight}}g</div>
@@ -17,6 +18,7 @@
         {{theme}}
       </ng-container>
     </div>
+    <app-futur-reservations [game]="boardGame"></app-futur-reservations>
     <div class="book-resume" [innerHTML]="boardGame.description"></div>
   </div>
   <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && boardGame.cover"></ng-container>

@@ -16,11 +16,11 @@ export interface LudothequeDetails {
 export enum LudoStatus {
   AVAILABLE = 'AVAILABLE',
   EMPRUNTE = 'EMPRUNTE',
-  RESERVED = 'RESERVE',
+  RESERVED = 'RESERVED',
   MISSING = 'MISSING',
 }
 
-interface BorrowInfo {
+export interface BorrowInfo {
   userId: string;
   startDate: string;
   endDate: string;

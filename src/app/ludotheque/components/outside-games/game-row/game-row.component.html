@@ -2,12 +2,11 @@
   <ng-container [ngTemplateOutlet]="image" *ngIf="parity"></ng-container>
   <div class="book-infos">
     <div class="book-title">{{game.name}}
-      <app-badge class="badge" [status]="game.status"></app-badge>
-    </div>
-    <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
-    <div>
+      <app-game-status class="badge" [game]="game"></app-game-status>
       <button mat-raised-button (click)="borrowGame(game)">Réserver</button>
     </div>
+    <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
+    <app-futur-reservations [game]="game"></app-futur-reservations>
   </div>
   <ng-container [ngTemplateOutlet]="image" *ngIf="!parity"></ng-container>
 </div>

@@ -1,6 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
+import {Game} from '../../../../models/common.model';
+import {take} from 'rxjs';
+import {
+  ChangeBorrowStatusModalComponent
+} from '../../../../admin/components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
+import {UserService} from '../../../../services/firebase/user.service';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-video-game-row',
@@ -11,8 +18,12 @@ export class VideoGameRowComponent implements OnInit, OnChanges {
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
-  constructor(private toolsService: ToolsService) { }
 
+
+  constructor(private toolsService: ToolsService,
+              public dialog: MatDialog,
+              private userService: UserService) {
+  }
   ngOnInit(): void {
     if (this.selectedVideoGameId) {
       this.toolsService.scrollToId(this.selectedVideoGameId);
@@ -23,5 +34,15 @@ export class VideoGameRowComponent implements OnInit, OnChanges {
     if (changes['selectedVideoGameId'] && !!changes['selectedVideoGameId'].currentValue) {
       this.toolsService.scrollToId(changes['selectedVideoGameId'].currentValue);
     }
+  }
+
+  borrowGame(game: Game) {
+    this.userService.userList$.pipe(take(1)).subscribe(
+      (users) => {
+        this.dialog.open(ChangeBorrowStatusModalComponent, {
+          data: {users, game: game}
+        });
+      }
+    );
   }
 }

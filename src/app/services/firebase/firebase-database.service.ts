@@ -3,10 +3,10 @@ import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable, take} from 'rxjs';
 import {Biblio, Library} from '../../models/author.model';
 import {BoardGame} from '../../models/boardGame.model';
-import {BddGame, Game, LudoStatus, Ludotheque} from '../../models/common.model';
+import {BddGame, Game, Ludotheque} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
-import {BorrowStatus, CseUser} from '../../models/users.model';
+import {CseUser} from '../../models/users.model';
 import {UserService} from './user.service';
 import {FileUpload} from '../../models/fileUpload.model';
 
@@ -72,24 +72,22 @@ export class FirebaseDatabaseService {
 
   }
 
-  setNewBorrowForUser(game: BoardGame | VideoGame | Game, employee: CseUser): void {
-    this.updateGameStatus(game, LudoStatus.EMPRUNTE);
+  setNewBorrowForUser(game: Game, employee: CseUser): void {
+    this.updateGameBorrowList(game);
     this.userService.setBorrowedGameOfUser(employee, game);
   }
 
-  removeBorrowForUser(game: BoardGame | VideoGame | Game, employee: CseUser): void {
-    this.updateGameStatus(game, LudoStatus.AVAILABLE);
+  removeBorrowForUser(game: Game, employee: CseUser): void {
+    this.updateGameBorrowList(game);
     this.userService.removeBorrowedGameOfUser(employee, game.ref);
   }
 
-  private updateGameStatus(game: BoardGame | VideoGame | Game | BorrowStatus,
-                           newStatus: LudoStatus.AVAILABLE | LudoStatus.EMPRUNTE) {
+  private updateGameBorrowList(game: Game) {
     this.db.object(`ludotheque/${GamesUtils.libraryIdOfGame(game)}/games/${game.ref}`)
-      .update({status: newStatus});
+      .update({borrowList: game.borrowList});
   }
 
-  public updateGameImage(game: BoardGame | VideoGame | Game,
-                         newCover: FileUpload) {
+  public updateGameImage(game: Game, newCover: FileUpload) {
     const libraryIdOfGame = GamesUtils.libraryIdOfGame(game);
     let update;
     switch (libraryIdOfGame) {

@@ -1,6 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
+import {MatDialog} from '@angular/material/dialog';
+import {UserService} from '../../../../../services/firebase/user.service';
+import {Game} from '../../../../../models/common.model';
+import {take} from 'rxjs';
+import {
+  ChangeBorrowStatusModalComponent
+} from '../../../../../admin/components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
 
 @Component({
   selector: 'app-board-game-row',
@@ -15,8 +22,12 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
 
   parity!: boolean;
 
-  constructor(public toolsService: ToolsService) { }
 
+
+  constructor(private toolsService: ToolsService,
+              public dialog: MatDialog,
+              private userService: UserService) {
+  }
   ngOnInit(): void {
     this.parity = this.index % 2 === 0;
     if (this.selectedBoardGameId) {
@@ -28,5 +39,15 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
     if (changes['selectedBoardGameId'] && !!changes['selectedBoardGameId'].currentValue) {
       this.toolsService.scrollToId(changes['selectedBoardGameId'].currentValue);
     }
+  }
+
+  borrowGame(game: Game) {
+    this.userService.userList$.pipe(take(1)).subscribe(
+      (users) => {
+        this.dialog.open(ChangeBorrowStatusModalComponent, {
+          data: {users, game: game}
+        });
+      }
+    );
   }
 }

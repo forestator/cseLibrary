@@ -49,7 +49,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +74,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppCommonModule
   ],
   providers: [{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

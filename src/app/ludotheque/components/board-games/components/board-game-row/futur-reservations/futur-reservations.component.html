@@ -1,0 +1,8 @@
+<div class="book-info" *ngIf="game.borrowList | gameReservedForFuturWeeks">
+    Prochaine Réservations :
+    <ng-container *ngFor="let futurBorrow of game.borrowList | gameReservedForFuturWeeks">
+      <div>Réservé par : {{futurBorrow.userId | userById | async}} du
+        {{futurBorrow.startDate}} au
+        {{futurBorrow.endDate}}</div>
+    </ng-container>
+</div>

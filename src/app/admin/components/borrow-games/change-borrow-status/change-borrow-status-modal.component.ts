@@ -10,6 +10,7 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {VideoGame} from '../../../../models/videoGames.model';
 import moment, {Moment} from 'moment';
 import {DateFilterFn} from '@angular/material/datepicker';
+import {GamesUtils} from '../../../../models/gamesUtils';
 
 @Component({
   selector: 'app-change-borrow-status',
@@ -66,11 +67,22 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
   }
 
   borrowGame() {
-    if (this.newStatus === LudoStatus.EMPRUNTE) {
-      this.firebaseDatabaseService.setNewBorrowForUser(this.data.game, this.selectedEmployee);
+    const gameToUpdate = this.data.game;
+    if (gameToUpdate.borrowList) {
+      gameToUpdate.borrowList.push({
+        userId: this.selectedEmployee.id,
+        startDate: moment(this.range.get('start').value).format('DD/MM/YYYY'),
+        endDate: moment(this.range.get('end').value).format('DD/MM/YYYY')
+      });
     } else {
-      this.firebaseDatabaseService.removeBorrowForUser(this.data.game, this.selectedEmployee);
+      gameToUpdate.borrowList = [{
+        userId: this.selectedEmployee.id,
+        startDate: moment(this.range.get('start').value).format('DD/MM/YYYY'),
+        endDate: moment(this.range.get('end').value).format('DD/MM/YYYY')
+      }];
     }
+    this.firebaseDatabaseService.setNewBorrowForUser(gameToUpdate, this.selectedEmployee);
+    // todo this.firebaseDatabaseService.removeBorrowForUser(this.data.game, this.selectedEmployee);
     this.cancel();
   }
 
@@ -95,14 +107,7 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
       return (day === 2 || day === 4) && (week % 2 === 0);
     };
 
-    const currentDate: Moment = moment();
-    if (currentDate.day() !== 2 || currentDate.day() !== 4) {
-      currentDate.day(currentDate.day() === 3 ? 4 : 2);
-    }
-    if (currentDate.week() % 2 !== 0) {
-      currentDate.add(1, 'week');
-    }
-
+    const nextLudothequeOpening: Moment = GamesUtils.getNextLudothequeOpening();
     const validRange: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
       const start = control.get('start').value;
       const end = control.get('end').value;
@@ -111,10 +116,21 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
       const forbidden = days > 30;
       return forbidden ? {tooLongRange: {value: days}} : null;
     };
+    const isNotReserved: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+      if (this.data.game.borrowList) {
+        const reserved = GamesUtils.gameIsReservedOrEmprunte(this.data.game.borrowList, control.value);
+        return reserved ? {reserved: {value: {start: reserved.startDate, end: reserved.endDate}}} : null;
+      } else {
+        return null;
+      }
+    };
 
     this.range = new FormGroup({
-      start: new FormControl<Date | null>(currentDate.toDate()),
-      end: new FormControl<Date | null>(currentDate.add(14, 'days').toDate()),
+      start: new FormControl<Date | null>(nextLudothequeOpening.toDate(), isNotReserved),
+      end: new FormControl<Date | null>(nextLudothequeOpening.add(14, 'days').toDate(), isNotReserved),
     }, {validators: validRange});
+
+    this.range.updateValueAndValidity();
+    console.log(this.range);
   }
 }

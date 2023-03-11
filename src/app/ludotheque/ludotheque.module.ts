@@ -42,6 +42,12 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {LudoNewComponent} from './components/ludo-new/ludo-new.component';
+import {GameStatusComponent} from './components/game-status/game-status.component';
+import {
+  FuturReservationsComponent
+} from './components/board-games/components/board-game-row/futur-reservations/futur-reservations.component';
+import {GameReservedForFuturWeeksPipe} from './pipes/game-reserved-for-futur-weeks.pipe';
+import {UserByIdPipe} from './pipes/user-by-id.pipe';
 
 @NgModule({
   declarations: [
@@ -61,27 +67,31 @@ import {LudoNewComponent} from './components/ludo-new/ludo-new.component';
     VideoGamesToFilterComponent,
     BoardGameToFilterComponent,
     LudoMenuComponent,
-    LudoNewComponent],
+    LudoNewComponent,
+    GameStatusComponent,
+    GameReservedForFuturWeeksPipe,
+    FuturReservationsComponent,
+    UserByIdPipe],
   exports: [LudoMenuComponent],
-  imports: [
-    CommonModule,
-    MatIconModule,
-    RouterModule,
-    AppCommonModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatDividerModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatMenuModule,
-    MatExpansionModule,
-    MatTableModule,
-    MatSortModule
-  ]
+    imports: [
+        CommonModule,
+        MatIconModule,
+        RouterModule,
+        AppCommonModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatButtonToggleModule,
+        MatDividerModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatMenuModule,
+        MatExpansionModule,
+        MatTableModule,
+        MatSortModule
+    ]
 })
 export class LudothequeModule {
 }

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Game} from '../../../models/common.model';
 import {BoardGame} from '../../../models/boardGame.model';
 import {VideoGame} from '../../../models/videoGames.model';
-import {map, Observable, tap} from 'rxjs';
+import {map, Observable} from 'rxjs';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 
 @Component({
@@ -20,8 +20,7 @@ export class LudoNewComponent implements OnInit {
 
   ngOnInit() {
     this.videoGames$ = this.firebaseDatabaseService.videoGamesOneShot$.pipe(
-      map(games => games.filter(game => game.isNew)),
-      tap((games) => console.log(games))
+      map(games => games.filter(game => game.isNew))
     );
     this.boardGames$ = this.firebaseDatabaseService.boardGamesOneShot$.pipe(
       map(games => games.filter(game => game.isNew))
