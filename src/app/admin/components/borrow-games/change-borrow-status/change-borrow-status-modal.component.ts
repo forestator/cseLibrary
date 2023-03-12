@@ -3,7 +3,7 @@ import {BoardGame} from '../../../../models/boardGame.model';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Game, LudoStatus} from '../../../../models/common.model';
 import {map, Observable} from 'rxjs';
-import {BorrowStatus, CseUser} from '../../../../models/users.model';
+import {CseUser} from '../../../../models/users.model';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
@@ -37,12 +37,8 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
     },
   ) {
     this.statusOptions = [LudoStatus.EMPRUNTE, LudoStatus.AVAILABLE];
-    if (this.data.game instanceof BorrowStatus) {
-      this.newStatus = LudoStatus.AVAILABLE;
-    } else {
-      this.newStatus = this.data.game.status === LudoStatus.AVAILABLE ?
-        LudoStatus.EMPRUNTE : LudoStatus.AVAILABLE;
-    }
+    this.newStatus = this.data.game.status === LudoStatus.AVAILABLE ?
+      LudoStatus.EMPRUNTE : LudoStatus.AVAILABLE;
     this.employeeFomControl = new FormControl<string | CseUser>(this.data.returnForUser ?? '');
     this.selectedEmployee = this.data.returnForUser;
     this.initDateFormGroup();
@@ -82,7 +78,6 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
       }];
     }
     this.firebaseDatabaseService.setNewBorrowForUser(gameToUpdate, this.selectedEmployee);
-    // todo this.firebaseDatabaseService.removeBorrowForUser(this.data.game, this.selectedEmployee);
     this.cancel();
   }
 

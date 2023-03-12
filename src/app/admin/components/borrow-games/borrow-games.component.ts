@@ -1,11 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
-import {map, Observable, Subscription} from 'rxjs';
+import {combineLatest, map, Observable, Subscription, take} from 'rxjs';
 import {FormControl} from '@angular/forms';
-import {BorrowStatus, CseUser} from '../../../models/users.model';
+import {CseUser} from '../../../models/users.model';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {ActivatedRoute} from '@angular/router';
 import {UserService} from '../../../services/firebase/user.service';
+import {Game} from '../../../models/common.model';
+import moment from 'moment';
 
 @Component({
   selector: 'app-borrow-games',
@@ -16,16 +18,16 @@ export class BorrowGamesComponent implements OnInit, OnDestroy {
   displayedColumnsBoardGames = ['borrow', 'status', 'borrowedBy', 'category', 'name', 'poids', 'ref'];
   displayedColumnsVideoGame = ['borrow', 'status', 'borrowedBy', 'category', 'name', 'ref'];
   displayedColumnsOutsideGame = ['borrow', 'status', 'borrowedBy', 'name', 'ref'];
-  displayedColumnsGameOfUser = ['borrow', 'date', 'name', 'ref'];
+  displayedColumnsGameOfUser = ['return', 'date', 'name', 'ref'];
   search: string = '';
   boardGamePanelOpen: boolean = false;
   videoGamePanelOpen: boolean = false;
   outsideGamePanelOpen: boolean = false;
   employeeSearch: FormControl<string> = new FormControl<string>('');
   filteredOptions$?: Observable<Array<CseUser>>;
-  gamesOfUser: Array<BorrowStatus> = [];
   users: Array<CseUser>;
   selectedUser?: CseUser;
+  gameOfUser$?: Observable<Array<Game>>;
   private usersSub: Subscription;
 
   constructor(public firebaseDatabaseService: FirebaseDatabaseService,
@@ -53,8 +55,21 @@ export class BorrowGamesComponent implements OnInit, OnDestroy {
 
   selectEmployee($event: MatAutocompleteSelectedEvent) {
     this.selectedUser = $event.option.value as CseUser;
-    this.gamesOfUser = this.selectedUser?.borrowedGames ?
-      Object.values(this.selectedUser.borrowedGames) : [];
+    this.gameOfUser$ = combineLatest([
+      this.firebaseDatabaseService.boardGamesOneShot$,
+      this.firebaseDatabaseService.videoGamesOneShot$,
+      this.firebaseDatabaseService.outsideGamesOneShot$
+    ]).pipe(
+      take(1),
+      map(([bgs, vgs, ots]) => {
+        const gamesWithBorrowList: Array<Game> = [...bgs, ...vgs, ...ots].filter(game => game?.borrowList);
+        return gamesWithBorrowList.filter(game => {
+          const lastBorrow = game.borrowList[game.borrowList.length - 1];
+          const endDateAfterToday = moment(lastBorrow.endDate, 'DD/MM/YYYY').isAfter(moment());
+          return lastBorrow.userId === this.selectedUser.id && endDateAfterToday;
+        })
+      })
+    );
   }
 
   ngOnDestroy() {

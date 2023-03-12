@@ -30,6 +30,7 @@ import {AddGameFormComponent} from './components/admin-games/add-game/add-game-f
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {LastBorrowDatesPipe} from './pipe/last-borrow-dates.pipe';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameComponent, AddGameFormComponent
+    AdminMenuComponent, AddGameComponent, AddGameFormComponent, LastBorrowDatesPipe
   ],
   exports: [
     AdminMenuComponent

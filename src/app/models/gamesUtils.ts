@@ -1,7 +1,6 @@
 import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
 import {Consoles, VideoGame} from './videoGames.model';
 import {BddGame, BorrowInfo, Game} from './common.model';
-import {BorrowStatus} from './users.model';
 import moment, {Moment} from 'moment';
 
 export class GamesUtils {
@@ -71,7 +70,7 @@ export class GamesUtils {
     return elements.filter(el => el.attributes?.type === attribute).map(el => el.attributes.value);
   }
 
-  static libraryIdOfGame(game: Game | BorrowStatus): string | null {
+  static libraryIdOfGame(game: Game): string | null {
     let library = null;
     if (('category' in game) && game.category in BoardGameCategory) {
       library = 'boardGames';
@@ -81,9 +80,6 @@ export class GamesUtils {
     }
     if (('category' in game) && game.category === 'outsideGames') {
       library = 'outsideGames';
-    }
-    if ('libraryId' in game) {
-      library = game.libraryId;
     }
     return library;
   }

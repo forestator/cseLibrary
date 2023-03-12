@@ -72,7 +72,7 @@ import {UserByIdPipe} from './pipes/user-by-id.pipe';
     GameReservedForFuturWeeksPipe,
     FuturReservationsComponent,
     UserByIdPipe],
-  exports: [LudoMenuComponent],
+  exports: [LudoMenuComponent, GameStatusComponent],
     imports: [
         CommonModule,
         MatIconModule,

@@ -9,6 +9,7 @@ import {GamesUtils} from '../../models/gamesUtils';
 import {CseUser} from '../../models/users.model';
 import {UserService} from './user.service';
 import {FileUpload} from '../../models/fileUpload.model';
+import moment from 'moment/moment';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +79,8 @@ export class FirebaseDatabaseService {
   }
 
   removeBorrowForUser(game: Game, employee: CseUser): void {
+    const lastBorrow = game.borrowList[game.borrowList.length - 1];
+    lastBorrow.endDate = moment().add(-1, 'day').locale('fr').format('L');
     this.updateGameBorrowList(game);
     this.userService.removeBorrowedGameOfUser(employee, game.ref);
   }

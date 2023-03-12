@@ -9,15 +9,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
-import {BorrowedByUserPipe} from './pipe/borrowed-by-user.pipe';
 import {UploadFormComponent} from './components/upload-form/upload-form.component';
+import {BorrowedByUserPipe} from './pipe/borrowed-by-user.pipe';
 
 @NgModule({
   declarations: [
     HomeComponent,
     BadgeComponent,
-    BorrowedByUserPipe,
-    UploadFormComponent
+    UploadFormComponent,
+    BorrowedByUserPipe
   ],
   imports: [
     CommonModule,
@@ -29,12 +29,12 @@ import {UploadFormComponent} from './components/upload-form/upload-form.componen
     RouterModule,
     MatIconModule
   ],
-    exports: [
-        HomeComponent,
-        BadgeComponent,
-        BorrowedByUserPipe,
-        UploadFormComponent
-    ]
+  exports: [
+    HomeComponent,
+    BadgeComponent,
+    UploadFormComponent,
+    BorrowedByUserPipe
+  ]
 })
 export class AppCommonModule {
 }

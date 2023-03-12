@@ -15,7 +15,7 @@
   </form>
 
   <app-ludo-table [displayedColumns]="displayedColumnsGameOfUser"
-                  [games]="gamesOfUser"
+                  [games]="gameOfUser$ | async"
                   [returnForUser]="selectedUser"
                   [users]="users">
   </app-ludo-table>
