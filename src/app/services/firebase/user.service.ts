@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
-import {map, Observable} from 'rxjs';
+import {BehaviorSubject, map} from 'rxjs';
 import {BddUsers, CseUser} from '../../models/users.model';
 import moment from 'moment';
 import {Game} from '../../models/common.model';
@@ -11,11 +11,13 @@ import {GamesUtils} from '../../models/gamesUtils';
 })
 export class UserService {
 
-  userList$: Observable<Array<CseUser>>;
+  userList$: BehaviorSubject<Array<CseUser>> = new BehaviorSubject<Array<CseUser>>([]);
 
   constructor(private db: AngularFireDatabase) {
-    this.userList$ = this.db.object<BddUsers>('users').valueChanges().pipe(
-      map((users) => Object.values(users)));
+    this.db.object<BddUsers>('users').valueChanges().pipe(
+      map((users) => Object.values(users))).subscribe(
+        value => this.userList$.next(value)
+    );
   }
 
   setBorrowedGameOfUser(employee: CseUser, game: Game): void {

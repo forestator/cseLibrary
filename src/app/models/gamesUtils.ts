@@ -104,7 +104,12 @@ export class GamesUtils {
   static reservedForNextSession(borrowList: Array<BorrowInfo>): boolean {
     return borrowList.some(borrow => {
       const nextSessionDay: Moment = this.getNextLudothequeOpening();
-      return this.daysRemaining(borrow.startDate, nextSessionDay) < 14;
+      const borrowEnd = moment(borrow.endDate, 'DD/MM/YYYY');
+      if (borrowEnd.isAfter(nextSessionDay)) {
+        return this.daysRemaining(borrow.startDate, nextSessionDay) < 14;
+      } else {
+        return false;
+      }
     });
   }
 
@@ -116,9 +121,9 @@ export class GamesUtils {
   static getNextLudothequeOpening(): Moment {
     const currentDate: Moment = moment();
     if (currentDate.week() % 2 !== 0) {
+      currentDate.day(2);
       currentDate.add(1, 'week');
-    }
-    if (currentDate.week() % 2 === 0 && currentDate.day() > 4) {
+    } else if (currentDate.week() % 2 === 0 && currentDate.day() > 4) {
       currentDate.day(2);
       currentDate.add(2, 'week');
     } else if (currentDate.day() !== 2 || currentDate.day() !== 4) {

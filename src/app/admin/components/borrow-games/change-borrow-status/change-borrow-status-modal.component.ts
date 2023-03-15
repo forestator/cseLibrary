@@ -99,7 +99,8 @@ export class ChangeBorrowStatusModalComponent implements OnInit {
     this.dateFilter = (d: Date | null): boolean => {
       const day = (moment(d) || moment()).day();
       const week = (moment(d) || moment()).week();
-      return (day === 2 || day === 4) && (week % 2 === 0);
+      const past = (moment(d) || moment()).isAfter(moment());
+      return (day === 2 || day === 4) && (week % 2 === 0) && past;
     };
 
     const nextLudothequeOpening: Moment = GamesUtils.getNextLudothequeOpening();
