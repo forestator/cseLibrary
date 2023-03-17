@@ -49,9 +49,12 @@ const ludoRoutes: Routes = [
 const biblioRoutes: Routes = [
   {path: 'bibliotheque', component: BibliothequeComponent},
   {path: 'bibliotheque/new', component: NewViewComponent},
+  {
+    path: 'bibliotheque/admin/:libraryId', component: SettingsViewComponent,
+    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$],
+  },
   {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
   {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
-  {path: 'bibliotheque/:libraryId/:catId/settings', component: SettingsViewComponent},
   {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
 ];
 

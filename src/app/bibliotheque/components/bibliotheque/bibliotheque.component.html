@@ -8,4 +8,13 @@
             {{biblio.library?.resume}}
         </div>
     </div>
+  <div class="core-header"
+       *ngIf="authService.userAllowedToWrite$ | async">
+    <div class="core-title">
+      <div class="primary">Administration biblio</div>
+    </div>
+    <div class="core-body" [routerLink]="'admin/' + biblio.library.id"  *ngFor="let biblio of allBiblio">
+      Gestion des livres {{biblio.library?.name}}
+    </div>
+  </div>
 </div>

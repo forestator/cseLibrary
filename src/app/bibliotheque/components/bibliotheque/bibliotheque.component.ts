@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Biblio} from '../../../models/author.model';
 import {XmlParserService} from '../../../services/biblio/xml-parser.service';
 import {DataService} from '../../../services/biblio/data.service';
+import {AuthentificationService} from '../../../services/firebase/authentification.service';
 
 @Component({
     selector: 'app-bibliotheque',
@@ -13,6 +14,7 @@ export class BibliothequeComponent {
     allBiblio: Array<Biblio>;
     constructor(
         private xmlParser: XmlParserService,
+        public authService: AuthentificationService,
         public dataService: DataService) {
 
         this.xmlParser.loadXML('assets/IMG.xml').subscribe(biblio => {

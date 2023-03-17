@@ -16,4 +16,8 @@ export class HomeComponent implements OnInit {
   linkToComission(comission: 'bibliotheque' | 'ludotheque'): void {
     this.navigateService.goToComission(comission);
   }
+
+  gotoUrl(url: string) {
+    window.open(url, "_blank");
+  }
 }

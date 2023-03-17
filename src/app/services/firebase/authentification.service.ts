@@ -11,7 +11,7 @@ export class AuthentificationService {
 
   currentUser$: Observable<User | null> = this.auth.user;
   userAllowedToWrite$: Observable<boolean> = this.currentUser$.pipe(
-    map((user) => user?.uid === 'h0F4SqDlGWXgHAjesEQRzExYN3c2')
+    map((user) => !!user?.uid)
   );
 
   constructor(public auth: AngularFireAuth) {

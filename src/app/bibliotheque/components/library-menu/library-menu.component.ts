@@ -25,7 +25,6 @@ export class LibraryMenuComponent implements OnInit {
   ngOnInit(): void {
     this.selectedBiblio$ = this.navService.getRouteParams().pipe(mergeMap((params) => {
       const libraryId = params['libraryId'];
-      console.log(libraryId);
       return this.firebaseDatabaseService.bibliotheque$.pipe(
         map(biblio => biblio?.find(b => b?.library?.id === libraryId))
       )
