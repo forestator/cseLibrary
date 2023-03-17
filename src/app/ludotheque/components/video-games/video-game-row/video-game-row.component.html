@@ -3,7 +3,7 @@
   <div class="video-game-info">
     <div class="video-game-title">{{videoGame.name}}</div>
     <app-game-status class="badge" [game]="videoGame"></app-game-status>
-    <button mat-raised-button (click)="borrowGame(videoGame)">Réserver</button>
+    <!--<button mat-raised-button (click)="borrowGame(videoGame)">Réserver</button>-->
     <div class="" *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
     <div class="" *ngIf="videoGame.category">Console: {{videoGame.category}}</div>
     <app-futur-reservations [game]="videoGame"></app-futur-reservations>
