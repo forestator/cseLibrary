@@ -12,7 +12,7 @@
                     <mat-icon *ngIf="author.by==='BY_AUTHOR'" class="ctrl-add" (click)="addSeries($event)" title="Ajouter une nouvelle serie">add-box</mat-icon>
                 </div>
             </div>
-            
+
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="description">
@@ -25,13 +25,15 @@
             <div class="content">{{author.resume}}</div>
         </div>
     </div>
-    <app-settings-book 
+    <app-settings-book
         *ngFor="let book of author.books; let bi=index;"
+        [library]="library"
         [book]="book"
         [index]="index + '_' + (bi+1)">
-    </app-settings-book>  
-    <app-settings-series 
+    </app-settings-book>
+    <app-settings-series
         *ngFor="let series of author.series; let si=index;"
+        [library]="library"
         [series]="series"
         [index]="index + '_' + (si+1)">
     </app-settings-series>

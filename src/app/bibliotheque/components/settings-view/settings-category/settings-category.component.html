@@ -32,20 +32,22 @@
             <div class="content">{{category.prefix}}</div>
         </div>
     </div>
-    <ng-container *ngIf="category.by === 'BY_SERIES'">    
-        <app-settings-series 
+    <ng-container *ngIf="category.by === 'BY_SERIES'">
+        <app-settings-series
             *ngFor="let serie of category.series; let si=index;"
+            [library]="library"
             (sendDelete)="deleteSeries($event)"
             [series]="serie"
             [index]="(index+1) + '_' + (si+1)">
-        </app-settings-series>   
-    </ng-container> 
-    <ng-container *ngIf="category.by === 'BY_AUTHOR'">    
-        <app-settings-author 
+        </app-settings-series>
+    </ng-container>
+    <ng-container *ngIf="category.by === 'BY_AUTHOR'">
+        <app-settings-author
             *ngFor="let author of category.authors; let ai=index;"
             (sendDelete)="deleteAuthor($event)"
             [author]="author"
+            [library]="library"
             [index]="(index+1) + '_' + (ai+1)">
-        </app-settings-author>   
-    </ng-container> 
+        </app-settings-author>
+    </ng-container>
 </mat-expansion-panel>

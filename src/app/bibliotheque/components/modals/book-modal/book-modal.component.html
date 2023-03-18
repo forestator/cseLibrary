@@ -9,7 +9,7 @@
 <div mat-dialog-content>
     <div class="book-edit">
         <div class="book-cover">
-            <img [src]="dataService.selectedLib?.library?.path+'/'+cover.value">
+            <img [src]="(data?.library?.path | bookCover: cover.value) | async">
         </div>
         <div class="book-form">
             <form>

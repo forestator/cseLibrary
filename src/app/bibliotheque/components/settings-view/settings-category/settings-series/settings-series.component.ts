@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Series} from 'src/app/models/author.model';
+import {Library, Series} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SeriesModalComponent} from '../../../modals/series-modal/series-modal.component';
@@ -19,6 +19,9 @@ export class SettingsSeriesComponent implements OnInit {
 
    @Input()
    index!: string;
+
+  @Input()
+  library!: Library;
 
    @Output() sendDelete = new EventEmitter<string>();
 
@@ -59,7 +62,7 @@ export class SettingsSeriesComponent implements OnInit {
          BookModalComponent, {
          height: 'auto',
          width: '1200px',
-         data: { parent: this.series, book: null }
+         data: { parent: this.series, book: null, library: this.library }
       });
 
       dialogRef.afterClosed().subscribe(result => {

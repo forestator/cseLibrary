@@ -11,7 +11,7 @@
                     <mat-icon class="ctrl-add" (click)="add($event)">add</mat-icon>
                 </div>
             </div>
-            
+
         </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="description">
@@ -32,10 +32,11 @@
             <div class="content"><app-series-badge [series]="series"></app-series-badge></div>
         </div>
     </div>
-    <app-settings-book 
+    <app-settings-book
         *ngFor="let book of series.books; let bi=index;"
+        [library]="library"
         (sendDelete)="deleteBook($event)"
         [book]="book"
         [index]="index + '_' + (bi+1)">
-    </app-settings-book>  
+    </app-settings-book>
 </mat-expansion-panel>

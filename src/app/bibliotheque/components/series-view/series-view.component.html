@@ -18,7 +18,7 @@
       <div class="books">
         <div *ngFor="let book of series.books | bookFilter: tools.adminMode" class="book" [title]="book.name">
           <div (click)="tools.scrollToId(book.id)">
-            <img class="book-cover" [src]="dataService.selectedLib?.library?.path+'/'+book.cover">
+            <img class="book-cover" [src]="(library?.path | bookCover: book.cover) | async">
           </div>
           <div class="book-badge">
             <app-badge [status]="book.status" [display]="'small'"></app-badge>
@@ -27,7 +27,9 @@
       </div>
     </div>
     <div class="core-body">
-      <app-book-row *ngFor="let book of series.books | bookFilter: tools.adminMode;let index=index;" [book]="book"
+      <app-book-row *ngFor="let book of series.books | bookFilter: tools.adminMode;let index=index;"
+                    [library]="library"
+                    [book]="book"
                     [index]="index"></app-book-row>
     </div>
   </div>

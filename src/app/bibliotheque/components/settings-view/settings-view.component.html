@@ -62,18 +62,21 @@
     </div>
     <app-settings-category
       *ngIf="categoryDisplayed"
+      [library]="library"
       (sendDelete)="deleteCategory($event)"
       [category]="categoryDisplayed"
       [index]="index?index + 1:0">
     </app-settings-category>
     <app-settings-authors
       *ngIf="isAuthorsDisplayed"
+      [library]="library"
       (sendDelete)="deleteAuthor($event)"
       [authors]="dataService.selectedLib?.authors"
       [index]="index?index + 1:0">
     </app-settings-authors>
     <app-settings-publishers
       *ngIf="isPublishersDisplayed"
+      [library]="library"
       (sendDelete)="deletePublisher($event)"
       [publishers]="dataService.selectedLib?.publishers"
       [index]="index?index + 1:0">

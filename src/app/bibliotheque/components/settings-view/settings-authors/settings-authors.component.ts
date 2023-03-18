@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Author} from 'src/app/models/author.model';
+import {Author, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 
 @Component({
@@ -14,6 +14,9 @@ export class SettingsAuthorsComponent implements OnInit {
 
    @Input()
    index!: number;
+
+  @Input()
+  library!: Library;
 
    @Output() sendDelete = new EventEmitter<string>();
 

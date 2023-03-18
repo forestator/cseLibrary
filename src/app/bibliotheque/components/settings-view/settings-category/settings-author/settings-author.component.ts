@@ -4,7 +4,7 @@ import {AuthorModalComponent} from 'src/app/bibliotheque/components/modals/autho
 import {BookModalComponent} from 'src/app/bibliotheque/components/modals/book-modal/book-modal.component';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {SeriesModalComponent} from 'src/app/bibliotheque/components/modals/series-modal/series-modal.component';
-import {Author} from 'src/app/models/author.model';
+import {Author, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
@@ -19,6 +19,9 @@ export class SettingsAuthorComponent implements OnInit {
 
    @Input()
    index!: string;
+
+  @Input()
+  library!: Library;
 
    @Output() sendDelete = new EventEmitter<string>();
 
@@ -56,7 +59,7 @@ export class SettingsAuthorComponent implements OnInit {
          BookModalComponent, {
          height: '780px',
          width: '1200px',
-         data: { parent: this.author, book: null }
+         data: { parent: this.author, book: null, library: this.library}
       });
 
       dialogRef.afterClosed().subscribe(result => {

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {Category, ViewBy} from 'src/app/models/author.model';
+import {Category, Library, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
 import {CategoryModalComponent} from '../../modals/category-modal/category-modal.component';
 import {DeleteModalComponent} from '../../modals/delete-modal/delete-modal.component';
@@ -19,6 +19,9 @@ export class SettingsCategoryComponent implements OnInit {
 
    @Input()
    index!: number;
+
+   @Input()
+   library!: Library;
 
    @Output() sendDelete = new EventEmitter<string>();
 

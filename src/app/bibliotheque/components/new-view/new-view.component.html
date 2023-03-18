@@ -4,20 +4,22 @@
             Nouveautés
             <mat-icon (click)="exportNewsAsPDF()">picture_as_pdf</mat-icon>
         </div>
-        <app-book-row 
-            [id]="book.book.id" 
-            *ngFor="let book of books;let index=index;" 
-            [book]="book.book" 
+        <app-book-row
+            [id]="book.book.id"
+            *ngFor="let book of books;let index=index;"
+            [book]="book.book"
+            [library]="library"
             [category]="book.category"
             [index]="index">
         </app-book-row>
     </div>
     <div id="inProject">
         <div class="title">En projet</div>
-        <app-book-row 
+        <app-book-row
             [id]="book.book.id"
-            *ngFor="let book of booksInProject;let index=index;" 
+            *ngFor="let book of booksInProject;let index=index;"
             [book]="book.book"
+            [library]="library"
             [category]="book.category"
             [index]="index">
         </app-book-row>

@@ -25,6 +25,7 @@
     <div class="category-core">
         <app-series-row
             *ngFor="let series of category.series  | seriesFilter : tools.adminMode"
+            [library]="library$ | async"
             [series]="series">
         </app-series-row>
     </div>

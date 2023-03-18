@@ -4,6 +4,7 @@ import {
   Author,
   Book,
   BookStatus,
+  Library,
   Publisher,
   SearchBookResult,
   Series,
@@ -46,12 +47,13 @@ export class BookModalComponent extends BasicModal implements OnInit {
 
    constructor(
       public dialogRef: MatDialogRef<BookModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: { parent: Series | Author, book: Book },
+      @Inject(MAT_DIALOG_DATA) public data: { parent: Series | Author, book: Book, library: Library },
       public dataService: DataService,
       public googleBookService: GoogleBookService,
       public dialog: MatDialog) {
       super();
-      this.parent = data.parent;
+     console.log(this.data.library);
+     this.parent = data.parent;
       if (data.book) {
          this.isNew = false;
          this.by = data.book.by;

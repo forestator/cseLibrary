@@ -52,6 +52,8 @@ import {MatTableModule} from '@angular/material/table';
 import {RouterModule} from '@angular/router';
 import {AppCommonModule} from '../common/app-common.module';
 import {LibraryMenuComponent} from './components/library-menu/library-menu.component';
+import {BookCoverPipe} from './pipes/book-cover.pipe';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import {LibraryMenuComponent} from './components/library-menu/library-menu.compo
     BookFilterPipe,
     SeriesFilterPipe,
     CategoryViewComponent,
+    BookCoverPipe,
   ],
   imports: [
     CommonModule,
@@ -100,7 +103,8 @@ import {LibraryMenuComponent} from './components/library-menu/library-menu.compo
     FormsModule,
     MatTableModule,
     RouterModule,
-    AppCommonModule
+    AppCommonModule,
+    MatInputModule
   ],
   providers: [BookFilterPipe],
   exports: [LibraryMenuComponent]
