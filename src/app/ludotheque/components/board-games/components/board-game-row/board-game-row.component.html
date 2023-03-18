@@ -1,4 +1,4 @@
-<div [id]="boardGame.id" *ngIf="boardGame" class="book-core">
+<div [id]="boardGame.id" class="book-core" #row>
   <ng-container [ngTemplateOutlet]="image" *ngIf="parity && boardGame.cover"></ng-container>
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
@@ -26,6 +26,6 @@
 
 <ng-template #image>
   <div class="book-cover">
-    <img width="400" height="400" [src]="boardGame!.cover" [alt]="boardGame.name"/>
+    <img [src]="boardGame!.cover" [alt]="boardGame.name"/>
   </div>
 </ng-template>
