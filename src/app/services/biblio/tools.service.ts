@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {DataService} from './data.service';
 
 @Injectable({
@@ -7,7 +7,6 @@ import {DataService} from './data.service';
 })
 export class ToolsService {
   public adminMode: boolean = false;
-  public adminMode$ = new BehaviorSubject<boolean>(false);
   private scrollRetry = 0;
 
   constructor(private dataService: DataService) {

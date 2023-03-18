@@ -31,12 +31,18 @@
          [routerLink]="prefixRoute + 'new'">
       Nouveautés
     </div>
-    <ng-container *ngIf="selectedBiblio$ | async as currentBiblio">
-      <div *ngFor='let category of currentBiblio.library?.categories'
-           class="cat-nav"
-           [routerLink]="prefixRoute + currentBiblio.library?.id + '/' + category.id">
-        {{category?.name}}
-      </div>
+    <ng-container *ngIf="navService.url$ | async as url">
+      <ng-container *ngIf="menu$ | async as menu">
+        <ng-container  *ngFor="let item of menu">
+          <ng-container *ngIf="url.includes(item.library.id)">
+            <div *ngFor='let category of item.library?.categories'
+                 class="cat-nav"
+                 [routerLink]="prefixRoute + item.library?.id + '/' + category.id">
+              {{category?.name}}
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
     </ng-container>
   </div>
 </div>

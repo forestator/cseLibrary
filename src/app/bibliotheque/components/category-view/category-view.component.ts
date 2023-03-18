@@ -32,7 +32,6 @@ export class CategoryViewComponent implements OnInit {
     this.library$ = this.navigationService.getRouteParams().pipe(
       mergeMap((params: Params) => this.biblioDatabaseService.getLibrary(params['libraryId']!))
     );
-    console.log(this.library$);
     this.category$ = this.navigationService.getRouteParams().pipe(
       mergeMap((params: Params) =>
         this.biblioDatabaseService.getLibrary(params['libraryId']!).pipe(
