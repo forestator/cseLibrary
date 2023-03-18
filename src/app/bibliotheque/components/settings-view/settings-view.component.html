@@ -51,13 +51,13 @@
            [class]="isAuthorsDisplayed?'bloc-selected':''"
            (click)="displayAuthors()">
         <div class="category-title">Auteur</div>
-        <div>{{dataService.selectedLib?.authors?.length}} auteurs</div>
+        <div>{{dataService.getCurrentBiblio(library.id)?.authors?.length}} auteurs</div>
       </div>
       <div class="category bloc-link"
            [class]="isPublishersDisplayed?'bloc-selected':''"
            (click)="displayPublishers()">
         <div class="category-title">Editeur</div>
-        <div>{{dataService.selectedLib?.publishers?.length}} editeurs</div>
+        <div>{{dataService.getCurrentBiblio(library.id)?.publishers?.length}} editeurs</div>
       </div>
     </div>
     <app-settings-category
@@ -71,14 +71,14 @@
       *ngIf="isAuthorsDisplayed"
       [library]="library"
       (sendDelete)="deleteAuthor($event)"
-      [authors]="dataService.selectedLib?.authors"
+      [authors]="dataService.getCurrentBiblio(library.id)?.authors"
       [index]="index?index + 1:0">
     </app-settings-authors>
     <app-settings-publishers
       *ngIf="isPublishersDisplayed"
       [library]="library"
       (sendDelete)="deletePublisher($event)"
-      [publishers]="dataService.selectedLib?.publishers"
+      [publishers]="dataService.getCurrentBiblio(library.id)?.publishers"
       [index]="index?index + 1:0">
     </app-settings-publishers>
   </mat-expansion-panel>

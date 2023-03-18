@@ -14,7 +14,7 @@
     <div class="books">
       <div *ngFor="let book of books" [class]="book.id?'book':'separator'" [title]="book.name">
         <a *ngIf="book.id" [href]="'#'+book.id">
-          <img class="book-cover" [src]="(library?.path | bookCover: book.cover) | async">
+          <img alt="" class="book-cover" [src]="(library?.path | bookCover: book.cover) | async">
         </a>
         <div *ngIf="book.id" class="book-badge">
           <app-badge [status]="book.status" [display]="'small'"></app-badge>

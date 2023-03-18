@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Library} from 'src/app/models/author.model';
-import {map, Observable} from 'rxjs';
+import {mergeMap, Observable} from 'rxjs';
 import {Params} from '@angular/router';
-import {DataService} from '../../../services/biblio/data.service';
 import {NavigationService} from '../../../services/navigation.service';
+import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
 @Component({
   selector: 'app-library-view',
@@ -12,16 +12,15 @@ import {NavigationService} from '../../../services/navigation.service';
 })
 export class LibraryViewComponent implements OnInit {
 
-  library$!: Observable<Library | undefined>;
+  library$!: Observable<Library>;
 
-  constructor(private dataService: DataService, private navigationService: NavigationService) {
+  constructor(private biblioDatabaseService: BiblioDatabaseService, private navigationService: NavigationService) {
   }
 
   ngOnInit() {
     this.library$ = this.navigationService.getRouteParams().pipe(
-      map((params: Params) => {
-          return this.dataService.allBiblio
-            .find(biblio => biblio.library?.id === params['libraryId']!)?.library;
+      mergeMap((params: Params) => {
+          return this.biblioDatabaseService.getLibrary(params['libraryId']!);
         }
       ));
   }

@@ -18,7 +18,7 @@
       <div class="books">
         <div *ngFor="let book of series.books | bookFilter: tools.adminMode" class="book" [title]="book.name">
           <div (click)="tools.scrollToId(book.id)">
-            <img class="book-cover" [src]="(library?.path | bookCover: book.cover) | async">
+            <img alt="" class="book-cover" [src]="(library?.path | bookCover: book.cover) | async">
           </div>
           <div class="book-badge">
             <app-badge [status]="book.status" [display]="'small'"></app-badge>

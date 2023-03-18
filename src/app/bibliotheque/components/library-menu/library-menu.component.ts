@@ -14,7 +14,7 @@ export class LibraryMenuComponent implements OnInit {
 
   title: string = 'Cse';
   prefixRoute: string = 'bibliotheque/';
-  menu$: Observable<Array<Biblio> | null> = this.firebaseDatabaseService.bibliotheque$;
+  menu$: Observable<Array<Biblio> | null> = this.firebaseDatabaseService.bibliothequeOneShot$;
   selectedBiblio$?: Observable<Biblio | undefined>;
 
   constructor(public firebaseDatabaseService: FirebaseDatabaseService,
@@ -25,7 +25,7 @@ export class LibraryMenuComponent implements OnInit {
   ngOnInit(): void {
     this.selectedBiblio$ = this.navService.getRouteParams().pipe(mergeMap((params) => {
       const libraryId = params['libraryId'];
-      return this.firebaseDatabaseService.bibliotheque$.pipe(
+      return this.firebaseDatabaseService.bibliothequeOneShot$.pipe(
         map(biblio => biblio?.find(b => b?.library?.id === libraryId))
       )
     }));

@@ -8,6 +8,7 @@ import {PublisherModalComponent} from '../modals/publisher-modal/publisher-modal
 import {NavigationService} from '../../../services/navigation.service';
 import {map, Observable} from 'rxjs';
 import {Params} from '@angular/router';
+import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
 @Component({
   selector: 'app-settings-view',
@@ -27,6 +28,7 @@ export class SettingsViewComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
               private navService: NavigationService,
+              private biblioDatabaseService: BiblioDatabaseService,
               public dataService: DataService) {
     this.isAuthorsDisplayed = false;
     this.isPublishersDisplayed = false;
@@ -101,8 +103,7 @@ export class SettingsViewComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // add author
-        this.dataService.selectedLib?.authors?.push(result);
-        this.dataService.log();
+        this.biblioDatabaseService.addAuthor(this.library, result);
       }
     });
   }
@@ -118,9 +119,8 @@ export class SettingsViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // add author
-        this.dataService.selectedLib?.publishers?.push(result);
-        this.dataService.log();
+        // add publisher
+        this.biblioDatabaseService.addPublisher(this.library, result);
       }
     });
   }

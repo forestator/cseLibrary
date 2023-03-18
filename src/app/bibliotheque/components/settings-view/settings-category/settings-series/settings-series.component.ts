@@ -40,7 +40,7 @@ export class SettingsSeriesComponent implements OnInit {
          SeriesModalComponent, {
          height: 'auto',
          width: '1200px',
-         data: { series: this.series }
+         data: { series: this.series, library: this.library }
       });
 
       dialogRef.afterClosed().subscribe(result => {

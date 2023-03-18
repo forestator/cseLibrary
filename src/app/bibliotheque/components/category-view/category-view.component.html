@@ -1,40 +1,42 @@
-<div *ngIf="(library$ | async) && category" class="core-page fadein">
+<ng-container *ngIf="library$ | async as library">
+  <div *ngIf="category$ | async as category" class="core-page fadein">
     <div class="core-header">
-        <div class="core-title">
-            <div class="secondary"></div>
-            <mat-icon>navigate_next</mat-icon>
-            <div class="primary">{{category.name}}</div>
-            <div class="counter">{{counter}} livres</div>
+      <div class="core-title">
+        <div class="secondary"></div>
+        <mat-icon>navigate_next</mat-icon>
+        <div class="primary">{{category.name}}</div>
+        <div class="counter">{{counter}} livres</div>
+      </div>
+      <div class="core-resume">
+        {{category.resume}}
+      </div>
+      <div *ngIf="category.by===VIEW_BY.BY_AUTHOR">
+        <app-alphabet *ngIf="category.by===VIEW_BY.BY_AUTHOR"
+                      (filterByLetter)="filterByLetter($event)"></app-alphabet>
+      </div>
+      <div class="all-series">
+        <div *ngFor="let series of category.series | seriesFilter : tools.adminMode"
+             class="series bloc-link"
+             [routerLink]="series?.id">
+          <div class="series-title">{{series.name}}</div>
+          <div class="series-info">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
         </div>
-        <div class="core-resume">
-            {{category.resume}}
-        </div>
-        <div *ngIf="category.by===VIEW_BY.BY_AUTHOR">
-            <app-alphabet *ngIf="category.by===VIEW_BY.BY_AUTHOR"
-                          (filterByLetter)="filterByLetter($event)"></app-alphabet>
-        </div>
-        <div class="all-series">
-            <div *ngFor="let series of category.series | seriesFilter : tools.adminMode"
-                 class="series bloc-link"
-                 [routerLink]="series?.id">
-                <div class="series-title">{{series.name}}</div>
-                <div class="series-info">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
-            </div>
-        </div>
+      </div>
     </div>
     <div class="category-core">
-        <app-series-row
-            *ngFor="let series of category.series  | seriesFilter : tools.adminMode"
-            [library]="library$ | async"
-            [series]="series">
-        </app-series-row>
+      <app-series-row
+        *ngFor="let series of category.series  | seriesFilter : tools.adminMode"
+        [library]="library"
+        [series]="series">
+      </app-series-row>
     </div>
     <div *ngIf="category.by===VIEW_BY.BY_AUTHOR" class="category-core">
-        <app-author-row
-            *ngFor="let author of filterAuthors(category.authors)"
-            [author]="author"
-            [library]="library$ | async"
-            (sendView)="selectAuthor($event)">
-        </app-author-row>
+      <app-author-row
+        *ngFor="let author of filterAuthors(category.authors)"
+        [author]="author"
+        [library]="library"
+        (sendView)="selectAuthor($event)">
+      </app-author-row>
     </div>
-</div>
+  </div>
+</ng-container>

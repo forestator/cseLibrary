@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {Author, Category, Library, SelectorView, ViewBy} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {DataService} from '../../../services/biblio/data.service';
-import {map, Observable} from 'rxjs';
+import {map, mergeMap, Observable} from 'rxjs';
 import {Params} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
+import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
 @Component({
   selector: 'app-category-view',
@@ -15,37 +16,30 @@ export class CategoryViewComponent implements OnInit {
 
   library$!: Observable<Library | undefined>;
 
-  private _category!: Category | undefined;
   public filterLetter?: string;
 
-  set category(value: Category | undefined) {
-    this._category = value;
-    this._category?.series?.forEach(s => {
-      this.counter += s.books ? s.books.length : 0;
-    });
-  }
-
-  get category(): Category | undefined {
-    return this._category;
-  }
-
+  category$?: Observable<Category>;
   counter: number = 0;
   VIEW_BY = ViewBy;
 
   constructor(public tools: ToolsService,
               private navigationService: NavigationService,
+              private biblioDatabaseService: BiblioDatabaseService,
               public dataService: DataService) {
   }
 
   ngOnInit(): void {
     this.library$ = this.navigationService.getRouteParams().pipe(
-      map((params: Params) => {
-          const lib = this.dataService.allBiblio
-            .find(biblio => biblio.library?.id === params['libraryId']!)?.library;
-          this.category = lib?.categories?.find(cat => cat.id === params['catId']!);
-          return lib;
-        }
-      ));
+      mergeMap((params: Params) => this.biblioDatabaseService.getLibrary(params['libraryId']!))
+    );
+    console.log(this.library$);
+    this.category$ = this.navigationService.getRouteParams().pipe(
+      mergeMap((params: Params) =>
+        this.biblioDatabaseService.getLibrary(params['libraryId']!).pipe(
+          map(lib => lib.categories.find(cat => cat.id === params['catId']))
+        )
+      )
+    );
   }
 
   selectAuthor(selectorView: SelectorView) {

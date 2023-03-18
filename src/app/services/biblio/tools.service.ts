@@ -13,7 +13,7 @@ export class ToolsService {
   constructor(private dataService: DataService) {
   }
 
-  getAuthors(authorIds: Array<string | undefined>): Observable<string> {
+  getAuthors(authorIds: Array<string | undefined>, libId: string): Observable<string> {
     return new Observable<string>(observer => {
       const ids: Array<string> = [];
       authorIds?.forEach(item => {
@@ -22,7 +22,7 @@ export class ToolsService {
         }
       });
       let authorNames: string = '';
-      let authors = this.dataService.getAuthors(ids);
+      let authors = this.dataService.getAuthors(ids, libId);
       authors.forEach((item, index) => {
         authorNames += `${item.firstName} ${item.lastName}`;
         if (index != authors.length - 1) {
@@ -33,11 +33,11 @@ export class ToolsService {
     });
   }
 
-  getPublisher(publisherId: string | undefined): Observable<string> {
+  getPublisher(publisherId: string | undefined, libId: string): Observable<string> {
     return new Observable<string>(observer => {
       let publisherName: string = '';
       if (publisherId) {
-        let publisher = this.dataService.selectedLib?.publishers?.find(item => item.id === publisherId);
+        let publisher = this.dataService.getCurrentBiblio(libId)?.publishers?.find(item => item.id === publisherId);
         if (publisher) {
           publisherName = publisher.name;
         }

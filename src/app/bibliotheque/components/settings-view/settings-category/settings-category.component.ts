@@ -6,6 +6,7 @@ import {CategoryModalComponent} from '../../modals/category-modal/category-modal
 import {DeleteModalComponent} from '../../modals/delete-modal/delete-modal.component';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {AuthorModalComponent} from '../../modals/author-modal/author-modal.component';
+import {BiblioDatabaseService} from '../../../services/biblio-database.service';
 
 @Component({
    selector: 'app-settings-category',
@@ -25,7 +26,9 @@ export class SettingsCategoryComponent implements OnInit {
 
    @Output() sendDelete = new EventEmitter<string>();
 
-   constructor(public dialog: MatDialog, public dataService: DataService) { }
+   constructor(public dialog: MatDialog,
+               public dataService: DataService,
+               private biblioDatabaseService: BiblioDatabaseService) { }
 
    ngOnInit(): void {
    }
@@ -56,7 +59,7 @@ export class SettingsCategoryComponent implements OnInit {
             SeriesModalComponent, {
             height: 'auto',
             width: '1200px',
-            data: { parent: this.category, series: null }
+            data: { parent: this.category, series: null, library: this.library }
          });
 
          dialogRef.afterClosed().subscribe(result => {
@@ -77,9 +80,7 @@ export class SettingsCategoryComponent implements OnInit {
          dialogRef.afterClosed().subscribe(result => {
             console.log(`Add author: ${result}`);
             if (result) {
-               this.category.authors?.push(result);
-               this.dataService.selectedLib?.authors?.push(result);
-               this.dataService.log();
+              this.biblioDatabaseService.addAuthor(this.library, result);
             }
          });
       }

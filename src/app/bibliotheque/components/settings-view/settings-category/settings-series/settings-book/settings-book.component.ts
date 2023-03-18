@@ -31,7 +31,6 @@ export class SettingsBookComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.library);
   }
 
   public edit($event: any) {

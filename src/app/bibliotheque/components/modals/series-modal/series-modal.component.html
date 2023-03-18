@@ -21,7 +21,7 @@
         <mat-form-field class="full-width" appearance="fill">
             <mat-label for="author">Auteur</mat-label>
             <mat-select id="author" [formControl]="author">
-                <mat-option *ngFor="let option of dataService.selectedLib?.authors" [value]="option">
+                <mat-option *ngFor="let option of dataService.getCurrentBiblio(data.library.id)?.authors" [value]="option">
                     {{option.firstName}} {{option.lastName}}
                 </mat-option>
             </mat-select>

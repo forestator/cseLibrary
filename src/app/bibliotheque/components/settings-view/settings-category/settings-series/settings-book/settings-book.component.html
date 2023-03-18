@@ -23,7 +23,7 @@
         </div>
         <div *ngIf="book.by==='BY_SERIES'" class="field">
             <div class="label">Auteur(s)</div>
-            <div class="content">{{tools.getAuthors(book.authorIds) | async}}</div>
+            <div class="content">{{tools.getAuthors(book.authorIds, library.id) | async}}</div>
         </div>
         <div *ngIf="book.tome !== '0'" class="field">
             <div class="label">Tome</div>
@@ -31,7 +31,7 @@
         </div>
         <div class="field">
             <div class="label">Editeur</div>
-            <div class="content">{{tools.getPublisher(book.publisherId) | async}}</div>
+            <div class="content">{{tools.getPublisher(book.publisherId, library.id) | async}}</div>
         </div>
         <div class="field">
             <div class="label">Status</div>

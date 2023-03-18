@@ -65,7 +65,7 @@ export class AuthorRowComponent implements OnInit {
   private getBooksByAuthor(authorId: string | undefined): Observable<Array<Book>> {
     return new Observable<Array<Book>>(observer => {
       const books: Array<Book> = [];
-      this.dataService.selectedLib?.library?.categories?.forEach(category => {
+      this.library?.categories?.forEach(category => {
         category.series?.forEach(series => {
           series.books?.forEach(book => {
             if (book.authorIds.includes(authorId)) {

@@ -1,3 +1,4 @@
+<!--suppress XmlDuplicatedId -->
 <app-library-menu *ngIf="showBibliothequeMenu && !showAdmin"
                   id="top">
 </app-library-menu>
@@ -15,7 +16,7 @@
   </div>
 </div>
 
-<ng-container *ngIf="(firebaseDatabaseService.bibliotheque$ | async) && (firebaseDatabaseService.ludotheque$ | async)">
+<ng-container *ngIf="(firebaseDatabaseService.bibliothequeOneShot$ | async) && (firebaseDatabaseService.ludotheque$ | async)">
   <router-outlet></router-outlet>
 </ng-container>
 

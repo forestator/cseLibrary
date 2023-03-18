@@ -16,7 +16,8 @@ import moment from 'moment/moment';
 })
 export class FirebaseDatabaseService {
 
-  public bibliotheque$: Observable<Array<Biblio> | null>;
+  public bibliothequeOneShot$: Observable<Array<Biblio> | null>;
+  public bibliothequeStream$: Observable<Array<Biblio>>;
   public ludotheque$: Observable<Ludotheque | null>;
   public boardGames$: Observable<Array<BoardGame>>;
   public boardGamesOneShot$: Observable<Array<BoardGame> | null>;
@@ -32,8 +33,9 @@ export class FirebaseDatabaseService {
     this.ludotheque$ = this.db.object<Ludotheque>('ludotheque').valueChanges()
       .pipe(take(1));
 
-    this.bibliotheque$ = this.db.object<Array<Biblio>>('bibliotheque').valueChanges()
+    this.bibliothequeOneShot$ = this.db.object<Array<Biblio>>('bibliotheque').valueChanges()
       .pipe(take(1));
+    this.bibliothequeStream$ = this.db.object<Array<Biblio>>('bibliotheque').valueChanges();
 
     this.boardGames$ = this.db.object<BddGame>('ludotheque/boardGames/games')
       .valueChanges().pipe(

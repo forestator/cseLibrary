@@ -76,7 +76,7 @@ export class SettingsAuthorComponent implements OnInit {
          SeriesModalComponent, {
          height: '780px',
          width: '1200px',
-         data: { parent: this.author, series: null }
+         data: { parent: this.author, series: null, library: this.library }
       });
 
       dialogRef.afterClosed().subscribe(result => {

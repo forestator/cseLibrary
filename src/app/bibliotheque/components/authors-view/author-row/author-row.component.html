@@ -12,7 +12,7 @@
       <ng-container matColumnDef="cover">
         <th mat-header-cell *matHeaderCellDef class="mat-cell-cover"> Couverture</th>
         <td mat-cell class="mat-cell-cover" *matCellDef="let book">
-          <img class="cover"
+          <img alt="" class="cover"
                (click)=selectBook(book.id)
                [src]="(library?.path | bookCover: book.cover) | async">
         </td>
@@ -54,7 +54,7 @@
         <ng-container matColumnDef="cover">
           <th mat-header-cell *matHeaderCellDef class="mat-cell-cover"> Couverture</th>
           <td mat-cell class="mat-cell-cover" *matCellDef="let book">
-            <img class="cover"
+            <img alt="" class="cover"
                  (click)=selectBook(book.id)
                  [src]="(library?.path | bookCover: book.cover) | async">
           </td>
