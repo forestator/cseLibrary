@@ -9,7 +9,7 @@ export class DataService {
   public allBiblio: Array<Biblio>;
   constructor(private firebaseDatabaseService: FirebaseDatabaseService) {
     this.allBiblio = [];
-    this.firebaseDatabaseService.bibliothequeStream$.subscribe(allBiblio => {
+    this.firebaseDatabaseService.bibliothequeOneShot$.subscribe(allBiblio => {
       this.allBiblio = allBiblio ?? [];
     });
   }
