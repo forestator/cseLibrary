@@ -54,6 +54,7 @@ import {AppCommonModule} from '../common/app-common.module';
 import {LibraryMenuComponent} from './components/library-menu/library-menu.component';
 import {BookCoverPipe} from './pipes/book-cover.pipe';
 import {MatInputModule} from '@angular/material/input';
+import {CategoryBackgroundPipe} from './pipes/category-background.pipe';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import {MatInputModule} from '@angular/material/input';
     SeriesFilterPipe,
     CategoryViewComponent,
     BookCoverPipe,
+    CategoryBackgroundPipe,
   ],
   imports: [
     CommonModule,
