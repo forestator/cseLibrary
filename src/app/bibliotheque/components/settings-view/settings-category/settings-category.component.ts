@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {Category, Library, ViewBy} from 'src/app/models/author.model';
+import {Biblio, Category, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
 import {CategoryModalComponent} from '../../modals/category-modal/category-modal.component';
 import {DeleteModalComponent} from '../../modals/delete-modal/delete-modal.component';
@@ -22,7 +22,7 @@ export class SettingsCategoryComponent implements OnInit {
    index!: number;
 
    @Input()
-   library!: Library;
+   biblio!: Biblio;
 
    @Output() sendDelete = new EventEmitter<string>();
 
@@ -59,7 +59,7 @@ export class SettingsCategoryComponent implements OnInit {
             SeriesModalComponent, {
             height: 'auto',
             width: '1200px',
-            data: { parent: this.category, series: null, library: this.library }
+            data: { parent: this.category, series: null, biblio: this.biblio }
          });
 
          dialogRef.afterClosed().subscribe(result => {
@@ -80,7 +80,7 @@ export class SettingsCategoryComponent implements OnInit {
          dialogRef.afterClosed().subscribe(result => {
             console.log(`Add author: ${result}`);
             if (result) {
-              this.biblioDatabaseService.addAuthor(this.library, result);
+              this.biblioDatabaseService.addAuthor(this.biblio, result);
             }
          });
       }

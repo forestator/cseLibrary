@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Library, Series} from 'src/app/models/author.model';
+import {Biblio, Series} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
@@ -13,7 +13,7 @@ export class SeriesRowComponent implements OnInit {
   series!: Series | undefined;
 
   @Input()
-  library!: Library;
+  biblio!: Biblio;
 
   bookColumns: Array<string> = ['cover', 'title', 'authors', 'tome', 'isbn', 'page', 'status'];
 

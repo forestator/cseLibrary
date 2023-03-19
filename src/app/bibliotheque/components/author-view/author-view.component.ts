@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Author, Book, BookStatus, Category, Library, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
+import {Author, Biblio, Book, BookStatus, Category, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
@@ -29,7 +29,7 @@ export class AuthorViewComponent implements OnInit {
   }
 
   @Input()
-  library!: Library | undefined;
+  biblio!: Biblio | undefined;
 
   @Input()
   category!: Category | undefined;

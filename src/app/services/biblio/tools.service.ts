@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {DataService} from './data.service';
+import {Author, Biblio} from '../../models/author.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,10 @@ export class ToolsService {
   public adminMode: boolean = false;
   private scrollRetry = 0;
 
-  constructor(private dataService: DataService) {
+  constructor() {
   }
 
-  getAuthors(authorIds: Array<string | undefined>, libId: string): Observable<string> {
+  getAuthors(authorIds: Array<string | undefined>, biblio: Biblio): Observable<string> {
     return new Observable<string>(observer => {
       const ids: Array<string> = [];
       authorIds?.forEach(item => {
@@ -21,7 +21,7 @@ export class ToolsService {
         }
       });
       let authorNames: string = '';
-      let authors = this.dataService.getAuthors(ids, libId);
+      let authors = this.getFilteredAuthors(ids, biblio);
       authors.forEach((item, index) => {
         authorNames += `${item.firstName} ${item.lastName}`;
         if (index != authors.length - 1) {
@@ -32,11 +32,23 @@ export class ToolsService {
     });
   }
 
-  getPublisher(publisherId: string | undefined, libId: string): Observable<string> {
+  private getFilteredAuthors(authorIds: Array<string>, biblio: Biblio): Array<Author> {
+    let authors: Array<Author> = [];
+    authorIds?.forEach(authorId => {
+
+      let author: Author | undefined = biblio?.authors?.find(item => item.id === authorId);
+      if (author) {
+        authors.push(author);
+      }
+    });
+    return authors;
+  }
+
+  getPublisher(publisherId: string | undefined, biblio: Biblio): Observable<string> {
     return new Observable<string>(observer => {
       let publisherName: string = '';
       if (publisherId) {
-        let publisher = this.dataService.getCurrentBiblio(libId)?.publishers?.find(item => item.id === publisherId);
+        let publisher = biblio?.publishers?.find(item => item.id === publisherId);
         if (publisher) {
           publisherName = publisher.name;
         }

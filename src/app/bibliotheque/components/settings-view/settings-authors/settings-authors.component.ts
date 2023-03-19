@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Author, Library} from 'src/app/models/author.model';
+import {Biblio} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 
 @Component({
@@ -10,13 +10,10 @@ import {DataService} from 'src/app/services/biblio/data.service';
 export class SettingsAuthorsComponent implements OnInit {
 
    @Input()
-   authors!: Array<Author> | undefined;
-
-   @Input()
    index!: number;
 
   @Input()
-  library!: Library;
+  biblio!: Biblio;
 
    @Output() sendDelete = new EventEmitter<string>();
 
@@ -27,9 +24,9 @@ export class SettingsAuthorsComponent implements OnInit {
 
    public deleteAuthor($event: string): void {
       console.log('Delete auhor: ', $event);
-      let index = this.authors?.findIndex(d => d.id === $event); //find index in your array
+      let index = this.biblio.authors?.findIndex(d => d.id === $event); //find index in your array
       if (index !== undefined) {
-         this.authors?.splice(index, 1);//remove element from array
+         this.biblio.authors?.splice(index, 1);//remove element from array
       }
       this.dataService.log();
    }

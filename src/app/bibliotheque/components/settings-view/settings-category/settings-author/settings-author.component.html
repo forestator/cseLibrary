@@ -27,13 +27,13 @@
     </div>
     <app-settings-book
         *ngFor="let book of author.books; let bi=index;"
-        [library]="library"
+        [biblio]="biblio"
         [book]="book"
         [index]="index + '_' + (bi+1)">
     </app-settings-book>
     <app-settings-series
         *ngFor="let series of author.series; let si=index;"
-        [library]="library"
+        [biblio]="biblio"
         [series]="series"
         [index]="index + '_' + (si+1)">
     </app-settings-series>

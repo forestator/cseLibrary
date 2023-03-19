@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Biblio, Library} from '../../models/author.model';
+import {Biblio} from '../../models/author.model';
 import {FirebaseDatabaseService} from '../../services/firebase/firebase-database.service';
 import {map, Observable} from 'rxjs';
 
@@ -20,31 +20,35 @@ export class BiblioDatabaseService {
     this.adulteBiblio$ = this.firebaseDatabaseService.bibliothequeOneShot$.pipe(map(allBiblio => allBiblio[3]));
   }
 
-  addAuthor(library: Library, result: any) {
+  addAuthor(library: Biblio, result: any) {
     // todo
   }
 
-  addPublisher(library: Library, result: any) {
+  addPublisher(library: Biblio, result: any) {
     // todo
   }
 
-  getLibrary(libraryId: string): Observable<Library> {
-    let lib: Observable<Library>;
+  addCategory(biblio: Biblio, result: any) {
+
+  }
+
+  getBiblio(libraryId: string): Observable<Biblio> {
+    let lib: Observable<Biblio>;
     switch (libraryId) {
       case 'litterature-imaginaire':
-        lib = this.imaginaireBiblio$.pipe(map(b => b.library));
+        lib = this.imaginaireBiblio$;
         break;
       case 'inclassable':
-        lib = this.inclassaveBiblio$.pipe(map(b => b.library));
+        lib = this.inclassaveBiblio$;
         break;
       case 'litterature-jeunesse':
-        lib = this.jeunesseBiblio$.pipe(map(b => b.library));
+        lib = this.jeunesseBiblio$;
         break;
       case 'litterature-adulte':
-        lib = this.adulteBiblio$.pipe(map(b => b.library));
+        lib = this.adulteBiblio$;
         break;
       default:
-        lib = this.imaginaireBiblio$.pipe(map(b => b.library));
+        lib = this.imaginaireBiblio$;
     }
     return lib;
   }

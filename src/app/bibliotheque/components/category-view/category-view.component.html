@@ -1,4 +1,4 @@
-<ng-container *ngIf="library$ | async as library">
+<ng-container *ngIf="biblio$ | async as biblio">
   <div *ngIf="category$ | async as category" class="core-page fadein">
     <div class="core-header">
       <div class="core-title">
@@ -26,7 +26,7 @@
     <div class="category-core">
       <app-series-row
         *ngFor="let series of category.series  | seriesFilter : tools.adminMode"
-        [library]="library"
+        [biblio]="biblio"
         [series]="series">
       </app-series-row>
     </div>
@@ -34,7 +34,7 @@
       <app-author-row
         *ngFor="let author of filterAuthors(category.authors)"
         [author]="author"
-        [library]="library"
+        [biblio]="biblio"
         (sendView)="selectAuthor($event)">
       </app-author-row>
     </div>

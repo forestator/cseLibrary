@@ -2,9 +2,9 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {
   Author,
+  Biblio,
   Book,
   BookStatus,
-  Library,
   Publisher,
   SearchBookResult,
   Series,
@@ -47,12 +47,11 @@ export class BookModalComponent extends BasicModal implements OnInit {
 
    constructor(
       public dialogRef: MatDialogRef<BookModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: { parent: Series | Author, book: Book, library: Library },
+      @Inject(MAT_DIALOG_DATA) public data: { parent: Series | Author, book: Book, biblio: Biblio },
       public dataService: DataService,
       public googleBookService: GoogleBookService,
       public dialog: MatDialog) {
       super();
-     console.log(this.data.library);
      this.parent = data.parent;
       if (data.book) {
          this.isNew = false;
@@ -64,10 +63,10 @@ export class BookModalComponent extends BasicModal implements OnInit {
          this.isbn10.setValue(data.book.isbn10);
          this.isbn13.setValue(data.book.isbn13);
          this.format.setValue(data.book.format);
-         this.author.setValue(this.dataService.getCurrentBiblio(this.data.library.id)?.authors?.find(item => item.id === data.book.authorIds[0]));
+         this.author.setValue(this.data.biblio?.authors?.find(item => item.id === data.book.authorIds[0]));
          this.status.setValue(data.book.status);
          this.page.setValue(data.book.page);
-         this.publisher.setValue(this.dataService.getCurrentBiblio(this.data.library.id)?.publishers?.find(item => item.id === data.book.publisherId));
+         this.publisher.setValue(this.data.biblio?.publishers?.find(item => item.id === data.book.publisherId));
          this.publishedDate.setValue(data.book.date);
          this.ref.setValue(data.book.ref);
          this.tome.setValue(data.book.tome);
@@ -95,7 +94,9 @@ export class BookModalComponent extends BasicModal implements OnInit {
          let tomeValue: number | string;
          if (this.by == ViewBy.BY_SERIES) {
             let series: Series = data.parent as Series;
-            authorValue = series.status === SeriesStatus.ONE_SHOT ? undefined : this.dataService.getCurrentBiblio(this.data.library.id)?.authors?.find(item => item.id === series.authorIds[0])
+            authorValue = series.status === SeriesStatus.ONE_SHOT ?
+              undefined :
+              this.data.biblio?.authors?.find(item => item.id === series.authorIds[0])
             tomeValue = series.status === SeriesStatus.IN_PROGRESS && series.books ? series.books.length + 1 : '';
          } else {
             authorValue = data.parent as Author;
@@ -183,13 +184,13 @@ export class BookModalComponent extends BasicModal implements OnInit {
          let lastName: string = authorTokens.slice(0, authorTokens.length - 1).join(' ');
          console.log('FirstName: ', firstName);
          console.log('LastName: ', lastName);
-         this.author.setValue(this.dataService.getCurrentBiblio(this.data.library.id)?.authors?.find(item =>
+         this.author.setValue(this.data.biblio?.authors?.find(item =>
             (item.firstName === firstName && item.lastName === lastName) ||
             (item.firstName === lastName && item.lastName === firstName)));
          console.log('this.author: ', this.author.value);
          let publisher: Publisher | undefined;
          if (result.publisher) {
-            publisher = this.dataService.getCurrentBiblio(this.data.library.id)?.publishers?.find(item => item.name === result.publisher.trim());
+            publisher = this.data.biblio?.publishers?.find(item => item.name === result.publisher.trim());
             console.log('Find publisher', publisher);
          }
          this.publisher.setValue(publisher);

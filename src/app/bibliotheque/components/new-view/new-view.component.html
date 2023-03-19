@@ -8,7 +8,7 @@
             [id]="book.book.id"
             *ngFor="let book of books;let index=index;"
             [book]="book.book"
-            [library]="library"
+            [biblio]="biblio"
             [category]="book.category"
             [index]="index">
         </app-book-row>
@@ -19,7 +19,7 @@
             [id]="book.book.id"
             *ngFor="let book of booksInProject;let index=index;"
             [book]="book.book"
-            [library]="library"
+            [biblio]="biblio"
             [category]="book.category"
             [index]="index">
         </app-book-row>

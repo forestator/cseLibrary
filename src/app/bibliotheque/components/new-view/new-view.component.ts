@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {map, Observable, take} from 'rxjs';
-import {BookPath, BookStatus, Library} from 'src/app/models/author.model';
+import {Biblio, BookPath, BookStatus, Library} from 'src/app/models/author.model';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 
@@ -10,9 +10,8 @@ import html2canvas from 'html2canvas';
    styleUrls: ['./new-view.component.scss']
 })
 export class NewViewComponent implements OnInit {
-   @Input()
-   library!: Library | undefined;
-
+  // todo to repair new view need to init biblio using router ?
+   biblio: Biblio;
    books!: Array<BookPath>;
    booksInProject!: Array<BookPath>;
 
@@ -20,7 +19,7 @@ export class NewViewComponent implements OnInit {
 
    ngOnInit(): void {
       // build new books list
-      this.findNewBooks(this.library).pipe(
+      this.findNewBooks(this.biblio.library).pipe(
          map(newBooks => {
             this.books = newBooks.new;
             this.booksInProject = newBooks.inProject;

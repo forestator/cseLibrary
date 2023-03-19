@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {map, Observable, take} from 'rxjs';
-import {Author, Book, BookStatus, Library, SelectorView, Series, ViewBy, ViewMode} from 'src/app/models/author.model';
+import {Author, Biblio, Book, BookStatus, SelectorView, Series, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -15,7 +15,7 @@ export class AuthorRowComponent implements OnInit {
   @Input()
   author!: Author;
   @Input()
-  library: Library | null | undefined;
+  biblio: Biblio;
   @Output() sendView = new EventEmitter<SelectorView>();
 
   public books!: Array<Book> | undefined;
@@ -65,7 +65,7 @@ export class AuthorRowComponent implements OnInit {
   private getBooksByAuthor(authorId: string | undefined): Observable<Array<Book>> {
     return new Observable<Array<Book>>(observer => {
       const books: Array<Book> = [];
-      this.library?.categories?.forEach(category => {
+      this.biblio.library?.categories?.forEach(category => {
         category.series?.forEach(series => {
           series.books?.forEach(book => {
             if (book.authorIds.includes(authorId)) {

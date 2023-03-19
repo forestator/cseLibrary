@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Book, Category, Library, Series, SeriesStatus} from 'src/app/models/author.model';
+import {Biblio, Book, Category, Series, SeriesStatus} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
-import {map, Observable} from 'rxjs';
+import {map, mergeMap, Observable} from 'rxjs';
 import {Params, Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
+import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
 @Component({
   selector: 'app-series-view',
@@ -13,36 +14,42 @@ import {NavigationService} from '../../../services/navigation.service';
 })
 export class SeriesViewComponent implements OnInit {
 
-  library$!: Observable<Library | undefined>;
+  biblio$!: Observable<Biblio>;
 
-  category!: Category | undefined;
+  category$!: Observable<Category>;
 
-  series!: Series | undefined;
+  series$!: Observable<Series>;
 
-  book!: Book | undefined;
+  book!: Book;
 
   constructor(public dataService: DataService,
               private navigationService: NavigationService,
+              private biblioDatabaseService: BiblioDatabaseService,
               private router: Router,
               public tools: ToolsService) {
   }
 
   ngOnInit(): void {
-    this.library$ = this.navigationService.getRouteParams().pipe(
-      map((params: Params) => {
-          const lib = this.dataService.allBiblio
-            .find(biblio => biblio.library?.id === params['libraryId']!)?.library;
-          this.category = lib?.categories?.find(cat => cat.id === params['catId']!);
-          this.series = this.category?.series?.find(serie => serie.id === params['seriesId']!);
-          if (this.series?.status === SeriesStatus.ONE_SHOT) {
-            this.series.books = this.series.books?.reverse();
+    this.biblio$ = this.navigationService.getRouteParams().pipe(
+      mergeMap((params: Params) => this.biblioDatabaseService.getBiblio(params['libraryId']!))
+    );
+    this.category$ = this.navigationService.getRouteParams().pipe(
+      mergeMap((params: Params) => this.biblioDatabaseService.getBiblio(params['libraryId']!)
+        .pipe(map(biblio => biblio.library?.categories?.find(cat => cat.id === params['catId']!)))
+      )
+    );
+    this.series$ = this.navigationService.getRouteParams().pipe(
+      mergeMap((params: Params) => this.biblioDatabaseService.getBiblio(params['libraryId']!)
+        .pipe(map(biblio => {
+          const cat = biblio.library?.categories?.find(cat => cat.id === params['catId']!);
+          const series = cat.series?.find(serie => serie.id === params['seriesId']!);
+          if (series?.status === SeriesStatus.ONE_SHOT) {
+            series.books = series.books?.reverse();
           }
-          if (this.book && this.book.id) {
-            this.tools.scrollToId(this.book.id);
-          }
-          return lib;
-        }
-      ));
+          return series;
+        }))
+      )
+    );
   }
 
   selectCategory(libId: string | undefined, id: string | undefined) {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Library} from 'src/app/models/author.model';
-import {mergeMap, Observable} from 'rxjs';
+import {map, mergeMap, Observable} from 'rxjs';
 import {Params} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
@@ -20,7 +20,9 @@ export class LibraryViewComponent implements OnInit {
   ngOnInit() {
     this.library$ = this.navigationService.getRouteParams().pipe(
       mergeMap((params: Params) => {
-          return this.biblioDatabaseService.getLibrary(params['libraryId']!);
+          return this.biblioDatabaseService.getBiblio(params['libraryId']!).pipe(
+            map(biblio => biblio.library)
+          );
         }
       ));
   }

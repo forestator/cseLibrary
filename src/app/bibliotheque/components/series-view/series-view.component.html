@@ -1,36 +1,40 @@
-<ng-container *ngIf="(library$ | async) as library">
-  <div *ngIf="series && category" class="core-page fadein">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="secondary" (click)="selectLibrary(library.id)">{{library.name}}</div>
-        <mat-icon>navigate_next</mat-icon>
-        <div class="secondary" (click)="selectCategory(library.id, category.id)">{{category.name}}</div>
-        <mat-icon>navigate_next</mat-icon>
-        <div class="primary">{{series.name}}</div>
-        <div class="badge">
-          <app-series-badge [series]="series"></app-series-badge>
-        </div>
-        <div class="counter">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
-      </div>
-      <div class="core-resume">
-        {{series.resume}}
-      </div>
-      <div class="books">
-        <div *ngFor="let book of series.books | bookFilter: tools.adminMode" class="book" [title]="book.name">
-          <div (click)="tools.scrollToId(book.id)">
-            <img alt="" class="book-cover" [src]="(library?.path | bookCover: book.cover) | async">
+<ng-container *ngIf="(biblio$ | async) as biblio">
+  <ng-container *ngIf="(series$ | async) as series">
+    <ng-container *ngIf="(category$ | async) as category">
+      <div *ngIf="series && category" class="core-page fadein">
+        <div class="core-header">
+          <div class="core-title">
+            <div class="secondary" (click)="selectLibrary(biblio.library.id)">{{biblio.library.name}}</div>
+            <mat-icon>navigate_next</mat-icon>
+            <div class="secondary" (click)="selectCategory(biblio.library.id, category.id)">{{category.name}}</div>
+            <mat-icon>navigate_next</mat-icon>
+            <div class="primary">{{series.name}}</div>
+            <div class="badge">
+              <app-series-badge [series]="series"></app-series-badge>
+            </div>
+            <div class="counter">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
           </div>
-          <div class="book-badge">
-            <app-badge [status]="book.status" [display]="'small'"></app-badge>
+          <div class="core-resume">
+            {{series.resume}}
+          </div>
+          <div class="books">
+            <div *ngFor="let book of series.books | bookFilter: tools.adminMode" class="book" [title]="book.name">
+              <div (click)="tools.scrollToId(book.id)">
+                <img alt="" class="book-cover" [src]="(biblio.library?.path | bookCover: book.cover) | async">
+              </div>
+              <div class="book-badge">
+                <app-badge [status]="book.status" [display]="'small'"></app-badge>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="core-body">
+          <app-book-row *ngFor="let book of series.books | bookFilter: tools.adminMode;let index=index;"
+                        [biblio]="biblio"
+                        [book]="book"
+                        [index]="index"></app-book-row>
+        </div>
       </div>
-    </div>
-    <div class="core-body">
-      <app-book-row *ngFor="let book of series.books | bookFilter: tools.adminMode;let index=index;"
-                    [library]="library"
-                    [book]="book"
-                    [index]="index"></app-book-row>
-    </div>
-  </div>
+    </ng-container>
+  </ng-container>
 </ng-container>

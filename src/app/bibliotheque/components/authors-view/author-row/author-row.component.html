@@ -1,4 +1,4 @@
-<mat-accordion *ngIf="author && library" [id]="id">
+<mat-accordion *ngIf="author && biblio" [id]="id">
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
@@ -14,7 +14,7 @@
         <td mat-cell class="mat-cell-cover" *matCellDef="let book">
           <img alt="" class="cover"
                (click)=selectBook(book.id)
-               [src]="(library?.path | bookCover: book.cover) | async">
+               [src]="(biblio.library?.path | bookCover: book.cover) | async">
         </td>
       </ng-container>
 
@@ -56,7 +56,7 @@
           <td mat-cell class="mat-cell-cover" *matCellDef="let book">
             <img alt="" class="cover"
                  (click)=selectBook(book.id)
-                 [src]="(library?.path | bookCover: book.cover) | async">
+                 [src]="(biblio.library?.path | bookCover: book.cover) | async">
           </td>
         </ng-container>
 

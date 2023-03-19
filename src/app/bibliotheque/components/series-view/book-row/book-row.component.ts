@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Book, Category, Library} from 'src/app/models/author.model';
+import {Biblio, Book, Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
@@ -20,7 +20,7 @@ export class BookRowComponent implements OnInit {
   index!: number;
 
   @Input()
-  library!: Library;
+  biblio!: Biblio;
 
   parity!: boolean;
   badge!: string;

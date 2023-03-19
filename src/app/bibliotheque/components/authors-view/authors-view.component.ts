@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Author, Library, SelectorView, ViewMode} from 'src/app/models/author.model';
+import {Author, Biblio, SelectorView, ViewMode} from 'src/app/models/author.model';
 
 @Component({
   selector: 'app-authors-view',
@@ -9,10 +9,10 @@ import {Author, Library, SelectorView, ViewMode} from 'src/app/models/author.mod
 export class AuthorsViewComponent implements OnInit {
 
   @Input()
-  library!: Library | undefined;
+  biblio!: Biblio;
 
   @Input()
-  authors!: Array<Author> | undefined;
+  authors!: Array<Author>;
 
   @Output() sendView = new EventEmitter<SelectorView>();
 

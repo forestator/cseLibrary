@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {Category, Library} from 'src/app/models/author.model';
+import {Biblio, Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {AuthorModalComponent} from '../modals/author-modal/author-modal.component';
 import {CategoryModalComponent} from '../modals/category-modal/category-modal.component';
 import {PublisherModalComponent} from '../modals/publisher-modal/publisher-modal.component';
 import {NavigationService} from '../../../services/navigation.service';
-import {map, Observable} from 'rxjs';
+import {mergeMap, take} from 'rxjs';
 import {Params} from '@angular/router';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
@@ -17,14 +17,13 @@ import {BiblioDatabaseService} from '../../services/biblio-database.service';
 })
 export class SettingsViewComponent implements OnInit {
 
-  library$!: Observable<Library | undefined>;
+  biblio?: Biblio;
 
   public categoryDisplayed: Category | undefined;
   public index: number | undefined;
 
   public isAuthorsDisplayed: boolean;
   public isPublishersDisplayed: boolean;
-  public library: Library | undefined;
 
   constructor(public dialog: MatDialog,
               private navService: NavigationService,
@@ -36,14 +35,10 @@ export class SettingsViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.library$ = this.navService.getRouteParams().pipe(
-      map((params: Params) => {
-          const lib = this.dataService.allBiblio
-            .find(biblio => biblio.library?.id === params['libraryId']!)?.library;
-          this.library = lib;
-        return lib;
-        }
-      ));
+    this.navService.getRouteParams().pipe(
+      mergeMap((params: Params) => this.biblioDatabaseService.getBiblio(params['libraryId']!)),
+      take(1)
+    ).subscribe(biblio => this.biblio = biblio);
   }
 
   public displayAuthors() {
@@ -58,13 +53,10 @@ export class SettingsViewComponent implements OnInit {
     this.categoryDisplayed = undefined;
   }
 
-  public displayCategory(id: string | undefined) {
-    this.index = this.library?.categories?.findIndex(item => item.id === id);
-    if (this.index !== undefined) {
-      this.categoryDisplayed = this.library?.categories?.find(item => item.id === id);
-      this.isAuthorsDisplayed = false;
-      this.isPublishersDisplayed = false;
-    }
+  public displayCategory(category: Category) {
+    this.categoryDisplayed = category;
+    this.isAuthorsDisplayed = false;
+    this.isPublishersDisplayed = false;
   }
 
   public edit($event: any) {
@@ -78,14 +70,13 @@ export class SettingsViewComponent implements OnInit {
       CategoryModalComponent, {
         height: 'auto',
         width: '1200px',
-        data: {parent: this.library, category: null}
+        data: {parent: this.biblio.library, category: null}
       });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // add category
-        this.library?.categories?.push(result);
-        this.dataService.log();
+        this.biblioDatabaseService.addCategory(this.biblio, result);
       }
     });
 
@@ -97,13 +88,13 @@ export class SettingsViewComponent implements OnInit {
       AuthorModalComponent, {
         height: 'auto',
         width: '1200px',
-        data: {parent: this.library, author: null}
+        data: {parent: this.biblio.library, author: null}
       });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // add author
-        this.biblioDatabaseService.addAuthor(this.library, result);
+        this.biblioDatabaseService.addAuthor(this.biblio, result);
       }
     });
   }
@@ -114,13 +105,13 @@ export class SettingsViewComponent implements OnInit {
       PublisherModalComponent, {
         height: 'auto',
         width: '1200px',
-        data: {parent: this.library, publisher: null}
+        data: {parent: this.biblio.library, publisher: null}
       });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // add publisher
-        this.biblioDatabaseService.addPublisher(this.library, result);
+        this.biblioDatabaseService.addPublisher(this.biblio, result);
       }
     });
   }
@@ -130,13 +121,6 @@ export class SettingsViewComponent implements OnInit {
   }
 
   public deleteCategory($event: string) {
-    let index = this.library?.categories?.findIndex(d => d.id === $event); //find index in your array
-    if (index !== undefined) {
-      this.library?.categories?.splice(index, 1);//remove element from array
-      this.categoryDisplayed = undefined;
-      this.index = 0;
-    }
-    this.dataService.log();
   }
 
   public deleteAuthor($event: string) {

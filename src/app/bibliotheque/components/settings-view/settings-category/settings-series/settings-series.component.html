@@ -25,7 +25,7 @@
         </div>
         <div *ngIf="series.by==='BY_SERIES' && series.status!=='ONE_SHOT'" class="field">
             <div class="label">Auteur(s)</div>
-            <div class="content">{{tools.getAuthors(series.authorIds, library.id) | async}}</div>
+            <div class="content">{{tools.getAuthors(series.authorIds, biblio) | async}}</div>
         </div>
         <div class="field">
             <div class="label">Status</div>
@@ -34,7 +34,7 @@
     </div>
     <app-settings-book
         *ngFor="let book of series.books; let bi=index;"
-        [library]="library"
+        [biblio]="biblio"
         (sendDelete)="deleteBook($event)"
         [book]="book"
         [index]="index + '_' + (bi+1)">

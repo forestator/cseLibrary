@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
-import {Book, Library} from 'src/app/models/author.model';
+import {Biblio, Book} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {BookModalComponent} from '../../../../modals/book-modal/book-modal.component';
@@ -20,7 +20,7 @@ export class SettingsBookComponent implements OnInit {
   index!: string;
 
   @Input()
-  library!: Library;
+  biblio!: Biblio;
 
   @Output() sendDelete = new EventEmitter<string>();
 
@@ -39,7 +39,7 @@ export class SettingsBookComponent implements OnInit {
       BookModalComponent, {
         height: 'auto',
         width: '1200px',
-        data: {parent: null, book: this.book, library: this.library}
+        data: {parent: null, book: this.book, biblio: this.biblio}
       });
 
     dialogRef.afterClosed().subscribe(result => {
