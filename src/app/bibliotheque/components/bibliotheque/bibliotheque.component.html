@@ -1,5 +1,5 @@
 <div class="core-page fadein">
-    <div class="core-header" *ngFor="let biblio of allBiblio"
+    <div class="core-header" *ngFor="let biblio of firebaseDatabaseService.bibliothequeOneShot$ | async"
     [routerLink]="biblio.library?.id">
         <div class="core-title">
             <div class="primary">{{biblio.library?.name}}</div>
@@ -13,7 +13,9 @@
     <div class="core-title">
       <div class="primary">Administration biblio</div>
     </div>
-    <div class="core-body" [routerLink]="'admin/' + biblio.library.id"  *ngFor="let biblio of allBiblio">
+    <div class="core-body"
+         [routerLink]="'admin/' + biblio.library.id"
+         *ngFor="let biblio of firebaseDatabaseService.bibliothequeOneShot$ | async">
       Gestion des livres {{biblio.library?.name}}
     </div>
   </div>

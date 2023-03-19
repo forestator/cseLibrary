@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Author, Biblio, Category, SelectorView, ViewBy} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {DataService} from '../../../services/biblio/data.service';
-import {map, mergeMap, Observable, tap} from 'rxjs';
+import {map, mergeMap, Observable} from 'rxjs';
 import {Params} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
@@ -35,9 +35,15 @@ export class CategoryViewComponent implements OnInit {
     this.category$ = this.navigationService.getRouteParams().pipe(
       mergeMap((params: Params) =>
         this.biblioDatabaseService.getBiblio(params['libraryId']!).pipe(
-          map(biblio => biblio.library.categories.find(cat => cat.id === params['catId'])),
-          tap(category => {
-            category.series.forEach(serie => serie.books.forEach(book => this.counter++))
+          map(biblio => {
+            const category = biblio.library.categories.find(cat => cat.id === params['catId']);
+            if (category.by === ViewBy.BY_SERIES) {
+              category.series?.forEach(serie => serie.books?.forEach(() => this.counter++));
+            }
+            if (category.by === ViewBy.BY_AUTHOR) {
+              // todo count books with all authors
+            }
+            return category;
           })
         )
       )
