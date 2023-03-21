@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -14,17 +14,16 @@ import {
   templateUrl: './board-game-row.component.html',
   styleUrls: ['./board-game-row.component.scss']
 })
-export class BoardGameRowComponent implements OnInit, OnChanges, AfterViewInit {
+export class BoardGameRowComponent implements OnInit, OnChanges {
 
   @Input() boardGame: BoardGame | null = null;
   @Input() index!: number;
   @Input() selectedBoardGameId?: string;
-  @ViewChild('row') row: ElementRef;
 
   parity!: boolean;
 
 
-  constructor(private toolsService: ToolsService,
+  constructor(public toolsService: ToolsService,
               public dialog: MatDialog,
               private userService: UserService) {
   }
@@ -39,14 +38,6 @@ export class BoardGameRowComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['selectedBoardGameId'] && !!changes['selectedBoardGameId'].currentValue) {
       this.toolsService.scrollToId(changes['selectedBoardGameId'].currentValue);
-    }
-  }
-
-  ngAfterViewInit() {
-    console.log(this.row.nativeElement.offsetWidth);
-    if (this.row.nativeElement.offsetWidth < 300) {
-      // always same place for image on phones
-      this.parity = true;
     }
   }
 

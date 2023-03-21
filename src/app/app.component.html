@@ -1,14 +1,18 @@
 <!--suppress XmlDuplicatedId -->
 <app-library-menu *ngIf="showBibliothequeMenu && !showAdmin"
+                  #top
                   id="top">
 </app-library-menu>
 <app-ludo-menu *ngIf="showLudothequeMenu && !showAdmin"
+               #top
                id="top">
 </app-ludo-menu>
 <app-admin-menu *ngIf="showAdmin"
+                #top
                 id="top">
 </app-admin-menu>
-<div class="library-menu" id="top" *ngIf="!showLudothequeMenu && !showBibliothequeMenu && !showAdmin">
+<div class="library-menu" #top id="top"
+     *ngIf="!showLudothequeMenu && !showBibliothequeMenu && !showAdmin">
   <div class="library-title">
     <div class="title">
       <span [routerLink]="''">{{title}}</span>
@@ -16,9 +20,7 @@
   </div>
 </div>
 
-<ng-container *ngIf="(firebaseDatabaseService.bibliothequeOneShot$ | async) && (firebaseDatabaseService.ludotheque$ | async)">
-  <router-outlet></router-outlet>
-</ng-container>
+<router-outlet></router-outlet>
 
 <div class="go-top bloc-link">
   <div (click)="scrollToTop()" class="go-top-link">

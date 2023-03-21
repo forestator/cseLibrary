@@ -4,6 +4,7 @@ import {map, mergeMap, Observable} from 'rxjs';
 import {Params} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
+import {ToolsService} from '../../../services/biblio/tools.service';
 
 @Component({
   selector: 'app-library-view',
@@ -14,7 +15,9 @@ export class LibraryViewComponent implements OnInit {
 
   library$!: Observable<Library>;
 
-  constructor(private biblioDatabaseService: BiblioDatabaseService, private navigationService: NavigationService) {
+  constructor(private biblioDatabaseService: BiblioDatabaseService,
+              public toolsService: ToolsService,
+              private navigationService: NavigationService) {
   }
 
   ngOnInit() {

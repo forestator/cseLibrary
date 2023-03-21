@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ToolsService} from './services/biblio/tools.service';
 import {FirebaseDatabaseService} from './services/firebase/firebase-database.service';
 import {NavigationService} from './services/navigation.service';
@@ -9,11 +9,12 @@ import {NavigationService} from './services/navigation.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   title = 'Cse';
   showLudothequeMenu?: boolean;
   showBibliothequeMenu?: boolean;
   showAdmin?: boolean;
+  @ViewChild('top') topMenu: ElementRef;
 
   constructor(
     public firebaseDatabaseService: FirebaseDatabaseService,
@@ -23,10 +24,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.navigationService.url$.subscribe(url => {
-        this.showLudothequeMenu = url.includes('ludotheque');
-        this.showBibliothequeMenu = url.includes('bibliotheque');
-        this.showAdmin = url.includes('admin');
+      this.showLudothequeMenu = url.includes('ludotheque');
+      this.showBibliothequeMenu = url.includes('bibliotheque');
+      this.showAdmin = url.includes('admin');
     });
+  }
+
+  ngAfterViewInit() {
+    this.toolService.mobilePhoneDisplay.next(this.topMenu.nativeElement.offsetWidth < 400);
   }
 
   scrollToTop() {
