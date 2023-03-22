@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {BoardGameCategory} from '../../../../../models/boardGame.model';
 import {Consoles} from '../../../../../models/videoGames.model';
 import {FormGroup} from '@angular/forms';
@@ -14,8 +14,11 @@ export class AddGameFormComponent implements OnChanges {
   @Input() gameForm: FormGroup;
   categoryOptions: Array<{ id: string; name: string }> = [];
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {
     this.setCategoryOptions('boardGames');
+    setInterval(() => {
+      this.cdr.detectChanges();
+    }, 1000);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -38,5 +41,11 @@ export class AddGameFormComponent implements OnChanges {
         this.categoryOptions = [{id: category, name: 'Jeu plein air'}];
         break;
     }
+  }
+
+  search() {
+    const name = this.gameForm.get('name').value;
+    window.open(`https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=${name}`,
+      '_blank');
   }
 }

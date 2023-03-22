@@ -1,45 +1,81 @@
- <div [formGroup]="gameForm" class="form-container">
-  <div class="select-library">
-    <mat-button-toggle-group (ngModelChange)="setCategoryOptions($event)"
-                             name="libraryId" formControlName="libraryId" aria-label="Font Style">
-      <mat-button-toggle value="boardGames">Jeu de Société</mat-button-toggle>
-      <mat-button-toggle value="videoGames">Jeux Vidéo</mat-button-toggle>
-      <mat-button-toggle value="outsideGames">Grand Jeu</mat-button-toggle>
-    </mat-button-toggle-group>
-  </div>
-  <mat-form-field>
-    <mat-label>Nom</mat-label>
-    <input matInput placeholder="Splendor" formControlName="name">
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Référence</mat-label>
-    <input matInput placeholder="ludo1234" formControlName="ref">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Catégorie</mat-label>
-    <mat-select formControlName="category">
-      <mat-option *ngFor="let cat of categoryOptions" [value]="cat.id">
-        <app-badge class="category" [status]="cat.id"></app-badge>
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea matInput placeholder="le meilleur jeu du monde" formControlName="description">
+<div [formGroup]="gameForm" class="form-container">
+  <div class="main">
+    <div class="select-library">
+      <mat-button-toggle-group (ngModelChange)="setCategoryOptions($event)"
+                               name="libraryId" formControlName="libraryId" aria-label="Font Style">
+        <mat-button-toggle value="boardGames">Jeu de Société</mat-button-toggle>
+        <mat-button-toggle value="videoGames">Jeux Vidéo</mat-button-toggle>
+        <mat-button-toggle value="outsideGames">Grand Jeu</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput placeholder="Splendor" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Référence</mat-label>
+      <input matInput placeholder="ludo1234" formControlName="ref">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Catégorie</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let cat of categoryOptions" [value]="cat.id">
+          <app-badge class="category" [status]="cat.id"></app-badge>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput placeholder="le meilleur jeu du monde" formControlName="description">
   </textarea>
-  </mat-form-field>
-  <div>
-    <mat-label>Nouveauté ?</mat-label>
-    <mat-checkbox formControlName="isNew"></mat-checkbox>
+    </mat-form-field>
+    <div>
+      <mat-label>Nouveauté ?</mat-label>
+      <mat-checkbox formControlName="isNew"></mat-checkbox>
+    </div>
   </div>
   <ng-container *ngIf="gameForm.get('libraryId').value === 'boardGames'">
-    <mat-form-field appearance="fill">
-      <mat-label>BoardGameGeek Id</mat-label>
-      <input matInput type="number" placeholder="123456" formControlName="id">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Poids</mat-label>
-      <input matInput type="number" placeholder="100" formControlName="weight">
-    </mat-form-field>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="boardgames">
+      <button mat-raised-button
+              [disabled]="!gameForm.get('name').value"
+              (click)="search()">Trouver Id
+      </button>
+      <mat-form-field appearance="fill">
+        <mat-label>BoardGameGeek Id</mat-label>
+        <input matInput type="number" placeholder="123456" formControlName="id">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Poids</mat-label>
+        <input matInput type="number" placeholder="100" formControlName="weight">
+      </mat-form-field>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="boardgames">
+      <mat-form-field appearance="fill">
+        <mat-label>Minimum de joueurs</mat-label>
+        <input matInput type="number" formControlName="minPlayers">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Max de joueurs</mat-label>
+        <input matInput type="number" formControlName="maxPlayers">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Age mini</mat-label>
+        <input matInput type="number" formControlName="minAge">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Temps de jeu</mat-label>
+        <input matInput type="number" formControlName="playingTime">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Age suggéré</mat-label>
+        <input matInput type="number" formControlName="suggestedPlayAge">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Année publication</mat-label>
+        <input matInput type="number" formControlName="yearPublished">
+      </mat-form-field>
+    </div>
   </ng-container>
 </div>

@@ -1,4 +1,4 @@
-<div [id]="boardGame.id" class="book-core" #row>
+<div [id]="boardGame.id" *ngIf="boardGame" class="book-core">
   <ng-container [ngTemplateOutlet]="image"
                 *ngIf="(parity || (toolsService.mobilePhoneDisplay | async)) && boardGame.cover">
   </ng-container>

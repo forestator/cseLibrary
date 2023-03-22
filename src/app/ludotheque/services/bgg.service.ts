@@ -12,8 +12,6 @@ import {GamesUtils} from '../../models/gamesUtils';
 export class BGGService {
   private bggUrl = 'https://www.boardgamegeek.com/xmlapi2';
 
-  private cache: Array<{ bgId: number; bg: BoardGame }> = [];
-
   constructor(private http: HttpClient) {
   }
 
@@ -35,20 +33,14 @@ export class BGGService {
   }
 
   gameDetails(ludoGame: BoardGame): Observable<BoardGame> {
-    const gameInCache = this.cache.find(game => game.bgId === +ludoGame.id);
-    if (gameInCache) {
-      gameInCache.bg.status = ludoGame.status;
-      return of(gameInCache.bg);
-    } else if (typeof +ludoGame.id === 'number') {
+    if (typeof +ludoGame.id === 'number') {
       const url = `${this.bggUrl}/thing?id=${ludoGame.id}`;
       return this.send(url).pipe(map(rep => {
         const detailsFromApi: Thing | null = rep ? rep[0] : null;
-        const convertedGame = GamesUtils.convertGameDetailsThingToBoardGame(ludoGame, detailsFromApi);
-        this.cache.push({bgId: +ludoGame.id, bg: convertedGame});
-        return convertedGame;
+        return GamesUtils.convertGameDetailsThingToBoardGame(ludoGame, detailsFromApi);
       }));
     } else {
-      return of(GamesUtils.convertGameDetailsThingToBoardGame(ludoGame, null));
+      return of(ludoGame);
     }
   }
 }

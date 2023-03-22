@@ -32,6 +32,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {LastBorrowDatesPipe} from './pipe/last-borrow-dates.pipe';
 import {LudothequeModule} from '../ludotheque/ludotheque.module';
+import {AddGameModalComponent} from './components/admin-games/add-game-modal/add-game-modal.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -42,7 +44,7 @@ import {LudothequeModule} from '../ludotheque/ludotheque.module';
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameComponent, AddGameFormComponent, LastBorrowDatesPipe
+    AdminMenuComponent, AddGameComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent
   ],
   exports: [
     AdminMenuComponent
@@ -70,6 +72,7 @@ import {LudothequeModule} from '../ludotheque/ludotheque.module';
         MatDatepickerModule,
         MatNativeDateModule,
         LudothequeModule,
+        MatProgressSpinnerModule,
     ]
 })
 export class AdminModule {

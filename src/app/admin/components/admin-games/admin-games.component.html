@@ -1,6 +1,7 @@
-<app-add-game [boardGames]="firebaseDatabaseService.boardGames$ | async"
-              [videoGames]="firebaseDatabaseService.videoGames$ | async"
-              [outsideGames]="firebaseDatabaseService.outsideGames$| async"></app-add-game>
+<div class="manage-buttons">
+  <button mat-raised-button color="primary" (click)="addGame()">Ajouter un jeu</button>
+  <button mat-raised-button color="primary">Modifier un jeu</button>
+</div>
 <mat-divider></mat-divider>
 <div class="game-list">
   <mat-accordion>

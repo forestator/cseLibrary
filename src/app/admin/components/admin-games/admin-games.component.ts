@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import {MatDialog} from '@angular/material/dialog';
+import {AddGameModalComponent} from './add-game-modal/add-game-modal.component';
+import {combineLatest, take} from 'rxjs';
 
 @Component({
   selector: 'app-admin-games',
@@ -16,6 +19,19 @@ export class AdminGamesComponent {
   outsideGamePanelOpen: boolean = false;
 
 
-  constructor(public firebaseDatabaseService: FirebaseDatabaseService) {
+  constructor(public firebaseDatabaseService: FirebaseDatabaseService,
+              private dialog: MatDialog,) {
+  }
+
+  addGame() {
+    combineLatest([
+      this.firebaseDatabaseService.boardGamesOneShot$,
+      this.firebaseDatabaseService.videoGamesOneShot$,
+      this.firebaseDatabaseService.outsideGamesOneShot$
+    ]).pipe(take(1)).subscribe(([a,b,c]) => {
+      this.dialog.open(AddGameModalComponent, {
+        data: {games: [...a, ...b, ...c]}
+      });
+    })
   }
 }

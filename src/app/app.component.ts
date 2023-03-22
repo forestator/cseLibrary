@@ -1,6 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ToolsService} from './services/biblio/tools.service';
-import {FirebaseDatabaseService} from './services/firebase/firebase-database.service';
 import {NavigationService} from './services/navigation.service';
 
 
@@ -17,7 +16,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('top') topMenu: ElementRef;
 
   constructor(
-    public firebaseDatabaseService: FirebaseDatabaseService,
     private navigationService: NavigationService,
     private toolService: ToolsService) {
   }

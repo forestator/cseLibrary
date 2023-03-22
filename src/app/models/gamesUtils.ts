@@ -16,7 +16,7 @@ export class GamesUtils {
         maxPlayers: +this.getAttributeValue(elements, 'maxplayers'),
         playingTime: +this.getAttributeValue(elements, 'playingtime'),
         minAge: +this.getAttributeValue(elements, 'minage'),
-        suggestedPlayAge: this.getSuggestedPlayAge(elements),
+        suggestedPlayAge: this.getSuggestedPlayAge(elements) ??  +this.getAttributeValue(elements, 'minage'),
         themes: this.getAllAttributesOfType(elements, 'boardgamecategory')
       };
     } else {
