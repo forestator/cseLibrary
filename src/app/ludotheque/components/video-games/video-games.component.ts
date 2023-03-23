@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {Library} from '../../../models/author.model';
 import {Observable} from 'rxjs';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import {ToolsService} from '../../../services/biblio/tools.service';
 
 @Component({
   selector: 'app-video-games',
@@ -10,5 +11,5 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
 })
 export class VideoGamesComponent {
   library$: Observable<Library | null> = this.firebaseDatabase.videoGamesLibrary$;
-  constructor(private firebaseDatabase: FirebaseDatabaseService) { }
+  constructor(private firebaseDatabase: FirebaseDatabaseService, public tools: ToolsService) { }
 }

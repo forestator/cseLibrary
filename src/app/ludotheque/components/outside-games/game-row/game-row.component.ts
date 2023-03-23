@@ -20,7 +20,7 @@ export class GameRowComponent implements OnInit {
   @Input() selectedGame?: string;
   parity!: boolean;
 
-  constructor(private toolsService: ToolsService,
+  constructor(public toolsService: ToolsService,
               public dialog: MatDialog,
               private userService: UserService) {
   }
