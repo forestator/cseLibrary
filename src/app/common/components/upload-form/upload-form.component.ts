@@ -13,7 +13,7 @@ import {take} from 'rxjs';
   styleUrls: ['./upload-form.component.scss']
 })
 export class UploadFormComponent implements OnChanges {
-  @Input() selectedGame: Game;
+  @Input() selectedGame?: Game;
   selectedFile?: File;
   currentFileUpload: FileUpload;
   percentage?: number;

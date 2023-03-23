@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Modifier un jeu</h1>
+<div class="modal-container" mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Chercher un jeu</mat-label>
+    <input matInput placeholder="Splendor" [formControl]="searchText" [matAutocomplete]="auto" type="text">
+    <mat-autocomplete #auto="matAutocomplete"
+                      [displayWith]="displayGame"
+                      (optionSelected)="selectGameToModify($event)"
+                      autoActiveFirstOption>
+      <mat-option *ngFor="let option of filteredOptions$ | async"
+                  [value]="option">
+        <app-badge [status]="option.category"></app-badge>
+        {{displayGame(option)}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button (click)="cancel()" mat-button>Cancel</button>
+</div>

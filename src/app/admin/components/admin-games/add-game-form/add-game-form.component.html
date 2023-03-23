@@ -34,13 +34,10 @@
       <mat-checkbox formControlName="isNew"></mat-checkbox>
     </div>
   </div>
-  <ng-container *ngIf="gameForm.get('libraryId').value === 'boardGames'">
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="boardgames">
-      <button mat-raised-button
-              [disabled]="!gameForm.get('name').value"
-              (click)="search()">Trouver Id
-      </button>
+  <mat-divider [vertical]="true"></mat-divider>
+  <div class="boardgames">
+    <app-upload-form [selectedGame]="gameForm.value"></app-upload-form>
+    <ng-container *ngIf="gameForm.get('libraryId').value === 'boardGames'">
       <mat-form-field appearance="fill">
         <mat-label>BoardGameGeek Id</mat-label>
         <input matInput type="number" placeholder="123456" formControlName="id">
@@ -49,7 +46,9 @@
         <mat-label>Poids</mat-label>
         <input matInput type="number" placeholder="100" formControlName="weight">
       </mat-form-field>
-    </div>
+    </ng-container>
+  </div>
+  <ng-container *ngIf="gameForm.get('libraryId').value === 'boardGames'">
     <mat-divider [vertical]="true"></mat-divider>
     <div class="boardgames">
       <mat-form-field appearance="fill">

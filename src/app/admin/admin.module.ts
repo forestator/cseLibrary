@@ -26,7 +26,7 @@ import {
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {AddGameComponent} from './components/admin-games/add-game/add-game.component';
-import {AddGameFormComponent} from './components/admin-games/add-game/add-game-form/add-game-form.component';
+import {AddGameFormComponent} from './components/admin-games/add-game-form/add-game-form.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
@@ -34,6 +34,7 @@ import {LastBorrowDatesPipe} from './pipe/last-borrow-dates.pipe';
 import {LudothequeModule} from '../ludotheque/ludotheque.module';
 import {AddGameModalComponent} from './components/admin-games/add-game-modal/add-game-modal.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {EditGameModalComponent} from './components/admin-games/edit-game-modal/edit-game-modal.component';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent
+    AdminMenuComponent, AddGameComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent
   ],
   exports: [
     AdminMenuComponent

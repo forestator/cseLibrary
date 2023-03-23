@@ -6,6 +6,7 @@ import {BoardGame} from '../../../../models/boardGame.model';
 import {OpenAiService} from '../../../../services/open-ai.service';
 import {BGGService} from '../../../../ludotheque/services/bgg.service';
 import {GamesUtils} from '../../../../models/gamesUtils';
+import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 
 @Component({
   selector: 'app-add-game-modal',
@@ -14,25 +15,27 @@ import {GamesUtils} from '../../../../models/gamesUtils';
 })
 export class AddGameModalComponent {
   gameForm: FormGroup;
+
   constructor(
     public dialogRef: MatDialogRef<AddGameModalComponent>,
     public fb: FormBuilder,
     private openAiService: OpenAiService,
+    private firebaseDatabaseService: FirebaseDatabaseService,
     private bggService: BGGService,
     @Inject(MAT_DIALOG_DATA) public data: {
-      games: Array<Game>
+      games: Array<Game>, selectedGame?: BoardGame
     },
   ) {
-    this.gameForm = this.initForm();
+    this.gameForm = this.initForm(this.data.selectedGame);
+    console.log(this.gameForm);
   }
 
   private initForm(game?: BoardGame): FormGroup {
     const uniqRef: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
       const exist = this.data.games.some(game => game.ref === control.value);
-      return exist ? {exist: true} : null;
+      const edit = this.data?.selectedGame.ref === control.value;
+      return (exist && !edit) ? {exist: true} : null;
     };
-
-    console.log(game);
 
     return this.fb.group({
       ref: this.fb.control(game?.ref, [Validators.required, uniqRef]),
@@ -55,7 +58,10 @@ export class AddGameModalComponent {
   }
 
   addGame() {
-
+    if (this.gameForm.valid) {
+      this.firebaseDatabaseService.addGame(this.gameForm.value);
+      this.cancel();
+    }
   }
 
   cancel() {
@@ -65,6 +71,11 @@ export class AddGameModalComponent {
   async makeSomeMagic() {
     const detailedGame: BoardGame = await this.bggService.gameDetails(this.gameForm.value).toPromise();
     detailedGame.description = await this.openAiService.genDescriptionJeu(detailedGame);
+    console.log('openAi description', detailedGame.description);
     this.gameForm.patchValue(detailedGame);
+  }
+
+  disableMagic(): boolean {
+    return !this.gameForm.get('id').value || !this.gameForm.get('name').value;
   }
 }

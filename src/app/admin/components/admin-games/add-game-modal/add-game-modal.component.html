@@ -11,7 +11,8 @@
     Confirm
   </button>
   <button mat-button
-          [disabled]="!gameForm?.get('id')?.value"
+          [title]="disableMagic() ? 'Ajouter l\'id boardgamegeek et le nom du jeu' : ''"
+          [disabled]="disableMagic()"
           (click)="makeSomeMagic()">Remplir automatiquement les champs
   </button>
 </div>

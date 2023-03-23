@@ -3,6 +3,7 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
 import {MatDialog} from '@angular/material/dialog';
 import {AddGameModalComponent} from './add-game-modal/add-game-modal.component';
 import {combineLatest, take} from 'rxjs';
+import {EditGameModalComponent} from './edit-game-modal/edit-game-modal.component';
 
 @Component({
   selector: 'app-admin-games',
@@ -30,6 +31,17 @@ export class AdminGamesComponent {
       this.firebaseDatabaseService.outsideGamesOneShot$
     ]).pipe(take(1)).subscribe(([a,b,c]) => {
       this.dialog.open(AddGameModalComponent, {
+        data: {games: [...a, ...b, ...c]}
+      });
+    })
+  }
+  editGame() {
+    combineLatest([
+      this.firebaseDatabaseService.boardGamesOneShot$,
+      this.firebaseDatabaseService.videoGamesOneShot$,
+      this.firebaseDatabaseService.outsideGamesOneShot$
+    ]).pipe(take(1)).subscribe(([a,b,c]) => {
+      this.dialog.open(EditGameModalComponent, {
         data: {games: [...a, ...b, ...c]}
       });
     })

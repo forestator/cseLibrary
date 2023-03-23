@@ -1,8 +1,8 @@
 import {ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {BoardGameCategory} from '../../../../../models/boardGame.model';
-import {Consoles} from '../../../../../models/videoGames.model';
+import {BoardGameCategory} from '../../../../models/boardGame.model';
+import {Consoles} from '../../../../models/videoGames.model';
 import {FormGroup} from '@angular/forms';
-import {GamesUtils} from '../../../../../models/gamesUtils';
+import {GamesUtils} from '../../../../models/gamesUtils';
 
 @Component({
   selector: 'app-add-game-form',

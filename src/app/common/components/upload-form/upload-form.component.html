@@ -1,11 +1,11 @@
 <div class="upload-form-container">
-  <button type="button" mat-raised-button (click)="fileInput.click()">Changer l'image</button>
+  <button type="button" mat-raised-button (click)="fileInput.click()">Ajouter l'image</button>
   <input hidden (change)="selectFile($event)" #fileInput type="file"
          [multiple]="false"
          accept="image/png, image/jpeg">
 
   <img [width]="250"
-       [src]="previewImage ?? selectedGame.cover"/>
+       [src]="previewImage ?? selectedGame?.cover"/>
 
   <div class="upload-btn">
     <button
