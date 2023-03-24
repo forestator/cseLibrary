@@ -1,27 +1,29 @@
-<div *ngIf="books" class="new-page fadein">
-    <div id="new">
-        <div class="title">
-            Nouveautés
-            <mat-icon (click)="exportNewsAsPDF()">picture_as_pdf</mat-icon>
-        </div>
-        <app-book-row
-            [id]="book.book.id"
-            *ngFor="let book of books;let index=index;"
-            [book]="book.book"
-            [biblio]="biblio"
-            [category]="book.category"
-            [index]="index">
-        </app-book-row>
+<div *ngIf="newBooks$ | async as libraryNew" class="new-page fadein">
+  <div class="title">
+    Nouveautés
+    <mat-icon (click)="exportNewsAsPDF()" *ngIf="auth.userAllowedToWrite$ | async">picture_as_pdf</mat-icon>
+  </div>
+  <div class="core-page" *ngFor="let data of libraryNew">
+    <div id="new" class="core-body" *ngIf="data.books.length > 0">
+      <app-book-row
+        [id]="book.book.id"
+        *ngFor="let book of data.books;let index=index;"
+        [book]="book.book"
+        [biblio]="data.biblio"
+        [category]="book.category"
+        [index]="index">
+      </app-book-row>
     </div>
-    <div id="inProject">
-        <div class="title">En projet</div>
-        <app-book-row
-            [id]="book.book.id"
-            *ngFor="let book of booksInProject;let index=index;"
-            [book]="book.book"
-            [biblio]="biblio"
-            [category]="book.category"
-            [index]="index">
-        </app-book-row>
+    <div id="inProject" class="core-body" *ngIf="data.bookInProject.length > 0">
+      <div class="title">En projet</div>
+      <app-book-row
+        [id]="book.book.id"
+        *ngFor="let book of data.bookInProject;let index=index;"
+        [book]="book.book"
+        [biblio]="data.biblio"
+        [category]="book.category"
+        [index]="index">
+      </app-book-row>
     </div>
+  </div>
 </div>

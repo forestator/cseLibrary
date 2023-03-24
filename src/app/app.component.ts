@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.toolService.mobilePhoneDisplay.next(this.topMenu.nativeElement.offsetWidth < 400);
+    this.toolService.mobilePhoneDisplay$.next(this.topMenu.nativeElement.offsetWidth < 400);
   }
 
   scrollToTop() {

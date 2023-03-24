@@ -1,5 +1,5 @@
 <div [id]="game.ref" *ngIf="game" class="book-core">
-  <ng-container [ngTemplateOutlet]="image" *ngIf="(parity || (toolsService.mobilePhoneDisplay | async))"></ng-container>
+  <ng-container [ngTemplateOutlet]="image" *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async))"></ng-container>
   <div class="book-infos">
     <div class="book-title">{{game.name}}
       <app-game-status class="badge" [game]="game"></app-game-status>
@@ -8,7 +8,7 @@
     <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
     <app-futur-reservations [game]="game"></app-futur-reservations>
   </div>
-  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && !(toolsService.mobilePhoneDisplay | async)"></ng-container>
+  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && !(toolsService.mobilePhoneDisplay$ | async)"></ng-container>
 </div>
 
 <ng-template #image>

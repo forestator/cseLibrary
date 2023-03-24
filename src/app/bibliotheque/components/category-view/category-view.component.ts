@@ -37,6 +37,7 @@ export class CategoryViewComponent implements OnInit {
         this.biblioDatabaseService.getBiblio(params['libraryId']!).pipe(
           map(biblio => {
             const category = biblio.library.categories.find(cat => cat.id === params['catId']);
+            this.counter = 0;
             if (category.by === ViewBy.BY_SERIES) {
               category.series?.forEach(serie => serie.books?.forEach(() => this.counter++));
             }

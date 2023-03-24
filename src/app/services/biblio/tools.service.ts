@@ -7,7 +7,7 @@ import {Author, Biblio} from '../../models/author.model';
 })
 export class ToolsService {
   public adminMode: boolean = false;
-  public mobilePhoneDisplay: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public mobilePhoneDisplay$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private scrollRetry = 0;
 
   constructor() {

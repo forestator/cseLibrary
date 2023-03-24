@@ -11,13 +11,13 @@
        class="core-body core-body-category"
        [routerLink]="category.id"
        title="Clickez ici pour visualiser cette categorie">
-    <div *ngIf="!(toolsService.mobilePhoneDisplay | async)">
+    <div *ngIf="!(toolsService.mobilePhoneDisplay$ | async)">
       <img alt="" class="category-visuel"
            [src]="(library?.path | categoryBackground: category.bg) | async">
     </div>
     <div class="core-header">
       <img alt="" class="category-visuel small-display"
-           *ngIf="toolsService.mobilePhoneDisplay | async"
+           *ngIf="toolsService.mobilePhoneDisplay$ | async"
            [src]="(library?.path | categoryBackground: category.bg) | async">
       <div class="core-title">
         <div class="primary">{{category.name}}</div>

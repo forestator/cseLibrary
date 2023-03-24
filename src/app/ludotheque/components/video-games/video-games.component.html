@@ -13,13 +13,13 @@
        title="Cliquez ici pour visualiser cette categorie">
     <div>
       <img class="category-visuel"
-           *ngIf="!(tools.mobilePhoneDisplay | async)"
+           *ngIf="!(tools.mobilePhoneDisplay$ | async)"
            src="{{category.bg}}"
            [alt]="library.name">
     </div>
     <div class="core-header">
       <img class="category-visuel small-display"
-           *ngIf="(tools.mobilePhoneDisplay | async)"
+           *ngIf="(tools.mobilePhoneDisplay$ | async)"
            src="{{category.bg}}"
            [alt]="library.name">
       <div class="core-title">
