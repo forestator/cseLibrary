@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {Observable} from 'rxjs';
+import {Observable, take} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/compat/storage';
 
 @Pipe({
@@ -11,6 +11,6 @@ export class BookCoverPipe implements PipeTransform {
   }
 
   transform(libPath: string, coverName: string): Observable<string> {
-    return this.afs.ref(`assets/books/covers/${libPath}/${coverName}`).getDownloadURL();
+    return this.afs.ref(`assets/books/covers/${libPath}/${coverName}`).getDownloadURL().pipe(take(1));
   }
 }
