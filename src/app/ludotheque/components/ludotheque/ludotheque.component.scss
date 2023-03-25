@@ -1,1 +1,19 @@
 @import '../../../common/common';
+
+.core-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  .category-visuel {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    margin: 20px;
+
+    &.small-display {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
