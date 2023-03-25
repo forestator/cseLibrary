@@ -4,6 +4,9 @@
          matInput
          [formControl]="searchText"
          [matAutocomplete]="auto">
+  <button matSuffix mat-icon-button aria-label="advanced">
+    <mat-icon class="param-icon">filter_list</mat-icon>
+  </button>
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
                     [displayWith]="displayGame"
                     (optionSelected)="goToSelectedItem($event)">
