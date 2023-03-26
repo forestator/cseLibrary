@@ -9,12 +9,6 @@ import {VideoGame} from '../../../models/videoGames.model';
 import {DataService} from '../../../services/biblio/data.service';
 import {Game} from '../../../models/common.model';
 
-export interface SearchOption {
-  category: string;
-  name: string;
-  id: string
-}
-
 @Component({
   selector: 'app-search-in-lib',
   templateUrl: './search-in-lib.component.html',
@@ -26,9 +20,9 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   @Input() videoGames!: Array<VideoGame> | null;
   @Input() outsideGames!: Array<Game> | null;
   searchText: UntypedFormControl = new UntypedFormControl('');
-  filteredOptions$?: Observable<Array<SearchOption>>;
+  filteredOptions$?: Observable<Array<Game | BoardGame>>;
 
-  datas: Array<{ category: string; name: string; id: string }> = [];
+  datas: Array<Game | BoardGame> = [];
   private currentUrl?: string;
 
   constructor(private dataService: DataService,
@@ -49,7 +43,7 @@ export class SearchInLibComponent implements OnInit, OnChanges {
     }
   }
 
-  private _filter(value: string | Game): { category: string; name: string; id: string }[] {
+  private _filter(value: string | Game): Array<Game | BoardGame> {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
     return this.datas.filter((item) =>
       item.name?.toLowerCase().includes(filterValue)
@@ -60,32 +54,24 @@ export class SearchInLibComponent implements OnInit, OnChanges {
     this.navigateService.goToGame(matAutocompleteSelectedEvent.option.value);
   }
 
-  private setDatasToSeachIn(url: string): Array<SearchOption> {
+  private setDatasToSeachIn(url: string): Array<Game | BoardGame> {
     this.currentUrl = url;
     if (this.boardGames && url.includes('boardGames')) {
       return this.boardGames;
     } else if (this.videoGames && url.includes('videoGames')) {
-      return this.videoGames.map((vg) => {
-        return {id: vg.ref, category: vg.category, name: vg.name};
-      });
+      return this.videoGames;
     } else if (this.outsideGames && url.includes('outsideGames')) {
-      return this.outsideGames.map((game) => {
-        return {id: game.ref, category: game.category, name: game.name};
-      });
+      return this.outsideGames;
     } else {
-      const defaultSearch: Array<SearchOption> = [];
+      const defaultSearch: Array<Game> = [];
       if (this.boardGames) {
         defaultSearch.push(...this.boardGames);
       }
       if (this.videoGames) {
-        this.videoGames.forEach((vg) => {
-          defaultSearch.push({id: vg.ref, category: vg.category, name: vg.name});
-        });
+        defaultSearch.push(...this.videoGames);
       }
       if (this.outsideGames) {
-        this.outsideGames.forEach((outsideG) => {
-          defaultSearch.push({id: outsideG.ref, category: outsideG.category, name: outsideG.name});
-        });
+        defaultSearch.push(...this.outsideGames);
       }
       return defaultSearch;
     }
