@@ -1,13 +1,20 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {BoardGame} from '../../../models/boardGame.model';
-import {map, Observable} from 'rxjs';
-import {UntypedFormControl} from '@angular/forms';
+import {
+  AdvancedFilter, AgeFilter,
+  BoardGame,
+  BoardGameCategory,
+  CategoryFilter, DurationFilter,
+  NbOfPlayersFilter
+} from '../../../models/boardGame.model';
+import {map, Observable, startWith} from 'rxjs';
+import {FormControl, UntypedFormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {VideoGame} from '../../../models/videoGames.model';
 import {DataService} from '../../../services/biblio/data.service';
 import {Game} from '../../../models/common.model';
+import {MatCheckbox} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-search-in-lib',
@@ -19,22 +26,30 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   @Input() boardGames!: Array<BoardGame> | null;
   @Input() videoGames!: Array<VideoGame> | null;
   @Input() outsideGames!: Array<Game> | null;
-  searchText: UntypedFormControl = new UntypedFormControl('');
+  searchText: FormControl<string> = new FormControl<string>(null);
   filteredOptions$?: Observable<Array<Game | BoardGame>>;
-
   datas: Array<Game | BoardGame> = [];
-  private currentUrl?: string;
+  currentUrl?: string;
+  categoriesList: Array<string> = Object.values(BoardGameCategory);
+  numberOfPlayers: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8];
+  gameDuration: Array<number> = [10, 20, 30, 45, 60, 120];
+  ageList: Array<number> = [2, 4, 7, 10, 12, 16];
+  advancedFilters: AdvancedFilter;
 
   constructor(private dataService: DataService,
               private router: Router,
               private navigateService: NavigationService) {
+    this.advancedFilters = new AdvancedFilter();
   }
 
   ngOnInit() {
-    this.filteredOptions$ = this.searchText.valueChanges.pipe(
-      map(value => this._filter(value || '')),
-    );
-    this.navigateService.url$.subscribe(url => this.datas = this.setDatasToSeachIn(url));
+    this.navigateService.url$.subscribe(url => {
+      this.datas = this.setDatasToSeachIn(url);
+      this.filteredOptions$ = this.searchText.valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value || '')),
+      );
+    });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -43,11 +58,16 @@ export class SearchInLibComponent implements OnInit, OnChanges {
     }
   }
 
-  private _filter(value: string | Game): Array<Game | BoardGame> {
+  private _filter(value: string | Game | BoardGame | VideoGame): Array<Game | BoardGame> {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
-    return this.datas.filter((item) =>
+    const filteredByName: Array<Game> = this.datas.filter((item) =>
       item.name?.toLowerCase().includes(filterValue)
     );
+    const filteredByCategories = filteredByName.filter((item) =>
+      typeof item.category === BoardGameCategory
+    );
+
+    return filteredByName;
   }
 
   goToSelectedItem(matAutocompleteSelectedEvent: MatAutocompleteSelectedEvent) {
@@ -79,5 +99,12 @@ export class SearchInLibComponent implements OnInit, OnChanges {
 
   displayGame(game?: Game): string {
     return game ? `${game.name}` : '';
+  }
+
+  selectCheckbox(filter: CategoryFilter | NbOfPlayersFilter | DurationFilter | AgeFilter,
+                 properties: string,
+                 event: MouseEvent): void {
+    event.stopPropagation();
+    filter[properties] = !filter[properties];
   }
 }

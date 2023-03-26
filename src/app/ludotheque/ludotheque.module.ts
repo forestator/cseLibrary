@@ -48,6 +48,7 @@ import {
 } from './components/board-games/components/board-game-row/futur-reservations/futur-reservations.component';
 import {GameReservedForFuturWeeksPipe} from './pipes/game-reserved-for-futur-weeks.pipe';
 import {UserByIdPipe} from './pipes/user-by-id.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import {UserByIdPipe} from './pipes/user-by-id.pipe';
         MatMenuModule,
         MatExpansionModule,
         MatTableModule,
-        MatSortModule
+        MatSortModule,
+        MatCheckboxModule
     ]
 })
 export class LudothequeModule {
