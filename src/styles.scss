@@ -5,7 +5,16 @@ html {
   background-attachment: fixed;
 }
 
-html {
+.side-nav-container {
+  background: transparent;
+
+  mat-sidenav:not(.mobile-display) {
+    background: transparent;
+    min-width: 200px;
+  }
+}
+
+html, body {
   height: 100%;
 }
 
@@ -13,81 +22,41 @@ html {
   font-family: 'Courier Prime', monospace;
 }
 
+.library-title {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
+  .title {
+    display: flex;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    color: darkgrey;
+    text-transform: uppercase;
+    justify-content: left;
+    align-items: center;
+    line-height: 40px;
+  }
+}
+
 .library-menu {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  background: transparent;
+  width: 100%;
   align-items: center;
-  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   vertical-align: middle;
   border-bottom: 2px solid darkgrey;
 
-  .library-title {
-    flex: 2;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    line-height: 40px;
-
-    .title {
-      display: flex;
-      font-size: 30px;
-      font-weight: bold;
-      color: darkgrey;
-      text-transform: uppercase;
-      justify-content: left;
-      align-items: center;
-      line-height: 40px;
-
-      .admin {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 50px;
-        height: 40px;
-        line-height: 40px;
-        margin-top: -12px;
-        cursor: pointer;
-
-        mat-icon {
-          font-size: 30px !important;
-        }
-
-        mat-icon:hover {
-          color: red;
-        }
-
-        &.actif {
-          color: red;
-        }
-
-        &.inactif {
-          color: darkgrey;
-        }
-      }
-    }
-
-    .menu {
-      margin-top: -6px;
-      color: darkgrey;
-
-      button {
-        mat-icon {
-          font-size: 30px !important;
-        }
-      }
-    }
-
-    .popup-menu-label {
-      font-family: 'Courier Prime', monospace;
-    }
+  .tool {
+    width: 100%;
   }
 
   .category-menu {
     flex: 3;
-    justify-content: flex-end;
+    justify-content: space-between;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -98,25 +67,25 @@ html {
       max-width: 500px;
       width: 100%;
     }
+  }
+}
 
-    .cat-nav {
-      display: flex;
-      font-size: 16px;
-      width: 150px;
-      text-transform: uppercase;
-      justify-content: center;
-      cursor: pointer;
-      color: darkgrey;
+.cat-nav {
+  display: flex;
+  font-size: 16px;
+  width: 150px;
+  text-transform: uppercase;
+  justify-content: center;
+  cursor: pointer;
+  color: darkgrey;
 
-      &:hover {
-        background-color: darkgrey;
-        color: white;
-      }
+  &:hover {
+    background-color: darkgrey;
+    color: white;
+  }
 
-      &.admin {
-        width: 30px;
-        font-size: small;
-      }
-    }
+  &.admin {
+    width: 30px;
+    font-size: small;
   }
 }

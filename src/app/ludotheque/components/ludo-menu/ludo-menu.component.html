@@ -1,33 +1,9 @@
-<div class="library-menu" id="top">
-  <div class="library-title">
-    <div class="title">
-      <span [routerLink]="''">Cse</span>
-    </div>
-    <div class="menu" *ngIf="menu.length > 0">
-      <button mat-icon-button [matMenuTriggerFor]="mainMenu">
-        <mat-icon>view_headline</mat-icon>
-      </button>
-      <mat-menu #mainMenu="matMenu">
-        <button
-          mat-menu-item
-          *ngFor="let item of menu"
-          [routerLink]="item.route">
-          <span class="popup-menu-label">{{item.name}}</span>
-        </button>
-      </mat-menu>
-    </div>
-  </div>
-  <div class="category-menu">
-    <div class="search">
-      <app-search-in-lib
-        [videoGames]="firebaseDatabaseService.videoGamesOneShot$ | async"
-        [outsideGames]="firebaseDatabaseService.outsideGamesOneShot$ | async"
-        [boardGames]="firebaseDatabaseService.boardGamesOneShot$ | async">
-      </app-search-in-lib>
-    </div>
-    <div class="cat-nav"
-         [routerLink]="'ludotheque/new'">
-      Nouveautés
-    </div>
+<div class="category-menu">
+  <div class="search">
+    <app-search-in-lib
+      [videoGames]="firebaseDatabaseService.videoGamesOneShot$ | async"
+      [outsideGames]="firebaseDatabaseService.outsideGamesOneShot$ | async"
+      [boardGames]="firebaseDatabaseService.boardGamesOneShot$ | async">
+    </app-search-in-lib>
   </div>
 </div>

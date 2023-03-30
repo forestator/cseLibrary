@@ -131,3 +131,10 @@ export interface SearchBookResult {
     tome: string;
     publishedDate: string;
 }
+
+export enum Libraries {
+  IMAGINAIRE = 'litterature-imaginaire',
+  INCLASSABLE = 'inclassable',
+  LIBRAIRIE_JEUNESSE = 'litterature-jeunesse',
+  LITTERATURE_ADULTE = 'litterature-adulte'
+}

@@ -1,29 +1,44 @@
-<!--suppress XmlDuplicatedId -->
-<app-library-menu *ngIf="showBibliothequeMenu && !showAdmin"
-                  #top
-                  id="top">
-</app-library-menu>
-<app-ludo-menu *ngIf="showLudothequeMenu && !showAdmin"
-               #top
-               id="top">
-</app-ludo-menu>
-<app-admin-menu *ngIf="showAdmin"
-                #top
-                id="top">
-</app-admin-menu>
-<div class="library-menu" #top id="top"
-     *ngIf="!showLudothequeMenu && !showBibliothequeMenu && !showAdmin">
-  <div class="library-title">
-    <div class="title">
-      <span [routerLink]="''">{{title}}</span>
+<mat-sidenav-container class="side-nav-container">
+  <mat-sidenav #drawer fixedInViewport="true"
+               [class.mobile-display]="toolService.mobilePhoneDisplay$ | async"
+               [attr.role]="(toolService.mobilePhoneDisplay$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(toolService.mobilePhoneDisplay$ | async) ? 'over' : 'side'"
+               [opened]="!(toolService.mobilePhoneDisplay$ | async)">
+    <div class="library-title">
+      <div class="title">
+        <span [routerLink]="''">{{title}}</span>
+      </div>
     </div>
-  </div>
-</div>
+    <mat-list>
+      <mat-list-item *ngFor="let category of menu">
+        <div matListItemTitle [routerLink]="category.route" class="cat-nav">{{category.name}}</div>
+        <!--<mat-list-item *ngFor="let sub of category.subList">
+          <div matListItemTitle [routerLink]="sub.route">{{sub.name | titlecase}}</div>
+        </mat-list-item>-->
+      </mat-list-item>
+      <ng-container *ngIf="showBoardGameFilters">
+        <mat-divider></mat-divider>
+        <div mat-subheader>Filters</div>
+      </ng-container>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content id="top" #top>
+    <mat-toolbar class="library-menu">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+              *ngIf="(toolService.mobilePhoneDisplay$ | async) && (showAdmin || showLudothequeMenu || showBibliothequeMenu)">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <app-library-menu class="tool" *ngIf="showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin"></app-library-menu>
+      <app-ludo-menu class="tool" *ngIf="showLudothequeMenu && !showAdmin"></app-ludo-menu>
+      <app-admin-menu class="tool" *ngIf="showAdmin"></app-admin-menu>
+    </mat-toolbar>
 
-<router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
-<div class="go-top bloc-link">
-  <div (click)="scrollToTop()" class="go-top-link">
-    <mat-icon class="icon">keyboard_arrow_up</mat-icon>
-  </div>
-</div>
+    <div class="go-top bloc-link">
+      <div (click)="scrollToTop()" class="go-top-link">
+        <mat-icon class="icon">keyboard_arrow_up</mat-icon>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
