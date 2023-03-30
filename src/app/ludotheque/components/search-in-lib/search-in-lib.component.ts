@@ -1,20 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {
-  AdvancedFilter, AgeFilter,
-  BoardGame,
-  BoardGameCategory,
-  CategoryFilter, DurationFilter,
-  NbOfPlayersFilter
-} from '../../../models/boardGame.model';
+import {AdvancedFilter, BoardGame, BoardGameCategory} from '../../../models/boardGame.model';
 import {map, Observable, startWith} from 'rxjs';
-import {FormControl, UntypedFormControl} from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {VideoGame} from '../../../models/videoGames.model';
 import {DataService} from '../../../services/biblio/data.service';
 import {Game} from '../../../models/common.model';
-import {MatCheckbox} from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-search-in-lib',
@@ -60,14 +53,9 @@ export class SearchInLibComponent implements OnInit, OnChanges {
 
   private _filter(value: string | Game | BoardGame | VideoGame): Array<Game | BoardGame> {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
-    const filteredByName: Array<Game> = this.datas.filter((item) =>
+    return this.datas.filter((item) =>
       item.name?.toLowerCase().includes(filterValue)
     );
-    const filteredByCategories = filteredByName.filter((item) =>
-      typeof item.category === BoardGameCategory
-    );
-
-    return filteredByName;
   }
 
   goToSelectedItem(matAutocompleteSelectedEvent: MatAutocompleteSelectedEvent) {
@@ -99,12 +87,5 @@ export class SearchInLibComponent implements OnInit, OnChanges {
 
   displayGame(game?: Game): string {
     return game ? `${game.name}` : '';
-  }
-
-  selectCheckbox(filter: CategoryFilter | NbOfPlayersFilter | DurationFilter | AgeFilter,
-                 properties: string,
-                 event: MouseEvent): void {
-    event.stopPropagation();
-    filter[properties] = !filter[properties];
   }
 }

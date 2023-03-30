@@ -4,11 +4,6 @@
          matInput
          [formControl]="searchText"
          [matAutocomplete]="auto">
-  <button
-    *ngIf="currentUrl.includes('boardGames')"
-    matSuffix mat-icon-button aria-label="advanced" [matMenuTriggerFor]="filters">
-    <mat-icon class="param-icon">filter_list</mat-icon>
-  </button>
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
                     [displayWith]="displayGame"
                     (optionSelected)="goToSelectedItem($event)">
@@ -18,55 +13,3 @@
     </mat-option>
   </mat-autocomplete>
 </mat-form-field>
-
-<mat-menu #filters="matMenu">
-  <div mat-menu-item class="menu-list" (click)="$event.stopPropagation()" [matMenuTriggerFor]="categories">Categories</div>
-  <div mat-menu-item class="menu-list" (click)="$event.stopPropagation()" [matMenuTriggerFor]="nbOfMinPlayers">Nombre joueurs mini</div>
-  <div mat-menu-item class="menu-list" (click)="$event.stopPropagation()" [matMenuTriggerFor]="nbOfMaxPlayers">Nombre joueurs max</div>
-  <div mat-menu-item class="menu-list" (click)="$event.stopPropagation()" [matMenuTriggerFor]="gameTime">Temps jeu</div>
-  <div mat-menu-item class="menu-list" (click)="$event.stopPropagation()" [matMenuTriggerFor]="age">Age</div>
-</mat-menu>
-
-<mat-menu #categories="matMenu">
-  <div mat-menu-item
-       (click)="selectCheckbox(advancedFilters.categoryFilter, cat, $event)"
-       *ngFor="let cat of categoriesList">
-    <mat-checkbox [(ngModel)]="advancedFilters.categoryFilter[cat]">
-      <app-badge [status]="cat"></app-badge>
-    </mat-checkbox>
-  </div>
-</mat-menu>
-
-<mat-menu #nbOfMinPlayers="matMenu">
-  <div mat-menu-item
-       (click)="selectCheckbox(advancedFilters.minNumberOfPlayers, nbPlayers.toString(), $event)"
-       *ngFor="let nbPlayers of numberOfPlayers">
-    <mat-checkbox>{{nbPlayers}}</mat-checkbox>
-  </div>
-</mat-menu>
-
-
-<mat-menu #nbOfMaxPlayers="matMenu">
-  <div mat-menu-item
-       (click)="selectCheckbox(advancedFilters.maxNumberOfPlayer, nbPlayers.toString(), $event)"
-       *ngFor="let nbPlayers of numberOfPlayers">
-    <mat-checkbox>{{nbPlayers}}</mat-checkbox>
-  </div>
-</mat-menu>
-
-<mat-menu #gameTime="matMenu">
-  <div mat-menu-item
-       (click)="selectCheckbox(advancedFilters.gameDurationFilter, duration.toString(), $event)"
-       *ngFor="let duration of gameDuration">
-    <mat-checkbox>{{duration}} minutes</mat-checkbox>
-  </div>
-</mat-menu>
-
-<mat-menu #age="matMenu">
-  <div mat-menu-item
-       (click)="selectCheckbox(advancedFilters.ageFilter, age.toString(), $event)"
-       *ngFor="let age of ageList">
-    <mat-checkbox>{{age}}+</mat-checkbox>
-  </div>
-</mat-menu>
-

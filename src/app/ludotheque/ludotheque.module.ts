@@ -72,28 +72,29 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     GameStatusComponent,
     GameReservedForFuturWeeksPipe,
     FuturReservationsComponent,
-    UserByIdPipe],
+    UserByIdPipe,
+  ],
   exports: [LudoMenuComponent, GameStatusComponent],
-    imports: [
-        CommonModule,
-        MatIconModule,
-        RouterModule,
-        AppCommonModule,
-        MatDialogModule,
-        MatFormFieldModule,
-        MatInputModule,
-        FormsModule,
-        MatButtonModule,
-        MatButtonToggleModule,
-        MatDividerModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        MatMenuModule,
-        MatExpansionModule,
-        MatTableModule,
-        MatSortModule,
-        MatCheckboxModule
-    ]
+  imports: [
+    CommonModule,
+    MatIconModule,
+    RouterModule,
+    AppCommonModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatDividerModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatExpansionModule,
+    MatTableModule,
+    MatSortModule,
+    MatCheckboxModule
+  ]
 })
 export class LudothequeModule {
 }
