@@ -27,13 +27,12 @@ export class AddGameModalComponent {
     },
   ) {
     this.gameForm = this.initForm(this.data.selectedGame);
-    console.log(this.gameForm);
   }
 
   private initForm(game?: BoardGame): FormGroup {
     const uniqRef: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
       const exist = this.data.games.some(game => game.ref === control.value);
-      const edit = this.data?.selectedGame.ref === control.value;
+      const edit = this.data?.selectedGame?.ref === control.value;
       return (exist && !edit) ? {exist: true} : null;
     };
 
