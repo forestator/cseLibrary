@@ -8,9 +8,12 @@ html {
 .side-nav-container {
   background: transparent;
 
-  mat-sidenav:not(.mobile-display) {
-    background: transparent;
+  mat-sidenav {
     width: 200px;
+
+    :not(.mobile-display) {
+      background: transparent;
+    }
   }
 }
 
