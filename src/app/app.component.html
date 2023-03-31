@@ -4,23 +4,28 @@
                [attr.role]="(toolService.mobilePhoneDisplay$ | async) ? 'dialog' : 'navigation'"
                [mode]="(toolService.mobilePhoneDisplay$ | async) ? 'over' : 'side'"
                [opened]="!(toolService.mobilePhoneDisplay$ | async)">
-    <div class="library-title">
-      <div class="title">
-        <span [routerLink]="''">{{title}}</span>
+    <div class="navigation-container">
+      <div class="library-title">
+        <div class="title">
+          <span [routerLink]="''">{{title}}</span>
+        </div>
       </div>
+      <mat-list>
+        <mat-list-item *ngFor="let category of menu">
+          <div matListItemTitle [routerLink]="category.route" class="cat-nav">{{category.name}}</div>
+          <!--<mat-list-item *ngFor="let sub of category.subList">
+            <div matListItemTitle [routerLink]="sub.route">{{sub.name | titlecase}}</div>
+          </mat-list-item>-->
+        </mat-list-item>
+        <ng-container *ngIf="showBoardGameFilters">
+          <mat-divider></mat-divider>
+          <app-filter-board-games></app-filter-board-games>
+        </ng-container>
+      </mat-list>
     </div>
-    <mat-list>
-      <mat-list-item *ngFor="let category of menu">
-        <div matListItemTitle [routerLink]="category.route" class="cat-nav">{{category.name}}</div>
-        <!--<mat-list-item *ngFor="let sub of category.subList">
-          <div matListItemTitle [routerLink]="sub.route">{{sub.name | titlecase}}</div>
-        </mat-list-item>-->
-      </mat-list-item>
-      <ng-container *ngIf="showBoardGameFilters">
-        <mat-divider></mat-divider>
-        <app-filter-board-games></app-filter-board-games>
-      </ng-container>
-    </mat-list>
+    <div class="contact">
+      Suggestions : <a href="mailto:maximilien.foret@harmonicinc.com"><mat-icon>email</mat-icon></a>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content id="top" #top>
     <mat-toolbar class="library-menu">
@@ -28,7 +33,8 @@
               *ngIf="(toolService.mobilePhoneDisplay$ | async) && (showAdmin || showLudothequeMenu || showBibliothequeMenu)">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <app-library-menu class="tool" *ngIf="showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin"></app-library-menu>
+      <app-library-menu class="tool"
+                        *ngIf="showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin"></app-library-menu>
       <app-ludo-menu class="tool" *ngIf="showLudothequeMenu && !showAdmin"></app-ludo-menu>
       <app-admin-menu class="tool" *ngIf="showAdmin"></app-admin-menu>
     </mat-toolbar>

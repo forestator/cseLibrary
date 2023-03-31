@@ -14,6 +14,23 @@ html {
     &:not(.mobile-display) {
       background: transparent;
     }
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .contact {
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a {
+          color: inherit;
+        }
+      }
+    }
   }
 }
 
@@ -27,7 +44,7 @@ html, body {
 
 .library-title {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
 
   .title {

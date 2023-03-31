@@ -29,9 +29,9 @@ export class NavigationService {
   goToGame(game: BoardGame): void {
     const gameCat = GamesUtils.libraryIdOfGame(game);
     if (gameCat === 'outsideGames') {
-      this.router.navigateByUrl(`/ludotheque/${gameCat}/${game.id}`);
+      this.router.navigateByUrl(`/ludotheque/${gameCat}/${game.id ?? game.ref}`);
     } else {
-      this.router.navigateByUrl(`/ludotheque/${gameCat}/${game.category}/${game.id}`);
+      this.router.navigateByUrl(`/ludotheque/${gameCat}/${game.category}/${game.id ?? game.ref}`);
     }
   }
 }
