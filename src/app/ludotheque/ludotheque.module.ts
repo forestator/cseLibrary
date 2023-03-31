@@ -49,6 +49,10 @@ import {
 import {GameReservedForFuturWeeksPipe} from './pipes/game-reserved-for-futur-weeks.pipe';
 import {UserByIdPipe} from './pipes/user-by-id.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {
+  FilterBoardGamesComponent
+} from './components/board-games/components/filter-board-games/filter-board-games.component';
+import {AdvancedBoardGameFilterPipe} from './pipes/advanced-board-game-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -73,8 +77,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     GameReservedForFuturWeeksPipe,
     FuturReservationsComponent,
     UserByIdPipe,
+    FilterBoardGamesComponent,
+    AdvancedBoardGameFilterPipe,
   ],
-  exports: [LudoMenuComponent, GameStatusComponent],
+  exports: [LudoMenuComponent, GameStatusComponent, FilterBoardGamesComponent],
   imports: [
     CommonModule,
     MatIconModule,

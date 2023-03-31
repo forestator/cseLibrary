@@ -1,0 +1,39 @@
+<div class="filter-group">
+  <div class="filter-header">
+    <mat-icon>group</mat-icon>
+    Nombre de joueurs
+  </div>
+  <div class="number-list">
+    <mat-button-toggle-group [(value)]="numberOfPlayersGroupValue" aria-label="Number of players">
+      <mat-button-toggle [value]="nb"
+                         (click)="selectedFilter(nb, boardGameFilterType.NUMBER_OF_PLAYERS)"
+                         *ngFor="let nb of numberOfPlayers">{{nb}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div class="filter-group">
+  <div class="filter-header">
+    <mat-icon>timer</mat-icon>
+    Durée d'une partie
+  </div>
+  <div class="number-list">
+    <mat-button-toggle-group [(value)]="durationGroupValue" aria-label="Game duration">
+      <mat-button-toggle [value]="nb"
+                         (click)="selectedFilter(nb, boardGameFilterType.DURATION)"
+                         *ngFor="let nb of gameDuration">{{nb}}</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+<div class="filter-group">
+  <div class="filter-header">
+    <mat-icon>family_restroom</mat-icon>
+    Âge, à partir de
+  </div>
+  <div class="number-list">
+    <mat-button-toggle-group [(value)]="ageGroupValue" aria-label="Player Age">
+      <mat-button-toggle [value]="nb"
+                         (click)="selectedFilter(nb, boardGameFilterType.AGE)"
+                         *ngFor="let nb of ageList">{{nb}} ans</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>

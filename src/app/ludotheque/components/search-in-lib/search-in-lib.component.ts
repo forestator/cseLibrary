@@ -1,5 +1,5 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {AdvancedFilter, BoardGame, BoardGameCategory} from '../../../models/boardGame.model';
+import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable, startWith} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
@@ -23,16 +23,10 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   filteredOptions$?: Observable<Array<Game | BoardGame>>;
   datas: Array<Game | BoardGame> = [];
   currentUrl?: string;
-  categoriesList: Array<string> = Object.values(BoardGameCategory);
-  numberOfPlayers: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8];
-  gameDuration: Array<number> = [10, 20, 30, 45, 60, 120];
-  ageList: Array<number> = [2, 4, 7, 10, 12, 16];
-  advancedFilters: AdvancedFilter;
 
   constructor(private dataService: DataService,
               private router: Router,
               private navigateService: NavigationService) {
-    this.advancedFilters = new AdvancedFilter();
   }
 
   ngOnInit() {
