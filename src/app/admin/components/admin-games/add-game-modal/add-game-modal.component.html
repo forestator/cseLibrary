@@ -1,18 +1,21 @@
-<h1 mat-dialog-title>Ajouter un jeu</h1>
-<div class="modal-container" mat-dialog-content>
-  <app-add-game-form [gameForm]="gameForm"></app-add-game-form>
-</div>
-<div mat-dialog-actions>
-  <button (click)="cancel()" mat-button>Cancel</button>
-  <button (click)="addGame()"
-          [disabled]="gameForm?.invalid"
-          cdkFocusInitial
-          mat-button>
-    Confirm
-  </button>
-  <button mat-button
-          [title]="disableMagic() ? 'Ajouter l\'id boardgamegeek et le nom du jeu' : ''"
-          [disabled]="disableMagic()"
-          (click)="makeSomeMagic()">Remplir automatiquement les champs
-  </button>
+<div [class.disable]="loading">
+  <h1 mat-dialog-title>Ajouter un jeu</h1>
+  <div class="modal-container" mat-dialog-content>
+    <app-add-game-form [gameForm]="gameForm"></app-add-game-form>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="cancel()" mat-button>Cancel</button>
+    <button (click)="addGame()"
+            [disabled]="gameForm?.invalid"
+            cdkFocusInitial
+            mat-button>
+      Confirm
+    </button>
+    <button mat-button
+            [title]="disableMagic() ? 'Ajouter l\'id boardgamegeek et le nom du jeu' : ''"
+            [disabled]="disableMagic()"
+            (click)="makeSomeMagic()">Remplir automatiquement les champs
+    </button>
+    <mat-spinner *ngIf="loading"></mat-spinner>
+  </div>
 </div>

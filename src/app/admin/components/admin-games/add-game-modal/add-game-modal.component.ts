@@ -15,6 +15,7 @@ import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-da
 })
 export class AddGameModalComponent {
   gameForm: FormGroup;
+  loading: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<AddGameModalComponent>,
@@ -68,10 +69,12 @@ export class AddGameModalComponent {
   }
 
   async makeSomeMagic() {
+    this.loading = true;
     const detailedGame: BoardGame = await this.bggService.gameDetails(this.gameForm.value).toPromise();
     detailedGame.description = await this.openAiService.genDescriptionJeu(detailedGame);
     console.log('openAi description', detailedGame.description);
     this.gameForm.patchValue(detailedGame);
+    this.loading = false;
   }
 
   disableMagic(): boolean {
