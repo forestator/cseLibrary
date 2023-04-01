@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Params, Router} from '@angular/router';
 import {BehaviorSubject, filter, map, Observable} from 'rxjs';
 import {BoardGame} from '../models/boardGame.model';
 import {GamesUtils} from '../models/gamesUtils';
+import {Tool} from '../bricolage/models/bricolage.model';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class NavigationService {
     } else {
       this.router.navigateByUrl(`/ludotheque/${gameCat}/${game.category}/${game.id ?? game.ref}`);
     }
+  }
+
+  goToTool(tool: Tool) {
+    this.router.navigateByUrl(`/bricolage/${tool.categoryId}/${tool.id}`);
   }
 }

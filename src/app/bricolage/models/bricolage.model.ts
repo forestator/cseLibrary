@@ -3,6 +3,9 @@ export enum ToolStatus {
   REPARATION = 'REPARATION',
   HS = 'HS'
 }
+export interface AllTools {
+  [categoryId: string]: BddTools;
+}
 export interface BddTools {
   [id: string]: Tool;
 }
@@ -12,6 +15,7 @@ export interface Tool {
   name: string;
   photo?: string;
   description?: string;
+  categoryId?: string;
 }
 
 export enum BricoCategories {

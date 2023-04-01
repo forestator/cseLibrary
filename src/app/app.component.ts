@@ -5,7 +5,9 @@ import {BoardGameCategory} from './models/boardGame.model';
 import {Consoles} from './models/videoGames.model';
 import {MatSidenavContent} from '@angular/material/sidenav';
 import {Libraries} from './models/author.model';
-import {BricoCategories} from './bricolage/models/bricolage.model';
+import {BricoCategories, Tool} from './bricolage/models/bricolage.model';
+import {Observable} from 'rxjs';
+import {BricolageDatabaseService} from './bricolage/services/bricolage-database.service';
 
 
 @Component({
@@ -23,10 +25,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   showAdmin?: boolean;
   public menu: ({ route: string; name: string, subList?: { route: string; name: string }[] })[];
   showBoardGameFilters = false;
+  allTools$?: Observable<Tool[]>;
 
 
   constructor(
     private navigationService: NavigationService,
+    private bricolageDatabaseService: BricolageDatabaseService,
     public toolService: ToolsService) {
   }
 
@@ -80,6 +84,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     if (this.showBricolageMenu) {
+      if (!this.allTools$) {
+        this.allTools$ = this.bricolageDatabaseService.allTools$;
+      }
       this.menu = [
         {name: 'Machine à bois', route: `bricolage/${BricoCategories.MACHINE_BOIS}`},
         {name: 'Carrelage', route: `bricolage/${BricoCategories.MACONNERIE_CARRELAGE}`},

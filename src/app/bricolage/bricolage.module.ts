@@ -7,6 +7,11 @@ import {BricoMenuComponent} from './components/brico-menu/brico-menu.component';
 import {BricoCategoryComponent} from './components/brico-category/brico-category.component';
 import {ToolRowComponent} from './components/tool-row/tool-row.component';
 import {LudothequeModule} from '../ludotheque/ludotheque.module';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatOptionModule} from '@angular/material/core';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +20,19 @@ import {LudothequeModule} from '../ludotheque/ludotheque.module';
     BricoCategoryComponent,
     ToolRowComponent,
   ],
+  exports: [
+    BricoMenuComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
     AppCommonModule,
-    LudothequeModule
+    LudothequeModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    ReactiveFormsModule
   ]
 })
 export class BricolageModule { }

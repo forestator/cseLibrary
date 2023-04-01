@@ -8,6 +8,6 @@
     </div>
   </div>
   <div *ngFor="let tool of categoryTools$ | async; let index = index" class="core-body">
-    <app-tool-row [tool]="tool" [index]="index"></app-tool-row>
+    <app-tool-row [tool]="tool" [index]="index" [selectedTool]="searchedToolId"></app-tool-row>
   </div>
 </div>

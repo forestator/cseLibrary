@@ -6,7 +6,6 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {VideoGame} from '../../../models/videoGames.model';
-import {DataService} from '../../../services/biblio/data.service';
 import {Game} from '../../../models/common.model';
 
 @Component({
@@ -24,8 +23,7 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   datas: Array<Game | BoardGame> = [];
   currentUrl?: string;
 
-  constructor(private dataService: DataService,
-              private router: Router,
+  constructor(private router: Router,
               private navigateService: NavigationService) {
   }
 

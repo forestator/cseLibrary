@@ -37,6 +37,7 @@
       <app-library-menu class="tool"
                         *ngIf="showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin"></app-library-menu>
       <app-ludo-menu class="tool" *ngIf="showLudothequeMenu && !showAdmin"></app-ludo-menu>
+      <app-brico-menu class="tool" [allTools]="allTools$ | async" *ngIf="showBricolageMenu && !showAdmin"></app-brico-menu>
       <app-admin-menu class="tool" *ngIf="showAdmin"></app-admin-menu>
     </mat-toolbar>
 
