@@ -3,6 +3,7 @@ import {BookStatus} from 'src/app/models/author.model';
 import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
 import {LudoStatus} from '../../../models/common.model';
+import {ToolStatus} from '../../../bricolage/models/bricolage.model';
 
 @Component({
   selector: 'app-badge',
@@ -94,6 +95,19 @@ export class BadgeComponent implements OnInit, OnChanges {
         case Consoles.xboxOne:
           this.txt = this.status;
           this.bg = '#4dd938';
+          this.fg = 'white';
+          break;
+      }
+    } else if (this.status in ToolStatus) {
+      switch (this.status) {
+        case ToolStatus.HS:
+          this.txt = 'Hors-Service';
+          this.bg = '#fe0016';
+          this.fg = 'white';
+          break;
+        case ToolStatus.REPARATION:
+          this.txt = 'En réparation';
+          this.bg = 'darkorange';
           this.fg = 'white';
           break;
       }

@@ -10,7 +10,7 @@ import {ToolsService} from '../../../services/biblio/tools.service';
   styleUrls: ['./board-games.component.scss']
 })
 export class BoardGamesComponent {
-  library$: Observable<Library | null> = this.firebaseDatabase.boardGamesLibrary$;
+  library$: Observable<Library> = this.firebaseDatabase.boardGamesLibrary$;
   constructor(private firebaseDatabase: FirebaseDatabaseService,
               public toolsService: ToolsService) { }
 }

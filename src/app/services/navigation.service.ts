@@ -22,7 +22,7 @@ export class NavigationService {
     return this.route.firstChild!.params;
   }
 
-  goToComission(comissionName: 'bibliotheque' | 'ludotheque'): void {
+  goToComission(comissionName: 'bibliotheque' | 'ludotheque' | 'bricolage'): void {
     this.router.navigateByUrl(`/${comissionName}`);
   }
 

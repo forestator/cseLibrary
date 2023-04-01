@@ -30,7 +30,8 @@
   <mat-sidenav-content id="top" #top>
     <mat-toolbar class="library-menu">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-              *ngIf="(toolService.mobilePhoneDisplay$ | async) && (showAdmin || showLudothequeMenu || showBibliothequeMenu)">
+              *ngIf="(toolService.mobilePhoneDisplay$ | async) &&
+              (showAdmin || showLudothequeMenu || showBibliothequeMenu || showBricolageMenu)">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <app-library-menu class="tool"

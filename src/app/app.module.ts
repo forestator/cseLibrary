@@ -25,6 +25,7 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
+import {BricolageModule} from './bricolage/bricolage.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDK-byU9NpioO3Lve34_Y4QvxvOviDCKFY",
@@ -64,6 +65,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     LudothequeModule,
     BibliothequeModule,
+    BricolageModule,
     AdminModule,
     MatIconModule,
     MatButtonModule,

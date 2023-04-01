@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  linkToComission(comission: 'bibliotheque' | 'ludotheque'): void {
+  linkToComission(comission: 'bibliotheque' | 'ludotheque' | 'bricolage'): void {
     this.navigateService.goToComission(comission);
   }
 

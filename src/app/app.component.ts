@@ -5,6 +5,7 @@ import {BoardGameCategory} from './models/boardGame.model';
 import {Consoles} from './models/videoGames.model';
 import {MatSidenavContent} from '@angular/material/sidenav';
 import {Libraries} from './models/author.model';
+import {BricoCategories} from './bricolage/models/bricolage.model';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'Cse';
   showLudothequeMenu?: boolean;
   showBibliothequeMenu?: boolean;
+  showBricolageMenu?: boolean;
   showAdmin?: boolean;
   public menu: ({ route: string; name: string, subList?: { route: string; name: string }[] })[];
   showBoardGameFilters = false;
@@ -44,6 +46,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   private handleUrlChange(url: string) {
     this.showLudothequeMenu = url.includes('ludotheque');
     this.showBibliothequeMenu = url.includes('bibliotheque');
+    this.showBricolageMenu = url.includes('bricolage');
     this.showAdmin = url.includes('admin');
     this.showBoardGameFilters = url.includes('boardGames/');
 
@@ -76,7 +79,24 @@ export class AppComponent implements OnInit, AfterViewInit {
       ];
     }
 
-    if (!this.showBibliothequeMenu && !this.showLudothequeMenu && !this.showAdmin) {
+    if (this.showBricolageMenu) {
+      this.menu = [
+        {name: 'Machine à bois', route: `bricolage/${BricoCategories.MACHINE_BOIS}`},
+        {name: 'Carrelage', route: `bricolage/${BricoCategories.MACONNERIE_CARRELAGE}`},
+        {name: 'Perçage', route: `bricolage/${BricoCategories.PERCAGE}`},
+        {name: 'Scies Cloches', route: `bricolage/${BricoCategories.SCIES_CLOCHES}`},
+        {name: 'Jardinage', route: `bricolage/${BricoCategories.JARDINAGE}`},
+        {name: 'Nettoyage', route: `bricolage/${BricoCategories.NETTOYAGE}`},
+        {name: 'Peinture', route: `bricolage/${BricoCategories.PEINTURE_TAPISSERIE_MOQUETTE}`},
+        {name: 'Mecanique', route: `bricolage/${BricoCategories.MECANIQUE}`},
+        {name: 'Soudure', route: `bricolage/${BricoCategories.SOUDURE_PLOMBERIE}`},
+        {name: 'Electronique', route: `bricolage/${BricoCategories.ELECTRONIQUE}`},
+        {name: 'Remorques', route: `bricolage/${BricoCategories.REMORQUES}`},
+        {name: 'Divers', route: `bricolage/${BricoCategories.DIVERS}`},
+      ];
+    }
+
+    if (!this.showBibliothequeMenu && !this.showLudothequeMenu && !this.showAdmin && !this.showBricolageMenu) {
       this.menu = [];
     }
   }

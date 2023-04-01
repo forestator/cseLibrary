@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {Library} from '../../../models/author.model';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
@@ -12,7 +12,7 @@ import {NavigationService} from '../../../services/navigation.service';
 })
 export class GameComponent implements OnInit, OnDestroy {
   library$: Observable<Library | null> = this.firebaseDb.outsideGamesLibrary$;
-  @Input() games$: Observable<Array<Game> | null> = this.firebaseDb.outsideGames$;
+  games$: Observable<Array<Game> | null> = this.firebaseDb.outsideGames$;
 
   private sub?: Subscription;
   public selectedOutsideGame?: string;

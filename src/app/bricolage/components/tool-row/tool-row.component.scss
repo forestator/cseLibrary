@@ -1,0 +1,11 @@
+@import '../../../common/common';
+
+.book-core {
+  flex-wrap: wrap;
+}
+
+.book-cover {
+  img {
+    height: 300px !important;
+  }
+}

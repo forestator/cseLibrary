@@ -1,0 +1,15 @@
+<div [id]="tool.id" *ngIf="tool" class="book-core">
+  <ng-container [ngTemplateOutlet]="image" *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async))"></ng-container>
+  <div class="book-infos">
+    <div class="book-title">{{tool.name}} <app-badge [status]="tool.status"></app-badge>
+    </div>
+    <div class="book-info">Ref: {{tool.id}}</div>
+  </div>
+  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && !(toolsService.mobilePhoneDisplay$ | async)"></ng-container>
+</div>
+
+<ng-template #image>
+  <div class="book-cover">
+    <img [src]="tool.photo ?? defaultImage" [alt]="tool.name"/>
+  </div>
+</ng-template>

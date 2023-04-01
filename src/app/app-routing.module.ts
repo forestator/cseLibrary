@@ -23,6 +23,8 @@ import {BorrowGamesComponent} from './admin/components/borrow-games/borrow-games
 import {UserService} from './services/firebase/user.service';
 import {AuthentificationService} from './services/firebase/authentification.service';
 import {LudoNewComponent} from './ludotheque/components/ludo-new/ludo-new.component';
+import {BricolageHomeComponent} from './bricolage/components/bricolage-home/bricolage-home.component';
+import {BricoCategoryComponent} from './bricolage/components/brico-category/brico-category.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -57,10 +59,16 @@ const biblioRoutes: Routes = [
   {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
   {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
 ];
+const bricoRoutes: Routes = [
+  {path: 'bricolage', component: BricolageHomeComponent},
+  {path: 'bricolage/:categoryId', component: BricoCategoryComponent},
+  {path: 'bricolage/:categoryId/:id', component: BricoCategoryComponent},
+];
 
 const routes: Routes = [
   ...ludoRoutes,
   ...biblioRoutes,
+  ...bricoRoutes,
   {path: 'iWantToConfigureThisAwesomeApp', component: AdminHomeComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: HomeComponent},
