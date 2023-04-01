@@ -9,6 +9,16 @@ export interface AllTools {
 export interface BddTools {
   [id: string]: Tool;
 }
+
+export interface Dimensions {
+  longueur?: string;
+  largeur?: string;
+  hauteur?: string;
+  PTAC?: string;
+  PV?: string;
+  volume?: string;
+}
+
 export interface Tool {
   status?: ToolStatus;
   id: number;
@@ -16,6 +26,7 @@ export interface Tool {
   photo?: string;
   description?: string;
   categoryId?: string;
+  dimensions?: Dimensions;
 }
 
 export enum BricoCategories {

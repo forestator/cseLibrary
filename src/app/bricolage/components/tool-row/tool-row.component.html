@@ -1,11 +1,22 @@
 <div [id]="tool.id" *ngIf="tool" class="book-core">
-  <ng-container [ngTemplateOutlet]="image" *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async))"></ng-container>
+  <ng-container [ngTemplateOutlet]="image"
+                *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async))"></ng-container>
   <div class="book-infos">
-    <div class="book-title">{{tool.name}} <app-badge [status]="tool.status"></app-badge>
+    <div class="book-title">{{tool.name}}
+      <app-badge [status]="tool.status"></app-badge>
     </div>
     <div class="book-info">Ref: {{tool.id}}</div>
+    <ng-container *ngIf="tool.dimensions">
+      <div class="book-info" *ngIf="tool.dimensions.longueur">Longueur: {{tool.dimensions.longueur}}</div>
+      <div class="book-info" *ngIf="tool.dimensions.largeur">Largeur: {{tool.dimensions.largeur}}</div>
+      <div class="book-info" *ngIf="tool.dimensions.hauteur">Hauteur: {{tool.dimensions.hauteur}}</div>
+      <div class="book-info" *ngIf="tool.dimensions.PTAC">PTAC: {{tool.dimensions.PTAC}}</div>
+      <div class="book-info" *ngIf="tool.dimensions.PV">PV: {{tool.dimensions.PV}}</div>
+      <div class="book-info" *ngIf="tool.dimensions.volume">Volume: {{tool.dimensions.volume}}</div>
+    </ng-container>
   </div>
-  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && !(toolsService.mobilePhoneDisplay$ | async)"></ng-container>
+  <ng-container [ngTemplateOutlet]="image"
+                *ngIf="!parity && !(toolsService.mobilePhoneDisplay$ | async)"></ng-container>
 </div>
 
 <ng-template #image>
