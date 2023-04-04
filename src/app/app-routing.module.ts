@@ -18,13 +18,14 @@ import {
 import {
   BoardGameToFilterComponent
 } from './ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component';
-import {AdminGamesComponent} from './admin/components/admin-games/admin-games.component';
-import {BorrowGamesComponent} from './admin/components/borrow-games/borrow-games.component';
+import {AdminGamesComponent} from './admin/components/admin-ludo/admin-games/admin-games.component';
+import {BorrowGamesComponent} from './admin/components/admin-ludo/borrow-games/borrow-games.component';
 import {UserService} from './services/firebase/user.service';
 import {AuthentificationService} from './services/firebase/authentification.service';
 import {LudoNewComponent} from './ludotheque/components/ludo-new/ludo-new.component';
 import {BricolageHomeComponent} from './bricolage/components/bricolage-home/bricolage-home.component';
 import {BricoCategoryComponent} from './bricolage/components/brico-category/brico-category.component';
+import {AdminBricolageComponent} from './admin/components/admin-bricolage/admin-bricolage.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -61,6 +62,10 @@ const biblioRoutes: Routes = [
 ];
 const bricoRoutes: Routes = [
   {path: 'bricolage', component: BricolageHomeComponent},
+  {
+    path: 'bricolage/admin/tools', component: AdminBricolageComponent,
+    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$]
+  },
   {path: 'bricolage/:categoryId', component: BricoCategoryComponent},
   {path: 'bricolage/:categoryId/:id', component: BricoCategoryComponent},
 ];

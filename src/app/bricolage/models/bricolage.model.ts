@@ -23,7 +23,7 @@ export interface Tool {
   status?: ToolStatus;
   id: number;
   name: string;
-  photo?: string;
+  cover?: string;
   description?: string;
   categoryId?: string;
   dimensions?: Dimensions;

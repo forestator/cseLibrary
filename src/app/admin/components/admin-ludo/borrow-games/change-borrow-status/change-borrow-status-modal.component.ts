@@ -1,16 +1,16 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {BoardGame} from '../../../../models/boardGame.model';
+import {BoardGame} from '../../../../../models/boardGame.model';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Game, LudoStatus} from '../../../../models/common.model';
+import {Game, LudoStatus} from '../../../../../models/common.model';
 import {map, Observable} from 'rxjs';
-import {CseUser} from '../../../../models/users.model';
+import {CseUser} from '../../../../../models/users.model';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
-import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
+import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
-import {VideoGame} from '../../../../models/videoGames.model';
+import {VideoGame} from '../../../../../models/videoGames.model';
 import moment, {Moment} from 'moment';
 import {DateFilterFn} from '@angular/material/datepicker';
-import {GamesUtils} from '../../../../models/gamesUtils';
+import {GamesUtils} from '../../../../../models/gamesUtils';
 
 @Component({
   selector: 'app-change-borrow-status',

@@ -1,4 +1,4 @@
-<div class="core-page fadein" *ngIf="bricoLibrary$ | async as library">
+<div class="core-page fadein" *ngIf="bricoDb.bricolageLibrary$ | async as library">
   <div class="core-header">
     <div class="core-title">
       <div class="primary">{{library.name}}</div>
@@ -26,6 +26,17 @@
       </div>
       <div class="core-resume">
         {{category.resume}}
+      </div>
+    </div>
+  </div>
+  <div class="core-header"
+       *ngIf="authService.userAllowedToWrite$ | async">
+    <div>
+      <div class="core-title">
+        <div class="primary">Administration bricolage</div>
+      </div>
+      <div class="core-body" [routerLink]="'admin/tools'">
+        Gestion des outils
       </div>
     </div>
   </div>

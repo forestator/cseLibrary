@@ -1,12 +1,12 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Game} from '../../../../models/common.model';
+import {Game} from '../../../../../models/common.model';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {BoardGame} from '../../../../models/boardGame.model';
-import {OpenAiService} from '../../../../services/open-ai.service';
-import {BGGService} from '../../../../ludotheque/services/bgg.service';
-import {GamesUtils} from '../../../../models/gamesUtils';
-import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
+import {BoardGame} from '../../../../../models/boardGame.model';
+import {OpenAiService} from '../../../../../services/open-ai.service';
+import {BGGService} from '../../../../../ludotheque/services/bgg.service';
+import {GamesUtils} from '../../../../../models/gamesUtils';
+import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 
 @Component({
   selector: 'app-add-game-modal',

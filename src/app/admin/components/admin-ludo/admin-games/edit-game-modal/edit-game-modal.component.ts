@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
-import {Game} from '../../../../models/common.model';
+import {Game} from '../../../../../models/common.model';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {map, Observable} from 'rxjs';
 import {AddGameModalComponent} from '../add-game-modal/add-game-modal.component';

@@ -3,13 +3,13 @@ import {CommonModule} from '@angular/common';
 import {AdminHomeComponent} from './components/admin-home/admin-home.component';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {FirebaseUIModule} from 'firebaseui-angular';
-import {AdminGamesComponent} from './components/admin-games/admin-games.component';
-import {BorrowGamesComponent} from './components/borrow-games/borrow-games.component';
+import {AdminGamesComponent} from './components/admin-ludo/admin-games/admin-games.component';
+import {BorrowGamesComponent} from './components/admin-ludo/borrow-games/borrow-games.component';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AppCommonModule} from '../common/app-common.module';
-import {LudoTableComponent} from './components/ludo-table/ludo-table.component';
+import {LudoTableComponent} from './components/admin-ludo/ludo-table/ludo-table.component';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -22,19 +22,23 @@ import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {
   ChangeBorrowStatusModalComponent
-} from './components/borrow-games/change-borrow-status/change-borrow-status-modal.component';
+} from './components/admin-ludo/borrow-games/change-borrow-status/change-borrow-status-modal.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
-import {AddGameComponent} from './components/admin-games/add-game/add-game.component';
-import {AddGameFormComponent} from './components/admin-games/add-game-form/add-game-form.component';
+import {AddGameFormComponent} from './components/admin-ludo/admin-games/add-game-form/add-game-form.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {LastBorrowDatesPipe} from './pipe/last-borrow-dates.pipe';
 import {LudothequeModule} from '../ludotheque/ludotheque.module';
-import {AddGameModalComponent} from './components/admin-games/add-game-modal/add-game-modal.component';
+import {AddGameModalComponent} from './components/admin-ludo/admin-games/add-game-modal/add-game-modal.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {EditGameModalComponent} from './components/admin-games/edit-game-modal/edit-game-modal.component';
+import {EditGameModalComponent} from './components/admin-ludo/admin-games/edit-game-modal/edit-game-modal.component';
+import {AdminBricolageComponent} from './components/admin-bricolage/admin-bricolage.component';
+import {BricoTableComponent} from './components/admin-bricolage/brico-table/brico-table.component';
+import {AddToolModalComponent} from './components/admin-bricolage/add-tool-modal/add-tool-modal.component';
+import {EditToolModalComponent} from './components/admin-bricolage/edit-tool-modal/edit-tool-modal.component';
+import {UploadGameComponent} from './components/admin-ludo/admin-games/upload-game/upload-game.component';
 
 
 @NgModule({
@@ -45,36 +49,36 @@ import {EditGameModalComponent} from './components/admin-games/edit-game-modal/e
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent
+    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent
   ],
   exports: [
     AdminMenuComponent
   ],
-    imports: [
-        CommonModule,
-        AngularFireAuthModule,
-        FirebaseUIModule,
-        MatSortModule,
-        MatTableModule,
-        MatExpansionModule,
-        AppCommonModule,
-        MatInputModule,
-        FormsModule,
-        MatButtonModule,
-        MatDialogModule,
-        ReactiveFormsModule,
-        MatSnackBarModule,
-        RouterLink,
-        MatListModule,
-        MatAutocompleteModule,
-        MatButtonToggleModule,
-        MatSelectModule,
-        MatCheckboxModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
-        LudothequeModule,
-        MatProgressSpinnerModule,
-    ]
+  imports: [
+    CommonModule,
+    AngularFireAuthModule,
+    FirebaseUIModule,
+    MatSortModule,
+    MatTableModule,
+    MatExpansionModule,
+    AppCommonModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    RouterLink,
+    MatListModule,
+    MatAutocompleteModule,
+    MatButtonToggleModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    LudothequeModule,
+    MatProgressSpinnerModule,
+  ]
 })
 export class AdminModule {
 }

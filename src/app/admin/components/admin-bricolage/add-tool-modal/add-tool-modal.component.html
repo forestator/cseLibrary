@@ -1,0 +1,40 @@
+<div>
+  <h1 mat-dialog-title>Ajouter un outil</h1>
+  <div mat-dialog-content class="modal-container" [formGroup]="toolForm">
+    <div class="modal-part">
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Rotototor" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Référence</mat-label>
+        <input matInput placeholder="123" formControlName="id">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Catégorie</mat-label>
+        <mat-select formControlName="categoryId">
+          <mat-option *ngFor="let catId of categoryOptions" [value]="catId">
+            {{catId | titlecase}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput placeholder="le meilleur jeu du monde" formControlName="description">
+  </textarea>
+      </mat-form-field>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <app-upload-form [defaultImage]="data?.selectedTool?.cover ?? defaultImageForTool" (fileToUploadReady)="upload($event)">
+    </app-upload-form>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="cancel()" mat-button>Cancel</button>
+    <button (click)="addTool()"
+            [disabled]="toolForm?.invalid"
+            cdkFocusInitial
+            mat-button>
+      Confirm
+    </button>
+  </div>
+</div>

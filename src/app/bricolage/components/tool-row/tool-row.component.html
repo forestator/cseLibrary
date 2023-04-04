@@ -6,6 +6,7 @@
       <app-badge [status]="tool.status"></app-badge>
     </div>
     <div class="book-info">Ref: {{tool.id}}</div>
+    <div class="book-info" *ngIf="tool.description">Description: {{tool.description}}</div>
     <ng-container *ngIf="tool.dimensions">
       <div class="book-info" *ngIf="tool.dimensions.longueur">Longueur: {{tool.dimensions.longueur}}</div>
       <div class="book-info" *ngIf="tool.dimensions.largeur">Largeur: {{tool.dimensions.largeur}}</div>
@@ -21,6 +22,6 @@
 
 <ng-template #image>
   <div class="book-cover">
-    <img [src]="tool.photo ?? defaultImage" [alt]="tool.name"/>
+    <img [src]="tool.cover ?? defaultImage" [alt]="tool.name"/>
   </div>
 </ng-template>

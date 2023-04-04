@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Modifier un outil</h1>
+<div class="modal-container" mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Chercher un outil</mat-label>
+    <input matInput placeholder="Super perceuse" [formControl]="searchText" [matAutocomplete]="auto" type="text">
+    <mat-autocomplete #auto="matAutocomplete"
+                      [displayWith]="displayTool"
+                      (optionSelected)="selectGameToModify($event)"
+                      autoActiveFirstOption>
+      <mat-option *ngFor="let option of filteredOptions$ | async"
+                  [value]="option">
+        {{displayTool(option)}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button (click)="cancel()" mat-button>Cancel</button>
+</div>

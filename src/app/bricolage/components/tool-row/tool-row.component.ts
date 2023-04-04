@@ -14,9 +14,9 @@ export class ToolRowComponent implements OnInit {
   @Input() selectedTool?: string;
   parity!: boolean;
 
-  defaultImage = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fbricolage%2F886a62acec77b09e8f37f72cb957da99%5B1%5D.jpg?alt=media&token=265aeac8-5453-4a36-9dba-ba8032564e7e';
-
+  readonly defaultImage = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fbricolage%2F886a62acec77b09e8f37f72cb957da99%5B1%5D.jpg?alt=media&token=265aeac8-5453-4a36-9dba-ba8032564e7e';
   constructor(public toolsService: ToolsService) {
+
   }
 
   ngOnInit() {

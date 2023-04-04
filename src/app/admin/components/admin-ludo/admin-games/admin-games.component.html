@@ -22,7 +22,6 @@
       </mat-expansion-panel-header>
       <app-ludo-table *ngIf="videoGamePanelOpen"
                       [games]="firebaseDatabaseService.videoGamesOneShot$ | async"
-                      [filterBy]="search"
                       [displayedColumns]="columnsVideoGame"></app-ludo-table>
     </mat-expansion-panel>
 
@@ -33,7 +32,6 @@
       </mat-expansion-panel-header>
       <app-ludo-table *ngIf="outsideGamePanelOpen"
                       [games]="firebaseDatabaseService.outsideGamesOneShot$ | async"
-                      [filterBy]="search"
                       [displayedColumns]="columnsOutsideGame"></app-ludo-table>
     </mat-expansion-panel>
   </mat-accordion>

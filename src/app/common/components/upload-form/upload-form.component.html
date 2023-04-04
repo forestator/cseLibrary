@@ -5,7 +5,8 @@
          accept="image/png, image/jpeg">
 
   <img [width]="250"
-       [src]="previewImage ?? selectedGame?.cover"/>
+       alt="filte to upload"
+       [src]="previewImage ?? defaultImage"/>
 
   <div class="upload-btn">
     <button
@@ -15,17 +16,5 @@
       (click)="upload()">
       Upload
     </button>
-    <span *ngIf="currentFileUpload" class="progress">
-      <div
-        class="progress-bar progress-bar-info"
-        role="progressbar"
-        attr.aria-valuenow="{{ percentage }}"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        [ngStyle]="{ width: percentage + '%' }"
-      >
-        {{ percentage }}%
-      </div>
-    </span>
   </div>
 </div>

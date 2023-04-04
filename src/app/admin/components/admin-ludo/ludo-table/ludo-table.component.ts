@@ -1,13 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-import {CseUser} from '../../../models/users.model';
+import {CseUser} from '../../../../models/users.model';
 import {
   ChangeBorrowStatusModalComponent
 } from '../borrow-games/change-borrow-status/change-borrow-status-modal.component';
 import {MatDialog} from '@angular/material/dialog';
-import {Game} from '../../../models/common.model';
-import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import {Game} from '../../../../models/common.model';
+import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 
 @Component({
   selector: 'app-ludo-table',

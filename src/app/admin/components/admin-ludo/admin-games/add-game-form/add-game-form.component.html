@@ -36,7 +36,7 @@
   </div>
   <mat-divider [vertical]="true"></mat-divider>
   <div class="boardgames">
-    <app-upload-form [selectedGame]="gameForm.value"></app-upload-form>
+    <app-upload-game [selectedGame]="gameForm.value"></app-upload-game>
     <ng-container *ngIf="gameForm.get('libraryId').value === 'boardGames'">
       <mat-form-field appearance="fill">
         <mat-label>BoardGameGeek Id</mat-label>

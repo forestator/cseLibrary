@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AddGameModalComponent} from './add-game-modal/add-game-modal.component';
 import {combineLatest, take} from 'rxjs';
@@ -14,14 +14,14 @@ export class AdminGamesComponent {
   columnsBoardGames = ['status', 'category', 'name', 'poids', 'ref'];
   columnsVideoGame = ['status', 'category', 'name', 'ref'];
   columnsOutsideGame = ['status', 'category', 'name', 'ref'];
-  search: string = '';
-  boardGamePanelOpen: boolean = false;
-  videoGamePanelOpen: boolean = false;
-  outsideGamePanelOpen: boolean = false;
+  search = '';
+  boardGamePanelOpen = false;
+  videoGamePanelOpen = false;
+  outsideGamePanelOpen = false;
 
 
   constructor(public firebaseDatabaseService: FirebaseDatabaseService,
-              private dialog: MatDialog,) {
+              private dialog: MatDialog) {
   }
 
   addGame() {

@@ -1,12 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {combineLatest, map, Observable, Subscription, take} from 'rxjs';
 import {FormControl} from '@angular/forms';
-import {CseUser} from '../../../models/users.model';
+import {CseUser} from '../../../../models/users.model';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../../../services/firebase/user.service';
-import {Game} from '../../../models/common.model';
+import {UserService} from '../../../../services/firebase/user.service';
+import {Game} from '../../../../models/common.model';
 import moment from 'moment';
 
 @Component({
