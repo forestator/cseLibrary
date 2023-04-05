@@ -1,4 +1,5 @@
-<div class="upload-form-container">
+<div class="upload-form-container" [class.disabled]="disabled"
+     [title]="disabled ? 'Remplissez les champs du formulaire en premier' : ''">
   <button type="button" mat-raised-button (click)="fileInput.click()">Ajouter l'image</button>
   <input hidden (change)="selectFile($event)" #fileInput type="file"
          [multiple]="false"

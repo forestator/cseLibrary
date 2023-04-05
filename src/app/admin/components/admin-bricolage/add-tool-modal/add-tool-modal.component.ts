@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {BricoCategories, Tool} from '../../../../bricolage/models/bricolage.model';
 import {BricolageDatabaseService} from '../../../../bricolage/services/bricolage-database.service';
 import {FileUpload} from "../../../../models/fileUpload.model";
+import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
 
 @Component({
   selector: 'app-add-tool-modal',
@@ -15,10 +16,12 @@ export class AddToolModalComponent {
   toolForm: FormGroup;
   categoryOptions: string[] = Object.values(BricoCategories);
   readonly defaultImageForTool = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fbricolage%2F886a62acec77b09e8f37f72cb957da99%5B1%5D.jpg?alt=media&token=265aeac8-5453-4a36-9dba-ba8032564e7e';
+
   constructor(
     public dialogRef: MatDialogRef<AddToolModalComponent>,
     public fb: FormBuilder,
     private bricolageDatabaseService: BricolageDatabaseService,
+    private uploadService: StorageUploadService,
     @Inject(MAT_DIALOG_DATA) public data: {
       tools: Array<Tool>, selectedTool?: Tool
     },
@@ -34,16 +37,16 @@ export class AddToolModalComponent {
     };
 
     return this.fb.group({
+      ...tool,
       id: this.fb.control(tool?.id, [Validators.required, uniqRef]),
       name: this.fb.control(tool?.name, Validators.required),
-      description: this.fb.control(tool?.description),
       categoryId: this.fb.control(tool?.categoryId, Validators.required),
     });
   }
 
   addTool() {
     if (this.toolForm.valid) {
-      // todo
+      this.bricolageDatabaseService.addTool(this.toolForm.value);
       this.cancel();
     }
   }
@@ -52,7 +55,9 @@ export class AddToolModalComponent {
     this.dialogRef.close();
   }
 
-  upload(filteToUpload: FileUpload) {
-    // todo
+  upload(fileUpload: FileUpload) {
+    if (this.toolForm.valid) {
+      this.uploadService.uploadToolCover(fileUpload, this.toolForm.value as Tool);
+    }
   }
 }

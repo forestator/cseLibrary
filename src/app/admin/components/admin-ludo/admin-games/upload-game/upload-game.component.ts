@@ -31,6 +31,6 @@ export class UploadGameComponent implements OnChanges {
   }
 
   upload(filteToUpload: FileUpload): void {
-    this.uploadService.pushFileToStorage(filteToUpload, this.selectedGame);
+    this.uploadService.uploadGameCover(filteToUpload, this.selectedGame);
   }
 }

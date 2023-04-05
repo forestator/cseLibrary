@@ -4,6 +4,7 @@ import {map, Observable, take} from 'rxjs';
 import {Library} from '../../models/author.model';
 import {AllTools, BddTools, BricoCategories, Tool} from '../models/bricolage.model';
 import {BricoUtils} from '../models/brico-utils';
+import {FileUpload} from "../../models/fileUpload.model";
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,14 @@ export class BricolageDatabaseService {
       take(1),
       map((bddTools) => BricoUtils.bddToolToTool(bddTools, categoryId) as Array<Tool>)
     );
+  }
+
+  addTool(tool: Tool) {
+    return this.db.object(`bricolage/tools/${tool.categoryId}/${tool.id}`).update(tool);
+  }
+
+  updateToolCover(tool: Tool, filteToUpload: FileUpload) {
+    return this.db.object(`bricolage/tools//${tool.categoryId}/${tool.id}`)
+      .update({cover: filteToUpload.url});
   }
 }

@@ -94,18 +94,8 @@ export class FirebaseDatabaseService {
 
   public updateGameImage(game: Game, newCover: FileUpload) {
     const libraryIdOfGame = GamesUtils.libraryIdOfGame(game);
-    let update;
-    switch (libraryIdOfGame) {
-      case 'boardGames':
-        update = {thumbnail: newCover.url};
-        break;
-      case 'videoGames':
-      case 'outsideGames':
-        update = {cover: newCover.url};
-        break;
-    }
     this.db.object(`ludotheque/${libraryIdOfGame}/games/${game.ref}`)
-      .update(update);
+      .update({cover: newCover.url});
   }
 
   addGame(game: BoardGame | VideoGame | Game, libraryId?: string): Promise<void> {

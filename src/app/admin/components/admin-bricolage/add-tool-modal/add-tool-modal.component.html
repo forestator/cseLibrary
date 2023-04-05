@@ -25,7 +25,9 @@
       </mat-form-field>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
-    <app-upload-form [defaultImage]="data?.selectedTool?.cover ?? defaultImageForTool" (fileToUploadReady)="upload($event)">
+    <app-upload-form [defaultImage]="data?.selectedTool?.cover ?? defaultImageForTool"
+                     [disabled]="toolForm?.invalid"
+                     (fileToUploadReady)="upload($event)">
     </app-upload-form>
   </div>
   <div mat-dialog-actions>

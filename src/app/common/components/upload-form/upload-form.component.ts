@@ -8,6 +8,7 @@ import {FileUpload} from '../../../models/fileUpload.model';
 })
 export class UploadFormComponent implements OnChanges {
   @Input() defaultImage?: string;
+  @Input() disabled?: boolean;
   @Output() fileToUploadReady = new EventEmitter<FileUpload>();
   selectedFile?: File;
   previewImage?: string | ArrayBuffer;
@@ -19,7 +20,7 @@ export class UploadFormComponent implements OnChanges {
   selectFile(event: any): void {
     this.selectedFile = event.target.files.item(0);
     const reader = new FileReader();
-    reader.onload = e => this.previewImage = reader.result;
+    reader.onload = () => this.previewImage = reader.result;
     reader.readAsDataURL(this.selectedFile);
   }
 

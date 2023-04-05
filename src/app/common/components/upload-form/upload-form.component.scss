@@ -4,6 +4,11 @@
   align-items: center;
   justify-content: center;
 
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   img {
     margin: 20px 0;
   }
