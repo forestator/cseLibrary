@@ -1,1 +1,3 @@
-<app-upload-form [defaultImage]="selectedGame?.cover" (fileToUploadReady)="upload($event)"></app-upload-form>
+<app-upload-form [defaultImage]="selectedGame?.cover"
+                 [disabled]="!!selectedGame?.ref && !!selectedGame.category && !!selectedGame.name"
+                 (fileToUploadReady)="upload($event)"></app-upload-form>
