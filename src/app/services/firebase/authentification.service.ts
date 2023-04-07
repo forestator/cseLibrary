@@ -9,9 +9,14 @@ import User = firebase.User;
 })
 export class AuthentificationService {
 
+  readonly adminUid = [
+    'h0F4SqDlGWXgHAjesEQRzExYN3c2',
+    'UCugwOtt4cVGffoIkzoxYJpgQe93'
+  ];
+
   currentUser$: Observable<User | null> = this.auth.user;
   userAllowedToWrite$: Observable<boolean> = this.currentUser$.pipe(
-    map((user) => !!user?.uid)
+    map((user) => this.adminUid.includes(user.uid))
   );
 
   constructor(public auth: AngularFireAuth) {
