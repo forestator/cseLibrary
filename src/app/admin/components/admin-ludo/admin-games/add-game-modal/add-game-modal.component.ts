@@ -41,7 +41,7 @@ export class AddGameModalComponent {
       ref: this.fb.control(game?.ref, [Validators.required, uniqRef]),
       name: this.fb.control(game?.name, Validators.required),
       description: this.fb.control(game?.description),
-      isNew: this.fb.control(true),
+      isNew: this.fb.control(game?.isNew ?? true),
       category: this.fb.control(game?.category, Validators.required),
       libraryId: this.fb.control(game ? GamesUtils.libraryIdOfGame(game) : 'boardGames', Validators.required),
       weight: this.fb.control(game?.weight),

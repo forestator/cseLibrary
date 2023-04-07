@@ -15,7 +15,7 @@ export class AddToolModalComponent {
 
   toolForm: FormGroup;
   categoryOptions: string[] = Object.values(BricoCategories);
-  readonly defaultImageForTool = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fbricolage%2F886a62acec77b09e8f37f72cb957da99%5B1%5D.jpg?alt=media&token=265aeac8-5453-4a36-9dba-ba8032564e7e';
+  readonly defaultImageForTool = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Ftools%2Fcovers%2FdefaultTool.jpg?alt=media&token=165e5ad1-3d3f-477a-a7d7-72cf49c8eaa4';
 
   constructor(
     public dialogRef: MatDialogRef<AddToolModalComponent>,

@@ -20,9 +20,18 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
-        <textarea matInput placeholder="le meilleur jeu du monde" formControlName="description">
-  </textarea>
+        <textarea matInput formControlName="description"></textarea>
       </mat-form-field>
+      <div>
+        <mat-label>Status</mat-label>
+        <div>
+          <mat-button-toggle-group name="status" formControlName="status" aria-label="Font Style">
+            <mat-button-toggle value="AVAILABLE">Disponible</mat-button-toggle>
+            <mat-button-toggle value="REPARATION">En Réparation</mat-button-toggle>
+            <mat-button-toggle value="HS">HS</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <app-upload-form [defaultImage]="data?.selectedTool?.cover ?? defaultImageForTool"
