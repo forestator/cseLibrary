@@ -10,6 +10,7 @@
   <div *ngFor="let category of library?.categories"
        [routerLink]="category.id" routerLinkActive="active"
        class="core-body core-body-category"
+       [id]="category.id"
        title="Cliquez ici pour visualiser cette categorie">
     <div>
       <img class="category-visuel"

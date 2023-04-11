@@ -10,4 +10,8 @@ export class AdminHomeComponent {
 
   constructor(public auth: AuthentificationService) {
   }
+
+  logout() {
+    this.auth.logout();
+  }
 }

@@ -57,9 +57,11 @@ export class AddGameModalComponent {
     });
   }
 
-  addGame() {
+  async addGame() {
     if (this.gameForm.valid) {
-      this.firebaseDatabaseService.addGame(this.gameForm.value);
+      console.log(this.gameForm.value);
+      const result = await this.firebaseDatabaseService.addGame(this.gameForm.value);
+      console.log(result);
       this.cancel();
     }
   }
@@ -71,7 +73,12 @@ export class AddGameModalComponent {
   async makeSomeMagic() {
     this.loading = true;
     const detailedGame: BoardGame = await this.bggService.gameDetails(this.gameForm.value).toPromise();
-    detailedGame.description = await this.openAiService.genDescriptionJeu(detailedGame);
+    const description = await this.openAiService.genDescriptionJeu(detailedGame).catch(error => {
+      console.warn(error);
+    });
+    if (description) {
+      detailedGame.description = description;
+    }
     console.log('openAi description', detailedGame.description);
     this.gameForm.patchValue(detailedGame);
     this.loading = false;
@@ -79,5 +86,10 @@ export class AddGameModalComponent {
 
   disableMagic(): boolean {
     return !this.gameForm.get('id').value || !this.gameForm.get('name').value;
+  }
+
+  deleteGame() {
+    this.firebaseDatabaseService.deleteGame(this.data.selectedGame);
+    this.cancel();
   }
 }

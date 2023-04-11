@@ -112,4 +112,9 @@ export class FirebaseDatabaseService {
   updateGameDescription(game: BoardGame, libraryId: string, description: string): Promise<void> {
     return this.db.object<Game>(`ludotheque/${libraryId}/games/${game.ref}`).update({description});
   }
+
+  deleteGame(game: Game) {
+    const libraryId = GamesUtils.libraryIdOfGame(game);
+    return this.db.object<Game>(`ludotheque/${libraryId}/games/${game.ref}`).remove();
+  }
 }
