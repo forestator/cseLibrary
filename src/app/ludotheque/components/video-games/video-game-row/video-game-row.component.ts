@@ -5,7 +5,7 @@ import {Game} from '../../../../models/common.model';
 import {take} from 'rxjs';
 import {
   ChangeBorrowStatusModalComponent
-} from '../../../../admin/components/admin-ludo/borrow-games/change-borrow-status/change-borrow-status-modal.component';
+} from '../../../../admin/components/emprunts/change-borrow-status/change-borrow-status-modal.component';
 import {UserService} from '../../../../services/firebase/user.service';
 import {MatDialog} from '@angular/material/dialog';
 

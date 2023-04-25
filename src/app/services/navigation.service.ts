@@ -4,6 +4,7 @@ import {BehaviorSubject, filter, map, Observable} from 'rxjs';
 import {BoardGame} from '../models/boardGame.model';
 import {GamesUtils} from '../models/gamesUtils';
 import {Tool} from '../bricolage/models/bricolage.model';
+import {Comissions} from "../models/common.model";
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,12 @@ export class NavigationService {
     return this.route.firstChild!.params;
   }
 
-  goToComission(comissionName: 'bibliotheque' | 'ludotheque' | 'bricolage'): void {
+  goToComission(comissionName: Comissions): void {
     this.router.navigateByUrl(`/${comissionName}`);
+  }
+
+  goToBorrowAdmin(): void {
+    this.router.navigateByUrl(`/admin/emprunts`);
   }
 
   goToGame(game: BoardGame): void {

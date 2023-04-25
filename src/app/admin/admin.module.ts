@@ -4,7 +4,6 @@ import {AdminHomeComponent} from './components/admin-home/admin-home.component';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {FirebaseUIModule} from 'firebaseui-angular';
 import {AdminGamesComponent} from './components/admin-ludo/admin-games/admin-games.component';
-import {BorrowGamesComponent} from './components/admin-ludo/borrow-games/borrow-games.component';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -22,7 +21,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {
   ChangeBorrowStatusModalComponent
-} from './components/admin-ludo/borrow-games/change-borrow-status/change-borrow-status-modal.component';
+} from './components/emprunts/change-borrow-status/change-borrow-status-modal.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {AddGameFormComponent} from './components/admin-ludo/admin-games/add-game-form/add-game-form.component';
@@ -39,17 +38,17 @@ import {BricoTableComponent} from './components/admin-bricolage/brico-table/bric
 import {AddToolModalComponent} from './components/admin-bricolage/add-tool-modal/add-tool-modal.component';
 import {EditToolModalComponent} from './components/admin-bricolage/edit-tool-modal/edit-tool-modal.component';
 import {UploadGameComponent} from './components/admin-ludo/admin-games/upload-game/upload-game.component';
+import {EmpruntsHomeComponent} from './components/emprunts/emprunts-home/emprunts-home.component';
 
 
 @NgModule({
   declarations: [
     AdminHomeComponent,
     AdminGamesComponent,
-    BorrowGamesComponent,
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent
+    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent
   ],
   exports: [
     AdminMenuComponent

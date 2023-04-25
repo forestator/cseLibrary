@@ -1,19 +1,5 @@
-<h1 mat-dialog-title>Changer le status du jeu {{data.game.name}}</h1>
+<h1 mat-dialog-title>Emprunt du jeu {{data.object.name}}</h1>
 <div class="modal-container" mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Employé ?</mat-label>
-    <input [formControl]="employeeFomControl" [matAutocomplete]="auto"
-           matInput
-           type="text">
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectEmployee($event)"
-                      [displayWith]="displayUser"
-                      autoActiveFirstOption>
-      <mat-option *ngFor="let option of filterUserAutocomplete$ | async"
-                  [value]="option">
-        {{displayUser(option)}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Période d'emprunt</mat-label>
     <!--suppress TypeScriptValidateTypes -->
@@ -40,7 +26,8 @@
 <div mat-dialog-actions>
   <button (click)="cancel()" mat-button>Cancel</button>
   <button (click)="borrowGame()"
-          [disabled]="!selectedEmployee || range.invalid"
+          (keyup.enter)="borrowGame()"
+          [disabled]="range.invalid"
           cdkFocusInitial
           mat-button>
     Confirm

@@ -1,13 +1,13 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {BorrowInfo} from '../../models/common.model';
 import moment from 'moment/moment';
+import {Borrow} from '../../admin/models/borrow.model';
 
 @Pipe({
   name: 'gameReservedForFuturWeeks'
 })
 export class GameReservedForFuturWeeksPipe implements PipeTransform {
 
-  transform(borrowInfos: Array<BorrowInfo> | undefined): Array<BorrowInfo> | null {
+  transform(borrowInfos: Array<Borrow> | undefined): Array<Borrow> | null {
     let gameReserved = null;
     if (borrowInfos) {
       const filteredBorrow = borrowInfos.filter(borrow => {

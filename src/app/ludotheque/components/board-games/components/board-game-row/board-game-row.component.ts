@@ -7,7 +7,7 @@ import {Game} from '../../../../../models/common.model';
 import {take} from 'rxjs';
 import {
   ChangeBorrowStatusModalComponent
-} from '../../../../../admin/components/admin-ludo/borrow-games/change-borrow-status/change-borrow-status-modal.component';
+} from '../../../../../admin/components/emprunts/change-borrow-status/change-borrow-status-modal.component';
 
 @Component({
   selector: 'app-board-game-row',

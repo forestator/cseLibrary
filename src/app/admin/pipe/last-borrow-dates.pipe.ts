@@ -7,8 +7,9 @@ import {Game} from '../../models/common.model';
 export class LastBorrowDatesPipe implements PipeTransform {
 
   transform(game: Game): string {
-    const lastBorrow = game.borrowList[game.borrowList.length - 1];
-    return `Du ${lastBorrow.startDate} au ${lastBorrow.endDate}`;
+   // const lastBorrow = game.borrowList[game.borrowList.length - 1];
+   // todo return `Du ${lastBorrow.startDate} au ${lastBorrow.endDate}`;
+    return 'TODO';
   }
 
 }

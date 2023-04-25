@@ -20,10 +20,10 @@ export enum LudoStatus {
   MISSING = 'MISSING',
 }
 
-export interface BorrowInfo {
-  userId: string;
-  startDate: string;
-  endDate: string;
+export enum Comissions {
+  BIBLIOTHEQUE = 'bibliotheque',
+  LUDOTHEQUE = 'ludotheque',
+  BRICOLAGE = 'bricolage',
 }
 
 export interface Game {
@@ -34,7 +34,6 @@ export interface Game {
   cover?: string;
   category: BoardGameCategory | Consoles | string;
   description?: string;
-  borrowList?: Array<BorrowInfo>;
 }
 
 export interface BddGame {

@@ -1,7 +1,8 @@
 import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
 import {Consoles, VideoGame} from './videoGames.model';
-import {BddGame, BorrowInfo, Game} from './common.model';
+import {BddGame, Game} from './common.model';
 import moment, {Moment} from 'moment';
+import {Borrow} from "../admin/models/borrow.model";
 
 export class GamesUtils {
   static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
@@ -85,7 +86,7 @@ export class GamesUtils {
   }
 
   static gameIsReservedOrEmprunte(
-    borrowList: Array<BorrowInfo>, date: Date, includeStartEndDates?: boolean): BorrowInfo | undefined {
+    borrowList: Array<Borrow>, date: Date, includeStartEndDates?: boolean): Borrow | undefined {
     return borrowList.find(borrow => {
       const compareDate = moment(date, 'DD/MM/YYYY');
       const startDate = moment(borrow.startDate, 'DD/MM/YYYY');
@@ -101,7 +102,7 @@ export class GamesUtils {
     });
   }
 
-  static reservedForNextSession(borrowList: Array<BorrowInfo>): boolean {
+  static reservedForNextSession(borrowList: Array<Borrow>): boolean {
     return borrowList.some(borrow => {
       const nextSessionDay: Moment = this.getNextLudothequeOpening();
       const borrowEnd = moment(borrow.endDate, 'DD/MM/YYYY');

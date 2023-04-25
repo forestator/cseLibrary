@@ -6,10 +6,7 @@ import {BoardGame} from '../../models/boardGame.model';
 import {BddGame, Game, Ludotheque} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
-import {CseUser} from '../../models/users.model';
-import {UserService} from './user.service';
 import {FileUpload} from '../../models/fileUpload.model';
-import moment from 'moment/moment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +25,9 @@ export class FirebaseDatabaseService {
   public outsideGames$: Observable<Array<Game> | null>;
   public outsideGamesLibrary$: Observable<Library | null>;
   public outsideGamesOneShot$: Observable<Array<Game> | null>;
+  public allGames: Observable<Array<Game> | null>;
 
-  constructor(private db: AngularFireDatabase, private userService: UserService) {
+  constructor(private db: AngularFireDatabase) {
     this.ludotheque$ = this.db.object<Ludotheque>('ludotheque').valueChanges()
       .pipe(take(1));
 
@@ -73,23 +71,9 @@ export class FirebaseDatabaseService {
     this.outsideGamesLibrary$ = this.db.object<Library>('ludotheque/outsideGames/library').valueChanges()
       .pipe(take(1));
 
-  }
-
-  setNewBorrowForUser(game: Game, employee: CseUser): void {
-    this.updateGameBorrowList(game);
-    this.userService.setBorrowedGameOfUser(employee, game);
-  }
-
-  removeBorrowForUser(game: Game, employee: CseUser): void {
-    const lastBorrow = game.borrowList[game.borrowList.length - 1];
-    lastBorrow.endDate = moment().add(-1, 'day').locale('fr').format('L');
-    this.updateGameBorrowList(game);
-    this.userService.removeBorrowedGameOfUser(employee, game.ref);
-  }
-
-  private updateGameBorrowList(game: Game) {
-    this.db.object(`ludotheque/${GamesUtils.libraryIdOfGame(game)}/games/${game.ref}`)
-      .update({borrowList: game.borrowList});
+    this.allGames = this.ludotheque$.pipe(
+      map(ludo => Object.keys(ludo).map(category => ludo[category].games))
+    );
   }
 
   public updateGameImage(game: Game, newCover: FileUpload) {
@@ -107,10 +91,6 @@ export class FirebaseDatabaseService {
 
   updateGame(game: BoardGame | VideoGame | Game, libraryId: string): Promise<void> {
     return this.db.object<Game>(`ludotheque/${libraryId}/games/${game.ref}`).update(game);
-  }
-
-  updateGameDescription(game: BoardGame, libraryId: string, description: string): Promise<void> {
-    return this.db.object<Game>(`ludotheque/${libraryId}/games/${game.ref}`).update({description});
   }
 
   deleteGame(game: Game) {

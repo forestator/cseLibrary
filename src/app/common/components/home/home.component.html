@@ -1,6 +1,6 @@
 <div class="core-page fadein">
     <div class="core-header"
-         (click)="linkToComission('bibliotheque')">
+         (click)="navigateService.goToComission(comissions.BIBLIOTHEQUE)">
         <div class="core-title">
             <div class="primary">Bibliotheque</div>
         </div>
@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="core-header"
-         (click)="linkToComission('ludotheque')">
+         (click)="navigateService.goToComission(comissions.LUDOTHEQUE)">
         <div class="core-title">
             <div class="primary">Ludotheque</div>
         </div>
@@ -26,12 +26,19 @@
         </div>
     </div>
     <div class="core-header"
-         (click)="linkToComission('bricolage')">
+         (click)="navigateService.goToComission(comissions.BRICOLAGE)">
         <div class="core-title">
             <div class="primary">Bricolage</div>
         </div>
         <div class="core-resume">
             Les outils de vos rêves
+        </div>
+    </div>
+    <div class="core-header"
+         *ngIf="authentificationService.userAllowedToWrite$ | async"
+         (click)="navigateService.goToBorrowAdmin()">
+        <div class="core-title">
+            <div class="primary">Gestion des emprunts</div>
         </div>
     </div>
 </div>

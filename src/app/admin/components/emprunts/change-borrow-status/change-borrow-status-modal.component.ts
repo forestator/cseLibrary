@@ -1,0 +1,94 @@
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Comissions, Game, LudoStatus} from '../../../../models/common.model';
+import {CseUser} from '../../../../models/users.model';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
+import moment, {Moment} from 'moment';
+import {DateFilterFn} from '@angular/material/datepicker';
+import {GamesUtils} from '../../../../models/gamesUtils';
+import {Tool} from "../../../../bricolage/models/bricolage.model";
+import {Book} from "../../../../models/author.model";
+import {BorrowDataService} from "../../../services/borrow-data.service";
+
+interface RangeForm {
+  start: FormControl<Date>;
+  end: FormControl<Date>;
+}
+
+@Component({
+  selector: 'app-change-borrow-status',
+  templateUrl: './change-borrow-status-modal.component.html',
+  styleUrls: ['./change-borrow-status-modal.component.scss']
+})
+export class ChangeBorrowStatusModalComponent {
+  statusOptions: Array<string>;
+  newStatus: LudoStatus;
+  range: FormGroup<RangeForm>;
+  dateFilter: DateFilterFn<Date>;
+
+
+  constructor(
+    public dialogRef: MatDialogRef<ChangeBorrowStatusModalComponent>,
+    public borrowDataService: BorrowDataService,
+    @Inject(MAT_DIALOG_DATA) public data: {
+      user: CseUser,
+      comission: Comissions,
+      object: Book | Tool | Game
+    },
+  ) {
+    this.statusOptions = [LudoStatus.EMPRUNTE, LudoStatus.AVAILABLE];
+    this.newStatus = this.data.object.status === LudoStatus.AVAILABLE ?
+      LudoStatus.EMPRUNTE : LudoStatus.AVAILABLE;
+    this.initDateFormGroup();
+  }
+
+  cancel(): void {
+    this.dialogRef.close();
+  }
+
+  borrowGame() {
+    this.borrowDataService.setNewBorrow(
+      this.data.object,
+      this.data.user,
+      this.data.comission,
+      moment(this.range.get('start').value).locale('fr').format('L'),
+      moment(this.range.get('end').value).locale('fr').format('L'));
+    this.cancel();
+  }
+
+  private initDateFormGroup(): void {
+    this.dateFilter = (d: Date | null): boolean => {
+      const day = (moment(d) || moment()).day();
+      const week = (moment(d) || moment()).week();
+      const past = (moment(d) || moment()).isAfter(moment());
+      return (day === 2 || day === 4) && (week % 2 === 0) && past;
+    };
+
+    // todo other comissions
+    const nextLudothequeOpening: Moment = GamesUtils.getNextLudothequeOpening();
+    const validRange: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+      const start = control.get('start').value;
+      const end = control.get('end').value;
+      const duration = moment.duration(moment(end).diff(moment(start)));
+      const days = duration.asDays();
+      const forbidden = days > 30;
+      return forbidden ? {tooLongRange: {value: days}} : null;
+    };
+    const isNotReserved: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+     /* todo if (this.data.game.borrowList) {
+        const reserved = GamesUtils.gameIsReservedOrEmprunte(this.data.game.borrowList, control.value);
+        return reserved ? {reserved: {value: {start: reserved.startDate, end: reserved.endDate}}} : null;
+      } else {*/
+        return null;
+      //}
+    };
+
+    this.range = new FormGroup({
+      start: new FormControl<Date>(nextLudothequeOpening.toDate(), isNotReserved),
+      end: new FormControl<Date>(nextLudothequeOpening.add(14, 'days').toDate(), isNotReserved),
+    }, {validators: validRange});
+
+    this.range.updateValueAndValidity();
+    console.log(this.range);
+  }
+}
