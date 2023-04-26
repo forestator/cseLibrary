@@ -1,0 +1,60 @@
+<table mat-table [dataSource]="dataTableSource"
+       matSort
+       class="mat-elevation-z8">
+
+    <ng-container matColumnDef="borrow">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox [ngModel]="selectAllBorrow" (ngModelChange)="selectAll($event)"></mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-checkbox [(ngModel)]="element.selected"></mat-checkbox>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.item.name}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="start">
+        <th mat-header-cell *matHeaderCellDef>Début</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.startDate}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="end">
+        <th mat-header-cell *matHeaderCellDef>Fin</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.endDate}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.status}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="comission">
+        <th mat-header-cell *matHeaderCellDef>Comission</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.comission}}
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">
+            {{element.item.ref ?? element.item.id}}
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [hidden]="row.status === 'RETURNED'"
+    ></tr>
+</table>

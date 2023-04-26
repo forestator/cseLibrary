@@ -39,6 +39,10 @@ import {AddToolModalComponent} from './components/admin-bricolage/add-tool-modal
 import {EditToolModalComponent} from './components/admin-bricolage/edit-tool-modal/edit-tool-modal.component';
 import {UploadGameComponent} from './components/admin-ludo/admin-games/upload-game/upload-game.component';
 import {EmpruntsHomeComponent} from './components/emprunts/emprunts-home/emprunts-home.component';
+import {
+  ConfirmReturnAllModalComponent
+} from './components/emprunts/confirm-return-all-modal/confirm-return-all-modal.component';
+import {BorrowTableComponent} from './components/emprunts/borrow-table/borrow-table.component';
 
 
 @NgModule({
@@ -48,7 +52,7 @@ import {EmpruntsHomeComponent} from './components/emprunts/emprunts-home/emprunt
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent
+    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmReturnAllModalComponent, BorrowTableComponent
   ],
   exports: [
     AdminMenuComponent

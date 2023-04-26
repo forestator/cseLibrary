@@ -14,6 +14,7 @@ import {Tool} from "../../../../bricolage/models/bricolage.model";
 import {ChangeBorrowStatusModalComponent} from "../change-borrow-status/change-borrow-status-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatTableDataSource} from "@angular/material/table";
+import {ConfirmReturnAllModalComponent} from "../confirm-return-all-modal/confirm-return-all-modal.component";
 
 @Component({
   selector: 'app-emprunts-home',
@@ -27,14 +28,15 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
   filteredOptionsObject$?: Observable<Array<Game | Tool | Book>>;
   users: Array<CseUser>;
   selectedUser?: CseUser;
-  private usersSub: Subscription;
-  public borrows$: Observable<Borrow[]>;
-  displayedColumns = ['borrow','name', 'start', 'end', 'status', 'comission', 'id'];
+  displayedColumns = ['borrow', 'name', 'start', 'end', 'status', 'comission', 'id'];
   selectedComission: Comissions = Comissions.LUDOTHEQUE;
   comissions = Comissions;
   selectedObject: Game | Tool | Book;
+  dataTableSource: MatTableDataSource<Borrow & { selected: boolean }>;
+  selectAllBorrow: boolean;
+
+  private usersSub: Subscription;
   private datasTableSub: Subscription;
-  dataTableSource: MatTableDataSource<Borrow & {selected: boolean}>;
 
   constructor(private route: ActivatedRoute,
               private borrowService: BorrowDataService,
@@ -86,11 +88,6 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
-    this.usersSub.unsubscribe();
-    this.datasTableSub.unsubscribe();
-  }
-
   private _filterUser(value: string | CseUser, userList: Array<CseUser>): Array<CseUser> {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.firstName.toLowerCase();
     return userList.filter((item) => {
@@ -137,8 +134,21 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  selectedBorrows(): Array<Borrow & {selected: boolean}> {
+  selectedBorrows(): Array<Borrow & { selected: boolean }> {
     return this.dataTableSource?.data.filter(borrow => borrow.selected);
+  }
+
+  confirmReturnSelectedBorrows() {
+    const dialogRef = this.dialog.open(ConfirmReturnAllModalComponent, {
+      maxWidth: "400px",
+    });
+
+    dialogRef.afterClosed().subscribe(dialogResult => {
+      if (dialogResult) {
+        this.returnSelectedBorrows();
+        this.selectAllBorrow = false;
+      }
+    });
   }
 
   returnSelectedBorrows() {
@@ -146,5 +156,10 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
       delete selectedBorrow.selected;
       this.borrowService.setReturnForBorrow(this.selectedUser, this.dataTableSource.data, selectedBorrow);
     });
+  }
+
+  ngOnDestroy() {
+    this.usersSub.unsubscribe();
+    this.datasTableSub.unsubscribe();
   }
 }

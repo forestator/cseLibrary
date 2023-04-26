@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>
+  Confirmation
+</h1>
+
+<div mat-dialog-content>
+  <p>Êtes vous certain de vouloir faire le retour de tous les items ?</p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onDismiss()">No</button>
+  <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
+</div>

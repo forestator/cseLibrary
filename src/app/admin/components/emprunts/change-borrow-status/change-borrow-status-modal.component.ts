@@ -9,6 +9,7 @@ import {GamesUtils} from '../../../../models/gamesUtils';
 import {Tool} from "../../../../bricolage/models/bricolage.model";
 import {Book} from "../../../../models/author.model";
 import {BorrowDataService} from "../../../services/borrow-data.service";
+import {BricoUtils} from "../../../../bricolage/models/brico-utils";
 
 interface RangeForm {
   start: FormControl<Date>;
@@ -21,11 +22,11 @@ interface RangeForm {
   styleUrls: ['./change-borrow-status-modal.component.scss']
 })
 export class ChangeBorrowStatusModalComponent {
+
   statusOptions: Array<string>;
   newStatus: LudoStatus;
   range: FormGroup<RangeForm>;
   dateFilter: DateFilterFn<Date>;
-
 
   constructor(
     public dialogRef: MatDialogRef<ChangeBorrowStatusModalComponent>,
@@ -57,15 +58,9 @@ export class ChangeBorrowStatusModalComponent {
   }
 
   private initDateFormGroup(): void {
-    this.dateFilter = (d: Date | null): boolean => {
-      const day = (moment(d) || moment()).day();
-      const week = (moment(d) || moment()).week();
-      const past = (moment(d) || moment()).isAfter(moment());
-      return (day === 2 || day === 4) && (week % 2 === 0) && past;
-    };
+    this.dateFilter = this.getComissionDates(this.data.comission);
+    const nextLudothequeOpening: Moment = this.nextComissionOpening(this.data.comission);
 
-    // todo other comissions
-    const nextLudothequeOpening: Moment = GamesUtils.getNextLudothequeOpening();
     const validRange: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
       const start = control.get('start').value;
       const end = control.get('end').value;
@@ -74,12 +69,13 @@ export class ChangeBorrowStatusModalComponent {
       const forbidden = days > 30;
       return forbidden ? {tooLongRange: {value: days}} : null;
     };
+
     const isNotReserved: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-     /* todo if (this.data.game.borrowList) {
-        const reserved = GamesUtils.gameIsReservedOrEmprunte(this.data.game.borrowList, control.value);
-        return reserved ? {reserved: {value: {start: reserved.startDate, end: reserved.endDate}}} : null;
-      } else {*/
-        return null;
+      /* todo if (this.data.game.borrowList) {
+         const reserved = GamesUtils.gameIsReservedOrEmprunte(this.data.game.borrowList, control.value);
+         return reserved ? {reserved: {value: {start: reserved.startDate, end: reserved.endDate}}} : null;
+       } else {*/
+      return null;
       //}
     };
 
@@ -90,5 +86,41 @@ export class ChangeBorrowStatusModalComponent {
 
     this.range.updateValueAndValidity();
     console.log(this.range);
+  }
+
+  private nextComissionOpening(comission: Comissions) {
+    let nextOpenComission: Moment;
+    switch (comission) {
+      case Comissions.LUDOTHEQUE:
+        nextOpenComission = GamesUtils.getNextLudothequeOpening();
+        break
+      case Comissions.BIBLIOTHEQUE:
+        break;
+      case Comissions.BRICOLAGE:
+        nextOpenComission = BricoUtils.nextComissionBricolage();
+        break;
+      default:
+        nextOpenComission = moment();
+    }
+    return nextOpenComission;
+  }
+
+  private getComissionDates(comission: Comissions): (date: Date | null) => boolean {
+    switch (comission) {
+      case Comissions.LUDOTHEQUE:  return (d: Date | null): boolean => {
+        const day = (moment(d) || moment()).day();
+        const week = (moment(d) || moment()).week();
+        const past = (moment(d) || moment()).isAfter(moment());
+        return (day === 2 || day === 4) && (week % 2 === 0) && past;
+      };
+      case Comissions.BIBLIOTHEQUE:
+        return null;
+      case Comissions.BRICOLAGE:
+        return (d: Date | null): boolean => {
+        const day = (moment(d) || moment()).day();
+        const past = (moment(d) || moment()).isAfter(moment());
+        return day === 1 && past;
+      };
+    }
   }
 }
