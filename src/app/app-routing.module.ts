@@ -32,6 +32,7 @@ import {SonoHomeComponent} from "./sonotheque/components/sono-home/sono-home.com
 import {SonoDatabaseService} from "./sonotheque/services/sono-database.service";
 import {AdminSonothequeComponent} from "./admin/components/admin-sonotheque/admin-sonotheque.component";
 import {SonoCategoryComponent} from "./sonotheque/components/sono-category/sono-category.component";
+import {NautismeHomeComponent} from "./nautisme/components/nautisme-home/nautisme-home.component";
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -63,6 +64,10 @@ const bricoRoutes: Routes = [
 const sonoRoutes: Routes = [
   {path: 'sonotheque', component: SonoHomeComponent},
   {path: 'sonotheque/:categoryId', component: SonoCategoryComponent},
+];
+
+const nautismeRoutes: Routes = [
+  {path: 'nautisme', component: NautismeHomeComponent},
 ];
 
 const adminRoutes: Routes = [
@@ -104,6 +109,7 @@ const routes: Routes = [
   ...biblioRoutes,
   ...bricoRoutes,
   ...sonoRoutes,
+  ...nautismeRoutes,
   {path: '', component: HomeComponent},
   {path: '**', component: HomeComponent},
 ];

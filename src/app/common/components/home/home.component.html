@@ -44,6 +44,15 @@
         </div>
     </div>
     <div class="core-header"
+         (click)="navigateService.goToComission(comissions.NAUTISME)">
+        <div class="core-title">
+            <div class="primary">Matériel Nautique</div>
+        </div>
+        <div class="core-resume">
+          Paddle, kayak ...
+        </div>
+    </div>
+    <div class="core-header"
          *ngIf="authentificationService.userAllowedToWrite$ | async"
          (click)="navigateService.goToBorrowAdmin()">
         <div class="core-title">
