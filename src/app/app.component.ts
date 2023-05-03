@@ -8,6 +8,8 @@ import {Libraries} from './models/author.model';
 import {BricoCategories, Tool} from './bricolage/models/bricolage.model';
 import {Observable} from 'rxjs';
 import {BricolageDatabaseService} from './bricolage/services/bricolage-database.service';
+import {SonoCategory} from "./sonotheque/models/sono.model";
+import {Comissions} from "./models/common.model";
 
 
 @Component({
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   showLudothequeMenu?: boolean;
   showBibliothequeMenu?: boolean;
   showBricolageMenu?: boolean;
+  showSonothequeMenu?: boolean;
   showAdmin?: boolean;
   public menu: ({ route: string; name: string, subList?: { route: string; name: string }[] })[];
   showBoardGameFilters = false;
@@ -48,9 +51,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private handleUrlChange(url: string) {
-    this.showLudothequeMenu = url.includes('ludotheque');
-    this.showBibliothequeMenu = url.includes('bibliotheque');
-    this.showBricolageMenu = url.includes('bricolage');
+    this.showLudothequeMenu = url.includes(Comissions.LUDOTHEQUE);
+    this.showBibliothequeMenu = url.includes(Comissions.BIBLIOTHEQUE);
+    this.showBricolageMenu = url.includes(Comissions.BRICOLAGE);
+    this.showSonothequeMenu = url.includes(Comissions.SONOTHEQUE);
     this.showAdmin = url.includes('admin');
     this.showBoardGameFilters = url.includes('boardGames/');
 
@@ -71,6 +75,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         {name: 'Grand Jeux', route: 'ludotheque/outsideGames'},
         {name: 'Nouveautés ludo', route: 'ludotheque/new'},
       ];
+    }
+    if (this.showSonothequeMenu) {
+      this.menu = Object.values(SonoCategory).map(cat => {
+        return {name: cat, route: `sonotheque/${cat}`};
+      });
     }
 
     if (this.showBibliothequeMenu) {
@@ -103,7 +112,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       ];
     }
 
-    if (!this.showBibliothequeMenu && !this.showLudothequeMenu && !this.showAdmin && !this.showBricolageMenu) {
+    if (!this.showBibliothequeMenu && !this.showLudothequeMenu && !this.showAdmin && !this.showBricolageMenu && !this.showSonothequeMenu) {
       this.menu = [];
     }
   }

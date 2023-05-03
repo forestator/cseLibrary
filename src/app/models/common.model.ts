@@ -24,6 +24,7 @@ export enum Comissions {
   BIBLIOTHEQUE = 'bibliotheque',
   LUDOTHEQUE = 'ludotheque',
   BRICOLAGE = 'bricolage',
+  SONOTHEQUE = 'sonotheque',
 }
 
 export interface Game {

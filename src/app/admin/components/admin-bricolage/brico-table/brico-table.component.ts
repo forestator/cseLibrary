@@ -22,6 +22,7 @@ export class BricoTableComponent implements OnInit, OnChanges {
 
   private setDatasource(tools: Array<Tool>) {
     this.dataSource = new MatTableDataSource<Tool>(tools);
+    // todo make sort works
     this.dataSource.sort = this.sort;
   }
 

@@ -32,11 +32,15 @@ export class EditToolModalComponent {
     return userList.filter((item) => item.name.toLowerCase().includes(filterValue));
   }
 
-  displayTool(option: Tool) {
-    return option.name;
+  displayTool(option?: Tool) {
+    if (option) {
+      return option.name;
+    } else {
+      return '';
+    }
   }
 
-  selectGameToModify($event: MatAutocompleteSelectedEvent) {
+  selectToolToModify($event: MatAutocompleteSelectedEvent) {
     this.dialog.open(AddToolModalComponent, {
       data: {tools: this.data.tools, selectedTool: $event.option.value}
     });

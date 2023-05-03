@@ -35,6 +35,15 @@
         </div>
     </div>
     <div class="core-header"
+         (click)="navigateService.goToComission(comissions.SONOTHEQUE)">
+        <div class="core-title">
+            <div class="primary">Sonothèque</div>
+        </div>
+        <div class="core-resume">
+            Ce soir c'est soirée disco !
+        </div>
+    </div>
+    <div class="core-header"
          *ngIf="authentificationService.userAllowedToWrite$ | async"
          (click)="navigateService.goToBorrowAdmin()">
         <div class="core-title">

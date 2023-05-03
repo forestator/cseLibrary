@@ -10,6 +10,8 @@ import {GamesUtils} from '../../models/gamesUtils';
 import {Game} from '../../models/common.model';
 import {Tool} from "../../bricolage/models/bricolage.model";
 import {BricolageDatabaseService} from "../../bricolage/services/bricolage-database.service";
+import {SonoItem} from "../../sonotheque/models/sono.model";
+import {SonoDatabaseService} from "../../sonotheque/services/sono-database.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +20,11 @@ export class StorageUploadService {
 
   private readonly gameBasePath = '/assets/games/covers/';
   private readonly bricoBasePath = '/assets/tools/covers/';
+  private readonly sonoBasePath = '/assets/sonoItems/covers/';
   constructor(private db: AngularFireDatabase,
               private firebaseDatabaseService: FirebaseDatabaseService,
               private bricolageDatabaseService: BricolageDatabaseService,
+              private sonoDatabaseService: SonoDatabaseService,
               private storage: AngularFireStorage) { }
 
   uploadGameCover(fileUpload: FileUpload, gameToUpdate: VideoGame | Game | BoardGame): Observable<number> {
@@ -77,6 +81,25 @@ export class StorageUploadService {
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
           this.bricolageDatabaseService.updateToolCover(tool, fileUpload);
+        });
+      })
+    ).subscribe();
+
+    return uploadTask.percentageChanges();
+  }
+
+  uploadSonoItemCover(fileUpload: FileUpload, item: SonoItem) {
+    const fileExtension: string = fileUpload.name.split('.').pop();
+    const filePath: string = `${this.sonoBasePath}/${item.category}/${item.name}.${fileExtension}`;
+    const storageRef = this.storage.ref(filePath);
+    const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, fileUpload.file);
+
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().pipe(take(1)).subscribe(downloadURL => {
+          fileUpload.url = downloadURL;
+          fileUpload.name = fileUpload.file.name;
+          this.sonoDatabaseService.updateItemCover(item, fileUpload);
         });
       })
     ).subscribe();

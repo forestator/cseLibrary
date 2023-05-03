@@ -43,7 +43,7 @@ export class BricolageDatabaseService {
   }
 
   updateToolCover(tool: Tool, filteToUpload: FileUpload) {
-    return this.db.object(`bricolage/tools//${tool.categoryId}/${tool.id}`)
+    return this.db.object(`bricolage/tools/${tool.categoryId}/${tool.id}`)
       .update({cover: filteToUpload.url});
   }
 }

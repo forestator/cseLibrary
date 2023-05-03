@@ -15,6 +15,7 @@ import {ChangeBorrowStatusModalComponent} from "../change-borrow-status/change-b
 import {MatDialog} from "@angular/material/dialog";
 import {MatTableDataSource} from "@angular/material/table";
 import {ConfirmReturnAllModalComponent} from "../confirm-return-all-modal/confirm-return-all-modal.component";
+import {SonoItem} from "../../../../sonotheque/models/sono.model";
 
 @Component({
   selector: 'app-emprunts-home',
@@ -25,13 +26,13 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
   employeeSearch: FormControl<string> = new FormControl<string>('');
   objectSearch: FormControl<string> = new FormControl<string>('');
   filteredOptionsUser$?: Observable<Array<CseUser>>;
-  filteredOptionsObject$?: Observable<Array<Game | Tool | Book>>;
+  filteredOptionsObject$?: Observable<Array<Game | Tool | Book | SonoItem>>;
   users: Array<CseUser>;
   selectedUser?: CseUser;
   displayedColumns = ['borrow', 'name', 'start', 'end', 'status', 'comission', 'id'];
   selectedComission: Comissions = Comissions.LUDOTHEQUE;
   comissions = Comissions;
-  selectedObject: Game | Tool | Book;
+  selectedObject: Game | Tool | Book | SonoItem;
   dataTableSource: MatTableDataSource<Borrow & { selected: boolean }>;
   selectAllBorrow: boolean;
 
@@ -66,7 +67,7 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
     return user ? `${user.firstName} ${user.lastName}` : '';
   }
 
-  displayObject(obj?: Game | Tool | Book): string {
+  displayObject(obj?: Game | Tool | Book | SonoItem): string {
     if (this.selectedComission === Comissions.BRICOLAGE) {
       const tool = obj as Tool;
       return `${tool.id}: ${tool.name};`
@@ -97,7 +98,7 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  private _filterObject(value: string | Tool | Book | Game, allObjectCse: Array<Tool | Book | Game>) {
+  private _filterObject(value: string | Tool | Book | Game, allObjectCse: Array<Tool | Book | Game | SonoItem>) {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name;
     return allObjectCse.filter((item) => {
       return item.name.toLowerCase().includes(filterValue);
@@ -119,10 +120,13 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getObjectsToFilter(selectedComission: Comissions): Array<Tool | Book | Game> {
+  private getObjectsToFilter(selectedComission: Comissions): Array<Tool | Book | Game | SonoItem> {
     switch (selectedComission) {
       case Comissions.BIBLIOTHEQUE:
+        // todo
         return [];
+      case Comissions.SONOTHEQUE:
+        return this.route.snapshot.data['sonoItems'];
       case Comissions.BRICOLAGE:
         return this.route.snapshot.data['allTools'];
       case Comissions.LUDOTHEQUE:

@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {BricoCategories, Tool} from '../../../../bricolage/models/bricolage.model';
+import {BricoCategories, Tool, ToolStatus} from '../../../../bricolage/models/bricolage.model';
 import {BricolageDatabaseService} from '../../../../bricolage/services/bricolage-database.service';
 import {FileUpload} from "../../../../models/fileUpload.model";
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
@@ -31,7 +31,7 @@ export class AddToolModalComponent {
 
   private initForm(tool?: Tool): FormGroup {
     const uniqRef: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-      const exist = this.data.tools.some(game => game.id === control.value);
+      const exist = this.data.tools.some(tool => tool.id === control.value);
       const edit = this.data?.selectedTool?.id === control.value;
       return (exist && !edit) ? {exist: true} : null;
     };
@@ -41,6 +41,8 @@ export class AddToolModalComponent {
       id: this.fb.control(tool?.id, [Validators.required, uniqRef]),
       name: this.fb.control(tool?.name, Validators.required),
       categoryId: this.fb.control(tool?.categoryId, Validators.required),
+      status: this.fb.control(tool?.status ?? ToolStatus.AVAILABLE, Validators.required),
+      description: this.fb.control(tool?.description),
     });
   }
 

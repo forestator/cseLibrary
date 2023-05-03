@@ -13,9 +13,9 @@
       <mat-list>
         <mat-list-item *ngFor="let category of menu">
           <div matListItemTitle [routerLink]="category.route" class="cat-nav">{{category.name}}</div>
-          <!--<mat-list-item *ngFor="let sub of category.subList">
+          <mat-list-item *ngFor="let sub of category.subList">
             <div matListItemTitle [routerLink]="sub.route">{{sub.name | titlecase}}</div>
-          </mat-list-item>-->
+          </mat-list-item>
         </mat-list-item>
         <ng-container *ngIf="showBoardGameFilters">
           <mat-divider></mat-divider>

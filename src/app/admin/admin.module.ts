@@ -43,6 +43,14 @@ import {
   ConfirmReturnAllModalComponent
 } from './components/emprunts/confirm-return-all-modal/confirm-return-all-modal.component';
 import {BorrowTableComponent} from './components/emprunts/borrow-table/borrow-table.component';
+import {AdminSonothequeComponent} from './components/admin-sonotheque/admin-sonotheque.component';
+import {SonoTableComponent} from './components/admin-sonotheque/sono-table/sono-table.component';
+import {
+  AddSonoItemModalComponent
+} from './components/admin-sonotheque/add-sono-item-modal/add-sono-item-modal.component';
+import {
+  EditSonoItemModalComponent
+} from './components/admin-sonotheque/edit-sono-item-modal/edit-sono-item-modal.component';
 
 
 @NgModule({
@@ -52,7 +60,7 @@ import {BorrowTableComponent} from './components/emprunts/borrow-table/borrow-ta
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmReturnAllModalComponent, BorrowTableComponent
+    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmReturnAllModalComponent, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent
   ],
   exports: [
     AdminMenuComponent

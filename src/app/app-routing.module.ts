@@ -28,6 +28,10 @@ import {AdminBricolageComponent} from './admin/components/admin-bricolage/admin-
 import {EmpruntsHomeComponent} from "./admin/components/emprunts/emprunts-home/emprunts-home.component";
 import {FirebaseDatabaseService} from "./services/firebase/firebase-database.service";
 import {BricolageDatabaseService} from "./bricolage/services/bricolage-database.service";
+import {SonoHomeComponent} from "./sonotheque/components/sono-home/sono-home.component";
+import {SonoDatabaseService} from "./sonotheque/services/sono-database.service";
+import {AdminSonothequeComponent} from "./admin/components/admin-sonotheque/admin-sonotheque.component";
+import {SonoCategoryComponent} from "./sonotheque/components/sono-category/sono-category.component";
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -56,6 +60,11 @@ const bricoRoutes: Routes = [
   {path: 'bricolage/:categoryId/:id', component: BricoCategoryComponent},
 ];
 
+const sonoRoutes: Routes = [
+  {path: 'sonotheque', component: SonoHomeComponent},
+  {path: 'sonotheque/:categoryId', component: SonoCategoryComponent},
+];
+
 const adminRoutes: Routes = [
   {
     path: 'iWantToConfigureThisAwesomeApp', component: AdminHomeComponent
@@ -68,6 +77,7 @@ const adminRoutes: Routes = [
       'ludotheque': () => inject(FirebaseDatabaseService).ludotheque$,
       // todo bilbiotheque quand JY a refondu le bordel
       'allTools': () => inject(BricolageDatabaseService).allTools$,
+      'sonoItems': () => inject(SonoDatabaseService).allItems$,
     }
   },
   {
@@ -76,6 +86,10 @@ const adminRoutes: Routes = [
   },
   {
     path: 'bricolage/admin/tools', component: AdminBricolageComponent,
+    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$]
+  },
+  {
+    path: 'sonotheque/admin/sonoItems', component: AdminSonothequeComponent,
     canActivate: [() => inject(AuthentificationService).userAllowedToWrite$]
   },
   {
@@ -89,6 +103,7 @@ const routes: Routes = [
   ...ludoRoutes,
   ...biblioRoutes,
   ...bricoRoutes,
+  ...sonoRoutes,
   {path: '', component: HomeComponent},
   {path: '**', component: HomeComponent},
 ];

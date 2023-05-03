@@ -26,6 +26,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {BricolageModule} from './bricolage/bricolage.module';
+import {SonothequeModule} from "./sonotheque/sonotheque.module";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDK-byU9NpioO3Lve34_Y4QvxvOviDCKFY",
@@ -66,6 +67,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     LudothequeModule,
     BibliothequeModule,
     BricolageModule,
+    SonothequeModule,
     AdminModule,
     MatIconModule,
     MatButtonModule,

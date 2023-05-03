@@ -94,7 +94,11 @@ export class ChangeBorrowStatusModalComponent {
       case Comissions.LUDOTHEQUE:
         nextOpenComission = GamesUtils.getNextLudothequeOpening();
         break
+      // todo
       case Comissions.BIBLIOTHEQUE:
+        break;
+      // todo
+      case Comissions.SONOTHEQUE:
         break;
       case Comissions.BRICOLAGE:
         nextOpenComission = BricoUtils.nextComissionBricolage();
@@ -107,20 +111,25 @@ export class ChangeBorrowStatusModalComponent {
 
   private getComissionDates(comission: Comissions): (date: Date | null) => boolean {
     switch (comission) {
-      case Comissions.LUDOTHEQUE:  return (d: Date | null): boolean => {
-        const day = (moment(d) || moment()).day();
-        const week = (moment(d) || moment()).week();
-        const past = (moment(d) || moment()).isAfter(moment());
-        return (day === 2 || day === 4) && (week % 2 === 0) && past;
-      };
+      case Comissions.LUDOTHEQUE:
+        return (d: Date | null): boolean => {
+          const day = (moment(d) || moment()).day();
+          const week = (moment(d) || moment()).week();
+          const past = (moment(d) || moment()).isAfter(moment());
+          return (day === 2 || day === 4) && (week % 2 === 0) && past;
+        };
+      // todo
       case Comissions.BIBLIOTHEQUE:
+        return null;
+      // todo
+      case Comissions.SONOTHEQUE:
         return null;
       case Comissions.BRICOLAGE:
         return (d: Date | null): boolean => {
-        const day = (moment(d) || moment()).day();
-        const past = (moment(d) || moment()).isAfter(moment());
-        return day === 1 && past;
-      };
+          const day = (moment(d) || moment()).day();
+          const past = (moment(d) || moment()).isAfter(moment());
+          return day === 1 && past;
+        };
     }
   }
 }
