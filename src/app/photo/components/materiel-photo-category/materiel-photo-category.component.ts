@@ -1,0 +1,40 @@
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {map, Observable, Subscription} from "rxjs";
+import {Category} from "../../../models/author.model";
+import {NavigationService} from "../../../services/navigation.service";
+import {MaterielPhotoItem, PhotoCategory} from '../../models/materiel-photo.model';
+import {MaterielPhotoDatabaseService} from '../../services/materiel-photo-database.service';
+
+@Component({
+  selector: 'app-materiel-photo-category',
+  templateUrl: './materiel-photo-category.component.html',
+  styleUrls: ['./materiel-photo-category.component.scss']
+})
+export class MaterielPhotoCategoryComponent implements OnInit, OnDestroy {
+  category$?: Observable<Category>;
+  categoryItems$?: Observable<Array<MaterielPhotoItem>>;
+  searchedPhotoItemId?: string;
+  categoryId?: PhotoCategory;
+  private sub?: Subscription;
+
+  constructor(private materielPhotoDatabaseService: MaterielPhotoDatabaseService,
+              private navigationService: NavigationService) {
+  }
+
+  ngOnInit() {
+    this.sub = this.navigationService.getRouteParams().subscribe((params) => {
+      if (this.categoryId !== params['categoryId']) {
+        this.categoryId = params['categoryId'];
+        this.category$ = this.materielPhotoDatabaseService.photoLibrary$.pipe(
+          map(lib => lib.categories.find(cat => cat.id === this.categoryId))
+        );
+        this.categoryItems$ = this.materielPhotoDatabaseService.getPhotoCategory(this.categoryId);
+      }
+      this.searchedPhotoItemId = params['id'];
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub?.unsubscribe();
+  }
+}

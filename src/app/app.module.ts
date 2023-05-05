@@ -28,6 +28,7 @@ import {MatListModule} from '@angular/material/list';
 import {BricolageModule} from './bricolage/bricolage.module';
 import {SonothequeModule} from "./sonotheque/sonotheque.module";
 import {NautismeModule} from "./nautisme/nautisme.module";
+import {MaterielPhotoModule} from './photo/materiel-photo.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDK-byU9NpioO3Lve34_Y4QvxvOviDCKFY",
@@ -71,6 +72,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     SonothequeModule,
     NautismeModule,
     AdminModule,
+    MaterielPhotoModule,
     MatIconModule,
     MatButtonModule,
     MatMenuModule,

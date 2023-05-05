@@ -53,6 +53,15 @@
         </div>
     </div>
     <div class="core-header"
+         (click)="navigateService.goToComission(comissions.PHOTO)">
+        <div class="core-title">
+            <div class="primary">Matériel Photo</div>
+        </div>
+        <div class="core-resume">
+          Appareil photo, Vidéo projecteurs ...
+        </div>
+    </div>
+    <div class="core-header"
          *ngIf="authentificationService.userAllowedToWrite$ | async"
          (click)="navigateService.goToBorrowAdmin()">
         <div class="core-title">

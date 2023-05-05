@@ -125,6 +125,9 @@ export class ChangeBorrowStatusModalComponent {
       case Comissions.NAUTISME:
         return null;
       // todo
+      case Comissions.PHOTO:
+        return null;
+      // todo
       case Comissions.SONOTHEQUE:
         return null;
       case Comissions.BRICOLAGE:

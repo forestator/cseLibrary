@@ -1,0 +1,13 @@
+<div class="core-page fadein">
+  <div class="core-header" *ngIf="category$ | async as category">
+    <div class="core-title">
+      <div class="primary">{{category.name}}</div>
+    </div>
+    <div class="core-resume">
+      {{category.resume}}
+    </div>
+  </div>
+  <div *ngFor="let photoItem of categoryItems$ | async; let index = index" class="core-body">
+    <app-materiel-photo-row [item]="photoItem" [index]="index" [selectedItem]="searchedPhotoItemId"></app-materiel-photo-row>
+  </div>
+</div>

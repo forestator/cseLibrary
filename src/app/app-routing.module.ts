@@ -33,6 +33,10 @@ import {SonoDatabaseService} from "./sonotheque/services/sono-database.service";
 import {AdminSonothequeComponent} from "./admin/components/admin-sonotheque/admin-sonotheque.component";
 import {SonoCategoryComponent} from "./sonotheque/components/sono-category/sono-category.component";
 import {NautismeHomeComponent} from "./nautisme/components/nautisme-home/nautisme-home.component";
+import {MaterielPhotoHomeComponent} from './photo/components/materiel-photo-home/materiel-photo-home.component';
+import {
+  MaterielPhotoCategoryComponent
+} from './photo/components/materiel-photo-category/materiel-photo-category.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -68,6 +72,11 @@ const sonoRoutes: Routes = [
 
 const nautismeRoutes: Routes = [
   {path: 'nautisme', component: NautismeHomeComponent},
+];
+
+const materielPhotoRoutes: Routes = [
+  {path: 'photo', component: MaterielPhotoHomeComponent},
+  {path: 'photo/:categoryId', component: MaterielPhotoCategoryComponent},
 ];
 
 const adminRoutes: Routes = [
@@ -110,6 +119,7 @@ const routes: Routes = [
   ...bricoRoutes,
   ...sonoRoutes,
   ...nautismeRoutes,
+  ...materielPhotoRoutes,
   {path: '', component: HomeComponent},
   {path: '**', component: HomeComponent},
 ];

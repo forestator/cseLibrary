@@ -128,6 +128,9 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
       case Comissions.NAUTISME:
         // todo
         return [];
+      case Comissions.PHOTO:
+        // todo
+        return [];
       case Comissions.SONOTHEQUE:
         return this.route.snapshot.data['sonoItems'];
       case Comissions.BRICOLAGE:

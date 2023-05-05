@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {BricolageDatabaseService} from './bricolage/services/bricolage-database.service';
 import {SonoCategory} from "./sonotheque/models/sono.model";
 import {Comissions} from "./models/common.model";
+import {PhotoCategory} from './photo/models/materiel-photo.model';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   showBibliothequeMenu?: boolean;
   showBricolageMenu?: boolean;
   showSonothequeMenu?: boolean;
+  showPhotoMenu?: boolean;
   showAdmin?: boolean;
   public menu: ({ route: string; name: string, subList?: { route: string; name: string }[] })[];
   showBoardGameFilters = false;
@@ -55,6 +57,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.showBibliothequeMenu = url.includes(Comissions.BIBLIOTHEQUE);
     this.showBricolageMenu = url.includes(Comissions.BRICOLAGE);
     this.showSonothequeMenu = url.includes(Comissions.SONOTHEQUE);
+    this.showPhotoMenu = url.includes(Comissions.PHOTO);
     this.showAdmin = url.includes('admin');
     this.showBoardGameFilters = url.includes('boardGames/');
 
@@ -79,6 +82,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     if (this.showSonothequeMenu) {
       this.menu = Object.values(SonoCategory).map(cat => {
         return {name: cat, route: `sonotheque/${cat}`};
+      });
+    }
+    if (this.showPhotoMenu) {
+      this.menu = Object.values(PhotoCategory).map(cat => {
+        return {name: cat === PhotoCategory.APPAREIL_PHOTO ? 'Appareils photo' : cat, route: `photo/${cat}`};
       });
     }
 
@@ -112,7 +120,8 @@ export class AppComponent implements OnInit, AfterViewInit {
       ];
     }
 
-    if (!this.showBibliothequeMenu && !this.showLudothequeMenu && !this.showAdmin && !this.showBricolageMenu && !this.showSonothequeMenu) {
+    if (!this.showBibliothequeMenu && !this.showLudothequeMenu && !this.showAdmin && !this.showPhotoMenu
+      && !this.showBricolageMenu && !this.showSonothequeMenu) {
       this.menu = [];
     }
   }
