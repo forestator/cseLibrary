@@ -4,6 +4,9 @@ import {AuthentificationService} from "../../../services/firebase/authentificati
 import {Comissions} from "../../../models/common.model";
 import {GamesUtils} from '../../../models/gamesUtils';
 import moment from 'moment';
+import {BiblioUtils} from '../../../bibliotheque/models/biblio-utils';
+import {BricoUtils} from '../../../bricolage/models/brico-utils';
+import {SonoUtils} from '../../../sonotheque/models/sono.utils';
 
 @Component({
   selector: 'app-home',
@@ -22,4 +25,7 @@ export class HomeComponent {
 
   protected readonly GamesUtils = GamesUtils;
   protected readonly moment = moment;
+    protected readonly BiblioUtils = BiblioUtils;
+  protected readonly BricoUtils = BricoUtils;
+  protected readonly SonoUtils = SonoUtils;
 }

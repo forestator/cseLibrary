@@ -64,6 +64,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.showBoardGameFilters = url.includes('boardGames/');
     this.showHomeMenu = url === '/';
 
+    if (url.includes(Comissions.NAUTISME)) {
+      this.menu = [];
+    }
+
     if (this.showLudothequeMenu) {
       this.menu = [
         {
@@ -82,11 +86,13 @@ export class AppComponent implements OnInit, AfterViewInit {
         {name: 'Nouveautés ludo', route: 'ludotheque/new'},
       ];
     }
+
     if (this.showSonothequeMenu) {
       this.menu = Object.values(SonoCategory).map(cat => {
         return {name: cat, route: `sonotheque/${cat}`};
       });
     }
+
     if (this.showPhotoMenu) {
       this.menu = Object.values(PhotoCategory).map(cat => {
         return {name: cat === PhotoCategory.APPAREIL_PHOTO ? 'Appareils photo' : cat, route: `photo/${cat}`};

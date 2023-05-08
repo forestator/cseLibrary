@@ -9,7 +9,8 @@
         <div class="primary">Bibliotheque</div>
       </div>
       <div class="core-resume">
-        Prochaine commission : todo
+        <!-- fausse erreur  sur moment -->
+        Prochaine commission : {{BiblioUtils.nextComission() | momentToDate}}
       </div>
     </div>
   </div>
@@ -50,7 +51,7 @@
         <div class="primary">Bricolage</div>
       </div>
       <div class="core-resume">
-        Les outils de vos rêves
+        Prochaine comission : {{BricoUtils.nextComissionBricolage() | momentToDate}}
       </div>
     </div>
   </div>
@@ -64,7 +65,7 @@
         <div class="primary">Sonothèque</div>
       </div>
       <div class="core-resume">
-        Ce soir c'est soirée disco !
+        Prochaine comission : {{SonoUtils.nextComission() | momentToDate}}
       </div>
     </div>
   </div>
@@ -78,7 +79,8 @@
         <div class="primary">Matériel Nautique</div>
       </div>
       <div class="core-resume">
-        Paddle, kayak ...
+        Paddle, kayak ... <br>
+        Pour emprunter veuillez contacter un membre de la comission
       </div>
     </div>
   </div>
@@ -92,7 +94,8 @@
         <div class="primary">Matériel Photo</div>
       </div>
       <div class="core-resume">
-        Appareil photo, Vidéo projecteurs ...
+        Appareil photo, Vidéo projecteurs ... <br>
+        Pour emprunter veuillez contacter un membre de la comission
       </div>
     </div>
   </div>

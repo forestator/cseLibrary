@@ -1,4 +1,6 @@
 import {SonoBddItems, SonoCategory, SonoItem, SonoStatus} from "./sono.model";
+import {Moment} from 'moment';
+import moment from 'moment/moment';
 
 export class SonoUtils {
   public static BddItemToSonoItem(sonoBddItem: SonoBddItems, category: SonoCategory): SonoItem[] {
@@ -13,5 +15,14 @@ export class SonoUtils {
     } else {
       return [];
     }
+  }
+
+  static nextComission(): Moment {
+    const currentDate: Moment = moment();
+    currentDate.day(4);
+    if (currentDate.day() > 4) {
+      currentDate.add(1, 'week');
+    }
+    return currentDate;
   }
 }
