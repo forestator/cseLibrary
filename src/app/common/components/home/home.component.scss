@@ -1,5 +1,17 @@
 @import "../../common";
 
 .core-header {
-  cursor: pointer;
+  flex: 1;
+}
+
+.core-body {
+  &.comission {
+    cursor: pointer;
+    display: flex;
+
+    .category-visuel {
+      width: 150px;
+      height: 150px;
+    }
+  }
 }

@@ -24,6 +24,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   title = 'Cse';
   showLudothequeMenu?: boolean;
   showBibliothequeMenu?: boolean;
+  showHomeMenu?: boolean;
   showBricolageMenu?: boolean;
   showSonothequeMenu?: boolean;
   showPhotoMenu?: boolean;
@@ -53,6 +54,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private handleUrlChange(url: string) {
+    console.log(url);
     this.showLudothequeMenu = url.includes(Comissions.LUDOTHEQUE);
     this.showBibliothequeMenu = url.includes(Comissions.BIBLIOTHEQUE);
     this.showBricolageMenu = url.includes(Comissions.BRICOLAGE);
@@ -60,6 +62,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.showPhotoMenu = url.includes(Comissions.PHOTO);
     this.showAdmin = url.includes('admin');
     this.showBoardGameFilters = url.includes('boardGames/');
+    this.showHomeMenu = url === '/';
 
     if (this.showLudothequeMenu) {
       this.menu = [
@@ -100,6 +103,10 @@ export class AppComponent implements OnInit, AfterViewInit {
       ];
     }
 
+    if (this.showHomeMenu) {
+      this.menu = Object.values(Comissions).map((com) => ({name: com, route: com}));
+    }
+
     if (this.showBricolageMenu) {
       if (!this.allTools$) {
         this.allTools$ = this.bricolageDatabaseService.allTools$;
@@ -118,11 +125,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         {name: 'Remorques', route: `bricolage/${BricoCategories.REMORQUES}`},
         {name: 'Divers', route: `bricolage/${BricoCategories.DIVERS}`},
       ];
-    }
-
-    if (!this.showBibliothequeMenu && !this.showLudothequeMenu && !this.showAdmin && !this.showPhotoMenu
-      && !this.showBricolageMenu && !this.showSonothequeMenu) {
-      this.menu = [];
     }
   }
 
