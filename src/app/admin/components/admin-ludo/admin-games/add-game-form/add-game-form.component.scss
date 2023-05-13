@@ -13,4 +13,19 @@
     display: flex;
     flex-direction: column;
   }
+
+  .name-container {
+    display: flex;
+
+    mat-form-field {
+      flex: 1;
+    }
+
+    .search {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 22px;
+    }
+  }
 }

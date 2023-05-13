@@ -1,7 +1,7 @@
 <div [class.disable]="loading">
   <h1 mat-dialog-title>Ajouter un jeu</h1>
   <div class="modal-container" mat-dialog-content>
-    <app-add-game-form [gameForm]="gameForm"></app-add-game-form>
+    <app-add-game-form [gameForm]="gameForm" (gameSelected)="makeSomeMagic()"></app-add-game-form>
   </div>
   <div mat-dialog-actions>
     <button (click)="cancel()" id="cancel" mat-button>Cancel</button>

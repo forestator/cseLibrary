@@ -8,10 +8,15 @@
         <mat-button-toggle value="outsideGames">Grand Jeu</mat-button-toggle>
       </mat-button-toggle-group>
     </div>
-    <mat-form-field>
-      <mat-label>Nom</mat-label>
-      <input matInput placeholder="Splendor" formControlName="name">
-    </mat-form-field>
+    <div class="name-container">
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Splendor" formControlName="name">
+      </mat-form-field>
+      <div class="search" (click)="search()">
+        <mat-icon aria-label="Search on bgg">search</mat-icon>
+      </div>
+    </div>
     <mat-form-field>
       <mat-label>Référence</mat-label>
       <input matInput placeholder="ludo1234" formControlName="ref">

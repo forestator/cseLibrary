@@ -51,6 +51,10 @@ import {
 import {
   EditSonoItemModalComponent
 } from './components/admin-sonotheque/edit-sono-item-modal/edit-sono-item-modal.component';
+import {MatIconModule} from '@angular/material/icon';
+import {
+  BggGameSearchModalComponent
+} from './components/admin-ludo/admin-games/bgg-game-search-modal/bgg-game-search-modal.component';
 
 
 @NgModule({
@@ -60,36 +64,37 @@ import {
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmReturnAllModalComponent, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent
+    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmReturnAllModalComponent, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent
   ],
   exports: [
     AdminMenuComponent
   ],
-  imports: [
-    CommonModule,
-    AngularFireAuthModule,
-    FirebaseUIModule,
-    MatSortModule,
-    MatTableModule,
-    MatExpansionModule,
-    AppCommonModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatSnackBarModule,
-    RouterLink,
-    MatListModule,
-    MatAutocompleteModule,
-    MatButtonToggleModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    LudothequeModule,
-    MatProgressSpinnerModule,
-  ]
+    imports: [
+        CommonModule,
+        AngularFireAuthModule,
+        FirebaseUIModule,
+        MatSortModule,
+        MatTableModule,
+        MatExpansionModule,
+        AppCommonModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatSnackBarModule,
+        RouterLink,
+        MatListModule,
+        MatAutocompleteModule,
+        MatButtonToggleModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        LudothequeModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+    ]
 })
 export class AdminModule {
 }

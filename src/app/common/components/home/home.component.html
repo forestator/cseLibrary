@@ -14,19 +14,6 @@
       </div>
     </div>
   </div>
-  <div class="core-body comission" (click)="gotoUrl('https://www.bdgest.com/online/collection?IdUser=118221&IdCollection=1')">
-    <img class="category-visuel"
-         src="https://www.bdgest.com/skin/logo_h.svg"
-         alt="BD">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">BDthèque</div>
-      </div>
-      <div class="core-resume">
-        Retrouvez vos BD préférés
-      </div>
-    </div>
-  </div>
   <div class="core-body comission"
        (click)="navigateService.goToComission(comissions.LUDOTHEQUE)">
     <img class="category-visuel"
@@ -59,7 +46,7 @@
        (click)="navigateService.goToComission(comissions.SONOTHEQUE)">
     <img class="category-visuel"
          src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fcomissions%2FForest_a_generic_image_for_speakers_and_microphones_that_can_be_d71477b5-f554-45a5-a25c-47edea9160a8.png?alt=media&token=a792523b-975c-427f-b7dc-40f5bb164d6d"
-         alt="Biblio">
+         alt="Enceintes">
     <div class="core-header">
       <div class="core-title">
         <div class="primary">Sonothèque</div>
@@ -88,7 +75,7 @@
        (click)="navigateService.goToComission(comissions.PHOTO)">
     <img class="category-visuel"
          src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fcomissions%2FForest_a_generic_image_for_my_application_for_a_category_to_bor_6e97a15e-efb0-468d-b6e7-aeedeb84bcf6.png?alt=media&token=2b217920-d9bb-4b3f-9fb0-c40a52aa0e6d"
-         alt="Biblio">
+         alt="Appareil Photo">
     <div class="core-header">
       <div class="core-title">
         <div class="primary">Matériel Photo</div>
@@ -99,9 +86,22 @@
       </div>
     </div>
   </div>
-  <div class="core-body comission">
+  <div class="core-body comission" (click)="gotoUrl('https://www.bdgest.com/online/collection?IdUser=118221&IdCollection=1')">
+    <img class="category-visuel"
+         src="https://www.bdgest.com/skin/logo_h.svg"
+         alt="BD">
+    <div class="core-header">
+      <div class="core-title">
+        <div class="primary">BDthèque</div>
+      </div>
+      <div class="core-resume">
+        Retrouvez vos BD préférés
+      </div>
+    </div>
+  </div>
+  <div class="core-body comission"
+       *ngIf="authentificationService.userAllowedToWrite$ | async">
     <div class="core-header"
-         *ngIf="authentificationService.userAllowedToWrite$ | async"
          (click)="navigateService.goToBorrowAdmin()">
       <div class="core-title">
         <div class="primary">Gestion des emprunts</div>

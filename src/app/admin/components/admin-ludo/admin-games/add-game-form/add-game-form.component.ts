@@ -1,8 +1,12 @@
-import {ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {BoardGameCategory} from '../../../../../models/boardGame.model';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {BoardGameCategory, Thing} from '../../../../../models/boardGame.model';
 import {Consoles} from '../../../../../models/videoGames.model';
 import {FormGroup} from '@angular/forms';
 import {GamesUtils} from '../../../../../models/gamesUtils';
+import {BGGService} from '../../../../../ludotheque/services/bgg.service';
+import {take} from 'rxjs';
+import {MatDialog} from '@angular/material/dialog';
+import {BggGameSearchModalComponent} from '../bgg-game-search-modal/bgg-game-search-modal.component';
 
 @Component({
   selector: 'app-add-game-form',
@@ -12,13 +16,12 @@ import {GamesUtils} from '../../../../../models/gamesUtils';
 export class AddGameFormComponent implements OnChanges {
 
   @Input() gameForm: FormGroup;
+  @Output() gameSelected: EventEmitter<void> = new EventEmitter<void>();
   categoryOptions: Array<{ id: string; name: string }> = [];
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(private bggService: BGGService,
+              private dialog: MatDialog,) {
     this.setCategoryOptions('boardGames');
-    setInterval(() => {
-      this.cdr.detectChanges();
-    }, 1000);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -45,7 +48,18 @@ export class AddGameFormComponent implements OnChanges {
 
   search() {
     const name = this.gameForm.get('name').value;
-    window.open(`https://boardgamegeek.com/geeksearch.php?action=search&objecttype=boardgame&q=${name}`,
-      '_blank');
+    if (name) {
+      this.bggService.searchGame(name).pipe(take(1)).subscribe(rep => {
+        const ref = this.dialog.open(BggGameSearchModalComponent, {
+          data: {games: rep}
+        });
+        ref.afterClosed().pipe(take(1)).subscribe((thing?: Thing) => {
+          if (thing) {
+            this.gameForm.get('id').setValue(thing.attributes?.id);
+            this.gameSelected.next();
+          }
+        });
+      })
+    }
   }
 }

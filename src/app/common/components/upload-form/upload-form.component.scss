@@ -5,8 +5,10 @@
   justify-content: center;
 
   &.disabled {
-    opacity: 0.5;
-    pointer-events: none;
+    *:not(img) {
+      opacity: 0.5;
+      pointer-events: none;
+    }
   }
 
   img {
