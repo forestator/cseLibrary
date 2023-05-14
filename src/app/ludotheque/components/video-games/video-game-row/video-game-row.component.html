@@ -5,13 +5,12 @@
     <app-game-status class="badge" [game]="videoGame"></app-game-status>
     <!--<button mat-raised-button (click)="borrowGame(videoGame)">Réserver</button>-->
     <div class="" *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
-    <div class="" *ngIf="videoGame.category">Console: {{videoGame.category}}</div>
-    <app-futur-reservations [game]="videoGame"></app-futur-reservations>
+    <!--<app-futur-reservations [game]="videoGame"></app-futur-reservations>-->
   </div>
 </div>
 <ng-template #image>
   <div class="book-cover" *ngIf="videoGame.cover">
-    <img width="120" height="150"
+    <img width="120" height="200"
          [src]="videoGame.cover"
          [alt]="videoGame.name + ' cover'"/>
   </div>

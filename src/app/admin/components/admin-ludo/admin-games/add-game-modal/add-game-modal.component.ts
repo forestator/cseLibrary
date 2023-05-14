@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Game} from '../../../../../models/common.model';
+import {Game, LudoStatus} from '../../../../../models/common.model';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {OpenAiService} from '../../../../../services/open-ai.service';
@@ -38,6 +38,7 @@ export class AddGameModalComponent {
     };
 
     return this.fb.group({
+      ...game,
       ref: this.fb.control(game?.ref, [Validators.required, uniqRef]),
       name: this.fb.control(game?.name, Validators.required),
       description: this.fb.control(game?.description),
@@ -54,13 +55,13 @@ export class AddGameModalComponent {
       suggestedPlayAge: this.fb.control(game?.suggestedPlayAge),
       themes: this.fb.control(game?.themes),
       yearPublished: this.fb.control(game?.yearPublished),
+      status: this.fb.control(game?.status ?? LudoStatus.AVAILABLE),
     });
   }
 
   async addGame() {
     if (this.gameForm.valid) {
-      console.log(this.gameForm.value);
-      const result = await this.firebaseDatabaseService.addGame(this.gameForm.value);
+      const result = await this.firebaseDatabaseService.addGame(this.gameForm.value, this.gameForm.value.libraryId);
       console.log(result);
       this.cancel();
     }
