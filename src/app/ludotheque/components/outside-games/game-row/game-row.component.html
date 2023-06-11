@@ -6,7 +6,7 @@
       <!--<button mat-raised-button (click)="borrowGame(game)">Réserver</button>-->
     </div>
     <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
-    <app-futur-reservations [game]="game"></app-futur-reservations>
+    <!--<app-futur-reservations [game]="game"></app-futur-reservations>-->
   </div>
   <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && !(toolsService.mobilePhoneDisplay$ | async)"></ng-container>
 </div>
