@@ -8,7 +8,7 @@
       <div class="core-title">
         <div class="primary">Bibliotheque</div>
       </div>
-      <div class="core-resume">
+      <div class="core-resume lib-resume">
         <!-- fausse erreur  sur moment -->
         Prochaine commission : {{BiblioUtils.nextComission() | momentToDate}}
       </div>
@@ -23,7 +23,7 @@
       <div class="core-title">
         <div class="primary">Ludothèque</div>
       </div>
-      <div class="core-resume">
+      <div class="core-resume lib-resume">
         Prochaine comission : {{GamesUtils.getNextLudothequeOpening() | momentToDate}}
       </div>
     </div>
@@ -37,7 +37,7 @@
       <div class="core-title">
         <div class="primary">Bricolage</div>
       </div>
-      <div class="core-resume">
+      <div class="core-resume lib-resume">
         Prochaine comission : {{BricoUtils.nextComissionBricolage() | momentToDate}}
       </div>
     </div>
@@ -51,8 +51,9 @@
       <div class="core-title">
         <div class="primary">Sonothèque</div>
       </div>
-      <div class="core-resume">
-        Prochaine comission : {{SonoUtils.nextComission() | momentToDate}}
+      <div class="core-resume lib-resume">
+        <span>Enceintes, micros ...</span>
+        <span>Pour emprunter veuillez contacter un membre de la commission</span>
       </div>
     </div>
   </div>
@@ -65,9 +66,9 @@
       <div class="core-title">
         <div class="primary">Matériel Nautique</div>
       </div>
-      <div class="core-resume">
-        Paddle, kayak ... <br>
-        Pour emprunter veuillez contacter un membre de la cmomission
+      <div class="core-resume lib-resume">
+        <span>Paddle, kayak ...</span>
+        <span>Pour emprunter veuillez contacter un membre de la commission</span>
       </div>
     </div>
   </div>
@@ -80,9 +81,9 @@
       <div class="core-title">
         <div class="primary">Matériel Photo</div>
       </div>
-      <div class="core-resume">
-        Appareil photo, Vidéo projecteurs ... <br>
-        Pour emprunter veuillez contacter un membre de la commission
+      <div class="core-resume lib-resume">
+        <span>Appareil photo, Vidéo projecteurs ...</span>
+        <span>Pour emprunter veuillez contacter un membre de la commission</span>
       </div>
     </div>
   </div>
@@ -94,7 +95,7 @@
       <div class="core-title">
         <div class="primary">BDthèque</div>
       </div>
-      <div class="core-resume">
+      <div class="core-resume lib-resume">
         Retrouvez vos BD préférés
       </div>
     </div>

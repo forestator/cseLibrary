@@ -1,2 +1,3 @@
-<div *ngIf="display==='normal'" class="badge" [style.background-color]="bg" [style.color]="fg">{{txt}}</div>
-<div *ngIf="display==='small'" class="badge-small" [style.background-color]="bg" [style.color]="fg"></div>
+<!-- todo remove le txt disponible si on active les réservations -->
+<div *ngIf="display==='normal' && txt !== 'DISPONIBLE'" class="badge" [style.background-color]="bg" [style.color]="fg">{{txt}}</div>
+<div *ngIf="display==='small' && txt !== 'DISPONIBLE'" class="badge-small" [style.background-color]="bg" [style.color]="fg"></div>

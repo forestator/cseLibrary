@@ -17,6 +17,7 @@ export class SonoUtils {
     }
   }
 
+  // comission toujours avec un jour d'ouverture ?
   static nextComission(): Moment {
     const currentDate: Moment = moment();
     currentDate.day(4);
