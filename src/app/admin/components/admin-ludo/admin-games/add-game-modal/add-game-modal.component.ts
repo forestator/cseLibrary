@@ -61,7 +61,10 @@ export class AddGameModalComponent {
 
   async addGame() {
     if (this.gameForm.valid) {
-      const result = await this.firebaseDatabaseService.addGame(this.gameForm.value, this.gameForm.value.libraryId);
+      const game = this.gameForm.value;
+      // this is already updated by upload cover service
+      delete game.cover;
+      const result = await this.firebaseDatabaseService.updateGame(game, this.gameForm.value.libraryId);
       console.log(result);
       this.cancel();
     }

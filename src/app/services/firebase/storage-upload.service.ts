@@ -18,9 +18,9 @@ import {SonoDatabaseService} from "../../sonotheque/services/sono-database.servi
 })
 export class StorageUploadService {
 
-  private readonly gameBasePath = '/assets/games/covers/';
-  private readonly bricoBasePath = '/assets/tools/covers/';
-  private readonly sonoBasePath = '/assets/sonoItems/covers/';
+  private readonly gameBasePath = '/assets/games/covers';
+  private readonly bricoBasePath = '/assets/tools/covers';
+  private readonly sonoBasePath = '/assets/sonoItems/covers';
   constructor(private db: AngularFireDatabase,
               private firebaseDatabaseService: FirebaseDatabaseService,
               private bricolageDatabaseService: BricolageDatabaseService,

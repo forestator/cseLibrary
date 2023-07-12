@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 import {BoardGameCategory, Thing} from '../../../../../models/boardGame.model';
-import {Consoles} from '../../../../../models/videoGames.model';
-import {FormGroup} from '@angular/forms';
+import {Consoles, VideoGameType} from '../../../../../models/videoGames.model';
+import {FormControl, FormGroup} from '@angular/forms';
 import {GamesUtils} from '../../../../../models/gamesUtils';
 import {BGGService} from '../../../../../ludotheque/services/bgg.service';
 import {take} from 'rxjs';
@@ -39,6 +39,7 @@ export class AddGameFormComponent implements OnChanges {
         this.categoryOptions = Object.values(Consoles).map(vgCat => {
           return {id: vgCat, name: vgCat};
         });
+        this.gameForm.addControl('type', new FormControl(VideoGameType.GAME));
         break;
       case 'outsideGames':
         this.categoryOptions = [{id: category, name: 'Jeu plein air'}];
