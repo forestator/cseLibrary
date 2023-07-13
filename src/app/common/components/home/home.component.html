@@ -101,7 +101,7 @@
     </div>
   </div>
   <div class="core-body comission"
-       *ngIf="authentificationService.userAllowedToWrite$ | async">
+       *ngIf="authentificationService.userIsAdmin$ | async">
     <div class="core-header"
          (click)="navigateService.goToBorrowAdmin()">
       <div class="core-title">

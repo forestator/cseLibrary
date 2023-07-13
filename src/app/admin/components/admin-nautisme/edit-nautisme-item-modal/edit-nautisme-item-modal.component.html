@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Modifier un item nautique</h1>
+<div class="modal-container" mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Chercher un item</mat-label>
+    <input matInput placeholder="Paddle" [formControl]="searchText" [matAutocomplete]="auto" type="text">
+    <mat-autocomplete #auto="matAutocomplete"
+                      (optionSelected)="selectItemToModify($event)"
+                      autoActiveFirstOption>
+      <mat-option *ngFor="let option of filteredOptions$ | async"
+                  [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button (click)="cancel()" mat-button>Cancel</button>
+</div>

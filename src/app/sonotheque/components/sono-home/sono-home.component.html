@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="core-header"
-       *ngIf="authService.userAllowedToWrite$ | async">
+       *ngIf="(authService.userIsAdmin$ | async) || (authService.userIsSonoAdmin$ | async)">
     <div>
       <div class="core-title">
         <div class="primary">Administration sonothèque</div>

@@ -37,6 +37,7 @@ import {MaterielPhotoHomeComponent} from './photo/components/materiel-photo-home
 import {
   MaterielPhotoCategoryComponent
 } from './photo/components/materiel-photo-category/materiel-photo-category.component';
+import {AdminNautismeComponent} from './admin/components/admin-nautisme/admin-nautisme.component';
 
 const ludoRoutes: Routes = [
   {path: 'ludotheque', component: LudothequeComponent},
@@ -85,7 +86,7 @@ const adminRoutes: Routes = [
   },
   {
     path: 'admin/emprunts', component: EmpruntsHomeComponent,
-    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$],
+    canActivate: [() => inject(AuthentificationService).userIsAdmin$],
     resolve: {
       'users': () => inject(UserService).userList$,
       'ludotheque': () => inject(FirebaseDatabaseService).ludotheque$,
@@ -96,19 +97,23 @@ const adminRoutes: Routes = [
   },
   {
     path: 'ludotheque/admin/games', component: AdminGamesComponent,
-    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$]
+    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsLudoAdmin$]
   },
   {
     path: 'bricolage/admin/tools', component: AdminBricolageComponent,
-    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$]
+    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsBricolageAdmin$]
   },
   {
     path: 'sonotheque/admin/sonoItems', component: AdminSonothequeComponent,
-    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$]
+    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsSonoAdmin$]
+  },
+  {
+    path: 'nautisme/admin/nautismeItems', component: AdminNautismeComponent,
+    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsNautismeAdmin$]
   },
   {
     path: 'bibliotheque/admin/:libraryId', component: SettingsViewComponent,
-    canActivate: [() => inject(AuthentificationService).userAllowedToWrite$],
+    canActivate: [() => inject(AuthentificationService).userIsAdmin$],
   },
 ];
 

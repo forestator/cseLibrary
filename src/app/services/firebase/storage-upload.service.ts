@@ -12,6 +12,8 @@ import {Tool} from "../../bricolage/models/bricolage.model";
 import {BricolageDatabaseService} from "../../bricolage/services/bricolage-database.service";
 import {SonoItem} from "../../sonotheque/models/sono.model";
 import {SonoDatabaseService} from "../../sonotheque/services/sono-database.service";
+import {NautismeItem} from '../../nautisme/models/nautisme.model';
+import {NautismeDatabaseService} from '../../nautisme/services/nautisme-database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +23,12 @@ export class StorageUploadService {
   private readonly gameBasePath = '/assets/games/covers';
   private readonly bricoBasePath = '/assets/tools/covers';
   private readonly sonoBasePath = '/assets/sonoItems/covers';
+  private readonly nautismeBasePath = '/assets/nautisme/covers';
   constructor(private db: AngularFireDatabase,
               private firebaseDatabaseService: FirebaseDatabaseService,
               private bricolageDatabaseService: BricolageDatabaseService,
               private sonoDatabaseService: SonoDatabaseService,
+              private nautismeDatabaseService: NautismeDatabaseService,
               private storage: AngularFireStorage) { }
 
   uploadGameCover(fileUpload: FileUpload, gameToUpdate: VideoGame | Game | BoardGame): Observable<number> {
@@ -100,6 +104,25 @@ export class StorageUploadService {
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
           this.sonoDatabaseService.updateItemCover(item, fileUpload);
+        });
+      })
+    ).subscribe();
+
+    return uploadTask.percentageChanges();
+  }
+
+  uploadNautCover(fileUpload: FileUpload, item: NautismeItem) {
+    const fileExtension: string = fileUpload.name.split('.').pop();
+    const filePath: string = `${this.nautismeBasePath}/${item.name}.${fileExtension}`;
+    const storageRef = this.storage.ref(filePath);
+    const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, fileUpload.file);
+
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().pipe(take(1)).subscribe(downloadURL => {
+          fileUpload.url = downloadURL;
+          fileUpload.name = fileUpload.file.name;
+          this.nautismeDatabaseService.updateItemCover(item, fileUpload);
         });
       })
     ).subscribe();

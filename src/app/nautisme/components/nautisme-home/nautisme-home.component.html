@@ -13,12 +13,12 @@
     </div>
   </div>
   <div class="core-header"
-       *ngIf="authService.userAllowedToWrite$ | async">
+       *ngIf="(authService.userIsAdmin$ | async) || (authService.userIsNautismeAdmin$ | async)">
     <div>
       <div class="core-title">
         <div class="primary">Administration matériel nautique</div>
       </div>
-      <div class="core-body" [routerLink]="'admin/tools'">
+      <div class="core-body" [routerLink]="'admin/nautismeItems'">
         Gestion du matériel nautique
       </div>
     </div>

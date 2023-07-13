@@ -1,0 +1,43 @@
+<div>
+  <h1 mat-dialog-title>Ajouter un item</h1>
+  <div mat-dialog-content class="modal-container" [formGroup]="nautismeItemForm">
+    <div class="modal-part">
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="Jeux de lumière" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Référence</mat-label>
+        <input matInput placeholder="123" formControlName="id">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <div>
+        <mat-label>Status</mat-label>
+        <div>
+          <mat-button-toggle-group name="status" formControlName="status" aria-label="Font Style">
+            <mat-button-toggle value="AVAILABLE">Disponible</mat-button-toggle>
+            <mat-button-toggle value="HS">Hors-Service</mat-button-toggle>
+            <mat-button-toggle value="MISSING">Perdu</mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <app-upload-form [defaultImage]="data?.selectedItem?.cover ?? defaultNautImage"
+                     [disabled]="nautismeItemForm?.invalid"
+                     (fileToUploadReady)="upload($event)">
+    </app-upload-form>
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="cancel()" mat-button>Cancel</button>
+    <button (click)="addNautItem()"
+            [disabled]="nautismeItemForm?.invalid"
+            cdkFocusInitial
+            mat-button>
+      Confirm
+    </button>
+  </div>
+</div>
