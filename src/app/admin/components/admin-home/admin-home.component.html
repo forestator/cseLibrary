@@ -1,2 +1,3 @@
 <firebase-ui></firebase-ui>
+<p *ngIf="auth.currentUser$ | async">Login ok</p>
 <button (click)="logout()">logout</button>

@@ -46,4 +46,9 @@ export class BricolageDatabaseService {
     return this.db.object(`bricolage/tools/${tool.categoryId}/${tool.id}`)
       .update({cover: filteToUpload.url});
   }
+
+  async delete(tool: Tool) {
+    return this.db.object(`bricolage/tools/${tool.categoryId}/${tool.id}`)
+      .remove();
+  }
 }

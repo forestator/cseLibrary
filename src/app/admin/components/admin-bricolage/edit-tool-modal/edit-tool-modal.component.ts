@@ -29,7 +29,7 @@ export class EditToolModalComponent {
   }
   private _filter(value: string | Tool, userList: Array<Tool>): Array<Tool> {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
-    return userList.filter((item) => item.name.toLowerCase().includes(filterValue));
+    return userList.filter((item) => item.name.toLowerCase().includes(filterValue) || item.id.toString().includes(filterValue));
   }
 
   displayTool(option?: Tool) {

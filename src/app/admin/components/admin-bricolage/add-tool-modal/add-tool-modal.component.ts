@@ -1,10 +1,12 @@
 import {Component, Inject} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {BricoCategories, Tool, ToolStatus} from '../../../../bricolage/models/bricolage.model';
 import {BricolageDatabaseService} from '../../../../bricolage/services/bricolage-database.service';
 import {FileUpload} from "../../../../models/fileUpload.model";
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
+import {ConfirmationModal} from '../../emprunts/confirm-return-all-modal/confirmation-modal.component';
+import {take} from 'rxjs';
 
 @Component({
   selector: 'app-add-tool-modal',
@@ -19,6 +21,7 @@ export class AddToolModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AddToolModalComponent>,
+    private dialog: MatDialog,
     public fb: FormBuilder,
     private bricolageDatabaseService: BricolageDatabaseService,
     private uploadService: StorageUploadService,
@@ -61,5 +64,19 @@ export class AddToolModalComponent {
     if (this.toolForm.valid) {
       this.uploadService.uploadToolCover(fileUpload, this.toolForm.value as Tool);
     }
+  }
+
+  deleteTool(selectedItem: Tool) {
+    const dialogRef = this.dialog.open(ConfirmationModal, {
+      maxWidth: "400px",
+      data: {confirmText: `Veuillez confirmer la supression de : ${selectedItem.name}`}
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe(async dialogResult => {
+      if (dialogResult) {
+        await this.bricolageDatabaseService.delete(selectedItem);
+        this.cancel();
+      }
+    });
   }
 }

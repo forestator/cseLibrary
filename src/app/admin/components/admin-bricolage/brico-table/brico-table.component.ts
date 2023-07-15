@@ -10,7 +10,7 @@ import {MatSort} from '@angular/material/sort';
 })
 export class BricoTableComponent implements OnInit, OnChanges {
   @Input() tools: Array<Tool>;
-  displayedColumns = ['id', 'name', 'status'];
+  displayedColumns = ['id','cover',  'name', 'status'];
   dataSource?: MatTableDataSource<Tool>;
   @ViewChild(MatSort) sort!: MatSort;
 

@@ -9,7 +9,7 @@
                       autoActiveFirstOption>
       <mat-option *ngFor="let option of filteredOptions$ | async"
                   [value]="option">
-        {{displayTool(option)}}
+        <b>{{option.id}}</b>{{displayTool(option)}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

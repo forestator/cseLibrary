@@ -42,7 +42,6 @@
     <button *ngIf="data?.selectedItem"
             (click)="deleteItem(data!.selectedItem)"
             color="warn"
-            [disabled]="nautismeItemForm?.invalid"
             cdkFocusInitial
             mat-button>
       Delete
