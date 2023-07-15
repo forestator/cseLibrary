@@ -32,12 +32,20 @@
     </app-upload-form>
   </div>
   <div mat-dialog-actions>
-    <button (click)="cancel()" mat-button>Cancel</button>
     <button (click)="addNautItem()"
             [disabled]="nautismeItemForm?.invalid"
             cdkFocusInitial
             mat-button>
       Confirm
+    </button>
+    <button (click)="cancel()" mat-button>Cancel</button>
+    <button *ngIf="data?.selectedItem"
+            (click)="deleteItem(data!.selectedItem)"
+            color="warn"
+            [disabled]="nautismeItemForm?.invalid"
+            cdkFocusInitial
+            mat-button>
+      Delete
     </button>
   </div>
 </div>

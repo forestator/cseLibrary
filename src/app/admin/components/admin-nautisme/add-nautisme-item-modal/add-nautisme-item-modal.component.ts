@@ -1,10 +1,12 @@
 import {Component, Inject} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
 import {FileUpload} from '../../../../models/fileUpload.model';
 import {NautismeDatabaseService} from '../../../../nautisme/services/nautisme-database.service';
 import {NautismeItem, NautismeStatus} from '../../../../nautisme/models/nautisme.model';
+import {ConfirmationModal} from '../../emprunts/confirm-return-all-modal/confirmation-modal.component';
+import {take} from 'rxjs';
 
 @Component({
   selector: 'app-add-nautisme-item-modal',
@@ -18,6 +20,7 @@ export class AddNautismeItemModalComponent {
 
   constructor(
     public dialogRef: MatDialogRef<AddNautismeItemModalComponent>,
+    private dialog: MatDialog,
     public fb: FormBuilder,
     private nautismeDatabaseService: NautismeDatabaseService,
     private uploadService: StorageUploadService,
@@ -60,5 +63,19 @@ export class AddNautismeItemModalComponent {
     if (this.nautismeItemForm.valid) {
       this.uploadService.uploadNautCover(fileUpload, this.nautismeItemForm.value as NautismeItem);
     }
+  }
+
+  deleteItem(selectedItem: NautismeItem) {
+    const dialogRef = this.dialog.open(ConfirmationModal, {
+      maxWidth: "400px",
+      data: {confirmText: `Veuillez confirmer la supression de : ${selectedItem.name}`}
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe(async dialogResult => {
+      if (dialogResult) {
+        await this.nautismeDatabaseService.delete(selectedItem);
+        this.cancel();
+      }
+    });
   }
 }

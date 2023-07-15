@@ -71,6 +71,10 @@ html, body {
   vertical-align: middle;
   border-bottom: 2px solid darkgrey;
 
+  &.home-menu {
+    justify-content: flex-end;
+  }
+
   .tool {
     width: 100%;
   }
@@ -110,3 +114,13 @@ html, body {
     font-size: small;
   }
 }
+/* todo does not work in table issue with z-index ?
+.table-image-preview {
+  transition: transform .1s;
+
+  &:hover{
+    z-index: 10;
+    transform: scale(5);
+  }
+}
+*/

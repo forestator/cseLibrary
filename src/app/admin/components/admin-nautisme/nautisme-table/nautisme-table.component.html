@@ -8,6 +8,15 @@
       <app-badge [status]="element.status"></app-badge>
     </td>
   </ng-container>
+  <ng-container matColumnDef="cover">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo</th>
+    <td mat-cell *matCellDef="let element">
+      <img *ngIf="element.cover; else noPhoto"
+           class="table-image-preview"
+           [src]="element.cover" alt="photo" width="50px" height="100">
+      <ng-template #noPhoto>Pas de photo</ng-template>
+    </td>
+  </ng-container>
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom</th>

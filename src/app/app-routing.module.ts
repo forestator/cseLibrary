@@ -86,7 +86,7 @@ const adminRoutes: Routes = [
   },
   {
     path: 'admin/emprunts', component: EmpruntsHomeComponent,
-    canActivate: [() => inject(AuthentificationService).userIsAdmin$],
+    canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
     resolve: {
       'users': () => inject(UserService).userList$,
       'ludotheque': () => inject(FirebaseDatabaseService).ludotheque$,
@@ -97,23 +97,23 @@ const adminRoutes: Routes = [
   },
   {
     path: 'ludotheque/admin/games', component: AdminGamesComponent,
-    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsLudoAdmin$]
+    canActivate: [() =>inject(AuthentificationService).isUserLudoAdmin$]
   },
   {
     path: 'bricolage/admin/tools', component: AdminBricolageComponent,
-    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsBricolageAdmin$]
+    canActivate: [() => inject(AuthentificationService).isUserBricolageAdmin$]
   },
   {
     path: 'sonotheque/admin/sonoItems', component: AdminSonothequeComponent,
-    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsSonoAdmin$]
+    canActivate: [() => inject(AuthentificationService).isUserSonoAdmin$]
   },
   {
     path: 'nautisme/admin/nautismeItems', component: AdminNautismeComponent,
-    canActivate: [() => inject(AuthentificationService).userIsAdmin$ || inject(AuthentificationService).userIsNautismeAdmin$]
+    canActivate: [() => inject(AuthentificationService).isUserNautismeAdmin$]
   },
   {
     path: 'bibliotheque/admin/:libraryId', component: SettingsViewComponent,
-    canActivate: [() => inject(AuthentificationService).userIsAdmin$],
+    canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
   },
 ];
 

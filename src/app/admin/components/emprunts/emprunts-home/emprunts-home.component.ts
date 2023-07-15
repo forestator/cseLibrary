@@ -14,7 +14,7 @@ import {Tool} from "../../../../bricolage/models/bricolage.model";
 import {ChangeBorrowStatusModalComponent} from "../change-borrow-status/change-borrow-status-modal.component";
 import {MatDialog} from "@angular/material/dialog";
 import {MatTableDataSource} from "@angular/material/table";
-import {ConfirmReturnAllModalComponent} from "../confirm-return-all-modal/confirm-return-all-modal.component";
+import {ConfirmationModal} from "../confirm-return-all-modal/confirmation-modal.component";
 import {SonoItem} from "../../../../sonotheque/models/sono.model";
 
 @Component({
@@ -149,8 +149,9 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
   }
 
   confirmReturnSelectedBorrows() {
-    const dialogRef = this.dialog.open(ConfirmReturnAllModalComponent, {
+    const dialogRef = this.dialog.open(ConfirmationModal, {
       maxWidth: "400px",
+      data: {confirmText: 'Êtes vous certain de vouloir faire le retour de tous les items ?'}
     });
 
     dialogRef.afterClosed().subscribe(dialogResult => {

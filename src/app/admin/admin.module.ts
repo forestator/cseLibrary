@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {AdminHomeComponent} from './components/admin-home/admin-home.component';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {FirebaseUIModule} from 'firebaseui-angular';
@@ -39,9 +39,7 @@ import {AddToolModalComponent} from './components/admin-bricolage/add-tool-modal
 import {EditToolModalComponent} from './components/admin-bricolage/edit-tool-modal/edit-tool-modal.component';
 import {UploadGameComponent} from './components/admin-ludo/admin-games/upload-game/upload-game.component';
 import {EmpruntsHomeComponent} from './components/emprunts/emprunts-home/emprunts-home.component';
-import {
-  ConfirmReturnAllModalComponent
-} from './components/emprunts/confirm-return-all-modal/confirm-return-all-modal.component';
+import {ConfirmationModal} from './components/emprunts/confirm-return-all-modal/confirmation-modal.component';
 import {BorrowTableComponent} from './components/emprunts/borrow-table/borrow-table.component';
 import {AdminSonothequeComponent} from './components/admin-sonotheque/admin-sonotheque.component';
 import {SonoTableComponent} from './components/admin-sonotheque/sono-table/sono-table.component';
@@ -72,10 +70,11 @@ import {NautismeTableComponent} from './components/admin-nautisme/nautisme-table
     LudoTableComponent,
     AddEmployeeDialogComponent,
     ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmReturnAllModalComponent, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent
+    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmationModal, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent
   ],
   exports: [
-    AdminMenuComponent
+    AdminMenuComponent,
+    ConfirmationModal
   ],
   imports: [
     CommonModule,
@@ -102,6 +101,7 @@ import {NautismeTableComponent} from './components/admin-nautisme/nautisme-table
     LudothequeModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    NgOptimizedImage,
   ]
 })
 export class AdminModule {

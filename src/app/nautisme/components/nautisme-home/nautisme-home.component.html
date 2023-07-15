@@ -12,8 +12,7 @@
       <app-nautisme-item-row [item]="item" [index]="index"></app-nautisme-item-row>
     </div>
   </div>
-  <div class="core-header"
-       *ngIf="(authService.userIsAdmin$ | async) || (authService.userIsNautismeAdmin$ | async)">
+  <div class="core-header" *ngIf="authService.isUserNautismeAdmin$ | async">
     <div>
       <div class="core-title">
         <div class="primary">Administration matériel nautique</div>

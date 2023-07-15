@@ -1,7 +1,7 @@
 <div *ngIf="newBooks$ | async as libraryNew" class="new-page fadein">
   <div class="title">
     Nouveautés
-    <mat-icon (click)="exportNewsAsPDF()" *ngIf="auth.userIsAdmin$ | async">picture_as_pdf</mat-icon>
+    <mat-icon (click)="exportNewsAsPDF()" *ngIf="auth.isUserSuperAdmin | async">picture_as_pdf</mat-icon>
   </div>
   <div class="core-page" *ngFor="let data of libraryNew">
     <div id="new" class="core-body" *ngIf="data.books.length > 0">

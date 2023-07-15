@@ -30,7 +30,7 @@
     </div>
   </div>
   <div class="core-header"
-       *ngIf="authService.userIsAdmin$ | async">
+       *ngIf="authService.isUserSuperAdmin | async">
     <div>
       <div class="core-title">
         <div class="primary">Administration matériel photo</div>

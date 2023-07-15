@@ -9,7 +9,7 @@ import User = firebase.User;
 })
 export class AuthentificationService {
 
-  readonly adminUid = [
+  readonly adminUids = [
     'h0F4SqDlGWXgHAjesEQRzExYN3c2',
     'bcCO7BDwU1hvnDjKMNb2GvRwI1Y2',
     'UCugwOtt4cVGffoIkzoxYJpgQe93'
@@ -20,29 +20,29 @@ export class AuthentificationService {
   adminSonoUid = 'h1YOMupBxBTdKBAuCGJFryqE4n72';
 
   currentUser$: Observable<User | null> = this.auth.user;
-  userIsAdmin$: Observable<boolean> = this.currentUser$.pipe(
+  isUserSuperAdmin: Observable<boolean> = this.currentUser$.pipe(
     map((user) => {
-      return this.adminUid.includes(user?.uid);
+      return this.adminUids.includes(user?.uid);
     })
   );
-  userIsBricolageAdmin$: Observable<boolean> = this.currentUser$.pipe(
+  isUserBricolageAdmin$: Observable<boolean> = this.currentUser$.pipe(
     map((user) => {
-      return this.adminBricoUid === user?.uid;
+      return this.adminBricoUid === user?.uid || this.adminUids.includes(user?.uid);
     })
   );
-  userIsLudoAdmin$: Observable<boolean> = this.currentUser$.pipe(
+  isUserLudoAdmin$: Observable<boolean> = this.currentUser$.pipe(
     map((user) => {
-      return this.adminLudoUid === user?.uid;
+      return this.adminLudoUid === user?.uid || this.adminUids.includes(user?.uid);
     })
   );
-  userIsNautismeAdmin$: Observable<boolean> = this.currentUser$.pipe(
+  isUserNautismeAdmin$: Observable<boolean> = this.currentUser$.pipe(
     map((user) => {
-      return this.adminNautismeUid === user?.uid;
+      return this.adminNautismeUid === user?.uid || this.adminUids.includes(user?.uid);
     })
   );
-  userIsSonoAdmin$: Observable<boolean> = this.currentUser$.pipe(
+  isUserSonoAdmin$: Observable<boolean> = this.currentUser$.pipe(
     map((user) => {
-      return this.adminSonoUid === user?.uid;
+      return this.adminSonoUid === user?.uid || this.adminUids.includes(user?.uid);
     })
   );
 

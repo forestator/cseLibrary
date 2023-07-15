@@ -25,7 +25,7 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content id="top" #top>
-    <mat-toolbar class="library-menu">
+    <mat-toolbar class="library-menu" [class.home-menu]="showHomeMenu">
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
               *ngIf="(toolService.mobilePhoneDisplay$ | async) &&
               (showAdmin || showLudothequeMenu || showBibliothequeMenu || showBricolageMenu)">
@@ -36,6 +36,9 @@
       <app-ludo-menu class="tool" *ngIf="showLudothequeMenu && !showAdmin"></app-ludo-menu>
       <app-brico-menu class="tool" [allTools]="allTools$ | async" *ngIf="showBricolageMenu && !showAdmin"></app-brico-menu>
       <app-admin-menu class="tool" *ngIf="showAdmin"></app-admin-menu>
+      <ng-container *ngIf="showHomeMenu">
+        <mat-icon [routerLink]="'/iWantToConfigureThisAwesomeApp'">login</mat-icon>
+      </ng-container>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

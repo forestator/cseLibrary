@@ -41,8 +41,7 @@
       </div>
     </div>
   </div>
-  <div class="core-header"
-       *ngIf="(authService.userIsAdmin$ | async) || (authService.userIsLudoAdmin$ | async)">
+  <div class="core-header" *ngIf="authService.isUserLudoAdmin$ | async">
     <div>
       <div class="core-title">
         <div class="primary">Administration ludotheque</div>

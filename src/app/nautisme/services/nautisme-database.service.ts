@@ -32,4 +32,8 @@ export class NautismeDatabaseService {
     return this.db.object(`nautisme/items/${item.id}`)
       .update({cover: fileUpload.url});
   }
+
+  delete(item: NautismeItem) {
+    return this.db.object(`nautisme/items/${item.id}`).remove();
+  }
 }

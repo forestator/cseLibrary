@@ -19,22 +19,25 @@ import {NautismeDatabaseService} from '../../nautisme/services/nautisme-database
   providedIn: 'root'
 })
 export class StorageUploadService {
+  private readonly basePath = {
+    game: '/assets/games/covers',
+    brico: '/assets/tools/covers',
+    sono: '/assets/sonoItems/covers',
+    nautisme: '/assets/nautisme/covers'
+  };
 
-  private readonly gameBasePath = '/assets/games/covers';
-  private readonly bricoBasePath = '/assets/tools/covers';
-  private readonly sonoBasePath = '/assets/sonoItems/covers';
-  private readonly nautismeBasePath = '/assets/nautisme/covers';
-  constructor(private db: AngularFireDatabase,
-              private firebaseDatabaseService: FirebaseDatabaseService,
-              private bricolageDatabaseService: BricolageDatabaseService,
-              private sonoDatabaseService: SonoDatabaseService,
-              private nautismeDatabaseService: NautismeDatabaseService,
-              private storage: AngularFireStorage) { }
+  constructor(
+    private db: AngularFireDatabase,
+    private firebaseDatabaseService: FirebaseDatabaseService,
+    private bricolageDatabaseService: BricolageDatabaseService,
+    private sonoDatabaseService: SonoDatabaseService,
+    private nautismeDatabaseService: NautismeDatabaseService,
+    private storage: AngularFireStorage
+  ) {
+  }
 
-  uploadGameCover(fileUpload: FileUpload, gameToUpdate: VideoGame | Game | BoardGame): Observable<number> {
-    const libraryId: string = GamesUtils.libraryIdOfGame(gameToUpdate);
-    const fileExtension: string = fileUpload.name.split('.').pop();
-    const filePath: string = `${this.gameBasePath}/${libraryId}/${gameToUpdate.name}.${fileExtension}`;
+  uploadCover(fileUpload: FileUpload, basePath: string, filePath: string,
+              itemToUpdate: Game | Tool | SonoItem | NautismeItem): Observable<number> {
     const storageRef = this.storage.ref(filePath);
     const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, fileUpload.file);
 
@@ -43,7 +46,7 @@ export class StorageUploadService {
         storageRef.getDownloadURL().pipe(take(1)).subscribe(downloadURL => {
           fileUpload.url = downloadURL;
           fileUpload.name = fileUpload.file.name;
-          this.firebaseDatabaseService.updateGameImage(gameToUpdate, fileUpload);
+          this.updateItemCover(basePath, fileUpload, itemToUpdate);
         });
       })
     ).subscribe();
@@ -51,9 +54,25 @@ export class StorageUploadService {
     return uploadTask.percentageChanges();
   }
 
+  private updateItemCover(basePath: string, fileUpload: FileUpload, itemToUpdate: Game | Tool | SonoItem | NautismeItem): void {
+    switch (basePath) {
+      case this.basePath.game:
+        this.firebaseDatabaseService.updateGameImage(itemToUpdate as Game, fileUpload);
+        break;
+      case this.basePath.brico:
+        this.bricolageDatabaseService.updateToolCover(itemToUpdate as Tool, fileUpload);
+        break;
+      case this.basePath.sono:
+        this.sonoDatabaseService.updateItemCover(itemToUpdate as SonoItem, fileUpload);
+        break;
+      case this.basePath.nautisme:
+        this.nautismeDatabaseService.updateItemCover(itemToUpdate as NautismeItem, fileUpload);
+        break;
+    }
+  }
+
   getFiles(numberItems: number): AngularFireList<FileUpload> {
-    return this.db.list(this.gameBasePath, ref =>
-      ref.limitToLast(numberItems));
+    return this.db.list(this.basePath.game, ref => ref.limitToLast(numberItems));
   }
 
   deleteFile(fileUpload: FileUpload): void {
@@ -65,68 +84,44 @@ export class StorageUploadService {
   }
 
   private deleteFileDatabase(key: string): Promise<void> {
-    return this.db.list(this.gameBasePath).remove(key);
+    return this.db.list(this.basePath.game).remove(key);
   }
 
   private deleteFileStorage(name: string): void {
-    const storageRef = this.storage.ref(this.gameBasePath);
+    const storageRef = this.storage.ref(this.basePath.game);
     storageRef.child(name).delete();
   }
 
+  private getFileExtenion(fileUpload: FileUpload) {
+    return fileUpload.name.split('.').pop();
+  }
+
+  uploadGameCover(fileUpload: FileUpload, gameToUpdate: VideoGame | Game | BoardGame): Observable<number> {
+    const libraryId: string = GamesUtils.libraryIdOfGame(gameToUpdate);
+    const fileExtension = this.getFileExtenion(fileUpload);
+    const filePath: string = `${this.basePath.game}/${libraryId}/${gameToUpdate.name}.${fileExtension}`;
+
+    return this.uploadCover(fileUpload, this.basePath.game, filePath, gameToUpdate);
+  }
+
   uploadToolCover(fileUpload: FileUpload, tool: Tool): Observable<number> {
-    const fileExtension: string = fileUpload.name.split('.').pop();
-    const filePath: string = `${this.bricoBasePath}/${tool.categoryId}/${tool.name}.${fileExtension}`;
-    const storageRef = this.storage.ref(filePath);
-    const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, fileUpload.file);
+    const fileExtension = this.getFileExtenion(fileUpload);
+    const filePath: string = `${this.basePath.brico}/${tool.categoryId}/${tool.name}.${fileExtension}`;
 
-    uploadTask.snapshotChanges().pipe(
-      finalize(() => {
-        storageRef.getDownloadURL().pipe(take(1)).subscribe(downloadURL => {
-          fileUpload.url = downloadURL;
-          fileUpload.name = fileUpload.file.name;
-          this.bricolageDatabaseService.updateToolCover(tool, fileUpload);
-        });
-      })
-    ).subscribe();
-
-    return uploadTask.percentageChanges();
+    return this.uploadCover(fileUpload, this.basePath.brico, filePath, tool);
   }
 
   uploadSonoItemCover(fileUpload: FileUpload, item: SonoItem) {
-    const fileExtension: string = fileUpload.name.split('.').pop();
-    const filePath: string = `${this.sonoBasePath}/${item.category}/${item.name}.${fileExtension}`;
-    const storageRef = this.storage.ref(filePath);
-    const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, fileUpload.file);
+    const fileExtension = this.getFileExtenion(fileUpload);
+    const filePath: string = `${this.basePath.sono}/${item.category}/${item.name}.${fileExtension}`;
 
-    uploadTask.snapshotChanges().pipe(
-      finalize(() => {
-        storageRef.getDownloadURL().pipe(take(1)).subscribe(downloadURL => {
-          fileUpload.url = downloadURL;
-          fileUpload.name = fileUpload.file.name;
-          this.sonoDatabaseService.updateItemCover(item, fileUpload);
-        });
-      })
-    ).subscribe();
-
-    return uploadTask.percentageChanges();
+    return this.uploadCover(fileUpload, this.basePath.sono, filePath, item);
   }
 
   uploadNautCover(fileUpload: FileUpload, item: NautismeItem) {
-    const fileExtension: string = fileUpload.name.split('.').pop();
-    const filePath: string = `${this.nautismeBasePath}/${item.name}.${fileExtension}`;
-    const storageRef = this.storage.ref(filePath);
-    const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, fileUpload.file);
+    const fileExtension = this.getFileExtenion(fileUpload);
+    const filePath: string = `${this.basePath.nautisme}/${item.name}.${fileExtension}`;
 
-    uploadTask.snapshotChanges().pipe(
-      finalize(() => {
-        storageRef.getDownloadURL().pipe(take(1)).subscribe(downloadURL => {
-          fileUpload.url = downloadURL;
-          fileUpload.name = fileUpload.file.name;
-          this.nautismeDatabaseService.updateItemCover(item, fileUpload);
-        });
-      })
-    ).subscribe();
-
-    return uploadTask.percentageChanges();
+    return this.uploadCover(fileUpload, this.basePath.nautisme, filePath, item);
   }
 }
