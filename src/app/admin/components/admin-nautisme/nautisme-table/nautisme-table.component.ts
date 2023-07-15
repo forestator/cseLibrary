@@ -10,7 +10,7 @@ import {MatSort} from '@angular/material/sort';
 })
 export class NautismeTableComponent {
 
-  @Input({required: true}) nautItems: NautismeItem[];
+  @Input() nautItems: NautismeItem[];
   displayedColumns = ['id', 'cover', 'name', 'status'];
   dataSource?: MatTableDataSource<NautismeItem>;
   @ViewChild(MatSort) sort!: MatSort;
