@@ -46,4 +46,9 @@ export class SonoDatabaseService {
     return this.db.object(`sonotheque/items/${item.category}/${item.id}`)
       .update({cover: fileUpload.url});
   }
+
+  async delete(item: SonoItem) {
+    return this.db.object(`sonotheque/items/${item.category}/${item.id}`)
+      .remove();
+  }
 }

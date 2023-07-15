@@ -1,10 +1,12 @@
 import {Component, Inject} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {StorageUploadService} from "../../../../services/firebase/storage-upload.service";
 import {FileUpload} from "../../../../models/fileUpload.model";
 import {SonoCategory, SonoItem, SonoStatus} from "../../../../sonotheque/models/sono.model";
 import {SonoDatabaseService} from "../../../../sonotheque/services/sono-database.service";
+import {ConfirmationModal} from '../../emprunts/confirm-return-all-modal/confirmation-modal.component';
+import {take} from 'rxjs';
 
 @Component({
   selector: 'app-add-sono-item-modal',
@@ -20,6 +22,7 @@ export class AddSonoItemModalComponent {
   constructor(
     public dialogRef: MatDialogRef<AddSonoItemModalComponent>,
     public fb: FormBuilder,
+    private dialog: MatDialog,
     private sonoDatabaseService: SonoDatabaseService,
     private uploadService: StorageUploadService,
     @Inject(MAT_DIALOG_DATA) public data: {
@@ -62,5 +65,19 @@ export class AddSonoItemModalComponent {
     if (this.sonoItemForm.valid) {
       this.uploadService.uploadSonoItemCover(fileUpload, this.sonoItemForm.value as SonoItem);
     }
+  }
+
+  deleteItem(selectedItem: SonoItem) {
+    const dialogRef = this.dialog.open(ConfirmationModal, {
+      maxWidth: "400px",
+      data: {confirmText: `Veuillez confirmer la supression de : ${selectedItem.name}`}
+    });
+
+    dialogRef.afterClosed().pipe(take(1)).subscribe(async dialogResult => {
+      if (dialogResult) {
+        await this.sonoDatabaseService.delete(selectedItem);
+        this.cancel();
+      }
+    });
   }
 }

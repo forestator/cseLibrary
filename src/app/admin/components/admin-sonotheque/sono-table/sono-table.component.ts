@@ -10,7 +10,7 @@ import {SonoItem} from "../../../../sonotheque/models/sono.model";
 })
 export class SonoTableComponent implements  OnInit, OnChanges {
   @Input({required: true}) sonoItems: Array<SonoItem>;
-  displayedColumns = ['id', 'name', 'status'];
+  displayedColumns = ['id', 'cover', 'name', 'status'];
   dataSource?: MatTableDataSource<SonoItem>;
   @ViewChild(MatSort) sort!: MatSort;
 
