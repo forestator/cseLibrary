@@ -20,3 +20,7 @@ export interface Borrow {
 export interface BorrowForUser {
   [userId: string]: Borrow[];
 }
+
+export interface BorrowByComission extends  Borrow {
+  userId: string;
+}

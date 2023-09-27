@@ -4,7 +4,9 @@
       <app-board-game-row
         [boardGame]="bg"
         [selectedBoardGameId]="selectedBoardGameId"
+        [borrowsInfo]="(ludoBorrowInformations$ | async) | filterBorrowById: bg.ref"
         [index]="index"></app-board-game-row>
+      {{(ludoBorrowInformations$ | async) | filterBorrowById: bg.ref}}
     </div>
   </ng-container>
 </div>

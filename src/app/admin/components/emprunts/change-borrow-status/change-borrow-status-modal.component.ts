@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Comissions, Game, LudoStatus} from '../../../../models/common.model';
+import {Comissions, Game} from '../../../../models/common.model';
 import {CseUser} from '../../../../models/users.model';
 import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 import moment, {Moment} from 'moment';
@@ -10,6 +10,8 @@ import {Tool} from "../../../../bricolage/models/bricolage.model";
 import {Book} from "../../../../models/author.model";
 import {BorrowDataService} from "../../../services/borrow-data.service";
 import {BricoUtils} from "../../../../bricolage/models/brico-utils";
+import {map, Observable} from 'rxjs';
+import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 
 interface RangeForm {
   start: FormControl<Date>;
@@ -23,24 +25,35 @@ interface RangeForm {
 })
 export class ChangeBorrowStatusModalComponent {
 
-  statusOptions: Array<string>;
-  newStatus: LudoStatus;
   range: FormGroup<RangeForm>;
+  employeeSearch: FormControl<string> = new FormControl<string>('');
+  filteredOptionsUser$?: Observable<Array<CseUser>>;
   dateFilter: DateFilterFn<Date>;
+  selectedUSer?: CseUser;
 
   constructor(
     public dialogRef: MatDialogRef<ChangeBorrowStatusModalComponent>,
     public borrowDataService: BorrowDataService,
     @Inject(MAT_DIALOG_DATA) public data: {
-      user: CseUser,
+      users: CseUser[],
       comission: Comissions,
       object: Book | Tool | Game
     },
   ) {
-    this.statusOptions = [LudoStatus.EMPRUNTE, LudoStatus.AVAILABLE];
-    this.newStatus = this.data.object.status === LudoStatus.AVAILABLE ?
-      LudoStatus.EMPRUNTE : LudoStatus.AVAILABLE;
     this.initDateFormGroup();
+
+    this.filteredOptionsUser$ = this.employeeSearch.valueChanges.pipe(
+      map((value) => this._filterUser(value || '', this.data.users)),
+    );
+  }
+
+  private _filterUser(value: string | CseUser, userList: Array<CseUser>): Array<CseUser> {
+    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.firstName.toLowerCase();
+    return userList.filter((item) => {
+      const matchFirstName: boolean = item.firstName.toLowerCase().includes(filterValue);
+      const matchLastName: boolean = item.firstName.toLowerCase().includes(filterValue);
+      return matchFirstName || matchLastName;
+    });
   }
 
   cancel(): void {
@@ -48,9 +61,9 @@ export class ChangeBorrowStatusModalComponent {
   }
 
   borrowGame() {
-    this.borrowDataService.setNewBorrow(
+    this.borrowDataService.setReservedStatus(
       this.data.object,
-      this.data.user,
+      this.selectedUSer,
       this.data.comission,
       moment(this.range.get('start').value).locale('fr').format('L'),
       moment(this.range.get('end').value).locale('fr').format('L'));
@@ -70,22 +83,12 @@ export class ChangeBorrowStatusModalComponent {
       return forbidden ? {tooLongRange: {value: days}} : null;
     };
 
-    const isNotReserved: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-      /* todo if (this.data.game.borrowList) {
-         const reserved = GamesUtils.gameIsReservedOrEmprunte(this.data.game.borrowList, control.value);
-         return reserved ? {reserved: {value: {start: reserved.startDate, end: reserved.endDate}}} : null;
-       } else {*/
-      return null;
-      //}
-    };
-
     this.range = new FormGroup({
-      start: new FormControl<Date>(nextLudothequeOpening.toDate(), isNotReserved),
-      end: new FormControl<Date>(nextLudothequeOpening.add(14, 'days').toDate(), isNotReserved),
+      start: new FormControl<Date>(nextLudothequeOpening.toDate()),
+      end: new FormControl<Date>(nextLudothequeOpening.add(14, 'days').toDate()),
     }, {validators: validRange});
 
     this.range.updateValueAndValidity();
-    console.log(this.range);
   }
 
   private nextComissionOpening(comission: Comissions) {
@@ -137,5 +140,13 @@ export class ChangeBorrowStatusModalComponent {
           return day === 1 && past;
         };
     }
+  }
+
+  displayUser(user: CseUser): string {
+    return user ? `${user.firstName} ${user.lastName}` : '';
+  }
+
+  selectUser($event: MatAutocompleteSelectedEvent) {
+    this.selectedUSer = $event.option.value;
   }
 }

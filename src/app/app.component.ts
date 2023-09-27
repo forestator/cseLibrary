@@ -62,44 +62,35 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.showPhotoMenu = url.includes(Comissions.PHOTO);
     this.showAdmin = url.includes('admin');
     this.showBoardGameFilters = url.includes('boardGames/');
-    this.showHomeMenu = url === '/';
 
     if (url.includes(Comissions.NAUTISME)) {
       this.menu = [];
-    }
-
-    if (this.showLudothequeMenu) {
+    } else if (this.showLudothequeMenu) {
       this.menu = [
         {
           name: 'Jeux de société', route: 'ludotheque/boardGames',
           subList: Object.values(BoardGameCategory).map(cat => {
-            return {name: cat, route: `ludotheque/boardGames/${cat}`};
+            return {name: cat.toString(), route: `ludotheque/boardGames/${cat}`};
           })
         },
         {
           name: 'Jeux vidéos', route: 'ludotheque/videoGames',
           subList: Object.values(Consoles).map(cat => {
-            return {name: cat, route: `ludotheque/videoGames/${cat}`};
+            return {name: cat.toString(), route: `ludotheque/videoGames/${cat}`};
           })
         },
         {name: 'Grand Jeux', route: 'ludotheque/outsideGames'},
         {name: 'Nouveautés ludo', route: 'ludotheque/new'},
       ];
-    }
-
-    if (this.showSonothequeMenu) {
+    } else if (this.showSonothequeMenu) {
       this.menu = Object.values(SonoCategory).map(cat => {
-        return {name: cat, route: `sonotheque/${cat}`};
+        return {name: cat.toString(), route: `sonotheque/${cat}`};
       });
-    }
-
-    if (this.showPhotoMenu) {
+    } else if (this.showPhotoMenu) {
       this.menu = Object.values(PhotoCategory).map(cat => {
-        return {name: cat === PhotoCategory.APPAREIL_PHOTO ? 'Appareils photo' : cat, route: `photo/${cat}`};
+        return {name: cat === PhotoCategory.APPAREIL_PHOTO ? 'Appareils photo' : cat.toString(), route: `photo/${cat}`};
       });
-    }
-
-    if (this.showBibliothequeMenu) {
+    } else if (this.showBibliothequeMenu) {
       this.menu = [
         {name: 'Imaginaire', route: `bibliotheque/${Libraries.IMAGINAIRE}`},
         {name: 'Inclassable', route: `bibliotheque/${Libraries.INCLASSABLE}`},
@@ -107,13 +98,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         {name: 'Adultes', route: `bibliotheque/${Libraries.LITTERATURE_ADULTE}`},
         {name: 'Nouveautés', route: `bibliotheque/new`},
       ];
-    }
-
-    if (this.showHomeMenu) {
-      this.menu = Object.values(Comissions).map((com) => ({name: com, route: com}));
-    }
-
-    if (this.showBricolageMenu) {
+    } else if (this.showBricolageMenu) {
       if (!this.allTools$) {
         this.allTools$ = this.bricolageDatabaseService.allTools$;
       }
@@ -131,6 +116,8 @@ export class AppComponent implements OnInit, AfterViewInit {
         {name: 'Remorques', route: `bricolage/${BricoCategories.REMORQUES}`},
         {name: 'Divers', route: `bricolage/${BricoCategories.DIVERS}`},
       ];
+    } else {
+      this.menu = Object.values(Comissions).map((com) => ({name: com.toString(), route: com.toString()}));
     }
   }
 

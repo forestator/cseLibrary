@@ -53,6 +53,7 @@ import {
   FilterBoardGamesComponent
 } from './components/board-games/components/filter-board-games/filter-board-games.component';
 import {AdvancedBoardGameFilterPipe} from './pipes/advanced-board-game-filter.pipe';
+import {FilterBorrowByIDPipe} from './pipes/filter-borrow-by-id.pipe';
 
 @NgModule({
   declarations: [
@@ -79,8 +80,9 @@ import {AdvancedBoardGameFilterPipe} from './pipes/advanced-board-game-filter.pi
     UserByIdPipe,
     FilterBoardGamesComponent,
     AdvancedBoardGameFilterPipe,
+    FilterBorrowByIDPipe
   ],
-  exports: [LudoMenuComponent, GameStatusComponent, FilterBoardGamesComponent],
+  exports: [LudoMenuComponent, GameStatusComponent, FilterBoardGamesComponent, FilterBorrowByIDPipe],
   imports: [
     CommonModule,
     MatIconModule,

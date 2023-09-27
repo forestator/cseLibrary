@@ -5,7 +5,11 @@
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
       <app-game-status class="badge" [game]="boardGame"></app-game-status>
-      <!--<button mat-raised-button (click)="borrowGame(boardGame)">Réserver</button>-->
+      <div *ngIf="borrowsInfo?.status === borrowStatus.EMPRUNTE">Emprunté</div>
+      <div *ngIf="borrowsInfo?.status === borrowStatus.LATE">Retour en retard</div>
+      <div *ngIf="borrowsInfo?.status === borrowStatus.RESERVED">Réservé</div>
+      <button mat-raised-button *ngIf="!borrowsInfo || borrowsInfo?.status === borrowStatus.RETURNED"
+              (click)="reserveGame(boardGame)">Réserver</button>
     </div>
     <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
     <div class="book-info" *ngIf="boardGame.weight">Poids: {{boardGame.weight}}g</div>

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable, take} from "rxjs";
+import {map, Observable, take} from "rxjs";
 import {AngularFireDatabase} from "@angular/fire/compat/database";
-import {Borrow, BorrowStatus} from "../models/borrow.model";
+import {Borrow, BorrowByComission, BorrowForUser, BorrowStatus} from "../models/borrow.model";
 import {Book} from "../../models/author.model";
 import {Tool} from "../../bricolage/models/bricolage.model";
 import {Comissions, Game} from "../../models/common.model";
@@ -13,15 +13,19 @@ import moment from "moment/moment";
 })
 export class BorrowDataService {
 
+  allBorrows$: Observable<BorrowForUser>;
+
   constructor(private db: AngularFireDatabase) {
+    this.allBorrows$ = this.db.object<BorrowForUser>('borrows').valueChanges()
+      .pipe(take(1));
   }
 
   borrowForUser(userId: string): Observable<Borrow[]> {
     return this.db.object<Borrow[]>(`borrows/${userId}`).valueChanges();
   }
 
-  setNewBorrow(object: Book | Tool | Game, user: CseUser, comission: Comissions, start: string, end: string) {
-    const newBorrow: Borrow = {item: object, comission, startDate: start, endDate: end, status: BorrowStatus.EMPRUNTE}
+  setReservedStatus(object: Book | Tool | Game, user: CseUser, comission: Comissions, start: string, end: string) {
+    const newBorrow: Borrow = {item: object, comission, startDate: start, endDate: end, status: BorrowStatus.RESERVED};
     this.borrowForUser(user.id).pipe(take(1)).subscribe(userBorrows => {
       if (!userBorrows) {
         this.db.object(`borrows/${user.id}`).set([newBorrow]);
@@ -38,6 +42,20 @@ export class BorrowDataService {
     const index = allBorrowsOfUser.indexOf(selectedBorrow);
     const endDate: string = moment().locale('fr').format('DD/MM/YYYY');
     console.log(index);
-    this.db.object(`borrows/${user.id}/${index}`).update({status: BorrowStatus.RETURNED, endDate });
+    this.db.object(`borrows/${user.id}/${index}`).update({status: BorrowStatus.RETURNED, endDate});
+  }
+
+  getBorrowsOfComission(comission: Comissions): Observable<BorrowByComission> {
+    return this.allBorrows$.pipe(
+      map(borrowForUsers => {
+        return Object.keys(borrowForUsers)
+          .map(userId => borrowForUsers[userId].map(borrow => ({userId, ...borrow})))
+          .flat()
+          .filter(borrowByComission => borrowByComission.comission === comission)
+          .filter(borrowByComission => moment(borrowByComission.endDate).isAfter(moment()));
+      }),
+        // only last SHOULD WORK MF to verify
+        map(borrowByComission => borrowByComission[borrowByComission.length - 1])
+    )
   }
 }

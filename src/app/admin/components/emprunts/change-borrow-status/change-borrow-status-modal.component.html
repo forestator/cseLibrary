@@ -1,8 +1,19 @@
 <h1 mat-dialog-title>Emprunt du jeu {{data.object.name}}</h1>
 <div class="modal-container" mat-dialog-content>
   <mat-form-field appearance="fill">
+    <mat-label>Réservation pour :</mat-label>
+    <input [formControl]="employeeSearch" [matAutocomplete]="user" matInput type="text">
+    <mat-autocomplete #user="matAutocomplete" (optionSelected)="selectUser($event)"
+                      [displayWith]="displayUser"
+                      autoActiveFirstOption>
+      <mat-option *ngFor="let option of filteredOptionsUser$ | async"
+                  [value]="option">
+        {{displayUser(option)}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Période d'emprunt</mat-label>
-    <!--suppress TypeScriptValidateTypes -->
     <mat-date-range-input
       [dateFilter]="dateFilter" [formGroup]="range" [rangePicker]="picker">
       <input matStartDate [readonly]="true"
@@ -27,7 +38,7 @@
   <button (click)="cancel()" mat-button>Cancel</button>
   <button (click)="borrowGame()"
           (keyup.enter)="borrowGame()"
-          [disabled]="range.invalid"
+          [disabled]="range.invalid && !!selectedUSer"
           cdkFocusInitial
           mat-button>
     Confirm

@@ -101,6 +101,10 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
   private _filterObject(value: string | Tool | Book | Game, allObjectCse: Array<Tool | Book | Game | SonoItem>) {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name;
     return allObjectCse.filter((item) => {
+      if (this.selectedComission === Comissions.BRICOLAGE) {
+        const tool = item as Tool;
+        return tool.name.toLowerCase().includes(filterValue) || tool.id.toString() === filterValue;
+      }
       return item.name.toLowerCase().includes(filterValue);
     });
   }

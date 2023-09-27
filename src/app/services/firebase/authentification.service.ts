@@ -12,7 +12,8 @@ export class AuthentificationService {
   readonly adminUids = [
     'h0F4SqDlGWXgHAjesEQRzExYN3c2',
     'bcCO7BDwU1hvnDjKMNb2GvRwI1Y2',
-    'UCugwOtt4cVGffoIkzoxYJpgQe93'
+    'UCugwOtt4cVGffoIkzoxYJpgQe93',
+    'whXa5tBO1VZQhCWRhO1gYbcJmrH3'
   ];
   adminBricoUid = 'ls9tc3kKxeRlkaXAccs0qk9T9oA2';
   adminLudoUid = 'TtUtjCQZW8cE51IBltKf1LzjxW42';
