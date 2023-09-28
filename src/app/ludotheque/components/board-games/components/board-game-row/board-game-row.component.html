@@ -4,12 +4,11 @@
   </ng-container>
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
-      <app-game-status class="badge" [game]="boardGame"></app-game-status>
-      <div *ngIf="borrowsInfo?.status === borrowStatus.EMPRUNTE">Emprunté</div>
-      <div *ngIf="borrowsInfo?.status === borrowStatus.LATE">Retour en retard</div>
-      <div *ngIf="borrowsInfo?.status === borrowStatus.RESERVED">Réservé</div>
-      <button mat-raised-button *ngIf="!borrowsInfo || borrowsInfo?.status === borrowStatus.RETURNED"
+      <button mat-raised-button *ngIf="!borrowsInfo || borrowsInfo?.status === borrowStatus.RETURNED; else borrowsInfoStatus"
               (click)="reserveGame(boardGame)">Réserver</button>
+      <ng-template #borrowsInfoStatus>
+        <app-badge [status]="borrowsInfo.status"></app-badge>
+      </ng-template>
     </div>
     <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
     <div class="book-info" *ngIf="boardGame.weight">Poids: {{boardGame.weight}}g</div>
@@ -25,7 +24,6 @@
         {{theme}}
       </ng-container>
     </div>
-    <!--<app-futur-reservations [game]="boardGame"></app-futur-reservations>-->
     <div class="book-resume" [innerHTML]="boardGame.description"></div>
   </div>
   <ng-container [ngTemplateOutlet]="image"

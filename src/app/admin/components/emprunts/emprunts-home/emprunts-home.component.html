@@ -1,7 +1,7 @@
 <div class="search-container">
   <mat-button-toggle-group name="Commission" [(ngModel)]="selectedComission">
     <mat-button-toggle [value]="comissions.LUDOTHEQUE">{{comissions.LUDOTHEQUE}}</mat-button-toggle>
-    <mat-button-toggle [value]="comissions.BIBLIOTHEQUE">{{comissions.BIBLIOTHEQUE}}</mat-button-toggle>
+    <!-- TODO WIP <mat-button-toggle [value]="comissions.BIBLIOTHEQUE">{{comissions.BIBLIOTHEQUE}}</mat-button-toggle> -->
     <mat-button-toggle [value]="comissions.BRICOLAGE">{{comissions.BRICOLAGE}}</mat-button-toggle>
   </mat-button-toggle-group>
   <div>
@@ -18,7 +18,7 @@
       </mat-autocomplete>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Recherche Objet</mat-label>
+      <mat-label>Objet à emprunter</mat-label>
       <input [formControl]="objectSearch" [matAutocomplete]="obj" matInput type="text">
       <mat-autocomplete #obj="matAutocomplete" (optionSelected)="selectObject($event)"
                         [displayWith]="displayObject"

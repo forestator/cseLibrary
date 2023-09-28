@@ -174,7 +174,7 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.usersSub.unsubscribe();
-    this.datasTableSub.unsubscribe();
+    this.usersSub?.unsubscribe();
+    this.datasTableSub?.unsubscribe();
   }
 }

@@ -23,8 +23,8 @@ import {
 } from './components/video-games/video-games-console-details/video-games-console-details.component';
 import {VideoGameRowComponent} from './components/video-games/video-game-row/video-game-row.component';
 import {
-  VideoGameConsoleRowComponent
-} from './components/video-games/video-game-console-row/video-game-console-row.component';
+  VideoGameConsoleAccessoryRowComponent
+} from './components/video-games/video-game-console-row/video-game-console-accessory-row.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {FilterVideoGameByTypePipe} from './pipes/filter-video-game-by-type.pipe';
 import {GameRowComponent} from './components/outside-games/game-row/game-row.component';
@@ -43,9 +43,6 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {LudoNewComponent} from './components/ludo-new/ludo-new.component';
 import {GameStatusComponent} from './components/game-status/game-status.component';
-import {
-  FuturReservationsComponent
-} from './components/board-games/components/board-game-row/futur-reservations/futur-reservations.component';
 import {GameReservedForFuturWeeksPipe} from './pipes/game-reserved-for-futur-weeks.pipe';
 import {UserByIdPipe} from './pipes/user-by-id.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
@@ -67,7 +64,7 @@ import {FilterBorrowByIDPipe} from './pipes/filter-borrow-by-id.pipe';
     GameComponent,
     VideoGamesConsoleDetailsComponent,
     VideoGameRowComponent,
-    VideoGameConsoleRowComponent,
+    VideoGameConsoleAccessoryRowComponent,
     FilterVideoGameByTypePipe,
     GameRowComponent,
     VideoGamesToFilterComponent,
@@ -76,7 +73,6 @@ import {FilterBorrowByIDPipe} from './pipes/filter-borrow-by-id.pipe';
     LudoNewComponent,
     GameStatusComponent,
     GameReservedForFuturWeeksPipe,
-    FuturReservationsComponent,
     UserByIdPipe,
     FilterBoardGamesComponent,
     AdvancedBoardGameFilterPipe,

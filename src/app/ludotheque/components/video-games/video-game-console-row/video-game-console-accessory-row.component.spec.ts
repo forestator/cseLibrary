@@ -1,20 +1,20 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {VideoGameConsoleRowComponent} from './video-game-console-row.component';
+import {VideoGameConsoleAccessoryRowComponent} from './video-game-console-accessory-row.component';
 
 describe('VideoGameConsoleRowComponent', () => {
-  let component: VideoGameConsoleRowComponent;
-  let fixture: ComponentFixture<VideoGameConsoleRowComponent>;
+  let component: VideoGameConsoleAccessoryRowComponent;
+  let fixture: ComponentFixture<VideoGameConsoleAccessoryRowComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VideoGameConsoleRowComponent ]
+      declarations: [ VideoGameConsoleAccessoryRowComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoGameConsoleRowComponent);
+    fixture = TestBed.createComponent(VideoGameConsoleAccessoryRowComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

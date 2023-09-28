@@ -16,7 +16,7 @@ export class BoardGameCategoryDetailsComponent {
   @Input() selectedBoardGameId?: string;
   @Input() categoryId?: string;
 
-  ludoBorrowInformations$: Observable<BorrowByComission>;
+  ludoBorrowInformations$: Observable<BorrowByComission[]>;
 
   constructor(private borrowDataService: BorrowDataService) {
     this.ludoBorrowInformations$ = this.borrowDataService.getBorrowsOfComission(Comissions.LUDOTHEQUE);

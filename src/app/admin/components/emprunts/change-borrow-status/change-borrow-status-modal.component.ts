@@ -35,7 +35,8 @@ export class ChangeBorrowStatusModalComponent {
     public dialogRef: MatDialogRef<ChangeBorrowStatusModalComponent>,
     public borrowDataService: BorrowDataService,
     @Inject(MAT_DIALOG_DATA) public data: {
-      users: CseUser[],
+      user?: CseUser,
+      users?: CseUser[],
       comission: Comissions,
       object: Book | Tool | Game
     },
@@ -63,7 +64,7 @@ export class ChangeBorrowStatusModalComponent {
   borrowGame() {
     this.borrowDataService.setReservedStatus(
       this.data.object,
-      this.selectedUSer,
+      this.data.user ?? this.selectedUSer,
       this.data.comission,
       moment(this.range.get('start').value).locale('fr').format('L'),
       moment(this.range.get('end').value).locale('fr').format('L'));

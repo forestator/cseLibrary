@@ -9,9 +9,11 @@
       <ng-container
         *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.CONSOLE; let index = index; trackBy: trackVideoGame">
         <div class="core-body">
-          <app-video-game-console-row [videoGame]="videoGame"
-                                      [selectedVideoGameId]="selectedVideoGameId">
-          </app-video-game-console-row>
+          <app-video-game-console-accessory-row
+            [videoGame]="videoGame"
+            [borrowsInfo]="(ludoBorrowInformations$ | async) | filterBorrowById: videoGame.ref"
+            [selectedVideoGameId]="selectedVideoGameId">
+          </app-video-game-console-accessory-row>
         </div>
       </ng-container>
       <mat-divider></mat-divider>
@@ -25,9 +27,11 @@
       <ng-container
         *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.ACCESSORY  ; let index = index; trackBy: trackVideoGame">
         <div class="core-body">
-          <app-video-game-console-row [videoGame]="videoGame"
-                                      [selectedVideoGameId]="selectedVideoGameId">
-          </app-video-game-console-row>
+          <app-video-game-console-accessory-row
+            [videoGame]="videoGame"
+            [borrowsInfo]="(ludoBorrowInformations$ | async) | filterBorrowById: videoGame.ref"
+            [selectedVideoGameId]="selectedVideoGameId">
+          </app-video-game-console-accessory-row>
         </div>
       </ng-container>
       <mat-divider></mat-divider>
@@ -41,8 +45,10 @@
       <ng-container
         *ngFor="let videoGame of videoGames | filterVideoGameByType: videoGameType.GAME; let index = index; trackBy: trackVideoGame">
         <div class="core-body">
-          <app-video-game-row [videoGame]="videoGame"
-                              [selectedVideoGameId]="selectedVideoGameId">
+          <app-video-game-row
+            [videoGame]="videoGame"
+            [borrowsInfo]="(ludoBorrowInformations$ | async) | filterBorrowById: videoGame.ref"
+            [selectedVideoGameId]="selectedVideoGameId">
           </app-video-game-row>
         </div>
       </ng-container>

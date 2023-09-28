@@ -16,8 +16,8 @@ export class BorrowDataService {
   allBorrows$: Observable<BorrowForUser>;
 
   constructor(private db: AngularFireDatabase) {
-    this.allBorrows$ = this.db.object<BorrowForUser>('borrows').valueChanges()
-      .pipe(take(1));
+    this.allBorrows$ = this.db.object<BorrowForUser>('borrows').valueChanges();
+    this.setLateStatus();
   }
 
   borrowForUser(userId: string): Observable<Borrow[]> {
@@ -37,25 +37,35 @@ export class BorrowDataService {
   }
 
   setReturnForBorrow(user: CseUser, allBorrowsOfUser: Borrow[], selectedBorrow: Borrow) {
-    console.log(allBorrowsOfUser);
-    console.log(selectedBorrow);
     const index = allBorrowsOfUser.indexOf(selectedBorrow);
     const endDate: string = moment().locale('fr').format('DD/MM/YYYY');
-    console.log(index);
     this.db.object(`borrows/${user.id}/${index}`).update({status: BorrowStatus.RETURNED, endDate});
   }
 
-  getBorrowsOfComission(comission: Comissions): Observable<BorrowByComission> {
+  getBorrowsOfComission(comission: Comissions): Observable<BorrowByComission[]> {
     return this.allBorrows$.pipe(
       map(borrowForUsers => {
         return Object.keys(borrowForUsers)
           .map(userId => borrowForUsers[userId].map(borrow => ({userId, ...borrow})))
           .flat()
           .filter(borrowByComission => borrowByComission.comission === comission)
-          .filter(borrowByComission => moment(borrowByComission.endDate).isAfter(moment()));
-      }),
-        // only last SHOULD WORK MF to verify
-        map(borrowByComission => borrowByComission[borrowByComission.length - 1])
+      })
     )
+  }
+
+  private setLateStatus() {
+    this.db.object<BorrowForUser>('borrows').valueChanges().pipe(
+      take(1),
+    ).subscribe(borrows => {
+      Object.keys(borrows).forEach(userId => {
+        borrows[userId].forEach(borrow => {
+          console.log(borrow);
+          if (borrow.status === BorrowStatus.EMPRUNTE &&
+            moment(borrow.endDate, 'DD/MM/YYYY').isBefore(moment(new Date(), 'DD/MM/YYYY'))) {
+            this.db.object(`borrows/${userId}/${borrows[userId].indexOf(borrow)}`).update({status: BorrowStatus.LATE});
+          }
+        });
+      });
+    });
   }
 }

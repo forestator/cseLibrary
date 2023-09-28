@@ -1,0 +1,20 @@
+<div [id]="videoGame.ref" class="video-console-core">
+  <ng-container [ngTemplateOutlet]="image"></ng-container>
+  <div class="video-console-info">
+    <div class="video-console-title">{{videoGame.name}}</div>
+    <button mat-raised-button *ngIf="!borrowsInfo || borrowsInfo?.status === borrowStatus.RETURNED; else borrowsInfoStatus"
+            (click)="reserve(videoGame)">Réserver</button>
+    <ng-template #borrowsInfoStatus>
+      <app-badge [status]="borrowsInfo.status"></app-badge>
+    </ng-template>
+    <div *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
+    <div *ngIf="videoGame.description">Description: {{videoGame.description}}</div>
+  </div>
+</div>
+<ng-template #image>
+  <div class="book-cover" *ngIf="videoGame.cover">
+    <img width="300" height="250"
+         [src]="videoGame.cover"
+         [alt]="videoGame.name + ' cover'"/>
+  </div>
+</ng-template>

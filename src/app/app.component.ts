@@ -54,7 +54,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   private handleUrlChange(url: string) {
-    console.log(url);
     this.showLudothequeMenu = url.includes(Comissions.LUDOTHEQUE);
     this.showBibliothequeMenu = url.includes(Comissions.BIBLIOTHEQUE);
     this.showBricolageMenu = url.includes(Comissions.BRICOLAGE);

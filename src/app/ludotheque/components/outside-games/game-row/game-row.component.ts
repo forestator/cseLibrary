@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Game} from '../../../../models/common.model';
+import {Comissions, Game} from '../../../../models/common.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {
   ChangeBorrowStatusModalComponent
@@ -7,6 +7,7 @@ import {
 import {UserService} from '../../../../services/firebase/user.service';
 import {take} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
+import {BorrowByComission, BorrowStatus} from '../../../../admin/models/borrow.model';
 
 @Component({
   selector: 'app-game-row',
@@ -18,6 +19,9 @@ export class GameRowComponent implements OnInit {
   @Input() game!: Game;
   @Input() index!: number;
   @Input() selectedGame?: string;
+  @Input() borrowsInfo: BorrowByComission | null;
+
+  borrowStatus = BorrowStatus;
   parity!: boolean;
 
   constructor(public toolsService: ToolsService,
@@ -33,11 +37,11 @@ export class GameRowComponent implements OnInit {
     }
   }
 
-  borrowGame(game: Game) {
+  reserve(game: Game) {
     this.userService.userList$.pipe(take(1)).subscribe(
       (users) => {
         this.dialog.open(ChangeBorrowStatusModalComponent, {
-          data: {users, game: game}
+          data: {users, comission: Comissions.LUDOTHEQUE, object: game}
         });
       }
     );

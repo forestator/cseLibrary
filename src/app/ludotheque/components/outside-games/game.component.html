@@ -8,6 +8,10 @@
     </div>
   </div>
   <div *ngFor="let game of games$ | async; let index = index" class="core-body">
-    <app-game-row [game]="game" [selectedGame]="selectedOutsideGame" [index]="index"></app-game-row>
+    <app-game-row [game]="game"
+                  [borrowsInfo]="(ludoBorrowInformations$ | async) | filterBorrowById: game.ref"
+                  [selectedGame]="selectedOutsideGame"
+                  [index]="index">
+    </app-game-row>
   </div>
 </div>

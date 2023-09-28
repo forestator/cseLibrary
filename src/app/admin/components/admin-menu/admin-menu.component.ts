@@ -29,7 +29,7 @@ export class AdminMenuComponent {
             (user.email === newUSer.email)
           );
           if (!userAlreadyExist) {
-            newUSer.id = users.length;
+            newUSer.id = users.length + 1;
             this.userService.addUser(newUSer);
           } else {
             this.snackBar.open('Cet utilisateur existe déjà', 'Ok');

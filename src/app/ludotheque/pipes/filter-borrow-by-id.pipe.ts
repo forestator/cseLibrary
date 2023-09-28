@@ -8,19 +8,17 @@ import {Tool} from '../../bricolage/models/bricolage.model';
 })
 export class FilterBorrowByIDPipe implements PipeTransform {
 
-  transform(value: BorrowByComission, id: string): BorrowByComission | null {
-    if (value?.comission === Comissions.LUDOTHEQUE) {
-      const game = value.item as Game;
-      if (game.ref === id) {
-        return value;
-      }
-    } else if (value?.comission === Comissions.BRICOLAGE) {
-      const tool = value.item as Tool;
-      if (tool.id.toString() === id) {
-        return value;
+  transform(values: BorrowByComission[], id: string): BorrowByComission | null {
+    let returnValue: BorrowByComission | null = null;
+    if (values) {
+      const comission = values[0]?.comission;
+      if (comission === Comissions.LUDOTHEQUE) {
+        returnValue = values.find(val => (val.item as Game).ref === id);
+      } else if (comission === Comissions.BRICOLAGE) {
+        returnValue = values.find(val => (val.item as Tool).id.toString() === id);
       }
     }
-    return null;
+    return returnValue;
   }
 
 }
