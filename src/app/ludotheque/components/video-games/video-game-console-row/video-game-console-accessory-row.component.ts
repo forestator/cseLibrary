@@ -19,7 +19,7 @@ export class VideoGameConsoleAccessoryRowComponent implements OnInit {
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
-  @Input() borrowsInfo: BorrowByComission | null;
+  @Input() borrowsInfo: BorrowByComission[];
 
   borrowStatus = BorrowStatus;
 

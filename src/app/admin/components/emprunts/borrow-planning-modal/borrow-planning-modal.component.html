@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Emprunt du jeu {{data.object.name}}</h1>
+<div class="modal-container" mat-dialog-content>
+  <app-planning-emprunts
+    *ngIf="(borrowInformations$ | async) as info"
+    [users]="userService.userList$ | async"
+    [borrowInformations]="info | filterBorrowById: data.object"
+    [comission]="data.comission"
+    [object]="data.object">
+  </app-planning-emprunts>
+</div>
+<div mat-dialog-actions>
+  <button (click)="cancel()" mat-button>Cancel</button>
+  <button cdkFocusInitial
+          mat-button>
+    Confirm
+  </button>
+</div>

@@ -1,6 +1,8 @@
 import {Comissions, Game} from "../../models/common.model";
 import {Book} from "../../models/author.model";
 import {Tool} from "../../bricolage/models/bricolage.model";
+import {SonoItem} from '../../sonotheque/models/sono.model';
+import {NautismeItem} from '../../nautisme/models/nautisme.model';
 
 export enum BorrowStatus {
   EMPRUNTE = 'EMPRUNTE',
@@ -10,7 +12,7 @@ export enum BorrowStatus {
 }
 
 export interface Borrow {
-  item: Game | Book | Tool;
+  item: Game | Book | Tool | SonoItem | NautismeItem;
   startDate: string;
   endDate: string;
   status: BorrowStatus;

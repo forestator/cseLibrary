@@ -38,100 +38,102 @@ import {
   MaterielPhotoCategoryComponent
 } from './photo/components/materiel-photo-category/materiel-photo-category.component';
 import {AdminNautismeComponent} from './admin/components/admin-nautisme/admin-nautisme.component';
+import {BorrowDataService} from './admin/services/borrow-data.service';
 
 const ludoRoutes: Routes = [
-  {path: 'ludotheque', component: LudothequeComponent},
-  {path: 'ludotheque/outsideGames', component: GameComponent},
-  {path: 'ludotheque/outsideGames/:id', component: GameComponent},
-  {path: 'ludotheque/videoGames', component: VideoGamesComponent},
-  {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesToFilterComponent},
-  {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesToFilterComponent},
-  {path: 'ludotheque/boardGames', component: BoardGamesComponent},
-  {path: 'ludotheque/boardGames/:categoryId', component: BoardGameToFilterComponent},
-  {path: 'ludotheque/boardGames/:categoryId/:id', component: BoardGameToFilterComponent},
-  {path: 'ludotheque/new', component: LudoNewComponent},
+    {path: 'ludotheque', component: LudothequeComponent},
+    {path: 'ludotheque/outsideGames', component: GameComponent},
+    {path: 'ludotheque/outsideGames/:id', component: GameComponent},
+    {path: 'ludotheque/videoGames', component: VideoGamesComponent},
+    {path: 'ludotheque/videoGames/:categoryId', component: VideoGamesToFilterComponent},
+    {path: 'ludotheque/videoGames/:categoryId/:id', component: VideoGamesToFilterComponent},
+    {path: 'ludotheque/boardGames', component: BoardGamesComponent},
+    {path: 'ludotheque/boardGames/:categoryId', component: BoardGameToFilterComponent},
+    {path: 'ludotheque/boardGames/:categoryId/:id', component: BoardGameToFilterComponent},
+    {path: 'ludotheque/new', component: LudoNewComponent},
 ];
 
 const biblioRoutes: Routes = [
-  {path: 'bibliotheque', component: BibliothequeComponent},
-  {path: 'bibliotheque/new', component: NewViewComponent},
-  {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
-  {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
-  {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
+    {path: 'bibliotheque', component: BibliothequeComponent},
+    {path: 'bibliotheque/new', component: NewViewComponent},
+    {path: 'bibliotheque/:libraryId', component: LibraryViewComponent},
+    {path: 'bibliotheque/:libraryId/:catId', component: CategoryViewComponent},
+    {path: 'bibliotheque/:libraryId/:catId/:seriesId', component: SeriesViewComponent},
 ];
 
 const bricoRoutes: Routes = [
-  {path: 'bricolage', component: BricolageHomeComponent},
-  {path: 'bricolage/:categoryId', component: BricoCategoryComponent},
-  {path: 'bricolage/:categoryId/:id', component: BricoCategoryComponent},
+    {path: 'bricolage', component: BricolageHomeComponent},
+    {path: 'bricolage/:categoryId', component: BricoCategoryComponent},
+    {path: 'bricolage/:categoryId/:id', component: BricoCategoryComponent},
 ];
 
 const sonoRoutes: Routes = [
-  {path: 'sonotheque', component: SonoHomeComponent},
-  {path: 'sonotheque/:categoryId', component: SonoCategoryComponent},
+    {path: 'sonotheque', component: SonoHomeComponent},
+    {path: 'sonotheque/:categoryId', component: SonoCategoryComponent},
 ];
 
 const nautismeRoutes: Routes = [
-  {path: 'nautisme', component: NautismeHomeComponent},
+    {path: 'nautisme', component: NautismeHomeComponent},
 ];
 
 const materielPhotoRoutes: Routes = [
-  {path: 'photo', component: MaterielPhotoHomeComponent},
-  {path: 'photo/:categoryId', component: MaterielPhotoCategoryComponent},
+    {path: 'photo', component: MaterielPhotoHomeComponent},
+    {path: 'photo/:categoryId', component: MaterielPhotoCategoryComponent},
 ];
 
 const adminRoutes: Routes = [
-  {
-    path: 'iWantToConfigureThisAwesomeApp', component: AdminHomeComponent
-  },
-  {
-    path: 'admin/emprunts', component: EmpruntsHomeComponent,
-    canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
-    resolve: {
-      'users': () => inject(UserService).userList$,
-      'ludotheque': () => inject(FirebaseDatabaseService).ludotheque$,
-      // todo bilbiotheque quand JY a refondu le bordel
-      'allTools': () => inject(BricolageDatabaseService).allTools$,
-      'sonoItems': () => inject(SonoDatabaseService).allItems$,
-    }
-  },
-  {
-    path: 'ludotheque/admin/games', component: AdminGamesComponent,
-    canActivate: [() =>inject(AuthentificationService).isUserLudoAdmin$]
-  },
-  {
-    path: 'bricolage/admin/tools', component: AdminBricolageComponent,
-    canActivate: [() => inject(AuthentificationService).isUserBricolageAdmin$]
-  },
-  {
-    path: 'sonotheque/admin/sonoItems', component: AdminSonothequeComponent,
-    canActivate: [() => inject(AuthentificationService).isUserSonoAdmin$]
-  },
-  {
-    path: 'nautisme/admin/nautismeItems', component: AdminNautismeComponent,
-    canActivate: [() => inject(AuthentificationService).isUserNautismeAdmin$]
-  },
-  {
-    path: 'bibliotheque/admin/:libraryId', component: SettingsViewComponent,
-    canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
-  },
+    {
+        path: 'iWantToConfigureThisAwesomeApp', component: AdminHomeComponent
+    },
+    {
+        path: 'admin/emprunts', component: EmpruntsHomeComponent,
+        canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
+        resolve: {
+            'users': () => inject(UserService).userList$,
+            'ludotheque': () => inject(FirebaseDatabaseService).ludotheque$,
+            // todo bilbiotheque quand JY a refondu le bordel
+            'allTools': () => inject(BricolageDatabaseService).allTools$,
+            'sonoItems': () => inject(SonoDatabaseService).allItems$,
+            'allBorrows': () => inject(BorrowDataService).allBorrows$,
+        },
+    },
+    {
+        path: 'ludotheque/admin/games', component: AdminGamesComponent,
+        canActivate: [() => inject(AuthentificationService).isUserLudoAdmin$]
+    },
+    {
+        path: 'bricolage/admin/tools', component: AdminBricolageComponent,
+        canActivate: [() => inject(AuthentificationService).isUserBricolageAdmin$]
+    },
+    {
+        path: 'sonotheque/admin/sonoItems', component: AdminSonothequeComponent,
+        canActivate: [() => inject(AuthentificationService).isUserSonoAdmin$]
+    },
+    {
+        path: 'nautisme/admin/nautismeItems', component: AdminNautismeComponent,
+        canActivate: [() => inject(AuthentificationService).isUserNautismeAdmin$]
+    },
+    {
+        path: 'bibliotheque/admin/:libraryId', component: SettingsViewComponent,
+        canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
+    },
 ];
 
 const routes: Routes = [
-  ...adminRoutes,
-  ...ludoRoutes,
-  ...biblioRoutes,
-  ...bricoRoutes,
-  ...sonoRoutes,
-  ...nautismeRoutes,
-  ...materielPhotoRoutes,
-  {path: '', component: HomeComponent},
-  {path: '**', component: HomeComponent},
+    ...adminRoutes,
+    ...ludoRoutes,
+    ...biblioRoutes,
+    ...bricoRoutes,
+    ...sonoRoutes,
+    ...nautismeRoutes,
+    ...materielPhotoRoutes,
+    {path: '', component: HomeComponent},
+    {path: '**', component: HomeComponent},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, {bindToComponentInputs: true})],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }

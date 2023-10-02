@@ -4,11 +4,9 @@
   </ng-container>
   <div class="book-infos">
     <div class="book-title">{{boardGame.name}}
-      <button mat-raised-button *ngIf="!borrowsInfo || borrowsInfo?.status === borrowStatus.RETURNED; else borrowsInfoStatus"
+      <button mat-raised-button
+              [color]="borrowsInfo[borrowsInfo.length - 1]?.status === borrowStatus.RESERVED ? 'accent' : undefined"
               (click)="reserveGame(boardGame)">Réserver</button>
-      <ng-template #borrowsInfoStatus>
-        <app-badge [status]="borrowsInfo.status"></app-badge>
-      </ng-template>
     </div>
     <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
     <div class="book-info" *ngIf="boardGame.weight">Poids: {{boardGame.weight}}g</div>

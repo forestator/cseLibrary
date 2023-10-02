@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {Borrow} from "../../../models/borrow.model";
 
@@ -13,10 +13,13 @@ export class BorrowTableComponent {
   @Input() selectAllBorrow: boolean;
   @Input() displayedColumns: string[];
 
+  @Output() selectChange: EventEmitter<void> = new EventEmitter<void>();
+
   selectAll(selectAll: boolean) {
     this.selectAllBorrow = selectAll;
     const newData =
-      this.dataTableSource.data.map(data => Object.assign(data, {selected: selectAll}));
+      this.dataTableSource?.data.map(data => Object.assign(data, {selected: selectAll}));
     this.dataTableSource = new MatTableDataSource<Borrow & { selected: boolean }>(newData);
+    this.selectChange.next();
   }
 }

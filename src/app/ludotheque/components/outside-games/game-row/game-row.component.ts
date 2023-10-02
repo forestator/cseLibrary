@@ -19,7 +19,7 @@ export class GameRowComponent implements OnInit {
   @Input() game!: Game;
   @Input() index!: number;
   @Input() selectedGame?: string;
-  @Input() borrowsInfo: BorrowByComission | null;
+  @Input() borrowsInfo: BorrowByComission[];
 
   borrowStatus = BorrowStatus;
   parity!: boolean;
@@ -31,7 +31,6 @@ export class GameRowComponent implements OnInit {
 
   ngOnInit() {
     this.parity = this.index % 2 === 0;
-
     if (this.selectedGame) {
       this.toolsService.scrollToId(this.selectedGame);
     }

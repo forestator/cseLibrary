@@ -12,6 +12,7 @@ import {BorrowDataService} from "../../../services/borrow-data.service";
 import {BricoUtils} from "../../../../bricolage/models/brico-utils";
 import {map, Observable} from 'rxjs';
 import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import {BorrowStatus} from '../../../models/borrow.model';
 
 interface RangeForm {
   start: FormControl<Date>;
@@ -62,10 +63,11 @@ export class ChangeBorrowStatusModalComponent {
   }
 
   borrowGame() {
-    this.borrowDataService.setReservedStatus(
+    this.borrowDataService.setBorrow(
       this.data.object,
       this.data.user ?? this.selectedUSer,
       this.data.comission,
+      this.data.user ? BorrowStatus.EMPRUNTE : BorrowStatus.RESERVED,
       moment(this.range.get('start').value).locale('fr').format('L'),
       moment(this.range.get('end').value).locale('fr').format('L'));
     this.cancel();

@@ -2,10 +2,10 @@
   <ng-container [ngTemplateOutlet]="image"></ng-container>
   <div class="video-game-info">
     <div class="video-game-title">{{videoGame.name}}</div>
-    <button mat-raised-button *ngIf="!borrowsInfo || borrowsInfo?.status === borrowStatus.RETURNED; else borrowsInfoStatus"
+    <button mat-raised-button *ngIf="!borrowsInfo || (borrowsInfo[borrowsInfo.length - 1])?.status === borrowStatus.RETURNED; else borrowsInfoStatus"
             (click)="reserveVideoGame(videoGame)">Réserver</button>
     <ng-template #borrowsInfoStatus>
-      <app-badge [status]="borrowsInfo.status"></app-badge>
+      <app-badge [status]="(borrowsInfo[borrowsInfo.length - 1]).status"></app-badge>
     </ng-template>
     <div class="" *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
   </div>

@@ -9,7 +9,7 @@
   </div>
   <div *ngFor="let game of games$ | async; let index = index" class="core-body">
     <app-game-row [game]="game"
-                  [borrowsInfo]="(ludoBorrowInformations$ | async) | filterBorrowById: game.ref"
+                  [borrowsInfo]="(ludoBorrowInformations$ | async) | filterBorrowById: game"
                   [selectedGame]="selectedOutsideGame"
                   [index]="index">
     </app-game-row>

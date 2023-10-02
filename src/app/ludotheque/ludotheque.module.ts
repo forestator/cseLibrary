@@ -78,7 +78,7 @@ import {FilterBorrowByIDPipe} from './pipes/filter-borrow-by-id.pipe';
     AdvancedBoardGameFilterPipe,
     FilterBorrowByIDPipe
   ],
-  exports: [LudoMenuComponent, GameStatusComponent, FilterBoardGamesComponent, FilterBorrowByIDPipe],
+    exports: [LudoMenuComponent, GameStatusComponent, FilterBoardGamesComponent, FilterBorrowByIDPipe, UserByIdPipe],
   imports: [
     CommonModule,
     MatIconModule,

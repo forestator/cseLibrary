@@ -19,7 +19,7 @@ export class VideoGameRowComponent implements OnInit, OnChanges {
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
-  @Input() borrowsInfo: BorrowByComission | null;
+  @Input() borrowsInfo: BorrowByComission[];
 
   borrowStatus = BorrowStatus;
 

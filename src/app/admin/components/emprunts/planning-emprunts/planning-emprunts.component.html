@@ -1,0 +1,23 @@
+<table mat-table [dataSource]="dataSource" *ngIf="displayedColumns.length > 0">
+
+  <ng-container  *ngFor="let column of displayedColumns">
+    <ng-container [matColumnDef]="column" *ngIf="column === 'name'">
+      <th mat-header-cell *matHeaderCellDef> {{column | titlecase}} </th>
+      <td mat-cell *matCellDef="let element"> {{object.name}} </td>
+    </ng-container>
+    <ng-container [matColumnDef]="column" *ngIf="column !== 'name'">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="isReserved(column); else reserver">
+        {{isReserved(column).userId | userById}}
+      </ng-container>
+        <ng-template #reserver>
+          {{'Reserver'}}
+        </ng-template>
+      </td>
+    </ng-container>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

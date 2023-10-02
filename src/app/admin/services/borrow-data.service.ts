@@ -7,6 +7,8 @@ import {Tool} from "../../bricolage/models/bricolage.model";
 import {Comissions, Game} from "../../models/common.model";
 import {CseUser} from "../../models/users.model";
 import moment from "moment/moment";
+import {SonoItem} from '../../sonotheque/models/sono.model';
+import {NautismeItem} from '../../nautisme/models/nautisme.model';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +26,8 @@ export class BorrowDataService {
     return this.db.object<Borrow[]>(`borrows/${userId}`).valueChanges();
   }
 
-  setReservedStatus(object: Book | Tool | Game, user: CseUser, comission: Comissions, start: string, end: string) {
-    const newBorrow: Borrow = {item: object, comission, startDate: start, endDate: end, status: BorrowStatus.RESERVED};
+  setBorrow(object: Book | Tool | Game | SonoItem | NautismeItem, user: CseUser, comission: Comissions, status: BorrowStatus, start: string, end: string) {
+    const newBorrow: Borrow = {item: object, comission, startDate: start, endDate: end, status};
     this.borrowForUser(user.id).pipe(take(1)).subscribe(userBorrows => {
       if (!userBorrows) {
         this.db.object(`borrows/${user.id}`).set([newBorrow]);
@@ -59,7 +61,6 @@ export class BorrowDataService {
     ).subscribe(borrows => {
       Object.keys(borrows).forEach(userId => {
         borrows[userId].forEach(borrow => {
-          console.log(borrow);
           if (borrow.status === BorrowStatus.EMPRUNTE &&
             moment(borrow.endDate, 'DD/MM/YYYY').isBefore(moment(new Date(), 'DD/MM/YYYY'))) {
             this.db.object(`borrows/${userId}/${borrows[userId].indexOf(borrow)}`).update({status: BorrowStatus.LATE});
