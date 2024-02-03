@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Game, LudoStatus} from '../../../models/common.model';
+import {BorrowByComission} from '../../../admin/models/borrow.model';
 
 @Component({
   selector: 'app-game-status',
@@ -8,7 +8,5 @@ import {Game, LudoStatus} from '../../../models/common.model';
 })
 export class GameStatusComponent {
 
-  @Input() game: Game;
-
-  gameStatus: LudoStatus = LudoStatus.AVAILABLE;
+  @Input() gameBorrowInformation:BorrowByComission[];
 }

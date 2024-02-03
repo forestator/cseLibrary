@@ -1,60 +1,31 @@
 <table *ngIf="dataSource" mat-table [dataSource]="dataSource"
        matSort
        class="mat-elevation-z8">
-
-  <ng-container matColumnDef="borrow">
-    <th mat-header-cell *matHeaderCellDef> Emprunter ce jeu</th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-button color="primary" (click)="borrowGame(element)">
-        Emprunter
-      </button>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="return">
-    <th mat-header-cell *matHeaderCellDef> Retour</th>
-    <td mat-cell *matCellDef="let element">
-      <button mat-button color="primary" (click)="returnGame(element)">
-        Retour
-      </button>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date emprunt</th>
-    <td mat-cell *matCellDef="let element">
-      {{element | lastBorrowDates}}
-    </td>
-  </ng-container>
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Statut</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="status"> Statut</th>
     <td mat-cell *matCellDef="let element">
-      <app-game-status [game]="element"></app-game-status>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="borrowedBy">
-    <th mat-header-cell *matHeaderCellDef>Emprunté par</th>
-    <td mat-cell *matCellDef="let element">
-      {{element | borrowedByUser | async}}
+      <app-game-status [gameBorrowInformation]="borrowsInformations | filterBorrowById: element"></app-game-status>
     </td>
   </ng-container>
   <ng-container matColumnDef="category">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="category">Category</th>
     <td mat-cell *matCellDef="let element">
       <app-badge [status]="element.category"></app-badge>
     </td>
   </ng-container>
 
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="name"> Nom</th>
     <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
 
   <ng-container matColumnDef="poids">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> poids</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="weight"> poids</th>
     <td mat-cell *matCellDef="let element"> {{element.weight}}g </td>
   </ng-container>
 
   <ng-container matColumnDef="ref">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> ref</th>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header="ref"> ref</th>
     <td mat-cell *matCellDef="let element"> {{element.ref}} </td>
   </ng-container>
 

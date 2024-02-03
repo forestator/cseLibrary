@@ -20,7 +20,7 @@ import {RouterLink} from '@angular/router';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {
-  ChangeBorrowStatusModalComponent
+    ChangeBorrowStatusModalComponent
 } from './components/emprunts/change-borrow-status/change-borrow-status-modal.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
@@ -28,7 +28,6 @@ import {AddGameFormComponent} from './components/admin-ludo/admin-games/add-game
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import {LastBorrowDatesPipe} from './pipe/last-borrow-dates.pipe';
 import {LudothequeModule} from '../ludotheque/ludotheque.module';
 import {AddGameModalComponent} from './components/admin-ludo/admin-games/add-game-modal/add-game-modal.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
@@ -44,69 +43,69 @@ import {BorrowTableComponent} from './components/emprunts/borrow-table/borrow-ta
 import {AdminSonothequeComponent} from './components/admin-sonotheque/admin-sonotheque.component';
 import {SonoTableComponent} from './components/admin-sonotheque/sono-table/sono-table.component';
 import {
-  AddSonoItemModalComponent
+    AddSonoItemModalComponent
 } from './components/admin-sonotheque/add-sono-item-modal/add-sono-item-modal.component';
 import {
-  EditSonoItemModalComponent
+    EditSonoItemModalComponent
 } from './components/admin-sonotheque/edit-sono-item-modal/edit-sono-item-modal.component';
 import {MatIconModule} from '@angular/material/icon';
 import {
-  BggGameSearchModalComponent
+    BggGameSearchModalComponent
 } from './components/admin-ludo/admin-games/bgg-game-search-modal/bgg-game-search-modal.component';
 import {AdminNautismeComponent} from './components/admin-nautisme/admin-nautisme.component';
 import {
-  AddNautismeItemModalComponent
+    AddNautismeItemModalComponent
 } from './components/admin-nautisme/add-nautisme-item-modal/add-nautisme-item-modal.component';
 import {
-  EditNautismeItemModalComponent
+    EditNautismeItemModalComponent
 } from './components/admin-nautisme/edit-nautisme-item-modal/edit-nautisme-item-modal.component';
 import {NautismeTableComponent} from './components/admin-nautisme/nautisme-table/nautisme-table.component';
 import {PlanningEmpruntsComponent} from './components/emprunts/planning-emprunts/planning-emprunts.component';
 import {
-  BorrowPlanningModalComponent
+    BorrowPlanningModalComponent
 } from './components/emprunts/borrow-planning-modal/borrow-planning-modal.component';
 
 
 @NgModule({
-  declarations: [
-    AdminHomeComponent,
-    AdminGamesComponent,
-    LudoTableComponent,
-    AddEmployeeDialogComponent,
-    ChangeBorrowStatusModalComponent,
-    AdminMenuComponent, AddGameFormComponent, LastBorrowDatesPipe, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmationModal, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent, PlanningEmpruntsComponent, BorrowPlanningModalComponent
-  ],
-  exports: [
-    AdminMenuComponent,
-    ConfirmationModal
-  ],
-  imports: [
-    CommonModule,
-    AngularFireAuthModule,
-    FirebaseUIModule,
-    MatSortModule,
-    MatTableModule,
-    MatExpansionModule,
-    AppCommonModule,
-    MatInputModule,
-    FormsModule,
-    MatButtonModule,
-    MatDialogModule,
-    ReactiveFormsModule,
-    MatSnackBarModule,
-    RouterLink,
-    MatListModule,
-    MatAutocompleteModule,
-    MatButtonToggleModule,
-    MatSelectModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    LudothequeModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    NgOptimizedImage,
-  ]
+    declarations: [
+        AdminHomeComponent,
+        AdminGamesComponent,
+        LudoTableComponent,
+        AddEmployeeDialogComponent,
+        ChangeBorrowStatusModalComponent,
+        AdminMenuComponent, AddGameFormComponent, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmationModal, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent, PlanningEmpruntsComponent, BorrowPlanningModalComponent
+    ],
+    exports: [
+        AdminMenuComponent,
+        ConfirmationModal
+    ],
+    imports: [
+        CommonModule,
+        AngularFireAuthModule,
+        FirebaseUIModule,
+        MatSortModule,
+        MatTableModule,
+        MatExpansionModule,
+        AppCommonModule,
+        MatInputModule,
+        FormsModule,
+        MatButtonModule,
+        MatDialogModule,
+        ReactiveFormsModule,
+        MatSnackBarModule,
+        RouterLink,
+        MatListModule,
+        MatAutocompleteModule,
+        MatButtonToggleModule,
+        MatSelectModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        LudothequeModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        NgOptimizedImage,
+    ]
 })
 export class AdminModule {
 }
