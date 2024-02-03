@@ -14,9 +14,9 @@ import {BorrowByComission} from '../../../models/borrow.model';
     styleUrls: ['./admin-games.component.scss']
 })
 export class AdminGamesComponent {
-    columnsBoardGames = ['status', 'category', 'name', 'poids', 'ref'];
-    columnsVideoGame = ['status', 'category', 'name', 'ref'];
-    columnsOutsideGame = ['status', 'category', 'name', 'ref'];
+    columnsBoardGames = ['status', 'category', 'name', 'poids', 'ref', 'stats'];
+    columnsVideoGame = ['status', 'category', 'name', 'ref', 'stats'];
+    columnsOutsideGame = ['status', 'category', 'name', 'ref', 'stats'];
     search = '';
     boardGamePanelOpen = false;
     videoGamePanelOpen = false;

@@ -35,9 +35,9 @@
   </mat-error>
 </div>
 <div mat-dialog-actions>
-  <button (click)="cancel()" mat-button>Cancel</button>
+  <button type="button" (click)="cancel()" mat-button>Cancel</button>
   <button (click)="borrowGame()"
-          (keyup.enter)="borrowGame()"
+          type="submit"
           [disabled]="range.invalid && !!selectedUSer"
           cdkFocusInitial
           mat-button>

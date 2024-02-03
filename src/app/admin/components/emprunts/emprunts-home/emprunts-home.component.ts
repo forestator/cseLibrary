@@ -43,6 +43,7 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
     borrowAll: boolean;
     private usersSub: Subscription;
     private datasTableSub: Subscription;
+    showReturned = false;
 
     constructor(private borrowService: BorrowDataService,
                 private dialog: MatDialog,
@@ -86,8 +87,13 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
             borrowOfUSer => {
                 const tableData =
                     borrowOfUSer
+                        .filter(borrow => !!borrow)
                         .map(borrow => Object.assign({selected: false}, borrow));
                 this.dataTableSource = new MatTableDataSource(tableData);
+
+                if (!tableData.length) {
+                    this.borrowAll = false;
+                }
             }
         );
     }
@@ -193,9 +199,7 @@ export class EmpruntsHomeComponent implements OnInit, OnDestroy {
     }
 
     selectChange() {
-        console.log(this.dataTableSource.data);
         this.borrowAll = this.dataTableSource.data
             .some(obj => obj.status !== BorrowStatus.RESERVED);
-        console.log(this.borrowAll);
     }
 }

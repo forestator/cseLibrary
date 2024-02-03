@@ -64,6 +64,7 @@ import {PlanningEmpruntsComponent} from './components/emprunts/planning-emprunts
 import {
     BorrowPlanningModalComponent
 } from './components/emprunts/borrow-planning-modal/borrow-planning-modal.component';
+import {ComputeStatisticsPipe} from './pipe/compute-statistics.pipe';
 
 
 @NgModule({
@@ -73,7 +74,7 @@ import {
         LudoTableComponent,
         AddEmployeeDialogComponent,
         ChangeBorrowStatusModalComponent,
-        AdminMenuComponent, AddGameFormComponent, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmationModal, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent, PlanningEmpruntsComponent, BorrowPlanningModalComponent
+        AdminMenuComponent, AddGameFormComponent, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmationModal, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent, PlanningEmpruntsComponent, BorrowPlanningModalComponent, ComputeStatisticsPipe
     ],
     exports: [
         AdminMenuComponent,

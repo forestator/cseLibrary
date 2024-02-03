@@ -13,10 +13,10 @@ import {SettingsViewComponent} from './bibliotheque/components/settings-view/set
 import {GameComponent} from './ludotheque/components/outside-games/game.component';
 import {AdminHomeComponent} from './admin/components/admin-home/admin-home.component';
 import {
-  VideoGamesToFilterComponent
+    VideoGamesToFilterComponent
 } from './ludotheque/components/video-games/video-games-to-filter/video-games-to-filter.component';
 import {
-  BoardGameToFilterComponent
+    BoardGameToFilterComponent
 } from './ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component';
 import {AdminGamesComponent} from './admin/components/admin-ludo/admin-games/admin-games.component';
 import {UserService} from './services/firebase/user.service';
@@ -35,7 +35,7 @@ import {SonoCategoryComponent} from "./sonotheque/components/sono-category/sono-
 import {NautismeHomeComponent} from "./nautisme/components/nautisme-home/nautisme-home.component";
 import {MaterielPhotoHomeComponent} from './photo/components/materiel-photo-home/materiel-photo-home.component';
 import {
-  MaterielPhotoCategoryComponent
+    MaterielPhotoCategoryComponent
 } from './photo/components/materiel-photo-category/materiel-photo-category.component';
 import {AdminNautismeComponent} from './admin/components/admin-nautisme/admin-nautisme.component';
 import {BorrowDataService} from './admin/services/borrow-data.service';
@@ -86,7 +86,7 @@ const adminRoutes: Routes = [
         path: 'iWantToConfigureThisAwesomeApp', component: AdminHomeComponent
     },
     {
-        path: 'admin/emprunts', component: EmpruntsHomeComponent,
+        path: 'ludotheque/admin/emprunts', component: EmpruntsHomeComponent,
         canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
         resolve: {
             'users': () => inject(UserService).userList$,

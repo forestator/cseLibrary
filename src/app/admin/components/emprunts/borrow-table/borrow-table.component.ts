@@ -11,15 +11,16 @@ export class BorrowTableComponent {
 
   @Input() dataTableSource: MatTableDataSource<Borrow & { selected: boolean }>;
   @Input() selectAllBorrow: boolean;
+  @Input() showReturned: boolean;
   @Input() displayedColumns: string[];
 
-  @Output() selectChange: EventEmitter<void> = new EventEmitter<void>();
+  @Output() selectAllBorrowChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   selectAll(selectAll: boolean) {
     this.selectAllBorrow = selectAll;
     const newData =
       this.dataTableSource?.data.map(data => Object.assign(data, {selected: selectAll}));
     this.dataTableSource = new MatTableDataSource<Borrow & { selected: boolean }>(newData);
-    this.selectChange.next();
+    this.selectAllBorrowChange.next(selectAll);
   }
 }

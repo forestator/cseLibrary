@@ -1,10 +1,11 @@
 <div class="search-container">
+    <!-- TODO WIP
     <mat-button-toggle-group name="Commission" [(ngModel)]="selectedComission">
         <mat-button-toggle [value]="comissions.LUDOTHEQUE">{{comissions.LUDOTHEQUE}}</mat-button-toggle>
-        <!-- TODO WIP <mat-button-toggle [value]="comissions.BIBLIOTHEQUE">{{comissions.BIBLIOTHEQUE}}</mat-button-toggle> -->
+         <mat-button-toggle [value]="comissions.BIBLIOTHEQUE">{{comissions.BIBLIOTHEQUE}}</mat-button-toggle>
         <mat-button-toggle [value]="comissions.BRICOLAGE">{{comissions.BRICOLAGE}}</mat-button-toggle>
-    </mat-button-toggle-group>
-    <div>
+    </mat-button-toggle-group>-->
+    <div class="controls-container">
         <mat-form-field appearance="fill">
             <mat-label>Employe recherche</mat-label>
             <input [formControl]="employeeSearch" [matAutocomplete]="user" matInput type="text">
@@ -39,12 +40,17 @@
                 (click)="selectAllBorrow ? confirmReturnSelectedBorrows() : returnSelectedBorrows()">
             Retour
         </button>
+        <div>
+            <mat-label>Afficher les emprunts rendus</mat-label>
+            <mat-checkbox [(ngModel)]="showReturned"></mat-checkbox>
+        </div>
     </div>
 </div>
 <mat-divider></mat-divider>
 <div>
     <app-borrow-table [dataTableSource]="dataTableSource"
-                      [selectAllBorrow]="selectAllBorrow"
+                      [(selectAllBorrow)]="selectAllBorrow"
                       [displayedColumns]="displayedColumns"
-                      (selectChange)="selectChange()"></app-borrow-table>
+                      [showReturned]="showReturned"
+                      (selectAllBorrowChange)="selectChange()"></app-borrow-table>
 </div>
