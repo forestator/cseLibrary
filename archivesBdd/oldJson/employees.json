@@ -1,0 +1,1956 @@
+[
+  {
+    "id": "4623",
+    "firstName": "Xavier",
+    "lastName": "Marquer",
+    "email": "Xavier.Marquer@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8126",
+    "firstName": "Diego",
+    "lastName": "Osorio Cano",
+    "email": "Diego.OsorioCano@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4638",
+    "firstName": "Thomas",
+    "lastName": "Guihal",
+    "email": "Thomas.Guihal@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7970",
+    "firstName": "Clementine",
+    "lastName": "Bossy",
+    "email": "clementine.bossy@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "8680",
+    "firstName": "Priyanka ",
+    "lastName": "Tamuley",
+    "email": "priyanka.tamuley@harmonicinc.com",
+    "deptName": "CORPORATE COMMUNICATIONS"
+  },
+  {
+    "id": "4295",
+    "firstName": "Julien",
+    "lastName": "Chazottes",
+    "email": "Julien.Chazottes@harmonicinc.com",
+    "deptName": "EMEA - Southern Europe"
+  },
+  {
+    "id": "4255",
+    "firstName": "Gildas",
+    "lastName": "Guelou",
+    "email": "Gildas.Guelou@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "7231",
+    "firstName": "Yann",
+    "lastName": "Jegu",
+    "email": "yann.jegu@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4570",
+    "firstName": "Christophe",
+    "lastName": "Duval",
+    "email": "Christophe.Duval@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4544",
+    "firstName": "Arnaud",
+    "lastName": "Levesque",
+    "email": "Arnaud.Levesque@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4502",
+    "firstName": "Ronan",
+    "lastName": "Toutous",
+    "email": "Ronan.Toutous@harmonicinc.com",
+    "deptName": "MARKET MANAGEMENT"
+  },
+  {
+    "id": "8094",
+    "firstName": "Baptiste",
+    "lastName": "Posseme",
+    "email": "baptiste.posseme@harmonicinc.com"
+  },
+  {
+    "id": "4826",
+    "firstName": "Marc",
+    "lastName": "Leullier",
+    "email": "marc.leullier@harmonicinc.com",
+    "deptName": "EMEA SALES - MEA/RUSSIA/CIS"
+  },
+  {
+    "id": "4650",
+    "firstName": "Marine",
+    "lastName": "Lepetit",
+    "email": "marine.lepetit@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4229",
+    "firstName": "Patrick",
+    "lastName": "Hardy",
+    "email": "Patrick.Hardy@harmonicinc.com",
+    "deptName": "MANUFACTURING ENGINEERING - BROADBAND"
+  },
+  {
+    "id": "4206",
+    "firstName": "Patrick",
+    "lastName": "Dumenil",
+    "email": "Patrick.Dumenil@harmonicinc.com",
+    "deptName": "RENNES INNOVATION & TECHNOLOGY"
+  },
+  {
+    "id": "6944",
+    "firstName": "Adrien",
+    "lastName": "Papail",
+    "email": "adrien.papail@harmonicinc.com"
+  },
+  {
+    "id": "7895",
+    "firstName": "Pierre",
+    "lastName": "Bezard",
+    "email": "pierre.bezard@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4172",
+    "firstName": "Eric",
+    "lastName": "Le Doeuff",
+    "email": "Eric.LeDoeuff@harmonicinc.com",
+    "deptName": "TECH PUB"
+  },
+  {
+    "id": "4992",
+    "firstName": "Veronique",
+    "lastName": "Esnault Lunel",
+    "email": "veronique.esnaultlunel@harmonicinc.com",
+    "deptName": "FINANCIAL PLANNING & ANALYSIS"
+  },
+  {
+    "id": "5005",
+    "firstName": "Joanna",
+    "lastName": "Pays",
+    "email": "joanna.pays@harmonicinc.com",
+    "deptName": "CORPORATE COMMUNICATIONS"
+  },
+  {
+    "id": "4313",
+    "firstName": "Olivier",
+    "lastName": "Dumas",
+    "email": "Olivier.Dumas@harmonicinc.com",
+    "deptName": "EMEA SALES ENGINEERING"
+  },
+  {
+    "id": "4429",
+    "firstName": "Alain",
+    "lastName": "Collet",
+    "email": "Alain.Collet@harmonicinc.com",
+    "teamId": "6186e427-e152-4282-8745-45415492a5fd",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4373",
+    "firstName": "Fabrice",
+    "lastName": "Delannay",
+    "email": "Fabrice.Delannay@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4478",
+    "firstName": "Thierry",
+    "lastName": "Lorand",
+    "email": "Thierry.Lorand@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4358",
+    "firstName": "Jean Louis",
+    "lastName": "Diascorn",
+    "email": "Jean-Louis.Diascorn@harmonicinc.com",
+    "deptName": "DV PM & SOLUTIONS ADMIN"
+  },
+  {
+    "id": "4321",
+    "firstName": "Roland",
+    "lastName": "Bobee",
+    "email": "Roland.Bobee@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4397",
+    "firstName": "Joelle",
+    "lastName": "Le Map",
+    "email": "Joelle.LeMap@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4274",
+    "firstName": "David",
+    "lastName": "Henry",
+    "email": "David.Henry@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4610",
+    "firstName": "Erwan",
+    "lastName": "Corbel",
+    "email": "Erwan.Corbel@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8745",
+    "firstName": "Arnaud",
+    "lastName": "Lerailler",
+    "email": "arnaud.lerailler@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "5471",
+    "firstName": "Pauline",
+    "lastName": "Braud",
+    "email": "pauline.braud@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4420",
+    "firstName": "Tran Minh",
+    "lastName": "Nguyen",
+    "email": "Tran.Nguyen@harmonicinc.com",
+    "deptName": "FACTORY"
+  },
+  {
+    "id": "7138",
+    "firstName": "Jean Francois",
+    "lastName": "Moy",
+    "email": "jean-francois.moy@harmonicinc.com",
+    "deptName": "FINANCIAL PLANNING & ANALYSIS"
+  },
+  {
+    "id": "8080",
+    "firstName": "Hamdi",
+    "lastName": "Daboussi",
+    "email": "Hamdi.Daboussi@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4239",
+    "firstName": "Manuela",
+    "lastName": "Troeira",
+    "email": "Manuela.Troeira@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4423",
+    "firstName": "Stephane",
+    "lastName": "Le Grand",
+    "email": "Stephane.Legrand@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4230",
+    "firstName": "Philippe",
+    "lastName": "Le Bras",
+    "email": "Philippe.LeBras@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4626",
+    "firstName": "Gildas",
+    "lastName": "Cancouet",
+    "email": "Gildas.Cancouet@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8102",
+    "firstName": "Giovanni",
+    "lastName": "Begue",
+    "email": "giovanni.begue@harmonicinc.com",
+    "deptName": "BROADBAND DEVICES"
+  },
+  {
+    "id": "4201",
+    "firstName": "Valerie",
+    "lastName": "Dore",
+    "email": "Valerie.Dore@harmonicinc.com",
+    "deptName": "SALES ENABLEMENT"
+  },
+  {
+    "id": "4553",
+    "firstName": "Joel",
+    "lastName": "Chauvin",
+    "email": "Joel.Chauvin@harmonicinc.com",
+    "deptName": "EMEA - Southern Europe Pre-Sales"
+  },
+  {
+    "id": "4251",
+    "firstName": "Fabien",
+    "lastName": "Deschamps",
+    "email": "Fabien.Deschamps@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4851",
+    "firstName": "Nicolas",
+    "lastName": "Monnerie",
+    "email": "nicolas.monnerie@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4402",
+    "firstName": "Pascal",
+    "lastName": "Fontaine",
+    "email": "Pascal.Fontaine@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4294",
+    "firstName": "Pierre Yves",
+    "lastName": "Cochennec",
+    "email": "Pierre-yves.Cochennec@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7386",
+    "firstName": "Emilie",
+    "lastName": "Lievre",
+    "email": "emilie.lievre@harmonicinc.com",
+    "deptName": "SALES ENABLEMENT"
+  },
+  {
+    "id": "7310",
+    "firstName": "Christopher",
+    "lastName": "Le Mehaute ",
+    "email": "christopher.lemehaute@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4186",
+    "firstName": "Stephane",
+    "lastName": "Cloirec",
+    "email": "Stephane.Cloirec@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "7085",
+    "firstName": "Thomas",
+    "lastName": "Fave",
+    "email": "thomas.fave@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7989",
+    "firstName": "Tamim Hasan",
+    "lastName": "Matubbar",
+    "email": "Tamim-hasan.Matubbar@harmonicinc.com"
+  },
+  {
+    "id": "4273",
+    "firstName": "Olivier",
+    "lastName": "Sernin",
+    "email": "Olivier.Sernin@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4479",
+    "firstName": "Marc",
+    "lastName": "De Ratuld",
+    "email": "Marc.DeRatuld@harmonicinc.com",
+    "deptName": "CS SUPPORT LOGISTICS"
+  },
+  {
+    "id": "4387",
+    "firstName": "Yvan",
+    "lastName": "Lemanissier",
+    "email": "Yvan.Lemanissier@harmonicinc.com",
+    "deptName": "FACTORY"
+  },
+  {
+    "id": "7629",
+    "firstName": "Karima",
+    "lastName": "Toumi",
+    "email": "karima.toumi@harmonicinc.com"
+  },
+  {
+    "id": "4616",
+    "firstName": "Thibault",
+    "lastName": "Riou",
+    "email": "Thibault.Riou@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4603",
+    "firstName": "Damien",
+    "lastName": "Minaud",
+    "email": "Damien.Minaud@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4154",
+    "firstName": "Jean-Marc",
+    "lastName": "Guiot",
+    "email": "Jean-Marc.Guiot@harmonicinc.com",
+    "deptName": "APPLICATIONS & IT"
+  },
+  {
+    "id": "7882",
+    "firstName": "Marouene",
+    "lastName": "Aouadhi",
+    "email": "marouene.aouadhi@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4406",
+    "firstName": "Stephane",
+    "lastName": "Gestin",
+    "email": "Stephane.Gestin@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4477",
+    "firstName": "Christophe",
+    "lastName": "Langlais",
+    "email": "Christophe.Langlais@harmonicinc.com",
+    "deptName": "GLOBAL PROGRAM MANAGEMENT"
+  },
+  {
+    "id": "4205",
+    "firstName": "Herve",
+    "lastName": "Nicolle",
+    "email": "Herve.Nicolle@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4525",
+    "firstName": "Julie",
+    "lastName": "Chatelais",
+    "email": "Julie.Chatelais@harmonicinc.com",
+    "deptName": "HUMAN RESOURCES"
+  },
+  {
+    "id": "378",
+    "firstName": "Alfred (Dan)",
+    "lastName": "Eliason",
+    "email": "daniel.eliason@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4261",
+    "firstName": "Pierre",
+    "lastName": "Mauclair",
+    "email": "Pierre.Mauclair@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "7320",
+    "firstName": "Naomie",
+    "lastName": "Bwepu",
+    "email": "naomie.bwepu@harmonicinc.com"
+  },
+  {
+    "id": "7924",
+    "firstName": "Christophe",
+    "lastName": "Cazettes",
+    "email": "christophe.cazettes@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4319",
+    "firstName": "Benoit",
+    "lastName": "Oger",
+    "email": "Benoit.Oger@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4153",
+    "firstName": "Laurent",
+    "lastName": "Lesenne",
+    "email": "Laurent.Lesenne@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7964",
+    "firstName": "Laura",
+    "lastName": "Francois",
+    "email": "Laura.Francois@harmonicinc.com",
+    "deptName": "HUMAN RESOURCES"
+  },
+  {
+    "id": "8619",
+    "firstName": "Daniel Francis",
+    "lastName": "Sebastian Charles",
+    "email": "daniel.sebastiancharles@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4769",
+    "firstName": "Loic",
+    "lastName": "Hurault",
+    "email": "loic.hurault@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4316",
+    "firstName": "Bruno",
+    "lastName": "Larrouyat",
+    "email": "Bruno.Larrouyat@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4444",
+    "firstName": "Bertrand",
+    "lastName": "Toscer",
+    "email": "Bertrand.Toscer@harmonicinc.com",
+    "teamId": "6186e427-e152-4282-8745-45415492a5fd",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4462",
+    "firstName": "Pascal",
+    "lastName": "Helou",
+    "email": "Pascal.Helou@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7619",
+    "firstName": "Rabab",
+    "lastName": "Nounah",
+    "email": "rabab.nounah@harmonicinc.com"
+  },
+  {
+    "id": "4365",
+    "firstName": "Laurent",
+    "lastName": "Thebault",
+    "email": "Laurent.Thebault@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4586",
+    "firstName": "Hubert",
+    "lastName": "Prioul",
+    "email": "Hubert.Prioul@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4270",
+    "firstName": "David",
+    "lastName": "Appert",
+    "email": "David.Appert@harmonicinc.com",
+    "deptName": "SaaS PRODUCT MANAGEMENT"
+  },
+  {
+    "id": "7232",
+    "firstName": "Sabera",
+    "lastName": "Djelti",
+    "email": "sabera.djelti@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4436",
+    "firstName": "Isabelle",
+    "lastName": "Gatel",
+    "email": "Isabelle.Gatel@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "8016",
+    "firstName": "Ulysse",
+    "lastName": "Lemire",
+    "email": "ulysse.lemire@harmonicinc.com"
+  },
+  {
+    "id": "8750",
+    "firstName": "Francois Xavier",
+    "lastName": "Guyot",
+    "email": "francois-xavier.guyot@harmonicinc.com",
+    "deptName": "FINANCIAL PLANNING & ANALYSIS"
+  },
+  {
+    "id": "4474",
+    "firstName": "Thomas",
+    "lastName": "Theault",
+    "email": "Thomas.Theault@harmonicinc.com",
+    "deptName": "GLOBAL TIER 2 TECHNICAL SUPPORT"
+  },
+  {
+    "id": "4427",
+    "firstName": "Bertrand",
+    "lastName": "Provost",
+    "email": "Bertrand.Provost@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7502",
+    "firstName": "Rachad",
+    "lastName": "Abdallah",
+    "email": "rachad.abdallah@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4528",
+    "firstName": "Yves Michel",
+    "lastName": "Le Douarin",
+    "email": "Yves-Michel.LeDouarin@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4561",
+    "firstName": "Jerome",
+    "lastName": "Ginguene",
+    "email": "Jerome.Ginguene@harmonicinc.com",
+    "teamId": "6186e427-e152-4282-8745-45415492a5fd",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "5080",
+    "firstName": "Yoann",
+    "lastName": "Gueye-Deplechin",
+    "email": "yoann.gueye-deplechin@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4289",
+    "firstName": "Herve",
+    "lastName": "Pietrantoni",
+    "email": "Herve.Pietrantoni@harmonicinc.com",
+    "deptName": "FACTORY"
+  },
+  {
+    "id": "7470",
+    "firstName": "Kristine ",
+    "lastName": "Lathiere",
+    "email": "kristine.lathiere@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4308",
+    "firstName": "Jean Luc",
+    "lastName": "Delamotte",
+    "email": "Jean-Luc.Delamotte@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4430",
+    "firstName": "Lionel",
+    "lastName": "Lecorps",
+    "email": "Lionel.Lecorps@harmonicinc.com",
+    "deptName": "EMEA - FS - Southern Europe"
+  },
+  {
+    "id": "4175",
+    "firstName": "Karine",
+    "lastName": "Richecoeur",
+    "email": "Karine.Richecoeur@harmonicinc.com",
+    "deptName": "EMEA SALES ENGINEERING"
+  },
+  {
+    "id": "7330",
+    "firstName": "Nicolas",
+    "lastName": "Tronson",
+    "email": "nicolas.tronson@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4415",
+    "firstName": "Lila",
+    "lastName": "Huguenel",
+    "email": "Lila.Huguenel@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4379",
+    "firstName": "Frederic",
+    "lastName": "Abravanel",
+    "email": "Frederic.Abravanel@harmonicinc.com",
+    "deptName": "GLOBAL TIER 2 TECHNICAL SUPPORT"
+  },
+  {
+    "id": "8712",
+    "firstName": "Jean",
+    "lastName": "Laurent",
+    "email": "jean.laurent@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7786",
+    "firstName": "Angeline",
+    "lastName": "Guyomard",
+    "email": "angeline.guyomard@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "7995",
+    "firstName": "Gabin",
+    "lastName": "Deme",
+    "email": "gabin.deme@harmonicinc.com"
+  },
+  {
+    "id": "2902",
+    "firstName": "Pierre-Philippe (Pierre)",
+    "lastName": "Sohier",
+    "email": "pierre-philippe.sohier@harmonicinc.com",
+    "deptName": "BROADCAST MARKET DEVELPMENT"
+  },
+  {
+    "id": "4523",
+    "firstName": "Ronan",
+    "lastName": "Lhostis",
+    "email": "Ronan.Lhostis@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "4472",
+    "firstName": "Jean Louis",
+    "lastName": "Boisseau",
+    "email": "Jean-Louis.Boisseau@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "7441",
+    "firstName": "Soizic",
+    "lastName": "Deliot",
+    "email": "soizic.deliot@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4716",
+    "firstName": "Vincent",
+    "lastName": "Raymont",
+    "email": "vincent.raymont@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4277",
+    "firstName": "Lionel",
+    "lastName": "Peron",
+    "email": "Lionel.Peron@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4199",
+    "firstName": "Philippe",
+    "lastName": "Couet",
+    "email": "Philippe.Couet@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "5028",
+    "firstName": "Samuel",
+    "lastName": "Fernandes",
+    "email": "samuel.fernandes@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "5125",
+    "firstName": "Kévin",
+    "lastName": "Leon",
+    "email": "kevin.leon@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4511",
+    "firstName": "Gwenael",
+    "lastName": "Bronsard",
+    "email": "",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7921",
+    "firstName": "Nataliia",
+    "lastName": "Stopnyk",
+    "email": "nataliia.stopnyk@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4617",
+    "firstName": "Jerome",
+    "lastName": "Huet",
+    "email": "Jerome.Huet@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "8086",
+    "firstName": "Hanna",
+    "lastName": "Sidi Heiba",
+    "email": "Hanna.SidiHeiba@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "7846",
+    "firstName": "Taras",
+    "lastName": "Lemkin",
+    "email": "taras.lemkin@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "6878",
+    "firstName": "Nicolas",
+    "lastName": "Debomy",
+    "email": "nicolas.debomy@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4160",
+    "firstName": "Ludovic",
+    "lastName": "Huon",
+    "email": "Ludovic.Huon@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4193",
+    "firstName": "Philippe",
+    "lastName": "Cornichet",
+    "email": "Philippe.Cornichet@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "5123",
+    "firstName": "Amandeep",
+    "lastName": "Saini",
+    "email": "Amandeep.Saini@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "7896",
+    "firstName": "Anna",
+    "lastName": "Lyvytska",
+    "email": "anna.lyvytska@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7897",
+    "firstName": "Alexandre",
+    "lastName": "Julien",
+    "email": "alexandre.julien@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "7366",
+    "firstName": "Yaya",
+    "lastName": "Simpara",
+    "email": "yaya.simpara@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4468",
+    "firstName": "Delphine",
+    "lastName": "Le Cam",
+    "email": "Delphine.LeCam@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4244",
+    "firstName": "Jacquine",
+    "lastName": "Sevec",
+    "email": "Jacquine.Sevec@harmonicinc.com",
+    "deptName": "HUMAN RESOURCES"
+  },
+  {
+    "id": "4566",
+    "firstName": "Dar'ya",
+    "lastName": "Khaustova",
+    "email": "Darya.Khaustova@harmonicinc.com",
+    "deptName": "EDUCATIONAL SERVICES"
+  },
+  {
+    "id": "7869",
+    "firstName": "Yuxia",
+    "lastName": "Chen",
+    "email": "yuxia.chen@harmonicinc.com",
+    "deptName": "FINANCIAL PLANNING & ANALYSIS"
+  },
+  {
+    "id": "4240",
+    "firstName": "Virginie",
+    "lastName": "Roy",
+    "email": "Virginie.Roy@harmonicinc.com",
+    "deptName": "FINANCIAL PLANNING & ANALYSIS"
+  },
+  {
+    "id": "4466",
+    "firstName": "Frederic",
+    "lastName": "Mounier",
+    "email": "Frederic.Mounier@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4565",
+    "firstName": "Arnaud",
+    "lastName": "Maillet",
+    "email": "Arnaud.Maillet@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "4381",
+    "firstName": "Pierre",
+    "lastName": "Clement",
+    "email": "Pierre.Clement@harmonicinc.com",
+    "deptName": "EMEA - Central & Eastern Europe Pre-Sales"
+  },
+  {
+    "id": "4349",
+    "firstName": "Benoit",
+    "lastName": "Datin",
+    "email": "Benoit.Datin@harmonicinc.com",
+    "teamId": "6186e427-e152-4282-8745-45415492a5fd",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7133",
+    "firstName": "Daniel",
+    "lastName": "Becdelievre",
+    "email": "daniel.becdelievre@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4400",
+    "firstName": "Isabelle",
+    "lastName": "Mariais",
+    "email": "Isabelle.Mariais@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4608",
+    "firstName": "Stephane",
+    "lastName": "Lecomte",
+    "email": "Stephane.Lecomte@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "8009",
+    "firstName": "Servane",
+    "lastName": "Mahier",
+    "email": "servane.mahier@harmonicinc.com"
+  },
+  {
+    "id": "8068",
+    "firstName": "Cedric",
+    "lastName": "Thamin",
+    "email": "cedric.thamin@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4493",
+    "firstName": "Jean Michel",
+    "lastName": "Haroutel",
+    "email": "Jean-Michel.Haroutel@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "6692",
+    "firstName": "Henri",
+    "lastName": "Brault",
+    "email": "henri.brault@harmonicinc.com",
+    "deptName": "BROADBAND DEVICES"
+  },
+  {
+    "id": "4361",
+    "firstName": "Patrick",
+    "lastName": "Leclerc",
+    "email": "Patrick.Leclerc@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4829",
+    "firstName": "Frederic",
+    "lastName": "Mandry",
+    "email": "frederic.mandry@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4207",
+    "firstName": "Stephane",
+    "lastName": "Allie",
+    "email": "Stephane.Allie@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4912",
+    "firstName": "Alice",
+    "lastName": "Gerson",
+    "email": "alice.gerson@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "7926",
+    "firstName": "Alexandre",
+    "lastName": "Gaulon",
+    "email": "alexandre.gaulon@harmonicinc.com",
+    "deptName": "CS SUPPORT LOGISTICS"
+  },
+  {
+    "id": "4367",
+    "firstName": "Vincent",
+    "lastName": "Caratto",
+    "email": "Vincent.Caratto@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "5044",
+    "firstName": "Aurelien",
+    "lastName": "Beaudet",
+    "email": "aurelien.beaudet@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "5016",
+    "firstName": "Mikhail",
+    "lastName": "Silin",
+    "email": "mikhail.silin@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4310",
+    "firstName": "Juan",
+    "lastName": "Moronta",
+    "email": "Juan.Moronta@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8640",
+    "firstName": "Minh Phuong",
+    "lastName": "Ngo",
+    "email": "MinhPhuong.Ngo@harmonicinc.com",
+    "deptName": "Back Office and Infrastructure1"
+  },
+  {
+    "id": "7621",
+    "firstName": "Oumaima",
+    "lastName": "Kechikeche",
+    "email": "oumaima.kechikeche@harmonicinc.com"
+  },
+  {
+    "id": "4432",
+    "firstName": "Maryline",
+    "lastName": "Morand",
+    "email": "Maryline.Morand@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4396",
+    "firstName": "Beatrice",
+    "lastName": "Galais",
+    "email": "Beatrice.Galais@harmonicinc.com",
+    "deptName": "CHANNEL SALES"
+  },
+  {
+    "id": "8706",
+    "firstName": "Alexandre",
+    "lastName": "Martin",
+    "email": "alexandre.martin@harmonicinc.com",
+    "deptName": "CORPORATE COMMUNICATIONS"
+  },
+  {
+    "id": "6975",
+    "firstName": "Patricia",
+    "lastName": "Salignon",
+    "email": "patricia.salignon@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4417",
+    "firstName": "Veronique",
+    "lastName": "Philippe",
+    "email": "Veronique.Philippe@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4209",
+    "firstName": "Carine",
+    "lastName": "Somnard",
+    "email": "Carine.Somnard@harmonicinc.com",
+    "deptName": "HUMAN RESOURCES"
+  },
+  {
+    "id": "4470",
+    "firstName": "Serge",
+    "lastName": "Basle",
+    "email": "Serge.Basle@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "7724",
+    "firstName": "Wissem",
+    "lastName": "Bacha",
+    "email": "wissem.bacha@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "role": "ADMIN",
+    "id": "5295",
+    "firstName": "Elena",
+    "lastName": "Afanasieva",
+    "email": "Elena.Afanasieva@harmonicinc.com",
+    "deptName": "SaaS PRODUCT MANAGEMENT"
+  },
+  {
+    "id": "7079",
+    "firstName": "Bakr",
+    "lastName": "Chakkor",
+    "email": "bakr.chakkor@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4234",
+    "firstName": "Anne Lore",
+    "lastName": "Mevel",
+    "email": "Anne-lore.Mevel@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "7688",
+    "firstName": "Yohann",
+    "lastName": "Lallier",
+    "email": "yohann.lallier@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "role": "ADMIN",
+    "id": "4180",
+    "firstName": "Herve",
+    "lastName": "Le Bihan",
+    "email": "Herve.LeBihan@harmonicinc.com",
+    "deptName": "GLOBAL FACILITIES"
+  },
+  {
+    "id": "8054",
+    "firstName": "Christophe",
+    "lastName": "Chauvel",
+    "email": "christophe.chauvel@harmonicinc.com",
+    "deptName": "IT NETWORKS"
+  },
+  {
+    "id": "4335",
+    "firstName": "Julien",
+    "lastName": "Lincy",
+    "email": "Julien.Lincy@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "6629",
+    "firstName": "Cinderella",
+    "lastName": "Dubois",
+    "email": "cinderella.dubois@harmonicinc.com"
+  },
+  {
+    "id": "4486",
+    "firstName": "Bruno",
+    "lastName": "Guesdon",
+    "email": "Bruno.Guesdon@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "8082",
+    "firstName": "Ruddy",
+    "lastName": "Mouniama-Mounican",
+    "email": "Ruddy.MouniamaMounican@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4407",
+    "firstName": "Benoit",
+    "lastName": "Guerin",
+    "email": "Benoit.Guerin@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4312",
+    "firstName": "David",
+    "lastName": "Mouen Makoua",
+    "email": "David.Mouen@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "4357",
+    "firstName": "Nicolas",
+    "lastName": "Kermen",
+    "email": "Nicolas.Kermen@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4499",
+    "firstName": "Frederic",
+    "lastName": "Masse",
+    "email": "Frederic.Masse@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4162",
+    "firstName": "Christophe",
+    "lastName": "Brillant",
+    "email": "Christophe.Brillant@harmonicinc.com",
+    "deptName": "MANUFACTURING ENGINEERING"
+  },
+  {
+    "id": "4380",
+    "firstName": "Christophe",
+    "lastName": "Guernion",
+    "email": "Christophe.Guernion@harmonicinc.com",
+    "deptName": "RENNES CONFIGURATION MANAGEMENT"
+  },
+  {
+    "id": "6799",
+    "firstName": "Lucas",
+    "lastName": "Bahuaud",
+    "email": "lucas.bahuaud@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4216",
+    "firstName": "Michel",
+    "lastName": "Jouan",
+    "email": "Michel.Jouan@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "6968",
+    "firstName": "Williams",
+    "lastName": "Viyou",
+    "email": "williams.viyou@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4494",
+    "firstName": "Mickael",
+    "lastName": "Jamelot",
+    "email": "Mickael.Jamelot@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4562",
+    "firstName": "Benoit",
+    "lastName": "Martin",
+    "email": "Benoit.Martin@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4490",
+    "firstName": "Frederic",
+    "lastName": "Renaud",
+    "email": "Frederic.Renaud@harmonicinc.com",
+    "deptName": "MANUFACTURING ENGINEERING"
+  },
+  {
+    "id": "5611",
+    "firstName": "Magali",
+    "lastName": "Hamon",
+    "email": "magali.hamon@harmonicinc.com",
+    "deptName": "FINANCIAL PLANNING & ANALYSIS"
+  },
+  {
+    "id": "4507",
+    "firstName": "Jean Luc",
+    "lastName": "Leblanc",
+    "email": "Jean-Luc.Leblanc@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4350",
+    "firstName": "Patrick",
+    "lastName": "Gendron",
+    "email": "Patrick.Gendron@harmonicinc.com",
+    "deptName": "VOS VANGUARD PRODUCT DEFINITION"
+  },
+  {
+    "id": "4547",
+    "firstName": "Bihong",
+    "lastName": "Huang",
+    "email": "Bihong.Huang@harmonicinc.com",
+    "deptName": "RENNES INNOVATION & TECHNOLOGY"
+  },
+  {
+    "id": "4340",
+    "firstName": "Jean Yves",
+    "lastName": "Quintard",
+    "email": "Jean-Yves.Quintard@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7246",
+    "firstName": "Victor",
+    "lastName": "Hamon",
+    "email": "victor.hamon@harmonicinc.com",
+    "deptName": "CORPORATE COMMUNICATIONS"
+  },
+  {
+    "id": "4298",
+    "firstName": "Nicolas",
+    "lastName": "Gauthier",
+    "email": "Nicolas.Gauthier@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4399",
+    "firstName": "Patrick",
+    "lastName": "Marchal",
+    "email": "Patrick.Marchal@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "7829",
+    "firstName": "Richard",
+    "lastName": "Francois",
+    "email": "richard.francois@harmonicinc.com",
+    "deptName": "RENNES CONFIGURATION MANAGEMENT"
+  },
+  {
+    "id": "5081",
+    "firstName": "Emmanuel",
+    "lastName": "Berthaut",
+    "email": "emmanuel.berthaut@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "7362",
+    "firstName": "Quentin",
+    "lastName": "Nicod",
+    "email": "quentin.nicod@harmonicinc.com"
+  },
+  {
+    "id": "4307",
+    "firstName": "Alain",
+    "lastName": "Pellen",
+    "email": "Alain.Pellen@harmonicinc.com",
+    "deptName": "MARKET MANAGEMENT"
+  },
+  {
+    "id": "4483",
+    "firstName": "Roland",
+    "lastName": "Lefeuvre",
+    "email": "Roland.Lefeuvre@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4447",
+    "firstName": "Lahcen",
+    "lastName": "Jerid",
+    "email": "Lahcen.Jerid@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7627",
+    "firstName": "Angeline",
+    "lastName": "Magois",
+    "email": "angeline.magois@harmonicinc.com",
+    "teamId": "6186e427-e152-4282-8745-45415492a5fd",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4382",
+    "firstName": "Didier",
+    "lastName": "Harrang",
+    "email": "Didier.Harrang@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "8561",
+    "firstName": "Kilian",
+    "lastName": "Rocuet",
+    "email": "kilian.rocuet@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "7851",
+    "firstName": "Maksym",
+    "lastName": "Veselov",
+    "email": "maksym.veselov@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4368",
+    "firstName": "Armelle",
+    "lastName": "Le Baliner",
+    "email": "Armelle.LeBaliner@harmonicinc.com",
+    "deptName": "CS SUPPORT LOGISTICS"
+  },
+  {
+    "id": "6929",
+    "firstName": "Saad",
+    "lastName": "Merzaq",
+    "email": "saad.merzaq@harmonicinc.com",
+    "deptName": "BROADBAND DEVICES"
+  },
+  {
+    "id": "4222",
+    "firstName": "Isabelle",
+    "lastName": "Durupt",
+    "email": "Isabelle.Durupt@harmonicinc.com",
+    "deptName": "CHANNEL SALES"
+  },
+  {
+    "id": "4165",
+    "firstName": "Christophe",
+    "lastName": "Berthelot",
+    "email": "Christophe.Berthelot@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4476",
+    "firstName": "Jerome",
+    "lastName": "Bourget",
+    "email": "Jerome.Bourget@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "8781",
+    "firstName": "Lea",
+    "lastName": "Lamarque",
+    "email": "lea.lamarque@harmonicinc.com",
+    "deptName": "HUMAN RESOURCES"
+  },
+  {
+    "id": "8062",
+    "firstName": "Regis",
+    "lastName": "Prudhomme",
+    "email": "regis.prudhomme@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "7842",
+    "firstName": "Mykhailo",
+    "lastName": "Stopnyk",
+    "email": "mykhailo.stopnyk@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4329",
+    "firstName": "Jean Philippe",
+    "lastName": "Niobey",
+    "email": "JeanPhilippe.Niobey@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4993",
+    "firstName": "Jamal",
+    "lastName": "Boughourfi",
+    "email": "jamal.boughourfi@harmonicinc.com",
+    "deptName": "GLOBAL TIER 2 TECHNICAL SUPPORT"
+  },
+  {
+    "id": "7571",
+    "firstName": "Benoît",
+    "lastName": "Le Basse",
+    "email": "benoit.lebasse@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4988",
+    "firstName": "Maxime",
+    "lastName": "Prigent",
+    "email": "maxime.prigent@harmonicinc.com"
+  },
+  {
+    "id": "4564",
+    "firstName": "Matthieu",
+    "lastName": "Janvier",
+    "email": "Matthieu.Janvier@harmonicinc.com",
+    "deptName": "APPLICATIONS & IT"
+  },
+  {
+    "id": "4577",
+    "firstName": "Denis",
+    "lastName": "Mailleux",
+    "email": "Denis.Mailleux@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4285",
+    "firstName": "Stephane",
+    "lastName": "Fargeot",
+    "email": "Stephane.Fargeot@harmonicinc.com",
+    "deptName": "EMEA - Central & Eastern Europe Pre-Sales"
+  },
+  {
+    "id": "4437",
+    "firstName": "Jean Francois",
+    "lastName": "Bedague",
+    "email": "jean-francois.bedague@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4196",
+    "firstName": "Olivier",
+    "lastName": "Brohan",
+    "email": "Olivier.Brohan@harmonicinc.com",
+    "deptName": "GLOBAL TIER 2 TECHNICAL SUPPORT"
+  },
+  {
+    "id": "8739",
+    "firstName": "Fabrice",
+    "lastName": "Herbert",
+    "email": "fabrice.herbert@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "7816",
+    "firstName": "Cedric",
+    "lastName": "Soedjede",
+    "email": "cedric.soedjede@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "6966",
+    "firstName": "Alexandre",
+    "lastName": "Levrard",
+    "email": "alexandre.levrard@harmonicinc.com",
+    "deptName": "IT SALES TOOLS"
+  },
+  {
+    "id": "4213",
+    "firstName": "Yannick",
+    "lastName": "Legourd",
+    "email": "Yannick.Legourd@harmonicinc.com",
+    "deptName": "SUPPLY CHAIN MANAGEMENT"
+  },
+  {
+    "id": "4537",
+    "firstName": "Pascal",
+    "lastName": "Bernard",
+    "email": "Pascal.Bernard@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4450",
+    "firstName": "Sebastien",
+    "lastName": "Gillard",
+    "email": "Sebastien.Gillard@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7142",
+    "firstName": "Emeric",
+    "lastName": "Martin",
+    "email": "emeric.martin@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4155",
+    "firstName": "Frederic",
+    "lastName": "Raoult",
+    "email": "Frederic.Raoult@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7388",
+    "firstName": "Antoine",
+    "lastName": "Chou",
+    "email": "antoine.chou@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "7690",
+    "firstName": "Stéphane",
+    "lastName": "Massoni",
+    "email": "stephane.massoni@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4467",
+    "firstName": "Marc",
+    "lastName": "Julien",
+    "email": "Marc.Julien@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4300",
+    "firstName": "Anne Sophie",
+    "lastName": "Douchement",
+    "email": "Anne-Sophie.Douchement@harmonicinc.com",
+    "deptName": "EMEA SALES - HQ & OPERATIONS"
+  },
+  {
+    "id": "4418",
+    "firstName": "Goulwen",
+    "lastName": "Creignou",
+    "email": "Goulwen.Creignou@harmonicinc.com",
+    "deptName": "EMEA - Southern Europe Pre-Sales"
+  },
+  {
+    "id": "4256",
+    "firstName": "Pascal",
+    "lastName": "Lucas",
+    "email": "Pascal.Lucas@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4571",
+    "firstName": "Xavier",
+    "lastName": "Ducloux",
+    "email": "Xavier.Ducloux@harmonicinc.com",
+    "deptName": "DV PM & SOLUTIONS ADMIN"
+  },
+  {
+    "id": "7477",
+    "firstName": "Minh Phuong",
+    "lastName": "Carrasco",
+    "email": "minh.carrasco@harmonicinc.com",
+    "deptName": "CHANNEL SALES"
+  },
+  {
+    "id": "4913",
+    "firstName": "Megan",
+    "lastName": "Hannon",
+    "email": "megan.hannon@harmonicinc.com",
+    "deptName": "CORPORATE COMMUNICATIONS"
+  },
+  {
+    "id": "4306",
+    "firstName": "Didier",
+    "lastName": "Hardy",
+    "email": "Didier.Hardy@harmonicinc.com",
+    "deptName": "QUALITY ASSURANCE"
+  },
+  {
+    "id": "4334",
+    "firstName": "Laurent",
+    "lastName": "David",
+    "email": "Laurent.David@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7443",
+    "firstName": "Camille",
+    "lastName": "Charriot",
+    "email": "camille.charriot@harmonicinc.com",
+    "deptName": "CORPORATE SOCIAL RESPONSIBILITY"
+  },
+  {
+    "id": "4777",
+    "firstName": "Allard",
+    "lastName": "Hoog",
+    "email": "allard.hoog@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4515",
+    "firstName": "Thierry",
+    "lastName": "Leroy",
+    "email": "Thierry.Leroy@harmonicinc.com",
+    "deptName": "DOCUMENT CONTROL"
+  },
+  {
+    "id": "4220",
+    "firstName": "Veronique",
+    "lastName": "Savin",
+    "email": "veronique.savin@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8059",
+    "firstName": "Santiago",
+    "lastName": "Timm Soares",
+    "email": "santiago.soares@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "7848",
+    "firstName": "Mykhailo ",
+    "lastName": "Iavorskyi",
+    "email": "mykhailo.iavorskyi@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4364",
+    "firstName": "Sebastien",
+    "lastName": "Briand",
+    "email": "Sebastien.Briand@harmonicinc.com",
+    "teamId": "6186e427-e152-4282-8745-45415492a5fd",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7578",
+    "firstName": "Jeanne",
+    "lastName": "David",
+    "email": "jeanne.david@harmonicinc.com",
+    "deptName": "CORPORATE COMMUNICATIONS"
+  },
+  {
+    "id": "4336",
+    "firstName": "Stephane",
+    "lastName": "Le Cras",
+    "email": "Stephane.LeCras@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "8018",
+    "firstName": "Jean-Gatien ",
+    "lastName": "Cordier",
+    "email": "jean-gatien.cordier@harmonicinc.com",
+    "deptName": "BROADBAND DEVICES"
+  },
+  {
+    "id": "4203",
+    "firstName": "Christophe",
+    "lastName": "Cailteaux",
+    "email": "Christophe.Cailteaux@harmonicinc.com",
+    "deptName": "HUMAN RESOURCES"
+  },
+  {
+    "id": "4278",
+    "firstName": "Sabine",
+    "lastName": "Genand",
+    "email": "Sabine.Genand@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4395",
+    "firstName": "Christian",
+    "lastName": "Nicolas",
+    "email": "Christian.Nicolas@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8124",
+    "firstName": "Oksana ",
+    "lastName": "Dmytriv",
+    "email": "oksana.dmytriv@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "id": "4318",
+    "firstName": "Alexandre",
+    "lastName": "Belz",
+    "email": "Alexandre.Belz@harmonicinc.com",
+    "deptName": "EMEA SALES ENGINEERING"
+  },
+  {
+    "id": "6972",
+    "firstName": "Maxime",
+    "lastName": "Philippe",
+    "email": "maxime.philippe@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8538",
+    "firstName": "Manuel",
+    "lastName": "Olejniczak",
+    "email": "manuel.olejniczak@harmonicinc.com",
+    "deptName": "SaaS PRODUCT MANAGEMENT"
+  },
+  {
+    "id": "4158",
+    "firstName": "Etienne",
+    "lastName": "Bonneau",
+    "email": "Etienne.Bonneau@harmonicinc.com",
+    "deptName": "VIDEO APPLICATION & PLATFORM MGMT"
+  },
+  {
+    "id": "4533",
+    "firstName": "Frederic",
+    "lastName": "Lemoine",
+    "email": "Frederic.Lemoine@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "8112",
+    "firstName": "Armel",
+    "lastName": "Abautret",
+    "email": "armel.abautret@harmonicinc.com",
+    "deptName": "BROADBAND CORE"
+  },
+  {
+    "id": "4464",
+    "firstName": "Sandrine",
+    "lastName": "Mesureur",
+    "email": "Sandrine.Mesureur@harmonicinc.com",
+    "deptName": "RENNES SOFTWARE QA"
+  },
+  {
+    "role": "leader",
+    "id": "4208",
+    "firstName": "Patrice",
+    "lastName": "Alexandre",
+    "email": "Patrice.Alexandre@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "8092",
+    "firstName": "Victor",
+    "lastName": "Ferrand",
+    "email": "victor.ferrand@harmonicinc.com"
+  },
+  {
+    "id": "8098",
+    "firstName": "Romain",
+    "lastName": "Soulabaille",
+    "email": "romain.soulabaille@harmonicinc.com",
+    "deptName": "FINANCE"
+  },
+  {
+    "id": "4645",
+    "firstName": "Fabrice",
+    "lastName": "Templon",
+    "email": "Fabrice.Templon@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4517",
+    "firstName": "Laurent",
+    "lastName": "Marie",
+    "email": "Laurent.Marie@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "5007",
+    "firstName": "Sebastien",
+    "lastName": "Filleul",
+    "email": "sebastien.filleul@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "role": "ADMIN",
+    "id": "4232",
+    "firstName": "Frederic",
+    "lastName": "Landais",
+    "email": "Frederic.Landais@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "7484",
+    "firstName": "Benjamin",
+    "lastName": "Joa",
+    "email": "benjamin.joa@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "4215",
+    "firstName": "Crystele",
+    "lastName": "Trevisan",
+    "email": "Crystele.Trevisan@harmonicinc.com",
+    "deptName": "CORPORATE COMMUNICATIONS"
+  },
+  {
+    "id": "4159",
+    "firstName": "Arnaud",
+    "lastName": "Mahe",
+    "email": "Arnaud.Mahe@harmonicinc.com",
+    "deptName": "VOS VANGUARD PRODUCT DEFINITION"
+  },
+  {
+    "id": "4377",
+    "firstName": "Anne Sophie",
+    "lastName": "Harnois",
+    "email": "Anne-Sophie.Harnois@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "7363",
+    "firstName": "Manon",
+    "lastName": "Fortin",
+    "email": "manon.fortin@harmonicinc.com",
+    "deptName": "FINANCIAL PLANNING & ANALYSIS"
+  },
+  {
+    "id": "2954",
+    "firstName": "Simon",
+    "lastName": "Roux-Briffaud",
+    "email": "Simon.roux-briffaud@harmonicinc.com",
+    "deptName": "VIDEO STREAMING MARKET DEVELOPMENT"
+  },
+  {
+    "id": "8014",
+    "firstName": "Thomas",
+    "lastName": "Sanoussi",
+    "email": "thomas.sanoussi@harmonicinc.com"
+  },
+  {
+    "id": "7991",
+    "firstName": "Hugo",
+    "lastName": "Giorgione",
+    "email": "hugo.giorgione@harmonicinc.com"
+  },
+  {
+    "id": "7993",
+    "firstName": "Xavier",
+    "lastName": "Fremiot",
+    "email": "xavier.fremiot@harmonicinc.com"
+  },
+  {
+    "id": "4979",
+    "firstName": "Romain",
+    "lastName": "Charretteur",
+    "email": "romain.charretteur@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4449",
+    "firstName": "Bruno",
+    "lastName": "Derrien",
+    "email": "Bruno.Derrien@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "2542",
+    "firstName": "Denis",
+    "lastName": "Skobelev",
+    "email": "denis.scobelev@harmonicinc.com",
+    "deptName": "EMEA - MEA CIS Pre-Sales"
+  },
+  {
+    "id": "4272",
+    "firstName": "Marc",
+    "lastName": "Amstoutz",
+    "email": "Marc.Amstoutz@harmonicinc.com",
+    "deptName": "RENNES VIDEO & ALGORITHM"
+  },
+  {
+    "id": "8736",
+    "firstName": "Aymen",
+    "lastName": "Soufi",
+    "email": "aymen.soufi@harmonicinc.com",
+    "deptName": "MANUFACTURING ENGINEERING - BROADBAND"
+  },
+  {
+    "id": "4530",
+    "firstName": "Yann",
+    "lastName": "Perzo",
+    "email": "Yann.Perzo@harmonicinc.com",
+    "deptName": "RENNES CONFIGURATION MANAGEMENT"
+  },
+  {
+    "id": "4309",
+    "firstName": "Jean Pierre",
+    "lastName": "Mosset",
+    "email": "Jean-Pierre.Mosset@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4168",
+    "firstName": "Eric",
+    "lastName": "Gallier",
+    "email": "Eric.Gallier@harmonicinc.com",
+    "deptName": "MARKET MANAGEMENT"
+  },
+  {
+    "id": "4448",
+    "firstName": "Guillaume",
+    "lastName": "Lorand",
+    "email": "Guillaume.Lorand@harmonicinc.com",
+    "deptName": "RENNES R&D"
+  },
+  {
+    "id": "4344",
+    "firstName": "Christophe",
+    "lastName": "Fontaine",
+    "email": "Christophe.Fontaine@harmonicinc.com",
+    "deptName": "EMEA - Southern Europe Pre-Sales"
+  },
+  {
+    "id": "6769",
+    "firstName": "Maximilien",
+    "lastName": "Foret",
+    "email": "maximilien.foret@harmonicinc.com",
+    "teamId": "6186e427-e152-4282-8745-45415492a5fd",
+    "deptName": "RENNES R&D"
+  }
+]

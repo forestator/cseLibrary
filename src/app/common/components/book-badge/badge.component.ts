@@ -129,6 +129,7 @@ export class BadgeComponent implements OnInit, OnChanges {
         this.bg = 'darkorange';
         this.fg = 'white';
         break;
+      case BorrowStatus.AVAILABLE:
       case BorrowStatus.RETURNED:
         this.txt = 'DISPONIBLE';
         this.bg = 'green';

@@ -1,10 +1,10 @@
 <div class="core-page fadein" *ngIf="library$ | async as library">
   <div class="core-header">
     <div class="core-title">
-      <div class="primary">{{library.name}}</div>
+      <div class="primary">{{ library.name }}</div>
     </div>
     <div class="core-resume">
-      {{library.resume}}
+      {{ library.resume }}
     </div>
   </div>
   <div *ngFor="let category of library?.categories"
@@ -21,11 +21,11 @@
            class="category-visuel small-display" src="{{category.bg}}">
       <div class="core-title">
         <div class="primary">
-          {{category.name}}
+          {{ category.name }}
         </div>
       </div>
       <div class="core-resume">
-        {{category.resume}}
+        {{ category.resume }}
       </div>
     </div>
   </div>

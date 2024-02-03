@@ -5,6 +5,7 @@ import {SonoItem} from '../../sonotheque/models/sono.model';
 import {NautismeItem} from '../../nautisme/models/nautisme.model';
 
 export enum BorrowStatus {
+  AVAILABLE = 'AVAILABLE',
   EMPRUNTE = 'EMPRUNTE',
   RESERVED = 'RESERVED',
   RETURNED = 'RETURNED',

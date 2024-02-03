@@ -3,15 +3,7 @@ import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../../../../services/firebase/user.service';
-import {Comissions, Game} from '../../../../../models/common.model';
-import {take} from 'rxjs';
-import {
-  ChangeBorrowStatusModalComponent
-} from '../../../../../admin/components/emprunts/change-borrow-status/change-borrow-status-modal.component';
-import {BorrowByComission, BorrowStatus} from '../../../../../admin/models/borrow.model';
-import {
-  BorrowPlanningModalComponent
-} from '../../../../../admin/components/emprunts/borrow-planning-modal/borrow-planning-modal.component';
+import {BorrowByComission} from '../../../../../admin/models/borrow.model';
 
 @Component({
   selector: 'app-board-game-row',
@@ -27,7 +19,6 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
   @Input() borrowsInfo: BorrowByComission[];
 
   parity!: boolean;
-  borrowStatus = BorrowStatus;
 
   constructor(public toolsService: ToolsService,
               public dialog: MatDialog,
@@ -47,19 +38,4 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
     }
   }
 
-  reserveGame(game: Game) {
-    if (!this.borrowsInfo || this.borrowsInfo[this.borrowsInfo.length - 1].status === BorrowStatus.RETURNED) {
-      this.userService.userList$.pipe(take(1)).subscribe(
-        (users) => {
-          this.dialog.open(ChangeBorrowStatusModalComponent, {
-            data: {users, comission: Comissions.LUDOTHEQUE, object: game}
-          });
-        }
-      );
-    } else {
-      this.dialog.open(BorrowPlanningModalComponent, {
-        data: {comission: Comissions.LUDOTHEQUE, object: game}
-      });
-    }
-  }
 }

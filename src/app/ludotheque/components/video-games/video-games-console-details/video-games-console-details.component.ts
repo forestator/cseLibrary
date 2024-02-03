@@ -23,6 +23,6 @@ export class VideoGamesConsoleDetailsComponent {
   }
 
   trackVideoGame(index: number, item: VideoGame) {
-    return item.ref + item.status;
+    return item.ref;
   }
 }

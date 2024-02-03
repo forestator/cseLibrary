@@ -32,7 +32,6 @@ export enum Comissions {
 export interface Game {
   ref: string;
   name: string;
-  status: LudoStatus;
   isNew?: boolean;
   cover?: string;
   category: BoardGameCategory | Consoles | string;

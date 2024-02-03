@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 html {
   font-family: 'Courier Prime', monospace;
-  background-image: url("./assets/background.jpg");
-  background-attachment: fixed;
 }
 
 .side-nav-container {
@@ -114,6 +112,7 @@ html, body {
     font-size: small;
   }
 }
+
 /* todo does not work in table issue with z-index ?
 .table-image-preview {
   transition: transform .1s;

@@ -1,12 +1,9 @@
 <div [id]="videoGame.ref" class="video-console-core">
   <ng-container [ngTemplateOutlet]="image"></ng-container>
   <div class="video-console-info">
-    <div class="video-console-title">{{videoGame.name}}</div>
-    <button mat-raised-button *ngIf="!borrowsInfo || (borrowsInfo[borrowsInfo.length - 1])?.status === borrowStatus.RETURNED; else borrowsInfoStatus"
-            (click)="reserve(videoGame)">Réserver</button>
-    <ng-template #borrowsInfoStatus>
-      <app-badge [status]="(borrowsInfo[borrowsInfo.length - 1]).status"></app-badge>
-    </ng-template>
+    <div class="video-console-title">{{videoGame.name}}
+        <app-badge [status]="borrowsInfo | LastBorrowStatus"></app-badge>
+    </div>
     <div *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
     <div *ngIf="videoGame.description">Description: {{videoGame.description}}</div>
   </div>

@@ -23,6 +23,6 @@ export class BoardGameCategoryDetailsComponent {
   }
 
   trackBoardGame(index: number, item: BoardGame) {
-    return item.id + item.name + item.status;
+    return item.id + item.name;
   }
 }
