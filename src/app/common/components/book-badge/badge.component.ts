@@ -108,6 +108,11 @@ export class BadgeComponent implements OnInit, OnChanges {
         this.bg = '#fe0016';
         this.fg = 'white';
         break;
+      case Consoles.switch2:
+        this.txt = this.status;
+        this.bg = '#9f1e1e';
+        this.fg = 'white';
+        break;
       case Consoles.ps4:
       case Consoles.ps5:
         this.txt = this.status.toUpperCase();
@@ -117,6 +122,11 @@ export class BadgeComponent implements OnInit, OnChanges {
       case Consoles.xboxOne:
         this.txt = this.status;
         this.bg = '#4dd938';
+        this.fg = 'white';
+        break;
+      case Consoles.xboxX:
+        this.txt = this.status;
+        this.bg = '#409131';
         this.fg = 'white';
         break;
     }

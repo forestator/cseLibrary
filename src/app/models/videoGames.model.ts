@@ -2,9 +2,11 @@ import {Game} from './common.model';
 
 export enum Consoles {
   switch = 'switch',
+  switch2 = 'switch2',
   ps4 = 'ps4',
   ps5 = 'ps5',
-  xboxOne = 'xboxOne'
+  xboxOne = 'xboxOne',
+  xboxX = 'xboxX',
 }
 
 export interface VideoGame extends Game {
