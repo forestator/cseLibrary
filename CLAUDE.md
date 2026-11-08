@@ -15,8 +15,8 @@ npm run deploy         # firebase deploy (hosting, projet dans .firebaserc) – 
 
 ## Stack réelle (état actuel, à moderniser)
 
-- Angular **16.2** (package.json), TypeScript 4.9, RxJS 7.4, Angular Material/CDK 16 : `README` (13) et message de commit (« revert to angular 15 ») sont périmés.
-- **NgModules** partout (`app.module.ts`, un module par commission + `admin`, `common`), composants non standalone, `*ngIf`/`*ngFor`, constructeurs pour l'injection, `@Input()` décorateurs, pas de signals.
+- Angular **22.2**, TypeScript 6.0, RxJS 7.8, Angular Material/CDK 22, `@angular/fire` **22.0.0-rc** (prerelease : repasser en stable dès sa sortie). **Node ≥ 22.22.3 ou 24 requis** (`.nvmrc` = 24 ; `export PATH=$HOME/.nvm/versions/node/v24.21.0/bin:$PATH` si nvm n'est pas chargé). Alias `src/*` via `paths` dans `tsconfig.json` (plus de `baseUrl`).
+- **NgModules** partout (`app.module.ts`, un module par commission + `admin`, `common`), composants marqués `standalone: false` par la migration v19, `*ngIf`/`*ngFor`, constructeurs pour l'injection, `@Input()` décorateurs, pas de signals (sauf `admin-home`, écrit en style moderne).
 - `@angular/fire` **compat** (`AngularFireDatabase`, `AngularFireAuth`). Connexion : écran maison dans `admin-home` (email/mot de passe, Google, GitHub) via `AuthentificationService` ; `firebaseui`/`firebaseui-angular` ont été retirés (non maintenus, bloquaient Angular > 18). Pas de création de compte dans l'UI.
 - `tsconfig` : `strict: false` (mais `strictTemplates: true`). Beaucoup de champs non initialisés et de `any`.
 - Moment.js pour toutes les dates, **stockées en `string` au format `DD/MM/YYYY`**.
@@ -26,7 +26,7 @@ npm run deploy         # firebase deploy (hosting, projet dans .firebaserc) – 
 
 ## Conventions cibles (CLAUDE.md global de l'utilisateur)
 
-Le code neuf doit suivre les règles globales (Angular 20+ standalone, signals, `input()`/`output()`, `inject()`, OnPush, control flow natif, 3 fichiers `.ts/.html/.css`, pas de fonction dans les templates, classes CSS sans `--`, AXE/WCAG AA, etc.). Le code existant ne les suit pas : **ne pas mélanger au hasard**, moderniser par périmètre (feature par feature) et passer la version Angular par paliers (16 → 17 → … ) avant d'utiliser les API récentes (`input()` demande ≥ 17.1, `@if` ≥ 17). **Décision : uniquement du SCSS** (jamais de `.css` pour les composants, contrairement à la règle globale « 3 fichiers .ts/.html/.css » : ici `.ts` / `.html` / `.scss`). Les fichiers `.css` restants dans `angular.json` ne sont que des thèmes tiers (Material prebuilt, firebaseui).
+Le code neuf doit suivre les règles globales (Angular 20+ standalone, signals, `input()`/`output()`, `inject()`, OnPush, control flow natif, 3 fichiers `.ts/.html/.css`, pas de fonction dans les templates, classes CSS sans `--`, AXE/WCAG AA, etc.). Le code existant ne les suit pas : **ne pas mélanger au hasard**, moderniser par périmètre (feature par feature) et la montée de version 16 → 22 est faite, il reste la modernisation du code (désormais tout est disponible : Angular 22). **Décision : uniquement du SCSS** (jamais de `.css` pour les composants, contrairement à la règle globale « 3 fichiers .ts/.html/.css » : ici `.ts` / `.html` / `.scss`). Les fichiers `.css` restants dans `angular.json` ne sont que des thèmes tiers (Material prebuilt, firebaseui).
 
 ## Architecture (`src/app`)
 
