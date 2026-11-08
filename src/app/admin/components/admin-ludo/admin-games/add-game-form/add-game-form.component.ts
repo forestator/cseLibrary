@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {BoardGameCategory, Thing} from '../../../../../models/boardGame.model';
 import {Consoles, VideoGameType} from '../../../../../models/videoGames.model';
 import {FormControl, FormGroup} from '@angular/forms';
@@ -12,6 +12,7 @@ import {BggGameSearchModalComponent} from '../bgg-game-search-modal/bgg-game-sea
     selector: 'app-add-game-form',
     templateUrl: './add-game-form.component.html',
     styleUrls: ['./add-game-form.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AddGameFormComponent implements OnChanges {

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable, Subscription} from "rxjs";
 import {Category} from "../../../models/author.model";
 import {NavigationService} from "../../../services/navigation.service";
@@ -9,6 +9,7 @@ import {MaterielPhotoDatabaseService} from '../../services/materiel-photo-databa
     selector: 'app-materiel-photo-category',
     templateUrl: './materiel-photo-category.component.html',
     styleUrls: ['./materiel-photo-category.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MaterielPhotoCategoryComponent implements OnInit, OnDestroy {

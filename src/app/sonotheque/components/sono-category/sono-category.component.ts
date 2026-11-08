@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable, Subscription} from "rxjs";
 import {Category} from "../../../models/author.model";
 import {NavigationService} from "../../../services/navigation.service";
@@ -9,6 +9,7 @@ import {SonoDatabaseService} from "../../services/sono-database.service";
     selector: 'app-sono-category',
     templateUrl: './sono-category.component.html',
     styleUrls: ['./sono-category.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SonoCategoryComponent implements OnInit, OnDestroy {

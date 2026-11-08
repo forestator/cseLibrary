@@ -10,7 +10,7 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="close()">Cancel</button>
-  <button mat-button [disabled]="games?.selectedOptions?.isEmpty()"
-    [mat-dialog-close]="games?.selectedOptions?.selected[0]?.value"
+  <button mat-button [disabled]="$safeNavigationMigration(games?.selectedOptions?.isEmpty())"
+    [mat-dialog-close]="$safeNavigationMigration(games?.selectedOptions?.selected[0]?.value)"
   cdkFocusInitial>Ok</button>
 </div>

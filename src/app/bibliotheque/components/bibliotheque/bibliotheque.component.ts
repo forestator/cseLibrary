@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 
@@ -6,6 +6,7 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
     selector: 'app-bibliotheque',
     templateUrl: './bibliotheque.component.html',
     styleUrls: ['./bibliotheque.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BibliothequeComponent {

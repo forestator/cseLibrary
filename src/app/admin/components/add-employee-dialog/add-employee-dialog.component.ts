@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -12,6 +12,7 @@ interface CseUserForm {
     selector: 'app-add-employee-dialog',
     templateUrl: './add-employee-dialog.component.html',
     styleUrls: ['./add-employee-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AddEmployeeDialogComponent {

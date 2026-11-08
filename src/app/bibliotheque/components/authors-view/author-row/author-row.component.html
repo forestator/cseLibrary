@@ -18,7 +18,7 @@
             <td mat-cell class="mat-cell-cover" *matCellDef="let book">
               <img alt="" class="cover"
                 (click)=selectBook(book.id)
-                [src]="(biblio.library?.path | bookCover: book.cover) | async">
+                [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
             </td>
           </ng-container>
           <ng-container matColumnDef="title">
@@ -57,7 +57,7 @@
                 <td mat-cell class="mat-cell-cover" *matCellDef="let book">
                   <img alt="" class="cover"
                     (click)=selectBook(book.id)
-                    [src]="(biblio.library?.path | bookCover: book.cover) | async">
+                    [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
                 </td>
               </ng-container>
               <ng-container matColumnDef="title">

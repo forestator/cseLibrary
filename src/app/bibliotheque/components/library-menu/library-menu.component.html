@@ -6,7 +6,7 @@
           @for (category of item.library?.categories; track category) {
             <div
               class="cat-nav"
-              [routerLink]="prefixRoute + item.library?.id + '/' + category.id">
+              [routerLink]="prefixRoute + $safeNavigationMigration(item.library?.id) + '/' + category.id">
               {{category?.name}}
             </div>
           }

@@ -1,9 +1,10 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
     selector: 'app-alphabet',
     templateUrl: './alphabet.component.html',
     styleUrls: ['./alphabet.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AlphabetComponent implements OnInit {

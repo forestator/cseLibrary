@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
     selector: 'app-video-game-row',
     templateUrl: './video-game-row.component.html',
     styleUrls: ['./video-game-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class VideoGameRowComponent implements OnInit, OnChanges {

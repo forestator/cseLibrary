@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {MatSort, Sort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
 import {CseUser} from '../../../../models/users.model';
@@ -10,6 +10,7 @@ import {BoardGame} from '../../../../models/boardGame.model';
     selector: 'app-ludo-table',
     templateUrl: './ludo-table.component.html',
     styleUrls: ['./ludo-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LudoTableComponent implements OnInit, OnChanges {

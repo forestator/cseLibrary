@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Library} from '../../../models/author.model';
 import {Observable} from 'rxjs';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
@@ -8,6 +8,7 @@ import {ToolsService} from '../../../services/biblio/tools.service';
     selector: 'app-video-games',
     templateUrl: './video-games.component.html',
     styleUrls: ['./video-games.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class VideoGamesComponent {

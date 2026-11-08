@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {
   Author,
@@ -23,6 +23,7 @@ import {BasicModal} from '../basic-modal';
     selector: 'app-book-modal',
     templateUrl: './book-modal.component.html',
     styleUrls: ['./book-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BookModalComponent extends BasicModal implements OnInit {

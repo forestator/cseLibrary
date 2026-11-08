@@ -1,4 +1,4 @@
-import {Component, Input, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {NautismeItem} from '../../../../nautisme/models/nautisme.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
     selector: 'app-nautisme-table',
     templateUrl: './nautisme-table.component.html',
     styleUrls: ['./nautisme-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NautismeTableComponent {

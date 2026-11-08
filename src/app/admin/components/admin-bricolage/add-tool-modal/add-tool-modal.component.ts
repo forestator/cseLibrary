@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {BricoCategories, Tool, ToolStatus} from '../../../../bricolage/models/bricolage.model';
@@ -12,6 +12,7 @@ import {take} from 'rxjs';
     selector: 'app-add-tool-modal',
     templateUrl: './add-tool-modal.component.html',
     styleUrls: ['./add-tool-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AddToolModalComponent {

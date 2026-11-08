@@ -37,13 +37,13 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <app-upload-form [defaultImage]="data?.selectedItem?.cover ?? defaultImageForSonoItem"
-      [disabled]="sonoItemForm?.invalid"
+      [disabled]="$safeNavigationMigration(sonoItemForm?.invalid)"
       (fileToUploadReady)="upload($event)">
     </app-upload-form>
   </div>
   <div mat-dialog-actions>
     <button (click)="addSonoItem()"
-      [disabled]="sonoItemForm?.invalid"
+      [disabled]="$safeNavigationMigration(sonoItemForm?.invalid)"
       cdkFocusInitial
       mat-button>
       Confirm

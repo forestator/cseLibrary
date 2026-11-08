@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Series, SeriesStatus} from 'src/app/models/author.model';
 
 @Component({
     selector: 'app-series-badge',
     templateUrl: './series-badge.component.html',
     styleUrls: ['./series-badge.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SeriesBadgeComponent implements OnInit {

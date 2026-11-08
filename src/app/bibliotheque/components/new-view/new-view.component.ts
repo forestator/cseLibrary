@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {firstValueFrom, map, Observable} from 'rxjs';
 import {Biblio, BookPath, BookStatus, Library} from 'src/app/models/author.model';
 import jspdf from 'jspdf';
@@ -10,6 +10,7 @@ import {AuthentificationService} from '../../../services/firebase/authentificati
     selector: 'app-new-view',
     templateUrl: './new-view.component.html',
     styleUrls: ['./new-view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NewViewComponent implements OnInit {

@@ -7,7 +7,7 @@
     <button (click)="cancel()" id="cancel" mat-button>Cancel</button>
     <button (click)="addGame()"
       id="save"
-      [disabled]="gameForm?.invalid"
+      [disabled]="$safeNavigationMigration(gameForm?.invalid)"
       cdkFocusInitial
       mat-button>
       Confirm

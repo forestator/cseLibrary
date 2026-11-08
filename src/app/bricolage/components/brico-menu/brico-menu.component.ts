@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {map, Observable, startWith} from 'rxjs';
 import {Tool} from '../../models/bricolage.model';
@@ -9,6 +9,7 @@ import {NavigationService} from '../../../services/navigation.service';
     selector: 'app-brico-menu',
     templateUrl: './brico-menu.component.html',
     styleUrls: ['./brico-menu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BricoMenuComponent {

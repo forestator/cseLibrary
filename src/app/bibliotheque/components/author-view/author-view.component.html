@@ -17,7 +17,7 @@
           <div [class]="book.id?'book':'separator'" [title]="book.name">
             @if (book.id) {
               <a [href]="'#'+book.id">
-                <img alt="" class="book-cover" [src]="(biblio.library?.path | bookCover: book.cover) | async">
+                <img alt="" class="book-cover" [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
               </a>
             }
             @if (book.id) {

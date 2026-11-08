@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import {AddToolModalComponent} from "../add-tool-modal/add-tool-modal.component"
     selector: 'app-edit-tool-modal',
     templateUrl: './edit-tool-modal.component.html',
     styleUrls: ['./edit-tool-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditToolModalComponent {

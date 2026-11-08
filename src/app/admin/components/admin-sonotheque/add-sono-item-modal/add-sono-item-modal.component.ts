@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {StorageUploadService} from "../../../../services/firebase/storage-upload.service";
@@ -12,6 +12,7 @@ import {take} from 'rxjs';
     selector: 'app-add-sono-item-modal',
     templateUrl: './add-sono-item-modal.component.html',
     styleUrls: ['./add-sono-item-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AddSonoItemModalComponent {

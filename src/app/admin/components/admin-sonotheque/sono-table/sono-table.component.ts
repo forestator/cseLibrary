@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatSort} from "@angular/material/sort";
 import {SonoItem} from "../../../../sonotheque/models/sono.model";
@@ -7,6 +7,7 @@ import {SonoItem} from "../../../../sonotheque/models/sono.model";
     selector: 'app-sono-table',
     templateUrl: './sono-table.component.html',
     styleUrls: ['./sono-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SonoTableComponent implements  OnInit, OnChanges {

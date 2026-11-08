@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {AddEmployeeDialogComponent} from '../add-employee-dialog/add-employee-dialog.component';
 import {combineLatest, take} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -9,6 +9,7 @@ import {UserService} from '../../../services/firebase/user.service';
     selector: 'app-admin-menu',
     templateUrl: './admin-menu.component.html',
     styleUrls: ['./admin-menu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdminMenuComponent {

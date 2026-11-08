@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {Game} from '../../../../../models/common.model';
 import {FileUpload} from '../../../../../models/fileUpload.model';
 import {StorageUploadService} from '../../../../../services/firebase/storage-upload.service';
@@ -11,6 +11,7 @@ import {take} from 'rxjs';
     selector: 'app-upload-game',
     templateUrl: './upload-game.component.html',
     styleUrls: ['./upload-game.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class UploadGameComponent implements OnChanges {

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {MaterielPhotoItem} from '../../models/materiel-photo.model';
 
@@ -6,6 +6,7 @@ import {MaterielPhotoItem} from '../../models/materiel-photo.model';
     selector: 'app-materiel-photo-row',
     templateUrl: './materiel-photo-row.component.html',
     styleUrls: ['./materiel-photo-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MaterielPhotoRowComponent {

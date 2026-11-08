@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {FormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
@@ -10,6 +10,7 @@ import {AddNautismeItemModalComponent} from '../add-nautisme-item-modal/add-naut
     selector: 'app-edit-nautisme-item-modal',
     templateUrl: './edit-nautisme-item-modal.component.html',
     styleUrls: ['./edit-nautisme-item-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditNautismeItemModalComponent {

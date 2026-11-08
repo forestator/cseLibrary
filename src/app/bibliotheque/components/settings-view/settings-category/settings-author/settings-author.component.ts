@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthorModalComponent} from 'src/app/bibliotheque/components/modals/author-modal/author-modal.component';
 import {BookModalComponent} from 'src/app/bibliotheque/components/modals/book-modal/book-modal.component';
@@ -12,6 +12,7 @@ import {ToolsService} from 'src/app/services/biblio/tools.service';
     selector: 'app-settings-author',
     templateUrl: './settings-author.component.html',
     styleUrls: ['./settings-author.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsAuthorComponent implements OnInit {

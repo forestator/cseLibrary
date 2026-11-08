@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Library} from 'src/app/models/author.model';
 import {map, mergeMap, Observable} from 'rxjs';
 import {Params} from '@angular/router';
@@ -10,6 +10,7 @@ import {ToolsService} from '../../../services/biblio/tools.service';
     selector: 'app-library-view',
     templateUrl: './library-view.component.html',
     styleUrls: ['./library-view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LibraryViewComponent implements OnInit {

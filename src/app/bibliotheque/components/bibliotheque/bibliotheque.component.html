@@ -1,7 +1,7 @@
 <div class="core-page fadein">
   @for (biblio of firebaseDatabaseService.bibliothequeOneShot$ | async; track biblio) {
     <div class="core-header"
-      [routerLink]="biblio.library?.id">
+      [routerLink]="$safeNavigationMigration(biblio.library?.id)">
       <div class="core-title">
         <div class="primary">{{biblio.library?.name}}</div>
       </div>

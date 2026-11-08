@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Observable, Subscription} from 'rxjs';
 import {Library} from '../../../models/author.model';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
@@ -9,6 +9,7 @@ import {NavigationService} from '../../../services/navigation.service';
     selector: 'app-games-list',
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GameComponent implements OnInit, OnDestroy {

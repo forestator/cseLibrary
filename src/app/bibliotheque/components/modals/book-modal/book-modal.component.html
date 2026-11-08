@@ -13,7 +13,7 @@
 <div mat-dialog-content>
   <div class="book-edit">
     <div class="book-cover">
-      <img alt="" [src]="(data?.biblio.library?.path | bookCover: cover.value) | async">
+      <img alt="" [src]="($safeNavigationMigration(data?.biblio.library?.path) | bookCover: cover.value) | async">
     </div>
     <div class="book-form">
       <form>

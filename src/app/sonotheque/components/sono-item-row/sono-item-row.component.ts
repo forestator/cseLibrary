@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {SonoItem} from "../../models/sono.model";
 
@@ -6,6 +6,7 @@ import {SonoItem} from "../../models/sono.model";
     selector: 'app-sono-item-row',
     templateUrl: './sono-item-row.component.html',
     styleUrls: ['./sono-item-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SonoItemRowComponent implements OnInit {

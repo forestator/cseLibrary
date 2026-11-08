@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 import {Biblio, Series} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -11,6 +11,7 @@ import {DataService} from 'src/app/services/biblio/data.service';
     selector: 'app-settings-series',
     templateUrl: './settings-series.component.html',
     styleUrls: ['./settings-series.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsSeriesComponent implements OnInit {

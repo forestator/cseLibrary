@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {ToolsService} from './services/biblio/tools.service';
 import {NavigationService} from './services/navigation.service';
 import {BoardGameCategory} from './models/boardGame.model';
@@ -17,6 +17,7 @@ import {PhotoCategory} from './photo/models/materiel-photo.model';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AppComponent implements OnInit, AfterViewInit {

@@ -1,10 +1,11 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {Consoles, VideoGame, VideoGameType} from '../../../../models/videoGames.model';
 
 @Component({
     selector: 'app-video-games-console-details',
     templateUrl: './video-games-console-details.component.html',
     styleUrls: ['./video-games-console-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class VideoGamesConsoleDetailsComponent {

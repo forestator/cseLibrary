@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Biblio, Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
@@ -14,6 +14,7 @@ import {BiblioDatabaseService} from '../../services/biblio-database.service';
     selector: 'app-settings-view',
     templateUrl: './settings-view.component.html',
     styleUrls: ['./settings-view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsViewComponent implements OnInit {

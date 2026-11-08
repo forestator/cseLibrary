@@ -23,7 +23,7 @@
           @for (series of category.series | seriesFilter : tools.adminMode; track series) {
             <div
               class="series bloc-link"
-              [routerLink]="series?.id">
+              [routerLink]="$safeNavigationMigration(series?.id)">
               <div class="series-title">{{series.name}}</div>
               <div class="series-info">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
             </div>

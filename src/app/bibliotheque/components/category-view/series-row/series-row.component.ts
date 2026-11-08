@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Biblio, Series} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -7,6 +7,7 @@ import {ToolsService} from 'src/app/services/biblio/tools.service';
     selector: 'app-series-row',
     templateUrl: './series-row.component.html',
     styleUrls: ['./series-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SeriesRowComponent implements OnInit {

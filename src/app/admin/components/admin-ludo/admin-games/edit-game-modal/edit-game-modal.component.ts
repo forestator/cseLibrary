@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {FormControl} from '@angular/forms';
 import {Game} from '../../../../../models/common.model';
@@ -10,6 +10,7 @@ import {AddGameModalComponent} from '../add-game-modal/add-game-modal.component'
     selector: 'app-edit-game-modal',
     templateUrl: './edit-game-modal.component.html',
     styleUrls: ['./edit-game-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditGameModalComponent {

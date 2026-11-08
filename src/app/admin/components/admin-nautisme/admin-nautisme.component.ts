@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {take} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {NautismeDatabaseService} from '../../../nautisme/services/nautisme-database.service';
@@ -9,6 +9,7 @@ import {EditNautismeItemModalComponent} from './edit-nautisme-item-modal/edit-na
     selector: 'app-admin-nautisme',
     templateUrl: './admin-nautisme.component.html',
     styleUrls: ['./admin-nautisme.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdminNautismeComponent {

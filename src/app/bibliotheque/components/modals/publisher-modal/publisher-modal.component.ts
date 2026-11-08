@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Library, Publisher} from 'src/app/models/author.model';
@@ -10,6 +10,7 @@ import {v4 as uuidv4} from 'uuid';
     selector: 'app-publisher-modal',
     templateUrl: './publisher-modal.component.html',
     styleUrls: ['./publisher-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PublisherModalComponent extends BasicModal implements OnInit {

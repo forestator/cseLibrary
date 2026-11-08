@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Game} from '../../../../../models/common.model';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
@@ -12,6 +12,7 @@ import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase
     selector: 'app-add-game-modal',
     templateUrl: './add-game-modal.component.html',
     styleUrls: ['./add-game-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AddGameModalComponent {

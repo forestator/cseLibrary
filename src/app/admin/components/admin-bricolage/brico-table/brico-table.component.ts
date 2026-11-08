@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {Tool} from '../../../../bricolage/models/bricolage.model';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
@@ -7,6 +7,7 @@ import {MatSort} from '@angular/material/sort';
     selector: 'app-brico-table',
     templateUrl: './brico-table.component.html',
     styleUrls: ['./brico-table.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BricoTableComponent implements OnInit, OnChanges {

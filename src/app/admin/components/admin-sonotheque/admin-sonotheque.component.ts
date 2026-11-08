@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {SonoDatabaseService} from "../../../sonotheque/services/sono-database.service";
 import {SonoCategory, SonoItem} from "../../../sonotheque/models/sono.model";
@@ -10,6 +10,7 @@ import {EditSonoItemModalComponent} from "./edit-sono-item-modal/edit-sono-item-
     selector: 'app-admin-sonotheque',
     templateUrl: './admin-sonotheque.component.html',
     styleUrls: ['./admin-sonotheque.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdminSonothequeComponent {

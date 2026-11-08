@@ -22,7 +22,7 @@
               @for (book of series.books | bookFilter: tools.adminMode; track book) {
                 <div class="book" [title]="book.name">
                   <div (click)="tools.scrollToId(book.id)">
-                    <img alt="" class="book-cover" [src]="(biblio.library?.path | bookCover: book.cover) | async">
+                    <img alt="" class="book-cover" [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
                   </div>
                   <div class="book-badge">
                     <app-badge [status]="book.status" [display]="'small'"></app-badge>

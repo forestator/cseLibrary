@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable, Subscription} from 'rxjs';
 import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 import {NavigationService} from '../../../../../services/navigation.service';
@@ -8,6 +8,7 @@ import {BoardGame, BoardGameCategory} from '../../../../../models/boardGame.mode
     selector: 'app-board-game-to-filter',
     templateUrl: './board-game-to-filter.component.html',
     styleUrls: ['./board-game-to-filter.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BoardGameToFilterComponent implements OnInit, OnDestroy {

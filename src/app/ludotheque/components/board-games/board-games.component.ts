@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Library} from '../../../models/author.model';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 import {Observable} from 'rxjs';
@@ -8,6 +8,7 @@ import {ToolsService} from '../../../services/biblio/tools.service';
     selector: 'app-board-games',
     templateUrl: './board-games.component.html',
     styleUrls: ['./board-games.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BoardGamesComponent {

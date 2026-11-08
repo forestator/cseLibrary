@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Author, Biblio, Category, SelectorView, ViewBy} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {DataService} from '../../../services/biblio/data.service';
@@ -11,6 +11,7 @@ import {BiblioDatabaseService} from '../../services/biblio-database.service';
     selector: 'app-category-view',
     templateUrl: './category-view.component.html',
     styleUrls: ['./category-view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class CategoryViewComponent implements OnInit {

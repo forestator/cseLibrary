@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {Biblio, Book} from 'src/app/models/author.model';
@@ -10,6 +10,7 @@ import {BookModalComponent} from '../../../../modals/book-modal/book-modal.compo
     selector: 'app-settings-book',
     templateUrl: './settings-book.component.html',
     styleUrls: ['./settings-book.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsBookComponent implements OnInit {

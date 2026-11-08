@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Thing} from '../../../../../models/boardGame.model';
 
@@ -6,6 +6,7 @@ import {Thing} from '../../../../../models/boardGame.model';
     selector: 'app-bgg-game-search-modal',
     templateUrl: './bgg-game-search-modal.component.html',
     styleUrls: ['./bgg-game-search-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BggGameSearchModalComponent {

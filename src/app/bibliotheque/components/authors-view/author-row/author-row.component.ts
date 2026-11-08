@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable, take} from 'rxjs';
 import {Author, Biblio, Book, BookStatus, SelectorView, Series, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
@@ -9,6 +9,7 @@ import {ToolsService} from 'src/app/services/biblio/tools.service';
     selector: 'app-author-row',
     templateUrl: './author-row.component.html',
     styleUrls: ['./author-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AuthorRowComponent implements OnInit {

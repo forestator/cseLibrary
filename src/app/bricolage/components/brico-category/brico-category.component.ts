@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable, Subscription} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
 import {BricolageDatabaseService} from '../../services/bricolage-database.service';
@@ -9,6 +9,7 @@ import {Category} from '../../../models/author.model';
     selector: 'app-brico-category',
     templateUrl: './brico-category.component.html',
     styleUrls: ['./brico-category.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BricoCategoryComponent implements OnInit, OnDestroy {

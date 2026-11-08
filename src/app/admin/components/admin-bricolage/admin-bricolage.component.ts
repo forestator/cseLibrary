@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {BricoCategories, Tool} from '../../../bricolage/models/bricolage.model';
 import {Observable, take} from 'rxjs';
 import {BricolageDatabaseService} from '../../../bricolage/services/bricolage-database.service';
@@ -10,6 +10,7 @@ import {EditToolModalComponent} from './edit-tool-modal/edit-tool-modal.componen
     selector: 'app-admin-bricolage',
     templateUrl: './admin-bricolage.component.html',
     styleUrls: ['./admin-bricolage.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdminBricolageComponent {

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Game} from '../../../../models/common.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
@@ -8,6 +8,7 @@ import {MatDialog} from '@angular/material/dialog';
     selector: 'app-game-row',
     templateUrl: './game-row.component.html',
     styleUrls: ['./game-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class GameRowComponent implements OnInit {

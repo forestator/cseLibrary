@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Biblio, Book, Category, Series, SeriesStatus} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -11,6 +11,7 @@ import {BiblioDatabaseService} from '../../services/biblio-database.service';
     selector: 'app-series-view',
     templateUrl: './series-view.component.html',
     styleUrls: ['./series-view.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SeriesViewComponent implements OnInit {

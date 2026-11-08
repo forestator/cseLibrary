@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {UntypedFormControl} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Author, Category, Library} from 'src/app/models/author.model';
@@ -11,6 +11,7 @@ import {BasicModal} from '../basic-modal';
     selector: 'app-author-modal',
     templateUrl: './author-modal.component.html',
     styleUrls: ['./author-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AuthorModalComponent extends BasicModal implements OnInit {

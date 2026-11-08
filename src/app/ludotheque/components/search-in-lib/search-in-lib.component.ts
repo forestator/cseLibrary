@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable, startWith} from 'rxjs';
 import {FormControl} from '@angular/forms';
@@ -12,6 +12,7 @@ import {Game} from '../../../models/common.model';
     selector: 'app-search-in-lib',
     templateUrl: './search-in-lib.component.html',
     styleUrls: ['./search-in-lib.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SearchInLibComponent implements OnInit, OnChanges {

@@ -1,7 +1,7 @@
 @if (parity) {
   <div [id]="book.id" class="book-core">
     <div class="book-cover">
-      <img alt="" [src]="(biblio.library?.path | bookCover: book.cover) | async">
+      <img alt="" [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
       @if (badge) {
         <div class="badge">{{badge}}</div>
       }
@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="book-cover">
-      <img alt="" [src]="(biblio.library?.path | bookCover: book.cover) | async">
+      <img alt="" [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
       @if (badge) {
         <div class="badge">{{badge}}</div>
       }

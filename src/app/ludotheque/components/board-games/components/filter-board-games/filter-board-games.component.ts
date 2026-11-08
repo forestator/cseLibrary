@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {FilterBoardGamesService} from '../../../../services/filter-board-games.service';
 import {AdvancedBoardGameFilter, BoardGameFilterType} from '../../../../../models/boardGame.model';
 
@@ -6,6 +6,7 @@ import {AdvancedBoardGameFilter, BoardGameFilterType} from '../../../../../model
     selector: 'app-filter-board-games',
     templateUrl: './filter-board-games.component.html',
     styleUrls: ['./filter-board-games.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class FilterBoardGamesComponent {

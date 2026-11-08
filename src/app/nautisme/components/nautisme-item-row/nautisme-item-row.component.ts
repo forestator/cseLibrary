@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {NautismeItem} from "../../models/nautisme.model";
 
@@ -6,6 +6,7 @@ import {NautismeItem} from "../../models/nautisme.model";
     selector: 'app-nautisme-item-row',
     templateUrl: './nautisme-item-row.component.html',
     styleUrls: ['./nautisme-item-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class NautismeItemRowComponent {

@@ -37,13 +37,13 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <app-upload-form [defaultImage]="data?.selectedTool?.cover ?? defaultImageForTool"
-      [disabled]="toolForm?.invalid"
+      [disabled]="$safeNavigationMigration(toolForm?.invalid)"
       (fileToUploadReady)="upload($event)">
     </app-upload-form>
   </div>
   <div mat-dialog-actions>
     <button (click)="addTool()"
-      [disabled]="toolForm?.invalid"
+      [disabled]="$safeNavigationMigration(toolForm?.invalid)"
       cdkFocusInitial
       mat-button>
       Confirm

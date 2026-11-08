@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Biblio, Category, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
@@ -12,6 +12,7 @@ import {BiblioDatabaseService} from '../../../services/biblio-database.service';
     selector: 'app-settings-category',
     templateUrl: './settings-category.component.html',
     styleUrls: ['./settings-category.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsCategoryComponent implements OnInit {

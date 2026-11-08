@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {BookStatus} from 'src/app/models/author.model';
 import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
@@ -7,6 +7,7 @@ import {Consoles} from '../../../models/videoGames.model';
     selector: 'app-badge',
     templateUrl: './badge.component.html',
     styleUrls: ['./badge.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class BadgeComponent implements OnInit, OnChanges {

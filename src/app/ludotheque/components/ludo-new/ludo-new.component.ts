@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Game} from '../../../models/common.model';
 import {BoardGame} from '../../../models/boardGame.model';
 import {VideoGame} from '../../../models/videoGames.model';
@@ -9,6 +9,7 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
     selector: 'app-ludo-new',
     templateUrl: './ludo-new.component.html',
     styleUrls: ['./ludo-new.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LudoNewComponent implements OnInit {

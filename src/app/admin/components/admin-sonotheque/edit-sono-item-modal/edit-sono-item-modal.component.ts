@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable} from "rxjs";
 import {FormControl} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
@@ -10,6 +10,7 @@ import {SonoItem} from "../../../../sonotheque/models/sono.model";
     selector: 'app-edit-sono-item-modal',
     templateUrl: './edit-sono-item-modal.component.html',
     styleUrls: ['./edit-sono-item-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class EditSonoItemModalComponent {

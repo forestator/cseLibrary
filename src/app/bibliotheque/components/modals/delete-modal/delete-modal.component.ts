@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {DataService} from 'src/app/services/biblio/data.service';
 
@@ -6,6 +6,7 @@ import {DataService} from 'src/app/services/biblio/data.service';
     selector: 'app-delete-modal',
     templateUrl: './delete-modal.component.html',
     styleUrls: ['./delete-modal.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class DeleteModalComponent implements OnInit {

@@ -16,13 +16,13 @@
         @if (!(toolsService.mobilePhoneDisplay$ | async)) {
           <div>
             <img alt="" class="category-visuel"
-              [src]="(library?.path | categoryBackground: category.bg) | async">
+              [src]="($safeNavigationMigration(library?.path) | categoryBackground: category.bg) | async">
           </div>
         }
         <div class="core-header">
           @if (toolsService.mobilePhoneDisplay$ | async) {
             <img alt="" class="category-visuel small-display"
-              [src]="(library?.path | categoryBackground: category.bg) | async">
+              [src]="($safeNavigationMigration(library?.path) | categoryBackground: category.bg) | async">
           }
           <div class="core-title">
             <div class="primary">{{category.name}}</div>

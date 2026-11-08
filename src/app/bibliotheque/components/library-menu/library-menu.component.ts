@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Biblio} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {Observable} from 'rxjs';
@@ -9,6 +9,7 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
     selector: 'app-library-menu',
     templateUrl: './library-menu.component.html',
     styleUrls: ['./library-menu.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LibraryMenuComponent {

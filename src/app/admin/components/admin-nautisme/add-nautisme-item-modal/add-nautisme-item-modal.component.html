@@ -27,13 +27,13 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <app-upload-form [defaultImage]="data?.selectedItem?.cover ?? defaultNautImage"
-      [disabled]="nautismeItemForm?.invalid"
+      [disabled]="$safeNavigationMigration(nautismeItemForm?.invalid)"
       (fileToUploadReady)="upload($event)">
     </app-upload-form>
   </div>
   <div mat-dialog-actions>
     <button (click)="addNautItem()"
-      [disabled]="nautismeItemForm?.invalid"
+      [disabled]="$safeNavigationMigration(nautismeItemForm?.invalid)"
       cdkFocusInitial
       mat-button>
       Confirm

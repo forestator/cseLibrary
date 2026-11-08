@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {
@@ -12,6 +12,7 @@ import {ToolsService} from 'src/app/services/biblio/tools.service';
     selector: 'app-settings-publisher',
     templateUrl: './settings-publisher.component.html',
     styleUrls: ['./settings-publisher.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SettingsPublisherComponent implements OnInit {

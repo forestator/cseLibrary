@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {NavigationService} from '../../../services/navigation.service';
 import {AuthentificationService} from "../../../services/firebase/authentification.service";
 import {Comissions} from "../../../models/common.model";
@@ -12,6 +12,7 @@ import {SonoUtils} from '../../../sonotheque/models/sono.utils';
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class HomeComponent {

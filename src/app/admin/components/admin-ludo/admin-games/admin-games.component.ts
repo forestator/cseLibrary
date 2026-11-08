@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AddGameModalComponent} from './add-game-modal/add-game-modal.component';
@@ -9,6 +9,7 @@ import {EditGameModalComponent} from './edit-game-modal/edit-game-modal.componen
     selector: 'app-admin-games',
     templateUrl: './admin-games.component.html',
     styleUrls: ['./admin-games.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class AdminGamesComponent {
