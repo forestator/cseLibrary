@@ -11,9 +11,10 @@ import {Params} from '@angular/router';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
 @Component({
-  selector: 'app-settings-view',
-  templateUrl: './settings-view.component.html',
-  styleUrls: ['./settings-view.component.scss']
+    selector: 'app-settings-view',
+    templateUrl: './settings-view.component.html',
+    styleUrls: ['./settings-view.component.scss'],
+    standalone: false
 })
 export class SettingsViewComponent implements OnInit {
 

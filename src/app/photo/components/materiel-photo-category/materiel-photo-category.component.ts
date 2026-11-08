@@ -6,9 +6,10 @@ import {MaterielPhotoItem, PhotoCategory} from '../../models/materiel-photo.mode
 import {MaterielPhotoDatabaseService} from '../../services/materiel-photo-database.service';
 
 @Component({
-  selector: 'app-materiel-photo-category',
-  templateUrl: './materiel-photo-category.component.html',
-  styleUrls: ['./materiel-photo-category.component.scss']
+    selector: 'app-materiel-photo-category',
+    templateUrl: './materiel-photo-category.component.html',
+    styleUrls: ['./materiel-photo-category.component.scss'],
+    standalone: false
 })
 export class MaterielPhotoCategoryComponent implements OnInit, OnDestroy {
   category$?: Observable<Category>;

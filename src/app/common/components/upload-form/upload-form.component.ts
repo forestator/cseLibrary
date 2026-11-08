@@ -2,9 +2,10 @@ import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '
 import {FileUpload} from '../../../models/fileUpload.model';
 
 @Component({
-  selector: 'app-upload-form',
-  templateUrl: './upload-form.component.html',
-  styleUrls: ['./upload-form.component.scss']
+    selector: 'app-upload-form',
+    templateUrl: './upload-form.component.html',
+    styleUrls: ['./upload-form.component.scss'],
+    standalone: false
 })
 export class UploadFormComponent implements OnChanges {
   @Input() defaultImage?: string;

@@ -4,9 +4,10 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 
 @Component({
-  selector: 'app-brico-table',
-  templateUrl: './brico-table.component.html',
-  styleUrls: ['./brico-table.component.scss']
+    selector: 'app-brico-table',
+    templateUrl: './brico-table.component.html',
+    styleUrls: ['./brico-table.component.scss'],
+    standalone: false
 })
 export class BricoTableComponent implements OnInit, OnChanges {
   @Input() tools: Array<Tool>;

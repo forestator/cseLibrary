@@ -4,9 +4,10 @@ import {ToolsService} from "../../../services/biblio/tools.service";
 import {SonoDatabaseService} from "../../services/sono-database.service";
 
 @Component({
-  selector: 'app-sono-home',
-  templateUrl: './sono-home.component.html',
-  styleUrls: ['./sono-home.component.scss']
+    selector: 'app-sono-home',
+    templateUrl: './sono-home.component.html',
+    styleUrls: ['./sono-home.component.scss'],
+    standalone: false
 })
 export class SonoHomeComponent {
   constructor(public sonoDb: SonoDatabaseService,

@@ -9,9 +9,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {BggGameSearchModalComponent} from '../bgg-game-search-modal/bgg-game-search-modal.component';
 
 @Component({
-  selector: 'app-add-game-form',
-  templateUrl: './add-game-form.component.html',
-  styleUrls: ['./add-game-form.component.scss']
+    selector: 'app-add-game-form',
+    templateUrl: './add-game-form.component.html',
+    styleUrls: ['./add-game-form.component.scss'],
+    standalone: false
 })
 export class AddGameFormComponent implements OnChanges {
 

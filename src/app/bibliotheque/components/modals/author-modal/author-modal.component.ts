@@ -8,9 +8,10 @@ import {v4 as uuidv4} from 'uuid';
 import {BasicModal} from '../basic-modal';
 
 @Component({
-   selector: 'app-author-modal',
-   templateUrl: './author-modal.component.html',
-   styleUrls: ['./author-modal.component.scss']
+    selector: 'app-author-modal',
+    templateUrl: './author-modal.component.html',
+    styleUrls: ['./author-modal.component.scss'],
+    standalone: false
 })
 export class AuthorModalComponent extends BasicModal implements OnInit {
 

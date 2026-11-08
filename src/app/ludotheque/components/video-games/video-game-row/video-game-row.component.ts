@@ -5,9 +5,10 @@ import {UserService} from '../../../../services/firebase/user.service';
 import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-video-game-row',
-  templateUrl: './video-game-row.component.html',
-  styleUrls: ['./video-game-row.component.scss']
+    selector: 'app-video-game-row',
+    templateUrl: './video-game-row.component.html',
+    styleUrls: ['./video-game-row.component.scss'],
+    standalone: false
 })
 export class VideoGameRowComponent implements OnInit, OnChanges {
 

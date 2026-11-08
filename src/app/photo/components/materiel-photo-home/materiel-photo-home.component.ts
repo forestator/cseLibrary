@@ -4,9 +4,10 @@ import {ToolsService} from "../../../services/biblio/tools.service";
 import {MaterielPhotoDatabaseService} from "../../services/materiel-photo-database.service";
 
 @Component({
-  selector: 'app-materiel-photo-home',
-  templateUrl: './materiel-photo-home.component.html',
-  styleUrls: ['./materiel-photo-home.component.scss']
+    selector: 'app-materiel-photo-home',
+    templateUrl: './materiel-photo-home.component.html',
+    styleUrls: ['./materiel-photo-home.component.scss'],
+    standalone: false
 })
 export class MaterielPhotoHomeComponent {
 

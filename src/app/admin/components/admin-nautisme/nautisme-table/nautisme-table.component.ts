@@ -4,9 +4,10 @@ import {MatTableDataSource} from '@angular/material/table';
 import {MatSort} from '@angular/material/sort';
 
 @Component({
-  selector: 'app-nautisme-table',
-  templateUrl: './nautisme-table.component.html',
-  styleUrls: ['./nautisme-table.component.scss']
+    selector: 'app-nautisme-table',
+    templateUrl: './nautisme-table.component.html',
+    styleUrls: ['./nautisme-table.component.scss'],
+    standalone: false
 })
 export class NautismeTableComponent {
 

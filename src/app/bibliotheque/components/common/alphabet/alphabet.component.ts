@@ -1,9 +1,10 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-alphabet',
-  templateUrl: './alphabet.component.html',
-  styleUrls: ['./alphabet.component.scss']
+    selector: 'app-alphabet',
+    templateUrl: './alphabet.component.html',
+    styleUrls: ['./alphabet.component.scss'],
+    standalone: false
 })
 export class AlphabetComponent implements OnInit {
 

@@ -7,9 +7,10 @@ import {AddSonoItemModalComponent} from "../add-sono-item-modal/add-sono-item-mo
 import {SonoItem} from "../../../../sonotheque/models/sono.model";
 
 @Component({
-  selector: 'app-edit-sono-item-modal',
-  templateUrl: './edit-sono-item-modal.component.html',
-  styleUrls: ['./edit-sono-item-modal.component.scss']
+    selector: 'app-edit-sono-item-modal',
+    templateUrl: './edit-sono-item-modal.component.html',
+    styleUrls: ['./edit-sono-item-modal.component.scss'],
+    standalone: false
 })
 export class EditSonoItemModalComponent {
   filteredOptions$: Observable<Array<SonoItem>>;

@@ -4,9 +4,10 @@ import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
-  selector: 'app-book-row',
-  templateUrl: './book-row.component.html',
-  styleUrls: ['./book-row.component.scss']
+    selector: 'app-book-row',
+    templateUrl: './book-row.component.html',
+    styleUrls: ['./book-row.component.scss'],
+    standalone: false
 })
 export class BookRowComponent implements OnInit {
 

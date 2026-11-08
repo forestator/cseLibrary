@@ -6,9 +6,10 @@ import {NavigationService} from '../../../services/navigation.service';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 
 @Component({
-  selector: 'app-library-menu',
-  templateUrl: './library-menu.component.html',
-  styleUrls: ['./library-menu.component.scss']
+    selector: 'app-library-menu',
+    templateUrl: './library-menu.component.html',
+    styleUrls: ['./library-menu.component.scss'],
+    standalone: false
 })
 export class LibraryMenuComponent {
 

@@ -4,7 +4,8 @@ import {FilterBoardGamesService} from '../services/filter-board-games.service';
 import {AdvancedBoardGameFilter, BoardGame} from '../../models/boardGame.model';
 
 @Pipe({
-  name: 'advancedBoardGameFilter'
+    name: 'advancedBoardGameFilter',
+    standalone: false
 })
 export class AdvancedBoardGameFilterPipe implements PipeTransform {
 

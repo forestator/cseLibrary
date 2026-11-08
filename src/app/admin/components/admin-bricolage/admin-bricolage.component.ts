@@ -7,9 +7,10 @@ import {AddToolModalComponent} from './add-tool-modal/add-tool-modal.component';
 import {EditToolModalComponent} from './edit-tool-modal/edit-tool-modal.component';
 
 @Component({
-  selector: 'app-admin-bricolage',
-  templateUrl: './admin-bricolage.component.html',
-  styleUrls: ['./admin-bricolage.component.scss']
+    selector: 'app-admin-bricolage',
+    templateUrl: './admin-bricolage.component.html',
+    styleUrls: ['./admin-bricolage.component.scss'],
+    standalone: false
 })
 export class AdminBricolageComponent {
   bricoCategories = Object.values(BricoCategories);

@@ -5,9 +5,10 @@ import {NavigationService} from '../../../../../services/navigation.service';
 import {BoardGame, BoardGameCategory} from '../../../../../models/boardGame.model';
 
 @Component({
-  selector: 'app-board-game-to-filter',
-  templateUrl: './board-game-to-filter.component.html',
-  styleUrls: ['./board-game-to-filter.component.scss']
+    selector: 'app-board-game-to-filter',
+    templateUrl: './board-game-to-filter.component.html',
+    styleUrls: ['./board-game-to-filter.component.scss'],
+    standalone: false
 })
 export class BoardGameToFilterComponent implements OnInit, OnDestroy {
 

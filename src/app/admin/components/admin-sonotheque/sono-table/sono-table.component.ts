@@ -4,9 +4,10 @@ import {MatSort} from "@angular/material/sort";
 import {SonoItem} from "../../../../sonotheque/models/sono.model";
 
 @Component({
-  selector: 'app-sono-table',
-  templateUrl: './sono-table.component.html',
-  styleUrls: ['./sono-table.component.scss']
+    selector: 'app-sono-table',
+    templateUrl: './sono-table.component.html',
+    styleUrls: ['./sono-table.component.scss'],
+    standalone: false
 })
 export class SonoTableComponent implements  OnInit, OnChanges {
   @Input() sonoItems: Array<SonoItem>;

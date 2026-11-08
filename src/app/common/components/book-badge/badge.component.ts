@@ -4,9 +4,10 @@ import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
 
 @Component({
-  selector: 'app-badge',
-  templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.scss']
+    selector: 'app-badge',
+    templateUrl: './badge.component.html',
+    styleUrls: ['./badge.component.scss'],
+    standalone: false
 })
 export class BadgeComponent implements OnInit, OnChanges {
 

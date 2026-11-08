@@ -9,9 +9,10 @@ import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.com
 import {take} from 'rxjs';
 
 @Component({
-  selector: 'app-add-sono-item-modal',
-  templateUrl: './add-sono-item-modal.component.html',
-  styleUrls: ['./add-sono-item-modal.component.scss']
+    selector: 'app-add-sono-item-modal',
+    templateUrl: './add-sono-item-modal.component.html',
+    styleUrls: ['./add-sono-item-modal.component.scss'],
+    standalone: false
 })
 export class AddSonoItemModalComponent {
 

@@ -9,9 +9,10 @@ import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.com
 import {take} from 'rxjs';
 
 @Component({
-  selector: 'app-add-tool-modal',
-  templateUrl: './add-tool-modal.component.html',
-  styleUrls: ['./add-tool-modal.component.scss']
+    selector: 'app-add-tool-modal',
+    templateUrl: './add-tool-modal.component.html',
+    styleUrls: ['./add-tool-modal.component.scss'],
+    standalone: false
 })
 export class AddToolModalComponent {
 

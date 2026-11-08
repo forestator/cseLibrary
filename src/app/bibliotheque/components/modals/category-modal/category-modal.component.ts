@@ -7,9 +7,10 @@ import {BasicModal} from '../basic-modal';
 import {v4 as uuidv4} from 'uuid';
 
 @Component({
-   selector: 'app-category-modal',
-   templateUrl: './category-modal.component.html',
-   styleUrls: ['./category-modal.component.scss']
+    selector: 'app-category-modal',
+    templateUrl: './category-modal.component.html',
+    styleUrls: ['./category-modal.component.scss'],
+    standalone: false
 })
 export class CategoryModalComponent extends BasicModal implements OnInit {
 

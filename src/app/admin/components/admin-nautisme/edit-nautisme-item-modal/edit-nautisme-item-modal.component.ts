@@ -7,9 +7,10 @@ import {NautismeItem} from '../../../../nautisme/models/nautisme.model';
 import {AddNautismeItemModalComponent} from '../add-nautisme-item-modal/add-nautisme-item-modal.component';
 
 @Component({
-  selector: 'app-edit-nautisme-item-modal',
-  templateUrl: './edit-nautisme-item-modal.component.html',
-  styleUrls: ['./edit-nautisme-item-modal.component.scss']
+    selector: 'app-edit-nautisme-item-modal',
+    templateUrl: './edit-nautisme-item-modal.component.html',
+    styleUrls: ['./edit-nautisme-item-modal.component.scss'],
+    standalone: false
 })
 export class EditNautismeItemModalComponent {
   filteredOptions$: Observable<Array<NautismeItem>>;

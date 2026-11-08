@@ -7,9 +7,10 @@ import {BasicModal} from '../basic-modal';
 import {v4 as uuidv4} from 'uuid';
 
 @Component({
-   selector: 'app-publisher-modal',
-   templateUrl: './publisher-modal.component.html',
-   styleUrls: ['./publisher-modal.component.scss']
+    selector: 'app-publisher-modal',
+    templateUrl: './publisher-modal.component.html',
+    styleUrls: ['./publisher-modal.component.scss'],
+    standalone: false
 })
 export class PublisherModalComponent extends BasicModal implements OnInit {
 

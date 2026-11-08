@@ -9,9 +9,10 @@ interface CseUserForm {
 }
 
 @Component({
-  selector: 'app-add-employee-dialog',
-  templateUrl: './add-employee-dialog.component.html',
-  styleUrls: ['./add-employee-dialog.component.scss']
+    selector: 'app-add-employee-dialog',
+    templateUrl: './add-employee-dialog.component.html',
+    styleUrls: ['./add-employee-dialog.component.scss'],
+    standalone: false
 })
 export class AddEmployeeDialogComponent {
   userFormGroup: FormGroup<CseUserForm>;

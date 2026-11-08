@@ -2,9 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Series, SeriesStatus} from 'src/app/models/author.model';
 
 @Component({
-  selector: 'app-series-badge',
-  templateUrl: './series-badge.component.html',
-  styleUrls: ['./series-badge.component.scss']
+    selector: 'app-series-badge',
+    templateUrl: './series-badge.component.html',
+    styleUrls: ['./series-badge.component.scss'],
+    standalone: false
 })
 export class SeriesBadgeComponent implements OnInit {
 

@@ -8,9 +8,10 @@ import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
 @Component({
-  selector: 'app-series-view',
-  templateUrl: './series-view.component.html',
-  styleUrls: ['./series-view.component.scss']
+    selector: 'app-series-view',
+    templateUrl: './series-view.component.html',
+    styleUrls: ['./series-view.component.scss'],
+    standalone: false
 })
 export class SeriesViewComponent implements OnInit {
 

@@ -14,10 +14,11 @@ const IGNORED_AUTH_ERRORS = ['auth/popup-closed-by-user', 'auth/cancelled-popup-
 const DEFAULT_AUTH_ERROR = 'Connexion impossible.';
 
 @Component({
-  selector: 'app-admin-home',
-  templateUrl: './admin-home.component.html',
-  styleUrls: ['./admin-home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-admin-home',
+    templateUrl: './admin-home.component.html',
+    styleUrls: ['./admin-home.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AdminHomeComponent {
   protected readonly auth = inject(AuthentificationService);

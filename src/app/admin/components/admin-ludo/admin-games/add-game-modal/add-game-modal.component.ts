@@ -9,9 +9,10 @@ import {GamesUtils} from '../../../../../models/gamesUtils';
 import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 
 @Component({
-  selector: 'app-add-game-modal',
-  templateUrl: './add-game-modal.component.html',
-  styleUrls: ['./add-game-modal.component.scss']
+    selector: 'app-add-game-modal',
+    templateUrl: './add-game-modal.component.html',
+    styleUrls: ['./add-game-modal.component.scss'],
+    standalone: false
 })
 export class AddGameModalComponent {
   gameForm: FormGroup;

@@ -3,9 +3,10 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {SearchBookResult} from 'src/app/models/author.model';
 
 @Component({
-  selector: 'app-search-modal',
-  templateUrl: './search-modal.component.html',
-  styleUrls: ['./search-modal.component.scss']
+    selector: 'app-search-modal',
+    templateUrl: './search-modal.component.html',
+    styleUrls: ['./search-modal.component.scss'],
+    standalone: false
 })
 export class SearchModalComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import {ToolsService} from "../../../services/biblio/tools.service";
 import {SonoItem} from "../../models/sono.model";
 
 @Component({
-  selector: 'app-sono-item-row',
-  templateUrl: './sono-item-row.component.html',
-  styleUrls: ['./sono-item-row.component.scss']
+    selector: 'app-sono-item-row',
+    templateUrl: './sono-item-row.component.html',
+    styleUrls: ['./sono-item-row.component.scss'],
+    standalone: false
 })
 export class SonoItemRowComponent implements OnInit {
 

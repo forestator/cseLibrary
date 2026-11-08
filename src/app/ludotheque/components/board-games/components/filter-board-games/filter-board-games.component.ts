@@ -3,9 +3,10 @@ import {FilterBoardGamesService} from '../../../../services/filter-board-games.s
 import {AdvancedBoardGameFilter, BoardGameFilterType} from '../../../../../models/boardGame.model';
 
 @Component({
-  selector: 'app-filter-board-games',
-  templateUrl: './filter-board-games.component.html',
-  styleUrls: ['./filter-board-games.component.scss']
+    selector: 'app-filter-board-games',
+    templateUrl: './filter-board-games.component.html',
+    styleUrls: ['./filter-board-games.component.scss'],
+    standalone: false
 })
 export class FilterBoardGamesComponent {
   numberOfPlayers: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '8+'];

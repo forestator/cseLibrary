@@ -6,9 +6,10 @@ import {map, Observable} from 'rxjs';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 
 @Component({
-  selector: 'app-ludo-new',
-  templateUrl: './ludo-new.component.html',
-  styleUrls: ['./ludo-new.component.scss'],
+    selector: 'app-ludo-new',
+    templateUrl: './ludo-new.component.html',
+    styleUrls: ['./ludo-new.component.scss'],
+    standalone: false
 })
 export class LudoNewComponent implements OnInit {
   videoGames$: Observable<Array<VideoGame>>;

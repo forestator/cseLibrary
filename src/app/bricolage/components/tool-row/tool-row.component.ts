@@ -3,9 +3,10 @@ import {ToolsService} from '../../../services/biblio/tools.service';
 import {Tool} from '../../models/bricolage.model';
 
 @Component({
-  selector: 'app-tool-row',
-  templateUrl: './tool-row.component.html',
-  styleUrls: ['./tool-row.component.scss']
+    selector: 'app-tool-row',
+    templateUrl: './tool-row.component.html',
+    styleUrls: ['./tool-row.component.scss'],
+    standalone: false
 })
 export class ToolRowComponent implements OnInit {
 

@@ -6,9 +6,10 @@ import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../../services/firebase/user.service';
 
 @Component({
-  selector: 'app-admin-menu',
-  templateUrl: './admin-menu.component.html',
-  styleUrls: ['./admin-menu.component.scss']
+    selector: 'app-admin-menu',
+    templateUrl: './admin-menu.component.html',
+    styleUrls: ['./admin-menu.component.scss'],
+    standalone: false
 })
 export class AdminMenuComponent {
 

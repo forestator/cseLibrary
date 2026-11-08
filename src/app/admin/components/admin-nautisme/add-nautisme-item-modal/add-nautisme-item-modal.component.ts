@@ -9,9 +9,10 @@ import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.com
 import {take} from 'rxjs';
 
 @Component({
-  selector: 'app-add-nautisme-item-modal',
-  templateUrl: './add-nautisme-item-modal.component.html',
-  styleUrls: ['./add-nautisme-item-modal.component.scss']
+    selector: 'app-add-nautisme-item-modal',
+    templateUrl: './add-nautisme-item-modal.component.html',
+    styleUrls: ['./add-nautisme-item-modal.component.scss'],
+    standalone: false
 })
 export class AddNautismeItemModalComponent {
 

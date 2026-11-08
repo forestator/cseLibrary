@@ -9,7 +9,8 @@ import {BoardGame} from '../../../../models/boardGame.model';
 @Component({
     selector: 'app-ludo-table',
     templateUrl: './ludo-table.component.html',
-    styleUrls: ['./ludo-table.component.scss']
+    styleUrls: ['./ludo-table.component.scss'],
+    standalone: false
 })
 export class LudoTableComponent implements OnInit, OnChanges {
     @Input() games?: Array<Game> | null;

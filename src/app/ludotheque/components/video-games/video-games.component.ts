@@ -5,9 +5,10 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
 import {ToolsService} from '../../../services/biblio/tools.service';
 
 @Component({
-  selector: 'app-video-games',
-  templateUrl: './video-games.component.html',
-  styleUrls: ['./video-games.component.scss']
+    selector: 'app-video-games',
+    templateUrl: './video-games.component.html',
+    styleUrls: ['./video-games.component.scss'],
+    standalone: false
 })
 export class VideoGamesComponent {
   library$: Observable<Library | null> = this.firebaseDatabase.videoGamesLibrary$;

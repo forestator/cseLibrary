@@ -6,9 +6,10 @@ import {SonoCategory, SonoItem} from "../../models/sono.model";
 import {SonoDatabaseService} from "../../services/sono-database.service";
 
 @Component({
-  selector: 'app-sono-category',
-  templateUrl: './sono-category.component.html',
-  styleUrls: ['./sono-category.component.scss']
+    selector: 'app-sono-category',
+    templateUrl: './sono-category.component.html',
+    styleUrls: ['./sono-category.component.scss'],
+    standalone: false
 })
 export class SonoCategoryComponent implements OnInit, OnDestroy {
   category$?: Observable<Category>;

@@ -8,9 +8,10 @@ import {BoardGame} from '../../../../../models/boardGame.model';
 import {take} from 'rxjs';
 
 @Component({
-  selector: 'app-upload-game',
-  templateUrl: './upload-game.component.html',
-  styleUrls: ['./upload-game.component.scss']
+    selector: 'app-upload-game',
+    templateUrl: './upload-game.component.html',
+    styleUrls: ['./upload-game.component.scss'],
+    standalone: false
 })
 export class UploadGameComponent implements OnChanges {
   @Input() selectedGame?: Game;

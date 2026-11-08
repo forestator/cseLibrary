@@ -3,9 +3,10 @@ import {Biblio} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 
 @Component({
-   selector: 'app-settings-authors',
-   templateUrl: './settings-authors.component.html',
-   styleUrls: ['./settings-authors.component.scss']
+    selector: 'app-settings-authors',
+    templateUrl: './settings-authors.component.html',
+    styleUrls: ['./settings-authors.component.scss'],
+    standalone: false
 })
 export class SettingsAuthorsComponent implements OnInit {
 

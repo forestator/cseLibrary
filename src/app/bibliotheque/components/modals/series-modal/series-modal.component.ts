@@ -7,9 +7,10 @@ import {BasicModal} from '../basic-modal';
 import {v4 as uuidv4} from 'uuid';
 
 @Component({
-  selector: 'app-series-modal',
-  templateUrl: './series-modal.component.html',
-  styleUrls: ['./series-modal.component.scss']
+    selector: 'app-series-modal',
+    templateUrl: './series-modal.component.html',
+    styleUrls: ['./series-modal.component.scss'],
+    standalone: false
 })
 export class SeriesModalComponent extends BasicModal implements OnInit {
 

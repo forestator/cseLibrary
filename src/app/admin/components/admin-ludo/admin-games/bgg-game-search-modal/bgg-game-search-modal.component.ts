@@ -3,9 +3,10 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Thing} from '../../../../../models/boardGame.model';
 
 @Component({
-  selector: 'app-bgg-game-search-modal',
-  templateUrl: './bgg-game-search-modal.component.html',
-  styleUrls: ['./bgg-game-search-modal.component.scss']
+    selector: 'app-bgg-game-search-modal',
+    templateUrl: './bgg-game-search-modal.component.html',
+    styleUrls: ['./bgg-game-search-modal.component.scss'],
+    standalone: false
 })
 export class BggGameSearchModalComponent {
   constructor(

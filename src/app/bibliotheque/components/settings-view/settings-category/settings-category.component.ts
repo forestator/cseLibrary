@@ -9,9 +9,10 @@ import {AuthorModalComponent} from '../../modals/author-modal/author-modal.compo
 import {BiblioDatabaseService} from '../../../services/biblio-database.service';
 
 @Component({
-   selector: 'app-settings-category',
-   templateUrl: './settings-category.component.html',
-   styleUrls: ['./settings-category.component.scss']
+    selector: 'app-settings-category',
+    templateUrl: './settings-category.component.html',
+    styleUrls: ['./settings-category.component.scss'],
+    standalone: false
 })
 export class SettingsCategoryComponent implements OnInit {
 

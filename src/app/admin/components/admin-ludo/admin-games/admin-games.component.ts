@@ -8,7 +8,8 @@ import {EditGameModalComponent} from './edit-game-modal/edit-game-modal.componen
 @Component({
     selector: 'app-admin-games',
     templateUrl: './admin-games.component.html',
-    styleUrls: ['./admin-games.component.scss']
+    styleUrls: ['./admin-games.component.scss'],
+    standalone: false
 })
 export class AdminGamesComponent {
     columnsBoardGames = ['category', 'name', 'poids', 'ref'];

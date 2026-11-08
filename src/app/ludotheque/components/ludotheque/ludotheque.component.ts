@@ -4,7 +4,8 @@ import {AuthentificationService} from '../../../services/firebase/authentificati
 @Component({
     selector: 'app-ludotheque',
     templateUrl: './ludotheque.component.html',
-    styleUrls: ['./ludotheque.component.scss']
+    styleUrls: ['./ludotheque.component.scss'],
+    standalone: false
 })
 export class LudothequeComponent {
 

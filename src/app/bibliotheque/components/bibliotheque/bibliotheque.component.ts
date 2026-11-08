@@ -5,7 +5,8 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
 @Component({
     selector: 'app-bibliotheque',
     templateUrl: './bibliotheque.component.html',
-    styleUrls: ['./bibliotheque.component.scss']
+    styleUrls: ['./bibliotheque.component.scss'],
+    standalone: false
 })
 export class BibliothequeComponent {
 

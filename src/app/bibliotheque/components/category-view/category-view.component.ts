@@ -8,9 +8,10 @@ import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
 
 @Component({
-  selector: 'app-category-view',
-  templateUrl: './category-view.component.html',
-  styleUrls: ['./category-view.component.scss']
+    selector: 'app-category-view',
+    templateUrl: './category-view.component.html',
+    styleUrls: ['./category-view.component.scss'],
+    standalone: false
 })
 export class CategoryViewComponent implements OnInit {
 

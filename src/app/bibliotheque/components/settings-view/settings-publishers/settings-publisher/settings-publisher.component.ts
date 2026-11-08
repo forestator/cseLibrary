@@ -9,9 +9,10 @@ import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
-   selector: 'app-settings-publisher',
-   templateUrl: './settings-publisher.component.html',
-   styleUrls: ['./settings-publisher.component.scss']
+    selector: 'app-settings-publisher',
+    templateUrl: './settings-publisher.component.html',
+    styleUrls: ['./settings-publisher.component.scss'],
+    standalone: false
 })
 export class SettingsPublisherComponent implements OnInit {
    @Input()

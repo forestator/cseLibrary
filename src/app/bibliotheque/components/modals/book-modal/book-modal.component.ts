@@ -20,9 +20,10 @@ import {v4 as uuidv4} from 'uuid';
 import {BasicModal} from '../basic-modal';
 
 @Component({
-   selector: 'app-book-modal',
-   templateUrl: './book-modal.component.html',
-   styleUrls: ['./book-modal.component.scss']
+    selector: 'app-book-modal',
+    templateUrl: './book-modal.component.html',
+    styleUrls: ['./book-modal.component.scss'],
+    standalone: false
 })
 export class BookModalComponent extends BasicModal implements OnInit {
 

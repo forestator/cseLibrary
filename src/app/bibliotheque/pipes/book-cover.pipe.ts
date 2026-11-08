@@ -3,7 +3,8 @@ import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/compat/storage';
 
 @Pipe({
-  name: 'bookCover'
+    name: 'bookCover',
+    standalone: false
 })
 export class BookCoverPipe implements PipeTransform {
 

@@ -7,9 +7,10 @@ import {BiblioDatabaseService} from '../../services/biblio-database.service';
 import {ToolsService} from '../../../services/biblio/tools.service';
 
 @Component({
-  selector: 'app-library-view',
-  templateUrl: './library-view.component.html',
-  styleUrls: ['./library-view.component.scss']
+    selector: 'app-library-view',
+    templateUrl: './library-view.component.html',
+    styleUrls: ['./library-view.component.scss'],
+    standalone: false
 })
 export class LibraryViewComponent implements OnInit {
 

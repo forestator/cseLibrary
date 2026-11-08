@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Book, BookStatus, SeriesStatus } from '../models/author.model';
 
 @Pipe({
-  name: 'bookFilter'
+    name: 'bookFilter',
+    standalone: false
 })
 export class BookFilterPipe implements PipeTransform {
 

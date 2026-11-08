@@ -6,9 +6,10 @@ import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
-  selector: 'app-author-row',
-  templateUrl: './author-row.component.html',
-  styleUrls: ['./author-row.component.scss']
+    selector: 'app-author-row',
+    templateUrl: './author-row.component.html',
+    styleUrls: ['./author-row.component.scss'],
+    standalone: false
 })
 export class AuthorRowComponent implements OnInit {
 

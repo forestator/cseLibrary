@@ -7,9 +7,10 @@ import {map, Observable} from 'rxjs';
 import {AddGameModalComponent} from '../add-game-modal/add-game-modal.component';
 
 @Component({
-  selector: 'app-edit-game-modal',
-  templateUrl: './edit-game-modal.component.html',
-  styleUrls: ['./edit-game-modal.component.scss']
+    selector: 'app-edit-game-modal',
+    templateUrl: './edit-game-modal.component.html',
+    styleUrls: ['./edit-game-modal.component.scss'],
+    standalone: false
 })
 export class EditGameModalComponent {
 

@@ -4,7 +4,8 @@ import {Observable} from 'rxjs';
 import {BoardGame} from '../../../models/boardGame.model';
 
 @Pipe({
-  name: 'boardGameDetails'
+    name: 'boardGameDetails',
+    standalone: false
 })
 export class BoardGameDetailsPipe implements PipeTransform {
 

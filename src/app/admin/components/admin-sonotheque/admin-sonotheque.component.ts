@@ -7,9 +7,10 @@ import {AddSonoItemModalComponent} from "./add-sono-item-modal/add-sono-item-mod
 import {EditSonoItemModalComponent} from "./edit-sono-item-modal/edit-sono-item-modal.component";
 
 @Component({
-  selector: 'app-admin-sonotheque',
-  templateUrl: './admin-sonotheque.component.html',
-  styleUrls: ['./admin-sonotheque.component.scss']
+    selector: 'app-admin-sonotheque',
+    templateUrl: './admin-sonotheque.component.html',
+    styleUrls: ['./admin-sonotheque.component.scss'],
+    standalone: false
 })
 export class AdminSonothequeComponent {
   sonoCategories = Object.values(SonoCategory);

@@ -6,9 +6,10 @@ import {Game} from '../../../models/common.model';
 import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
-  selector: 'app-games-list',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+    selector: 'app-games-list',
+    templateUrl: './game.component.html',
+    styleUrls: ['./game.component.scss'],
+    standalone: false
 })
 export class GameComponent implements OnInit, OnDestroy {
   library$: Observable<Library | null> = this.firebaseDb.outsideGamesLibrary$;

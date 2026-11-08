@@ -5,9 +5,10 @@ import {map, Observable, Subscription} from 'rxjs';
 import {Consoles, VideoGame} from '../../../../models/videoGames.model';
 
 @Component({
-  selector: 'app-video-games-to-filter',
-  templateUrl: './video-games-to-filter.component.html',
-  styleUrls: ['./video-games-to-filter.component.scss']
+    selector: 'app-video-games-to-filter',
+    templateUrl: './video-games-to-filter.component.html',
+    styleUrls: ['./video-games-to-filter.component.scss'],
+    standalone: false
 })
 export class VideoGamesToFilterComponent implements OnInit, OnDestroy {
 

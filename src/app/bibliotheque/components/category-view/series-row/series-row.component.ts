@@ -4,9 +4,10 @@ import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
-  selector: 'app-series-row',
-  templateUrl: './series-row.component.html',
-  styleUrls: ['./series-row.component.scss']
+    selector: 'app-series-row',
+    templateUrl: './series-row.component.html',
+    styleUrls: ['./series-row.component.scss'],
+    standalone: false
 })
 export class SeriesRowComponent implements OnInit {
   @Input()

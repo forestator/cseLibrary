@@ -4,9 +4,10 @@ import {ToolsService} from "../../../services/biblio/tools.service";
 import {NautismeDatabaseService} from "../../services/nautisme-database.service";
 
 @Component({
-  selector: 'app-nautisme-home',
-  templateUrl: './nautisme-home.component.html',
-  styleUrls: ['./nautisme-home.component.scss']
+    selector: 'app-nautisme-home',
+    templateUrl: './nautisme-home.component.html',
+    styleUrls: ['./nautisme-home.component.scss'],
+    standalone: false
 })
 export class NautismeHomeComponent {
 

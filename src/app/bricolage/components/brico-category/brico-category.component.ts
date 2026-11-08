@@ -6,9 +6,10 @@ import {Tool} from '../../models/bricolage.model';
 import {Category} from '../../../models/author.model';
 
 @Component({
-  selector: 'app-brico-category',
-  templateUrl: './brico-category.component.html',
-  styleUrls: ['./brico-category.component.scss']
+    selector: 'app-brico-category',
+    templateUrl: './brico-category.component.html',
+    styleUrls: ['./brico-category.component.scss'],
+    standalone: false
 })
 export class BricoCategoryComponent implements OnInit, OnDestroy {
   category$?: Observable<Category>;

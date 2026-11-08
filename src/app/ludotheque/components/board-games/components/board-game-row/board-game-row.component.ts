@@ -5,10 +5,11 @@ import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../../../../services/firebase/user.service';
 
 @Component({
-  selector: 'app-board-game-row',
-  templateUrl: './board-game-row.component.html',
-  styleUrls: ['./board-game-row.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-board-game-row',
+    templateUrl: './board-game-row.component.html',
+    styleUrls: ['./board-game-row.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class BoardGameRowComponent implements OnInit, OnChanges {
 

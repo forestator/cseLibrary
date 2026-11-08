@@ -2,7 +2,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 import {VideoGame, VideoGameType} from '../../models/videoGames.model';
 
 @Pipe({
-  name: 'filterVideoGameByType'
+    name: 'filterVideoGameByType',
+    standalone: false
 })
 export class FilterVideoGameByTypePipe implements PipeTransform {
 

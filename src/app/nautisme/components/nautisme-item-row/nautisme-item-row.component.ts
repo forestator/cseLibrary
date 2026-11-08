@@ -3,9 +3,10 @@ import {ToolsService} from "../../../services/biblio/tools.service";
 import {NautismeItem} from "../../models/nautisme.model";
 
 @Component({
-  selector: 'app-nautisme-item-row',
-  templateUrl: './nautisme-item-row.component.html',
-  styleUrls: ['./nautisme-item-row.component.scss']
+    selector: 'app-nautisme-item-row',
+    templateUrl: './nautisme-item-row.component.html',
+    styleUrls: ['./nautisme-item-row.component.scss'],
+    standalone: false
 })
 export class NautismeItemRowComponent {
   @Input() item!: NautismeItem;

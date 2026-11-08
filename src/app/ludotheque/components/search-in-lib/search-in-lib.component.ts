@@ -9,9 +9,10 @@ import {VideoGame} from '../../../models/videoGames.model';
 import {Game} from '../../../models/common.model';
 
 @Component({
-  selector: 'app-search-in-lib',
-  templateUrl: './search-in-lib.component.html',
-  styleUrls: ['./search-in-lib.component.scss']
+    selector: 'app-search-in-lib',
+    templateUrl: './search-in-lib.component.html',
+    styleUrls: ['./search-in-lib.component.scss'],
+    standalone: false
 })
 export class SearchInLibComponent implements OnInit, OnChanges {
 

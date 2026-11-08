@@ -3,9 +3,10 @@ import {ToolsService} from "../../../services/biblio/tools.service";
 import {MaterielPhotoItem} from '../../models/materiel-photo.model';
 
 @Component({
-  selector: 'app-materiel-photo-row',
-  templateUrl: './materiel-photo-row.component.html',
-  styleUrls: ['./materiel-photo-row.component.scss']
+    selector: 'app-materiel-photo-row',
+    templateUrl: './materiel-photo-row.component.html',
+    styleUrls: ['./materiel-photo-row.component.scss'],
+    standalone: false
 })
 export class MaterielPhotoRowComponent {
   @Input() item!: MaterielPhotoItem;

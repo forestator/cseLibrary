@@ -7,7 +7,8 @@ import {MatDialog} from '@angular/material/dialog';
 @Component({
     selector: 'app-game-row',
     templateUrl: './game-row.component.html',
-    styleUrls: ['./game-row.component.scss']
+    styleUrls: ['./game-row.component.scss'],
+    standalone: false
 })
 export class GameRowComponent implements OnInit {
 

@@ -2,9 +2,10 @@ import {Component, Input} from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
 
 @Component({
-  selector: 'app-board-game-category-details',
-  templateUrl: './board-game-category-details.component.html',
-  styleUrls: ['./board-game-category-details.component.scss']
+    selector: 'app-board-game-category-details',
+    templateUrl: './board-game-category-details.component.html',
+    styleUrls: ['./board-game-category-details.component.scss'],
+    standalone: false
 })
 export class BoardGameCategoryDetailsComponent {
 

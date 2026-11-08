@@ -4,9 +4,10 @@ import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 
 @Component({
-  selector: 'app-author-view',
-  templateUrl: './author-view.component.html',
-  styleUrls: ['./author-view.component.scss']
+    selector: 'app-author-view',
+    templateUrl: './author-view.component.html',
+    styleUrls: ['./author-view.component.scss'],
+    standalone: false
 })
 export class AuthorViewComponent implements OnInit {
   private BOOK_SEPARATOR: Book = {

@@ -7,9 +7,10 @@ import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {BookModalComponent} from '../../../../modals/book-modal/book-modal.component';
 
 @Component({
-  selector: 'app-settings-book',
-  templateUrl: './settings-book.component.html',
-  styleUrls: ['./settings-book.component.scss']
+    selector: 'app-settings-book',
+    templateUrl: './settings-book.component.html',
+    styleUrls: ['./settings-book.component.scss'],
+    standalone: false
 })
 export class SettingsBookComponent implements OnInit {
 

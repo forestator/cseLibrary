@@ -3,7 +3,8 @@ import {AngularFireStorage} from '@angular/fire/compat/storage';
 import {catchError, Observable} from 'rxjs';
 
 @Pipe({
-  name: 'categoryBackground'
+    name: 'categoryBackground',
+    standalone: false
 })
 export class CategoryBackgroundPipe implements PipeTransform {
 

@@ -2,9 +2,10 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Author, Biblio, SelectorView, ViewMode} from 'src/app/models/author.model';
 
 @Component({
-  selector: 'app-authors-view',
-  templateUrl: './authors-view.component.html',
-  styleUrls: ['./authors-view.component.scss']
+    selector: 'app-authors-view',
+    templateUrl: './authors-view.component.html',
+    styleUrls: ['./authors-view.component.scss'],
+    standalone: false
 })
 export class AuthorsViewComponent implements OnInit {
 

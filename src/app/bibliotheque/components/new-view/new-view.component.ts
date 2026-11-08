@@ -7,9 +7,10 @@ import {FirebaseDatabaseService} from '../../../services/firebase/firebase-datab
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
 
 @Component({
-  selector: 'app-new-view',
-  templateUrl: './new-view.component.html',
-  styleUrls: ['./new-view.component.scss']
+    selector: 'app-new-view',
+    templateUrl: './new-view.component.html',
+    styleUrls: ['./new-view.component.scss'],
+    standalone: false
 })
 export class NewViewComponent implements OnInit {
   newBooks$?: Observable<{ biblio: Biblio; books: BookPath[]; bookInProject: BookPath[] }[]>;

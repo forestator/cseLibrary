@@ -6,9 +6,10 @@ import {AddNautismeItemModalComponent} from './add-nautisme-item-modal/add-nauti
 import {EditNautismeItemModalComponent} from './edit-nautisme-item-modal/edit-nautisme-item-modal.component';
 
 @Component({
-  selector: 'app-admin-nautisme',
-  templateUrl: './admin-nautisme.component.html',
-  styleUrls: ['./admin-nautisme.component.scss']
+    selector: 'app-admin-nautisme',
+    templateUrl: './admin-nautisme.component.html',
+    styleUrls: ['./admin-nautisme.component.scss'],
+    standalone: false
 })
 export class AdminNautismeComponent {
 

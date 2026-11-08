@@ -7,9 +7,10 @@ import {Tool} from '../../../../bricolage/models/bricolage.model';
 import {AddToolModalComponent} from "../add-tool-modal/add-tool-modal.component";
 
 @Component({
-  selector: 'app-edit-tool-modal',
-  templateUrl: './edit-tool-modal.component.html',
-  styleUrls: ['./edit-tool-modal.component.scss']
+    selector: 'app-edit-tool-modal',
+    templateUrl: './edit-tool-modal.component.html',
+    styleUrls: ['./edit-tool-modal.component.scss'],
+    standalone: false
 })
 export class EditToolModalComponent {
 

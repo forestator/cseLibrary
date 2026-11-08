@@ -8,9 +8,10 @@ import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delet
 import {DataService} from 'src/app/services/biblio/data.service';
 
 @Component({
-   selector: 'app-settings-series',
-   templateUrl: './settings-series.component.html',
-   styleUrls: ['./settings-series.component.scss']
+    selector: 'app-settings-series',
+    templateUrl: './settings-series.component.html',
+    styleUrls: ['./settings-series.component.scss'],
+    standalone: false
 })
 export class SettingsSeriesComponent implements OnInit {
 

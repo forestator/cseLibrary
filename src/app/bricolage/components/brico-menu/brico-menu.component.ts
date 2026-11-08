@@ -6,9 +6,10 @@ import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
 import {NavigationService} from '../../../services/navigation.service';
 
 @Component({
-  selector: 'app-brico-menu',
-  templateUrl: './brico-menu.component.html',
-  styleUrls: ['./brico-menu.component.scss']
+    selector: 'app-brico-menu',
+    templateUrl: './brico-menu.component.html',
+    styleUrls: ['./brico-menu.component.scss'],
+    standalone: false
 })
 export class BricoMenuComponent {
   @Input() allTools: Array<Tool>;
