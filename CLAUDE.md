@@ -5,7 +5,7 @@ Application web du CSE : catalogue de plusieurs « commissions » (ludothèque, 
 ## Commandes
 
 ```bash
-npm install --legacy-peer-deps   # pas de package-lock ; ajouter `firebaseui@6` (peer dep de firebaseui-angular) sinon le build échoue
+npm install            # .npmrc active legacy-peer-deps
 npm start              # ng serve -> http://localhost:4200
 npm run build          # sortie dist/CseBiblio
 npm test               # karma/jasmine (la plupart des spec sont des squelettes générés)
@@ -17,7 +17,7 @@ npm run deploy         # firebase deploy (hosting, projet dans .firebaserc) – 
 
 - Angular **16.2** (package.json), TypeScript 4.9, RxJS 7.4, Angular Material/CDK 16 : `README` (13) et message de commit (« revert to angular 15 ») sont périmés.
 - **NgModules** partout (`app.module.ts`, un module par commission + `admin`, `common`), composants non standalone, `*ngIf`/`*ngFor`, constructeurs pour l'injection, `@Input()` décorateurs, pas de signals.
-- `@angular/fire` **compat** (`AngularFireDatabase`), firebase 9, firebaseui-angular.
+- `@angular/fire` **compat** (`AngularFireDatabase`, `AngularFireAuth`). Connexion : écran maison dans `admin-home` (email/mot de passe, Google, GitHub) via `AuthentificationService` ; `firebaseui`/`firebaseui-angular` ont été retirés (non maintenus, bloquaient Angular > 18). Pas de création de compte dans l'UI.
 - `tsconfig` : `strict: false` (mais `strictTemplates: true`). Beaucoup de champs non initialisés et de `any`.
 - Moment.js pour toutes les dates, **stockées en `string` au format `DD/MM/YYYY`**.
 - Autres libs : openai 3 (`services/open-ai.service.ts`, descriptions de jeux), BGG XML (`ludotheque/services/bgg.service.ts`), Google Books, xml2js/xml-js/sax, jspdf + html2canvas.

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {map, Observable} from 'rxjs';
-import firebase from 'firebase/compat';
+import firebase from 'firebase/compat/app';
 import User = firebase.User;
 
 @Injectable({
@@ -54,6 +54,18 @@ export class AuthentificationService {
 
     logout() {
         return this.auth.signOut();
+    }
+
+    signInWithGoogle() {
+        return this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    }
+
+    signInWithGithub() {
+        return this.auth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+    }
+
+    signInWithEmail(email: string, password: string) {
+        return this.auth.signInWithEmailAndPassword(email, password);
     }
 
     getUserId(user: any): string {

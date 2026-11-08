@@ -1,0 +1,23 @@
+$login-error-color: #b00020;
+$login-max-width: 360px;
+$login-gap: 16px;
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: $login-gap;
+  max-width: $login-max-width;
+  margin: 32px auto;
+  padding: 0 $login-gap;
+}
+
+.login-form,
+.login-providers {
+  display: flex;
+  flex-direction: column;
+  gap: $login-gap;
+}
+
+.login-error {
+  color: $login-error-color;
+}

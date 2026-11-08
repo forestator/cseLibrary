@@ -18,7 +18,6 @@ import {AppCommonModule} from './common/app-common.module';
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {AdminModule} from './admin/admin.module';
-import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
 import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import {AngularFireAnalyticsModule} from '@angular/fire/compat/analytics';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
@@ -40,20 +39,6 @@ const firebaseConfig = {
   appId: "1:380057552327:web:6f48c47bb21f44fd32c5e2"
 };
 
-const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInFlow: 'popup',
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.GithubAuthProvider.PROVIDER_ID,
-    {
-      requireDisplayName: false,
-      provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-    },
-  ],
-  credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
-};
-
-
 @NgModule({ declarations: [
         AppComponent
     ],
@@ -64,8 +49,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
         AngularFireDatabaseModule,
         AngularFireStorageModule,
         AngularFireAnalyticsModule,
-        FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-        LudothequeModule,
+            LudothequeModule,
         BibliothequeModule,
         BricolageModule,
         SonothequeModule,

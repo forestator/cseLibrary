@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {AdminHomeComponent} from './components/admin-home/admin-home.component';
 import {AngularFireAuthModule} from '@angular/fire/compat/auth';
-import {FirebaseUIModule} from 'firebaseui-angular';
 import {AdminGamesComponent} from './components/admin-ludo/admin-games/admin-games.component';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
@@ -72,7 +71,6 @@ import {NautismeTableComponent} from './components/admin-nautisme/nautisme-table
     imports: [
         CommonModule,
         AngularFireAuthModule,
-        FirebaseUIModule,
         MatSortModule,
         MatTableModule,
         MatExpansionModule,

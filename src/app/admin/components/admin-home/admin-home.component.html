@@ -1,3 +1,38 @@
-<firebase-ui></firebase-ui>
-<p *ngIf="auth.currentUser$ | async">Login ok</p>
-<button (click)="logout()">logout</button>
+@if (auth.currentUser$ | async; as user) {
+  <section class="login-container">
+    <p class="login-status" role="status">Connecté en tant que {{ user.email }}</p>
+    <button mat-raised-button type="button" (click)="logout()">Se déconnecter</button>
+  </section>
+} @else {
+  <section class="login-container">
+    <h1 class="login-title">Connexion</h1>
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="signInWithEmail()">
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" autocomplete="username" formControlName="email" required>
+        @if (loginForm.controls.email.invalid) {
+          <mat-error>Une adresse email valide est requise</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput type="password" autocomplete="current-password" formControlName="password" required>
+        @if (loginForm.controls.password.invalid) {
+          <mat-error>Le mot de passe est requis</mat-error>
+        }
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading()">Se connecter</button>
+    </form>
+    <div class="login-providers">
+      <button mat-stroked-button type="button" [disabled]="loading()" (click)="signInWithGoogle()">
+        Continuer avec Google
+      </button>
+      <button mat-stroked-button type="button" [disabled]="loading()" (click)="signInWithGithub()">
+        Continuer avec GitHub
+      </button>
+    </div>
+    @if (errorMessage(); as message) {
+      <p class="login-error" role="alert">{{ message }}</p>
+    }
+  </section>
+}
