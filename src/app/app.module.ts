@@ -8,7 +8,7 @@ import {LudothequeModule} from './ludotheque/ludotheque.module';
 import {BibliothequeModule} from './bibliotheque/bibliotheque.module';
 import {MatButtonModule} from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
-import {HttpClientModule} from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -54,43 +54,35 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 };
 
 
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireStorageModule,
-    AngularFireAnalyticsModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
-    LudothequeModule,
-    BibliothequeModule,
-    BricolageModule,
-    SonothequeModule,
-    NautismeModule,
-    AdminModule,
-    MaterielPhotoModule,
-    MatIconModule,
-    MatButtonModule,
-    MatMenuModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    AppCommonModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule
-  ],
-  providers: [{provide: MAT_DATE_LOCALE, useValue: 'fr-FR'}],
-  exports: [
-  ],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent
+    ],
+    exports: [],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFireStorageModule,
+        AngularFireAnalyticsModule,
+        FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+        LudothequeModule,
+        BibliothequeModule,
+        BricolageModule,
+        SonothequeModule,
+        NautismeModule,
+        AdminModule,
+        MaterielPhotoModule,
+        MatIconModule,
+        MatButtonModule,
+        MatMenuModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        AppCommonModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule], providers: [{ provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }, provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule {
 }
