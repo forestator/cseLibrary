@@ -2,7 +2,6 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {BookStatus} from 'src/app/models/author.model';
 import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
-import {BorrowStatus} from '../../../admin/models/borrow.model';
 
 @Component({
   selector: 'app-badge',
@@ -34,8 +33,6 @@ export class BadgeComponent implements OnInit, OnChanges {
   private setup() {
     if (this.status in BookStatus) {
       this.bookStatusBadge();
-    } else if (this.status in BorrowStatus) {
-      this.borrowStatus();
     } else if (this.status in Consoles) {
       this.consoleBadge();
     } else if (this.status in BoardGameCategory) {
@@ -127,32 +124,6 @@ export class BadgeComponent implements OnInit, OnChanges {
       case Consoles.xboxX:
         this.txt = this.status;
         this.bg = '#409131';
-        this.fg = 'white';
-        break;
-    }
-  }
-
-  private borrowStatus() {
-    switch (this.status) {
-      case BorrowStatus.EMPRUNTE:
-        this.txt = 'EMPRUNTE';
-        this.bg = 'darkorange';
-        this.fg = 'white';
-        break;
-      case BorrowStatus.AVAILABLE:
-      case BorrowStatus.RETURNED:
-        this.txt = 'DISPONIBLE';
-        this.bg = 'green';
-        this.fg = 'white';
-        break;
-      case BorrowStatus.LATE :
-        this.txt = 'En Retard';
-        this.bg = '#d93856';
-        this.fg = 'white';
-        break;
-      case BorrowStatus.RESERVED:
-        this.txt = 'RESERVE';
-        this.bg = '#e0610f';
         this.fg = 'white';
         break;
     }

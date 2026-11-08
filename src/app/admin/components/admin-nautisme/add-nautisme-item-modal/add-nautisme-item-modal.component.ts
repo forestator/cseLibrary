@@ -5,7 +5,7 @@ import {StorageUploadService} from '../../../../services/firebase/storage-upload
 import {FileUpload} from '../../../../models/fileUpload.model';
 import {NautismeDatabaseService} from '../../../../nautisme/services/nautisme-database.service';
 import {NautismeItem, NautismeStatus} from '../../../../nautisme/models/nautisme.model';
-import {ConfirmationModal} from '../../emprunts/confirm-return-all-modal/confirmation-modal.component';
+import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.component';
 import {take} from 'rxjs';
 
 @Component({

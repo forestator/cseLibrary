@@ -10,7 +10,6 @@ import {MatMenuModule} from '@angular/material/menu';
 import {RouterModule} from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import {UploadFormComponent} from './components/upload-form/upload-form.component';
-import {BorrowedByUserPipe} from './pipe/borrowed-by-user.pipe';
 import {MomentToDatePipe} from './pipe/moment-to-date.pipe';
 
 @NgModule({
@@ -18,7 +17,6 @@ import {MomentToDatePipe} from './pipe/moment-to-date.pipe';
     HomeComponent,
     BadgeComponent,
     UploadFormComponent,
-    BorrowedByUserPipe,
     MomentToDatePipe
   ],
   imports: [
@@ -35,7 +33,6 @@ import {MomentToDatePipe} from './pipe/moment-to-date.pipe';
     HomeComponent,
     BadgeComponent,
     UploadFormComponent,
-    BorrowedByUserPipe
   ]
 })
 export class AppCommonModule {

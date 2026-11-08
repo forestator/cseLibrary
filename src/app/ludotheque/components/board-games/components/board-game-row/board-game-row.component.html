@@ -5,7 +5,6 @@
   <div class="book-infos">
     <div class="book-title">
       {{boardGame.name}}
-      <app-badge [status]="borrowsInfo | LastBorrowStatus"></app-badge>
     </div>
     <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
     <div class="book-info" *ngIf="boardGame.weight">Poids: {{boardGame.weight}}g</div>

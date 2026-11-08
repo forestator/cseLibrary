@@ -2,7 +2,6 @@ import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
 import {Consoles, VideoGame} from './videoGames.model';
 import {BddGame, Game} from './common.model';
 import moment, {Moment} from 'moment';
-import {Borrow} from "../admin/models/borrow.model";
 
 export class GamesUtils {
     static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
@@ -100,40 +99,6 @@ export class GamesUtils {
             library = 'outsideGames';
         }
         return library;
-    }
-
-    static gameIsReservedOrEmprunte(
-        borrowList: Array<Borrow>, date: Date, includeStartEndDates?: boolean): Borrow | undefined {
-        return borrowList.find(borrow => {
-            const compareDate = moment(date, 'DD/MM/YYYY');
-            const startDate = moment(borrow.startDate, 'DD/MM/YYYY');
-            const endDate = moment(borrow.endDate, 'DD/MM/YYYY');
-            if (includeStartEndDates) {
-                return compareDate.isBetween(startDate, endDate) ||
-                    compareDate.isSame(startDate) ||
-                    compareDate.isSame(endDate);
-            } else {
-                return compareDate.isBetween(startDate, endDate) &&
-                    !(compareDate.isSame(startDate) && compareDate.isSame(endDate));
-            }
-        });
-    }
-
-    static reservedForNextSession(borrowList: Array<Borrow>): boolean {
-        return borrowList.some(borrow => {
-            const nextSessionDay: Moment = this.getNextLudothequeOpening();
-            const borrowEnd = moment(borrow.endDate, 'DD/MM/YYYY');
-            if (borrowEnd.isAfter(nextSessionDay)) {
-                return this.daysRemaining(borrow.startDate, nextSessionDay) < 14;
-            } else {
-                return false;
-            }
-        });
-    }
-
-    private static daysRemaining(startDate: string, nextSessionDay: Moment): number {
-        const startDateMoment: Moment = moment(startDate, 'DD/MM/YYYY');
-        return nextSessionDay.diff(startDateMoment, 'days');
     }
 
     static getNextLudothequeOpening(): Moment {

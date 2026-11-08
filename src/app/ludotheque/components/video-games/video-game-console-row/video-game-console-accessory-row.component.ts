@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
-import {BorrowByComission} from '../../../../admin/models/borrow.model';
 import {UserService} from '../../../../services/firebase/user.service';
 import {MatDialog} from '@angular/material/dialog';
 
@@ -14,7 +13,6 @@ export class VideoGameConsoleAccessoryRowComponent implements OnInit {
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
-  @Input() borrowsInfo: BorrowByComission[];
 
   constructor(private toolsService: ToolsService,
               public dialog: MatDialog,

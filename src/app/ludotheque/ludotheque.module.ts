@@ -42,16 +42,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {LudoNewComponent} from './components/ludo-new/ludo-new.component';
-import {GameStatusComponent} from './components/game-status/game-status.component';
-import {GameReservedForFuturWeeksPipe} from './pipes/game-reserved-for-futur-weeks.pipe';
-import {UserByIdPipe} from './pipes/user-by-id.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {
     FilterBoardGamesComponent
 } from './components/board-games/components/filter-board-games/filter-board-games.component';
 import {AdvancedBoardGameFilterPipe} from './pipes/advanced-board-game-filter.pipe';
-import {FilterBorrowByIDPipe} from './pipes/filter-borrow-by-id.pipe';
-import {LastBorrowStatusPipe} from './pipes/last-borrow-status.pipe';
 
 @NgModule({
   declarations: [
@@ -72,15 +67,10 @@ import {LastBorrowStatusPipe} from './pipes/last-borrow-status.pipe';
     BoardGameToFilterComponent,
     LudoMenuComponent,
     LudoNewComponent,
-    GameStatusComponent,
-    GameReservedForFuturWeeksPipe,
-    UserByIdPipe,
     FilterBoardGamesComponent,
-    AdvancedBoardGameFilterPipe,
-    FilterBorrowByIDPipe,
-    LastBorrowStatusPipe
+    AdvancedBoardGameFilterPipe
   ],
-    exports: [LudoMenuComponent, GameStatusComponent, FilterBoardGamesComponent, FilterBorrowByIDPipe, UserByIdPipe],
+    exports: [LudoMenuComponent, FilterBoardGamesComponent],
   imports: [
     CommonModule,
     MatIconModule,

@@ -4,10 +4,7 @@ import {MatTableDataSource} from '@angular/material/table';
 import {CseUser} from '../../../../models/users.model';
 import {MatDialog} from '@angular/material/dialog';
 import {Game} from '../../../../models/common.model';
-import {BorrowByComission} from '../../../models/borrow.model';
-import {FilterBorrowByIDPipe} from '../../../../ludotheque/pipes/filter-borrow-by-id.pipe';
 import {BoardGame} from '../../../../models/boardGame.model';
-import {ComputeStatisticsPipe} from '../../../pipe/compute-statistics.pipe';
 
 @Component({
     selector: 'app-ludo-table',
@@ -20,7 +17,6 @@ export class LudoTableComponent implements OnInit, OnChanges {
     @Input() users?: Array<CseUser>;
     @Input() returnForUser?: CseUser;
     @Input() filterBy?: string;
-    @Input() borrowsInformations?: BorrowByComission[];
     dataSource?: MatTableDataSource<Game>;
     @ViewChild(MatSort) sort!: MatSort;
 
@@ -58,14 +54,7 @@ export class LudoTableComponent implements OnInit, OnChanges {
 
         data = data.sort((a, b) => {
             const isAsc = sort.direction === 'asc';
-            const itemPipe = new FilterBorrowByIDPipe();
-            const statPipe = new ComputeStatisticsPipe();
-            const itemBorrowsA = itemPipe.transform(this.borrowsInformations, a);
-            const itemBorrowsB = itemPipe.transform(this.borrowsInformations, b);
-
             switch (sort.active) {
-                case 'status':
-                    return this.compare(itemBorrowsA[itemBorrowsA.length - 1]?.status, itemBorrowsB[itemBorrowsB.length - 1]?.status, isAsc);
                 case 'category':
                     return this.compare(a.category, b.category, isAsc);
                 case 'name':
@@ -77,10 +66,6 @@ export class LudoTableComponent implements OnInit, OnChanges {
                     return 0;
                 case 'ref':
                     return this.compare(a.ref, b.ref, isAsc);
-                case 'stats':
-                    const aStat = statPipe.transform(itemBorrowsA);
-                    const bStat = statPipe.transform(itemBorrowsB);
-                    return this.compare(aStat.substring(0, aStat.length - 1), bStat.substring(0, bStat.length - 1), isAsc);
                 default:
                     return 0;
             }

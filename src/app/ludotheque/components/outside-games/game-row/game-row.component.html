@@ -2,7 +2,6 @@
   <ng-container [ngTemplateOutlet]="image" *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async))"></ng-container>
   <div class="book-infos">
     <div class="book-title">{{game.name}}
-      <app-badge [status]="borrowsInfo | LastBorrowStatus"></app-badge>
     </div>
     <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
   </div>

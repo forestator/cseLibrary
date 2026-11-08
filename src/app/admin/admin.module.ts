@@ -19,9 +19,6 @@ import {AdminMenuComponent} from './components/admin-menu/admin-menu.component';
 import {RouterLink} from '@angular/router';
 import {MatListModule} from '@angular/material/list';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-import {
-    ChangeBorrowStatusModalComponent
-} from './components/emprunts/change-borrow-status/change-borrow-status-modal.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {AddGameFormComponent} from './components/admin-ludo/admin-games/add-game-form/add-game-form.component';
@@ -37,9 +34,7 @@ import {BricoTableComponent} from './components/admin-bricolage/brico-table/bric
 import {AddToolModalComponent} from './components/admin-bricolage/add-tool-modal/add-tool-modal.component';
 import {EditToolModalComponent} from './components/admin-bricolage/edit-tool-modal/edit-tool-modal.component';
 import {UploadGameComponent} from './components/admin-ludo/admin-games/upload-game/upload-game.component';
-import {EmpruntsHomeComponent} from './components/emprunts/emprunts-home/emprunts-home.component';
-import {ConfirmationModal} from './components/emprunts/confirm-return-all-modal/confirmation-modal.component';
-import {BorrowTableComponent} from './components/emprunts/borrow-table/borrow-table.component';
+import {ConfirmationModal} from './components/confirmation-modal/confirmation-modal.component';
 import {AdminSonothequeComponent} from './components/admin-sonotheque/admin-sonotheque.component';
 import {SonoTableComponent} from './components/admin-sonotheque/sono-table/sono-table.component';
 import {
@@ -60,11 +55,6 @@ import {
     EditNautismeItemModalComponent
 } from './components/admin-nautisme/edit-nautisme-item-modal/edit-nautisme-item-modal.component';
 import {NautismeTableComponent} from './components/admin-nautisme/nautisme-table/nautisme-table.component';
-import {PlanningEmpruntsComponent} from './components/emprunts/planning-emprunts/planning-emprunts.component';
-import {
-    BorrowPlanningModalComponent
-} from './components/emprunts/borrow-planning-modal/borrow-planning-modal.component';
-import {ComputeStatisticsPipe} from './pipe/compute-statistics.pipe';
 
 
 @NgModule({
@@ -73,8 +63,7 @@ import {ComputeStatisticsPipe} from './pipe/compute-statistics.pipe';
         AdminGamesComponent,
         LudoTableComponent,
         AddEmployeeDialogComponent,
-        ChangeBorrowStatusModalComponent,
-        AdminMenuComponent, AddGameFormComponent, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, EmpruntsHomeComponent, ConfirmationModal, BorrowTableComponent, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent, PlanningEmpruntsComponent, BorrowPlanningModalComponent, ComputeStatisticsPipe
+        AdminMenuComponent, AddGameFormComponent, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, ConfirmationModal, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent
     ],
     exports: [
         AdminMenuComponent,

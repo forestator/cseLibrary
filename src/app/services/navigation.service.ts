@@ -28,10 +28,6 @@ export class NavigationService {
     this.router.navigateByUrl(`/${comissionName}`);
   }
 
-  goToBorrowAdmin(): void {
-    this.router.navigateByUrl(`/admin/emprunts`);
-  }
-
   goToGame(game: BoardGame): void {
     const gameCat = GamesUtils.libraryIdOfGame(game);
     if (gameCat === 'outsideGames') {

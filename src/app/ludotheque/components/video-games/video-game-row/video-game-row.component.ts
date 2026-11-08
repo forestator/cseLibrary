@@ -3,7 +3,6 @@ import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
 import {MatDialog} from '@angular/material/dialog';
-import {BorrowByComission} from '../../../../admin/models/borrow.model';
 
 @Component({
   selector: 'app-video-game-row',
@@ -14,7 +13,6 @@ export class VideoGameRowComponent implements OnInit, OnChanges {
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
-  @Input() borrowsInfo: BorrowByComission[];
 
   constructor(private toolsService: ToolsService,
               public dialog: MatDialog,

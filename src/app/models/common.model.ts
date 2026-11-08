@@ -13,13 +13,6 @@ export interface LudothequeDetails {
   library: Library;
 }
 
-export enum LudoStatus {
-  AVAILABLE = 'AVAILABLE',
-  EMPRUNTE = 'EMPRUNTE',
-  RESERVED = 'RESERVED',
-  MISSING = 'MISSING',
-}
-
 export enum Comissions {
   BIBLIOTHEQUE = 'bibliotheque',
   LUDOTHEQUE = 'ludotheque',

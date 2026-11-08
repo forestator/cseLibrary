@@ -3,7 +3,6 @@ import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../../../../services/firebase/user.service';
-import {BorrowByComission} from '../../../../../admin/models/borrow.model';
 
 @Component({
   selector: 'app-board-game-row',
@@ -16,7 +15,6 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
   @Input() boardGame: BoardGame | null = null;
   @Input() index!: number;
   @Input() selectedBoardGameId?: string;
-  @Input() borrowsInfo: BorrowByComission[];
 
   parity!: boolean;
 

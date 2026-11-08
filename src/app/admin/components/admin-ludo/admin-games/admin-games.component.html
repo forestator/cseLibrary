@@ -12,7 +12,6 @@
       </mat-expansion-panel-header>
       <app-ludo-table *ngIf="boardGamePanelOpen"
                       [games]="firebaseDatabaseService.boardGamesOneShot$ | async"
-                      [borrowsInformations]="(borrowInformations$ | async)"
                       [displayedColumns]="columnsBoardGames"></app-ludo-table>
     </mat-expansion-panel>
 
@@ -23,7 +22,6 @@
       </mat-expansion-panel-header>
       <app-ludo-table *ngIf="videoGamePanelOpen"
                       [games]="firebaseDatabaseService.videoGamesOneShot$ | async"
-                      [borrowsInformations]="(borrowInformations$ | async)"
                       [displayedColumns]="columnsVideoGame"></app-ludo-table>
     </mat-expansion-panel>
 
@@ -34,7 +32,6 @@
       </mat-expansion-panel-header>
       <app-ludo-table *ngIf="outsideGamePanelOpen"
                       [games]="firebaseDatabaseService.outsideGamesOneShot$ | async"
-                      [borrowsInformations]="(borrowInformations$ | async)"
                       [displayedColumns]="columnsOutsideGame"></app-ludo-table>
     </mat-expansion-panel>
   </mat-accordion>

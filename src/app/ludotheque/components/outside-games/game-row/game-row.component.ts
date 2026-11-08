@@ -3,7 +3,6 @@ import {Game} from '../../../../models/common.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
 import {MatDialog} from '@angular/material/dialog';
-import {BorrowByComission} from '../../../../admin/models/borrow.model';
 
 @Component({
     selector: 'app-game-row',
@@ -15,7 +14,6 @@ export class GameRowComponent implements OnInit {
     @Input() game!: Game;
     @Input() index!: number;
     @Input() selectedGame?: string;
-    @Input() borrowsInfo: BorrowByComission[] = [];
 
     parity!: boolean;
 

@@ -5,7 +5,7 @@ import {StorageUploadService} from "../../../../services/firebase/storage-upload
 import {FileUpload} from "../../../../models/fileUpload.model";
 import {SonoCategory, SonoItem, SonoStatus} from "../../../../sonotheque/models/sono.model";
 import {SonoDatabaseService} from "../../../../sonotheque/services/sono-database.service";
-import {ConfirmationModal} from '../../emprunts/confirm-return-all-modal/confirmation-modal.component';
+import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.component';
 import {take} from 'rxjs';
 
 @Component({

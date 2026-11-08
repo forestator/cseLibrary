@@ -2,7 +2,6 @@
   <ng-container [ngTemplateOutlet]="image"></ng-container>
   <div class="video-game-info">
     <div class="video-game-title">{{videoGame.name}}</div>
-    <app-badge [status]="borrowsInfo | LastBorrowStatus"></app-badge>
     <div class="" *ngIf="videoGame.ref">Ref: {{videoGame.ref}}</div>
   </div>
 </div>

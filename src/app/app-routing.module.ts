@@ -19,17 +19,12 @@ import {
     BoardGameToFilterComponent
 } from './ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component';
 import {AdminGamesComponent} from './admin/components/admin-ludo/admin-games/admin-games.component';
-import {UserService} from './services/firebase/user.service';
 import {AuthentificationService} from './services/firebase/authentification.service';
 import {LudoNewComponent} from './ludotheque/components/ludo-new/ludo-new.component';
 import {BricolageHomeComponent} from './bricolage/components/bricolage-home/bricolage-home.component';
 import {BricoCategoryComponent} from './bricolage/components/brico-category/brico-category.component';
 import {AdminBricolageComponent} from './admin/components/admin-bricolage/admin-bricolage.component';
-import {EmpruntsHomeComponent} from "./admin/components/emprunts/emprunts-home/emprunts-home.component";
-import {FirebaseDatabaseService} from "./services/firebase/firebase-database.service";
-import {BricolageDatabaseService} from "./bricolage/services/bricolage-database.service";
 import {SonoHomeComponent} from "./sonotheque/components/sono-home/sono-home.component";
-import {SonoDatabaseService} from "./sonotheque/services/sono-database.service";
 import {AdminSonothequeComponent} from "./admin/components/admin-sonotheque/admin-sonotheque.component";
 import {SonoCategoryComponent} from "./sonotheque/components/sono-category/sono-category.component";
 import {NautismeHomeComponent} from "./nautisme/components/nautisme-home/nautisme-home.component";
@@ -38,7 +33,6 @@ import {
     MaterielPhotoCategoryComponent
 } from './photo/components/materiel-photo-category/materiel-photo-category.component';
 import {AdminNautismeComponent} from './admin/components/admin-nautisme/admin-nautisme.component';
-import {BorrowDataService} from './admin/services/borrow-data.service';
 
 const ludoRoutes: Routes = [
     {path: 'ludotheque', component: LudothequeComponent},
@@ -84,18 +78,6 @@ const materielPhotoRoutes: Routes = [
 const adminRoutes: Routes = [
     {
         path: 'iWantToConfigureThisAwesomeApp', component: AdminHomeComponent
-    },
-    {
-        path: 'ludotheque/admin/emprunts', component: EmpruntsHomeComponent,
-        canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
-        resolve: {
-            'users': () => inject(UserService).userList$,
-            'ludotheque': () => inject(FirebaseDatabaseService).ludotheque$,
-            // todo bilbiotheque quand JY a refondu le bordel
-            'allTools': () => inject(BricolageDatabaseService).allTools$,
-            'sonoItems': () => inject(SonoDatabaseService).allItems$,
-            'allBorrows': () => inject(BorrowDataService).allBorrows$,
-        },
     },
     {
         path: 'ludotheque/admin/games', component: AdminGamesComponent,

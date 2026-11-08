@@ -5,7 +5,7 @@ import {BricoCategories, Tool, ToolStatus} from '../../../../bricolage/models/br
 import {BricolageDatabaseService} from '../../../../bricolage/services/bricolage-database.service';
 import {FileUpload} from "../../../../models/fileUpload.model";
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
-import {ConfirmationModal} from '../../emprunts/confirm-return-all-modal/confirmation-modal.component';
+import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.component';
 import {take} from 'rxjs';
 
 @Component({
