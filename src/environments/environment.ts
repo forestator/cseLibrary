@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   // Never commit a real key: a key shipped in the browser bundle is public anyway, so prefer a backend proxy.
-  openAiApiKey: ''
+  openAiApiKey: '',
+  // Unsigned upload preset configured in the Cloudinary console (Settings > Upload).
+  cloudinary: {cloudName: '', uploadPreset: ''}
 };
 
 /*

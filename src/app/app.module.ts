@@ -18,7 +18,6 @@ import {AppCommonModule} from './common/app-common.module';
 import {AngularFireModule} from '@angular/fire/compat';
 import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
 import {AdminModule} from './admin/admin.module';
-import {AngularFireStorageModule} from '@angular/fire/compat/storage';
 import {AngularFireAnalyticsModule} from '@angular/fire/compat/analytics';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -47,7 +46,6 @@ const firebaseConfig = {
         AppRoutingModule,
         AngularFireModule.initializeApp(firebaseConfig),
         AngularFireDatabaseModule,
-        AngularFireStorageModule,
         AngularFireAnalyticsModule,
             LudothequeModule,
         BibliothequeModule,

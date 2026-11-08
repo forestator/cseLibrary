@@ -1,22 +1,15 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {AngularFireStorage} from '@angular/fire/compat/storage';
-import {catchError, Observable} from 'rxjs';
+import {Pipe, PipeTransform, inject} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {CloudinaryService} from '../../services/cloudinary.service';
 
 @Pipe({
     name: 'categoryBackground',
     standalone: false
 })
 export class CategoryBackgroundPipe implements PipeTransform {
-
-  constructor(private afs: AngularFireStorage) {
-  }
+  private readonly cloudinary = inject(CloudinaryService);
 
   transform(libPath: string, bgName: string): Observable<string> {
-    return this.afs.ref(`assets/books/categoriesBackground/${libPath}/${bgName}`).getDownloadURL()
-      .pipe(
-        catchError(err => {
-          return this.afs.ref(`assets/books/categoriesBackground/defaultCatBg.jpg`).getDownloadURL();
-        })
-      );
+    return of(this.cloudinary.urlForPath(`assets/books/categoriesBackground/${libPath}/${bgName}`));
   }
 }

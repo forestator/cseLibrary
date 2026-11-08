@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import {finalize, Observable, take} from 'rxjs';
-import {AngularFireStorage, AngularFireUploadTask} from '@angular/fire/compat/storage';
-import {AngularFireDatabase, AngularFireList} from '@angular/fire/compat/database';
+import {Observable, map, shareReplay, tap} from 'rxjs';
+import {CloudinaryService} from '../cloudinary.service';
 import {FileUpload} from '../../models/fileUpload.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {BoardGame} from '../../models/boardGame.model';
@@ -27,31 +26,34 @@ export class StorageUploadService {
   };
 
   constructor(
-    private db: AngularFireDatabase,
+    private cloudinary: CloudinaryService,
     private firebaseDatabaseService: FirebaseDatabaseService,
     private bricolageDatabaseService: BricolageDatabaseService,
     private sonoDatabaseService: SonoDatabaseService,
-    private nautismeDatabaseService: NautismeDatabaseService,
-    private storage: AngularFireStorage
+    private nautismeDatabaseService: NautismeDatabaseService
   ) {
   }
 
   uploadCover(fileUpload: FileUpload, basePath: string, filePath: string,
               itemToUpdate: Game | Tool | SonoItem | NautismeItem): Observable<number> {
-    const storageRef = this.storage.ref(filePath);
-    const uploadTask: AngularFireUploadTask = this.storage.upload(filePath, fileUpload.file);
+    // A timestamp keeps the public id unique: unsigned Cloudinary uploads cannot overwrite an asset.
+    const pathWithoutExtension = filePath.replace(/^\//, '').replace(/\.[^./]+$/, '');
+    const publicId = `${pathWithoutExtension.replace(/[^\w/-]+/g, '_')}-${Date.now()}`;
 
-    uploadTask.snapshotChanges().pipe(
-      finalize(() => {
-        storageRef.getDownloadURL().pipe(take(1)).subscribe(downloadURL => {
-          fileUpload.url = downloadURL;
+    const progress$ = this.cloudinary.upload(fileUpload.file, publicId).pipe(
+      tap(state => {
+        if (state.url) {
+          fileUpload.url = state.url;
           fileUpload.name = fileUpload.file.name;
           this.updateItemCover(basePath, fileUpload, itemToUpdate);
-        });
-      })
-    ).subscribe();
-
-    return uploadTask.percentageChanges();
+        }
+      }),
+      map(state => state.progress),
+      shareReplay({bufferSize: 1, refCount: false})
+    );
+    // Callers only read the progress, so the upload must start even when nobody subscribes.
+    progress$.subscribe({error: error => console.error('Cover upload failed', error)});
+    return progress$;
   }
 
   private updateItemCover(basePath: string, fileUpload: FileUpload, itemToUpdate: Game | Tool | SonoItem | NautismeItem): void {
@@ -69,27 +71,6 @@ export class StorageUploadService {
         this.nautismeDatabaseService.updateItemCover(itemToUpdate as NautismeItem, fileUpload);
         break;
     }
-  }
-
-  getFiles(numberItems: number): AngularFireList<FileUpload> {
-    return this.db.list(this.basePath.game, ref => ref.limitToLast(numberItems));
-  }
-
-  deleteFile(fileUpload: FileUpload): void {
-    this.deleteFileDatabase(fileUpload.key)
-      .then(() => {
-        this.deleteFileStorage(fileUpload.name);
-      })
-      .catch(error => console.log(error));
-  }
-
-  private deleteFileDatabase(key: string): Promise<void> {
-    return this.db.list(this.basePath.game).remove(key);
-  }
-
-  private deleteFileStorage(name: string): void {
-    const storageRef = this.storage.ref(this.basePath.game);
-    storageRef.child(name).delete();
   }
 
   private getFileExtenion(fileUpload: FileUpload) {
