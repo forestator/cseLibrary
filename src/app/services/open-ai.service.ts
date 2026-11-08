@@ -1,8 +1,7 @@
 import {Injectable} from '@angular/core';
 import {BoardGame} from '../models/boardGame.model';
 import {environment} from '../../environments/environment';
-
-const {Configuration, OpenAIApi} = require("openai");
+import {Configuration, OpenAIApi} from 'openai';
 
 @Injectable({
   providedIn: 'root'
