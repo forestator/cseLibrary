@@ -4,13 +4,15 @@
     <mat-label>Chercher un item</mat-label>
     <input matInput placeholder="Super jeux de lumière" [formControl]="searchText" [matAutocomplete]="auto" type="text">
     <mat-autocomplete #auto="matAutocomplete"
-                      [displayWith]="displaySonoItem"
-                      (optionSelected)="selectItemToModify($event)"
-                      autoActiveFirstOption>
-      <mat-option *ngFor="let option of filteredOptions$ | async"
-                  [value]="option">
-        {{displaySonoItem(option)}}
-      </mat-option>
+      [displayWith]="displaySonoItem"
+      (optionSelected)="selectItemToModify($event)"
+      autoActiveFirstOption>
+      @for (option of filteredOptions$ | async; track option) {
+        <mat-option
+          [value]="option">
+          {{displaySonoItem(option)}}
+        </mat-option>
+      }
     </mat-autocomplete>
   </mat-form-field>
 </div>

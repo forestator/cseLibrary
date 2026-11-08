@@ -5,13 +5,17 @@
 <mat-divider></mat-divider>
 <div class="items-list">
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let sonoCat of sonoCategories"
-                         (opened)="changeOpenCat(sonoCat)">
-      <mat-expansion-panel-header>
-        <mat-panel-title>{{sonoCat | titlecase}}</mat-panel-title>
-      </mat-expansion-panel-header>
-      <app-sono-table *ngIf="openededCat === sonoCat"
-                      [sonoItems]="openededCatItems$ | async"></app-sono-table>
-    </mat-expansion-panel>
+    @for (sonoCat of sonoCategories; track sonoCat) {
+      <mat-expansion-panel
+        (opened)="changeOpenCat(sonoCat)">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{sonoCat | titlecase}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        @if (openededCat === sonoCat) {
+          <app-sono-table
+          [sonoItems]="openededCatItems$ | async"></app-sono-table>
+        }
+      </mat-expansion-panel>
+    }
   </mat-accordion>
 </div>

@@ -1,36 +1,40 @@
-<h1 *ngIf="!isNew" mat-dialog-title>
+@if (!isNew) {
+  <h1 mat-dialog-title>
     <mat-icon>edit</mat-icon>
     Edition d'un auteur : {{firstName.value}} {{lastName.value}}
-</h1>
-<h1 *ngIf="isNew" mat-dialog-title>
+  </h1>
+}
+@if (isNew) {
+  <h1 mat-dialog-title>
     <mat-icon>person_add_alt_1</mat-icon>
     Ajout d'un nouvel auteur
-</h1>
+  </h1>
+}
 <div mat-dialog-content>
-    <form>
-        <mat-form-field class="full-width" appearance="fill">
-            <mat-label for="firstname">Prénom</mat-label>
-            <input id="firstname" matInput placeholder="Prénom" [formControl]="firstName">
-        </mat-form-field>
+  <form>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label for="firstname">Prénom</mat-label>
+      <input id="firstname" matInput placeholder="Prénom" [formControl]="firstName">
+    </mat-form-field>
 
-        <mat-form-field class="full-width" appearance="fill">
-            <mat-label for="lastname">Nom</mat-label>
-            <input id="lastname" matInput placeholder="Nom" [formControl]="lastName">
-        </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label for="lastname">Nom</mat-label>
+      <input id="lastname" matInput placeholder="Nom" [formControl]="lastName">
+    </mat-form-field>
 
-        <mat-form-field class="full-width resume" appearance="fill">
-            <mat-label for="resume">Résumé</mat-label>
-            <textarea id="resume" matInput placeholder="Résumé" [formControl]="resume"></textarea>
-        </mat-form-field>
-    </form>
+    <mat-form-field class="full-width resume" appearance="fill">
+      <mat-label for="resume">Résumé</mat-label>
+      <textarea id="resume" matInput placeholder="Résumé" [formControl]="resume"></textarea>
+    </mat-form-field>
+  </form>
 </div>
 <div mat-dialog-actions>
-    <button mat-raised-button (click)="cancel()">
-        <mat-icon>cancel</mat-icon>
-        Abandonner
-    </button>
-    <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>
-        <mat-icon>check</mat-icon>
-        Enregistrer
-    </button>
+  <button mat-raised-button (click)="cancel()">
+    <mat-icon>cancel</mat-icon>
+    Abandonner
+  </button>
+  <button mat-raised-button color="primary" (click)="save()" cdkFocusInitial>
+    <mat-icon>check</mat-icon>
+    Enregistrer
+  </button>
 </div>

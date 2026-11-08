@@ -22,9 +22,11 @@
           <div class="primary">Nouveaux Jeux Grands jeux</div>
         </div>
       </div>
-      <div *ngFor="let game of otherGames$ | async; let index = index" class="core-body">
-        <app-game-row [game]="game" [index]="index"></app-game-row>
-      </div>
+      @for (game of otherGames$ | async; track game; let index = $index) {
+        <div class="core-body">
+          <app-game-row [game]="game" [index]="index"></app-game-row>
+        </div>
+      }
     </div>
   </div>
 </div>

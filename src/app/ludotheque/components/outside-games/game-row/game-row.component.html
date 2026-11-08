@@ -1,15 +1,25 @@
-<div [id]="game.ref" *ngIf="game" class="book-core">
-  <ng-container [ngTemplateOutlet]="image" *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async))"></ng-container>
-  <div class="book-infos">
-    <div class="book-title">{{game.name}}
+@if (game) {
+  <div [id]="game.ref" class="book-core">
+    @if ((parity || (toolsService.mobilePhoneDisplay$ | async))) {
+      <ng-container [ngTemplateOutlet]="image"></ng-container>
+    }
+    <div class="book-infos">
+      <div class="book-title">{{game.name}}
+      </div>
+      @if (game.ref) {
+        <div class="book-info">Ref: {{game.ref}}</div>
+      }
     </div>
-    <div class="book-info" *ngIf="game.ref">Ref: {{game.ref}}</div>
+    @if (!parity && !(toolsService.mobilePhoneDisplay$ | async)) {
+      <ng-container [ngTemplateOutlet]="image"></ng-container>
+    }
   </div>
-  <ng-container [ngTemplateOutlet]="image" *ngIf="!parity && !(toolsService.mobilePhoneDisplay$ | async)"></ng-container>
-</div>
+}
 
 <ng-template #image>
-  <div class="book-cover" *ngIf="game.cover">
-    <img [src]="game.cover" [alt]="game.name"/>
-  </div>
+  @if (game.cover) {
+    <div class="book-cover">
+      <img [src]="game.cover" [alt]="game.name"/>
+    </div>
+  }
 </ng-template>

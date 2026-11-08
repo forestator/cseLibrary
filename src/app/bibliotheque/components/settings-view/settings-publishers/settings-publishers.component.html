@@ -1,8 +1,9 @@
 <div class="authors">
+  @for (publisher of biblio?.publishers; track publisher; let ai = $index) {
     <app-settings-publisher
-        *ngFor="let publisher of biblio?.publishers; let ai=index;"
-        (sendDelete)="deletePublisher($event)"
-        [publisher]="publisher"
-        [index]="(index+1) + '_' + (ai+1)">
+      (sendDelete)="deletePublisher($event)"
+      [publisher]="publisher"
+      [index]="(index+1) + '_' + (ai+1)">
     </app-settings-publisher>
+  }
 </div>

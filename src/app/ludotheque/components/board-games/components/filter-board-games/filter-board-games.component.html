@@ -5,9 +5,11 @@
   </div>
   <div class="number-list">
     <mat-button-toggle-group [(value)]="numberOfPlayersGroupValue" aria-label="Number of players">
-      <mat-button-toggle [value]="nb"
-                         (click)="selectedFilter(nb, boardGameFilterType.NUMBER_OF_PLAYERS)"
-                         *ngFor="let nb of numberOfPlayers">{{nb}}</mat-button-toggle>
+      @for (nb of numberOfPlayers; track nb) {
+        <mat-button-toggle [value]="nb"
+          (click)="selectedFilter(nb, boardGameFilterType.NUMBER_OF_PLAYERS)"
+        >{{nb}}</mat-button-toggle>
+      }
     </mat-button-toggle-group>
   </div>
 </div>
@@ -18,9 +20,11 @@
   </div>
   <div class="number-list">
     <mat-button-toggle-group [(value)]="durationGroupValue" aria-label="Game duration">
-      <mat-button-toggle [value]="nb"
-                         (click)="selectedFilter(nb, boardGameFilterType.DURATION)"
-                         *ngFor="let nb of gameDuration">{{nb}}</mat-button-toggle>
+      @for (nb of gameDuration; track nb) {
+        <mat-button-toggle [value]="nb"
+          (click)="selectedFilter(nb, boardGameFilterType.DURATION)"
+        >{{nb}}</mat-button-toggle>
+      }
     </mat-button-toggle-group>
   </div>
 </div>
@@ -31,9 +35,11 @@
   </div>
   <div class="number-list">
     <mat-button-toggle-group [(value)]="ageGroupValue" aria-label="Player Age">
-      <mat-button-toggle [value]="nb"
-                         (click)="selectedFilter(nb, boardGameFilterType.AGE)"
-                         *ngFor="let nb of ageList">{{nb}} ans</mat-button-toggle>
+      @for (nb of ageList; track nb) {
+        <mat-button-toggle [value]="nb"
+          (click)="selectedFilter(nb, boardGameFilterType.AGE)"
+        >{{nb}} ans</mat-button-toggle>
+      }
     </mat-button-toggle-group>
   </div>
 </div>

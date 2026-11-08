@@ -1,16 +1,20 @@
 <div class="core-page fadein">
-  <div class="core-header" *ngIf="library$ | async as library">
-    <div class="core-title">
-      <div class="primary">{{library.name}}</div>
+  @if (library$ | async; as library) {
+    <div class="core-header">
+      <div class="core-title">
+        <div class="primary">{{library.name}}</div>
+      </div>
+      <div class="core-resume">
+        {{library.resume}}
+      </div>
     </div>
-    <div class="core-resume">
-      {{library.resume}}
+  }
+  @for (game of games$ | async; track game; let index = $index) {
+    <div class="core-body">
+      <app-game-row [game]="game"
+        [selectedGame]="selectedOutsideGame"
+        [index]="index">
+      </app-game-row>
     </div>
-  </div>
-  <div *ngFor="let game of games$ | async; let index = index" class="core-body">
-    <app-game-row [game]="game"
-                  [selectedGame]="selectedOutsideGame"
-                  [index]="index">
-    </app-game-row>
-  </div>
+  }
 </div>

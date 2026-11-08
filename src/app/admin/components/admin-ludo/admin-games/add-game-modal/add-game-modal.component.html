@@ -6,24 +6,26 @@
   <div mat-dialog-actions>
     <button (click)="cancel()" id="cancel" mat-button>Cancel</button>
     <button (click)="addGame()"
-            id="save"
-            [disabled]="gameForm?.invalid"
-            cdkFocusInitial
-            mat-button>
+      id="save"
+      [disabled]="gameForm?.invalid"
+      cdkFocusInitial
+      mat-button>
       Confirm
     </button>
     <button mat-button
-            id="makeMagic"
-            [title]="disableMagic() ? 'Ajouter l\'id boardgamegeek et le nom du jeu' : ''"
-            [disabled]="disableMagic()"
-            (click)="makeSomeMagic()">Remplir automatiquement les champs
+      id="makeMagic"
+      [title]="disableMagic() ? 'Ajouter l\'id boardgamegeek et le nom du jeu' : ''"
+      [disabled]="disableMagic()"
+      (click)="makeSomeMagic()">Remplir automatiquement les champs
     </button>
     <button mat-button
-            id="delete"
-            color="warn"
-            [disabled]="!data.selectedGame"
-            (click)="deleteGame()">Delete
+      id="delete"
+      color="warn"
+      [disabled]="!data.selectedGame"
+      (click)="deleteGame()">Delete
     </button>
-    <mat-spinner *ngIf="loading"></mat-spinner>
+    @if (loading) {
+      <mat-spinner></mat-spinner>
+    }
   </div>
 </div>

@@ -1,43 +1,53 @@
-<div class="core-page fadein" *ngIf="materielPhotoDatabaseService.photoLibrary$ | async as library">
-  <div class="core-header">
-    <div class="core-title">
-      <div class="primary">{{library.name}}</div>
-    </div>
-    <div class="core-resume">
-      {{library.resume}}
-    </div>
-  </div>
-  <div *ngFor="let category of library?.categories"
-       [routerLink]="category.id" routerLinkActive="active"
-       class="core-body core-body-category"
-       title="Cliquez ici pour visualiser cette categorie">
-    <div *ngIf="!(toolsService.mobilePhoneDisplay$ | async) && category.bg">
-      <img class="category-visuel" src="{{category.bg}}"
-           alt="{{category.name}}">
-    </div>
+@if (materielPhotoDatabaseService.photoLibrary$ | async; as library) {
+  <div class="core-page fadein">
     <div class="core-header">
-      <img *ngIf="(toolsService.mobilePhoneDisplay$ | async) && category.bg"
-           alt="{{category.name}}"
-           class="category-visuel small-display" src="{{category.bg}}">
       <div class="core-title">
-        <div class="primary">
-          {{category.name}}
-        </div>
+        <div class="primary">{{library.name}}</div>
       </div>
       <div class="core-resume">
-        {{category.resume}}
+        {{library.resume}}
       </div>
     </div>
-  </div>
-  <div class="core-header"
-       *ngIf="authService.isUserSuperAdmin | async">
-    <div>
-      <div class="core-title">
-        <div class="primary">Administration matériel photo</div>
+    @for (category of library?.categories; track category) {
+      <div
+        [routerLink]="category.id" routerLinkActive="active"
+        class="core-body core-body-category"
+        title="Cliquez ici pour visualiser cette categorie">
+        @if (!(toolsService.mobilePhoneDisplay$ | async) && category.bg) {
+          <div>
+            <img class="category-visuel" src="{{category.bg}}"
+              alt="{{category.name}}">
+          </div>
+        }
+        <div class="core-header">
+          @if ((toolsService.mobilePhoneDisplay$ | async) && category.bg) {
+            <img
+              alt="{{category.name}}"
+              class="category-visuel small-display" src="{{category.bg}}">
+          }
+          <div class="core-title">
+            <div class="primary">
+              {{category.name}}
+            </div>
+          </div>
+          <div class="core-resume">
+            {{category.resume}}
+          </div>
+        </div>
       </div>
-      <div class="core-body" [routerLink]="'admin/tools'">
-        Gestion du matériel photo
+    }
+    @if (authService.isUserSuperAdmin | async) {
+      <div class="core-header"
+        >
+        <div>
+          <div class="core-title">
+            <div class="primary">Administration matériel photo</div>
+          </div>
+          <div class="core-body" [routerLink]="'admin/tools'">
+            Gestion du matériel photo
+          </div>
+        </div>
       </div>
-    </div>
+    }
   </div>
-</div>
+}

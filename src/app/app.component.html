@@ -1,9 +1,9 @@
 <mat-sidenav-container class="side-nav-container">
   <mat-sidenav #drawer fixedInViewport="true"
-               [class.mobile-display]="toolService.mobilePhoneDisplay$ | async"
-               [attr.role]="(toolService.mobilePhoneDisplay$ | async) ? 'dialog' : 'navigation'"
-               [mode]="(toolService.mobilePhoneDisplay$ | async) ? 'over' : 'side'"
-               [opened]="!(toolService.mobilePhoneDisplay$ | async)">
+    [class.mobile-display]="toolService.mobilePhoneDisplay$ | async"
+    [attr.role]="(toolService.mobilePhoneDisplay$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(toolService.mobilePhoneDisplay$ | async) ? 'over' : 'side'"
+    [opened]="!(toolService.mobilePhoneDisplay$ | async)">
     <div class="navigation-container">
       <div class="library-title">
         <div class="title">
@@ -11,13 +11,15 @@
         </div>
       </div>
       <mat-list>
-        <mat-list-item *ngFor="let category of menu">
-          <div matListItemTitle [routerLink]="category.route" class="cat-nav">{{category.name}}</div>
-        </mat-list-item>
-        <ng-container *ngIf="showBoardGameFilters">
+        @for (category of menu; track category) {
+          <mat-list-item>
+            <div matListItemTitle [routerLink]="category.route" class="cat-nav">{{category.name}}</div>
+          </mat-list-item>
+        }
+        @if (showBoardGameFilters) {
           <mat-divider></mat-divider>
           <app-filter-board-games></app-filter-board-games>
-        </ng-container>
+        }
       </mat-list>
     </div>
     <div class="contact">
@@ -26,19 +28,29 @@
   </mat-sidenav>
   <mat-sidenav-content id="top" #top>
     <mat-toolbar class="library-menu" [class.home-menu]="showHomeMenu">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-              *ngIf="(toolService.mobilePhoneDisplay$ | async) &&
-              (showAdmin || showLudothequeMenu || showBibliothequeMenu || showBricolageMenu)">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <app-library-menu class="tool"
-                        *ngIf="showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin"></app-library-menu>
-      <app-ludo-menu class="tool" *ngIf="showLudothequeMenu && !showAdmin"></app-ludo-menu>
-      <app-brico-menu class="tool" [allTools]="allTools$ | async" *ngIf="showBricolageMenu && !showAdmin"></app-brico-menu>
-      <app-admin-menu class="tool" *ngIf="showAdmin"></app-admin-menu>
-      <ng-container *ngIf="showHomeMenu">
+      @if ((toolService.mobilePhoneDisplay$ | async) &&
+        (showAdmin || showLudothequeMenu || showBibliothequeMenu || showBricolageMenu)) {
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      @if (showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin) {
+        <app-library-menu class="tool"
+        ></app-library-menu>
+      }
+      @if (showLudothequeMenu && !showAdmin) {
+        <app-ludo-menu class="tool"></app-ludo-menu>
+      }
+      @if (showBricolageMenu && !showAdmin) {
+        <app-brico-menu class="tool" [allTools]="allTools$ | async"></app-brico-menu>
+      }
+      @if (showAdmin) {
+        <app-admin-menu class="tool"></app-admin-menu>
+      }
+      @if (showHomeMenu) {
         <mat-icon [routerLink]="'/iWantToConfigureThisAwesomeApp'">login</mat-icon>
-      </ng-container>
+      }
     </mat-toolbar>
 
     <router-outlet></router-outlet>

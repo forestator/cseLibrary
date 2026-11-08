@@ -1,5 +1,7 @@
 <div class="alphabet">
-    <div *ngFor="let letter of ALPHABET" class="letter bloc-link" (click)="filterByLetter.emit(letter)">
-        {{letter}}
+  @for (letter of ALPHABET; track letter) {
+    <div class="letter bloc-link" (click)="filterByLetter.emit(letter)">
+      {{letter}}
     </div>
+  }
 </div>

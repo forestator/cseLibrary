@@ -1,6 +1,7 @@
-<app-board-game-category-details
-  *ngIf="categoryId"
-  [categoryId]="categoryId"
-  [selectedBoardGameId]="selectedBoardGameId"
-  [boardGames]="boardGames$ | async">
-</app-board-game-category-details>
+@if (categoryId) {
+  <app-board-game-category-details
+    [categoryId]="categoryId"
+    [selectedBoardGameId]="selectedBoardGameId"
+    [boardGames]="boardGames$ | async">
+  </app-board-game-category-details>
+}

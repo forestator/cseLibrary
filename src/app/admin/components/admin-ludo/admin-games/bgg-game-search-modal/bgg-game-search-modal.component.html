@@ -1,14 +1,16 @@
 <h1 mat-dialog-title>Sélectionner le bon jeu</h1>
 <div mat-dialog-content>
   <mat-selection-list #games [multiple]="false">
-    <mat-list-option *ngFor="let game of data.games" [value]="game">
-      {{game.elements[0].attributes.value}} | {{game.elements[1].attributes.value}}
-    </mat-list-option>
+    @for (game of data.games; track game) {
+      <mat-list-option [value]="game">
+        {{game.elements[0].attributes.value}} | {{game.elements[1].attributes.value}}
+      </mat-list-option>
+    }
   </mat-selection-list>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="close()">Cancel</button>
   <button mat-button [disabled]="games?.selectedOptions?.isEmpty()"
-          [mat-dialog-close]="games?.selectedOptions?.selected[0]?.value"
-          cdkFocusInitial>Ok</button>
+    [mat-dialog-close]="games?.selectedOptions?.selected[0]?.value"
+  cdkFocusInitial>Ok</button>
 </div>

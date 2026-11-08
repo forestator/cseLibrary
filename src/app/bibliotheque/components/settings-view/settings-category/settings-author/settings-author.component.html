@@ -1,40 +1,48 @@
 <mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            <div class="settings-header">
-                <div class="designation">
-                    #{{index}}: {{author.lastName}} {{author.firstName}}
-                </div>
-                <div class="controls">
-                    <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
-                    <mat-icon class="ctrl-delete" (click)="delete($event)">delete</mat-icon>
-                    <mat-icon *ngIf="author.by==='BY_AUTHOR'" class="ctrl-add" (click)="addBook($event)" title="Ajouter un nouveau livre">add</mat-icon>
-                    <mat-icon *ngIf="author.by==='BY_AUTHOR'" class="ctrl-add" (click)="addSeries($event)" title="Ajouter une nouvelle serie">add-box</mat-icon>
-                </div>
-            </div>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <div class="settings-header">
+        <div class="designation">
+          #{{index}}: {{author.lastName}} {{author.firstName}}
+        </div>
+        <div class="controls">
+          <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
+          <mat-icon class="ctrl-delete" (click)="delete($event)">delete</mat-icon>
+          @if (author.by==='BY_AUTHOR') {
+            <mat-icon class="ctrl-add" (click)="addBook($event)" title="Ajouter un nouveau livre">add</mat-icon>
+          }
+          @if (author.by==='BY_AUTHOR') {
+            <mat-icon class="ctrl-add" (click)="addSeries($event)" title="Ajouter une nouvelle serie">add-box</mat-icon>
+          }
+        </div>
+      </div>
 
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="description">
-        <div class="field">
-            <div class="label">Nom</div>
-            <div class="content">{{author.lastName}} {{author.firstName}}</div>
-        </div>
-        <div *ngIf="author.resume?.length" class="field">
-            <div class="label">Résumé</div>
-            <div class="content">{{author.resume}}</div>
-        </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="description">
+    <div class="field">
+      <div class="label">Nom</div>
+      <div class="content">{{author.lastName}} {{author.firstName}}</div>
     </div>
+    @if (author.resume?.length) {
+      <div class="field">
+        <div class="label">Résumé</div>
+        <div class="content">{{author.resume}}</div>
+      </div>
+    }
+  </div>
+  @for (book of author.books; track book; let bi = $index) {
     <app-settings-book
-        *ngFor="let book of author.books; let bi=index;"
-        [biblio]="biblio"
-        [book]="book"
-        [index]="index + '_' + (bi+1)">
+      [biblio]="biblio"
+      [book]="book"
+      [index]="index + '_' + (bi+1)">
     </app-settings-book>
+  }
+  @for (series of author.series; track series; let si = $index) {
     <app-settings-series
-        *ngFor="let series of author.series; let si=index;"
-        [biblio]="biblio"
-        [series]="series"
-        [index]="index + '_' + (si+1)">
+      [biblio]="biblio"
+      [series]="series"
+      [index]="index + '_' + (si+1)">
     </app-settings-series>
+  }
 </mat-expansion-panel>

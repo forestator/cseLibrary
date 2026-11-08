@@ -6,14 +6,18 @@
 <mat-divider></mat-divider>
 <div class="items-list">
   <mat-accordion>
-    <mat-expansion-panel *ngFor="let brico of bricoCategories"
-                         (opened)="openededCat = brico"
-                         (closed)="openededCat = null">
-      <mat-expansion-panel-header>
-        <mat-panel-title>{{brico | titlecase}}</mat-panel-title>
-      </mat-expansion-panel-header>
-      <app-brico-table *ngIf="openededCat === brico"
-                       [tools]="toolsOfCategory(brico) | async"></app-brico-table>
-    </mat-expansion-panel>
+    @for (brico of bricoCategories; track brico) {
+      <mat-expansion-panel
+        (opened)="openededCat = brico"
+        (closed)="openededCat = null">
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{brico | titlecase}}</mat-panel-title>
+        </mat-expansion-panel-header>
+        @if (openededCat === brico) {
+          <app-brico-table
+          [tools]="toolsOfCategory(brico) | async"></app-brico-table>
+        }
+      </mat-expansion-panel>
+    }
   </mat-accordion>
 </div>

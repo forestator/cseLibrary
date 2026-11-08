@@ -13,9 +13,11 @@
       <mat-form-field appearance="fill">
         <mat-label>Catégorie</mat-label>
         <mat-select formControlName="categoryId">
-          <mat-option *ngFor="let catId of categoryOptions" [value]="catId">
-            {{catId | titlecase}}
-          </mat-option>
+          @for (catId of categoryOptions; track catId) {
+            <mat-option [value]="catId">
+              {{catId | titlecase}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -35,24 +37,26 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <app-upload-form [defaultImage]="data?.selectedTool?.cover ?? defaultImageForTool"
-                     [disabled]="toolForm?.invalid"
-                     (fileToUploadReady)="upload($event)">
+      [disabled]="toolForm?.invalid"
+      (fileToUploadReady)="upload($event)">
     </app-upload-form>
   </div>
   <div mat-dialog-actions>
     <button (click)="addTool()"
-            [disabled]="toolForm?.invalid"
-            cdkFocusInitial
-            mat-button>
+      [disabled]="toolForm?.invalid"
+      cdkFocusInitial
+      mat-button>
       Confirm
     </button>
     <button (click)="cancel()" mat-button>Cancel</button>
-    <button *ngIf="data?.selectedTool"
-            (click)="deleteTool(data!.selectedTool)"
-            color="warn"
-            cdkFocusInitial
-            mat-button>
-      Delete
-    </button>
+    @if (data?.selectedTool) {
+      <button
+        (click)="deleteTool(data!.selectedTool)"
+        color="warn"
+        cdkFocusInitial
+        mat-button>
+        Delete
+      </button>
+    }
   </div>
 </div>

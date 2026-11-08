@@ -1,54 +1,56 @@
 <div class="core-page fadein">
-    <div class="core-header"
-         [routerLink]="'boardGames'">
-        <img class="category-visuel small-display"
-             src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fludo%2Fcategorie%20jeux%20de%20societe.png?alt=media&token=16ed1538-7d18-4412-8c0a-8baeb18e5f8e"
-             alt="Jeux de société">
-        <div>
-            <div class="core-title">
-                <div class="primary">Jeux de société</div>
-            </div>
-            <div class="core-resume">
-                Les j2s
-            </div>
-        </div>
+  <div class="core-header"
+    [routerLink]="'boardGames'">
+    <img class="category-visuel small-display"
+      src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fludo%2Fcategorie%20jeux%20de%20societe.png?alt=media&token=16ed1538-7d18-4412-8c0a-8baeb18e5f8e"
+      alt="Jeux de société">
+    <div>
+      <div class="core-title">
+        <div class="primary">Jeux de société</div>
+      </div>
+      <div class="core-resume">
+        Les j2s
+      </div>
     </div>
-    <div class="core-header"
-         [routerLink]="'videoGames'">
-        <img class="category-visuel small-display"
-             src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fludo%2Fcategorie%20jeux%20video.png?alt=media&token=062e146d-d982-4ea2-ba80-825141a4bdc6"
-             alt="Jeux de société">
-        <div>
-            <div class="core-title">
-                <div class="primary">Jeux vidéos</div>
-            </div>
-            <div class="core-resume">
-                Les jeux vidéo !
-            </div>
-        </div>
+  </div>
+  <div class="core-header"
+    [routerLink]="'videoGames'">
+    <img class="category-visuel small-display"
+      src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fludo%2Fcategorie%20jeux%20video.png?alt=media&token=062e146d-d982-4ea2-ba80-825141a4bdc6"
+      alt="Jeux de société">
+    <div>
+      <div class="core-title">
+        <div class="primary">Jeux vidéos</div>
+      </div>
+      <div class="core-resume">
+        Les jeux vidéo !
+      </div>
     </div>
-    <div class="core-header"
-         [routerLink]="'outsideGames'">
-        <img class="category-visuel small-display"
-             src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fludo%2Fcategorie%20jeux%20bois.png?alt=media&token=750d81d1-fbce-4eb1-8ddb-1809a2832d9f"
-             alt="Jeux de société">
-        <div>
-            <div class="core-title">
-                <div class="primary">Grands jeux</div>
-            </div>
-            <div class="core-resume">
-                Pas forcément jeux pour grands !
-            </div>
-        </div>
+  </div>
+  <div class="core-header"
+    [routerLink]="'outsideGames'">
+    <img class="category-visuel small-display"
+      src="https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Fcategories%2Fludo%2Fcategorie%20jeux%20bois.png?alt=media&token=750d81d1-fbce-4eb1-8ddb-1809a2832d9f"
+      alt="Jeux de société">
+    <div>
+      <div class="core-title">
+        <div class="primary">Grands jeux</div>
+      </div>
+      <div class="core-resume">
+        Pas forcément jeux pour grands !
+      </div>
     </div>
-    <div class="core-header" *ngIf="authService.isUserLudoAdmin$ | async">
-        <div>
-            <div class="core-title">
-                <div class="primary">Administration ludotheque</div>
-            </div>
-            <div class="core-body" [routerLink]="'admin/games'">
-                Gestion des jeux
-            </div>
+  </div>
+  @if (authService.isUserLudoAdmin$ | async) {
+    <div class="core-header">
+      <div>
+        <div class="core-title">
+          <div class="primary">Administration ludotheque</div>
         </div>
+        <div class="core-body" [routerLink]="'admin/games'">
+          Gestion des jeux
+        </div>
+      </div>
     </div>
+  }
 </div>

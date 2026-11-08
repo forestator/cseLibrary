@@ -1,30 +1,37 @@
-<div *ngIf="(library$ | async) as library" class="core-page fadein">
-  <div class="core-header">
-    <div class="core-title">
-      <div class="primary">{{library.name}}</div>
-    </div>
-    <div class="core-resume">
-      {{library.resume}}
-    </div>
-  </div>
-  <div *ngFor="let category of library?.categories"
-       class="core-body core-body-category"
-       [routerLink]="category.id"
-       title="Clickez ici pour visualiser cette categorie">
-    <div *ngIf="!(toolsService.mobilePhoneDisplay$ | async)">
-      <img alt="" class="category-visuel"
-           [src]="(library?.path | categoryBackground: category.bg) | async">
-    </div>
+@if ((library$ | async); as library) {
+  <div class="core-page fadein">
     <div class="core-header">
-      <img alt="" class="category-visuel small-display"
-           *ngIf="toolsService.mobilePhoneDisplay$ | async"
-           [src]="(library?.path | categoryBackground: category.bg) | async">
       <div class="core-title">
-        <div class="primary">{{category.name}}</div>
+        <div class="primary">{{library.name}}</div>
       </div>
       <div class="core-resume">
-        {{category.resume}}
+        {{library.resume}}
       </div>
     </div>
+    @for (category of library?.categories; track category) {
+      <div
+        class="core-body core-body-category"
+        [routerLink]="category.id"
+        title="Clickez ici pour visualiser cette categorie">
+        @if (!(toolsService.mobilePhoneDisplay$ | async)) {
+          <div>
+            <img alt="" class="category-visuel"
+              [src]="(library?.path | categoryBackground: category.bg) | async">
+          </div>
+        }
+        <div class="core-header">
+          @if (toolsService.mobilePhoneDisplay$ | async) {
+            <img alt="" class="category-visuel small-display"
+              [src]="(library?.path | categoryBackground: category.bg) | async">
+          }
+          <div class="core-title">
+            <div class="primary">{{category.name}}</div>
+          </div>
+          <div class="core-resume">
+            {{category.resume}}
+          </div>
+        </div>
+      </div>
+    }
   </div>
-</div>
+}

@@ -27,24 +27,26 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <app-upload-form [defaultImage]="data?.selectedItem?.cover ?? defaultNautImage"
-                     [disabled]="nautismeItemForm?.invalid"
-                     (fileToUploadReady)="upload($event)">
+      [disabled]="nautismeItemForm?.invalid"
+      (fileToUploadReady)="upload($event)">
     </app-upload-form>
   </div>
   <div mat-dialog-actions>
     <button (click)="addNautItem()"
-            [disabled]="nautismeItemForm?.invalid"
-            cdkFocusInitial
-            mat-button>
+      [disabled]="nautismeItemForm?.invalid"
+      cdkFocusInitial
+      mat-button>
       Confirm
     </button>
     <button (click)="cancel()" mat-button>Cancel</button>
-    <button *ngIf="data?.selectedItem"
-            (click)="deleteItem(data!.selectedItem)"
-            color="warn"
-            cdkFocusInitial
-            mat-button>
-      Delete
-    </button>
+    @if (data?.selectedItem) {
+      <button
+        (click)="deleteItem(data!.selectedItem)"
+        color="warn"
+        cdkFocusInitial
+        mat-button>
+        Delete
+      </button>
+    }
   </div>
 </div>

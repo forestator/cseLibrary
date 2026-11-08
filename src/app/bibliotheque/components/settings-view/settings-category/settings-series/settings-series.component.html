@@ -1,42 +1,47 @@
 <mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title>
-            <div class="settings-header">
-                <div class="designation">
-                    #{{index}}: {{series.name}}
-                </div>
-                <div class="controls">
-                    <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
-                    <mat-icon class="ctrl-delete" (click)="delete($event)">delete</mat-icon>
-                    <mat-icon class="ctrl-add" (click)="add($event)">add</mat-icon>
-                </div>
-            </div>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      <div class="settings-header">
+        <div class="designation">
+          #{{index}}: {{series.name}}
+        </div>
+        <div class="controls">
+          <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
+          <mat-icon class="ctrl-delete" (click)="delete($event)">delete</mat-icon>
+          <mat-icon class="ctrl-add" (click)="add($event)">add</mat-icon>
+        </div>
+      </div>
 
-        </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="description">
-        <div class="field">
-            <div class="label">Nom</div>
-            <div class="content">{{series.name}}</div>
-        </div>
-        <div *ngIf="series.resume.length>0" class="field">
-            <div class="label">Résumé</div>
-            <div class="content">{{series.resume}}</div>
-        </div>
-        <div *ngIf="series.by==='BY_SERIES' && series.status!=='ONE_SHOT'" class="field">
-            <div class="label">Auteur(s)</div>
-            <div class="content">{{tools.getAuthors(series.authorIds, biblio) | async}}</div>
-        </div>
-        <div class="field">
-            <div class="label">Status</div>
-            <div class="content"><app-series-badge [series]="series"></app-series-badge></div>
-        </div>
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="description">
+    <div class="field">
+      <div class="label">Nom</div>
+      <div class="content">{{series.name}}</div>
     </div>
+    @if (series.resume.length>0) {
+      <div class="field">
+        <div class="label">Résumé</div>
+        <div class="content">{{series.resume}}</div>
+      </div>
+    }
+    @if (series.by==='BY_SERIES' && series.status!=='ONE_SHOT') {
+      <div class="field">
+        <div class="label">Auteur(s)</div>
+        <div class="content">{{tools.getAuthors(series.authorIds, biblio) | async}}</div>
+      </div>
+    }
+    <div class="field">
+      <div class="label">Status</div>
+      <div class="content"><app-series-badge [series]="series"></app-series-badge></div>
+    </div>
+  </div>
+  @for (book of series.books; track book; let bi = $index) {
     <app-settings-book
-        *ngFor="let book of series.books; let bi=index;"
-        [biblio]="biblio"
-        (sendDelete)="deleteBook($event)"
-        [book]="book"
-        [index]="index + '_' + (bi+1)">
+      [biblio]="biblio"
+      (sendDelete)="deleteBook($event)"
+      [book]="book"
+      [index]="index + '_' + (bi+1)">
     </app-settings-book>
+  }
 </mat-expansion-panel>

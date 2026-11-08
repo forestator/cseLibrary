@@ -1,6 +1,7 @@
-<app-video-games-console-details
-  *ngIf="consoleId"
-  [consoleId]="consoleId"
-  [selectedVideoGameId]="selectedVideoGameId"
-  [videoGames]="videoGames$ | async">
-</app-video-games-console-details>
+@if (consoleId) {
+  <app-video-games-console-details
+    [consoleId]="consoleId"
+    [selectedVideoGameId]="selectedVideoGameId"
+    [videoGames]="videoGames$ | async">
+  </app-video-games-console-details>
+}

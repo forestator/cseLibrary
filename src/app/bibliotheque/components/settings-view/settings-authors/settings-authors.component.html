@@ -1,9 +1,10 @@
 <div class="authors">
+  @for (author of biblio?.authors; track author; let ai = $index) {
     <app-settings-author
-        *ngFor="let author of biblio?.authors; let ai=index;"
-        (sendDelete)="deleteAuthor($event)"
-        [biblio]="biblio"
-        [author]="author"
-        [index]="(index+1) + '_' + (ai+1)">
+      (sendDelete)="deleteAuthor($event)"
+      [biblio]="biblio"
+      [author]="author"
+      [index]="(index+1) + '_' + (ai+1)">
     </app-settings-author>
+  }
 </div>

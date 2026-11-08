@@ -6,33 +6,39 @@
 <div class="game-list">
   <mat-accordion>
     <mat-expansion-panel (opened)="boardGamePanelOpen = true"
-                         (closed)="boardGamePanelOpen = false">
+      (closed)="boardGamePanelOpen = false">
       <mat-expansion-panel-header>
         <mat-panel-title>BoardGames</mat-panel-title>
       </mat-expansion-panel-header>
-      <app-ludo-table *ngIf="boardGamePanelOpen"
-                      [games]="firebaseDatabaseService.boardGamesOneShot$ | async"
-                      [displayedColumns]="columnsBoardGames"></app-ludo-table>
+      @if (boardGamePanelOpen) {
+        <app-ludo-table
+          [games]="firebaseDatabaseService.boardGamesOneShot$ | async"
+        [displayedColumns]="columnsBoardGames"></app-ludo-table>
+      }
     </mat-expansion-panel>
 
     <mat-expansion-panel (opened)="videoGamePanelOpen = true"
-                         (closed)="videoGamePanelOpen = false">
+      (closed)="videoGamePanelOpen = false">
       <mat-expansion-panel-header>
         <mat-panel-title>VideoGames</mat-panel-title>
       </mat-expansion-panel-header>
-      <app-ludo-table *ngIf="videoGamePanelOpen"
-                      [games]="firebaseDatabaseService.videoGamesOneShot$ | async"
-                      [displayedColumns]="columnsVideoGame"></app-ludo-table>
+      @if (videoGamePanelOpen) {
+        <app-ludo-table
+          [games]="firebaseDatabaseService.videoGamesOneShot$ | async"
+        [displayedColumns]="columnsVideoGame"></app-ludo-table>
+      }
     </mat-expansion-panel>
 
     <mat-expansion-panel (opened)="outsideGamePanelOpen = true"
-                         (closed)="outsideGamePanelOpen = false">
+      (closed)="outsideGamePanelOpen = false">
       <mat-expansion-panel-header>
         <mat-panel-title>OutsideGames</mat-panel-title>
       </mat-expansion-panel-header>
-      <app-ludo-table *ngIf="outsideGamePanelOpen"
-                      [games]="firebaseDatabaseService.outsideGamesOneShot$ | async"
-                      [displayedColumns]="columnsOutsideGame"></app-ludo-table>
+      @if (outsideGamePanelOpen) {
+        <app-ludo-table
+          [games]="firebaseDatabaseService.outsideGamesOneShot$ | async"
+        [displayedColumns]="columnsOutsideGame"></app-ludo-table>
+      }
     </mat-expansion-panel>
   </mat-accordion>
 </div>

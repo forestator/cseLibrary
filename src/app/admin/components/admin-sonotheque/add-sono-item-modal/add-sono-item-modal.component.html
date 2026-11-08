@@ -13,9 +13,11 @@
       <mat-form-field appearance="fill">
         <mat-label>Catégorie</mat-label>
         <mat-select formControlName="category">
-          <mat-option *ngFor="let catId of categoryOptions" [value]="catId">
-            {{catId | titlecase}}
-          </mat-option>
+          @for (catId of categoryOptions; track catId) {
+            <mat-option [value]="catId">
+              {{catId | titlecase}}
+            </mat-option>
+          }
         </mat-select>
       </mat-form-field>
       <mat-form-field appearance="fill">
@@ -35,24 +37,26 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <app-upload-form [defaultImage]="data?.selectedItem?.cover ?? defaultImageForSonoItem"
-                     [disabled]="sonoItemForm?.invalid"
-                     (fileToUploadReady)="upload($event)">
+      [disabled]="sonoItemForm?.invalid"
+      (fileToUploadReady)="upload($event)">
     </app-upload-form>
   </div>
   <div mat-dialog-actions>
     <button (click)="addSonoItem()"
-            [disabled]="sonoItemForm?.invalid"
-            cdkFocusInitial
-            mat-button>
+      [disabled]="sonoItemForm?.invalid"
+      cdkFocusInitial
+      mat-button>
       Confirm
     </button>
     <button (click)="cancel()" mat-button>Cancel</button>
-    <button *ngIf="data?.selectedItem"
-            (click)="deleteItem(data!.selectedItem)"
-            color="warn"
-            cdkFocusInitial
-            mat-button>
-      Delete
-    </button>
+    @if (data?.selectedItem) {
+      <button
+        (click)="deleteItem(data!.selectedItem)"
+        color="warn"
+        cdkFocusInitial
+        mat-button>
+        Delete
+      </button>
+    }
   </div>
 </div>

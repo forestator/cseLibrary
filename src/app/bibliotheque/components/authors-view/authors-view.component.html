@@ -1,19 +1,22 @@
-<div *ngIf="biblio && authors" class="core-page fadein">
+@if (biblio && authors) {
+  <div class="core-page fadein">
     <div class="core-header">
-        <div class="core-title">
-            <div class="secondary" (click)="selectLibrary(biblio.library.id)">{{biblio.library.name}}</div>
-            <mat-icon>navigate_next</mat-icon>
-            <div class="primary">Par Auteur</div>
-            <!-- <div class="counter">{{counter}} auteur</div> -->
-        </div>
-        <app-alphabet></app-alphabet>
+      <div class="core-title">
+        <div class="secondary" (click)="selectLibrary(biblio.library.id)">{{biblio.library.name}}</div>
+        <mat-icon>navigate_next</mat-icon>
+        <div class="primary">Par Auteur</div>
+        <!-- <div class="counter">{{counter}} auteur</div> -->
+      </div>
+      <app-alphabet></app-alphabet>
     </div>
     <div class="core-body">
+      @for (author of authors; track author) {
         <app-author-row
-            *ngFor="let author of authors"
-            [author]="author"
-            [biblio]="biblio"
-            (sendView)="select($event)">
+          [author]="author"
+          [biblio]="biblio"
+          (sendView)="select($event)">
         </app-author-row>
+      }
     </div>
-</div>
+  </div>
+}

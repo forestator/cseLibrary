@@ -1,31 +1,55 @@
-<div [id]="boardGame.id" *ngIf="boardGame" class="book-core">
-  <ng-container [ngTemplateOutlet]="image"
-                *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async)) && boardGame.cover">
-  </ng-container>
-  <div class="book-infos">
-    <div class="book-title">
-      {{boardGame.name}}
-    </div>
-    <div class="book-info" *ngIf="boardGame.ref">Ref: {{boardGame.ref}}</div>
-    <div class="book-info" *ngIf="boardGame.weight">Poids: {{boardGame.weight}}g</div>
-    <div class="book-info" *ngIf="boardGame.playingTime">Temps de jeu: {{boardGame.playingTime}} minutes</div>
-    <div class="book-info" *ngIf="boardGame.minPlayers">Min joueurs: {{boardGame.minPlayers}}</div>
-    <div class="book-info" *ngIf="boardGame.maxPlayers">Max joueurs: {{boardGame.maxPlayers}}</div>
-    <div class="book-info" *ngIf="boardGame.minAge">Age mini: {{boardGame.minAge}}</div>
-    <div class="book-info" *ngIf="boardGame.suggestedPlayAge">Age suggéré: {{boardGame.suggestedPlayAge}}</div>
-    <div class="book-info" *ngIf="boardGame.yearPublished">Année de publication: {{boardGame.yearPublished}}</div>
-    <div class="book-info" *ngIf="boardGame.themes && boardGame.themes.length">
-      Themes :
-      <ng-container *ngFor="let theme of boardGame.themes">
-        {{theme}}
+@if (boardGame) {
+  <div [id]="boardGame.id" class="book-core">
+    @if ((parity || (toolsService.mobilePhoneDisplay$ | async)) && boardGame.cover) {
+      <ng-container [ngTemplateOutlet]="image"
+        >
       </ng-container>
+    }
+    <div class="book-infos">
+      <div class="book-title">
+        {{boardGame.name}}
+      </div>
+      @if (boardGame.ref) {
+        <div class="book-info">Ref: {{boardGame.ref}}</div>
+      }
+      @if (boardGame.weight) {
+        <div class="book-info">Poids: {{boardGame.weight}}g</div>
+      }
+      @if (boardGame.playingTime) {
+        <div class="book-info">Temps de jeu: {{boardGame.playingTime}} minutes</div>
+      }
+      @if (boardGame.minPlayers) {
+        <div class="book-info">Min joueurs: {{boardGame.minPlayers}}</div>
+      }
+      @if (boardGame.maxPlayers) {
+        <div class="book-info">Max joueurs: {{boardGame.maxPlayers}}</div>
+      }
+      @if (boardGame.minAge) {
+        <div class="book-info">Age mini: {{boardGame.minAge}}</div>
+      }
+      @if (boardGame.suggestedPlayAge) {
+        <div class="book-info">Age suggéré: {{boardGame.suggestedPlayAge}}</div>
+      }
+      @if (boardGame.yearPublished) {
+        <div class="book-info">Année de publication: {{boardGame.yearPublished}}</div>
+      }
+      @if (boardGame.themes && boardGame.themes.length) {
+        <div class="book-info">
+          Themes :
+          @for (theme of boardGame.themes; track theme) {
+            {{theme}}
+          }
+        </div>
+      }
+      <div class="book-resume" [innerHTML]="boardGame.description"></div>
     </div>
-    <div class="book-resume" [innerHTML]="boardGame.description"></div>
+    @if (!parity && boardGame.cover && !(toolsService.mobilePhoneDisplay$ | async)) {
+      <ng-container [ngTemplateOutlet]="image"
+        >
+      </ng-container>
+    }
   </div>
-  <ng-container [ngTemplateOutlet]="image"
-                *ngIf="!parity && boardGame.cover && !(toolsService.mobilePhoneDisplay$ | async)">
-  </ng-container>
-</div>
+}
 
 <ng-template #image>
   <div class="book-cover">

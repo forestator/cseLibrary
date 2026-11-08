@@ -4,13 +4,15 @@
     <mat-label>Chercher un outil</mat-label>
     <input matInput placeholder="Super perceuse" [formControl]="searchText" [matAutocomplete]="auto" type="text">
     <mat-autocomplete #auto="matAutocomplete"
-                      [displayWith]="displayTool"
-                      (optionSelected)="selectToolToModify($event)"
-                      autoActiveFirstOption>
-      <mat-option *ngFor="let option of filteredOptions$ | async"
-                  [value]="option">
-        <b>{{option.id}}</b>{{displayTool(option)}}
-      </mat-option>
+      [displayWith]="displayTool"
+      (optionSelected)="selectToolToModify($event)"
+      autoActiveFirstOption>
+      @for (option of filteredOptions$ | async; track option) {
+        <mat-option
+          [value]="option">
+          <b>{{option.id}}</b>{{displayTool(option)}}
+        </mat-option>
+      }
     </mat-autocomplete>
   </mat-form-field>
 </div>

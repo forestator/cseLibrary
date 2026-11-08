@@ -1,25 +1,31 @@
-<div class="core-page fadein" *ngIf="nautismeDatabaseService.nautismeLibrary$ | async as library">
-  <div class="core-header">
-    <div class="core-title">
-      <div class="primary">{{library.name}}</div>
-    </div>
-    <div class="core-resume">
-      {{library.resume}}
-    </div>
-  </div>
-  <div class="core-header">
-    <div *ngFor="let item of nautismeDatabaseService.allNautisme$ | async; let index = index" class="core-body">
-      <app-nautisme-item-row [item]="item" [index]="index"></app-nautisme-item-row>
-    </div>
-  </div>
-  <div class="core-header" *ngIf="authService.isUserNautismeAdmin$ | async">
-    <div>
+@if (nautismeDatabaseService.nautismeLibrary$ | async; as library) {
+  <div class="core-page fadein">
+    <div class="core-header">
       <div class="core-title">
-        <div class="primary">Administration matériel nautique</div>
+        <div class="primary">{{library.name}}</div>
       </div>
-      <div class="core-body" [routerLink]="'admin/nautismeItems'">
-        Gestion du matériel nautique
+      <div class="core-resume">
+        {{library.resume}}
       </div>
     </div>
+    <div class="core-header">
+      @for (item of nautismeDatabaseService.allNautisme$ | async; track item; let index = $index) {
+        <div class="core-body">
+          <app-nautisme-item-row [item]="item" [index]="index"></app-nautisme-item-row>
+        </div>
+      }
+    </div>
+    @if (authService.isUserNautismeAdmin$ | async) {
+      <div class="core-header">
+        <div>
+          <div class="core-title">
+            <div class="primary">Administration matériel nautique</div>
+          </div>
+          <div class="core-body" [routerLink]="'admin/nautismeItems'">
+            Gestion du matériel nautique
+          </div>
+        </div>
+      </div>
+    }
   </div>
-</div>
+}

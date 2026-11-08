@@ -1,24 +1,44 @@
-<div [id]="tool.id" *ngIf="tool" class="book-core">
-  <ng-container [ngTemplateOutlet]="image"
-                *ngIf="(parity || (toolsService.mobilePhoneDisplay$ | async))"></ng-container>
-  <div class="book-infos">
-    <div class="book-title">{{tool.name}}
-      <app-badge [status]="tool.status"></app-badge>
+@if (tool) {
+  <div [id]="tool.id" class="book-core">
+    @if ((parity || (toolsService.mobilePhoneDisplay$ | async))) {
+      <ng-container [ngTemplateOutlet]="image"
+      ></ng-container>
+    }
+    <div class="book-infos">
+      <div class="book-title">{{tool.name}}
+        <app-badge [status]="tool.status"></app-badge>
+      </div>
+      <div class="book-info">Ref: {{tool.id}}</div>
+      @if (tool.description) {
+        <div class="book-info">Description: {{tool.description}}</div>
+      }
+      @if (tool.dimensions) {
+        @if (tool.dimensions.longueur) {
+          <div class="book-info">Longueur: {{tool.dimensions.longueur}}</div>
+        }
+        @if (tool.dimensions.largeur) {
+          <div class="book-info">Largeur: {{tool.dimensions.largeur}}</div>
+        }
+        @if (tool.dimensions.hauteur) {
+          <div class="book-info">Hauteur: {{tool.dimensions.hauteur}}</div>
+        }
+        @if (tool.dimensions.PTAC) {
+          <div class="book-info">PTAC: {{tool.dimensions.PTAC}}</div>
+        }
+        @if (tool.dimensions.PV) {
+          <div class="book-info">PV: {{tool.dimensions.PV}}</div>
+        }
+        @if (tool.dimensions.volume) {
+          <div class="book-info">Volume: {{tool.dimensions.volume}}</div>
+        }
+      }
     </div>
-    <div class="book-info">Ref: {{tool.id}}</div>
-    <div class="book-info" *ngIf="tool.description">Description: {{tool.description}}</div>
-    <ng-container *ngIf="tool.dimensions">
-      <div class="book-info" *ngIf="tool.dimensions.longueur">Longueur: {{tool.dimensions.longueur}}</div>
-      <div class="book-info" *ngIf="tool.dimensions.largeur">Largeur: {{tool.dimensions.largeur}}</div>
-      <div class="book-info" *ngIf="tool.dimensions.hauteur">Hauteur: {{tool.dimensions.hauteur}}</div>
-      <div class="book-info" *ngIf="tool.dimensions.PTAC">PTAC: {{tool.dimensions.PTAC}}</div>
-      <div class="book-info" *ngIf="tool.dimensions.PV">PV: {{tool.dimensions.PV}}</div>
-      <div class="book-info" *ngIf="tool.dimensions.volume">Volume: {{tool.dimensions.volume}}</div>
-    </ng-container>
+    @if (!parity && !(toolsService.mobilePhoneDisplay$ | async)) {
+      <ng-container [ngTemplateOutlet]="image"
+      ></ng-container>
+    }
   </div>
-  <ng-container [ngTemplateOutlet]="image"
-                *ngIf="!parity && !(toolsService.mobilePhoneDisplay$ | async)"></ng-container>
-</div>
+}
 
 <ng-template #image>
   <div class="book-cover">

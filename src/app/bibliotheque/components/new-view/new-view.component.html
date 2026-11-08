@@ -1,29 +1,41 @@
-<div *ngIf="newBooks$ | async as libraryNew" class="new-page fadein">
-  <div class="title">
-    Nouveautés
-    <mat-icon (click)="exportNewsAsPDF()" *ngIf="auth.isUserSuperAdmin | async">picture_as_pdf</mat-icon>
-  </div>
-  <div class="core-page" *ngFor="let data of libraryNew">
-    <div id="new" class="core-body" *ngIf="data.books.length > 0">
-      <app-book-row
-        [id]="book.book.id"
-        *ngFor="let book of data.books;let index=index;"
-        [book]="book.book"
-        [biblio]="data.biblio"
-        [category]="book.category"
-        [index]="index">
-      </app-book-row>
+@if (newBooks$ | async; as libraryNew) {
+  <div class="new-page fadein">
+    <div class="title">
+      Nouveautés
+      @if (auth.isUserSuperAdmin | async) {
+        <mat-icon (click)="exportNewsAsPDF()">picture_as_pdf</mat-icon>
+      }
     </div>
-    <div id="inProject" class="core-body" *ngIf="data.bookInProject.length > 0">
-      <div class="title">En projet</div>
-      <app-book-row
-        [id]="book.book.id"
-        *ngFor="let book of data.bookInProject;let index=index;"
-        [book]="book.book"
-        [biblio]="data.biblio"
-        [category]="book.category"
-        [index]="index">
-      </app-book-row>
-    </div>
+    @for (data of libraryNew; track data) {
+      <div class="core-page">
+        @if (data.books.length > 0) {
+          <div id="new" class="core-body">
+            @for (book of data.books; track book; let index = $index) {
+              <app-book-row
+                [id]="book.book.id"
+                [book]="book.book"
+                [biblio]="data.biblio"
+                [category]="book.category"
+                [index]="index">
+              </app-book-row>
+            }
+          </div>
+        }
+        @if (data.bookInProject.length > 0) {
+          <div id="inProject" class="core-body">
+            <div class="title">En projet</div>
+            @for (book of data.bookInProject; track book; let index = $index) {
+              <app-book-row
+                [id]="book.book.id"
+                [book]="book.book"
+                [biblio]="data.biblio"
+                [category]="book.category"
+                [index]="index">
+              </app-book-row>
+            }
+          </div>
+        }
+      </div>
+    }
   </div>
-</div>
+}

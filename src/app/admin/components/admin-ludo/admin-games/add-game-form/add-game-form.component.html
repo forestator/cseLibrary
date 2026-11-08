@@ -2,7 +2,7 @@
   <div class="main">
     <div class="select-library">
       <mat-button-toggle-group (ngModelChange)="setCategoryOptions($event)"
-                               name="libraryId" formControlName="libraryId" aria-label="Font Style">
+        name="libraryId" formControlName="libraryId" aria-label="Font Style">
         <mat-button-toggle value="boardGames">Jeu de Société</mat-button-toggle>
         <mat-button-toggle value="videoGames">Jeux Vidéo</mat-button-toggle>
         <mat-button-toggle value="outsideGames">Grand Jeu</mat-button-toggle>
@@ -24,15 +24,17 @@
     <mat-form-field appearance="fill">
       <mat-label>Catégorie</mat-label>
       <mat-select formControlName="category">
-        <mat-option *ngFor="let cat of categoryOptions" [value]="cat.id">
-          <app-badge class="category" [status]="cat.id"></app-badge>
-        </mat-option>
+        @for (cat of categoryOptions; track cat) {
+          <mat-option [value]="cat.id">
+            <app-badge class="category" [status]="cat.id"></app-badge>
+          </mat-option>
+        }
       </mat-select>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Description</mat-label>
       <textarea matInput placeholder="le meilleur jeu du monde" formControlName="description">
-  </textarea>
+      </textarea>
     </mat-form-field>
     <div>
       <mat-label>Nouveauté ?</mat-label>
@@ -42,7 +44,7 @@
   <mat-divider [vertical]="true"></mat-divider>
   <div class="boardgames">
     <app-upload-game [selectedGame]="gameForm.value"></app-upload-game>
-    <ng-container *ngIf="gameForm.get('libraryId')?.value === 'boardGames'">
+    @if (gameForm.get('libraryId')?.value === 'boardGames') {
       <mat-form-field appearance="fill">
         <mat-label>BoardGameGeek Id</mat-label>
         <input matInput type="number" placeholder="123456" formControlName="id">
@@ -51,9 +53,9 @@
         <mat-label>Poids</mat-label>
         <input matInput type="number" placeholder="100" formControlName="weight">
       </mat-form-field>
-    </ng-container>
+    }
   </div>
-  <ng-container *ngIf="gameForm.get('libraryId')?.value === 'boardGames'">
+  @if (gameForm.get('libraryId')?.value === 'boardGames') {
     <mat-divider [vertical]="true"></mat-divider>
     <div class="boardgames">
       <mat-form-field appearance="fill">
@@ -81,8 +83,8 @@
         <input matInput type="number" formControlName="yearPublished">
       </mat-form-field>
     </div>
-  </ng-container>
-  <ng-container *ngIf="gameForm.get('libraryId')?.value === 'videoGames'">
+  }
+  @if (gameForm.get('libraryId')?.value === 'videoGames') {
     <mat-divider [vertical]="true"></mat-divider>
     <div class="boardgames">
       <mat-form-field appearance="fill">
@@ -94,5 +96,5 @@
         </mat-select>
       </mat-form-field>
     </div>
-  </ng-container>
+  }
 </div>
