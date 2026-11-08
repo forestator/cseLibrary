@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BoardGame} from '../models/boardGame.model';
+import {environment} from '../../environments/environment';
 
 const {Configuration, OpenAIApi} = require("openai");
 
@@ -14,7 +15,7 @@ export class OpenAiService {
   async genDescriptionJeu(boardGame: BoardGame): Promise<string> {
     if (boardGame.yearPublished < 2021) {
       const configuration = new Configuration({
-        apiKey: '',
+        apiKey: environment.openAiApiKey,
       });
       const openai = new OpenAIApi(configuration);
 
@@ -39,7 +40,7 @@ export class OpenAiService {
    */
   async getGameBggId(gameName: string): Promise<string> {
       const configuration = new Configuration({
-        apiKey: '',
+        apiKey: environment.openAiApiKey,
       });
       const openai = new OpenAIApi(configuration);
 

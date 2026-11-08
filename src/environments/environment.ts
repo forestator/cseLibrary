@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Never commit a real key: a key shipped in the browser bundle is public anyway, so prefer a backend proxy.
+  openAiApiKey: ''
 };
 
 /*
