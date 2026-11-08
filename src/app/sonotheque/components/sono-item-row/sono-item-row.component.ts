@@ -16,7 +16,7 @@ export class SonoItemRowComponent implements OnInit {
   @Input() selectedSonoItemId?: string;
   parity!: boolean;
 
-  readonly defaultImage = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2FsonoItems%2FdefaultSonoIItem.jpg?alt=media&token=f8e80f87-645e-4eca-9ed5-ef7aba679811';
+  readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/sonoItems/defaultSonoIItem';
   constructor(public toolsService: ToolsService) {
 
   }

@@ -1,13 +1,14 @@
 #!/usr/bin/env node
 // One-shot migration of Firebase Storage files to Cloudinary.
 //
+//   node scripts/migrate-storage/migrate.mjs download  --cloud <name> --dir <local backup folder>
 //   node scripts/migrate-storage/migrate.mjs copy      --cloud <name> --preset <unsigned preset> [--dry-run]
 //   node scripts/migrate-storage/migrate.mjs rewrite-src --cloud <name>
 //   node scripts/migrate-storage/migrate.mjs rewrite-db  --cloud <name> --db <export.json>
 //
 // Cloudinary public ids mirror the old storage path without its extension, so URLs are deterministic
 // and the book cover pipes can build them without a database lookup.
-import {readFile, writeFile, readdir} from 'node:fs/promises';
+import {readFile, writeFile, readdir, mkdir} from 'node:fs/promises';
 import {existsSync} from 'node:fs';
 import path from 'node:path';
 
@@ -26,7 +27,8 @@ if (!command || !cloud) {
   process.exit(1);
 }
 
-const publicIdOf = storagePath => storagePath.replace(/\.[^./]+$/, '');
+// Cloudinary rejects ? & # % < > \\ in public ids, so those characters are replaced.
+const publicIdOf = storagePath => storagePath.replace(/\.[^./]+$/, '').replace(/[?&#%<>\\]/g, '_').replace(/\s+$/, '');
 const newUrl = storagePath => `https://res.cloudinary.com/${cloud}/image/upload/${encodeURI(publicIdOf(storagePath))}`;
 const replaceUrls = text => text.replace(OLD_URL, (_, encodedPath) => newUrl(decodeURIComponent(encodedPath)));
 
@@ -43,6 +45,30 @@ async function listAll() {
   return names;
 }
 
+async function download() {
+  const names = (await listAll()).filter(name => !name.endsWith('/'));
+  const queue = names.filter(name => !existsSync(path.join(args.dir, name)));
+  console.log(`${names.length} files in bucket, ${names.length - queue.length} already downloaded`);
+  const failures = [];
+  const worker = async () => {
+    for (let name = queue.shift(); name; name = queue.shift()) {
+      try {
+        const response = await fetch(`${API}/${encodeURIComponent(name)}?alt=media`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const target = path.join(args.dir, name);
+        await mkdir(path.dirname(target), {recursive: true});
+        await writeFile(target, Buffer.from(await response.arrayBuffer()));
+      } catch (error) {
+        failures.push(name);
+        console.error('FAIL', name, error.message);
+      }
+    }
+  };
+  await Promise.all(Array.from({length: 6}, worker));
+  console.log(`done, ${failures.length} failure(s)`);
+  if (failures.length) process.exitCode = 2;
+}
+
 async function copy() {
   const state = existsSync(STATE_FILE) ? JSON.parse(await readFile(STATE_FILE, 'utf8')) : {};
   const names = (await listAll()).filter(name => !name.endsWith('/'));
@@ -56,10 +82,17 @@ async function copy() {
   const worker = async () => {
     for (let name = queue.shift(); name; name = queue.shift()) {
       try {
-        const download = await fetch(`${API}/${encodeURIComponent(name)}?alt=media`);
-        if (!download.ok) throw new Error(`download ${download.status}`);
+        const localFile = args.dir ? path.join(args.dir, name) : undefined;
+        let content;
+        if (localFile && existsSync(localFile)) {
+          content = new Blob([await readFile(localFile)]);
+        } else {
+          const response = await fetch(`${API}/${encodeURIComponent(name)}?alt=media`);
+          if (!response.ok) throw new Error(`download ${response.status}`);
+          content = new Blob([await response.arrayBuffer()], {type: response.headers.get('content-type') ?? 'application/octet-stream'});
+        }
         const body = new FormData();
-        body.append('file', new Blob([await download.arrayBuffer()], {type: download.headers.get('content-type') ?? 'application/octet-stream'}), path.basename(name));
+        body.append('file', content, path.basename(name));
         body.append('upload_preset', args.preset);
         body.append('public_id', publicIdOf(name));
         const upload = await fetch(`https://api.cloudinary.com/v1_1/${cloud}/image/upload`, {method: 'POST', body});
@@ -119,4 +152,4 @@ async function rewriteDb() {
   console.log(`${Object.keys(updates).length} value(s) to update -> scripts/migrate-storage/updates.json`);
 }
 
-await {copy, 'rewrite-src': rewriteSrc, 'rewrite-db': rewriteDb}[command]?.();
+await {download, copy, 'rewrite-src': rewriteSrc, 'rewrite-db': rewriteDb}[command]?.();

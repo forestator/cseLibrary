@@ -19,7 +19,7 @@ export class AddSonoItemModalComponent {
 
   sonoItemForm: FormGroup;
   categoryOptions: string[] = Object.values(SonoCategory);
-  readonly defaultImageForSonoItem = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2FsonoItems%2FdefaultSonoIItem.jpg?alt=media&token=f8e80f87-645e-4eca-9ed5-ef7aba679811';
+  readonly defaultImageForSonoItem = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/sonoItems/defaultSonoIItem';
 
   constructor(
     public dialogRef: MatDialogRef<AddSonoItemModalComponent>,

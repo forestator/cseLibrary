@@ -16,7 +16,7 @@ export class ToolRowComponent implements OnInit {
   @Input() selectedTool?: string;
   parity!: boolean;
 
-  readonly defaultImage = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2Ftools%2Fcovers%2FdefaultTool.jpg?alt=media&token=165e5ad1-3d3f-477a-a7d7-72cf49c8eaa4';
+  readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/tools/covers/defaultTool';
   constructor(public toolsService: ToolsService) {
 
   }

@@ -21,12 +21,19 @@ npm run deploy         # firebase deploy (hosting, projet dans .firebaserc) – 
 - `tsconfig` : `strict: false` (mais `strictTemplates: true`). Beaucoup de champs non initialisés et de `any`.
 - Moment.js pour toutes les dates, **stockées en `string` au format `DD/MM/YYYY`**.
 - Autres libs : openai 3 (`services/open-ai.service.ts`, descriptions de jeux), BGG XML (`ludotheque/services/bgg.service.ts`), Google Books, xml2js/xml-js/sax, jspdf + html2canvas.
+- La Realtime Database du projet `cseh-50966` est **lisible publiquement** (règles à durcir, voir `docs/chantier.md`).
 - Config Firebase en dur dans `app.module.ts` (clé web publique, pas un secret, mais à déplacer dans `environment`). `environment.ts` ne contient que `production`.
 - Les UIDs admin sont codés en dur dans `services/firebase/authentification.service.ts` (super-admins + un admin par commission). Les routes admin sont protégées uniquement côté client par des `canActivate` ; la vraie sécurité dépend des règles Firebase (non versionnées ici).
 
 ## Conventions cibles (CLAUDE.md global de l'utilisateur)
 
 Le code neuf doit suivre les règles globales (Angular 20+ standalone, signals, `input()`/`output()`, `inject()`, OnPush, control flow natif, 3 fichiers `.ts/.html/.css`, pas de fonction dans les templates, classes CSS sans `--`, AXE/WCAG AA, etc.). Le code existant ne les suit pas : **ne pas mélanger au hasard**, moderniser par périmètre (feature par feature) et la montée de version 16 → 22 est faite, il reste la modernisation du code (désormais tout est disponible : Angular 22). **Décision : uniquement du SCSS** (jamais de `.css` pour les composants, contrairement à la règle globale « 3 fichiers .ts/.html/.css » : ici `.ts` / `.html` / `.scss`). Les fichiers `.css` restants dans `angular.json` ne sont que des thèmes tiers (Material prebuilt, firebaseui).
+
+## Images / Storage
+
+Firebase Storage n'est plus utilisé (payant). Les couvertures sont sur **Cloudinary** (cloud `seo9axkp`, preset non signé `cse_unsigned`, voir `environment*.ts` et `services/cloudinary.service.ts`). Les uploads non signés ne peuvent pas écraser : `StorageUploadService` ajoute un timestamp au `public_id`. Les couvertures de livres sont résolues par les pipes `bookCover` / `categoryBackground` (URL déterministe `assets/books/...`). Outil de migration : `scripts/migrate-storage/migrate.mjs`.
+
+**État du chantier, reste à faire et priorités : `docs/chantier.md` (à lire en début de session).**
 
 ## Architecture (`src/app`)
 

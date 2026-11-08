@@ -18,7 +18,7 @@ import {take} from 'rxjs';
 export class AddNautismeItemModalComponent {
 
   nautismeItemForm: FormGroup;
-  readonly defaultNautImage = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2FnautismeItems%2FnautismeDefaultImage.jpg?alt=media&token=72117134-24d6-433a-8257-3ec4572c7e4c';
+  readonly defaultNautImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/nautismeItems/nautismeDefaultImage';
 
   constructor(
     public dialogRef: MatDialogRef<AddNautismeItemModalComponent>,

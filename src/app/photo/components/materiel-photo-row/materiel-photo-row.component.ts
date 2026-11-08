@@ -15,7 +15,7 @@ export class MaterielPhotoRowComponent {
   @Input() selectedItem?: string;
   parity!: boolean;
 
-  readonly defaultImage = 'https://firebasestorage.googleapis.com/v0/b/cseh-50966.appspot.com/o/assets%2FmaterielPhoto%2FdefaultPhoto.jpg?alt=media&token=5e723ad3-91ec-419a-85dd-975b8a059506';
+  readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/materielPhoto/defaultPhoto';
   constructor(public toolsService: ToolsService) {
 
   }
