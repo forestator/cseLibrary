@@ -1,7 +1,7 @@
 <article class="row-card">
   <div class="row-head">
     <h2 class="row-heading">
-      <button type="button" class="row-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="panelId()" [attr.aria-label]="toggleLabel()" (click)="open.update(isOpen => !isOpen)">
+      <button type="button" class="row-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="panelId()" (click)="open.update(isOpen => !isOpen)">
         <mat-icon class="row-chevron" [class.row-chevron-open]="open()" aria-hidden="true">chevron_right</mat-icon>
         <span class="row-text">
           <span class="row-title">{{series().name}}</span>

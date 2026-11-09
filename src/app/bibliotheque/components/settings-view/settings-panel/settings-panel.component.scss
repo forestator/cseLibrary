@@ -69,11 +69,11 @@
   }
 
   &.node-action-add {
-    color: light-dark(#166534, #86efac);
+    color: $action-add;
   }
 
   &.node-action-delete {
-    color: light-dark(#b91c1c, #fca5a5);
+    color: $action-delete;
   }
 
   &:hover {

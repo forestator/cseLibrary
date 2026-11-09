@@ -27,7 +27,6 @@ export class AuthorRowComponent {
   protected readonly open = signal(false);
   protected readonly fullName = computed(() => `${this.author().lastName} ${this.author().firstName}`);
   protected readonly panelId = computed(() => `author-panel-${this.author().id}`);
-  protected readonly toggleLabel = computed(() => `${this.open() ? 'Masquer' : 'Afficher'} les livres de ${this.fullName()}`);
 
   protected readonly books = computed(() => {
     const author = this.author();

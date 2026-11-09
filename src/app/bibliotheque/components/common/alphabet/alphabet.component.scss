@@ -1,5 +1,10 @@
 @use '../ui' as *;
 
+// Without its own box, the bar sticks within the section holding it instead of within this host.
+:host {
+  display: contents;
+}
+
 .alphabet {
   position: sticky;
   top: $topbar-height;
@@ -10,8 +15,7 @@
   padding: $space-2;
   border: 1px solid $outline;
   border-radius: $radius-lg;
-  background: color-mix(in srgb, var(--mat-sys-surface-container) 92%, transparent);
-  backdrop-filter: blur(12px);
+  background: $surface-card;
 
   @include mobile {
     flex-wrap: nowrap;
@@ -48,7 +52,7 @@
 
   &[aria-pressed='true'] {
     background: $accent;
-    color: #fff;
+    color: $on-accent;
   }
 }
 
