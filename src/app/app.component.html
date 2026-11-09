@@ -1,64 +1,82 @@
-<mat-sidenav-container class="side-nav-container">
-  <mat-sidenav #drawer fixedInViewport="true"
-    [class.mobile-display]="toolService.mobilePhoneDisplay$ | async"
-    [attr.role]="(toolService.mobilePhoneDisplay$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(toolService.mobilePhoneDisplay$ | async) ? 'over' : 'side'"
-    [opened]="!(toolService.mobilePhoneDisplay$ | async)">
-    <div class="navigation-container">
-      <div class="library-title">
-        <div class="title">
-          <span [routerLink]="''">{{title}}</span>
-        </div>
-      </div>
-      <mat-list>
-        @for (category of menu; track category) {
-          <mat-list-item>
-            <div matListItemTitle [routerLink]="category.route" class="cat-nav">{{category.name}}</div>
-          </mat-list-item>
-        }
-        @if (showBoardGameFilters) {
-          <mat-divider />
-          <app-filter-board-games />
-        }
-      </mat-list>
-    </div>
-    <div class="contact">
-      Suggestions : <a href="mailto:maximilien.foret@harmonicinc.com"><mat-icon>email</mat-icon></a>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content id="top" #top>
-    <mat-toolbar class="library-menu" [class.home-menu]="showHomeMenu">
-      @if ((toolService.mobilePhoneDisplay$ | async) &&
-        (showAdmin || showLudothequeMenu || showBibliothequeMenu || showBricolageMenu)) {
-        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-          >
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-      }
-      @if (showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin) {
-        <app-library-menu class="tool"
-         />
-      }
-      @if (showLudothequeMenu && !showAdmin) {
-        <app-ludo-menu class="tool" />
-      }
-      @if (showBricolageMenu && !showAdmin) {
-        <app-catalogue-menu class="tool" [commission]="bricolage" />
-      }
-      @if (showAdmin) {
-        <app-admin-menu class="tool" />
-      }
-      @if (showHomeMenu) {
-        <mat-icon [routerLink]="'/iWantToConfigureThisAwesomeApp'">login</mat-icon>
-      }
-    </mat-toolbar>
+<div class="shell" [attr.data-commission]="section()" [class.nav-open]="navOpen()">
+  <a class="skip-link" href="#main">Aller au contenu</a>
 
-    <router-outlet />
+  <aside class="rail" id="rail" [attr.inert]="navHidden() ? '' : null">
+    <a class="brand" routerLink="/">
+      <span class="brand-mark" aria-hidden="true">CSE</span>
+      <span class="brand-text">Médiathèque<small>Comité social et économique</small></span>
+    </a>
 
-    <div class="go-top bloc-link">
-      <div (click)="scrollToTop()" class="go-top-link">
-        <mat-icon class="icon">keyboard_arrow_up</mat-icon>
-      </div>
+    <nav class="rail-section" aria-label="Commissions">
+      @for (commission of commissions; track commission.id) {
+        <a class="rail-link" [routerLink]="commission.route" routerLinkActive="rail-link-active"
+           [attr.data-commission]="commission.id">
+          <mat-icon aria-hidden="true">{{ commission.icon }}</mat-icon>
+          <span>{{ commission.label }}</span>
+        </a>
+      }
+    </nav>
+
+    @if (subMenu().length) {
+      <nav class="rail-section rail-sub" [attr.aria-label]="'Rubriques ' + sectionLabel()">
+        <p class="rail-heading">{{ sectionLabel() }}</p>
+        @for (link of subMenu(); track link.route) {
+          <a class="rail-sublink" [routerLink]="link.route" routerLinkActive="rail-sublink-active"
+             [routerLinkActiveOptions]="{exact: !!link.subList}">{{ link.name }}</a>
+          @if (link.subList) {
+            <div class="rail-chips">
+              @for (child of link.subList; track child.route) {
+                <a class="rail-chip" [routerLink]="child.route" routerLinkActive="rail-chip-active">{{ child.name }}</a>
+              }
+            </div>
+          }
+        }
+      </nav>
+    }
+
+    @if (showBoardGameFilters()) {
+      <section class="rail-section" aria-label="Filtres des jeux de société">
+        <app-filter-board-games />
+      </section>
+    }
+
+    <div class="rail-footer">
+      <button mat-icon-button type="button" (click)="cycleTheme()" [attr.aria-label]="themeLabel()" [title]="themeLabel()">
+        <mat-icon aria-hidden="true">{{ themeIcon() }}</mat-icon>
+      </button>
+      <a mat-icon-button routerLink="/iWantToConfigureThisAwesomeApp" aria-label="Espace administrateur" title="Espace administrateur">
+        <mat-icon aria-hidden="true">admin_panel_settings</mat-icon>
+      </a>
+      <a mat-icon-button href="mailto:maximilien.foret@harmonicinc.com" aria-label="Envoyer une suggestion" title="Envoyer une suggestion">
+        <mat-icon aria-hidden="true">mail</mat-icon>
+      </a>
     </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </aside>
+
+  <div class="scrim" (click)="closeNav()" aria-hidden="true"></div>
+
+  <div class="content" id="top">
+    <header class="topbar">
+      <button mat-icon-button type="button" class="menu-button" aria-controls="rail"
+              [attr.aria-expanded]="navOpen()" aria-label="Ouvrir le menu" (click)="toggleNav()">
+        <mat-icon aria-hidden="true">menu</mat-icon>
+      </button>
+      <p class="topbar-title">{{ sectionLabel() }}</p>
+      <div class="topbar-tools">
+        @switch (searchKind()) {
+          @case ('ludotheque') { <app-ludo-menu /> }
+          @case ('catalogue') { <app-catalogue-menu [commission]="catalogueCommission()" /> }
+          @case ('admin') { <app-admin-menu /> }
+        }
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <router-outlet />
+    </main>
+  </div>
+
+  <button type="button" class="go-top" aria-label="Retour en haut de page" (click)="scrollToTop()">
+    <mat-icon aria-hidden="true">keyboard_arrow_up</mat-icon>
+  </button>
+</div>

@@ -1,125 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use 'styles/tokens' as *;
+@use 'styles/base';
+@use 'app/common/common';
+
 html {
-  font-family: 'Courier Prime', monospace;
+  @include mat.theme((
+    color: (
+      theme-type: color-scheme,
+      primary: mat.$violet-palette,
+      tertiary: mat.$orange-palette,
+    ),
+    typography: (
+      plain-family: $font-ui,
+      brand-family: $font-ui,
+      bold-weight: 700,
+    ),
+    density: 0,
+  ));
 }
 
-.side-nav-container {
-  background: transparent;
-
-  mat-sidenav {
-    width: 200px;
-
-    &:not(.mobile-display) {
-      background: transparent;
-    }
-
-    > div {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      .contact {
-        margin-bottom: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        a {
-          color: inherit;
-          margin-bottom: -5px;
-        }
-      }
-    }
-  }
+// Explicit choice made with the theme button; without it the system preference applies.
+html[data-theme='light'] {
+  color-scheme: light;
 }
 
-html, body {
-  height: 100%;
+html[data-theme='dark'] {
+  color-scheme: dark;
 }
 
-* {
-  font-family: 'Courier Prime', monospace;
-}
-
-.library-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .title {
-    display: flex;
-    font-size: 30px;
-    cursor: pointer;
-    font-weight: bold;
-    color: darkgrey;
-    text-transform: uppercase;
-    justify-content: left;
-    align-items: center;
-    line-height: 40px;
-  }
-}
-
-.library-menu {
-  display: flex;
-  background: transparent;
-  width: 100%;
-  align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-  vertical-align: middle;
-  border-bottom: 2px solid darkgrey;
-
-  &.home-menu {
-    justify-content: flex-end;
-  }
-
-  .tool {
-    width: 100%;
-  }
-
-  .category-menu {
-    flex: 3;
-    justify-content: space-between;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-
-    .search {
-      min-width: 150px;
-      max-width: 500px;
-      width: 100%;
-    }
-  }
-}
-
-.cat-nav {
-  display: flex;
-  font-size: 16px;
-  width: 150px;
-  text-transform: uppercase;
-  justify-content: center;
-  cursor: pointer;
-  color: darkgrey;
-
-  &:hover {
-    background-color: darkgrey;
-    color: white;
-  }
-
-  &.admin {
-    width: 30px;
-    font-size: small;
-  }
-}
-
-/* todo does not work in table issue with z-index ?
-.table-image-preview {
-  transition: transform .1s;
-
-  &:hover{
-    z-index: 10;
-    transform: scale(5);
-  }
-}
-*/

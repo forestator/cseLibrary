@@ -1,28 +1,291 @@
-@import "common/common";
+@use '../styles/tokens' as *;
 
-.go-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.shell {
+  min-height: 100dvh;
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: $rail-width minmax(0, 1fr);
+  }
+}
+
+.skip-link {
   position: fixed;
-  bottom: 50px;
-  right: 50px;
-  width: 75px;
-  height: 75px;
-  line-height: 100px;
-  border-radius: 50%;
+  top: $space-2;
+  left: $space-2;
+  z-index: 100;
+  padding: $space-2 $space-4;
+  border-radius: $radius-pill;
+  background: $accent;
+  color: #fff;
+  transform: translateY(-200%);
 
-  .go-top-link {
-    width: 100%;
-    height: 100%;
-    margin-right: 16px;
-    margin-bottom: 16px;
+  &:focus {
+    transform: none;
+  }
+}
 
-    .icon {
-      font-weight: bold;
-      height: 70px;
-      font-size: 90px;
-      width: 75px;
+.rail {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: $space-4;
+  overflow-y: auto;
+  background: $surface-low;
+  border-right: 1px solid $outline;
+
+  @include desktop {
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+  }
+
+  @include mobile {
+    position: fixed;
+    inset: 0 auto 0 0;
+    z-index: 60;
+    width: min(320px, 86vw);
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: $shadow-2;
+  }
+}
+
+.nav-open .rail {
+  @include mobile {
+    transform: none;
+  }
+}
+
+.scrim {
+  display: none;
+
+  @include mobile {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgb(0 0 0 / 45%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    display: block;
+  }
+}
+
+.nav-open .scrim {
+  @include mobile {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-2;
+  color: $on-surface;
+  text-decoration: none;
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: $radius-md;
+    background: $accent;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.15;
+
+    small {
+      font-weight: 400;
+      font-size: 0.75rem;
+      color: $on-surface-muted;
     }
   }
+}
+
+.rail-section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.rail-heading {
+  margin: $space-3 $space-3 $space-1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $on-surface-muted;
+}
+
+.rail-link {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  padding: $space-3;
+  border-radius: $radius-md;
+  color: $on-surface;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+
+  mat-icon {
+    color: $accent-text;
+  }
+
+  &:hover {
+    background: $surface-high;
+  }
+
+  &.rail-link-active {
+    background: $accent-soft;
+    color: $accent-text;
+    font-weight: 600;
+  }
+}
+
+@each $name, $color in $commission-accents {
+  .rail-link[data-commission='#{$name}'] {
+    --accent: #{$color};
+    --accent-text: color-mix(in srgb, #{$color} 62%, var(--mat-sys-on-surface));
+    --accent-soft: color-mix(in srgb, #{$color} 14%, var(--mat-sys-surface));
+  }
+}
+
+.rail-sublink {
+  padding: $space-2 $space-3;
+  border-radius: $radius-sm;
+  color: $on-surface;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  &:hover {
+    background: $surface-high;
+  }
+
+  &.rail-sublink-active {
+    color: $accent-text;
+    font-weight: 600;
+  }
+}
+
+.rail-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1;
+  padding: 0 $space-3 $space-2;
+}
+
+.rail-chip {
+  padding: 2px $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-pill;
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  &:hover {
+    border-color: $accent;
+    color: $accent-text;
+  }
+
+  &.rail-chip-active {
+    border-color: $accent;
+    background: $accent-soft;
+    color: $accent-text;
+    font-weight: 600;
+  }
+}
+
+.rail-footer {
+  display: flex;
+  gap: $space-1;
+  margin-top: auto;
+  padding-top: $space-3;
+  border-top: 1px solid $outline;
+}
+
+.content {
+  min-width: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  min-height: $topbar-height;
+  padding: $space-2 $space-5;
+  background: color-mix(in srgb, var(--mat-sys-surface) 82%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid $outline;
+
+  @include mobile {
+    padding-inline: $space-3;
+  }
+
+  .menu-button {
+    @include desktop {
+      display: none;
+    }
+  }
+}
+
+.topbar-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  white-space: nowrap;
+
+  @include mobile {
+    display: none;
+  }
+}
+
+.topbar-tools {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.main {
+  max-width: $content-max-width;
+  margin-inline: auto;
+  padding: $space-5;
+
+  @include mobile {
+    padding: $space-4 $space-3;
+  }
+}
+
+.go-top {
+  position: fixed;
+  right: $space-5;
+  bottom: $space-5;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: $radius-pill;
+  background: $accent;
+  color: #fff;
+  box-shadow: $shadow-2;
+  cursor: pointer;
 }

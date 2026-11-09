@@ -1,211 +1,202 @@
-$bloc-bg-color: rgb(60, 60, 60);
-$bloc-fg-color: white;
-$small-radius: 5px;
-$small-space: 5px;
-$medium-space: 10px;
+@use '../../styles/tokens' as *;
+
+// Shared page building blocks (global): every catalogue page is a column of "surfaces".
 
 .core-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: 'Courier Prime', monospace;
+  gap: $space-4;
+  animation: fadein 0.3s ease;
+}
 
-  .core-body {
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(210, 210, 210, 0.5);
-    color: #808080;
+.core-header,
+.core-body {
+  padding: $space-5;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  color: $on-surface;
+
+  @include mobile {
+    padding: $space-4;
+  }
+}
+
+.core-body {
+  padding: $space-4;
+}
+
+.core-header {
+  .core-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $space-3;
+    margin-bottom: $space-2;
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+    .primary {
+      color: $on-surface;
+    }
+
+    .secondary {
+      color: $on-surface-muted;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        color: $accent-text;
+      }
+    }
+
+    .counter {
+      font-size: 1rem;
+      font-weight: 500;
+      color: $on-surface-muted;
+    }
   }
 
-  .core-header {
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: rgba(210, 210, 210, 0.5);
-    color: #808080;
-
-    .core-title {
-      text-transform: uppercase;
-      font-weight: bold;
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      align-items: center;
-      vertical-align: middle;
-      height: 40px;
-      line-height: 40px;
-
-      div {
-        &.primary {
-          color: black;
-          font-size: x-large;
-        }
-
-        &.secondary {
-          color: #808080;
-          font-size: x-large;
-          cursor: pointer;
-
-          &.secondary:hover {
-            color: black;
-          }
-        }
-
-        &.badge {
-          margin-left: 10px;
-        }
-
-        &.counter {
-          margin-left: 10px;
-          text-transform: capitalize;
-        }
-      }
-    }
-
-    .core-resume {
-      font-size: large;
-      white-space: pre-wrap;
-
-      &.category-resume:first-letter {
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: xx-large;
-      }
-    }
+  .core-resume {
+    max-width: 75ch;
+    color: $on-surface-muted;
+    white-space: pre-wrap;
   }
 }
 
 .core-body-category {
   cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: $accent;
+    box-shadow: $shadow-1;
+    transform: translateY(-2px);
+  }
 }
 
 .category-visuel {
-  width: 300px;
-  height: 300px;
-  border-radius: 10px;
-  margin: 20px 0 10px 20px;
+  width: 160px;
+  height: 160px;
+  border-radius: $radius-md;
+  object-fit: cover;
 
   &.small-display {
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
   }
 }
 
+// An item card: cover on the side (always first, whatever the template order), details next to it.
 .book-core {
   display: flex;
+  align-items: flex-start;
+  gap: $space-5;
+
+  @include mobile {
+    flex-direction: column;
+  }
 
   .book-cover {
-    flex: 1;
-    margin: 10px;
+    position: relative;
+    flex: 0 0 200px;
+    order: -1;
+    overflow: hidden;
+    border-radius: $radius-md;
+    background: $surface-high;
 
     img {
-      height: 600px;
-      box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-      border-radius: 10px;
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: $radius-md;
     }
 
     .badge {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background-color: white;
-      border: solid 3px darkslategrey;
-      color: darkslategrey;
-      font-size: 30px;
-      font-weight: bold;
-      opacity: 0.5;
-      left: 0px;
-      bottom: 607px;
-      animation: rotation 1s ease-in 1;
-      transform: rotate(-45deg);
-      text-decoration: underline overline;
+      position: absolute;
+      top: $space-2;
+      left: $space-2;
+      padding: 2px $space-3;
+      border-radius: $radius-pill;
+      background: $accent;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
     }
-
   }
 
   .book-infos {
-    flex: 2;
-    margin: 20px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: $space-1;
+    min-width: 0;
 
     .book-title {
-      font-size: xx-large;
-      font-weight: bold;
-      color: black;
-      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: $space-2;
+      margin-bottom: $space-2;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: $on-surface;
     }
 
     .book-authors {
-      font-size: x-large;
-      margin-bottom: 10px;
+      margin-bottom: $space-2;
+      font-size: 1.05rem;
+      color: $accent-text;
+    }
+
+    .book-info {
+      color: $on-surface-muted;
     }
 
     .book-resume {
-      margin-top: 20px;
-      font-size: large;
-
-      &.book-resume:first-letter {
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: xx-large;
-      }
+      margin-top: $space-3;
+      max-width: 75ch;
     }
   }
 }
 
 .bloc-link {
-  background-color: $bloc-bg-color;
-  color: $bloc-fg-color;
-  border-radius: $small-radius;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  margin: $small-space;
-  transition-property: background-color;
-  transition-duration: .5s;
-  transition-timing-function: ease-in;
+  justify-content: center;
+  margin: $space-1;
+  padding: $space-1 $space-3;
+  border-radius: $radius-pill;
+  background: $surface-high;
+  color: $on-surface;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
 
   a {
+    color: inherit;
     text-decoration: none;
-    color: $bloc-fg-color;
   }
 
+  &:hover,
   &.bloc-selected {
-    background-color: $bloc-fg-color;
-    color: $bloc-bg-color;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-
-    a {
-      color: $bloc-bg-color;
-    }
+    background: $accent;
+    color: #fff;
   }
-}
-
-.bloc-link:hover {
-  background-color: $bloc-fg-color;
-  color: $bloc-bg-color;
-  box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
-
-  a {
-    color: $bloc-bg-color;
-  }
-}
-
-.fadein {
-  animation: fadein 2s;
 }
 
 @keyframes fadein {
   from {
     opacity: 0;
+    transform: translateY(4px);
   }
+
   to {
     opacity: 1;
+    transform: none;
   }
 }

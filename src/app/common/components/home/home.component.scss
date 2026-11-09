@@ -1,22 +1,103 @@
-@import "../../common";
+@use '../../../../styles/tokens' as *;
 
-.core-header {
-  flex: 1;
+.hero {
+  margin-bottom: $space-6;
+  padding: $space-6 $space-5;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, var(--mat-sys-surface)), $surface-card);
+  border: 1px solid $outline;
+
+  .hero-title {
+    margin: 0 0 $space-2;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-text {
+    max-width: 60ch;
+    margin: 0;
+    font-size: 1.1rem;
+    color: $on-surface-muted;
+  }
 }
 
-.core-body {
-  &.comission {
-    cursor: pointer;
-    display: flex;
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: $space-5;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-    .category-visuel {
-      width: 150px;
-      height: 150px;
-    }
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  color: $on-surface;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 
-    .lib-resume {
-      display: flex;
-      flex-direction: column;
-    }
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    border-color: $accent;
+    box-shadow: $shadow-2;
   }
+}
+
+.card-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: $accent-soft;
+
+  img {
+    object-fit: cover;
+  }
+
+  &.card-cover-logo img {
+    padding: $space-6;
+    object-fit: contain;
+  }
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-5;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  mat-icon {
+    color: $accent-text;
+  }
+}
+
+.card-text {
+  color: $on-surface-muted;
+}
+
+.card-note {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin-top: auto;
+  padding-top: $space-3;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: $accent-text;
 }

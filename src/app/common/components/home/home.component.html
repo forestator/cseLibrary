@@ -1,103 +1,37 @@
-<div class="core-page fadein">
-  <div class="core-body comission"
-       (click)="navigateService.goToComission(comissions.BIBLIOTHEQUE)">
-    <img class="category-visuel"
-         src="https://res.cloudinary.com/seo9axkp/image/upload/assets/categories/comissions/Forest_a_generic_image_for_a_library_category_in_my_application_cc76b336-fe9e-40fa-8dff-8060c9d4f8ec"
-         alt="Biblio">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Bibliotheque</div>
-      </div>
-      <div class="core-resume lib-resume">
-        <!-- fausse erreur  sur moment -->
-        Prochaine commission : {{BiblioUtils.nextComission() | momentToDate}}
-      </div>
-    </div>
-  </div>
-  <div class="core-body comission"
-       (click)="navigateService.goToComission(comissions.LUDOTHEQUE)">
-    <img class="category-visuel"
-         src="https://res.cloudinary.com/seo9axkp/image/upload/assets/categories/comissions/Forest_a_generic_image_for_a_boardgames_library_category_in_my__11426016-9902-42c4-9fb7-d9531246a7a9"
-         alt="Ludotheque">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Ludothèque</div>
-      </div>
-      <div class="core-resume lib-resume">
-        Prochaine comission : {{GamesUtils.getNextLudothequeOpening() | momentToDate}}
-      </div>
-    </div>
-  </div>
-  <div class="core-body comission"
-       (click)="navigateService.goToComission(comissions.BRICOLAGE)">
-    <img class="category-visuel"
-         src="https://res.cloudinary.com/seo9axkp/image/upload/assets/categories/comissions/Forest_a_generic_image_for_tools_that_can_be_borrowed_category__a256b2db-ca02-42e8-904c-ec806fefd797"
-         alt="Bricolage">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Bricolage</div>
-      </div>
-      <div class="core-resume lib-resume">
-        Prochaine comission : {{nextBricolageOpening() | momentToDate}}
-      </div>
-    </div>
-  </div>
-  <div class="core-body comission"
-       (click)="navigateService.goToComission(comissions.SONOTHEQUE)">
-    <img class="category-visuel"
-         src="https://res.cloudinary.com/seo9axkp/image/upload/assets/categories/comissions/Forest_a_generic_image_for_speakers_and_microphones_that_can_be_d71477b5-f554-45a5-a25c-47edea9160a8"
-         alt="Enceintes">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Sonothèque</div>
-      </div>
-      <div class="core-resume lib-resume">
-        <span>Enceintes, micros ...</span>
-        <span>Pour emprunter veuillez contacter un membre de la commission</span>
-      </div>
-    </div>
-  </div>
-  <div class="core-body comission"
-       (click)="navigateService.goToComission(comissions.NAUTISME)">
-    <img class="category-visuel"
-         src="https://res.cloudinary.com/seo9axkp/image/upload/assets/categories/comissions/Forest_paddle_category_1739e8cc-4e73-475a-8805-961de1409771"
-         alt="Nautisme">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Matériel Nautique</div>
-      </div>
-      <div class="core-resume lib-resume">
-        <span>Paddle, kayak ...</span>
-        <span>Pour emprunter veuillez contacter un membre de la commission</span>
-      </div>
-    </div>
-  </div>
-  <div class="core-body comission"
-       (click)="navigateService.goToComission(comissions.PHOTO)">
-    <img class="category-visuel"
-         src="https://res.cloudinary.com/seo9axkp/image/upload/assets/categories/comissions/Forest_a_generic_image_for_my_application_for_a_category_to_bor_6e97a15e-efb0-468d-b6e7-aeedeb84bcf6"
-         alt="Appareil Photo">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Matériel Photo</div>
-      </div>
-      <div class="core-resume lib-resume">
-        <span>Appareil photo, Vidéo projecteurs ...</span>
-        <span>Pour emprunter veuillez contacter un membre de la commission</span>
-      </div>
-    </div>
-  </div>
-  <div class="core-body comission" (click)="gotoUrl('https://www.bdgest.com/online/collection?IdUser=118221&IdCollection=1')">
-    <img class="category-visuel"
-         src="https://www.bdgest.com/skin/logo_h.svg"
-         alt="BD">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">BDthèque</div>
-      </div>
-      <div class="core-resume lib-resume">
-        Retrouvez vos BD préférés
-      </div>
-    </div>
-  </div>
-</div>
+<section class="hero">
+  <h1 class="hero-title">La médiathèque du CSE</h1>
+  <p class="hero-text">Livres, jeux, outils, matériel de sono, de nautisme et de photo : tout ce que le CSE met à votre disposition, à portée de clic.</p>
+</section>
+
+<ul class="cards">
+  @for (card of cards; track card.id; let first = $first) {
+    <li>
+      <a class="card" [routerLink]="card.route" [attr.data-commission]="card.id">
+        <span class="card-cover">
+          <img [ngSrc]="card.cover" [priority]="first" fill alt="" sizes="(max-width: 840px) 100vw, 33vw">
+        </span>
+        <span class="card-body">
+          <span class="card-title"><mat-icon aria-hidden="true">{{ card.icon }}</mat-icon>{{ card.label }}</span>
+          <span class="card-text">{{ card.summary }}</span>
+          @if (card.nextSession; as nextSession) {
+            <span class="card-note"><mat-icon aria-hidden="true">event</mat-icon>Prochaine commission : {{ nextSession | momentToDate }}</span>
+          } @else {
+            <span class="card-note"><mat-icon aria-hidden="true">forum</mat-icon>Contactez un membre de la commission pour emprunter</span>
+          }
+        </span>
+      </a>
+    </li>
+  }
+  <li>
+    <a class="card" [href]="bdgestUrl" target="_blank" rel="noopener noreferrer" data-commission="bibliotheque">
+      <span class="card-cover card-cover-logo">
+        <img ngSrc="https://www.bdgest.com/skin/logo_h.svg" fill alt="" sizes="33vw">
+      </span>
+      <span class="card-body">
+        <span class="card-title"><mat-icon aria-hidden="true">collections_bookmark</mat-icon>BDthèque</span>
+        <span class="card-text">Retrouvez vos BD préférées sur BDGest.</span>
+        <span class="card-note"><mat-icon aria-hidden="true">open_in_new</mat-icon>S'ouvre dans un nouvel onglet</span>
+      </span>
+    </a>
+  </li>
+</ul>
