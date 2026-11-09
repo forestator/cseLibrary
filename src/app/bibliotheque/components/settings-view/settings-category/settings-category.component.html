@@ -40,22 +40,18 @@
   </div>
   @if (category().by === 'BY_SERIES') {
     @for (serie of category().series; track serie; let si = $index) {
-      <app-settings-series
-        [biblio]="biblio()"
+      <app-settings-series [biblio]="biblio()"
         (sendDelete)="deleteSeries($event)"
         [series]="serie"
-        [index]="(index()+1) + '_' + (si+1)">
-      </app-settings-series>
+        [index]="(index()+1) + '_' + (si+1)" />
     }
   }
   @if (category().by === 'BY_AUTHOR') {
     @for (author of category().authors; track author; let ai = $index) {
-      <app-settings-author
-        (sendDelete)="deleteAuthor($event)"
+      <app-settings-author (sendDelete)="deleteAuthor($event)"
         [author]="author"
         [biblio]="biblio()"
-        [index]="(index()+1) + '_' + (ai+1)">
-      </app-settings-author>
+        [index]="(index()+1) + '_' + (ai+1)" />
     }
   }
 </mat-expansion-panel>

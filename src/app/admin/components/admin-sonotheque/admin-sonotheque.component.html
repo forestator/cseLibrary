@@ -2,7 +2,7 @@
   <button mat-raised-button color="primary" (click)="addItem()">Ajouter une nouveauté</button>
   <button mat-raised-button color="primary" (click)="editItem()">Modifier un objet existant</button>
 </div>
-<mat-divider></mat-divider>
+<mat-divider />
 <div class="items-list">
   <mat-accordion>
     @for (sonoCat of sonoCategories; track sonoCat) {
@@ -12,8 +12,7 @@
           <mat-panel-title>{{sonoCat | titlecase}}</mat-panel-title>
         </mat-expansion-panel-header>
         @if (openededCat === sonoCat) {
-          <app-sono-table
-          [sonoItems]="openededCatItems$ | async"></app-sono-table>
+          <app-sono-table [sonoItems]="openededCatItems$ | async" />
         }
       </mat-expansion-panel>
     }

@@ -3,7 +3,7 @@
   <button mat-raised-button color="primary" (click)="addTool()">Ajouter un nouvel outil</button>
   <button mat-raised-button color="primary" (click)="editTool()">Modifier un outil existant</button>
 </div>
-<mat-divider></mat-divider>
+<mat-divider />
 <div class="items-list">
   <mat-accordion>
     @for (brico of bricoCategories; track brico) {
@@ -14,8 +14,7 @@
           <mat-panel-title>{{brico | titlecase}}</mat-panel-title>
         </mat-expansion-panel-header>
         @if (openededCat === brico) {
-          <app-brico-table
-          [tools]="toolsOfCategory(brico) | async"></app-brico-table>
+          <app-brico-table [tools]="toolsOfCategory(brico) | async" />
         }
       </mat-expansion-panel>
     }

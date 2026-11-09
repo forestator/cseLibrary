@@ -11,7 +11,7 @@
               <mat-icon>navigate_next</mat-icon>
               <div class="primary">{{series.name}}</div>
               <div class="badge">
-                <app-series-badge [series]="series"></app-series-badge>
+                <app-series-badge [series]="series" />
               </div>
               <div class="counter">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
             </div>
@@ -25,7 +25,7 @@
                     <img alt="" class="book-cover" [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
                   </div>
                   <div class="book-badge">
-                    <app-badge [status]="book.status" [display]="'small'"></app-badge>
+                    <app-badge [status]="book.status" [display]="'small'" />
                   </div>
                 </div>
               }
@@ -33,10 +33,9 @@
           </div>
           <div class="core-body">
             @for (book of series.books | bookFilter: tools.adminMode; track book; let index = $index) {
-              <app-book-row
-                [biblio]="biblio"
+              <app-book-row [biblio]="biblio"
                 [book]="book"
-              [index]="index"></app-book-row>
+              [index]="index" />
             }
           </div>
         </div>

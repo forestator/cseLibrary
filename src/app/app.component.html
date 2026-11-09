@@ -17,8 +17,8 @@
           </mat-list-item>
         }
         @if (showBoardGameFilters) {
-          <mat-divider></mat-divider>
-          <app-filter-board-games></app-filter-board-games>
+          <mat-divider />
+          <app-filter-board-games />
         }
       </mat-list>
     </div>
@@ -37,23 +37,23 @@
       }
       @if (showBibliothequeMenu && !(toolService.mobilePhoneDisplay$ | async) && !showAdmin) {
         <app-library-menu class="tool"
-        ></app-library-menu>
+         />
       }
       @if (showLudothequeMenu && !showAdmin) {
-        <app-ludo-menu class="tool"></app-ludo-menu>
+        <app-ludo-menu class="tool" />
       }
       @if (showBricolageMenu && !showAdmin) {
-        <app-brico-menu class="tool" [allTools]="allTools$ | async"></app-brico-menu>
+        <app-brico-menu class="tool" [allTools]="allTools$ | async" />
       }
       @if (showAdmin) {
-        <app-admin-menu class="tool"></app-admin-menu>
+        <app-admin-menu class="tool" />
       }
       @if (showHomeMenu) {
         <mat-icon [routerLink]="'/iWantToConfigureThisAwesomeApp'">login</mat-icon>
       }
     </mat-toolbar>
 
-    <router-outlet></router-outlet>
+    <router-outlet />
 
     <div class="go-top bloc-link">
       <div (click)="scrollToTop()" class="go-top-link">

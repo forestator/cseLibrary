@@ -8,13 +8,11 @@
       </div>
       @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.CONSOLE; track trackVideoGame(index, videoGame); let index = $index) {
         <div class="core-body">
-          <app-video-game-console-accessory-row
-            [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId()">
-          </app-video-game-console-accessory-row>
+          <app-video-game-console-accessory-row [videoGame]="videoGame"
+            [selectedVideoGameId]="selectedVideoGameId()" />
         </div>
       }
-      <mat-divider></mat-divider>
+      <mat-divider />
     }
     @if ((videoGames() | filterVideoGameByType: videoGameType.ACCESSORY).length > 0) {
       <div class="core-header">
@@ -24,13 +22,11 @@
       </div>
       @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.ACCESSORY  ; track trackVideoGame(index, videoGame); let index = $index) {
         <div class="core-body">
-          <app-video-game-console-accessory-row
-            [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId()">
-          </app-video-game-console-accessory-row>
+          <app-video-game-console-accessory-row [videoGame]="videoGame"
+            [selectedVideoGameId]="selectedVideoGameId()" />
         </div>
       }
-      <mat-divider></mat-divider>
+      <mat-divider />
     }
     <div class="core-header">
       <div class="core-title">
@@ -40,10 +36,8 @@
     <div class="core-body video-game-row">
       @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.GAME; track trackVideoGame(index, videoGame); let index = $index) {
         <div class="core-body">
-          <app-video-game-row
-            [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId()">
-          </app-video-game-row>
+          <app-video-game-row [videoGame]="videoGame"
+            [selectedVideoGameId]="selectedVideoGameId()" />
         </div>
       }
     </div>

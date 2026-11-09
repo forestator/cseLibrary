@@ -10,7 +10,7 @@
       @for (option of filteredOptions$ | async; track option) {
         <mat-option
           [value]="option">
-          <app-badge [status]="option.category"></app-badge>
+          <app-badge [status]="option.category" />
           {{displayGame(option)}}
         </mat-option>
       }

@@ -32,17 +32,13 @@
     }
   </div>
   @for (book of author().books; track book; let bi = $index) {
-    <app-settings-book
-      [biblio]="biblio()"
+    <app-settings-book [biblio]="biblio()"
       [book]="book"
-      [index]="index() + '_' + (bi+1)">
-    </app-settings-book>
+      [index]="index() + '_' + (bi+1)" />
   }
   @for (series of author().series; track series; let si = $index) {
-    <app-settings-series
-      [biblio]="biblio()"
+    <app-settings-series [biblio]="biblio()"
       [series]="series"
-      [index]="index() + '_' + (si+1)">
-    </app-settings-series>
+      [index]="index() + '_' + (si+1)" />
   }
 </mat-expansion-panel>

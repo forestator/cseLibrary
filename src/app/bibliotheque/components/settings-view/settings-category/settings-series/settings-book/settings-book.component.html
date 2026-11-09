@@ -3,7 +3,7 @@
     <mat-panel-title>
       <div class="settings-header">
         <div class="designation">
-          #{{index()}}: {{book().name}} <app-badge [status]="book().status"></app-badge>
+          #{{index()}}: {{book().name}} <app-badge [status]="book().status" />
         </div>
         <div class="controls">
           <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
@@ -41,7 +41,7 @@
     </div>
     <div class="field">
       <div class="label">Status</div>
-      <div class="content"><app-badge [status]="book().status"></app-badge></div>
+      <div class="content"><app-badge [status]="book().status" /></div>
     </div>
     <div class="field">
       <div class="label">ISBN</div>

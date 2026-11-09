@@ -26,7 +26,7 @@
       <mat-select formControlName="category">
         @for (cat of categoryOptions; track cat) {
           <mat-option [value]="cat.id">
-            <app-badge class="category" [status]="cat.id"></app-badge>
+            <app-badge class="category" [status]="cat.id" />
           </mat-option>
         }
       </mat-select>
@@ -38,12 +38,12 @@
     </mat-form-field>
     <div>
       <mat-label>Nouveauté ?</mat-label>
-      <mat-checkbox formControlName="isNew"></mat-checkbox>
+      <mat-checkbox formControlName="isNew" />
     </div>
   </div>
-  <mat-divider [vertical]="true"></mat-divider>
+  <mat-divider [vertical]="true" />
   <div class="boardgames">
-    <app-upload-game [selectedGame]="gameForm().value"></app-upload-game>
+    <app-upload-game [selectedGame]="gameForm().value" />
     @if (gameForm().get('libraryId')?.value === 'boardGames') {
       <mat-form-field appearance="fill">
         <mat-label>BoardGameGeek Id</mat-label>
@@ -56,7 +56,7 @@
     }
   </div>
   @if (gameForm().get('libraryId')?.value === 'boardGames') {
-    <mat-divider [vertical]="true"></mat-divider>
+    <mat-divider [vertical]="true" />
     <div class="boardgames">
       <mat-form-field appearance="fill">
         <mat-label>Minimum de joueurs</mat-label>
@@ -85,7 +85,7 @@
     </div>
   }
   @if (gameForm().get('libraryId')?.value === 'videoGames') {
-    <mat-divider [vertical]="true"></mat-divider>
+    <mat-divider [vertical]="true" />
     <div class="boardgames">
       <mat-form-field appearance="fill">
         <mat-label>Type</mat-label>

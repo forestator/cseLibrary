@@ -33,15 +33,13 @@
     }
     <div class="field">
       <div class="label">Status</div>
-      <div class="content"><app-series-badge [series]="series()"></app-series-badge></div>
+      <div class="content"><app-series-badge [series]="series()" /></div>
     </div>
   </div>
   @for (book of series().books; track book; let bi = $index) {
-    <app-settings-book
-      [biblio]="biblio()"
+    <app-settings-book [biblio]="biblio()"
       (sendDelete)="deleteBook($event)"
       [book]="book"
-      [index]="index() + '_' + (bi+1)">
-    </app-settings-book>
+      [index]="index() + '_' + (bi+1)" />
   }
 </mat-expansion-panel>

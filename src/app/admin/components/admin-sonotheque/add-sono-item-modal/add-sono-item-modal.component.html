@@ -35,11 +35,10 @@
         </div>
       </div>
     </div>
-    <mat-divider [vertical]="true"></mat-divider>
+    <mat-divider [vertical]="true" />
     <app-upload-form [defaultImage]="data?.selectedItem?.cover ?? defaultImageForSonoItem"
       [disabled]="$safeNavigationMigration(sonoItemForm?.invalid)"
-      (fileToUploadReady)="upload($event)">
-    </app-upload-form>
+      (fileToUploadReady)="upload($event)" />
   </div>
   <div mat-dialog-actions>
     <button (click)="addSonoItem()"

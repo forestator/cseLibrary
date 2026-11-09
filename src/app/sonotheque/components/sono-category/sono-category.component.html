@@ -11,7 +11,7 @@
   }
   @for (sonoItem of categoryItems$ | async; track sonoItem; let index = $index) {
     <div class="core-body">
-      <app-sono-item-row [sonoItem]="sonoItem" [index]="index" [selectedSonoItemId]="searchedSonoItemId"></app-sono-item-row>
+      <app-sono-item-row [sonoItem]="sonoItem" [index]="index" [selectedSonoItemId]="searchedSonoItemId" />
     </div>
   }
 </div>

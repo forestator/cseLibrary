@@ -2,7 +2,7 @@
   <button mat-raised-button color="primary" (click)="addItem()">Ajouter une nouveauté</button>
   <button mat-raised-button color="primary" (click)="editItem()">Modifier un objet existant</button>
 </div>
-<mat-divider></mat-divider>
+<mat-divider />
 <div class="items-list">
-  <app-nautisme-table [nautItems]="nautismeDatabaseService.allNautisme$ | async"></app-nautisme-table>
+  <app-nautisme-table [nautItems]="nautismeDatabaseService.allNautisme$ | async" />
 </div>

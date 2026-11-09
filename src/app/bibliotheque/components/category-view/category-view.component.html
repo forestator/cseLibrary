@@ -14,8 +14,7 @@
         @if (category.by===VIEW_BY.BY_AUTHOR) {
           <div>
             @if (category.by===VIEW_BY.BY_AUTHOR) {
-              <app-alphabet
-              (filterByLetter)="filterByLetter($event)"></app-alphabet>
+              <app-alphabet (filterByLetter)="filterByLetter($event)" />
             }
           </div>
         }
@@ -32,20 +31,16 @@
       </div>
       <div class="category-core">
         @for (series of category.series  | seriesFilter : tools.adminMode; track series) {
-          <app-series-row
-            [biblio]="biblio"
-            [series]="series">
-          </app-series-row>
+          <app-series-row [biblio]="biblio"
+            [series]="series" />
         }
       </div>
       @if (category.by===VIEW_BY.BY_AUTHOR) {
         <div class="category-core">
           @for (author of filterAuthors(category.authors); track author) {
-            <app-author-row
-              [author]="author"
+            <app-author-row [author]="author"
               [biblio]="biblio"
-              (sendView)="selectAuthor($event)">
-            </app-author-row>
+              (sendView)="selectAuthor($event)" />
           }
         </div>
       }

@@ -2,11 +2,11 @@
   <div [id]="sonoItem().id" class="book-core">
     @if ((parity || (toolsService.mobilePhoneDisplay$ | async))) {
       <ng-container [ngTemplateOutlet]="image"
-      ></ng-container>
+       />
     }
     <div class="book-infos">
       <div class="book-title">{{sonoItem().name}}
-        <app-badge [status]="sonoItem().status"></app-badge>
+        <app-badge [status]="sonoItem().status" />
       </div>
       <div class="book-info">Ref: {{sonoItem().id}}</div>
       @if (sonoItem().description) {
@@ -15,7 +15,7 @@
     </div>
     @if (!parity && !(toolsService.mobilePhoneDisplay$ | async)) {
       <ng-container [ngTemplateOutlet]="image"
-      ></ng-container>
+       />
     }
   </div>
 }

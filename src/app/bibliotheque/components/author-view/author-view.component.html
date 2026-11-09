@@ -22,7 +22,7 @@
             }
             @if (book.id) {
               <div class="book-badge">
-                <app-badge [status]="book.status" [display]="'small'"></app-badge>
+                <app-badge [status]="book.status" [display]="'small'" />
               </div>
             }
           </div>
@@ -32,7 +32,7 @@
     <div class="core-body">
       @for (book of books; track book; let index = $index) {
         @if (book.id) {
-          <app-book-row [book]="book" [index]="index" [biblio]="biblio()"></app-book-row>
+          <app-book-row [book]="book" [index]="index" [biblio]="biblio()" />
         }
         @if (book.status==='SEPARATOR') {
           <div class="series-separator">

@@ -1,7 +1,5 @@
 @if (consoleId) {
-  <app-video-games-console-details
-    [consoleId]="consoleId"
+  <app-video-games-console-details [consoleId]="consoleId"
     [selectedVideoGameId]="selectedVideoGameId"
-    [videoGames]="videoGames$ | async">
-  </app-video-games-console-details>
+    [videoGames]="videoGames$ | async" />
 }

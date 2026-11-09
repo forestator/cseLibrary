@@ -1,7 +1,7 @@
 @if (game()) {
   <div [id]="game().ref" class="book-core">
     @if ((parity || (toolsService.mobilePhoneDisplay$ | async))) {
-      <ng-container [ngTemplateOutlet]="image"></ng-container>
+      <ng-container [ngTemplateOutlet]="image" />
     }
     <div class="book-infos">
       <div class="book-title">{{game().name}}
@@ -11,7 +11,7 @@
       }
     </div>
     @if (!parity && !(toolsService.mobilePhoneDisplay$ | async)) {
-      <ng-container [ngTemplateOutlet]="image"></ng-container>
+      <ng-container [ngTemplateOutlet]="image" />
     }
   </div>
 }

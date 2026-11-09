@@ -74,26 +74,20 @@
         </div>
       </div>
       @if (categoryDisplayed) {
-        <app-settings-category
-          [biblio]="biblio"
+        <app-settings-category [biblio]="biblio"
           (sendDelete)="deleteCategory($event)"
           [category]="categoryDisplayed"
-          [index]="index?index + 1:0">
-        </app-settings-category>
+          [index]="index?index + 1:0" />
       }
       @if (isAuthorsDisplayed) {
-        <app-settings-authors
-          [biblio]="biblio"
+        <app-settings-authors [biblio]="biblio"
           (sendDelete)="deleteAuthor($event)"
-          [index]="index?index + 1:0">
-        </app-settings-authors>
+          [index]="index?index + 1:0" />
       }
       @if (isPublishersDisplayed) {
-        <app-settings-publishers
-          [biblio]="biblio"
+        <app-settings-publishers [biblio]="biblio"
           (sendDelete)="deletePublisher($event)"
-          [index]="index?index + 1:0">
-        </app-settings-publishers>
+          [index]="index?index + 1:0" />
       }
     </mat-expansion-panel>
   </div>

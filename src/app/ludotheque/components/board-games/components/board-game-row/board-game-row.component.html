@@ -2,8 +2,7 @@
   <div [id]="boardGame().id" class="book-core">
     @if ((parity || (toolsService.mobilePhoneDisplay$ | async)) && boardGame().cover) {
       <ng-container [ngTemplateOutlet]="image"
-        >
-      </ng-container>
+         />
     }
     <div class="book-infos">
       <div class="book-title">
@@ -45,8 +44,7 @@
     </div>
     @if (!parity && boardGame().cover && !(toolsService.mobilePhoneDisplay$ | async)) {
       <ng-container [ngTemplateOutlet]="image"
-        >
-      </ng-container>
+         />
     }
   </div>
 }

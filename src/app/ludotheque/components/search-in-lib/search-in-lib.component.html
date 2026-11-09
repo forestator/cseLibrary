@@ -10,7 +10,7 @@
     (optionSelected)="goToSelectedItem($event)">
     @for (option of filteredOptions$ | async; track option) {
       <mat-option [value]="option">
-        <app-badge class="badge" [status]="option.category"></app-badge>
+        <app-badge class="badge" [status]="option.category" />
         {{option.name}}
       </mat-option>
     }

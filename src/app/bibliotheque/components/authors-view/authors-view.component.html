@@ -7,15 +7,13 @@
         <div class="primary">Par Auteur</div>
         <!-- <div class="counter">{{counter}} auteur</div> -->
       </div>
-      <app-alphabet></app-alphabet>
+      <app-alphabet />
     </div>
     <div class="core-body">
       @for (author of authors(); track author) {
-        <app-author-row
-          [author]="author"
+        <app-author-row [author]="author"
           [biblio]="biblio()"
-          (sendView)="select($event)">
-        </app-author-row>
+          (sendView)="select($event)" />
       }
     </div>
   </div>

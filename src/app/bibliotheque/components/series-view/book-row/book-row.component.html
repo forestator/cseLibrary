@@ -8,7 +8,7 @@
     </div>
     <div class="book-infos">
       <div class="book-title">{{book().name}}
-        <app-badge [status]="book().status"></app-badge>
+        <app-badge [status]="book().status" />
       </div>
       <div class="book-authors">{{tools.getAuthors(book().authorIds, biblio()) | async}}</div>
       @if (book().tome?.length !== 0) {
@@ -44,7 +44,7 @@
   <div [id]="book().id" class="book-core">
     <div class="book-infos">
       <div class="book-title">{{book().name}}
-        <app-badge [status]="book().status"></app-badge>
+        <app-badge [status]="book().status" />
       </div>
       <div class="book-authors">{{tools.getAuthors(book().authorIds, biblio()) | async}}</div>
       @if (book().tome?.length !== 0) {

@@ -2,11 +2,11 @@
   <div [id]="tool().id" class="book-core">
     @if ((parity || (toolsService.mobilePhoneDisplay$ | async))) {
       <ng-container [ngTemplateOutlet]="image"
-      ></ng-container>
+       />
     }
     <div class="book-infos">
       <div class="book-title">{{tool().name}}
-        <app-badge [status]="tool().status"></app-badge>
+        <app-badge [status]="tool().status" />
       </div>
       <div class="book-info">Ref: {{tool().id}}</div>
       @if (tool().description) {
@@ -35,7 +35,7 @@
     </div>
     @if (!parity && !(toolsService.mobilePhoneDisplay$ | async)) {
       <ng-container [ngTemplateOutlet]="image"
-      ></ng-container>
+       />
     }
   </div>
 }

@@ -11,13 +11,11 @@
         @if (data.books.length > 0) {
           <div id="new" class="core-body">
             @for (book of data.books; track book; let index = $index) {
-              <app-book-row
-                [id]="book.book.id"
+              <app-book-row [id]="book.book.id"
                 [book]="book.book"
                 [biblio]="data.biblio"
                 [category]="book.category"
-                [index]="index">
-              </app-book-row>
+                [index]="index" />
             }
           </div>
         }
@@ -25,13 +23,11 @@
           <div id="inProject" class="core-body">
             <div class="title">En projet</div>
             @for (book of data.bookInProject; track book; let index = $index) {
-              <app-book-row
-                [id]="book.book.id"
+              <app-book-row [id]="book.book.id"
                 [book]="book.book"
                 [biblio]="data.biblio"
                 [category]="book.category"
-                [index]="index">
-              </app-book-row>
+                [index]="index" />
             }
           </div>
         }

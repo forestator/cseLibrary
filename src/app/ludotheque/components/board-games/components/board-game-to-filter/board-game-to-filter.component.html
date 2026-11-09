@@ -1,7 +1,5 @@
 @if (categoryId) {
-  <app-board-game-category-details
-    [categoryId]="categoryId"
+  <app-board-game-category-details [categoryId]="categoryId"
     [selectedBoardGameId]="selectedBoardGameId"
-    [boardGames]="boardGames$ | async">
-  </app-board-game-category-details>
+    [boardGames]="boardGames$ | async" />
 }

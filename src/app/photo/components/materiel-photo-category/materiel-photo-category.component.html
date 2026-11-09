@@ -11,7 +11,7 @@
   }
   @for (photoItem of categoryItems$ | async; track photoItem; let index = $index) {
     <div class="core-body">
-      <app-materiel-photo-row [item]="photoItem" [index]="index" [selectedItem]="searchedPhotoItemId"></app-materiel-photo-row>
+      <app-materiel-photo-row [item]="photoItem" [index]="index" [selectedItem]="searchedPhotoItemId" />
     </div>
   }
 </div>

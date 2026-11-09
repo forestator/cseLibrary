@@ -11,7 +11,7 @@
   }
   @for (tool of categoryTools$ | async; track tool; let index = $index) {
     <div class="core-body">
-      <app-tool-row [tool]="tool" [index]="index" [selectedTool]="searchedToolId"></app-tool-row>
+      <app-tool-row [tool]="tool" [index]="index" [selectedTool]="searchedToolId" />
     </div>
   }
 </div>

@@ -11,7 +11,7 @@
     <div class="core-header">
       @for (item of nautismeDatabaseService.allNautisme$ | async; track item; let index = $index) {
         <div class="core-body">
-          <app-nautisme-item-row [item]="item" [index]="index"></app-nautisme-item-row>
+          <app-nautisme-item-row [item]="item" [index]="index" />
         </div>
       }
     </div>

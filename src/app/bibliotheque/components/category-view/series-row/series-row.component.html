@@ -3,7 +3,7 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <app-series-badge [series]="series()"></app-series-badge>
+          <app-series-badge [series]="series()" />
           <span class="series-title">{{series().name}}</span>
           <span class="series-info">{{(series().books | bookFilter: tools.adminMode).length}} livres</span>
         </mat-panel-title>
@@ -41,7 +41,7 @@
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef class="mat-cell-status"> Status </th>
             <td mat-cell *matCellDef="let book">
-              <app-badge [status]="book.status"></app-badge>
+              <app-badge [status]="book.status" />
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="bookColumns"></tr>
