@@ -6,7 +6,8 @@ $font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 1400px;
+  width: 100%;
+  max-width: 1400px;
   margin-left: auto;
   margin-right: auto;
   font-family: $font-stack;

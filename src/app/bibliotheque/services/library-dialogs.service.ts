@@ -143,7 +143,7 @@ export class LibraryDialogs {
       values: {
         name: series?.name ?? '',
         resume: series?.resume ?? '',
-        author: series ? (series.authorIds[0] ?? '') : parent?.by === ViewBy.BY_AUTHOR ? (parent.id ?? '') : '',
+        author: series ? (series.authorIds?.[0] ?? '') : parent?.by === ViewBy.BY_AUTHOR ? (parent.id ?? '') : '',
         status: series?.status ?? SeriesStatus.NEW,
       },
     });
@@ -225,7 +225,7 @@ export class LibraryDialogs {
     return {
       name: book.name,
       resume: book.resume,
-      author: book.authorIds[0] ?? '',
+      author: book.authorIds?.[0] ?? '',
       status: book.status,
       tome: book.tome,
       ref: book.ref,
@@ -244,7 +244,7 @@ export class LibraryDialogs {
     let author = '';
     let tome = '';
     if (parent && isSeries(parent)) {
-      author = parent.status === SeriesStatus.ONE_SHOT ? '' : (parent.authorIds[0] ?? '');
+      author = parent.status === SeriesStatus.ONE_SHOT ? '' : (parent.authorIds?.[0] ?? '');
       tome = parent.status === SeriesStatus.IN_PROGRESS && parent.books ? String(parent.books.length + 1) : '';
     } else if (parent) {
       author = parent.id ?? '';

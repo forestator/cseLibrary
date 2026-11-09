@@ -32,7 +32,7 @@ export class AuthorRowComponent {
     const authored = categories
       .flatMap(category => category.series ?? [])
       .flatMap(series => series.books ?? [])
-      .filter(book => book.authorIds.includes(author.id));
+      .filter(book => book.authorIds?.includes(author.id));
     return filterBooks(authored, this.adminMode);
   });
 
