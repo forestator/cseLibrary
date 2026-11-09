@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {Biblio, Series} from '../../../../models/author.model';
-import {filterBooks} from '../../../../pipes/book-filter.pipe';
 import {ToolsService} from '../../../../services/biblio/tools.service';
+import {filterBooks} from '../../../models/library-visibility';
 import {BookTableComponent} from '../../common/book-table/book-table.component';
 import {SeriesBadgeComponent} from '../../common/series-badge/series-badge.component';
 

@@ -1,5 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {Book, BookStatus} from '../models/author.model';
+import {Book, BookStatus, Series} from '../../models/author.model';
 
 export function isBookVisible(book: Book): boolean {
   return book.status !== BookStatus.DECLASSED && book.status !== BookStatus.MISSING;
@@ -10,9 +9,7 @@ export function filterBooks(books: ReadonlyArray<Book> | undefined, isAdmin: boo
   return isAdmin ? [...(books ?? [])] : (books ?? []).filter(isBookVisible);
 }
 
-@Pipe({name: 'bookFilter'})
-export class BookFilterPipe implements PipeTransform {
-  transform(books: ReadonlyArray<Book> | undefined, isAdmin: boolean): Array<Book> {
-    return filterBooks(books, isAdmin);
-  }
+/** Keeps the series that still have at least one visible book (all of them in admin mode). */
+export function filterSeries(series: ReadonlyArray<Series> | undefined, isAdmin: boolean): Array<Series> {
+  return isAdmin ? [...(series ?? [])] : (series ?? []).filter(item => item.books?.some(isBookVisible));
 }

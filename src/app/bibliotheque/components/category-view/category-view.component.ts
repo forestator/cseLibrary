@@ -2,11 +2,10 @@ import {ChangeDetectionStrategy, Component, computed, inject, input, signal} fro
 import {RouterLink} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {ViewBy} from '../../../models/author.model';
-import {filterBooks} from '../../../pipes/book-filter.pipe';
-import {filterSeries} from '../../../pipes/series-filter.pipe';
 import {ToolsService} from '../../../services/biblio/tools.service';
+import {filterBooks, filterSeries} from '../../models/library-visibility';
 import {LibraryRepository} from '../../services/library.repository';
-import {AuthorRowComponent} from '../authors-view/author-row/author-row.component';
+import {AuthorRowComponent} from './author-row/author-row.component';
 import {AlphabetComponent} from '../common/alphabet/alphabet.component';
 import {SeriesRowComponent} from './series-row/series-row.component';
 
