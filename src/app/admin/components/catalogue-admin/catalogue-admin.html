@@ -1,0 +1,23 @@
+<div class="manage-buttons">
+  <button mat-raised-button color="primary" (click)="addItem()">{{texts().addButton}}</button>
+  <button mat-raised-button color="primary" (click)="editItem()">{{texts().editButton}}</button>
+</div>
+<mat-divider class="admin-divider" />
+<div class="items-list">
+  @if (config().categories) {
+    <mat-accordion>
+      @for (category of categories(); track category.id) {
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{category.id | titlecase}}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <ng-template matExpansionPanelContent>
+            <app-catalogue-table [items]="category.items" />
+          </ng-template>
+        </mat-expansion-panel>
+      }
+    </mat-accordion>
+  } @else {
+    <app-catalogue-table [items]="items()" />
+  }
+</div>

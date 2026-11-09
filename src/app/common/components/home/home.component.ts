@@ -5,8 +5,7 @@ import {Comissions} from "../../../models/common.model";
 import {GamesUtils} from '../../../models/gamesUtils';
 import moment from 'moment';
 import {BiblioUtils} from '../../../bibliotheque/models/biblio-utils';
-import {BricoUtils} from '../../../bricolage/models/brico-utils';
-import {SonoUtils} from '../../../sonotheque/models/sono.utils';
+import {nextBricolageOpening} from '../../../catalogue/models/commission-schedule';
 import { MomentToDatePipe } from '../../pipe/moment-to-date.pipe';
 
 @Component({
@@ -30,6 +29,5 @@ export class HomeComponent {
   protected readonly GamesUtils = GamesUtils;
   protected readonly moment = moment;
     protected readonly BiblioUtils = BiblioUtils;
-  protected readonly BricoUtils = BricoUtils;
-  protected readonly SonoUtils = SonoUtils;
+  protected readonly nextBricolageOpening = nextBricolageOpening;
 }

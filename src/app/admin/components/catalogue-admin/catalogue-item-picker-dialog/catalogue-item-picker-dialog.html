@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>{{texts.editTitle}}</h1>
+<div class="modal-container" mat-dialog-content>
+  <mat-form-field>
+    <mat-label>{{texts.searchLabel}}</mat-label>
+    <input matInput [placeholder]="texts.searchPlaceholder" [formControl]="searchText" [matAutocomplete]="auto" type="text">
+    <mat-autocomplete #auto="matAutocomplete"
+      [displayWith]="displayItem"
+      (optionSelected)="selectItem($event)"
+      autoActiveFirstOption>
+      @for (option of options(); track option.item.categoryId + '/' + option.item.id) {
+        <mat-option [value]="option.item">
+          @if (data.config.showRef) {
+            <b>{{option.item.id}}</b>
+          }
+          {{option.label}}
+        </mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button (click)="cancel()" mat-button>Cancel</button>
+</div>

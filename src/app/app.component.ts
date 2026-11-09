@@ -5,12 +5,8 @@ import {BoardGameCategory} from './models/boardGame.model';
 import {Consoles} from './models/videoGames.model';
 import { MatSidenavContent, MatSidenavContainer, MatSidenav } from '@angular/material/sidenav';
 import {Libraries} from './models/author.model';
-import {BricoCategories, Tool} from './bricolage/models/bricolage.model';
-import {Observable} from 'rxjs';
-import {BricolageDatabaseService} from './bricolage/services/bricolage-database.service';
-import {SonoCategory} from "./sonotheque/models/sono.model";
+import {BricoCategories, PhotoCategory, SonoCategory} from './catalogue/models/catalogue-categories';
 import {Comissions} from "./models/common.model";
-import {PhotoCategory} from './photo/models/materiel-photo.model';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatList, MatListItem, MatListItemTitle, MatDivider } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
@@ -20,7 +16,7 @@ import { LibraryMenuComponent } from './bibliotheque/components/library-menu/lib
 import { AsyncPipe } from '@angular/common';
 import { FilterBoardGamesComponent } from './ludotheque/components/board-games/components/filter-board-games/filter-board-games.component';
 import { LudoMenuComponent } from './ludotheque/components/ludo-menu/ludo-menu.component';
-import { BricoMenuComponent } from './bricolage/components/brico-menu/brico-menu.component';
+import { CatalogueMenu } from './catalogue/components/catalogue-menu/catalogue-menu';
 import { AdminMenuComponent } from './admin/components/admin-menu/admin-menu.component';
 
 
@@ -29,11 +25,10 @@ import { AdminMenuComponent } from './admin/components/admin-menu/admin-menu.com
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [FilterBoardGamesComponent, LudoMenuComponent, BricoMenuComponent, AdminMenuComponent, MatSidenavContainer, MatSidenav, RouterLink, MatList, MatListItem, MatListItemTitle, MatDivider, MatIcon, MatSidenavContent, MatToolbar, MatIconButton, LibraryMenuComponent, RouterOutlet, AsyncPipe]
+    imports: [FilterBoardGamesComponent, LudoMenuComponent, CatalogueMenu, AdminMenuComponent, MatSidenavContainer, MatSidenav, RouterLink, MatList, MatListItem, MatListItemTitle, MatDivider, MatIcon, MatSidenavContent, MatToolbar, MatIconButton, LibraryMenuComponent, RouterOutlet, AsyncPipe]
 })
 export class AppComponent implements OnInit, AfterViewInit {
   private navigationService = inject(NavigationService);
-  private bricolageDatabaseService = inject(BricolageDatabaseService);
   toolService = inject(ToolsService);
 
   readonly topMenu = viewChild<MatSidenavContent>('top');
@@ -48,7 +43,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   showAdmin?: boolean;
   public menu: ({ route: string; name: string, subList?: { route: string; name: string }[] })[];
   showBoardGameFilters = false;
-  allTools$?: Observable<Tool[]>;
+  protected readonly bricolage = Comissions.BRICOLAGE;
 
   ngOnInit() {
     this.navigationService.url$.subscribe(url => {
@@ -109,9 +104,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         {name: 'Nouveautés', route: `bibliotheque/new`},
       ];
     } else if (this.showBricolageMenu) {
-      if (!this.allTools$) {
-        this.allTools$ = this.bricolageDatabaseService.allTools$;
-      }
       this.menu = [
         {name: 'Machine à bois', route: `bricolage/${BricoCategories.MACHINE_BOIS}`},
         {name: 'Carrelage', route: `bricolage/${BricoCategories.MACONNERIE_CARRELAGE}`},

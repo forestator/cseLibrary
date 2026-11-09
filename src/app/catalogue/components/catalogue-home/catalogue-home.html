@@ -1,0 +1,58 @@
+@if (library(); as library) {
+  <div class="core-page fadein">
+    <div class="core-header">
+      <div class="core-title">
+        <div class="primary" role="heading" aria-level="1">{{library.name}}</div>
+      </div>
+      <div class="core-resume">
+        {{library.resume}}
+      </div>
+    </div>
+    @if (config().categories) {
+      @for (category of library.categories; track category.id) {
+        <a [routerLink]="category.id"
+           class="core-body core-body-category category-link"
+           title="Cliquez ici pour visualiser cette categorie">
+          @if (!mobile() && category.bg) {
+            <div>
+              <img class="category-visuel" [src]="category.bg" [alt]="category.name">
+            </div>
+          }
+          <div class="core-header">
+            @if (mobile() && category.bg) {
+              <img class="category-visuel small-display" [src]="category.bg" [alt]="category.name">
+            }
+            <div class="core-title">
+              <div class="primary">
+                {{category.name}}
+              </div>
+            </div>
+            <div class="core-resume">
+              {{category.resume}}
+            </div>
+          </div>
+        </a>
+      }
+    } @else {
+      <div class="core-header">
+        @for (item of flatItems(); track item.id; let index = $index) {
+          <div class="core-body">
+            <app-catalogue-item-row [item]="item" [config]="config()" [index]="index" />
+          </div>
+        }
+      </div>
+    }
+    @if (isAdmin()) {
+      <div class="core-header">
+        <div>
+          <div class="core-title">
+            <div class="primary">{{config().adminLink.title}}</div>
+          </div>
+          <a class="core-body admin-link" [routerLink]="config().adminLink.path">
+            {{config().adminLink.description}}
+          </a>
+        </div>
+      </div>
+    }
+  </div>
+}

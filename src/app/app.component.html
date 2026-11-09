@@ -43,7 +43,7 @@
         <app-ludo-menu class="tool" />
       }
       @if (showBricolageMenu && !showAdmin) {
-        <app-brico-menu class="tool" [allTools]="allTools$ | async" />
+        <app-catalogue-menu class="tool" [commission]="bricolage" />
       }
       @if (showAdmin) {
         <app-admin-menu class="tool" />

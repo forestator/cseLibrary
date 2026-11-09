@@ -1,42 +1,40 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import {AddEmployeeDialogComponent} from '../add-employee-dialog/add-employee-dialog.component';
-import {combineLatest, take} from 'rxjs';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {MatButton} from '@angular/material/button';
 import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {firstValueFrom} from 'rxjs';
+import {CseUser} from '../../../models/users.model';
 import {UserService} from '../../../services/firebase/user.service';
-import { MatButton } from '@angular/material/button';
+import {AddEmployeeDialogComponent, NewEmployee} from '../add-employee-dialog/add-employee-dialog.component';
 
 @Component({
-    selector: 'app-admin-menu',
-    templateUrl: './admin-menu.component.html',
-    styleUrls: ['./admin-menu.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatButton]
+  selector: 'app-admin-menu',
+  templateUrl: './admin-menu.component.html',
+  styleUrl: './admin-menu.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButton],
 })
 export class AdminMenuComponent {
-  private snackBar = inject(MatSnackBar);
-  private userService = inject(UserService);
-  private dialog = inject(MatDialog);
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly userService = inject(UserService);
+  private readonly dialog = inject(MatDialog);
 
+  protected async addEmployee() {
+    const newEmployee = await firstValueFrom(this.dialog.open(AddEmployeeDialogComponent).afterClosed());
+    if (!newEmployee) {
+      return;
+    }
+    const users = this.userService.userList$.value;
+    if (users.some(user => this.isSameEmployee(user, newEmployee))) {
+      this.snackBar.open('Cet utilisateur existe déjà', 'Ok');
+    } else {
+      this.userService.addUser({...newEmployee, id: String(users.length + 1)});
+    }
+  }
 
-  addEmployee(): void {
-    const dialogRef = this.dialog.open(AddEmployeeDialogComponent);
-
-    combineLatest([this.userService.userList$, dialogRef.afterClosed()]).pipe(take(1))
-      .subscribe(([users, newUSer]) => {
-        if (newUSer) {
-          const userAlreadyExist = users.some(user =>
-            (user.lastName.toLowerCase() && user.firstName.toLowerCase()) ===
-            (newUSer.lastName.toLowerCase() && newUSer.firstName.toLowerCase()) ||
-            (user.email === newUSer.email)
-          );
-          if (!userAlreadyExist) {
-            newUSer.id = users.length + 1;
-            this.userService.addUser(newUSer);
-          } else {
-            this.snackBar.open('Cet utilisateur existe déjà', 'Ok');
-          }
-        }
-      });
-  };
+  private isSameEmployee(user: CseUser, candidate: NewEmployee): boolean {
+    const sameName = user.lastName.toLowerCase() === candidate.lastName.toLowerCase()
+      && user.firstName.toLowerCase() === candidate.firstName.toLowerCase();
+    return sameName || user.email === candidate.email;
+  }
 }
