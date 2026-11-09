@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "~22.2.5",
     "@angular/router": "~22.2.5",
     "@types/xml2js": "^0.4.9",
-    "firebase": "^10.14.1",
+    "firebase": "^12.19.0",
     "html2canvas": "^1.4.0",
     "jspdf": "^2.5.0",
     "moment": "^2.29.1",

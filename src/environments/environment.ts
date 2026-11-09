@@ -15,6 +15,9 @@ export const environment = {
     messagingSenderId: '380057552327',
     appId: '1:380057552327:web:6f48c47bb21f44fd32c5e2'
   },
+  // Firestore database created next to the legacy (Datastore mode) default one, see docs/firestore-model.md.
+  firestoreDatabaseId: 'cse-db',
+  emulators: undefined as undefined | {firestore: {host: string; port: number}; auth: string},
   openAiApiKey: '',
   // Unsigned upload preset configured in the Cloudinary console (Settings > Upload).
   cloudinary: {cloudName: 'seo9axkp', uploadPreset: 'cse_unsigned'}

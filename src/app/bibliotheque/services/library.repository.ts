@@ -1,10 +1,10 @@
 import {inject, Injectable} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {AngularFireDatabase} from '@angular/fire/compat/database';
-import {catchError, map, of, take} from 'rxjs';
-import {Biblio, Libraries} from '../../models/author.model';
+import {Firestore, collection, doc, getDoc, getDocs} from '@angular/fire/firestore';
+import {catchError, forkJoin, from, map, Observable, of} from 'rxjs';
+import {Biblio, Category, Libraries, Library} from '../../models/author.model';
 
-// Position of each library in the `bibliotheque` array of the database.
+// Display order of the libraries (the order they had in the legacy `bibliotheque` array).
 const LIBRARY_ORDER: ReadonlyArray<Libraries> = [
   Libraries.IMAGINAIRE,
   Libraries.INCLASSABLE,
@@ -16,16 +16,16 @@ const LIBRARY_ORDER: ReadonlyArray<Libraries> = [
  * Single access point to the library catalogue (library > categories > series > books, authors, publishers).
  * Everything backend specific lives in this class so the storage can be swapped without touching the views.
  * Data is read once and shared as signals; it is read-only for the public pages.
+ * Storage: `bibliotheque/{libraryId}` holds the library infos, authors and publishers, and one document per
+ * category sits in its `categories` subcollection (see docs/firestore-model.md).
  */
 @Injectable({providedIn: 'root'})
 export class LibraryRepository {
-  private readonly db = inject(AngularFireDatabase);
+  private readonly firestore = inject(Firestore);
 
   /** All libraries in display order; `undefined` while loading. */
   readonly libraries = toSignal(
-    this.db.object<Array<Biblio> | null>('bibliotheque').valueChanges().pipe(
-      take(1),
-      map(allLibraries => allLibraries ?? []),
+    forkJoin(LIBRARY_ORDER.map(libraryId => this.loadLibrary(libraryId))).pipe(
       catchError(error => {
         console.error('Unable to load the libraries', error);
         return of([] as Array<Biblio>);
@@ -38,4 +38,29 @@ export class LibraryRepository {
     const index = LIBRARY_ORDER.indexOf(libraryId as Libraries);
     return this.libraries()?.[Math.max(index, 0)];
   }
+
+  private loadLibrary(libraryId: Libraries): Observable<Biblio> {
+    return from(Promise.all([
+      getDoc(doc(this.firestore, 'bibliotheque', libraryId)),
+      getDocs(collection(this.firestore, 'bibliotheque', libraryId, 'categories')),
+    ])).pipe(
+      map(([librarySnapshot, categorySnapshots]) => {
+        const stored = librarySnapshot.data() as StoredLibrary | undefined;
+        const categoriesById = new Map(categorySnapshots.docs.map(snapshot => [snapshot.id, snapshot.data() as Category]));
+        const {categoryIds = [], ...libraryInfo} = stored?.library ?? {};
+        const categories = categoryIds.map(categoryId => categoriesById.get(categoryId)).filter((category): category is Category => !!category);
+        return {
+          library: {...libraryInfo, categories} as Library,
+          authors: stored?.authors ?? [],
+          publishers: stored?.publishers ?? [],
+        } as Biblio;
+      })
+    );
+  }
+}
+
+interface StoredLibrary {
+  library?: Omit<Library, 'categories'> & {categoryIds?: string[]};
+  authors?: Biblio['authors'];
+  publishers?: Biblio['publishers'];
 }

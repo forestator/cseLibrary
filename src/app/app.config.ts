@@ -1,11 +1,12 @@
-import {ApplicationConfig, importProvidersFrom, provideZoneChangeDetection} from '@angular/core';
+import {ApplicationConfig, provideZoneChangeDetection} from '@angular/core';
 import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, withComponentInputBinding} from '@angular/router';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
-import {AngularFireModule} from '@angular/fire/compat';
-import {AngularFireDatabaseModule} from '@angular/fire/compat/database';
-import {AngularFireAnalyticsModule} from '@angular/fire/compat/analytics';
+import {getApp, initializeApp, provideFirebaseApp} from '@angular/fire/app';
+import {connectFirestoreEmulator, getFirestore, provideFirestore} from '@angular/fire/firestore';
+import {connectAuthEmulator, getAuth, provideAuth} from '@angular/fire/auth';
+import {getAnalytics, provideAnalytics, ScreenTrackingService} from '@angular/fire/analytics';
 import {environment} from '../environments/environment';
 import {routes} from './app.routes';
 
@@ -15,11 +16,22 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
-    importProvidersFrom(
-      AngularFireModule.initializeApp(environment.firebase),
-      AngularFireDatabaseModule,
-      AngularFireAnalyticsModule,
-    ),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => {
+      const firestore = getFirestore(getApp(), environment.firestoreDatabaseId);
+      if (environment.emulators) {
+        connectFirestoreEmulator(firestore, environment.emulators.firestore.host, environment.emulators.firestore.port);
+      }
+      return firestore;
+    }),
+    provideAuth(() => {
+      const auth = getAuth();
+      if (environment.emulators) {
+        connectAuthEmulator(auth, environment.emulators.auth, {disableWarnings: true});
+      }
+      return auth;
+    }),
+    ...(environment.emulators ? [] : [provideAnalytics(() => getAnalytics()), ScreenTrackingService]),
     {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
   ],
 };

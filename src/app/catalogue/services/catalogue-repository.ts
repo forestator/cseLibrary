@@ -1,46 +1,67 @@
-import {Injector, runInInjectionContext} from '@angular/core';
-import {AngularFireDatabase, AngularFireObject} from '@angular/fire/compat/database';
+import {DocumentReference, Firestore, doc, docData} from '@angular/fire/firestore';
 import {map, Observable, shareReplay, take} from 'rxjs';
+import {mergeAtPath, removeAtPath} from '../../services/firestore/document-paths';
 import {Library} from '../../models/author.model';
 import {CatalogueItem, ItemCollection} from '../models/catalogue-item.model';
 import {CommissionConfig} from '../models/commission-config.model';
+import {StoredCollection, toCategorizedCollection, toCollection, toStored} from './catalogue-mapper';
 
-type StoredItem = Partial<CatalogueItem> & {category?: string};
-type StoredCollection = Record<string, StoredItem>;
+type CommissionDocument = Record<string, unknown>;
 
 /**
- * Single access point to the data of one commission. Its public API only speaks in
- * collections of items keyed by id, so the Realtime Database can be replaced by another
- * backend by rewriting this class alone.
+ * Single access point to the data of one commission. Its public API only speaks in collections of items
+ * keyed by id; the storage (one Firestore document `commissions/{id}` shaped `{library, <items field>}`, see
+ * docs/firestore-model.md) is private to this class.
  */
 export class CatalogueRepository {
   readonly library$: Observable<Library>;
   readonly allItems$: Observable<ItemCollection>;
 
-  constructor(
-    private readonly config: CommissionConfig,
-    private readonly db: AngularFireDatabase,
-    private readonly injector: Injector
-  ) {
-    this.library$ = this.object<Library>(config.libraryPath).valueChanges().pipe(
+  private readonly reference: DocumentReference;
+  private readonly libraryField: string;
+  private readonly itemsField: string;
+  private readonly commissionDocument$: Observable<CommissionDocument | undefined>;
+
+  constructor(private readonly config: CommissionConfig, firestore: Firestore) {
+    // Paths keep their historical "<commission>/<field>" shape: the first segment is the document, the second the field.
+    const [documentId, libraryField] = config.libraryPath.split('/');
+    this.libraryField = libraryField;
+    this.itemsField = config.itemsPath.split('/')[1];
+    this.reference = doc(firestore, 'commissions', documentId);
+    this.commissionDocument$ = (docData(this.reference) as Observable<CommissionDocument | undefined>).pipe(
+      shareReplay({bufferSize: 1, refCount: true})
+    );
+
+    this.library$ = this.commissionDocument$.pipe(
+      map(document => document?.[this.libraryField] as Library),
       take(1),
       shareReplay({bufferSize: 1, refCount: false})
     );
-    this.allItems$ = config.categories ? this.allCategorizedItems$() : this.flatItems$();
+    this.allItems$ = this.commissionDocument$.pipe(
+      map(document => {
+        const stored = document?.[this.itemsField] as StoredCollection | Record<string, StoredCollection> | undefined;
+        return config.categories
+          ? toCategorizedCollection(config, stored as Record<string, StoredCollection>)
+          : toCollection(config, stored as StoredCollection);
+      })
+    );
   }
 
   categoryItems$(categoryId: string): Observable<ItemCollection> {
-    return this.object<StoredCollection>(`${this.config.itemsPath}/${categoryId}`).valueChanges().pipe(
-      map(stored => this.toCollection(stored, categoryId))
+    return this.commissionDocument$.pipe(
+      map(document => {
+        const byCategory = document?.[this.itemsField] as Record<string, StoredCollection> | undefined;
+        return toCollection(this.config, byCategory?.[categoryId], categoryId);
+      })
     );
   }
 
   add(item: CatalogueItem): Promise<void> {
-    return this.object<unknown>(this.itemPath(item)).update(this.toStored(item));
+    return mergeAtPath(this.reference, this.itemPath(item), toStored(this.config, item));
   }
 
   update(item: CatalogueItem, changes: Partial<CatalogueItem>): Promise<void> {
-    return this.object<unknown>(this.itemPath(item)).update(this.withoutUndefined(changes));
+    return mergeAtPath(this.reference, this.itemPath(item), changes);
   }
 
   updateCover(item: CatalogueItem, coverUrl: string): Promise<void> {
@@ -48,67 +69,12 @@ export class CatalogueRepository {
   }
 
   remove(item: CatalogueItem): Promise<void> {
-    return this.object<unknown>(this.itemPath(item)).remove();
+    return removeAtPath(this.reference, this.itemPath(item));
   }
 
-  // The compat API calls inject() on every access, so each call needs an injection context.
-  private object<T>(path: string): AngularFireObject<T> {
-    return runInInjectionContext(this.injector, () => this.db.object<T>(path));
-  }
-
-  private allCategorizedItems$(): Observable<ItemCollection> {
-    return this.object<Record<string, StoredCollection>>(this.config.itemsPath).valueChanges().pipe(
-      map(storedByCategory => {
-        const all: ItemCollection = {};
-        for (const categoryId of this.config.categories ?? []) {
-          const items = this.toCollection(storedByCategory?.[categoryId], categoryId);
-          for (const item of Object.values(items)) {
-            all[`${categoryId}/${item.id}`] = item;
-          }
-        }
-        return all;
-      })
-    );
-  }
-
-  private flatItems$(): Observable<ItemCollection> {
-    return this.object<StoredCollection>(this.config.itemsPath).valueChanges().pipe(
-      map(stored => this.toCollection(stored))
-    );
-  }
-
-  private toCollection(stored: StoredCollection | null, categoryId?: string): ItemCollection {
-    const collection: ItemCollection = {};
-    for (const [key, storedItem] of Object.entries(stored ?? {})) {
-      const {category, ...fields} = storedItem;
-      collection[key] = {
-        ...fields,
-        id: String(storedItem.id ?? key),
-        name: storedItem.name,
-        categoryId,
-        status: storedItem.status ?? this.config.defaultStatus,
-      };
-    }
-    return collection;
-  }
-
-  private itemPath(item: CatalogueItem): string {
+  private itemPath(item: CatalogueItem): string[] {
     return this.config.categories
-      ? `${this.config.itemsPath}/${item.categoryId}/${item.id}`
-      : `${this.config.itemsPath}/${item.id}`;
-  }
-
-  private toStored(item: CatalogueItem): Record<string, unknown> {
-    const {categoryId, ...fields} = item;
-    const stored: Record<string, unknown> = {...fields};
-    if (this.config.categoryField && categoryId) {
-      stored[this.config.categoryField] = categoryId;
-    }
-    return this.withoutUndefined(stored);
-  }
-
-  // The Realtime Database rejects undefined values.
-  private withoutUndefined<T extends object>(value: T): T {
-    return Object.fromEntries(Object.entries(value).filter(([, field]) => field !== undefined)) as T;
+      ? [this.itemsField, item.categoryId ?? '', item.id]
+      : [this.itemsField, item.id];
   }
 }

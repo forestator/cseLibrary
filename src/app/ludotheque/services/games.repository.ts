@@ -1,11 +1,12 @@
-import {Injectable, Injector, inject, runInInjectionContext} from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/compat/database';
+import {Injectable, inject} from '@angular/core';
+import {Firestore, doc, docData} from '@angular/fire/firestore';
 import {combineLatest, map, Observable, take} from 'rxjs';
 import {Library} from '../../models/author.model';
 import {BoardGame} from '../../models/boardGame.model';
-import {BddGame, Game, LibraryId} from '../../models/common.model';
+import {Game, LibraryId} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
+import {mergeAtPath, removeAtPath, replaceAtPath} from '../../services/firestore/document-paths';
 
 export interface GameByLibrary {
   boardGames: BoardGame;
@@ -15,17 +16,21 @@ export interface GameByLibrary {
 
 export type GameOf<Id extends LibraryId> = GameByLibrary[Id];
 
+interface LibraryDocument {
+  library?: Library;
+  games?: Record<string, Game>;
+}
+
 const LIBRARY_IDS: ReadonlyArray<LibraryId> = ['boardGames', 'videoGames', 'outsideGames'];
 
 /**
  * Single access point to the ludotheque data. Components only know libraries and games:
- * the storage layout (RTDB paths `ludotheque/{libraryId}/{games/{ref},library}`) stays private,
- * so swapping the backend only means rewriting this class.
+ * the storage layout (Firestore document `ludotheque/{libraryId}` = `{library, games: {[ref]: game}}`, see
+ * docs/firestore-model.md) stays private, so swapping the backend only means rewriting this class.
  */
 @Injectable({providedIn: 'root'})
 export class GamesRepository {
-  private db = inject(AngularFireDatabase);
-  private injector = inject(Injector);
+  private readonly firestore = inject(Firestore);
 
   /** Live list of the games of a library, newest reference first. */
   watchGames$<Id extends LibraryId>(libraryId: Id): Observable<Array<GameOf<Id>>> {
@@ -45,38 +50,44 @@ export class GamesRepository {
   }
 
   loadLibrary$(libraryId: LibraryId): Observable<Library | null> {
-    return this.object<Library>(`ludotheque/${libraryId}/library`).valueChanges().pipe(take(1));
+    return this.libraryDocument$(libraryId).pipe(
+      map(libraryDocument => libraryDocument?.library ?? null),
+      take(1)
+    );
   }
 
   addGame(game: Game, libraryId?: LibraryId): Promise<void> {
-    return this.gameObject(game, libraryId).set(game);
+    return replaceAtPath(this.libraryReference(game, libraryId), this.gamePath(game), game);
   }
 
   updateGame(game: Game, libraryId?: LibraryId): Promise<void> {
-    return this.gameObject(game, libraryId).update(game);
+    return mergeAtPath(this.libraryReference(game, libraryId), this.gamePath(game), game);
   }
 
   deleteGame(game: Game): Promise<void> {
-    return this.gameObject(game).remove();
+    return removeAtPath(this.libraryReference(game), this.gamePath(game));
   }
 
   updateCover(game: Game, coverUrl: string): Promise<void> {
-    return this.gameObject(game).update({cover: coverUrl});
+    return mergeAtPath(this.libraryReference(game), this.gamePath(game), {cover: coverUrl});
   }
 
-  /** AngularFire's `object()` injects services: it must also work when called lazily, outside a constructor. */
-  private object<T>(path: string) {
-    return runInInjectionContext(this.injector, () => this.db.object<T>(path));
+  private libraryDocument$(libraryId: LibraryId): Observable<LibraryDocument | undefined> {
+    return docData(doc(this.firestore, 'ludotheque', libraryId)) as Observable<LibraryDocument | undefined>;
   }
 
   private gamesByRef$<Id extends LibraryId>(libraryId: Id): Observable<Record<string, GameOf<Id>> | null> {
-    return this.object<BddGame>(`ludotheque/${libraryId}/games`).valueChanges() as
-      Observable<Record<string, GameOf<Id>> | null>;
+    return this.libraryDocument$(libraryId).pipe(
+      map(libraryDocument => (libraryDocument?.games ?? null) as Record<string, GameOf<Id>> | null)
+    );
   }
 
-  private gameObject(game: Game, libraryId?: LibraryId) {
-    const resolvedLibraryId = libraryId ?? GamesUtils.libraryIdOfGame(game);
-    return this.object<Game>(`ludotheque/${resolvedLibraryId}/games/${game.ref}`);
+  private libraryReference(game: Game, libraryId?: LibraryId) {
+    return doc(this.firestore, 'ludotheque', libraryId ?? GamesUtils.libraryIdOfGame(game));
+  }
+
+  private gamePath(game: Game): string[] {
+    return ['games', game.ref];
   }
 
   private toSortedList<Id extends LibraryId>(gamesByRef: Record<string, GameOf<Id>> | null): Array<GameOf<Id>> {

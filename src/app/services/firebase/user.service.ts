@@ -1,25 +1,24 @@
-import { Injectable, inject } from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/compat/database';
-import {BehaviorSubject, map} from 'rxjs';
-import {BddUsers, CseUser} from '../../models/users.model';
+import {Injectable, inject} from '@angular/core';
+import {Firestore, collection, collectionData, doc, setDoc} from '@angular/fire/firestore';
+import {catchError, Observable, of, shareReplay} from 'rxjs';
+import {CseUser} from '../../models/users.model';
 
+/** Employee directory: only readable by super admins, hence loaded lazily and never for visitors. */
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private db = inject(AngularFireDatabase);
+  private readonly firestore = inject(Firestore);
 
+  readonly userList$: Observable<Array<CseUser>> = (collectionData(collection(this.firestore, 'users')) as Observable<Array<CseUser>>).pipe(
+    catchError(error => {
+      console.error('Unable to load the employees', error);
+      return of([] as Array<CseUser>);
+    }),
+    shareReplay({bufferSize: 1, refCount: true})
+  );
 
-  userList$: BehaviorSubject<Array<CseUser>> = new BehaviorSubject<Array<CseUser>>([]);
-
-  constructor() {
-    this.db.object<BddUsers>('users').valueChanges().pipe(
-      map((users) => Object.values(users))).subscribe(
-        value => this.userList$.next(value)
-    );
-  }
-
-  addUser(newUSer: CseUser): void {
-    this.db.object(`users/${newUSer.id}`).set(newUSer);
+  addUser(newUser: CseUser): Promise<void> {
+    return setDoc(doc(this.firestore, 'users', newUser.id), newUser);
   }
 }

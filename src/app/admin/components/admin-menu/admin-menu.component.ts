@@ -24,7 +24,7 @@ export class AdminMenuComponent {
     if (!newEmployee) {
       return;
     }
-    const users = this.userService.userList$.value;
+    const users = await firstValueFrom(this.userService.userList$);
     if (users.some(user => this.isSameEmployee(user, newEmployee))) {
       this.snackBar.open('Cet utilisateur existe déjà', 'Ok');
     } else {
