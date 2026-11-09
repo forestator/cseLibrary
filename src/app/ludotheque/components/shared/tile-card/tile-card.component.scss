@@ -1,0 +1,87 @@
+@use '../../../../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  color: $on-surface;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    border-color: $accent;
+    box-shadow: $shadow-2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
+  }
+}
+
+.tile-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  background: $accent-soft;
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.tile-icon {
+  width: 56px;
+  height: 56px;
+  font-size: 56px;
+  color: $accent-text;
+}
+
+.tile-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-5;
+}
+
+.tile-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.tile-resume {
+  display: -webkit-box;
+  overflow: hidden;
+  color: $on-surface-muted;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+}
+
+.tile-more {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  margin-top: auto;
+  padding-top: $space-3;
+  font-weight: 600;
+  color: $accent-text;
+}

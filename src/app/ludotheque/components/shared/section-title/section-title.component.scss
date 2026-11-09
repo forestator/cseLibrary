@@ -1,0 +1,23 @@
+@use '../../../../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin: $space-6 0 $space-4;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.section-count {
+  padding: 2px $space-3;
+  border-radius: $radius-pill;
+  background: $accent-soft;
+  color: $accent-text;
+  font-size: 0.85rem;
+  font-weight: 600;
+}

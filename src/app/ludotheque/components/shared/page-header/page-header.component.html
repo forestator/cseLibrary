@@ -1,0 +1,17 @@
+<header class="page-header">
+  @if (backLink()) {
+    <a class="page-back" [routerLink]="backLink()">
+      <mat-icon aria-hidden="true">arrow_back</mat-icon>
+      {{ backLabel() }}
+    </a>
+  }
+  <div class="page-heading">
+    <h1 class="page-title">{{ title() }}</h1>
+    @if (count()) {
+      <span class="page-count">{{ count() }}</span>
+    }
+  </div>
+  @if (resume()) {
+    <p class="page-resume">{{ resume() }}</p>
+  }
+</header>

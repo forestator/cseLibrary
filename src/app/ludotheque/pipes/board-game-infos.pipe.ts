@@ -1,34 +1,53 @@
 import {Pipe, PipeTransform} from '@angular/core';
 import {BoardGame} from '../../models/boardGame.model';
+import {GameFact, GameInfos} from '../models';
 
 @Pipe({name: 'boardGameInfos'})
 export class BoardGameInfosPipe implements PipeTransform {
-  transform(boardGame: BoardGame): Array<string> {
-    const infos: Array<string> = [];
-    if (boardGame.weight) {
-      infos.push(`Poids: ${boardGame.weight}g`);
+  transform(boardGame: BoardGame): GameInfos {
+    return {facts: this.facts(boardGame), details: this.details(boardGame)};
+  }
+
+  private facts(boardGame: BoardGame): Array<GameFact> {
+    const facts: Array<GameFact> = [];
+    const players = this.players(boardGame);
+    if (players) {
+      facts.push({icon: 'group', label: players});
     }
     if (boardGame.playingTime) {
-      infos.push(`Temps de jeu: ${boardGame.playingTime} minutes`);
-    }
-    if (boardGame.minPlayers) {
-      infos.push(`Min joueurs: ${boardGame.minPlayers}`);
-    }
-    if (boardGame.maxPlayers) {
-      infos.push(`Max joueurs: ${boardGame.maxPlayers}`);
+      facts.push({icon: 'timer', label: `${boardGame.playingTime} min`});
     }
     if (boardGame.minAge) {
-      infos.push(`Age mini: ${boardGame.minAge}`);
+      facts.push({icon: 'family_restroom', label: `${boardGame.minAge} ans et +`});
+    }
+    return facts;
+  }
+
+  private players({minPlayers, maxPlayers}: BoardGame): string | undefined {
+    if (minPlayers && maxPlayers) {
+      return minPlayers === maxPlayers ? `${minPlayers} joueurs` : `${minPlayers} à ${maxPlayers} joueurs`;
+    }
+    const known = minPlayers ?? maxPlayers;
+    if (!known) {
+      return undefined;
+    }
+    return minPlayers ? `${known} joueurs min.` : `${known} joueurs max.`;
+  }
+
+  private details(boardGame: BoardGame): Array<string> {
+    const details: Array<string> = [];
+    if (boardGame.weight) {
+      details.push(`Poids : ${boardGame.weight} g`);
     }
     if (boardGame.suggestedPlayAge) {
-      infos.push(`Age suggéré: ${boardGame.suggestedPlayAge}`);
+      details.push(`Âge suggéré : ${boardGame.suggestedPlayAge} ans`);
     }
     if (boardGame.yearPublished) {
-      infos.push(`Année de publication: ${boardGame.yearPublished}`);
+      details.push(`Année de publication : ${boardGame.yearPublished}`);
     }
     if (boardGame.themes?.length) {
-      infos.push(`Themes : ${boardGame.themes.join(' ')}`);
+      details.push(`Thèmes : ${boardGame.themes.join(', ')}`);
     }
-    return infos;
+    return details;
   }
 }

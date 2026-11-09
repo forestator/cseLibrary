@@ -1,0 +1,19 @@
+<a class="tile" [routerLink]="route()">
+  <span class="tile-cover">
+    @if (image()) {
+      <img [ngSrc]="image()!" alt="" fill [priority]="priority()" sizes="(max-width: 840px) 100vw, 33vw">
+    } @else {
+      <mat-icon class="tile-icon" aria-hidden="true">{{ icon() }}</mat-icon>
+    }
+  </span>
+  <span class="tile-body">
+    <span class="tile-title">{{ title() }}</span>
+    @if (resume()) {
+      <span class="tile-resume">{{ resume() }}</span>
+    }
+    <span class="tile-more">
+      Voir
+      <mat-icon aria-hidden="true">arrow_forward</mat-icon>
+    </span>
+  </span>
+</a>

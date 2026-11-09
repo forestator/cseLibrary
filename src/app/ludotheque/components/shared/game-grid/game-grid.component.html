@@ -1,0 +1,17 @@
+@if (loading()) {
+  <div class="grid" role="status" aria-label="Chargement en cours">
+    @for (placeholder of placeholders; track placeholder) {
+      <div class="skeleton" aria-hidden="true">
+        <div class="skeleton-cover"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line skeleton-line-short"></div>
+      </div>
+    }
+  </div>
+} @else if (empty()) {
+  <p class="empty" role="status">{{ emptyMessage() }}</p>
+} @else {
+  <div class="grid">
+    <ng-content />
+  </div>
+}

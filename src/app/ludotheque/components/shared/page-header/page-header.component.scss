@@ -1,0 +1,66 @@
+@use '../../../../../styles/tokens' as *;
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin-bottom: $space-5;
+  padding: $space-5;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, var(--mat-sys-surface)), $surface-card);
+
+  @include mobile {
+    padding: $space-4;
+  }
+}
+
+.page-back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: $space-1;
+  min-height: 44px;
+  margin-block: (-$space-2);
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+}
+
+.page-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: $space-3;
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+  letter-spacing: -0.03em;
+}
+
+.page-count {
+  padding: 2px $space-3;
+  border-radius: $radius-pill;
+  background: $accent-soft;
+  color: $accent-text;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.page-resume {
+  max-width: 65ch;
+  margin: 0;
+  font-size: 1.05rem;
+  color: $on-surface-muted;
+}

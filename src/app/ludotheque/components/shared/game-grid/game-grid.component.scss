@@ -1,0 +1,61 @@
+@use '../../../../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  align-items: start;
+  gap: $space-4;
+}
+
+.empty {
+  margin: 0;
+  padding: $space-6 $space-4;
+  border: 1px dashed $outline;
+  border-radius: $radius-lg;
+  color: $on-surface-muted;
+  text-align: center;
+}
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+}
+
+.skeleton-cover,
+.skeleton-line {
+  border-radius: $radius-md;
+  background: linear-gradient(90deg, $surface-high 25%, $surface-low 50%, $surface-high 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+.skeleton-cover {
+  aspect-ratio: 4 / 3;
+}
+
+.skeleton-line {
+  height: 16px;
+
+  &-short {
+    width: 60%;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}

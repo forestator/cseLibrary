@@ -1,0 +1,52 @@
+<article class="card" [class.card-selected]="selected()" [id]="cardId()" [appScrollToSelected]="selectedId()"
+  [attr.aria-labelledby]="titleId()">
+  <div class="card-cover">
+    @if (game().cover) {
+      <img [ngSrc]="game().cover!" [alt]="game().name" fill [priority]="priority()" sizes="(max-width: 840px) 100vw, 25vw">
+    } @else {
+      <mat-icon class="card-cover-empty" aria-hidden="true">casino</mat-icon>
+    }
+    @if (game().isNew) {
+      <span class="card-new">Nouveau</span>
+    }
+  </div>
+  <div class="card-body">
+    @if (category()) {
+      <span class="card-category">{{ category() }}</span>
+    }
+    <h3 class="card-title" [id]="titleId()">{{ game().name }}</h3>
+    <ul class="card-facts">
+      @if (game().ref) {
+        <li class="card-fact">
+          <mat-icon aria-hidden="true">tag</mat-icon>
+          Réf. {{ game().ref }}
+        </li>
+      }
+      @for (fact of facts(); track fact.icon) {
+        <li class="card-fact">
+          <mat-icon aria-hidden="true">{{ fact.icon }}</mat-icon>
+          {{ fact.label }}
+        </li>
+      }
+    </ul>
+    @if (hasDetails()) {
+      <button type="button" class="card-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="detailsId()"
+        (click)="toggle()">
+        Détails
+        <mat-icon class="card-toggle-icon" [class.card-toggle-icon-open]="open()" aria-hidden="true">expand_more</mat-icon>
+      </button>
+      <div class="card-details" [id]="detailsId()" [hidden]="!open()">
+        @if (details().length) {
+          <ul class="card-details-list">
+            @for (detail of details(); track detail) {
+              <li>{{ detail }}</li>
+            }
+          </ul>
+        }
+        @if (description()) {
+          <div class="card-description" [innerHTML]="description()"></div>
+        }
+      </div>
+    }
+  </div>
+</article>
