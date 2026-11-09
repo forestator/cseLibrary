@@ -47,3 +47,6 @@ Thumbs.db
 scripts/migrate-storage/copied.json
 scripts/migrate-storage/updates.json
 .claude/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
