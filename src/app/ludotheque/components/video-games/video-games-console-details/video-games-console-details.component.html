@@ -1,29 +1,15 @@
 @if (videoGames()) {
   <div class="core-page">
-    @if ((videoGames() | filterVideoGameByType: videoGameType.CONSOLE).length > 0) {
+    @for (section of hardwareSections(); track section.title) {
       <div class="core-header">
         <div class="core-title">
-          <div class="primary">Consoles</div>
+          <div class="primary">{{ section.title }}</div>
         </div>
       </div>
-      @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.CONSOLE; track trackVideoGame(index, videoGame); let index = $index) {
+      @for (videoGame of section.videoGames; track videoGame.ref) {
         <div class="core-body">
-          <app-video-game-console-accessory-row [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId()" />
-        </div>
-      }
-      <mat-divider />
-    }
-    @if ((videoGames() | filterVideoGameByType: videoGameType.ACCESSORY).length > 0) {
-      <div class="core-header">
-        <div class="core-title">
-          <div class="primary">Accessoires</div>
-        </div>
-      </div>
-      @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.ACCESSORY  ; track trackVideoGame(index, videoGame); let index = $index) {
-        <div class="core-body">
-          <app-video-game-console-accessory-row [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId()" />
+          <app-video-game-row [videoGame]="videoGame" [variant]="section.variant"
+            [selectedId]="selectedId()" />
         </div>
       }
       <mat-divider />
@@ -33,11 +19,10 @@
         <div class="primary">Jeux</div>
       </div>
     </div>
-    <div class="core-body video-game-row">
-      @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.GAME; track trackVideoGame(index, videoGame); let index = $index) {
+    <div class="core-body video-game-list">
+      @for (videoGame of games(); track videoGame.ref) {
         <div class="core-body">
-          <app-video-game-row [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId()" />
+          <app-video-game-row [videoGame]="videoGame" [selectedId]="selectedId()" />
         </div>
       }
     </div>

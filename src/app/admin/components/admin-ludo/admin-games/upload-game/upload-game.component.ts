@@ -1,38 +1,43 @@
-import { Component, OnChanges, SimpleChanges, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {of, switchMap} from 'rxjs';
+import {UploadFormComponent} from '../../../../../common/components/upload-form/upload-form.component';
+import {BGGService} from '../../../../../ludotheque/services/bgg.service';
+import {BoardGame} from '../../../../../models/boardGame.model';
 import {Game} from '../../../../../models/common.model';
 import {FileUpload} from '../../../../../models/fileUpload.model';
-import {StorageUploadService} from '../../../../../services/firebase/storage-upload.service';
-import {BGGService} from '../../../../../ludotheque/services/bgg.service';
 import {GamesUtils} from '../../../../../models/gamesUtils';
-import {BoardGame} from '../../../../../models/boardGame.model';
-import {take} from 'rxjs';
-import { UploadFormComponent } from '../../../../../common/components/upload-form/upload-form.component';
+import {StorageUploadService} from '../../../../../services/firebase/storage-upload.service';
 
 @Component({
-    selector: 'app-upload-game',
-    templateUrl: './upload-game.component.html',
-    styleUrls: ['./upload-game.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [UploadFormComponent]
+  selector: 'app-upload-game',
+  templateUrl: './upload-game.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [UploadFormComponent],
 })
-export class UploadGameComponent implements OnChanges {
-  private uploadService = inject(StorageUploadService);
-  private bgg = inject(BGGService);
+export class UploadGameComponent {
+  private readonly uploadService = inject(StorageUploadService);
+  private readonly bggService = inject(BGGService);
 
-  readonly selectedGame = input<Game>(undefined);
+  readonly selectedGame = input<Game>();
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (GamesUtils.libraryIdOfGame(this.selectedGame()) === 'boardGames') {
-      const selectedBoardGame = this.selectedGame() as BoardGame;
-      if (selectedBoardGame.id) {
-        this.bgg.gameDetails(selectedBoardGame).pipe(take(1)).subscribe(rep => {
-          this.selectedGame().cover = rep.cover;
-        });
-      }
-    }
-  }
+  /** BoardGameGeek id of the game, only for board games. */
+  private readonly bggId = computed(() => {
+    const game = this.selectedGame();
+    return game && GamesUtils.libraryIdOfGame(game) === 'boardGames' ? (game as BoardGame).id : undefined;
+  });
 
-  upload(filteToUpload: FileUpload): void {
-    this.uploadService.uploadGameCover(filteToUpload, this.selectedGame());
+  private readonly bggCover = toSignal(toObservable(this.bggId).pipe(
+    switchMap(bggId => bggId ? this.bggService.gameDetails({...this.selectedGame(), id: bggId} as BoardGame) : of(undefined as BoardGame | undefined))
+  ));
+
+  protected readonly defaultImage = computed(() => this.selectedGame()?.cover ?? this.bggCover()?.cover);
+  protected readonly uploadDisabled = computed(() => {
+    const game = this.selectedGame();
+    return !(game?.ref && game.category && game.name);
+  });
+
+  protected upload(fileToUpload: FileUpload): void {
+    this.uploadService.uploadGameCover(fileToUpload, this.selectedGame());
   }
 }

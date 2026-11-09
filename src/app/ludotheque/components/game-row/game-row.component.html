@@ -1,0 +1,28 @@
+<div class="book-core game-row" [id]="rowId()" [appScrollToSelected]="selectedId()">
+  @if (coverFirst()) {
+    <ng-container [ngTemplateOutlet]="cover" />
+  }
+  <div class="book-infos">
+    <div class="book-title">{{ game().name }}</div>
+    @if (game().ref) {
+      <div class="book-info">Ref: {{ game().ref }}</div>
+    }
+    @for (info of infos(); track info) {
+      <div class="book-info">{{ info }}</div>
+    }
+    @if (description()) {
+      <div class="book-resume" [innerHTML]="description()"></div>
+    }
+  </div>
+  @if (!coverFirst()) {
+    <ng-container [ngTemplateOutlet]="cover" />
+  }
+</div>
+
+<ng-template #cover>
+  @if (game().cover) {
+    <div class="book-cover">
+      <img class="game-cover" [src]="game().cover" [alt]="game().name" />
+    </div>
+  }
+</ng-template>

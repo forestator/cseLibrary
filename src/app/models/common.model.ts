@@ -1,17 +1,7 @@
 import {Consoles, VideoGame} from './videoGames.model';
 import {BoardGame, BoardGameCategory} from './boardGame.model';
-import {Library} from './author.model';
 
-export interface Ludotheque {
-  boardGames: LudothequeDetails;
-  videoGames: LudothequeDetails;
-  outsideGames: LudothequeDetails;
-}
-
-export interface LudothequeDetails {
-  games: BddGame;
-  library: Library;
-}
+export type LibraryId = 'boardGames' | 'videoGames' | 'outsideGames';
 
 export enum Comissions {
   BIBLIOTHEQUE = 'bibliotheque',

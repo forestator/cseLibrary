@@ -1,90 +1,59 @@
-import { Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
+import {MatFormField, MatInput} from '@angular/material/input';
+import {BadgeComponent} from '../../../common/components/book-badge/badge.component';
 import {BoardGame} from '../../../models/boardGame.model';
-import {map, Observable, startWith} from 'rxjs';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
-import {Router} from '@angular/router';
+import {Game, LibraryId} from '../../../models/common.model';
 import {NavigationService} from '../../../services/navigation.service';
-import {VideoGame} from '../../../models/videoGames.model';
-import {Game} from '../../../models/common.model';
-import { MatFormField, MatInput } from '@angular/material/input';
-import { BadgeComponent } from '../../../common/components/book-badge/badge.component';
-import { AsyncPipe } from '@angular/common';
+import {GamesRepository} from '../../services/games.repository';
 
 @Component({
-    selector: 'app-search-in-lib',
-    templateUrl: './search-in-lib.component.html',
-    styleUrls: ['./search-in-lib.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, AsyncPipe]
+  selector: 'app-search-in-lib',
+  templateUrl: './search-in-lib.component.html',
+  styleUrl: './search-in-lib.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent],
 })
-export class SearchInLibComponent implements OnInit, OnChanges {
-  private router = inject(Router);
-  private navigateService = inject(NavigationService);
+export class SearchInLibComponent {
+  private readonly navigationService = inject(NavigationService);
+  private readonly repository = inject(GamesRepository);
 
+  protected readonly searchText = new FormControl<string | Game>('');
 
-  readonly boardGames = input.required<Array<BoardGame> | null>();
-  readonly videoGames = input.required<Array<VideoGame> | null>();
-  readonly outsideGames = input.required<Array<Game> | null>();
-  searchText: FormControl<string> = new FormControl<string>(null);
-  filteredOptions$?: Observable<Array<Game | BoardGame>>;
-  datas: Array<Game | BoardGame> = [];
-  currentUrl?: string;
+  private readonly boardGames = toSignal(this.repository.loadGames$('boardGames'), {initialValue: []});
+  private readonly videoGames = toSignal(this.repository.loadGames$('videoGames'), {initialValue: []});
+  private readonly outsideGames = toSignal(this.repository.loadGames$('outsideGames'), {initialValue: []});
+  private readonly url = toSignal(this.navigationService.url$, {requireSync: true});
+  private readonly searchValue = toSignal(this.searchText.valueChanges, {initialValue: ''});
 
-  ngOnInit() {
-    this.navigateService.url$.subscribe(url => {
-      this.datas = this.setDatasToSeachIn(url);
-      this.filteredOptions$ = this.searchText.valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value || '')),
-      );
-    });
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (this.currentUrl) {
-      this.datas = this.setDatasToSeachIn(this.currentUrl);
+  /** Searches in the library of the current page, or in all of them elsewhere. */
+  private readonly gamesToSearchIn = computed<ReadonlyArray<Game>>(() => {
+    const url = this.url();
+    const libraryId: LibraryId | undefined = (['boardGames', 'videoGames', 'outsideGames'] as const)
+      .find(id => url.includes(id));
+    switch (libraryId) {
+      case 'boardGames':
+        return this.boardGames();
+      case 'videoGames':
+        return this.videoGames();
+      case 'outsideGames':
+        return this.outsideGames();
+      default:
+        return [...this.boardGames(), ...this.videoGames(), ...this.outsideGames()];
     }
-  }
+  });
 
-  private _filter(value: string | Game | BoardGame | VideoGame): Array<Game | BoardGame> {
-    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
-    return this.datas.filter((item) =>
-      item.name?.toLowerCase().includes(filterValue)
-    );
-  }
+  protected readonly filteredOptions = computed(() => {
+    const value = this.searchValue();
+    const filterValue = (typeof value === 'string' ? value : value?.name ?? '').toLowerCase();
+    return this.gamesToSearchIn().filter(game => game.name?.toLowerCase().includes(filterValue));
+  });
 
-  goToSelectedItem(matAutocompleteSelectedEvent: MatAutocompleteSelectedEvent) {
-    this.navigateService.goToGame(matAutocompleteSelectedEvent.option.value);
-  }
+  protected readonly displayGame = (game?: Game): string => game ? `${game.name}` : '';
 
-  private setDatasToSeachIn(url: string): Array<Game | BoardGame> {
-    this.currentUrl = url;
-    const boardGames = this.boardGames();
-    const videoGames = this.videoGames();
-    const outsideGames = this.outsideGames();
-    if (boardGames && url.includes('boardGames')) {
-      return boardGames;
-    } else if (videoGames && url.includes('videoGames')) {
-      return videoGames;
-    } else if (outsideGames && url.includes('outsideGames')) {
-      return outsideGames;
-    } else {
-      const defaultSearch: Array<Game> = [];
-      if (boardGames) {
-        defaultSearch.push(...boardGames);
-      }
-      if (videoGames) {
-        defaultSearch.push(...videoGames);
-      }
-      if (outsideGames) {
-        defaultSearch.push(...outsideGames);
-      }
-      return defaultSearch;
-    }
-  }
-
-  displayGame(game?: Game): string {
-    return game ? `${game.name}` : '';
+  protected goToSelectedItem(event: MatAutocompleteSelectedEvent): void {
+    this.navigationService.goToGame(event.option.value as BoardGame);
   }
 }

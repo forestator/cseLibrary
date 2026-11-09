@@ -1,55 +1,46 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {MatButton} from '@angular/material/button';
 import {MatDialog} from '@angular/material/dialog';
+import {MatDivider} from '@angular/material/divider';
+import {
+  MatAccordion, MatExpansionPanel, MatExpansionPanelContent, MatExpansionPanelHeader, MatExpansionPanelTitle
+} from '@angular/material/expansion';
+import {firstValueFrom} from 'rxjs';
+import {GamesRepository} from '../../../../ludotheque/services/games.repository';
+import {LudoTableComponent} from '../ludo-table/ludo-table.component';
 import {AddGameModalComponent} from './add-game-modal/add-game-modal.component';
-import {combineLatest, take} from 'rxjs';
 import {EditGameModalComponent} from './edit-game-modal/edit-game-modal.component';
-import { MatButton } from '@angular/material/button';
-import { MatDivider } from '@angular/material/divider';
-import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
-import { LudoTableComponent } from '../ludo-table/ludo-table.component';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-admin-games',
-    templateUrl: './admin-games.component.html',
-    styleUrls: ['./admin-games.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatButton, MatDivider, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, LudoTableComponent, AsyncPipe]
+  selector: 'app-admin-games',
+  templateUrl: './admin-games.component.html',
+  styleUrl: './admin-games.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatButton, MatDivider, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle,
+    MatExpansionPanelContent, LudoTableComponent],
 })
 export class AdminGamesComponent {
-    firebaseDatabaseService = inject(FirebaseDatabaseService);
-    private dialog = inject(MatDialog);
+  private readonly repository = inject(GamesRepository);
+  private readonly dialog = inject(MatDialog);
 
-    columnsBoardGames = ['category', 'name', 'poids', 'ref'];
-    columnsVideoGame = ['category', 'name', 'ref'];
-    columnsOutsideGame = ['category', 'name', 'ref'];
-    search = '';
-    boardGamePanelOpen = false;
-    videoGamePanelOpen = false;
-    outsideGamePanelOpen = false;
+  private readonly boardGames = toSignal(this.repository.loadGames$('boardGames'));
+  private readonly videoGames = toSignal(this.repository.loadGames$('videoGames'));
+  private readonly outsideGames = toSignal(this.repository.loadGames$('outsideGames'));
 
-    addGame() {
-        combineLatest([
-            this.firebaseDatabaseService.boardGamesOneShot$,
-            this.firebaseDatabaseService.videoGamesOneShot$,
-            this.firebaseDatabaseService.outsideGamesOneShot$
-        ]).pipe(take(1)).subscribe(([a, b, c]) => {
-            this.dialog.open(AddGameModalComponent, {
-                data: {games: [...a, ...b, ...c]}
-            });
-        })
-    }
+  protected readonly sections = computed(() => [
+    {title: 'BoardGames', columns: ['category', 'name', 'poids', 'ref'], games: this.boardGames()},
+    {title: 'VideoGames', columns: ['category', 'name', 'ref'], games: this.videoGames()},
+    {title: 'OutsideGames', columns: ['category', 'name', 'ref'], games: this.outsideGames()},
+  ]);
 
-    editGame() {
-        combineLatest([
-            this.firebaseDatabaseService.boardGamesOneShot$,
-            this.firebaseDatabaseService.videoGamesOneShot$,
-            this.firebaseDatabaseService.outsideGamesOneShot$
-        ]).pipe(take(1)).subscribe(([a, b, c]) => {
-            this.dialog.open(EditGameModalComponent, {
-                data: {games: [...a, ...b, ...c]}
-            });
-        })
-    }
+  protected async addGame(): Promise<void> {
+    const games = await firstValueFrom(this.repository.loadAllGames$());
+    this.dialog.open(AddGameModalComponent, {data: {games}});
+  }
+
+  protected async editGame(): Promise<void> {
+    const games = await firstValueFrom(this.repository.loadAllGames$());
+    this.dialog.open(EditGameModalComponent, {data: {games}});
+  }
 }

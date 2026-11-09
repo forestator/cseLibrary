@@ -1,105 +1,107 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
-import {Game} from '../../../../../models/common.model';
+import {ChangeDetectionStrategy, Component, computed, inject, signal} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {CdkScrollable} from '@angular/cdk/scrolling';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {BoardGame} from '../../../../../models/boardGame.model';
-import {OpenAiService} from '../../../../../services/open-ai.service';
+import {MatButton} from '@angular/material/button';
+import {MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {firstValueFrom, startWith} from 'rxjs';
 import {BGGService} from '../../../../../ludotheque/services/bgg.service';
+import {GamesRepository} from '../../../../../ludotheque/services/games.repository';
+import {BoardGame} from '../../../../../models/boardGame.model';
+import {Game, LibraryId} from '../../../../../models/common.model';
 import {GamesUtils} from '../../../../../models/gamesUtils';
-import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import { AddGameFormComponent } from '../add-game-form/add-game-form.component';
-import { MatButton } from '@angular/material/button';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import {OpenAiService} from '../../../../../services/open-ai.service';
+import {AddGameFormComponent} from '../add-game-form/add-game-form.component';
 
 @Component({
-    selector: 'app-add-game-modal',
-    templateUrl: './add-game-modal.component.html',
-    styleUrls: ['./add-game-modal.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, AddGameFormComponent, MatDialogActions, MatButton, MatProgressSpinner]
+  selector: 'app-add-game-modal',
+  templateUrl: './add-game-modal.component.html',
+  styleUrl: './add-game-modal.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogTitle, CdkScrollable, MatDialogContent, AddGameFormComponent, MatDialogActions, MatButton,
+    MatProgressSpinner],
 })
 export class AddGameModalComponent {
-  dialogRef = inject<MatDialogRef<AddGameModalComponent>>(MatDialogRef);
-  fb = inject(FormBuilder);
-  private openAiService = inject(OpenAiService);
-  private firebaseDatabaseService = inject(FirebaseDatabaseService);
-  private bggService = inject(BGGService);
-  data = inject<{
+  private readonly dialogRef = inject<MatDialogRef<AddGameModalComponent>>(MatDialogRef);
+  private readonly formBuilder = inject(FormBuilder);
+  private readonly openAiService = inject(OpenAiService);
+  private readonly repository = inject(GamesRepository);
+  private readonly bggService = inject(BGGService);
+  protected readonly data = inject<{
     games: Array<Game>;
     selectedGame?: BoardGame;
-}>(MAT_DIALOG_DATA);
+  }>(MAT_DIALOG_DATA);
 
-  gameForm: FormGroup;
-  loading: boolean;
+  protected readonly gameForm = this.initForm(this.data.selectedGame);
+  protected readonly loading = signal(false);
 
-  constructor() {
-    this.gameForm = this.initForm(this.data.selectedGame);
-  }
+  private readonly formValue = toSignal(this.gameForm.valueChanges.pipe(startWith(this.gameForm.value)));
+  private readonly formStatus = toSignal(this.gameForm.statusChanges.pipe(startWith(this.gameForm.status)));
+
+  protected readonly formInvalid = computed(() => this.formStatus() === 'INVALID');
+  protected readonly magicDisabled = computed(() => !this.formValue()?.id || !this.formValue()?.name);
 
   private initForm(game?: BoardGame): FormGroup {
-    const uniqRef: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
-      const exist = this.data.games.some(game => game.ref === control.value);
-      const edit = this.data?.selectedGame?.ref === control.value;
+    const uniqueRef: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+      const exist = this.data.games.some(existingGame => existingGame.ref === control.value);
+      const edit = this.data.selectedGame?.ref === control.value;
       return (exist && !edit) ? {exist: true} : null;
     };
 
-    return this.fb.group({
+    return this.formBuilder.group({
       ...game,
-      ref: this.fb.control(game?.ref, [Validators.required, uniqRef]),
-      name: this.fb.control(game?.name, Validators.required),
-      description: this.fb.control(game?.description),
-      isNew: this.fb.control(game?.isNew ?? true),
-      category: this.fb.control(game?.category, Validators.required),
-      libraryId: this.fb.control(game ? GamesUtils.libraryIdOfGame(game) : 'boardGames', Validators.required),
-      weight: this.fb.control(game?.weight),
-      id: this.fb.control(game?.id),
-      cover: this.fb.control(game?.cover),
-      maxPlayers: this.fb.control(game?.maxPlayers),
-      minAge: this.fb.control(game?.minAge),
-      minPlayers: this.fb.control(game?.minPlayers),
-      playingTime: this.fb.control(game?.playingTime),
-      suggestedPlayAge: this.fb.control(game?.suggestedPlayAge),
-      themes: this.fb.control(game?.themes),
-      yearPublished: this.fb.control(game?.yearPublished),
+      ref: this.formBuilder.control(game?.ref, [Validators.required, uniqueRef]),
+      name: this.formBuilder.control(game?.name, Validators.required),
+      description: this.formBuilder.control(game?.description),
+      isNew: this.formBuilder.control(game?.isNew ?? true),
+      category: this.formBuilder.control(game?.category, Validators.required),
+      libraryId: this.formBuilder.control<LibraryId>(game ? GamesUtils.libraryIdOfGame(game) : 'boardGames', Validators.required),
+      weight: this.formBuilder.control(game?.weight),
+      id: this.formBuilder.control(game?.id),
+      cover: this.formBuilder.control(game?.cover),
+      maxPlayers: this.formBuilder.control(game?.maxPlayers),
+      minAge: this.formBuilder.control(game?.minAge),
+      minPlayers: this.formBuilder.control(game?.minPlayers),
+      playingTime: this.formBuilder.control(game?.playingTime),
+      suggestedPlayAge: this.formBuilder.control(game?.suggestedPlayAge),
+      themes: this.formBuilder.control(game?.themes),
+      yearPublished: this.formBuilder.control(game?.yearPublished),
     });
   }
 
-  async addGame() {
+  protected async addGame(): Promise<void> {
     if (this.gameForm.valid) {
       const game = this.gameForm.value;
-      // this is already updated by upload cover service
+      // The cover is already updated by the upload cover service.
       delete game.cover;
-      const result = await this.firebaseDatabaseService.updateGame(game, this.gameForm.value.libraryId);
-      console.log(result);
+      await this.repository.updateGame(game, this.gameForm.value.libraryId);
       this.cancel();
     }
   }
 
-  cancel() {
+  protected cancel(): void {
     this.dialogRef.close();
   }
 
-  async makeSomeMagic() {
-    this.loading = true;
-    const detailedGame: BoardGame = await this.bggService.gameDetails(this.gameForm.value).toPromise();
-    const description = await this.openAiService.genDescriptionJeu(detailedGame).catch(error => {
-      console.warn(error);
-    });
-    if (description) {
-      detailedGame.description = description;
+  protected async makeSomeMagic(): Promise<void> {
+    this.loading.set(true);
+    try {
+      const detailedGame = await firstValueFrom(this.bggService.gameDetails(this.gameForm.value));
+      const description = await this.openAiService.genDescriptionJeu(detailedGame).catch(error => {
+        console.warn(error);
+      });
+      if (description) {
+        detailedGame.description = description;
+      }
+      this.gameForm.patchValue(detailedGame);
+    } finally {
+      this.loading.set(false);
     }
-    console.log('openAi description', detailedGame.description);
-    this.gameForm.patchValue(detailedGame);
-    this.loading = false;
   }
 
-  disableMagic(): boolean {
-    return !this.gameForm.get('id').value || !this.gameForm.get('name').value;
-  }
-
-  deleteGame() {
-    this.firebaseDatabaseService.deleteGame(this.data.selectedGame);
+  protected async deleteGame(): Promise<void> {
+    await this.repository.deleteGame(this.data.selectedGame);
     this.cancel();
   }
 }

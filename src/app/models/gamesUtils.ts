@@ -1,6 +1,6 @@
 import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
-import {Consoles, VideoGame} from './videoGames.model';
-import {BddGame, Game} from './common.model';
+import {Consoles} from './videoGames.model';
+import {Game, LibraryId} from './common.model';
 import moment, {Moment} from 'moment';
 
 export class GamesUtils {
@@ -21,33 +21,6 @@ export class GamesUtils {
             };
         } else {
             return ludoGame;
-        }
-    }
-
-    static bddGameToLudoGame(bddGame: BddGame | null): Array<BoardGame | VideoGame | Game> {
-        if (bddGame) {
-            return Object.keys(bddGame).map(
-                (key) => Object.assign({ref: key}, bddGame[key])
-            ).sort((a, b) => {
-                const extractNumericPart = (str: string): number | undefined => {
-                    const numericPart = str.match(/\d+/);
-                    return numericPart ? parseInt(numericPart[0], 10) : undefined;
-                };
-                const aRefNumeric = a.ref ? extractNumericPart(a.ref) : undefined;
-                const bRefNumeric = b.ref ? extractNumericPart(b.ref) : undefined;
-
-                if (aRefNumeric !== undefined && bRefNumeric !== undefined) {
-                    return bRefNumeric - aRefNumeric;
-                } else if (aRefNumeric !== undefined) {
-                    return -1;
-                } else if (bRefNumeric !== undefined) {
-                    return 1;
-                } else {
-                    return 0;
-                }
-            });
-        } else {
-            return [];
         }
     }
 
@@ -87,8 +60,8 @@ export class GamesUtils {
         return elements.filter(el => el.attributes?.type === attribute).map(el => el.attributes.value);
     }
 
-    static libraryIdOfGame(game: Game): string | null {
-        let library = null;
+    static libraryIdOfGame(game: Game): LibraryId | null {
+        let library: LibraryId | null = null;
         if (('category' in game) && game.category in BoardGameCategory) {
             library = 'boardGames';
         }

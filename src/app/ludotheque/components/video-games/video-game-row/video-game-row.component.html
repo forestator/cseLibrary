@@ -1,18 +1,21 @@
-<div [id]="videoGame().ref" class="video-game-core">
-  <ng-container [ngTemplateOutlet]="image" />
-  <div class="video-game-info">
-    <div class="video-game-title">{{videoGame().name}}</div>
+<div class="video-row" [class.video-row-console]="variant() === 'console'"
+  [id]="videoGame().ref" [appScrollToSelected]="selectedId()">
+  @if (videoGame().cover) {
+    <div class="book-cover">
+      @if (variant() === 'console') {
+        <img width="300" height="250" [src]="videoGame().cover" [alt]="videoGame().name + ' cover'" />
+      } @else {
+        <img width="120" height="200" [src]="videoGame().cover" [alt]="videoGame().name + ' cover'" />
+      }
+    </div>
+  }
+  <div class="video-row-info">
+    <div class="video-row-title">{{ videoGame().name }}</div>
     @if (videoGame().ref) {
-      <div class="">Ref: {{videoGame().ref}}</div>
+      <div>Ref: {{ videoGame().ref }}</div>
+    }
+    @if (variant() === 'console' && videoGame().description) {
+      <div>Description: {{ videoGame().description }}</div>
     }
   </div>
 </div>
-<ng-template #image>
-  @if (videoGame().cover) {
-    <div class="book-cover">
-      <img width="120" height="200"
-        [src]="videoGame().cover"
-        [alt]="videoGame().name + ' cover'"/>
-    </div>
-  }
-</ng-template>

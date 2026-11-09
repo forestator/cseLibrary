@@ -1,56 +1,47 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
+import {MatButton} from '@angular/material/button';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {CdkScrollable} from '@angular/cdk/scrolling';
+import {BadgeComponent} from '../../../../../common/components/book-badge/badge.component';
 import {Game} from '../../../../../models/common.model';
-import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
-import {map, Observable} from 'rxjs';
 import {AddGameModalComponent} from '../add-game-modal/add-game-modal.component';
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
-import { BadgeComponent } from '../../../../../common/components/book-badge/badge.component';
-import { MatButton } from '@angular/material/button';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
-    selector: 'app-edit-game-modal',
-    templateUrl: './edit-game-modal.component.html',
-    styleUrls: ['./edit-game-modal.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, MatDialogActions, MatButton, AsyncPipe]
+  selector: 'app-edit-game-modal',
+  templateUrl: './edit-game-modal.component.html',
+  styleUrl: './edit-game-modal.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule,
+    MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, MatDialogActions, MatButton],
 })
 export class EditGameModalComponent {
-  dialogRef = inject<MatDialogRef<EditGameModalComponent>>(MatDialogRef);
-  private dialog = inject(MatDialog);
-  data = inject<{
-    games: Array<Game>;
-}>(MAT_DIALOG_DATA);
+  private readonly dialogRef = inject<MatDialogRef<EditGameModalComponent>>(MatDialogRef);
+  private readonly dialog = inject(MatDialog);
+  private readonly data = inject<{ games: Array<Game> }>(MAT_DIALOG_DATA);
 
+  protected readonly searchText = new FormControl<string | Game>('');
+  private readonly searchValue = toSignal(this.searchText.valueChanges, {initialValue: ''});
 
-  filteredOptions$: Observable<Array<Game>>;
-  searchText: FormControl<string>;
-  constructor() {
-    this.searchText = new FormControl('');
-    this.filteredOptions$ = this.searchText.valueChanges.pipe(
-      map((value) => this._filter(value || '', this.data.games)),
-    );
-  }
-  private _filter(value: string | Game, userList: Array<Game>): Array<Game> {
-    const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
-    return userList.filter((item) => item.name.toLowerCase().includes(filterValue));
-  }
+  protected readonly filteredOptions = computed(() => {
+    const value = this.searchValue();
+    const filterValue = (typeof value === 'string' ? value : value?.name ?? '').toLowerCase();
+    return this.data.games.filter(game => game.name.toLowerCase().includes(filterValue));
+  });
 
-  displayGame(option: Game) {
-    return option.name;
-  }
+  protected readonly displayGame = (game: Game): string => game.name;
 
-  selectGameToModify($event: MatAutocompleteSelectedEvent) {
+  protected selectGameToModify(event: MatAutocompleteSelectedEvent): void {
     this.dialog.open(AddGameModalComponent, {
-      data: {games: this.data.games, selectedGame: $event.option.value}
+      data: {games: this.data.games, selectedGame: event.option.value}
     });
     this.cancel();
   }
 
-  cancel() {
+  protected cancel(): void {
     this.dialogRef.close();
   }
 }

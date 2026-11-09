@@ -4,7 +4,7 @@ import {CloudinaryService} from '../cloudinary.service';
 import {FileUpload} from '../../models/fileUpload.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {BoardGame} from '../../models/boardGame.model';
-import {FirebaseDatabaseService} from './firebase-database.service';
+import {GamesRepository} from '../../ludotheque/services/games.repository';
 import {GamesUtils} from '../../models/gamesUtils';
 import {Game} from '../../models/common.model';
 import {CatalogueItem} from '../../catalogue/models/catalogue-item.model';
@@ -16,7 +16,7 @@ import {CatalogueRepositories} from '../../catalogue/services/catalogue-reposito
 })
 export class StorageUploadService {
   private cloudinary = inject(CloudinaryService);
-  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+  private gamesRepository = inject(GamesRepository);
   private catalogueRepositories = inject(CatalogueRepositories);
 
   private readonly gameCoverPath = '/assets/games/covers';
@@ -53,7 +53,7 @@ export class StorageUploadService {
     const filePath: string = `${this.gameCoverPath}/${libraryId}/${gameToUpdate.name}.${fileExtension}`;
 
     return this.uploadCover(fileUpload, filePath,
-      uploaded => this.firebaseDatabaseService.updateGameImage(gameToUpdate as Game, uploaded));
+      uploaded => this.gamesRepository.updateCover(gameToUpdate as Game, uploaded.url));
   }
 
   uploadItemCover(config: CommissionConfig, fileUpload: FileUpload, item: CatalogueItem): Observable<number> {

@@ -1,66 +1,65 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import {FilterBoardGamesService} from '../../../../services/filter-board-games.service';
+import {ChangeDetectionStrategy, Component, inject, signal, WritableSignal} from '@angular/core';
+import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
+import {MatIcon} from '@angular/material/icon';
 import {AdvancedBoardGameFilter, BoardGameFilterType} from '../../../../../models/boardGame.model';
-import { MatIcon } from '@angular/material/icon';
-import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
+import {FilterBoardGamesService} from '../../../../services/filter-board-games.service';
+
+interface FilterGroup {
+  type: BoardGameFilterType;
+  icon: string;
+  title: string;
+  ariaLabel: string;
+  unit: string;
+  options: ReadonlyArray<string>;
+  selected: WritableSignal<string | null>;
+}
 
 @Component({
-    selector: 'app-filter-board-games',
-    templateUrl: './filter-board-games.component.html',
-    styleUrls: ['./filter-board-games.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatIcon, MatButtonToggleGroup, MatButtonToggle]
+  selector: 'app-filter-board-games',
+  templateUrl: './filter-board-games.component.html',
+  styleUrl: './filter-board-games.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIcon, MatButtonToggleGroup, MatButtonToggle],
 })
 export class FilterBoardGamesComponent {
-  private filterService = inject(FilterBoardGamesService);
+  private readonly filterService = inject(FilterBoardGamesService);
 
-  numberOfPlayers: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '8+'];
-  gameDuration: Array<string> = ['moins de 15min', 'de 15 à 30min', 'de 30 à 1h', 'plus d\'1h'];
-  ageList: Array<string> = ['2', '4', '7', '10', '12', '14', '16'];
-  boardGameFilterType = BoardGameFilterType;
-  currentFilter: AdvancedBoardGameFilter = {age: null, duration: null, nbPlayers: null};
+  protected readonly groups: ReadonlyArray<FilterGroup> = [
+    {
+      type: BoardGameFilterType.NUMBER_OF_PLAYERS, icon: 'group', title: 'Nombre de joueurs',
+      ariaLabel: 'Number of players', unit: '',
+      options: ['1', '2', '3', '4', '5', '6', '7', '8', '8+'], selected: signal<string | null>(null),
+    },
+    {
+      type: BoardGameFilterType.DURATION, icon: 'timer', title: 'Durée d\'une partie',
+      ariaLabel: 'Game duration', unit: '',
+      options: ['moins de 15min', 'de 15 à 30min', 'de 30 à 1h', 'plus d\'1h'], selected: signal<string | null>(null),
+    },
+    {
+      type: BoardGameFilterType.AGE, icon: 'family_restroom', title: 'Âge, à partir de',
+      ariaLabel: 'Player Age', unit: ' ans',
+      options: ['2', '4', '7', '10', '12', '14', '16'], selected: signal<string | null>(null),
+    },
+  ];
 
-  numberOfPlayersGroupValue: string;
-  durationGroupValue: string;
-  ageGroupValue: string;
+  private currentFilter: AdvancedBoardGameFilter = {age: null, duration: null, nbPlayers: null};
 
-  selectedFilter(value: string, filterType: BoardGameFilterType) {
-    const convertedVal =
-      filterType === BoardGameFilterType.DURATION ? this.convertDurationFilterBeforeSend(value) : value;
-    // already selected filter should remove it
-    if (this.currentFilter[filterType] === convertedVal) {
-      this.currentFilter[filterType] = null;
-      switch (filterType) {
-        case BoardGameFilterType.AGE:
-          this.ageGroupValue = null;
-          break;
-        case BoardGameFilterType.DURATION:
-          this.durationGroupValue = null;
-          break;
-        case BoardGameFilterType.NUMBER_OF_PLAYERS:
-          this.numberOfPlayersGroupValue = null;
-          break;
-      }
+  protected selectedFilter(group: FilterGroup, value: string): void {
+    const convertedValue = group.type === BoardGameFilterType.DURATION ? this.convertDuration(value) : value;
+    // Clicking the already selected value removes the filter.
+    if (this.currentFilter[group.type] === convertedValue) {
+      this.currentFilter[group.type] = null;
+      group.selected.set(null);
     } else {
-      this.currentFilter[filterType] = convertedVal;
+      this.currentFilter[group.type] = convertedValue;
     }
-
-    this.filterService.filter$.next(this.currentFilter);
+    this.filterService.filter.set({...this.currentFilter});
   }
 
-  private convertDurationFilterBeforeSend(value: string): string {
-    let returnedValue: string;
+  private convertDuration(value: string): string {
     if (value.includes('15')) {
-      if (value.includes('30')) {
-        returnedValue = '15>30';
-      } else {
-        returnedValue = '<15';
-      }
-    } else if (!value.includes('15') && value.includes('30')) {
-      returnedValue = '30>60';
-    } else {
-      returnedValue = '>60';
+      return value.includes('30') ? '15>30' : '<15';
     }
-    return returnedValue;
+    return value.includes('30') ? '30>60' : '>60';
   }
 }

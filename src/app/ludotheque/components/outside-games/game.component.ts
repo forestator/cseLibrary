@@ -1,36 +1,21 @@
-import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
-import {Library} from '../../../models/author.model';
-import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
-import {Game} from '../../../models/common.model';
-import {NavigationService} from '../../../services/navigation.service';
-import { GameRowComponent } from './game-row/game-row.component';
-import { AsyncPipe } from '@angular/common';
+import {ChangeDetectionStrategy, Component, inject, input} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {GamesRepository} from '../../services/games.repository';
+import {GameRowComponent} from '../game-row/game-row.component';
 
 @Component({
-    selector: 'app-games-list',
-    templateUrl: './game.component.html',
-    styleUrls: ['./game.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [GameRowComponent, AsyncPipe]
+  selector: 'app-games-list',
+  templateUrl: './game.component.html',
+  styleUrl: './game.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [GameRowComponent],
 })
-export class GameComponent implements OnInit, OnDestroy {
-  private firebaseDb = inject(FirebaseDatabaseService);
-  private navigationService = inject(NavigationService);
+export class GameComponent {
+  /** Game to scroll to, from the route `ludotheque/outsideGames/:id`. */
+  readonly id = input<string>();
 
-  library$: Observable<Library | null> = this.firebaseDb.outsideGamesLibrary$;
-  games$: Observable<Array<Game> | null> = this.firebaseDb.outsideGames$;
+  private readonly repository = inject(GamesRepository);
 
-  private sub?: Subscription;
-  public selectedOutsideGame?: string;
-
-  ngOnInit() {
-    this.sub = this.navigationService.getRouteParams().subscribe((params) => {
-      this.selectedOutsideGame = params['id'];
-    });
-  }
-
-  ngOnDestroy() {
-    this.sub?.unsubscribe();
-  }
+  protected readonly library = toSignal(this.repository.loadLibrary$('outsideGames'));
+  protected readonly games = toSignal(this.repository.watchGames$('outsideGames'));
 }

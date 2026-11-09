@@ -1,10 +1,10 @@
-@if (boardGames()) {
+@if (filteredBoardGames(); as boardGames) {
   <div class="core-body">
-    @for (bg of (boardGames() | advancedBoardGameFilter | async); track trackBoardGame(index, bg); let index = $index) {
+    @for (boardGame of boardGames; track boardGame.ref) {
       <div class="core-body">
-        <app-board-game-row [boardGame]="bg"
-          [selectedBoardGameId]="selectedBoardGameId()"
-        [index]="index" />
+        <app-game-row [game]="boardGame" [index]="$index"
+          [anchorId]="boardGame.id" [selectedId]="selectedId()"
+          [infos]="boardGame | boardGameInfos" [description]="boardGame.description" />
       </div>
     }
   </div>
