@@ -26,6 +26,5 @@ export class SeriesRowComponent {
   protected readonly visibleBooks = computed(() => filterBooks(this.series().books, this.tools.adminMode));
   protected readonly bookCount = computed(() => countLabel(this.visibleBooks().length, 'livre'));
   protected readonly panelId = computed(() => `series-panel-${this.series().id}`);
-  protected readonly toggleLabel = computed(() => `${this.open() ? 'Masquer' : 'Afficher'} les livres de la série ${this.series().name}`);
   protected readonly linkLabel = computed(() => `Ouvrir la page de la série ${this.series().name}`);
 }

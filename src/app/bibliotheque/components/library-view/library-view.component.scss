@@ -32,15 +32,15 @@
   border: 1px solid $outline;
   border-radius: $radius-lg;
   // Visible when the picture is missing: keeps the white text readable.
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 70%, #000), color-mix(in srgb, var(--accent) 30%, #000));
-  color: #fff;
+  background: $image-fallback;
+  color: $on-accent;
   text-decoration: none;
 
   &::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgb(0 0 0 / 88%) 0%, rgb(0 0 0 / 62%) 50%, rgb(0 0 0 / 15%) 100%);
+    background: $image-overlay-strong;
     transition: opacity 0.2s ease;
   }
 
@@ -72,7 +72,7 @@
 
 .card-text {
   @include clamp-lines(3);
-  color: rgb(255 255 255 / 92%);
+  color: $on-image;
   font-size: 0.95rem;
 }
 

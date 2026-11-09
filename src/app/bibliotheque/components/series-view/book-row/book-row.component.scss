@@ -42,7 +42,7 @@
 .book-category {
   @include chip;
   background: $accent;
-  color: #fff;
+  color: $on-accent;
 }
 
 .book-infos {

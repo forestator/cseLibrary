@@ -36,13 +36,13 @@
   display: block;
   aspect-ratio: 16 / 8;
   // Dark base shown if the picture is missing; the overlay keeps any picture calm.
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 70%, #000), color-mix(in srgb, var(--accent) 30%, #000));
+  background: $image-fallback;
 
   &::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgb(0 0 0 / 35%), transparent 60%);
+    background: $image-overlay-soft;
   }
 
   img {

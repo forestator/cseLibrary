@@ -12,6 +12,17 @@ $tones: (
   'teal': (#ccfbf1, #134e4a, #134e4a, #99f6e4),
 );
 
+// Text on an accent-coloured surface and the dark overlays that keep text over pictures readable.
+$on-accent: #fff;
+$on-image: rgb(255 255 255 / 92%);
+$image-base: #000;
+$image-overlay-strong: linear-gradient(to top, rgb(0 0 0 / 88%) 0%, rgb(0 0 0 / 62%) 50%, rgb(0 0 0 / 15%) 100%);
+$image-overlay-soft: linear-gradient(to top, rgb(0 0 0 / 35%), transparent 60%);
+// Pictures missing: a dark accent gradient stands in.
+$image-fallback: linear-gradient(135deg, color-mix(in srgb, var(--accent) 70%, $image-base), color-mix(in srgb, var(--accent) 30%, $image-base));
+$action-add: light-dark(#166534, #86efac);
+$action-delete: light-dark(#b91c1c, #fca5a5);
+
 @mixin chip {
   display: inline-flex;
   align-items: center;

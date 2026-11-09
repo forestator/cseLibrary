@@ -1,9 +1,9 @@
-<h2 mat-dialog-title class="dialog-title" #top>
+<h2 mat-dialog-title class="dialog-title">
   <span class="dialog-title-icon"><mat-icon aria-hidden="true">search</mat-icon></span>
   Recherche par {{data.by}}, {{results.length}} résultat(s)
 </h2>
 <mat-dialog-content class="dialog-content">
-  <ul class="results">
+  <ul class="results" #top>
     @for (result of results; track $index; let index = $index) {
       <li class="result" [class.result-selected]="selectedIndex() === index">
         <mat-checkbox [checked]="selectedIndex() === index" (change)="toggle(index, $event.checked)">
