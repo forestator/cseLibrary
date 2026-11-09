@@ -1,23 +1,30 @@
 @if (editor.libraryNode(); as libraryNode) {
-  <div class="settings-page">
+  <div class="page">
+    <app-page-header [title]="title()" [crumbs]="crumbs" resume="Les modifications restent dans cette page : elles ne sont pas enregistrées dans la base." />
     <app-settings-panel [node]="libraryNode">
-      <nav class="all-categories" aria-label="Sections de la bibliothèque">
+      <nav class="tiles" aria-label="Sections de la bibliothèque">
         @for (tile of editor.tiles(); track tile.key) {
           <button
             type="button"
-            class="category bloc-link"
-            [class.bloc-selected]="tile.key === editor.selectedKey()"
+            class="tile"
+            [attr.aria-pressed]="tile.key === editor.selectedKey()"
             (click)="editor.selection.set(tile.selection)">
-            <span class="category-title">{{tile.title}}</span>
-            <span class="category-info">{{tile.info}}</span>
+            <span class="tile-title">{{tile.title}}</span>
+            <span class="tile-info">{{tile.info}}</span>
           </button>
         }
       </nav>
-      <div class="selected-nodes" [class.selected-list]="editor.selection()?.kind !== 'category'">
+      <div class="selected">
         @for (node of editor.selectedNodes(); track node.id) {
           <app-settings-panel [node]="node" />
+        } @empty {
+          <app-empty-state icon="touch_app" title="Choisissez une section" text="Sélectionnez une catégorie, les auteurs ou les éditeurs pour les modifier." />
         }
       </div>
     </app-settings-panel>
+  </div>
+} @else {
+  <div class="page">
+    <app-skeleton variant="list" [count]="4" />
   </div>
 }

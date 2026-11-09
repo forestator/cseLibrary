@@ -1,10 +1,59 @@
-.mat-mdc-dialog-title{
-    border-bottom: 1px solid lightgray;
-    font-family: 'Courier Prime', monospace;
+@use '../common/ui' as *;
+
+// Dialogs live in the overlay, outside the page shell: the commission accent is not inherited there,
+// so they rely on the Material primary colour.
+$dialog-accent: var(--mat-sys-primary);
+$dialog-accent-soft: var(--mat-sys-primary-container);
+$dialog-accent-text: var(--mat-sys-on-primary-container);
+
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  margin: 0;
+  padding: $space-5 $space-5 $space-3;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  @include mobile {
+    padding: $space-4 $space-4 $space-2;
+    font-size: 1.15rem;
+  }
+
+  // Material's spacer pseudo-element would become a flex item and shift the icon.
+  &::before {
+    display: none;
+  }
 }
 
-.mat-mdc-dialog-actions{
-    display: flex;
-    justify-content: flex-end;
-    border-top: 1px solid lightgray;
+.dialog-title-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-pill;
+  background: $dialog-accent-soft;
+  color: $dialog-accent-text;
+}
+
+.dialog-content {
+  padding: $space-2 $space-5 $space-4;
+
+  @include mobile {
+    padding-inline: $space-4;
+  }
+}
+
+.dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: $space-2;
+  padding: $space-3 $space-5 $space-5;
+
+  @include mobile {
+    padding-inline: $space-4;
+  }
 }

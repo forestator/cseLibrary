@@ -1,19 +1,57 @@
+@use '../ui' as *;
 
 .alphabet {
+  position: sticky;
+  top: $topbar-height;
+  z-index: 10;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  padding: 10px;
+  flex-wrap: wrap;
+  gap: $space-1;
+  padding: $space-2;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: color-mix(in srgb, var(--mat-sys-surface-container) 92%, transparent);
+  backdrop-filter: blur(12px);
+
+  @include mobile {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
 }
 
 .letter {
-  flex: 1;
-  width: 40px;
-  height: 40px;
+  @include touch-target;
+  flex: 0 0 auto;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 0 $space-2;
   border: 0;
-  padding: 0;
+  border-radius: $radius-pill;
+  background: none;
+  color: $on-surface;
   font: inherit;
-  font-size: x-large;
-  line-height: 40px;
+  font-weight: 600;
   cursor: pointer;
+  scroll-snap-align: start;
+  transition: background-color 0.15s ease;
+
+  @include mobile {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  &:hover {
+    background: $surface-high;
+  }
+
+  &[aria-pressed='true'] {
+    background: $accent;
+    color: #fff;
+  }
+}
+
+.letter-all {
+  padding: 0 $space-4;
 }

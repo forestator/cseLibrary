@@ -1,0 +1,35 @@
+<ul class="book-list">
+  @for (book of books(); track book.id) {
+    <li class="book-item">
+      <span class="book-thumb">
+        <img [ngSrc]="biblio().library?.path | bookCover: book.cover" fill [alt]="'Couverture de ' + book.name" sizes="(max-width: 840px) 20vw, 6vw">
+      </span>
+      <div class="book-main">
+        <p class="book-name">
+          {{book.name}}
+          @if (book.tome) {
+            <span class="book-tome">Tome {{book.tome}}</span>
+          }
+        </p>
+        @if (showAuthors()) {
+          <p class="book-authors">{{book.authorIds | authorNames: biblio()}}</p>
+        }
+      </div>
+      <dl class="book-meta">
+        @if (book.isbn10 || book.isbn13) {
+          <div>
+            <dt>ISBN</dt>
+            <dd>{{book.isbn10}} {{book.isbn13}}</dd>
+          </div>
+        }
+        @if (book.page) {
+          <div>
+            <dt>Pages</dt>
+            <dd>{{book.page}}</dd>
+          </div>
+        }
+      </dl>
+      <app-book-status class="book-status" [status]="book.status" />
+    </li>
+  }
+</ul>

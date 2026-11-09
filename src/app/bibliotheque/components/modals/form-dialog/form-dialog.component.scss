@@ -1,25 +1,47 @@
-@import '../modal';
+@use '../modal';
+@use '../../common/ui' as *;
 
 .form-layout {
   display: flex;
-  flex-direction: row;
+  gap: $space-5;
+  padding-top: $space-2;
+
+  @include mobile {
+    flex-direction: column;
+    gap: $space-4;
+  }
 }
 
 .form-cover {
-  flex: 1;
-  padding: 5px;
+  position: relative;
+  flex: none;
+  align-self: flex-start;
+  width: 220px;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: $radius-md;
+  background: $surface-high;
+  box-shadow: $shadow-1;
+
+  @include mobile {
+    width: 120px;
+  }
 
   img {
-    width: 400px;
+    object-fit: contain;
   }
 }
 
 .form-grid {
-  flex: 2;
   display: grid;
+  flex: 1;
   grid-template-columns: 1fr 1fr;
-  column-gap: 10px;
-  padding: 5px;
+  gap: $space-3 $space-3;
+  min-width: 0;
+
+  @include mobile {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .form-field {
@@ -29,8 +51,12 @@
 
 .form-field-half {
   grid-column: auto;
+
+  @include mobile {
+    grid-column: 1 / -1;
+  }
 }
 
 .form-textarea {
-  height: 100px;
+  min-height: 100px;
 }

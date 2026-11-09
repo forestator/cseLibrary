@@ -1,5 +1,0 @@
-<nav class="category-menu" aria-label="Catégories de la bibliothèque">
-  @for (entry of entries(); track entry.id) {
-    <a class="cat-nav" [routerLink]="entry.route">{{entry.name}}</a>
-  }
-</nav>

@@ -1,17 +1,17 @@
-<h2 mat-dialog-title>
-  <mat-icon>{{data.icon}}</mat-icon>
+<h2 mat-dialog-title class="dialog-title">
+  <span class="dialog-title-icon"><mat-icon aria-hidden="true">{{data.icon}}</mat-icon></span>
   {{heading()}}
 </h2>
-<mat-dialog-content>
+<mat-dialog-content class="dialog-content">
   <div class="form-layout">
     @if (data.cover; as cover) {
       <div class="form-cover">
-        <img alt="Couverture du livre" [src]="cover.libraryPath | bookCover: coverName()">
+        <img [ngSrc]="cover.libraryPath | bookCover: coverName()" fill alt="Couverture du livre" sizes="(max-width: 840px) 40vw, 20vw">
       </div>
     }
     <form class="form-grid" [formGroup]="form" (ngSubmit)="save()">
       @for (field of data.fields; track field.key) {
-        <mat-form-field class="form-field" [class.form-field-half]="field.half" appearance="fill">
+        <mat-form-field class="form-field" [class.form-field-half]="field.half" appearance="outline" subscriptSizing="dynamic">
           <mat-label>{{field.label}}</mat-label>
           @switch (field.type) {
             @case ('select') {
@@ -22,10 +22,10 @@
               </mat-select>
             }
             @case ('textarea') {
-              <textarea matInput class="form-textarea" [placeholder]="field.label" [formControlName]="field.key"></textarea>
+              <textarea matInput class="form-textarea" rows="4" [formControlName]="field.key"></textarea>
             }
             @default {
-              <input matInput [placeholder]="field.label" [formControlName]="field.key">
+              <input matInput [formControlName]="field.key">
             }
           }
         </mat-form-field>
@@ -33,19 +33,16 @@
     </form>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions class="dialog-actions">
   @for (action of data.extraActions; track action.label) {
-    <button type="button" mat-raised-button color="accent" (click)="action.run(form)">
-      <mat-icon>{{action.icon}}</mat-icon>
+    <button type="button" mat-stroked-button (click)="action.run(form)">
+      <mat-icon aria-hidden="true">{{action.icon}}</mat-icon>
       {{action.label}}
     </button>
   }
-  <button type="button" mat-raised-button (click)="cancel()">
-    <mat-icon>cancel</mat-icon>
-    Abandonner
-  </button>
-  <button type="button" mat-raised-button color="primary" (click)="save()" cdkFocusInitial>
-    <mat-icon>check</mat-icon>
+  <button type="button" mat-button (click)="cancel()">Abandonner</button>
+  <button type="button" mat-flat-button (click)="save()" cdkFocusInitial>
+    <mat-icon aria-hidden="true">check</mat-icon>
     Enregistrer
   </button>
 </mat-dialog-actions>

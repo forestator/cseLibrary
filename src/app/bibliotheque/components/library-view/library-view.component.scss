@@ -1,6 +1,91 @@
+@use '../common/ui' as *;
 
-.core-body {
+.page {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.cards {
+  @include responsive-grid(320px);
+  gap: $space-4;
+
+  li {
+    animation: reveal 0.35s ease backwards;
+
+    @for $index from 1 through 8 {
+      &:nth-child(#{$index}) {
+        animation-delay: #{$index * 50}ms;
+      }
+    }
+  }
+}
+
+.card {
+  @include interactive-card;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 260px;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  // Visible when the picture is missing: keeps the white text readable.
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 70%, #000), color-mix(in srgb, var(--accent) 30%, #000));
+  color: #fff;
   text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(0 0 0 / 88%) 0%, rgb(0 0 0 / 62%) 50%, rgb(0 0 0 / 15%) 100%);
+    transition: opacity 0.2s ease;
+  }
+
+  &:hover .card-image {
+    transform: scale(1.04);
+  }
+}
+
+.card-image {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  width: 100%;
+  padding: $space-5;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.card-text {
+  @include clamp-lines(3);
+  color: rgb(255 255 255 / 92%);
+  font-size: 0.95rem;
+}
+
+.card-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-1 $space-3;
+  padding-top: $space-2;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.card-go {
+  margin-left: auto;
 }

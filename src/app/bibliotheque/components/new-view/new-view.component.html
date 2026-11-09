@@ -1,31 +1,40 @@
-@if (newBooks(); as libraryNew) {
-  <div class="new-page fadein">
-    <div class="title">
-      Nouveautés
-      @if (auth.isUserSuperAdmin | async) {
-        <button type="button" mat-icon-button aria-label="Exporter les nouveautés en PDF" (click)="exportNewsAsPDF()">
-          <mat-icon>picture_as_pdf</mat-icon>
-        </button>
-      }
-    </div>
-    @for (data of libraryNew; track data.biblio.library?.id) {
-      <div class="core-page">
+<div class="page">
+  <app-page-header title="Nouveautés" resume="Les derniers livres arrivés dans les bibliothèques du CSE, et ceux qui sont en projet d'achat.">
+    @if (auth.isUserSuperAdmin | async) {
+      <button type="button" class="export-button" [disabled]="exporting()" (click)="exportNewsAsPDF()">
+        <mat-icon aria-hidden="true">picture_as_pdf</mat-icon>
+        {{exporting() ? 'Export en cours…' : 'Exporter les nouveautés en PDF'}}
+      </button>
+    }
+  </app-page-header>
+
+  @if (sections(); as libraryNew) {
+    @for (data of libraryNew; track data.biblio.library?.id; let firstLibrary = $first) {
+      <section class="library" [attr.aria-labelledby]="'library-' + data.biblio.library?.id">
+        <h2 class="library-title" [id]="'library-' + data.biblio.library?.id">
+          {{data.biblio.library?.name}}
+          <span class="library-count">{{data.newLabel}}</span>
+        </h2>
         @if (data.books.length > 0) {
-          <div class="core-body">
-            @for (path of data.books; track path.book.id; let index = $index) {
-              <app-book-row [book]="path.book" [biblio]="data.biblio" [category]="path.category" [index]="index" />
+          <div class="grid">
+            @for (path of data.books; track path.book.id; let first = $first) {
+              <app-book-row [book]="path.book" [biblio]="data.biblio" [category]="path.category" [resumeOpen]="true" [eagerCover]="true" [priorityCover]="first && firstLibrary" />
             }
           </div>
         }
         @if (data.booksInProject.length > 0) {
-          <div class="core-body">
-            <div class="title">En projet</div>
-            @for (path of data.booksInProject; track path.book.id; let index = $index) {
-              <app-book-row [book]="path.book" [biblio]="data.biblio" [category]="path.category" [index]="index" />
+          <h3 class="project-title">En projet <span class="library-count">{{data.projectLabel}}</span></h3>
+          <div class="grid">
+            @for (path of data.booksInProject; track path.book.id) {
+              <app-book-row [book]="path.book" [biblio]="data.biblio" [category]="path.category" [resumeOpen]="true" />
             }
           </div>
         }
-      </div>
+      </section>
+    } @empty {
+      <app-empty-state icon="auto_stories" title="Aucune nouveauté pour le moment" text="Les prochains achats apparaîtront ici." />
     }
-  </div>
-}
+  } @else {
+    <app-skeleton variant="list" [count]="4" />
+  }
+</div>

@@ -1,23 +1,52 @@
-@import "../modal";
-.search {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    background-color: lightgray;
-    border-radius: 10px;
-    margin: 10px;
-    max-height: 600px;
-    overflow: hidden;
-    overflow-y: scroll;
-    .search-item{
-        display: flex;
-        flex-direction: row;
-        .search-label{
-            flex: 1;
-            font-weight: bold;
-        }
-        .search-value{
-            flex: 5;
-        }
-    }
+@use '../modal';
+@use '../../common/ui' as *;
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.result {
+  padding: $space-3 $space-4;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: $radius-md;
+  background: var(--mat-sys-surface-container-low);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+
+  &.result-selected {
+    border-color: var(--mat-sys-primary);
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+  }
+}
+
+.result-rows {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  margin: $space-2 0 0;
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: minmax(110px, 180px) minmax(0, 1fr);
+  gap: $space-3;
+
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  @include mobile {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
 }

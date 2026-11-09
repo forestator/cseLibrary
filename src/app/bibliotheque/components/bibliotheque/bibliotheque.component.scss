@@ -1,8 +1,136 @@
+@use '../common/ui' as *;
 
-// Whole blocks are links: keep the block look of the previous clickable divs.
-a.core-header,
-a.core-body {
-  display: block;
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+}
+
+.cards {
+  @include responsive-grid(340px);
+  gap: $space-5;
+
+  li {
+    animation: reveal 0.35s ease backwards;
+
+    @for $index from 1 through 4 {
+      &:nth-child(#{$index}) {
+        animation-delay: #{$index * 60}ms;
+      }
+    }
+  }
+}
+
+.card {
+  @include surface-card;
+  @include interactive-card;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
   text-decoration: none;
-  cursor: pointer;
+}
+
+.card-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 8;
+  // Dark base shown if the picture is missing; the overlay keeps any picture calm.
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 70%, #000), color-mix(in srgb, var(--accent) 30%, #000));
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgb(0 0 0 / 35%), transparent 60%);
+  }
+
+  img {
+    object-fit: cover;
+  }
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-5;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.card-text {
+  @include clamp-lines(3);
+  color: $on-surface-muted;
+}
+
+.card-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-1 $space-2;
+  margin-top: auto;
+  padding-top: $space-3;
+  color: $accent-text;
+  font-size: 0.9rem;
+  font-weight: 500;
+
+  mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+
+  mat-icon:not(:first-child) {
+    margin-left: $space-3;
+  }
+}
+
+.admin {
+  @include surface-card;
+  padding: $space-5;
+}
+
+.admin-title {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin: 0 0 $space-3;
+  font-size: 1.2rem;
+
+  mat-icon {
+    color: $accent-text;
+  }
+}
+
+.admin-links {
+  @include responsive-grid(260px);
+  gap: $space-2;
+}
+
+.admin-link {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  min-height: 48px;
+  padding: $space-2 $space-4;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  color: $on-surface;
+  font-weight: 500;
+  text-decoration: none;
+
+  mat-icon {
+    color: $accent-text;
+  }
+
+  &:hover {
+    border-color: $accent;
+    background: $accent-soft;
+  }
 }

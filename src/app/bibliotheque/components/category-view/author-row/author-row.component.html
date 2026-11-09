@@ -1,16 +1,24 @@
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <span class="author-title">{{author().lastName}} {{author().firstName}}</span>
-        <span class="author-info">{{counter()}} livres</span>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    @if (books().length) {
-      <app-book-table [books]="books()" [biblio]="biblio()" />
-    }
-    @for (entry of series(); track entry.series.id) {
-      <app-book-table [books]="entry.books" [biblio]="biblio()" [seriesName]="entry.series.name" />
-    }
-  </mat-expansion-panel>
-</mat-accordion>
+<article class="row-card">
+  <h2 class="row-heading">
+    <button type="button" class="row-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="panelId()" [attr.aria-label]="toggleLabel()" (click)="open.update(isOpen => !isOpen)">
+      <mat-icon class="row-chevron" [class.row-chevron-open]="open()" aria-hidden="true">chevron_right</mat-icon>
+      <span class="row-text">
+        <span class="row-title">{{fullName()}}</span>
+        <span class="row-info">{{counter()}}</span>
+      </span>
+    </button>
+  </h2>
+  @if (open()) {
+    <div class="row-body" [id]="panelId()">
+      @if (books().length) {
+        <app-book-list [books]="books()" [biblio]="biblio()" />
+      }
+      @for (entry of series(); track entry.series.id) {
+        <section class="row-series">
+          <h3 class="row-series-title">{{entry.series.name}}</h3>
+          <app-book-list [books]="entry.books" [biblio]="biblio()" />
+        </section>
+      }
+    </div>
+  }
+</article>

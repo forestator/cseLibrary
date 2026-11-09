@@ -1,43 +1,42 @@
 @let biblioValue = biblio();
 @if (category(); as category) {
-  <div class="core-page fadein">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="secondary"></div>
-        <mat-icon>navigate_next</mat-icon>
-        <div class="primary">{{category.name}}</div>
-        <div class="counter">{{counter()}} livres</div>
-      </div>
-      <div class="core-resume">
-        {{category.resume}}
-      </div>
-      @if (isByAuthor()) {
-        <div>
-          <app-alphabet (filterByLetter)="filterLetter.set($event)" />
-        </div>
-      }
-      <nav class="all-series" aria-label="Séries de la catégorie">
-        @for (entry of seriesList(); track entry.series.id) {
-          <a class="series bloc-link" [routerLink]="entry.series.id">
-            <span class="series-title">{{entry.series.name}}</span>
-            <span class="series-info">{{entry.bookCount}} livres</span>
-          </a>
-        }
-      </nav>
-    </div>
+  <div class="page">
+    <app-page-header [title]="category.name" [resume]="category.resume" [crumbs]="crumbs()" [facts]="facts()" />
     @if (biblioValue) {
-      <div class="category-core">
-        @for (entry of seriesList(); track entry.series.id) {
-          <app-series-row [biblio]="biblioValue" [series]="entry.series" />
-        }
-      </div>
+      @if (seriesList().length) {
+        <section class="block" aria-labelledby="series-heading">
+          <h2 id="series-heading" class="block-title">Séries <span class="block-count">{{seriesList().length}}</span></h2>
+          <div class="block-list">
+            @for (entry of seriesList(); track entry.series.id) {
+              <app-series-row [biblio]="biblioValue" [series]="entry.series" />
+            }
+          </div>
+        </section>
+      }
       @if (isByAuthor()) {
-        <div class="category-core">
-          @for (author of authors(); track $index) {
-            <app-author-row [author]="author" [biblio]="biblioValue" />
-          }
-        </div>
+        <section class="block" aria-labelledby="authors-heading">
+          <h2 id="authors-heading" class="block-title">Auteurs <span class="block-count">{{authors().length}}</span></h2>
+          <app-alphabet [selected]="filterLetter()" (filterByLetter)="filterLetter.set($event)" />
+          <div class="block-list" aria-live="polite">
+            @for (author of authors(); track $index) {
+              <app-author-row [author]="author" [biblio]="biblioValue" />
+            } @empty {
+              <app-empty-state icon="person_search" title="Aucun auteur pour cette lettre" text="Choisissez « Tous » pour revoir la liste complète." />
+            }
+          </div>
+        </section>
+      }
+      @if (!seriesList().length && !isByAuthor()) {
+        <app-empty-state title="Aucune série dans cette catégorie" text="Les livres apparaîtront ici dès leur ajout au catalogue." />
       }
     }
+  </div>
+} @else if (!biblioValue) {
+  <div class="page">
+    <app-skeleton variant="list" [count]="6" />
+  </div>
+} @else {
+  <div class="page">
+    <app-empty-state icon="search_off" title="Catégorie introuvable" text="Revenez à la bibliothèque pour choisir une autre catégorie." />
   </div>
 }

@@ -1,12 +1,14 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input, signal} from '@angular/core';
-import {RouterLink} from '@angular/router';
-import {MatIcon} from '@angular/material/icon';
 import {ViewBy} from '../../../models/author.model';
 import {ToolsService} from '../../../services/biblio/tools.service';
+import {countLabel, visibleBookCount} from '../../models/library-queries';
 import {filterBooks, filterSeries} from '../../models/library-visibility';
 import {LibraryRepository} from '../../services/library.repository';
 import {AuthorRowComponent} from './author-row/author-row.component';
 import {AlphabetComponent} from '../common/alphabet/alphabet.component';
+import {EmptyStateComponent} from '../common/empty-state/empty-state.component';
+import {Crumb, PageHeaderComponent} from '../common/page-header/page-header.component';
+import {SkeletonComponent} from '../common/skeleton/skeleton.component';
 import {SeriesRowComponent} from './series-row/series-row.component';
 
 @Component({
@@ -14,7 +16,7 @@ import {SeriesRowComponent} from './series-row/series-row.component';
   templateUrl: './category-view.component.html',
   styleUrl: './category-view.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIcon, AlphabetComponent, RouterLink, SeriesRowComponent, AuthorRowComponent],
+  imports: [AlphabetComponent, SeriesRowComponent, AuthorRowComponent, PageHeaderComponent, SkeletonComponent, EmptyStateComponent],
 })
 export class CategoryViewComponent {
   private readonly repository = inject(LibraryRepository);
@@ -31,13 +33,17 @@ export class CategoryViewComponent {
     this.biblio()?.library?.categories?.find(category => category.id === this.catId())
   );
 
-  /** Counts every book of the category, visible or not; authors categories are not counted. */
-  protected readonly counter = computed(() => {
+  protected readonly crumbs = computed<Array<Crumb>>(() => {
+    const library = this.biblio()?.library;
+    return [
+      {label: 'Bibliothèque', link: '/bibliotheque'},
+      {label: library?.name ?? '', link: ['/bibliotheque', library?.id ?? '']},
+    ];
+  });
+
+  protected readonly facts = computed(() => {
     const category = this.category();
-    if (category?.by !== ViewBy.BY_SERIES) {
-      return 0;
-    }
-    return (category.series ?? []).reduce((total, series) => total + (series.books?.length ?? 0), 0);
+    return category ? [countLabel(visibleBookCount([category], this.adminMode), 'livre')] : [];
   });
 
   protected readonly seriesList = computed(() =>

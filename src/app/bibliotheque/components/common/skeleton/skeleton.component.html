@@ -1,0 +1,9 @@
+<div class="skeleton" [class]="'skeleton-' + variant()" role="status" aria-live="polite">
+  <span class="visually-hidden">Chargement en cours…</span>
+  <div class="skeleton-head" aria-hidden="true"></div>
+  <div class="skeleton-items" aria-hidden="true">
+    @for (item of items(); track item) {
+      <div class="skeleton-item"></div>
+    }
+  </div>
+</div>

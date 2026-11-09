@@ -1,9 +1,10 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
-import {MatExpansionModule} from '@angular/material/expansion';
+import {ChangeDetectionStrategy, Component, computed, inject, input, signal} from '@angular/core';
+import {MatIcon} from '@angular/material/icon';
 import {Author, Biblio, Book, Series, ViewBy} from '../../../../models/author.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
+import {countLabel} from '../../../models/library-queries';
 import {filterBooks} from '../../../models/library-visibility';
-import {BookTableComponent} from '../../common/book-table/book-table.component';
+import {BookListComponent} from '../../common/book-list/book-list.component';
 
 interface SeriesWithBooks {
   series: Series;
@@ -15,13 +16,18 @@ interface SeriesWithBooks {
   templateUrl: './author-row.component.html',
   styleUrl: './author-row.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatExpansionModule, BookTableComponent],
+  imports: [MatIcon, BookListComponent],
 })
 export class AuthorRowComponent {
   private readonly adminMode = inject(ToolsService).adminMode;
 
   readonly author = input.required<Author>();
   readonly biblio = input.required<Biblio>();
+
+  protected readonly open = signal(false);
+  protected readonly fullName = computed(() => `${this.author().lastName} ${this.author().firstName}`);
+  protected readonly panelId = computed(() => `author-panel-${this.author().id}`);
+  protected readonly toggleLabel = computed(() => `${this.open() ? 'Masquer' : 'Afficher'} les livres de ${this.fullName()}`);
 
   protected readonly books = computed(() => {
     const author = this.author();
@@ -48,6 +54,6 @@ export class AuthorRowComponent {
   });
 
   protected readonly counter = computed(() =>
-    this.series().reduce((total, entry) => total + entry.books.length, this.books().length)
+    countLabel(this.series().reduce((total, entry) => total + entry.books.length, this.books().length), 'livre')
   );
 }

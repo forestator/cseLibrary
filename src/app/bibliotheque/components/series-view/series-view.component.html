@@ -1,40 +1,41 @@
 @let biblioValue = biblio();
 @let seriesValue = series();
-@let categoryValue = category();
-@if (biblioValue && seriesValue && categoryValue) {
-  <div class="core-page fadein">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="secondary"><a class="crumb-link" [routerLink]="['/bibliotheque', biblioValue.library.id]">{{biblioValue.library.name}}</a></div>
-        <mat-icon>navigate_next</mat-icon>
-        <div class="secondary"><a class="crumb-link" [routerLink]="['/bibliotheque', biblioValue.library.id, categoryValue.id]">{{categoryValue.name}}</a></div>
-        <mat-icon>navigate_next</mat-icon>
-        <div class="primary">{{seriesValue.name}}</div>
-        <div class="badge">
-          <app-series-badge [series]="seriesValue" />
-        </div>
-        <div class="counter">{{books().length}} livres</div>
-      </div>
-      <div class="core-resume">
-        {{seriesValue.resume}}
-      </div>
+@if (biblioValue && seriesValue && category()) {
+  <div class="page">
+    <app-page-header [title]="seriesValue.name" [resume]="seriesValue.resume" [crumbs]="crumbs()" [facts]="facts()">
+      <app-series-badge headerMeta [series]="seriesValue" />
+    </app-page-header>
+
+    @if (books().length > 1) {
+      <nav class="covers" aria-label="Parcourir les livres de la série">
+        <ul class="covers-list">
+          @for (book of books(); track book.id) {
+            <li>
+              <button type="button" class="cover-button" [class.cover-button-active]="book.id === activeBookId()" [attr.aria-label]="'Aller au livre ' + book.name" [attr.aria-current]="book.id === activeBookId() ? 'true' : null" [title]="book.name" (click)="select(book.id); tools.scrollToId(book.id)">
+                <img [ngSrc]="biblioValue.library.path | bookCover: book.cover" fill alt="" sizes="(max-width: 840px) 20vw, 8vw">
+              </button>
+            </li>
+          }
+        </ul>
+      </nav>
+    }
+
+    @if (books().length) {
       <div class="books">
-        @for (book of books(); track book.id) {
-          <div class="book" [title]="book.name">
-            <button type="button" class="book-link" (click)="tools.scrollToId(book.id)">
-              <img class="book-cover" [alt]="'Couverture de ' + book.name" [src]="biblioValue.library.path | bookCover: book.cover">
-            </button>
-            <div class="book-badge">
-              <app-badge [status]="book.status" [display]="'small'" />
-            </div>
-          </div>
+        @for (book of books(); track book.id; let index = $index) {
+          <app-book-row [biblio]="biblioValue" [book]="book" [priorityCover]="index < 3" [highlighted]="book.id === activeBookId()" />
         }
       </div>
-    </div>
-    <div class="core-body">
-      @for (book of books(); track book.id; let index = $index) {
-        <app-book-row [biblio]="biblioValue" [book]="book" [index]="index" />
-      }
-    </div>
+    } @else {
+      <app-empty-state title="Aucun livre dans cette série" />
+    }
+  </div>
+} @else if (!biblioValue) {
+  <div class="page">
+    <app-skeleton variant="list" [count]="4" />
+  </div>
+} @else {
+  <div class="page">
+    <app-empty-state icon="search_off" title="Série introuvable" text="Revenez à la catégorie pour choisir une autre série." />
   </div>
 }

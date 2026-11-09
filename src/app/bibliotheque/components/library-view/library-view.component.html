@@ -1,36 +1,31 @@
 @if (library(); as library) {
-  <div class="core-page fadein">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">{{library.name}}</div>
-      </div>
-      <div class="core-resume">
-        {{library.resume}}
-      </div>
-    </div>
-    @for (category of library.categories; track category.id) {
-      @let background = library.path | categoryBackground: category.bg;
-      <a
-        class="core-body core-body-category"
-        [routerLink]="category.id"
-        title="Clickez ici pour visualiser cette categorie">
-        @if (!isMobile()) {
-          <div>
-            <img alt="" class="category-visuel" [src]="background">
-          </div>
+  <div class="page">
+    <app-page-header [title]="library.name" [resume]="library.resume" [crumbs]="crumbs" [facts]="facts()" />
+    @if (cards().length) {
+      <ul class="cards">
+        @for (card of cards(); track card.id; let index = $index) {
+          <li>
+            <a class="card" [routerLink]="card.id">
+              <img class="card-image" [ngSrc]="card.path | categoryBackground: card.background" fill alt="" [priority]="index < 4" sizes="(max-width: 840px) 100vw, 33vw">
+              <span class="card-content">
+                <h2 class="card-title">{{card.name}}</h2>
+                <span class="card-text">{{card.resume}}</span>
+                <span class="card-note">
+                  <span>{{card.count}}</span>
+                  <span>{{card.unit}}</span>
+                  <mat-icon class="card-go" aria-hidden="true">arrow_forward</mat-icon>
+                </span>
+              </span>
+            </a>
+          </li>
         }
-        <div class="core-header">
-          @if (isMobile()) {
-            <img alt="" class="category-visuel small-display" [src]="background">
-          }
-          <div class="core-title">
-            <div class="primary">{{category.name}}</div>
-          </div>
-          <div class="core-resume">
-            {{category.resume}}
-          </div>
-        </div>
-      </a>
+      </ul>
+    } @else {
+      <app-empty-state title="Aucune catégorie" text="Cette bibliothèque ne contient pas encore de catégorie." />
     }
+  </div>
+} @else {
+  <div class="page">
+    <app-skeleton variant="cards" [count]="6" />
   </div>
 }
