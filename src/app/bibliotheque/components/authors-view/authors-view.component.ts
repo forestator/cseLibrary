@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, input} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, input, output} from '@angular/core';
 import {Author, Biblio, SelectorView, ViewMode} from 'src/app/models/author.model';
 import { MatIcon } from '@angular/material/icon';
 import { AlphabetComponent } from '../common/alphabet/alphabet.component';
@@ -17,7 +17,7 @@ export class AuthorsViewComponent implements OnInit {
 
   readonly authors = input.required<Array<Author>>();
 
-  @Output() sendView = new EventEmitter<SelectorView>();
+  readonly sendView = output<SelectorView>();
 
   constructor() { }
 

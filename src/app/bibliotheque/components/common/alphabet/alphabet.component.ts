@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, output} from '@angular/core';
 
 @Component({
     selector: 'app-alphabet',
@@ -8,7 +8,7 @@ import {Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy} from '
 })
 export class AlphabetComponent implements OnInit {
 
-  @Output() filterByLetter: EventEmitter<string> = new EventEmitter<string>();
+  readonly filterByLetter = output<string>();
 
   ALPHABET: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 

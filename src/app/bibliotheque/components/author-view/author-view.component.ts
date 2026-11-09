@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {Author, Biblio, Book, BookStatus, Category, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -44,7 +44,7 @@ export class AuthorViewComponent implements OnInit {
 
   readonly author = input.required<Author | undefined>();
 
-  @Output() sendView = new EventEmitter<SelectorView>();
+  readonly sendView = output<SelectorView>();
 
   counter: number = 0;
   books!: Array<Book>;

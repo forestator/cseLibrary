@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {Biblio} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import { SettingsAuthorComponent } from '../settings-category/settings-author/settings-author.component';
@@ -18,7 +18,7 @@ export class SettingsAuthorsComponent implements OnInit {
 
   readonly biblio = input.required<Biblio>();
 
-   @Output() sendDelete = new EventEmitter<string>();
+   readonly sendDelete = output<string>();
 
    ngOnInit(): void {
    }

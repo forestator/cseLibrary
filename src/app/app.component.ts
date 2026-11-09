@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ChangeDetectionStrategy, inject, viewChild } from '@angular/core';
 import {ToolsService} from './services/biblio/tools.service';
 import {NavigationService} from './services/navigation.service';
 import {BoardGameCategory} from './models/boardGame.model';
@@ -36,8 +36,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   private bricolageDatabaseService = inject(BricolageDatabaseService);
   toolService = inject(ToolsService);
 
-  @ViewChild('top') topMenu: MatSidenavContent;
-  @ViewChild('drawer') drawer: any;
+  readonly topMenu = viewChild<MatSidenavContent>('top');
+  readonly drawer = viewChild<any>('drawer');
   title = 'Cse';
   showLudothequeMenu?: boolean;
   showBibliothequeMenu?: boolean;
@@ -58,8 +58,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   closeSideNav() {
-    if (this.drawer?._mode == 'over') {
-      this.drawer.close();
+    const drawer = this.drawer();
+    if (drawer?._mode == 'over') {
+      drawer.close();
     }
   }
 
@@ -131,7 +132,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.toolService.mobilePhoneDisplay$.next(this.topMenu.getElementRef().nativeElement.offsetWidth < 400);
+    this.toolService.mobilePhoneDisplay$.next(this.topMenu().getElementRef().nativeElement.offsetWidth < 400);
   }
 
   scrollToTop() {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {Biblio, Book} from 'src/app/models/author.model';
@@ -29,7 +29,7 @@ export class SettingsBookComponent implements OnInit {
 
   readonly biblio = input.required<Biblio>();
 
-  @Output() sendDelete = new EventEmitter<string>();
+  readonly sendDelete = output<string>();
 
   ngOnInit(): void {
   }

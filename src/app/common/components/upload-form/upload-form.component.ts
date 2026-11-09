@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy, input} from '@angular/core';
+import {Component, OnChanges, SimpleChanges, ChangeDetectionStrategy, input, output} from '@angular/core';
 import {FileUpload} from '../../../models/fileUpload.model';
 import { MatButton } from '@angular/material/button';
 
@@ -12,7 +12,7 @@ import { MatButton } from '@angular/material/button';
 export class UploadFormComponent implements OnChanges {
   readonly defaultImage = input<string>(undefined);
   readonly disabled = input<boolean>(undefined);
-  @Output() fileToUploadReady = new EventEmitter<FileUpload>();
+  readonly fileToUploadReady = output<FileUpload>();
   selectedFile?: File;
   previewImage?: string | ArrayBuffer;
 
@@ -30,6 +30,6 @@ export class UploadFormComponent implements OnChanges {
   upload(): void {
     const file = this.selectedFile;
     this.selectedFile = null;
-    this.fileToUploadReady.next(new FileUpload(file));
+    this.fileToUploadReady.emit(new FileUpload(file));
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Biblio, Category, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
@@ -31,7 +31,7 @@ export class SettingsCategoryComponent implements OnInit {
 
    readonly biblio = input.required<Biblio>();
 
-   @Output() sendDelete = new EventEmitter<string>();
+   readonly sendDelete = output<string>();
 
    ngOnInit(): void {
    }

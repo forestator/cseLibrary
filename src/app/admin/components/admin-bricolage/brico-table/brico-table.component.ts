@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, input} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, input, viewChild} from '@angular/core';
 import {Tool} from '../../../../bricolage/models/bricolage.model';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -15,7 +15,7 @@ export class BricoTableComponent implements OnInit, OnChanges {
   readonly tools = input<Array<Tool>>(undefined);
   displayedColumns = ['id','cover',  'name', 'status'];
   dataSource?: MatTableDataSource<Tool>;
-  @ViewChild(MatSort) sort!: MatSort;
+  readonly sort = viewChild.required(MatSort);
 
   ngOnInit() {
     const tools = this.tools();
@@ -27,7 +27,7 @@ export class BricoTableComponent implements OnInit, OnChanges {
   private setDatasource(tools: Array<Tool>) {
     this.dataSource = new MatTableDataSource<Tool>(tools);
     // todo make sort works
-    this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort();
   }
 
   ngOnChanges(changes: SimpleChanges) {

@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, input} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, input, viewChild} from '@angular/core';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
 import { MatSort, MatSortHeader } from "@angular/material/sort";
 import {SonoItem} from "../../../../sonotheque/models/sono.model";
@@ -15,7 +15,7 @@ export class SonoTableComponent implements  OnInit, OnChanges {
   readonly sonoItems = input<Array<SonoItem>>(undefined);
   displayedColumns = ['id', 'cover', 'name', 'status'];
   dataSource?: MatTableDataSource<SonoItem>;
-  @ViewChild(MatSort) sort!: MatSort;
+  readonly sort = viewChild.required(MatSort);
 
   ngOnInit() {
     const sonoItems = this.sonoItems();
@@ -27,7 +27,7 @@ export class SonoTableComponent implements  OnInit, OnChanges {
   private setDatasource(sonoItems: Array<SonoItem>) {
     this.dataSource = new MatTableDataSource<SonoItem>(sonoItems);
     // todo make sort works
-    this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort();
   }
 
   ngOnChanges(changes: SimpleChanges) {

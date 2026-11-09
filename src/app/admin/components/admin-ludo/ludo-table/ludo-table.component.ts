@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, inject, input, viewChild } from '@angular/core';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import {CseUser} from '../../../../models/users.model';
@@ -23,7 +23,7 @@ export class LudoTableComponent implements OnInit, OnChanges {
     readonly returnForUser = input<CseUser>(undefined);
     readonly filterBy = input<string>(undefined);
     dataSource?: MatTableDataSource<Game>;
-    @ViewChild(MatSort) sort!: MatSort;
+    readonly sort = viewChild.required(MatSort);
 
     ngOnInit() {
         const games = this.games();
@@ -39,7 +39,7 @@ export class LudoTableComponent implements OnInit, OnChanges {
         } else {
             this.dataSource = new MatTableDataSource<Game>(games);
         }
-        this.dataSource.sort = this.sort;
+        this.dataSource.sort = this.sort();
     }
 
     ngOnChanges(changes: SimpleChanges) {

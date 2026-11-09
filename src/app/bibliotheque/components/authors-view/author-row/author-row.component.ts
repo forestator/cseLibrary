@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {map, Observable, take} from 'rxjs';
 import {Author, Biblio, Book, BookStatus, SelectorView, Series, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
@@ -26,7 +26,7 @@ export class AuthorRowComponent implements OnInit {
 
   readonly author = input.required<Author>();
   readonly biblio = input<Biblio>(undefined);
-  @Output() sendView = new EventEmitter<SelectorView>();
+  readonly sendView = output<SelectorView>();
 
   public books!: Array<Book> | undefined;
   public series!: Array<Series> | undefined;

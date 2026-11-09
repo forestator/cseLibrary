@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {BoardGameCategory, Thing} from '../../../../../models/boardGame.model';
 import {Consoles, VideoGameType} from '../../../../../models/videoGames.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -30,7 +30,7 @@ export class AddGameFormComponent implements OnChanges {
 
 
   readonly gameForm = input<FormGroup>(undefined);
-  @Output() gameSelected: EventEmitter<void> = new EventEmitter<void>();
+  readonly gameSelected = output<void>();
   categoryOptions: Array<{ id: string; name: string }> = [];
 
   constructor() {
@@ -70,7 +70,7 @@ export class AddGameFormComponent implements OnChanges {
         ref.afterClosed().pipe(take(1)).subscribe((thing?: Thing) => {
           if (thing) {
             this.gameForm().get('id').setValue(thing.attributes?.id);
-            this.gameSelected.next();
+            this.gameSelected.emit();
           }
         });
       })

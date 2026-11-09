@@ -1,4 +1,4 @@
-import {Component, SimpleChanges, ViewChild, ChangeDetectionStrategy, input} from '@angular/core';
+import {Component, SimpleChanges, ChangeDetectionStrategy, input, viewChild} from '@angular/core';
 import {NautismeItem} from '../../../../nautisme/models/nautisme.model';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -16,7 +16,7 @@ export class NautismeTableComponent {
   readonly nautItems = input<NautismeItem[]>(undefined);
   displayedColumns = ['id', 'cover', 'name', 'status'];
   dataSource?: MatTableDataSource<NautismeItem>;
-  @ViewChild(MatSort) sort!: MatSort;
+  readonly sort = viewChild.required(MatSort);
 
   ngOnInit() {
     const nautItems = this.nautItems();
@@ -28,7 +28,7 @@ export class NautismeTableComponent {
   private setDatasource(nautismeItems: Array<NautismeItem>) {
     this.dataSource = new MatTableDataSource<NautismeItem>(nautismeItems);
     // todo make sort works
-    this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort();
   }
 
   ngOnChanges(changes: SimpleChanges) {

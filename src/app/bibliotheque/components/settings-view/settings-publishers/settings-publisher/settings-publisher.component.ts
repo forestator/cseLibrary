@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {
@@ -26,7 +26,7 @@ export class SettingsPublisherComponent implements OnInit {
 
    readonly index = input.required<string>();
 
-   @Output() sendDelete = new EventEmitter<string>();
+   readonly sendDelete = output<string>();
 
    ngOnInit(): void {
    }
