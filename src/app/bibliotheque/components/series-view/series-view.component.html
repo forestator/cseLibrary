@@ -22,8 +22,8 @@
 
     @if (books().length) {
       <div class="books">
-        @for (book of books(); track book.id; let first = $first) {
-          <app-book-row [biblio]="biblioValue" [book]="book" [priorityCover]="first" [highlighted]="book.id === activeBookId()" />
+        @for (book of books(); track book.id; let index = $index) {
+          <app-book-row [biblio]="biblioValue" [book]="book" [priorityCover]="index < 3" [highlighted]="book.id === activeBookId()" />
         }
       </div>
     } @else {

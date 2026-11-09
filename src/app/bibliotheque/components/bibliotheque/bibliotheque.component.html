@@ -5,11 +5,11 @@
 
   @if (cards(); as libraryCards) {
     <ul class="cards">
-      @for (card of libraryCards; track card.id; let first = $first) {
+      @for (card of libraryCards; track card.id; let index = $index) {
         <li>
           <a class="card" [routerLink]="card.id">
             <span class="card-cover">
-              <img [ngSrc]="card.path | categoryBackground: card.cover" fill alt="" [priority]="first" sizes="(max-width: 840px) 100vw, 40vw">
+              <img [ngSrc]="card.path | categoryBackground: card.cover" fill alt="" [priority]="index < 2" sizes="(max-width: 840px) 100vw, 40vw">
             </span>
             <span class="card-body">
               <h2 class="card-title">{{card.name}}</h2>

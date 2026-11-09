@@ -3,10 +3,10 @@
     <app-page-header [title]="library.name" [resume]="library.resume" [crumbs]="crumbs" [facts]="facts()" />
     @if (cards().length) {
       <ul class="cards">
-        @for (card of cards(); track card.id; let first = $first) {
+        @for (card of cards(); track card.id; let index = $index) {
           <li>
             <a class="card" [routerLink]="card.id">
-              <img class="card-image" [ngSrc]="card.path | categoryBackground: card.background" fill alt="" [priority]="first" sizes="(max-width: 840px) 100vw, 33vw">
+              <img class="card-image" [ngSrc]="card.path | categoryBackground: card.background" fill alt="" [priority]="index < 4" sizes="(max-width: 840px) 100vw, 33vw">
               <span class="card-content">
                 <h2 class="card-title">{{card.name}}</h2>
                 <span class="card-text">{{card.resume}}</span>
