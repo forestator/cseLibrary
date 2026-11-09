@@ -29,6 +29,11 @@ npm run deploy         # firebase deploy (hosting, projet dans .firebaserc) – 
 
 Le code neuf doit suivre les règles globales (Angular 20+ standalone, signals, `input()`/`output()`, `inject()`, OnPush, control flow natif, 3 fichiers `.ts/.html/.css`, pas de fonction dans les templates, classes CSS sans `--`, AXE/WCAG AA, etc.). Le code existant ne les suit pas : **ne pas mélanger au hasard**, moderniser par périmètre (feature par feature) et la montée de version 16 → 22 est faite, il reste la modernisation du code (désormais tout est disponible : Angular 22). **Décision : uniquement du SCSS** (jamais de `.css` pour les composants, contrairement à la règle globale « 3 fichiers .ts/.html/.css » : ici `.ts` / `.html` / `.scss`). Les fichiers `.css` restants dans `angular.json` ne sont que des thèmes tiers (Material prebuilt, firebaseui).
 
+## Vérifier l'application dans un navigateur
+
+- MCP enregistrés au niveau utilisateur (toutes sessions, copiés de `~/.config/github-copilot/intellij/mcp.json`) : `chrome-devtools` (se connecte à ton Chrome ouvert), `chrome-devtools-headless` (Chrome sans fenêtre, autonome : à privilégier pour vérifier seul), `angular-cli` (`ng mcp`, à lancer depuis la racine du projet, Node 24), `mcp-atlassian`, `bitbucket`. Un redémarrage de session est nécessaire pour les voir dans les outils. Le serveur `webstorm` du fichier d'origine n'a pas été copié (port dynamique lié à l'IDE).
+- Sans MCP : `ng serve` (Node 24, port 4200, peut déjà tourner) puis `google-chrome --headless=new --no-sandbox --disable-gpu --window-size=1280,900 --virtual-time-budget=15000 --screenshot=/chemin/out.png http://localhost:4200/` et lire l'image.
+
 ## Images / Storage
 
 Firebase Storage n'est plus utilisé (payant). Les couvertures sont sur **Cloudinary** (cloud `seo9axkp`, preset non signé `cse_unsigned`, voir `environment*.ts` et `services/cloudinary.service.ts`). Les uploads non signés ne peuvent pas écraser : `StorageUploadService` ajoute un timestamp au `public_id`. Les couvertures de livres sont résolues par les pipes `bookCover` / `categoryBackground` (URL déterministe `assets/books/...`). Outil de migration : `scripts/migrate-storage/migrate.mjs`.

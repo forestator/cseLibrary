@@ -29,3 +29,14 @@ Tant que l'étape 2 n'est pas faite, les couvertures de jeux/outils/sono/nautism
 9. Remplacer Moment.js, ajouter de vrais tests et une CI.
 10. Refonte des emprunts, de zéro (ne pas réintroduire l'ancien schéma).
 11. Alertes de budget Google Cloud à 1 € (le projet est en Blaze) et sortie éventuelle de Blaze après migration complète.
+
+## Plan de modernisation décidé le 2026-11-09 (ordre recommandé)
+1. **Outillage de vérification navigateur** : fait (MCP utilisateur + headless Chrome, voir `CLAUDE.md`).
+2. **Bonnes pratiques Angular + suppression des doublons**, en commençant par une couche d'accès aux données générique (un « repository » par commission au lieu de 6 services quasi identiques) et des composants de liste/ligne/admin génériques pour bricolage / sono / nautisme / photo. Standalone, signals (`toSignal` sur les flux Firebase), `input()`/`output()`, `@if`/`@for`, `inject()`, OnPush, SCSS.
+3. **Migration Realtime Database → Firestore** (demandée le 2026-11-09), à faire *derrière* la couche repository de l'étape 2 pour ne toucher qu'un endroit. Points à trancher avant de commencer :
+   - Facturation Firestore : lectures facturées **par document** (quota gratuit, à vérifier : ~50 000 lectures/jour). Un catalogue d'environ 1 200 objets rechargé à chaque visite consommerait vite ce quota. Pistes : cache persistant du SDK, ou documents « paquets » par bibliothèque/catégorie plutôt qu'un document par objet.
+   - Les règles de sécurité Firestore sont plus fines que celles de la RTDB (à écrire dès le départ, version contrôlée dans le repo, lecture publique du catalogue seulement, `users` restreint).
+   - Données : script d'import depuis l'export RTDB (sauvegarde du 2026-11-08 faite), ré-identification des chemins (tableaux RTDB → collections), double lecture le temps de la bascule.
+   - `@angular/fire` : passer de l'API `compat` à l'API modulaire (`@angular/fire/firestore`, `@angular/fire/auth`).
+   - Le gain doit être confirmé avant d'investir : la RTDB reste utilisable ; objectifs attendus (requêtes/filtrage serveur, règles fines, modèle de données propre) à valider.
+4. **Refonte de l'affichage et de la navigation** (design moderne, thème clair/sombre, mobile d'abord, accessibilité AA) : proposition de direction à valider avant d'implémenter.
