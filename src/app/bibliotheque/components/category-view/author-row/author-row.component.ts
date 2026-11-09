@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, computed, inject, input, signal} fro
 import {MatIcon} from '@angular/material/icon';
 import {Author, Biblio, Book, Series, ViewBy} from '../../../../models/author.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
+import {countLabel} from '../../../models/library-queries';
 import {filterBooks} from '../../../models/library-visibility';
 import {BookListComponent} from '../../common/book-list/book-list.component';
 
@@ -53,6 +54,6 @@ export class AuthorRowComponent {
   });
 
   protected readonly counter = computed(() =>
-    this.series().reduce((total, entry) => total + entry.books.length, this.books().length)
+    countLabel(this.series().reduce((total, entry) => total + entry.books.length, this.books().length), 'livre')
   );
 }

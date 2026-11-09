@@ -41,3 +41,8 @@ export function visibleBookCount(categories: ReadonlyArray<Category> | undefined
   const books = (categories ?? []).flatMap(category => categoryBooks(category));
   return filterBooks([...new Map(books.map(book => [book.id, book])).values()], isAdmin).length;
 }
+
+/** "1 livre", "12 livres": French plural with a regular `s`. */
+export function countLabel(count: number, unit: string): string {
+  return `${count} ${unit}${count > 1 ? 's' : ''}`;
+}

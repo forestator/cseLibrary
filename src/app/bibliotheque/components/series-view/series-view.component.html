@@ -2,7 +2,7 @@
 @let seriesValue = series();
 @if (biblioValue && seriesValue && category()) {
   <div class="page">
-    <app-page-header [title]="seriesValue.name" [resume]="seriesValue.resume" [crumbs]="crumbs()" [facts]="[books().length + ' livres']">
+    <app-page-header [title]="seriesValue.name" [resume]="seriesValue.resume" [crumbs]="crumbs()" [facts]="facts()">
       <app-series-badge headerMeta [series]="seriesValue" />
     </app-page-header>
 

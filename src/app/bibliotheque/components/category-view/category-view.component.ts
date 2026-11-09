@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input, signal} from '@angular/core';
 import {ViewBy} from '../../../models/author.model';
 import {ToolsService} from '../../../services/biblio/tools.service';
-import {visibleBookCount} from '../../models/library-queries';
+import {countLabel, visibleBookCount} from '../../models/library-queries';
 import {filterBooks, filterSeries} from '../../models/library-visibility';
 import {LibraryRepository} from '../../services/library.repository';
 import {AuthorRowComponent} from './author-row/author-row.component';
@@ -43,7 +43,7 @@ export class CategoryViewComponent {
 
   protected readonly facts = computed(() => {
     const category = this.category();
-    return category ? [`${visibleBookCount([category], this.adminMode)} livres`] : [];
+    return category ? [countLabel(visibleBookCount([category], this.adminMode), 'livre')] : [];
   });
 
   protected readonly seriesList = computed(() =>

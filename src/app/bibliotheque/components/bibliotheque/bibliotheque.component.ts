@@ -5,7 +5,7 @@ import {MatIcon} from '@angular/material/icon';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {CategoryBackgroundPipe} from '../../pipes/category-background.pipe';
-import {visibleBookCount} from '../../models/library-queries';
+import {countLabel, visibleBookCount} from '../../models/library-queries';
 import {LibraryRepository} from '../../services/library.repository';
 import {PageHeaderComponent} from '../common/page-header/page-header.component';
 import {SkeletonComponent} from '../common/skeleton/skeleton.component';
@@ -32,8 +32,8 @@ export class BibliothequeComponent {
         name: library?.name,
         resume: library?.resume,
         cover: categories.find(category => category.bg)?.bg,
-        categoryCount: categories.length,
-        bookCount: visibleBookCount(categories, this.adminMode),
+        categoryCount: countLabel(categories.length, 'catégorie'),
+        bookCount: countLabel(visibleBookCount(categories, this.adminMode), 'livre'),
       };
     })
   );

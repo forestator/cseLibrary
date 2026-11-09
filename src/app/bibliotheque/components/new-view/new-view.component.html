@@ -13,7 +13,7 @@
       <section class="library" [attr.aria-labelledby]="'library-' + data.biblio.library?.id">
         <h2 class="library-title" [id]="'library-' + data.biblio.library?.id">
           {{data.biblio.library?.name}}
-          <span class="library-count">{{data.books.length}} nouveautés</span>
+          <span class="library-count">{{data.newLabel}}</span>
         </h2>
         @if (data.books.length > 0) {
           <div class="grid">
@@ -23,7 +23,7 @@
           </div>
         }
         @if (data.booksInProject.length > 0) {
-          <h3 class="project-title">En projet <span class="library-count">{{data.booksInProject.length}}</span></h3>
+          <h3 class="project-title">En projet <span class="library-count">{{data.projectLabel}}</span></h3>
           <div class="grid">
             @for (path of data.booksInProject; track path.book.id) {
               <app-book-row [book]="path.book" [biblio]="data.biblio" [category]="path.category" [resumeOpen]="true" />

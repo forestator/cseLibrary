@@ -5,7 +5,7 @@
         <mat-icon class="row-chevron" [class.row-chevron-open]="open()" aria-hidden="true">chevron_right</mat-icon>
         <span class="row-text">
           <span class="row-title">{{series().name}}</span>
-          <span class="row-info">{{visibleBooks().length}} livres</span>
+          <span class="row-info">{{bookCount()}}</span>
         </span>
         <app-series-badge [series]="series()" />
       </button>

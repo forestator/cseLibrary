@@ -5,7 +5,7 @@ import {MatIcon} from '@angular/material/icon';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {ViewBy} from '../../../models/author.model';
 import {CategoryBackgroundPipe} from '../../pipes/category-background.pipe';
-import {visibleBookCount} from '../../models/library-queries';
+import {countLabel, visibleBookCount} from '../../models/library-queries';
 import {LibraryRepository} from '../../services/library.repository';
 import {EmptyStateComponent} from '../common/empty-state/empty-state.component';
 import {Crumb, PageHeaderComponent} from '../common/page-header/page-header.component';
@@ -30,7 +30,7 @@ export class LibraryViewComponent {
   protected readonly facts = computed(() => {
     const library = this.library();
     const categories = library?.categories ?? [];
-    return [`${categories.length} catégories`, `${visibleBookCount(categories, this.adminMode)} livres`];
+    return [countLabel(categories.length, 'catégorie'), countLabel(visibleBookCount(categories, this.adminMode), 'livre')];
   });
 
   protected readonly cards = computed(() => {
@@ -41,8 +41,8 @@ export class LibraryViewComponent {
       resume: category.resume,
       background: category.bg,
       path: library?.path,
-      count: visibleBookCount([category], this.adminMode),
-      unit: category.by === ViewBy.BY_AUTHOR ? `${category.authors?.length ?? 0} auteurs` : `${category.series?.length ?? 0} séries`,
+      count: countLabel(visibleBookCount([category], this.adminMode), 'livre'),
+      unit: category.by === ViewBy.BY_AUTHOR ? countLabel(category.authors?.length ?? 0, 'auteur') : countLabel(category.series?.length ?? 0, 'série'),
     }));
   });
 }

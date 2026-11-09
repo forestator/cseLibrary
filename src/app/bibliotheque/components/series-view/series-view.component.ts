@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, Component, computed, effect, inject, input, lin
 import {NgOptimizedImage} from '@angular/common';
 import {SeriesStatus} from '../../../models/author.model';
 import {ToolsService} from '../../../services/biblio/tools.service';
+import {countLabel} from '../../models/library-queries';
 import {filterBooks} from '../../models/library-visibility';
 import {BookCoverPipe} from '../../pipes/book-cover.pipe';
 import {LibraryRepository} from '../../services/library.repository';
@@ -44,6 +45,8 @@ export class SeriesViewComponent {
     const books = filterBooks(series?.books, this.tools.adminMode);
     return series?.status === SeriesStatus.ONE_SHOT ? books.reverse() : books;
   });
+
+  protected readonly facts = computed(() => [countLabel(this.books().length, 'livre')]);
 
   protected readonly crumbs = computed<Array<Crumb>>(() => {
     const library = this.biblio()?.library;
