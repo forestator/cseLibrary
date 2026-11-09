@@ -38,7 +38,7 @@ Tant que l'étape 2 n'est pas faite, les couvertures de jeux/outils/sono/nautism
 
 ## Reste à faire (priorité décroissante)
 1. **Verrouiller la Realtime Database** (encore lisible publiquement, dont 280 employés) maintenant que l'app n'en dépend plus : règles `{".read": false, ".write": false}` ou suppression. Garder la sauvegarde `db-export-*.json`. L'ancienne appli déployée sur `cseh-50966.web.app` utilise encore la RTDB : redéployer (`firebase deploy --only hosting`, action sortante, à faire avec l'accord du propriétaire) AVANT de verrouiller.
-2. Nouveau design (navigation, accueil, grilles de couvertures, thème clair/sombre, mobile d'abord, AA) : voir la section ci-dessous si déjà entamé.
+2. ~~Nouveau design~~ : fait le 2026-11-09 (voir `CLAUDE.md`, section Design). Reste à affiner en local : couleurs d'accent des dialogues (overlay hors `[data-commission]`), bouton « Filtres » sur mobile pour les jeux de société (aujourd'hui seulement dans le tiroir), nettoyage des classes legacy de `common.scss` (`core-*`, `book-*`) une fois plus utilisées, vérification Cypress/axe complète, upload Cloudinary réel depuis la nouvelle zone de dépôt.
 3. 5 composants partagés encore en `ChangeDetectionStrategy.Eager` à passer en OnPush/signals.
 4. Écritures admin ludothèque / bibliothèque non testées de bout en bout (seul l'ajout catalogue l'a été) ; la persistance des réglages bibliothèque n'existe pas (comme avant).
 5. Révoquer la clé OpenAI compromise ; décider du sort des descriptions IA.

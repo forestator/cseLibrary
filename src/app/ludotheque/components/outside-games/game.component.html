@@ -4,7 +4,7 @@
   <h2 class="visually-hidden">Jeux</h2>
   <app-game-grid [loading]="!games()" [empty]="games()?.length === 0">
     @for (game of games(); track game.ref) {
-      <app-game-card [priority]="$index < 4" [game]="game" [selectedId]="id()" [showCategory]="false" [description]="game.description" />
+      <app-game-card [priority]="$index < 8" [game]="game" [selectedId]="id()" [showCategory]="false" [description]="game.description" />
     }
   </app-game-grid>
 </div>

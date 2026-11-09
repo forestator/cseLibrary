@@ -18,10 +18,14 @@ npm run deploy         # firebase deploy – action sortante, ne pas lancer sans
 
 - Angular **22.2**, TypeScript 6, RxJS 7.8, Angular Material/CDK 22, `@angular/fire` **22.0.0-rc** (prerelease : repasser en stable dès sa sortie), firebase 12. Alias `src/*` via `paths` (plus de `baseUrl`).
 - **100 % standalone** : plus aucun NgModule. Démarrage dans `main.ts` + `app/app.config.ts` ; routes **lazy** dans `app/app.routes.ts` (celles des 4 commissions simples sont générées depuis les configs).
-- Modèle de code : composants OnPush, signals (`signal`, `computed`, `input()`, `output()`, `toSignal`), `inject()`, `@if/@for`, 3 fichiers `.ts/.html/.scss`. Restent à convertir : 5 composants partagés encore en `ChangeDetectionStrategy.Eager` (`app.component`, `home`, `upload-form`, `badge`, `confirmation-modal`).
+- Modèle de code : composants OnPush, signals (`signal`, `computed`, `input()`, `output()`, `toSignal`), `inject()`, `@if/@for`, 3 fichiers `.ts/.html/.scss`.
 - `tsconfig` : `strict: false` (mais `strictTemplates: true`), `skipLibCheck`.
 - Moment.js pour les dates (`DD/MM/YYYY` en string), jspdf + html2canvas (export PDF, chargés à la demande), Google Books, BGG XML (`ludotheque/services/bgg.service.ts`), openai 3 (`services/open-ai.service.ts`, clé vide dans `environment`, modèle retiré : à repenser).
 - Config Firebase publique dans `environments/environment*.ts` (+ `environment.emulator.ts`). Les UIDs admin sont dans `services/firebase/authentification.service.ts` **et** dans `firestore.rules` : garder les deux synchronisés.
+
+## Design (refonte de novembre 2026)
+
+Système de design Material 3 : `src/styles/_tokens.scss` (variables SCSS d'espacement, rayons, couleurs via `--mat-sys-*`, mixins `mobile`/`desktop`), `_base.scss` (accent par commission via `[data-commission]` : `--accent`, `--accent-text`, `--accent-soft`, `--accent-strong` pour les fonds pleins à texte blanc), `styles.scss` (`mat.theme` violet/orange, clair + sombre via `color-scheme`, bouton de thème dans la barre latérale : `ThemeService`). Coque `app.component.*` : barre latérale (commissions + rubriques contextuelles + filtres jeux de société) / tiroir sur mobile, barre supérieure collante avec la recherche de la commission. Navigation déclarée dans `navigation/navigation.config.ts`. Pages en cartes (`game-card`, `catalogue-item-card`, accueil), disclosure « Détails », états de chargement en squelettes. Toujours utiliser les tokens (jamais de couleurs en dur) pour que clair et sombre fonctionnent ; les dialogues sont dans l'overlay CDK, hors `[data-commission]` (couleur Material primaire).
 
 ## Conventions
 

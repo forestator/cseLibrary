@@ -3,7 +3,7 @@
     resume="Jeux de société, jeux vidéo et grands jeux en prêt pour les salariés du CSE." />
   <app-game-grid>
     @for (entry of entries; track entry.route) {
-      <app-tile-card [priority]="$first" [route]="entry.route" [title]="entry.title" [resume]="entry.resume" [image]="entry.image" />
+      <app-tile-card [priority]="$index < 4" [route]="entry.route" [title]="entry.title" [resume]="entry.resume" [image]="entry.image" />
     }
     @if (isLudoAdmin()) {
       <app-tile-card route="admin/games" title="Administration ludothèque" resume="Gestion des jeux" icon="admin_panel_settings" />

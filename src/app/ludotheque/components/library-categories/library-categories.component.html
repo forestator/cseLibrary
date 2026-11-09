@@ -3,7 +3,7 @@
     [count]="categoryCount()" backLink="/ludotheque" backLabel="Ludothèque" />
   <app-game-grid [loading]="library() === undefined" [empty]="categories().length === 0" emptyMessage="Aucune catégorie pour le moment.">
     @for (category of categories(); track category.id) {
-      <app-tile-card [priority]="$first" [route]="category.id!" [title]="category.name" [resume]="category.resume" [image]="category.bg" />
+      <app-tile-card [priority]="$index < 4" [route]="category.id!" [title]="category.name" [resume]="category.resume" [image]="category.bg" />
     }
   </app-game-grid>
 </div>
