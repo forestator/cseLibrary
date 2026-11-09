@@ -1,23 +1,115 @@
-$login-error-color: #b00020;
-$login-max-width: 360px;
-$login-gap: 16px;
+@use '../../../../styles/tokens' as *;
+@use '../../styles/admin' as *;
 
-.login-container {
+$login-max-width: 420px;
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  padding: $space-5 0;
+}
+
+.login-card {
   display: flex;
   flex-direction: column;
-  gap: $login-gap;
+  align-items: stretch;
+  gap: $space-4;
+  width: 100%;
   max-width: $login-max-width;
-  margin: 32px auto;
-  padding: 0 $login-gap;
+  padding: $space-6;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  box-shadow: $shadow-1;
+  animation: card-in 0.3s ease;
+
+  @include mobile {
+    padding: $space-5 $space-4;
+  }
+}
+
+.login-mark {
+  align-self: center;
+  box-sizing: content-box;
+  width: 32px;
+  height: 32px;
+  padding: $space-3;
+  border-radius: $radius-pill;
+  background: $accent-soft;
+  color: $accent-text;
+  font-size: 32px;
+}
+
+.login-title {
+  margin: 0;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.login-hint,
+.login-status {
+  margin: 0;
+  color: $on-surface-muted;
+  text-align: center;
 }
 
 .login-form,
 .login-providers {
   display: flex;
   flex-direction: column;
-  gap: $login-gap;
+  gap: $space-3;
+}
+
+.login-form {
+  gap: $space-1;
+}
+
+.login-button {
+  width: 100%;
+  min-height: $control-min-size + $space-1;
+}
+
+.login-separator {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+
+  &::before,
+  &::after {
+    flex: 1;
+    height: 1px;
+    background: $outline;
+    content: '';
+  }
+}
+
+.provider-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: $space-2;
 }
 
 .login-error {
-  color: $login-error-color;
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  margin: 0;
+  padding: $space-3 $space-4;
+  border-radius: $radius-md;
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

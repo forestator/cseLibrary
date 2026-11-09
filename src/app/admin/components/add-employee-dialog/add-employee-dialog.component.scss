@@ -1,4 +1,11 @@
-.dialog-container {
-  display: flex;
-  flex-direction: column;
+@use '../../styles/admin' as *;
+
+.employee-form {
+  @include form-column;
+
+  min-width: min(420px, 100%);
+}
+
+button {
+  min-height: $control-min-size;
 }

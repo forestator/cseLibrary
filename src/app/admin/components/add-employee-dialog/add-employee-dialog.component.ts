@@ -3,7 +3,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatFormField, MatHint, MatInput, MatLabel} from '@angular/material/input';
 
 export interface NewEmployee {
   firstName: string;
@@ -16,7 +16,7 @@ export interface NewEmployee {
   templateUrl: './add-employee-dialog.component.html',
   styleUrl: './add-employee-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatDialogTitle, ReactiveFormsModule, MatDialogContent, MatFormField, MatLabel, MatInput, MatDialogActions,
+  imports: [MatDialogTitle, ReactiveFormsModule, MatDialogContent, MatFormField, MatLabel, MatHint, MatInput, MatDialogActions,
     MatButton, MatDialogClose],
 })
 export class AddEmployeeDialogComponent {

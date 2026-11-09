@@ -1,13 +1,18 @@
-$admin-gap: 20px;
+@use '../../../../styles/tokens' as *;
+@use '../../styles/admin' as *;
 
-.admin-divider {
-  margin: $admin-gap 10px;
+.admin-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
 }
 
-.manage-buttons {
-  padding: $admin-gap;
+.admin-toolbar {
+  @include toolbar;
 
-  button {
-    margin-left: 10px;
-  }
+  margin-bottom: 0;
+}
+
+.admin-panels {
+  @include panel-list;
 }

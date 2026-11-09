@@ -1,34 +1,50 @@
-.select-library {
-  margin-bottom: 22px;
+@use '../../../../../../styles/tokens' as *;
+@use '../../../../styles/admin' as *;
+
+.form-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: $space-6;
+}
+
+.form-section {
+  @include form-column;
+}
+
+.form-section-title {
+  @include dialog-section-title;
 }
 
 .form-container {
   display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  padding-top: $space-2;
+}
 
-  mat-divider {
-    margin: 20px;
+.library-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.field-label {
+  font-size: 0.9rem;
+  color: $on-surface-muted;
+}
+
+.name-container {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+
+  mat-form-field {
+    flex: 1;
+    min-width: 0;
   }
 
-  .main, .boardgames {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .name-container {
-    display: flex;
-
-    mat-form-field {
-      flex: 1;
-    }
-
-    .search {
-      border: none;
-      background: none;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 22px;
-    }
+  .search {
+    flex: none;
+    margin-top: $space-2;
   }
 }

@@ -4,7 +4,8 @@ import {CdkScrollable} from '@angular/cdk/scrolling';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {MAT_DIALOG_DATA, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
-import {MatProgressSpinner} from '@angular/material/progress-spinner';
+import {MatIcon} from '@angular/material/icon';
+import {MatProgressBar} from '@angular/material/progress-bar';
 import {firstValueFrom, startWith} from 'rxjs';
 import {BGGService} from '../../../../../ludotheque/services/bgg.service';
 import {GamesRepository} from '../../../../../ludotheque/services/games.repository';
@@ -20,7 +21,7 @@ import {AddGameFormComponent} from '../add-game-form/add-game-form.component';
   styleUrl: './add-game-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatDialogTitle, CdkScrollable, MatDialogContent, AddGameFormComponent, MatDialogActions, MatButton,
-    MatProgressSpinner],
+    MatProgressBar, MatIcon],
 })
 export class AddGameModalComponent {
   private readonly dialogRef = inject<MatDialogRef<AddGameModalComponent>>(MatDialogRef);

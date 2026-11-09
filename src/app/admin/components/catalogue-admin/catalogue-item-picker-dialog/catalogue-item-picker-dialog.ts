@@ -4,9 +4,11 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
 import {MatButton} from '@angular/material/button';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatIcon} from '@angular/material/icon';
+import {MatFormField, MatInput, MatLabel, MatPrefix} from '@angular/material/input';
 import {CatalogueItem} from '../../../../catalogue/models/catalogue-item.model';
 import {CommissionConfig} from '../../../../catalogue/models/commission-config.model';
+import {ADMIN_DIALOG_CONFIG} from '../../../admin-dialog.config';
 import {CatalogueItemDialog} from '../catalogue-item-dialog/catalogue-item-dialog';
 
 export interface CataloguePickerData {
@@ -24,7 +26,7 @@ function describeItem(item: CatalogueItem): string {
   styleUrl: './catalogue-item-picker-dialog.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatDialogTitle, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule,
-    MatAutocompleteTrigger, MatAutocomplete, MatOption, MatDialogActions, MatButton],
+    MatAutocompleteTrigger, MatAutocomplete, MatOption, MatDialogActions, MatButton, MatIcon, MatPrefix],
 })
 export class CatalogueItemPickerDialog {
   private readonly dialogRef = inject<MatDialogRef<CatalogueItemPickerDialog>>(MatDialogRef);
@@ -48,6 +50,7 @@ export class CatalogueItemPickerDialog {
 
   protected selectItem(event: MatAutocompleteSelectedEvent) {
     this.dialog.open(CatalogueItemDialog, {
+      ...ADMIN_DIALOG_CONFIG,
       data: {config: this.data.config, items: this.data.items, selectedItem: event.option.value}
     });
     this.cancel();

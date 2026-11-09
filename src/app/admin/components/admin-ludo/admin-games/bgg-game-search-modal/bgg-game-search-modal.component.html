@@ -1,14 +1,20 @@
-<h1 mat-dialog-title>Sélectionner le bon jeu</h1>
-<div mat-dialog-content>
-  <mat-selection-list [multiple]="false" (selectionChange)="select($event)">
+<h2 mat-dialog-title>Sélectionner le bon jeu</h2>
+<mat-dialog-content>
+  <mat-selection-list [multiple]="false" aria-label="Résultats BoardGameGeek"
+                      (selectionChange)="select($event)">
     @for (game of data.games; track game.attributes.id) {
       <mat-list-option [value]="game">
-        {{ game.elements[0].attributes.value }} | {{ game.elements[1].attributes.value }}
+        <span class="game-name">{{ game.elements[0].attributes.value }}</span>
+        <span class="game-year">{{ game.elements[1].attributes.value }}</span>
       </mat-list-option>
+    } @empty {
+      <p class="empty">Aucun résultat sur BoardGameGeek.</p>
     }
   </mat-selection-list>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="close()">Cancel</button>
-  <button mat-button [disabled]="!selectedGame()" [mat-dialog-close]="selectedGame()" cdkFocusInitial>Ok</button>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button matButton type="button" (click)="close()">Annuler</button>
+  <button matButton="filled" type="button" [disabled]="!selectedGame()" [mat-dialog-close]="selectedGame()" cdkFocusInitial>
+    Valider
+  </button>
+</mat-dialog-actions>
