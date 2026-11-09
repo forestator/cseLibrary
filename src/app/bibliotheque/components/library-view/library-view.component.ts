@@ -1,35 +1,23 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import {Library} from 'src/app/models/author.model';
-import {map, mergeMap, Observable} from 'rxjs';
-import { Params, RouterLink } from '@angular/router';
-import {NavigationService} from '../../../services/navigation.service';
-import {BiblioDatabaseService} from '../../services/biblio-database.service';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {RouterLink} from '@angular/router';
 import {ToolsService} from '../../../services/biblio/tools.service';
-import { AsyncPipe } from '@angular/common';
-import { CategoryBackgroundPipe } from '../../pipes/category-background.pipe';
+import {CategoryBackgroundPipe} from '../../pipes/category-background.pipe';
+import {LibraryRepository} from '../../services/library.repository';
 
 @Component({
-    selector: 'app-library-view',
-    templateUrl: './library-view.component.html',
-    styleUrls: ['./library-view.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [RouterLink, AsyncPipe, CategoryBackgroundPipe]
+  selector: 'app-library-view',
+  templateUrl: './library-view.component.html',
+  styleUrl: './library-view.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [RouterLink, CategoryBackgroundPipe],
 })
-export class LibraryViewComponent implements OnInit {
-  private biblioDatabaseService = inject(BiblioDatabaseService);
-  toolsService = inject(ToolsService);
-  private navigationService = inject(NavigationService);
+export class LibraryViewComponent {
+  private readonly repository = inject(LibraryRepository);
 
+  /** Route parameter. */
+  readonly libraryId = input<string>();
 
-  library$!: Observable<Library>;
-
-  ngOnInit() {
-    this.library$ = this.navigationService.getRouteParams().pipe(
-      mergeMap((params: Params) => {
-          return this.biblioDatabaseService.getBiblio(params['libraryId']!).pipe(
-            map(biblio => biblio.library)
-          );
-        }
-      ));
-  }
+  protected readonly isMobile = toSignal(inject(ToolsService).mobilePhoneDisplay$, {initialValue: false});
+  protected readonly library = computed(() => this.repository.libraryById(this.libraryId())?.library);
 }

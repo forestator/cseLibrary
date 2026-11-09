@@ -1,17 +1,5 @@
-<div class="category-menu">
-  @if (navService.url$ | async; as url) {
-    @if (menu$ | async; as menu) {
-      @for (item of menu; track item) {
-        @if (url.includes(item.library.id)) {
-          @for (category of item.library?.categories; track category) {
-            <div
-              class="cat-nav"
-              [routerLink]="prefixRoute + $safeNavigationMigration(item.library?.id) + '/' + category.id">
-              {{category?.name}}
-            </div>
-          }
-        }
-      }
-    }
+<nav class="category-menu" aria-label="Catégories de la bibliothèque">
+  @for (entry of entries(); track entry.id) {
+    <a class="cat-nav" [routerLink]="entry.route">{{entry.name}}</a>
   }
-</div>
+</nav>

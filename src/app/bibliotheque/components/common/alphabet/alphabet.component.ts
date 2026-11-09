@@ -1,20 +1,15 @@
-import {Component, OnInit, ChangeDetectionStrategy, output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, output} from '@angular/core';
+
+const ALPHABET: ReadonlyArray<string> = Array.from({length: 26}, (_, offset) => String.fromCharCode(65 + offset));
 
 @Component({
-    selector: 'app-alphabet',
-    templateUrl: './alphabet.component.html',
-    styleUrls: ['./alphabet.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
+  selector: 'app-alphabet',
+  templateUrl: './alphabet.component.html',
+  styleUrl: './alphabet.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AlphabetComponent implements OnInit {
-
+export class AlphabetComponent {
   readonly filterByLetter = output<string>();
 
-  ALPHABET: Array<string> = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  protected readonly letters = ALPHABET;
 }

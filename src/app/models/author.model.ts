@@ -71,21 +71,6 @@ export interface Series {
     resume: string;
     books?: Array<Book>;
 }
-export enum ViewMode {
-    NEW = 'NEW',
-    BY_AUTHOR = 'BY_AUTHOR',
-    BY_LIBRARY = "BY_LIBRARY",
-    BY_CATEGORY = "BY_CATEGORY",
-    BY_SERIES = "BY_SERIES",
-    BY_BOOK = "BY_BOOK",
-    ADMIN = "ADMIN",
-    ADMIN_AUTHORS = "ADMIN_AUTHORS",
-    ADMIN_PUBLISHERS = "ADMIN_PUBLISHERS"
-}
-export interface SelectorView {
-    mode: ViewMode;
-    id: string | undefined;
-}
 export enum BookStatus {
     NEW = 'NEW',
     AVAILABLE = 'AVAILABLE',
@@ -119,10 +104,9 @@ export interface Book {
 }
 
 export interface SearchBookResult {
-    checked: boolean,
     title: string;
     resume: string;
-    authors: Array<string>;
+    authors: string;
     isbn10: string;
     isbn13: string;
     format: string;

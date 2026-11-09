@@ -1,100 +1,61 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import {firstValueFrom, map, Observable} from 'rxjs';
-import {Biblio, BookPath, BookStatus, Library} from 'src/app/models/author.model';
-import jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
-import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
+import {AsyncPipe} from '@angular/common';
+import {MatIconButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {BookStatus} from '../../../models/author.model';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
-import { MatIcon } from '@angular/material/icon';
-import { BookRowComponent } from '../series-view/book-row/book-row.component';
-import { AsyncPipe } from '@angular/common';
+import {booksWithStatus} from '../../models/library-queries';
+import {LibraryRepository} from '../../services/library.repository';
+import {BookRowComponent} from '../series-view/book-row/book-row.component';
 
 @Component({
-    selector: 'app-new-view',
-    templateUrl: './new-view.component.html',
-    styleUrls: ['./new-view.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatIcon, BookRowComponent, AsyncPipe]
+  selector: 'app-new-view',
+  templateUrl: './new-view.component.html',
+  styleUrl: './new-view.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIcon, MatIconButton, BookRowComponent, AsyncPipe],
 })
-export class NewViewComponent implements OnInit {
-  private firebaseDatabaseService = inject(FirebaseDatabaseService);
-  auth = inject(AuthentificationService);
+export class NewViewComponent {
+  private readonly libraries = inject(LibraryRepository).libraries;
+  private readonly document = inject(DOCUMENT);
+  protected readonly auth = inject(AuthentificationService);
 
-  newBooks$?: Observable<{ biblio: Biblio; books: BookPath[]; bookInProject: BookPath[] }[]>;
+  protected readonly newBooks = computed(() =>
+    this.libraries()?.map(biblio => ({
+      biblio,
+      books: booksWithStatus(biblio, BookStatus.NEW),
+      booksInProject: booksWithStatus(biblio, BookStatus.IN_PROJECT),
+    }))
+  );
 
-  ngOnInit(): void {
-    // build new books list
-    this.newBooks$ = this.firebaseDatabaseService.bibliothequeOneShot$.pipe(
-      map((allBiblio) =>
-        allBiblio.map(biblio => {
-          const {newBooks, inProject} = this.findNewBooks(biblio.library);
-          return {biblio: biblio, books: newBooks, bookInProject: inProject};
-        })
-      )
-    );
-  }
-
-  private findNewBooks(library: Library): { newBooks: Array<BookPath>, inProject: Array<BookPath> } {
-    // find book, series and category
-    const books: Array<BookPath> = [];
-    library?.categories?.forEach(c => {
-      c.series?.forEach(s => {
-        s.books?.forEach(b => {
-          if (b.status === BookStatus.NEW) {
-            books.push({category: c, series: s, book: b});
-          }
-        })
-      })
-    });
-    const booksInProject: Array<BookPath> = [];
-    library?.categories?.forEach(c => {
-      c.series?.forEach(s => {
-        s.books?.forEach(b => {
-          if (b.status === BookStatus.IN_PROJECT) {
-            booksInProject.push({category: c, series: s, book: b});
-          }
-        })
-      })
-    });
-    return {newBooks: books, inProject: booksInProject};
-  }
-
-  async exportNewsAsPDF() {
-    let pdf = new jspdf('l', 'cm', 'a4'); //Generates PDF in landscape mode
-    //let pdf = new jspdf('p', 'cm', 'a4'); //Generates PDF in portrait mode
-    const books: Array<BookPath> =
-      await firstValueFrom(this.newBooks$).then((newBooks) => {
-        const boooks: Array<BookPath> = [];
-        newBooks.forEach(newB => newB.books.forEach(book => boooks.push(book)));
-        return boooks;
-      });
-    this.convert(books, 0, pdf);
-  }
-
-  convert(bookPaths: Array<BookPath>, index: number, pdf: jspdf) {
-    let currentBook: BookPath = bookPaths[index];
-    let data = document.getElementById(currentBook.book?.id as string);
-    if (data) {
-      html2canvas(data).then(canvas => {
-        const contentDataURL = canvas.toDataURL('image/jpeg')  // 'image/jpeg' for lower quality output.
-        const imgProps = pdf.getImageProperties(contentDataURL);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-        if (index === 0) {
-          pdf.addImage(contentDataURL, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-        } else {
-          let page = pdf.addPage('a4', 'l');
-          page.addImage(contentDataURL, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-        }
-        //next
-        if (index < bookPaths.length - 1) {
-          // next
-          this.convert(bookPaths, index + 1, pdf);
-        } else {
-          // finish
-          pdf.save('ImaginaireNew.pdf');
-        }
-      });
+  protected async exportNewsAsPDF(): Promise<void> {
+    const bookIds = (this.newBooks() ?? []).flatMap(entry => entry.books.map(path => path.book.id));
+    if (!bookIds.length) {
+      return;
+    }
+    // Heavy libraries are only needed by this admin action.
+    const [{default: Pdf}, {default: html2canvas}] = await Promise.all([import('jspdf'), import('html2canvas')]);
+    const pdf = new Pdf('l', 'cm', 'a4');
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    let isFirstPage = true;
+    for (const bookId of bookIds) {
+      const element = bookId ? this.document.getElementById(bookId) : null;
+      if (!element) {
+        continue;
+      }
+      const canvas = await html2canvas(element);
+      const imageData = canvas.toDataURL('image/jpeg');
+      const imageProperties = pdf.getImageProperties(imageData);
+      const pdfHeight = (imageProperties.height * pdfWidth) / imageProperties.width;
+      if (!isFirstPage) {
+        pdf.addPage('a4', 'l');
+      }
+      pdf.addImage(imageData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+      isFirstPage = false;
+    }
+    if (!isFirstPage) {
+      pdf.save('ImaginaireNew.pdf');
     }
   }
 }

@@ -1,19 +1,19 @@
-<h1 mat-dialog-title>
-    <mat-icon>delete</mat-icon>
-    Confirmation de supression
-</h1>
-<div mat-dialog-content>
-    <div class="message">
-        {{message}}
-    </div>
-</div>
-<div mat-dialog-actions>
-    <button mat-raised-button (click)="cancel()">
-        <mat-icon>cancel</mat-icon>
-        Abandonner
-    </button>
-    <button mat-raised-button color="primary" (click)="confirm()" cdkFocusInitial>
-        <mat-icon>check</mat-icon>
-        Confirmer
-    </button>
-</div>
+<h2 mat-dialog-title>
+  <mat-icon>delete</mat-icon>
+  Confirmation de supression
+</h2>
+<mat-dialog-content>
+  <div class="message">
+    {{data.message}}
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="button" mat-raised-button (click)="close(false)">
+    <mat-icon>cancel</mat-icon>
+    Abandonner
+  </button>
+  <button type="button" mat-raised-button color="primary" (click)="close(true)" cdkFocusInitial>
+    <mat-icon>check</mat-icon>
+    Confirmer
+  </button>
+</mat-dialog-actions>

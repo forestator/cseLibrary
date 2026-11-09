@@ -1,33 +1,27 @@
-@if (newBooks$ | async; as libraryNew) {
+@if (newBooks(); as libraryNew) {
   <div class="new-page fadein">
     <div class="title">
       Nouveautés
       @if (auth.isUserSuperAdmin | async) {
-        <mat-icon (click)="exportNewsAsPDF()">picture_as_pdf</mat-icon>
+        <button type="button" mat-icon-button aria-label="Exporter les nouveautés en PDF" (click)="exportNewsAsPDF()">
+          <mat-icon>picture_as_pdf</mat-icon>
+        </button>
       }
     </div>
-    @for (data of libraryNew; track data) {
+    @for (data of libraryNew; track data.biblio.library?.id) {
       <div class="core-page">
         @if (data.books.length > 0) {
-          <div id="new" class="core-body">
-            @for (book of data.books; track book; let index = $index) {
-              <app-book-row [id]="book.book.id"
-                [book]="book.book"
-                [biblio]="data.biblio"
-                [category]="book.category"
-                [index]="index" />
+          <div class="core-body">
+            @for (path of data.books; track path.book.id; let index = $index) {
+              <app-book-row [book]="path.book" [biblio]="data.biblio" [category]="path.category" [index]="index" />
             }
           </div>
         }
-        @if (data.bookInProject.length > 0) {
-          <div id="inProject" class="core-body">
+        @if (data.booksInProject.length > 0) {
+          <div class="core-body">
             <div class="title">En projet</div>
-            @for (book of data.bookInProject; track book; let index = $index) {
-              <app-book-row [id]="book.book.id"
-                [book]="book.book"
-                [biblio]="data.biblio"
-                [category]="book.category"
-                [index]="index" />
+            @for (path of data.booksInProject; track path.book.id; let index = $index) {
+              <app-book-row [book]="path.book" [biblio]="data.biblio" [category]="path.category" [index]="index" />
             }
           </div>
         }

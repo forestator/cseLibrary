@@ -1,94 +1,23 @@
-@if (biblio) {
+@if (editor.libraryNode(); as libraryNode) {
   <div class="settings-page">
-    <mat-expansion-panel [expanded]="true">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <div class="settings-header">
-            <div class="designation">
-              {{biblio.library.name}}
-            </div>
-            <div class="controls">
-              <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
-              <mat-icon class="ctrl-delete" (click)="delete($event)">delete</mat-icon>
-              <mat-icon class="ctrl-add" (click)="addCategory($event)" title="Ajouter une nouvelle catégorie">add
-              </mat-icon>
-              @if (biblio.library.by==='BY_SERIES') {
-                <mat-icon
-                  class="ctrl-add"
-                  (click)="addAuthor($event)"
-                  title="Ajouter un nouvel auteur">person_add_alt_1
-                </mat-icon>
-              }
-              @if (biblio.library.by==='BY_SERIES') {
-                <mat-icon
-                  class="ctrl-add"
-                  (click)="addPublisher($event)"
-                  title="Ajouter un nouvel editeur">add_business
-                </mat-icon>
-              }
-            </div>
-          </div>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="description">
-        <div class="field">
-          <div class="label">Nom</div>
-          <div class="content">{{biblio.library.name}}</div>
-        </div>
-        @if (biblio.library.resume.length>0) {
-          <div class="field">
-            <div class="label">Résumé</div>
-            <div class="content">{{biblio.library.resume}}</div>
-          </div>
+    <app-settings-panel [node]="libraryNode">
+      <nav class="all-categories" aria-label="Sections de la bibliothèque">
+        @for (tile of editor.tiles(); track tile.key) {
+          <button
+            type="button"
+            class="category bloc-link"
+            [class.bloc-selected]="tile.key === editor.selectedKey()"
+            (click)="editor.selection.set(tile.selection)">
+            <span class="category-title">{{tile.title}}</span>
+            <span class="category-info">{{tile.info}}</span>
+          </button>
+        }
+      </nav>
+      <div class="selected-nodes" [class.selected-list]="editor.selection()?.kind !== 'category'">
+        @for (node of editor.selectedNodes(); track node.id) {
+          <app-settings-panel [node]="node" />
         }
       </div>
-      <div class="all-categories">
-        @for (category of biblio.library.categories; track category) {
-          <div
-            class="category bloc-link"
-            [class]="(category.id === categoryDisplayed?.id)?'bloc-selected':''"
-            (click)="displayCategory(category)">
-            <div class="category-title">{{category.name}}</div>
-            @if (category.by === 'BY_SERIES') {
-              <div class="category-info">{{category.series?.length}} séries</div>
-            }
-            @if (category.by === 'BY_AUTHOR') {
-              <div class="category-info">{{category.authors?.length}} auteurs</div>
-            }
-          </div>
-        }
-        @if (biblio.library.by === 'BY_SERIES') {
-          <div
-            class="category bloc-link"
-            [class]="isAuthorsDisplayed?'bloc-selected':''"
-            (click)="displayAuthors()">
-            <div class="category-title">Auteur</div>
-            <div>{{biblio?.authors?.length}} auteurs</div>
-          </div>
-        }
-        <div class="category bloc-link"
-          [class]="isPublishersDisplayed?'bloc-selected':''"
-          (click)="displayPublishers()">
-          <div class="category-title">Editeur</div>
-          <div>{{biblio?.publishers?.length}} editeurs</div>
-        </div>
-      </div>
-      @if (categoryDisplayed) {
-        <app-settings-category [biblio]="biblio"
-          (sendDelete)="deleteCategory($event)"
-          [category]="categoryDisplayed"
-          [index]="index?index + 1:0" />
-      }
-      @if (isAuthorsDisplayed) {
-        <app-settings-authors [biblio]="biblio"
-          (sendDelete)="deleteAuthor($event)"
-          [index]="index?index + 1:0" />
-      }
-      @if (isPublishersDisplayed) {
-        <app-settings-publishers [biblio]="biblio"
-          (sendDelete)="deletePublisher($event)"
-          [index]="index?index + 1:0" />
-      }
-    </mat-expansion-panel>
+    </app-settings-panel>
   </div>
 }

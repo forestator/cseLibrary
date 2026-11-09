@@ -1,1 +1,9 @@
 @import '../../../common/common';
+
+// Whole blocks are links: keep the block look of the previous clickable divs.
+a.core-header,
+a.core-body {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}

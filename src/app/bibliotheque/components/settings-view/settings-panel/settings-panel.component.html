@@ -1,0 +1,47 @@
+<div class="settings-node">
+  <mat-expansion-panel [expanded]="node().expanded ?? false">
+    <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
+      <mat-panel-title>
+        <div class="designation">
+          {{node().title}}
+          @if (node().bookStatus; as status) {
+            <app-badge [status]="status" />
+          }
+        </div>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="description">
+      @for (field of node().fields; track field.label) {
+        <div class="field">
+          <div class="label">{{field.label}}</div>
+          <div class="content">
+            @if (field.bookStatus; as status) {
+              <app-badge [status]="status" />
+            } @else if (field.series; as series) {
+              <app-series-badge [series]="series" />
+            } @else {
+              {{field.value}}
+            }
+          </div>
+        </div>
+      }
+    </div>
+    @for (child of node().children; track child.id) {
+      <app-settings-panel [node]="child" />
+    }
+    <ng-content />
+  </mat-expansion-panel>
+  <div class="controls">
+    @for (action of node().actions; track action.label) {
+      <button
+        type="button"
+        class="control"
+        [class]="'control-' + action.tone"
+        [attr.aria-label]="action.label + ' : ' + node().title"
+        [title]="action.label"
+        (click)="action.run()">
+        <mat-icon>{{action.icon}}</mat-icon>
+      </button>
+    }
+  </div>
+</div>

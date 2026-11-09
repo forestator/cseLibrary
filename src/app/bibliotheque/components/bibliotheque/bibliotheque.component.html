@@ -1,27 +1,23 @@
 <div class="core-page fadein">
-  @for (biblio of firebaseDatabaseService.bibliothequeOneShot$ | async; track biblio) {
-    <div class="core-header"
-      [routerLink]="$safeNavigationMigration(biblio.library?.id)">
+  @for (biblio of libraries(); track biblio.library?.id) {
+    <a class="core-header" [routerLink]="biblio.library?.id">
       <div class="core-title">
         <div class="primary">{{biblio.library?.name}}</div>
       </div>
       <div class="core-resume">
         {{biblio.library?.resume}}
       </div>
-    </div>
+    </a>
   }
   @if (authService.isUserSuperAdmin | async) {
-    <div class="core-header"
-      >
+    <div class="core-header">
       <div class="core-title">
         <div class="primary">Administration biblio</div>
       </div>
-      @for (biblio of firebaseDatabaseService.bibliothequeOneShot$ | async; track biblio) {
-        <div class="core-body"
-          [routerLink]="'admin/' + biblio.library.id"
-          >
+      @for (biblio of libraries(); track biblio.library?.id) {
+        <a class="core-body" [routerLink]="'admin/' + biblio.library?.id">
           Gestion des livres {{biblio.library?.name}}
-        </div>
+        </a>
       }
     </div>
   }

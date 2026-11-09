@@ -1,0 +1,23 @@
+$title-color: black;
+$info-color: #595959;
+
+.mat-accordion .mat-expansion-panel {
+  margin-bottom: 10px;
+}
+
+.mat-expansion-panel-header {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.author-title {
+  font-size: x-large;
+  margin-left: 10px;
+  color: $title-color;
+}
+
+.author-info {
+  font-size: medium;
+  margin-left: 10px;
+  color: $info-color;
+}

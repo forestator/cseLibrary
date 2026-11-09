@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>
+  <mat-icon>{{data.icon}}</mat-icon>
+  {{heading()}}
+</h2>
+<mat-dialog-content>
+  <div class="form-layout">
+    @if (data.cover; as cover) {
+      <div class="form-cover">
+        <img alt="Couverture du livre" [src]="cover.libraryPath | bookCover: coverName()">
+      </div>
+    }
+    <form class="form-grid" [formGroup]="form" (ngSubmit)="save()">
+      @for (field of data.fields; track field.key) {
+        <mat-form-field class="form-field" [class.form-field-half]="field.half" appearance="fill">
+          <mat-label>{{field.label}}</mat-label>
+          @switch (field.type) {
+            @case ('select') {
+              <mat-select [formControlName]="field.key">
+                @for (option of field.options; track option.value) {
+                  <mat-option [value]="option.value">{{option.label}}</mat-option>
+                }
+              </mat-select>
+            }
+            @case ('textarea') {
+              <textarea matInput class="form-textarea" [placeholder]="field.label" [formControlName]="field.key"></textarea>
+            }
+            @default {
+              <input matInput [placeholder]="field.label" [formControlName]="field.key">
+            }
+          }
+        </mat-form-field>
+      }
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  @for (action of data.extraActions; track action.label) {
+    <button type="button" mat-raised-button color="accent" (click)="action.run(form)">
+      <mat-icon>{{action.icon}}</mat-icon>
+      {{action.label}}
+    </button>
+  }
+  <button type="button" mat-raised-button (click)="cancel()">
+    <mat-icon>cancel</mat-icon>
+    Abandonner
+  </button>
+  <button type="button" mat-raised-button color="primary" (click)="save()" cdkFocusInitial>
+    <mat-icon>check</mat-icon>
+    Enregistrer
+  </button>
+</mat-dialog-actions>

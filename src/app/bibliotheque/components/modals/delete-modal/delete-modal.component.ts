@@ -1,45 +1,20 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
-import {DataService} from 'src/app/services/biblio/data.service';
-import { MatIcon } from '@angular/material/icon';
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import { MatButton } from '@angular/material/button';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {MatButton} from '@angular/material/button';
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
-    selector: 'app-delete-modal',
-    templateUrl: './delete-modal.component.html',
-    styleUrls: ['./delete-modal.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, MatDialogActions, MatButton]
+  selector: 'app-delete-modal',
+  templateUrl: './delete-modal.component.html',
+  styleUrl: './delete-modal.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogModule, MatButton, MatIcon],
 })
-export class DeleteModalComponent implements OnInit {
-   dialogRef = inject<MatDialogRef<DeleteModalComponent>>(MatDialogRef);
-   data = inject<{
-    id: string;
-    message: string;
-}>(MAT_DIALOG_DATA);
-   dataService = inject(DataService);
+export class DeleteModalComponent {
+  private readonly dialogRef = inject<MatDialogRef<DeleteModalComponent, boolean>>(MatDialogRef);
+  protected readonly data = inject<{message: string}>(MAT_DIALOG_DATA);
 
-
-   public id!: string | undefined;
-   public message!: string | undefined;
-
-
-   constructor() {
-         const data = this.data;
-
-         this.id = data.id;
-         this.message = data.message;
-   }
-
-   ngOnInit(): void {
-   }
-
-   cancel(): void {
-      this.dialogRef.close(false);
-   }
-
-   confirm(): void {
-      this.dialogRef.close(true);
-   }
+  protected close(confirmed: boolean): void {
+    this.dialogRef.close(confirmed);
+  }
 }
