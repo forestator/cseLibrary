@@ -1,14 +1,134 @@
+@use '../../../../styles/tokens' as *;
 
-.book-core {
-  flex-wrap: wrap;
+:host {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  scroll-margin-top: $topbar-height + $space-5;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 
-  &.image-right .book-cover {
-    order: 2;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-2;
   }
 }
 
-.book-cover {
-  img {
-    height: 300px !important;
+:host(.catalogue-card-selected) {
+  border-color: $accent;
+  box-shadow: 0 0 0 3px $accent, $shadow-2;
+}
+
+.card-cover {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: $surface-high;
+}
+
+.card-image {
+  padding: $space-3;
+  object-fit: contain;
+}
+
+.card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-4 $space-5 $space-5;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2;
+}
+
+.card-chip {
+  padding: 2px $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-pill;
+  background: $surface-high;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: $on-surface-muted;
+}
+
+.card-toggle {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: $space-1;
+  min-height: 44px;
+  margin-top: auto;
+  padding: 0 $space-3 0 $space-4;
+  border: 1px solid $outline;
+  border-radius: $radius-pill;
+  background: transparent;
+  color: $accent-text;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    background: $accent-soft;
+  }
+
+  &[aria-expanded='true'] .card-toggle-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.card-toggle-icon {
+  transition: transform 0.2s ease;
+}
+
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin: 0;
+  animation: details-in 0.2s ease;
+}
+
+.card-detail {
+  display: flex;
+  flex-direction: column;
+
+  dt {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: $on-surface-muted;
+  }
+
+  dd {
+    margin: 0;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+@keyframes details-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
   }
 }

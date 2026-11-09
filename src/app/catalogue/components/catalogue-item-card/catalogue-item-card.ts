@@ -1,32 +1,51 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
+import {NgOptimizedImage} from '@angular/common';
+import {ChangeDetectionStrategy, Component, computed, input, linkedSignal, signal} from '@angular/core';
+import {MatIcon} from '@angular/material/icon';
 import {BadgeComponent} from '../../../common/components/book-badge/badge.component';
-import {ToolsService} from '../../../services/biblio/tools.service';
 import {CatalogueItem} from '../../models/catalogue-item.model';
 import {CommissionConfig} from '../../models/commission-config.model';
 
-@Component({
-  selector: 'app-catalogue-item-row',
-  templateUrl: './catalogue-item-row.html',
-  styleUrl: './catalogue-item-row.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BadgeComponent],
-})
-export class CatalogueItemRow {
-  private readonly toolsService = inject(ToolsService);
+interface ItemDetail {
+  label: string;
+  value: string;
+}
 
+let nextCardId = 0;
+
+@Component({
+  selector: 'app-catalogue-item-card',
+  templateUrl: './catalogue-item-card.html',
+  styleUrl: './catalogue-item-card.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [BadgeComponent, MatIcon, NgOptimizedImage],
+  host: {class: 'catalogue-card', '[id]': 'item().id', '[class.catalogue-card-selected]': 'selected()'},
+})
+export class CatalogueItemCard {
   readonly item = input.required<CatalogueItem>();
   readonly config = input.required<CommissionConfig>();
-  readonly index = input.required<number>();
+  readonly selected = input(false);
+  /** Cards of the first row are loaded eagerly: they are the largest contentful paint. */
+  readonly priority = input(false);
 
-  private readonly mobile = toSignal(this.toolsService.mobilePhoneDisplay$, {initialValue: false});
+  protected readonly panelId = `catalogue-details-${nextCardId++}`;
+  protected readonly coverFailed = signal(false);
 
-  protected readonly imageOnRight = computed(() => this.index() % 2 !== 0 && !this.mobile());
-  protected readonly imageSrc = computed(() => this.item().cover ?? this.config().defaultImage);
-  protected readonly details = computed(() => {
-    const dimensions = this.item().dimensions;
-    return this.config().detailFields
-      .filter(field => dimensions?.[field.key])
-      .map(field => ({label: field.label, value: dimensions[field.key]}));
+  protected readonly imageSrc = computed(() =>
+    this.coverFailed() ? this.config().defaultImage : (this.item().cover ?? this.config().defaultImage));
+  protected readonly details = computed<ItemDetail[]>(() => {
+    const item = this.item();
+    const description = item.description ? [{label: 'Description', value: item.description}] : [];
+    const dimensions = this.config().detailFields
+      .filter(field => item.dimensions?.[field.key])
+      .map(field => ({label: field.label, value: item.dimensions[field.key]}));
+    return [...description, ...dimensions];
   });
+  protected readonly hasDetails = computed(() => this.details().length > 0);
+
+  // The item picked through the route or the search starts expanded.
+  protected readonly open = linkedSignal(() => this.selected());
+
+  protected toggle(): void {
+    this.open.update(open => !open);
+  }
 }

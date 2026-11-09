@@ -2,7 +2,8 @@ import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angu
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
-import {MatFormField, MatInput} from '@angular/material/input';
+import {MatIcon} from '@angular/material/icon';
+import {Router} from '@angular/router';
 import {switchMap} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
 import {CatalogueItem, ItemCollection} from '../../models/catalogue-item.model';
@@ -14,15 +15,17 @@ import {injectCatalogue} from '../../services/inject-catalogue';
   templateUrl: './catalogue-menu.html',
   styleUrl: './catalogue-menu.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption],
+  imports: [ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, MatIcon],
 })
 export class CatalogueMenu {
   private readonly navigationService = inject(NavigationService);
+  private readonly router = inject(Router);
 
   readonly commission = input.required<CatalogueCommission>();
 
   private readonly catalogue = injectCatalogue(this.commission);
   protected readonly config = this.catalogue.config;
+  protected readonly placeholder = computed(() => this.config().searchPlaceholder ?? 'Rechercher');
 
   protected readonly searchText = new FormControl<string | CatalogueItem>('', {nonNullable: true});
   private readonly searchValue = toSignal(this.searchText.valueChanges, {initialValue: ''});
@@ -40,6 +43,12 @@ export class CatalogueMenu {
     typeof item === 'string' ? item : (item?.name ?? '');
 
   protected goToSelectedItem(event: MatAutocompleteSelectedEvent) {
-    this.navigationService.goToCatalogueItem(this.commission(), event.option.value);
+    const item: CatalogueItem = event.option.value;
+    if (this.config().categories) {
+      this.navigationService.goToCatalogueItem(this.commission(), item);
+    } else {
+      // Commissions without categories show every item on their home page.
+      this.router.navigate(['/', this.commission()], {fragment: item.id});
+    }
   }
 }

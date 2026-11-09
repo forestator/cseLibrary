@@ -1,9 +1,10 @@
-<mat-form-field appearance="fill">
-  <input type="text"
-    [placeholder]="config().searchPlaceholder"
-    matInput
-    [formControl]="searchText"
-    [matAutocomplete]="auto">
+<div class="search">
+  <mat-icon class="search-icon" aria-hidden="true">search</mat-icon>
+  <input type="search" class="search-input" autocomplete="off"
+         [attr.aria-label]="placeholder()"
+         [placeholder]="placeholder()"
+         [formControl]="searchText"
+         [matAutocomplete]="auto">
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
     [displayWith]="displayItem"
     (optionSelected)="goToSelectedItem($event)">
@@ -13,4 +14,4 @@
       </mat-option>
     }
   </mat-autocomplete>
-</mat-form-field>
+</div>
