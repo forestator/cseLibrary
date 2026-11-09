@@ -46,3 +46,4 @@ testem.log
 Thumbs.db
 scripts/migrate-storage/copied.json
 scripts/migrate-storage/updates.json
+.claude/

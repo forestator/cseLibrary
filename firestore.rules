@@ -1,0 +1,79 @@
+rules_version = '2';
+
+// Catalogue data is public (read-only for visitors); writes need a signed-in admin.
+// The UID lists mirror services/firebase/authentification.service.ts: keep both in sync.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedInUid() {
+      return request.auth != null ? request.auth.uid : '';
+    }
+
+    function isSuperAdmin() {
+      return signedInUid() in [
+        'OBWB7BXsEHPYmauZ6NqwEzcuc0x2',
+        'WYf433kVzQUmHHRrEM1Th7eESvH3',
+        'h0F4SqDlGWXgHAjesEQRzExYN3c2',
+        'bcCO7BDwU1hvnDjKMNb2GvRwI1Y2',
+        'UCugwOtt4cVGffoIkzoxYJpgQe93',
+        'whXa5tBO1VZQhCWRhO1gYbcJmrH3'
+      ];
+    }
+
+    function isLudoAdmin() {
+      return isSuperAdmin() || signedInUid() == 'TtUtjCQZW8cE51IBltKf1LzjxW42';
+    }
+
+    function isBricolageAdmin() {
+      return isSuperAdmin() || signedInUid() == 'ls9tc3kKxeRlkaXAccs0qk9T9oA2';
+    }
+
+    function isNautismeAdmin() {
+      return isSuperAdmin() || signedInUid() == 'x4jVMSuZwKZR8ECj6UsxsMLvVAn1';
+    }
+
+    function isSonoAdmin() {
+      return isSuperAdmin() || signedInUid() == 'h1YOMupBxBTdKBAuCGJFryqE4n72';
+    }
+
+    match /ludotheque/{library} {
+      allow read: if true;
+      allow write: if isLudoAdmin();
+    }
+
+    match /bibliotheque/{library} {
+      allow read: if true;
+      allow write: if isSuperAdmin();
+
+      match /categories/{category} {
+        allow read: if true;
+        allow write: if isSuperAdmin();
+      }
+    }
+
+    match /commissions/bricolage {
+      allow read: if true;
+      allow write: if isBricolageAdmin();
+    }
+
+    match /commissions/nautisme {
+      allow read: if true;
+      allow write: if isNautismeAdmin();
+    }
+
+    match /commissions/sonotheque {
+      allow read: if true;
+      allow write: if isSonoAdmin();
+    }
+
+    match /commissions/photo {
+      allow read: if true;
+      allow write: if isSuperAdmin();
+    }
+
+    // Employee directory: personal data, never public.
+    match /users/{userId} {
+      allow read, write: if isSuperAdmin();
+    }
+  }
+}
