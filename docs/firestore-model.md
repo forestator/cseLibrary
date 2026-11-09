@@ -18,10 +18,11 @@ Non migrés : `borrows` (emprunts supprimés), `bibliotheque2` (refonte inachev�
 - `scripts/firestore/import.mjs` : importe un export RTDB (`--dry-run` pour contrôler). Réécrit au passage les URLs Firebase Storage vers Cloudinary. Refuse d'écrire en production sans `--prod`.
 - Émulateur local (pas de Java sur la machine : JRE portable) :
   `JAVA_HOME=<jre> npx firebase-tools emulators:start --only firestore,auth --project cseh-50966`, puis
-  `FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 node scripts/firestore/import.mjs --export db.json --project cseh-50966`.
+  `FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 node scripts/firestore/import.mjs --export db.json --project cseh-50966 --database cse-db`.
 
-## Bascule en production (à faire avec l'accord du propriétaire du projet)
-1. Créer la base Firestore dans `cseh-50966` (région **europe-west1**, définitive).
+## Production (fait le 2026-11-09)
+La base `(default)` de `cseh-50966` est en mode Datastore (incompatible avec Firestore natif), donc l'app utilise la base nommée **`cse-db`** (Firestore natif, **europe-west1**), créée avec le CLI. Règles déployées, 313 documents importés depuis un export frais de la RTDB. `firebase.json` cible cette base. Procédure pour refaire l'import :
+1. (fait) Créer la base : `npx firebase-tools firestore:databases:create cse-db --location europe-west1 --project cseh-50966`.
 2. `npx firebase-tools deploy --only firestore:rules`.
-3. Réexporter la RTDB juste avant (elle est lisible : `curl https://cseh-50966-default-rtdb.europe-west1.firebasedatabase.app/.json`), puis importer avec `--prod`.
+3. Réexporter la RTDB juste avant (`curl https://cseh-50966-default-rtdb.europe-west1.firebasedatabase.app/.json`), puis importer avec `--prod --database cse-db` et `GOOGLE_ACCESS_TOKEN` (jeton OAuth d'un propriétaire du projet, par exemple celui du CLI Firebase). L'import écrase les documents existants.
 4. Basculer l'app, vérifier, puis verrouiller les règles de la RTDB.
