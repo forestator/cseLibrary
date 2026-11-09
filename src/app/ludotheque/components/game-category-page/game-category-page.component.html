@@ -1,8 +1,15 @@
-@switch (libraryId()) {
-  @case ('boardGames') {
-    <app-board-game-category-details [boardGames]="boardGames()" [selectedId]="id()" />
+<div class="page">
+  <app-page-header [title]="title()" [resume]="category()?.resume" [count]="count()"
+    [backLink]="parentLink()" [backLabel]="parentLabel()" />
+  @switch (libraryId()) {
+    @case ('boardGames') {
+      <h2 class="visually-hidden">Jeux</h2>
+      <app-board-game-category-details [boardGames]="filteredBoardGames()" [selectedId]="id()"
+        [showCategory]="false"
+        [emptyMessage]="boardGames()?.length ? 'Aucun jeu ne correspond aux filtres choisis.' : 'Aucun jeu dans cette catégorie pour le moment.'" />
+    }
+    @case ('videoGames') {
+      <app-video-games-console-details [videoGames]="videoGames()" [selectedId]="id()" [showCategory]="false" />
+    }
   }
-  @case ('videoGames') {
-    <app-video-games-console-details [videoGames]="videoGames()" [selectedId]="id()" />
-  }
-}
+</div>

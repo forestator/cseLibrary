@@ -1,31 +1,32 @@
 import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
-import {MatDivider} from '@angular/material/divider';
 import {VideoGame, VideoGameType} from '../../../../models/videoGames.model';
-import {VideoGameRowComponent, VideoGameRowVariant} from '../video-game-row/video-game-row.component';
+import {GameCardComponent} from '../../shared/game-card/game-card.component';
+import {GameGridComponent} from '../../shared/game-grid/game-grid.component';
+import {SectionTitleComponent} from '../../shared/section-title/section-title.component';
 
 interface VideoGameSection {
   title: string;
-  variant: VideoGameRowVariant;
   videoGames: ReadonlyArray<VideoGame>;
 }
 
+/** Video games of a console, split in consoles, accessories and games; `undefined` means still loading. */
 @Component({
   selector: 'app-video-games-console-details',
   templateUrl: './video-games-console-details.component.html',
   styleUrl: './video-games-console-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatDivider, VideoGameRowComponent],
+  imports: [GameCardComponent, GameGridComponent, SectionTitleComponent],
 })
 export class VideoGamesConsoleDetailsComponent {
   readonly videoGames = input<ReadonlyArray<VideoGame>>();
   readonly selectedId = input<string>();
+  readonly showCategory = input(true);
 
-  protected readonly hardwareSections = computed<Array<VideoGameSection>>(() => [
-    {title: 'Consoles', variant: 'console', videoGames: this.ofType(VideoGameType.CONSOLE)},
-    {title: 'Accessoires', variant: 'console', videoGames: this.ofType(VideoGameType.ACCESSORY)},
-  ].filter(section => section.videoGames.length > 0) as Array<VideoGameSection>);
-
-  protected readonly games = computed(() => this.ofType(VideoGameType.GAME));
+  protected readonly sections = computed<ReadonlyArray<VideoGameSection>>(() => [
+    {title: 'Consoles', videoGames: this.ofType(VideoGameType.CONSOLE)},
+    {title: 'Accessoires', videoGames: this.ofType(VideoGameType.ACCESSORY)},
+    {title: 'Jeux', videoGames: this.ofType(VideoGameType.GAME)},
+  ].filter(section => section.videoGames.length > 0));
 
   private ofType(type: VideoGameType): ReadonlyArray<VideoGame> {
     return this.videoGames()?.filter(videoGame => videoGame?.type === type) ?? [];

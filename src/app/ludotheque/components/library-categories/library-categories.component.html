@@ -1,34 +1,9 @@
-@if (library(); as library) {
-  <div class="core-page fadein">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">{{ library.name }}</div>
-      </div>
-      <div class="core-resume">
-        {{ library.resume }}
-      </div>
-    </div>
+<div class="page">
+  <app-page-header [title]="library()?.name ?? ''" [resume]="library()?.resume"
+    [count]="categoryCount()" backLink="/ludotheque" backLabel="Ludothèque" />
+  <app-game-grid [loading]="library() === undefined" [empty]="categories().length === 0" emptyMessage="Aucune catégorie pour le moment.">
     @for (category of categories(); track category.id) {
-      <a [routerLink]="category.id" routerLinkActive="active"
-        class="core-body core-body-category category-link"
-        title="Cliquez ici pour visualiser cette categorie">
-        @if (!mobilePhoneDisplay()) {
-          <div>
-            <img class="category-visuel" [src]="category.bg" [alt]="category.name">
-          </div>
-        }
-        <div class="core-header">
-          @if (mobilePhoneDisplay()) {
-            <img class="category-visuel small-display" [src]="category.bg" [alt]="category.name">
-          }
-          <div class="core-title">
-            <div class="primary">{{ category.name }}</div>
-          </div>
-          <div class="core-resume">
-            {{ category.resume }}
-          </div>
-        </div>
-      </a>
+      <app-tile-card [priority]="$first" [route]="category.id!" [title]="category.name" [resume]="category.resume" [image]="category.bg" />
     }
-  </div>
-}
+  </app-game-grid>
+</div>

@@ -1,29 +1,22 @@
-<div class="new-page fadein">
-  <div id="new">
-    <h1 class="title">Nouveautés</h1>
-    <div class="core-page">
-      <div class="core-header">
-        <div class="core-title">
-          <div class="primary">Nouveaux Jeux de société</div>
-        </div>
-      </div>
-      <app-board-game-category-details [boardGames]="boardGames()" />
-      <div class="core-header">
-        <div class="core-title">
-          <div class="primary">Nouveaux Jeux vidéos</div>
-        </div>
-      </div>
-      <app-video-games-console-details class="core-body" [videoGames]="videoGames()" />
-      <div class="core-header">
-        <div class="core-title">
-          <div class="primary">Nouveaux Jeux Grands jeux</div>
-        </div>
-      </div>
-      @for (game of outsideGames(); track game.ref) {
-        <div class="core-body">
-          <app-game-row [game]="game" [index]="$index" />
-        </div>
-      }
-    </div>
-  </div>
-</div>
+<app-page-header title="Nouveautés" resume="Les derniers arrivages de la ludothèque."
+  backLink="/ludotheque" backLabel="Ludothèque" />
+<section>
+  <app-section-title title="Jeux de société" [count]="boardGames()?.length" />
+  <app-board-game-category-details [boardGames]="boardGames()" emptyMessage="Pas de nouveau jeu de société." />
+</section>
+<section>
+  <app-section-title title="Jeux vidéo" [count]="videoGames()?.length" />
+  <app-game-grid [loading]="!videoGames()" [empty]="videoGames()?.length === 0" emptyMessage="Pas de nouveau jeu vidéo.">
+    @for (videoGame of videoGames(); track videoGame.ref) {
+      <app-game-card [priority]="$index < 4" [game]="videoGame" [description]="videoGame.description" />
+    }
+  </app-game-grid>
+</section>
+<section>
+  <app-section-title title="Grands jeux" [count]="outsideGames()?.length" />
+  <app-game-grid [loading]="!outsideGames()" [empty]="outsideGames()?.length === 0" emptyMessage="Pas de nouveau grand jeu.">
+    @for (game of outsideGames(); track game.ref) {
+      <app-game-card [priority]="$index < 4" [game]="game" [showCategory]="false" [description]="game.description" />
+    }
+  </app-game-grid>
+</section>

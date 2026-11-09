@@ -1,11 +1,8 @@
-@if (filteredBoardGames(); as boardGames) {
-  <div class="core-body">
-    @for (boardGame of boardGames; track boardGame.ref) {
-      <div class="core-body">
-        <app-game-row [game]="boardGame" [index]="$index"
-          [anchorId]="boardGame.id" [selectedId]="selectedId()"
-          [infos]="boardGame | boardGameInfos" [description]="boardGame.description" />
-      </div>
-    }
-  </div>
-}
+<app-game-grid [loading]="!boardGames()" [empty]="boardGames()?.length === 0" [emptyMessage]="emptyMessage()">
+  @for (boardGame of boardGames(); track boardGame.ref) {
+    @let infos = boardGame | boardGameInfos;
+    <app-game-card [priority]="$index < 4" [game]="boardGame" [anchorId]="boardGame.id" [selectedId]="selectedId()"
+      [showCategory]="showCategory()" [facts]="infos.facts" [details]="infos.details"
+      [description]="boardGame.description" />
+  }
+</app-game-grid>

@@ -1,27 +1,12 @@
-<div class="core-page fadein">
-  @for (entry of entries; track entry.route) {
-    <a class="core-header entry-link" [routerLink]="entry.route">
-      <img class="category-visuel small-display" [src]="entry.image" [alt]="entry.title">
-      <div>
-        <div class="core-title">
-          <div class="primary">{{ entry.title }}</div>
-        </div>
-        <div class="core-resume">
-          {{ entry.resume }}
-        </div>
-      </div>
-    </a>
-  }
-  @if (isLudoAdmin()) {
-    <div class="core-header">
-      <div>
-        <div class="core-title">
-          <div class="primary">Administration ludotheque</div>
-        </div>
-        <a class="core-body entry-link" routerLink="admin/games">
-          Gestion des jeux
-        </a>
-      </div>
-    </div>
-  }
+<div class="page">
+  <app-page-header title="Ludothèque"
+    resume="Jeux de société, jeux vidéo et grands jeux en prêt pour les salariés du CSE." />
+  <app-game-grid>
+    @for (entry of entries; track entry.route) {
+      <app-tile-card [priority]="$first" [route]="entry.route" [title]="entry.title" [resume]="entry.resume" [image]="entry.image" />
+    }
+    @if (isLudoAdmin()) {
+      <app-tile-card route="admin/games" title="Administration ludothèque" resume="Gestion des jeux" icon="admin_panel_settings" />
+    }
+  </app-game-grid>
 </div>

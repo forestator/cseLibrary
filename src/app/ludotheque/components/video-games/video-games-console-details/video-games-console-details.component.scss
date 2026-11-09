@@ -1,17 +1,3 @@
-
-.core-body {
-  margin: 10px;
-  padding: 5px;
-  border-radius: 10px;
-  background-color: rgba(210,210,210,0.5);
-  color: #808080;
-
-  &.video-game-list {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .core-body {
-    width: fit-content;
-  }
+:host {
+  display: block;
 }

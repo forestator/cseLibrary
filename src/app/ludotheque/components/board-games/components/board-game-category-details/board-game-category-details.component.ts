@@ -1,24 +1,20 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input} from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
-import {FilterBoardGamesService} from '../../../../services/filter-board-games.service';
 import {BoardGameInfosPipe} from '../../../../pipes/board-game-infos.pipe';
-import {GameRowComponent} from '../../../game-row/game-row.component';
+import {GameCardComponent} from '../../../shared/game-card/game-card.component';
+import {GameGridComponent} from '../../../shared/game-grid/game-grid.component';
 
+/** Grid of board game cards; `undefined` means the games are still loading. */
 @Component({
   selector: 'app-board-game-category-details',
   templateUrl: './board-game-category-details.component.html',
   styleUrl: './board-game-category-details.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [GameRowComponent, BoardGameInfosPipe],
+  imports: [GameCardComponent, GameGridComponent, BoardGameInfosPipe],
 })
 export class BoardGameCategoryDetailsComponent {
-  private readonly filterService = inject(FilterBoardGamesService);
-
   readonly boardGames = input<ReadonlyArray<BoardGame>>();
   readonly selectedId = input<string>();
-
-  protected readonly filteredBoardGames = computed(() => {
-    const filter = this.filterService.filter();
-    return this.boardGames()?.filter(boardGame => this.filterService.matches(boardGame, filter));
-  });
+  readonly showCategory = input(true);
+  readonly emptyMessage = input('Aucun jeu ne correspond à votre recherche.');
 }

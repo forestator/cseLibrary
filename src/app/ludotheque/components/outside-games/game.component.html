@@ -1,17 +1,10 @@
-<div class="core-page fadein">
-  @if (library(); as library) {
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">{{ library.name }}</div>
-      </div>
-      <div class="core-resume">
-        {{ library.resume }}
-      </div>
-    </div>
-  }
-  @for (game of games(); track game.ref) {
-    <div class="core-body">
-      <app-game-row [game]="game" [index]="$index" [selectedId]="id()" />
-    </div>
-  }
+<div class="page">
+  <app-page-header [title]="library()?.name ?? 'Grands jeux'" [resume]="library()?.resume" [count]="count()"
+    backLink="/ludotheque" backLabel="Ludothèque" />
+  <h2 class="visually-hidden">Jeux</h2>
+  <app-game-grid [loading]="!games()" [empty]="games()?.length === 0">
+    @for (game of games(); track game.ref) {
+      <app-game-card [priority]="$index < 4" [game]="game" [selectedId]="id()" [showCategory]="false" [description]="game.description" />
+    }
+  </app-game-grid>
 </div>

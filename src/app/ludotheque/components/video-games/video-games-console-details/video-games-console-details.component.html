@@ -1,30 +1,17 @@
-@if (videoGames()) {
-  <div class="core-page">
-    @for (section of hardwareSections(); track section.title) {
-      <div class="core-header">
-        <div class="core-title">
-          <div class="primary">{{ section.title }}</div>
-        </div>
-      </div>
-      @for (videoGame of section.videoGames; track videoGame.ref) {
-        <div class="core-body">
-          <app-video-game-row [videoGame]="videoGame" [variant]="section.variant"
-            [selectedId]="selectedId()" />
-        </div>
-      }
-      <mat-divider />
-    }
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Jeux</div>
-      </div>
-    </div>
-    <div class="core-body video-game-list">
-      @for (videoGame of games(); track videoGame.ref) {
-        <div class="core-body">
-          <app-video-game-row [videoGame]="videoGame" [selectedId]="selectedId()" />
-        </div>
-      }
-    </div>
-  </div>
+@if (!videoGames()) {
+  <app-game-grid [loading]="true" />
+} @else if (sections().length === 0) {
+  <app-game-grid [empty]="true" emptyMessage="Aucun jeu vidéo pour le moment." />
+} @else {
+  @for (section of sections(); track section.title) {
+    <section>
+      <app-section-title [title]="section.title" [count]="section.videoGames.length" />
+      <app-game-grid>
+        @for (videoGame of section.videoGames; track videoGame.ref) {
+          <app-game-card [priority]="$index < 4" [game]="videoGame" [selectedId]="selectedId()" [showCategory]="showCategory()"
+            [description]="videoGame.description" />
+        }
+      </app-game-grid>
+    </section>
+  }
 }
