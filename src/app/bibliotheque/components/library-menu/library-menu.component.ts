@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Biblio} from 'src/app/models/author.model';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {Observable} from 'rxjs';
@@ -15,13 +15,12 @@ import { AsyncPipe } from '@angular/common';
     imports: [RouterLink, AsyncPipe]
 })
 export class LibraryMenuComponent {
+  firebaseDatabaseService = inject(FirebaseDatabaseService);
+  navService = inject(NavigationService);
+  tools = inject(ToolsService);
+
 
   title: string = 'Cse';
   prefixRoute: string = 'bibliotheque/';
   menu$: Observable<Array<Biblio> | null> = this.firebaseDatabaseService.bibliothequeOneShot$;
-
-  constructor(public firebaseDatabaseService: FirebaseDatabaseService,
-              public navService: NavigationService,
-              public tools: ToolsService) {
-  }
 }

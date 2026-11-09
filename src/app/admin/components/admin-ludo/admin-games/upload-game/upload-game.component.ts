@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Game} from '../../../../../models/common.model';
 import {FileUpload} from '../../../../../models/fileUpload.model';
 import {StorageUploadService} from '../../../../../services/firebase/storage-upload.service';
@@ -16,11 +16,10 @@ import { UploadFormComponent } from '../../../../../common/components/upload-for
     imports: [UploadFormComponent]
 })
 export class UploadGameComponent implements OnChanges {
-  @Input() selectedGame?: Game;
+  private uploadService = inject(StorageUploadService);
+  private bgg = inject(BGGService);
 
-  constructor(private uploadService: StorageUploadService,
-              private bgg: BGGService) {
-  }
+  @Input() selectedGame?: Game;
 
   ngOnChanges(changes: SimpleChanges) {
     if (GamesUtils.libraryIdOfGame(this.selectedGame) === 'boardGames') {

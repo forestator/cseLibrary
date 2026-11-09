@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {SonoItem} from "../../models/sono.model";
 import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
@@ -12,6 +12,8 @@ import { BadgeComponent } from '../../../common/components/book-badge/badge.comp
     imports: [NgTemplateOutlet, BadgeComponent, AsyncPipe]
 })
 export class SonoItemRowComponent implements OnInit {
+  toolsService = inject(ToolsService);
+
 
   @Input() sonoItem!: SonoItem;
   @Input() index!: number;
@@ -19,9 +21,6 @@ export class SonoItemRowComponent implements OnInit {
   parity!: boolean;
 
   readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/sonoItems/defaultSonoIItem';
-  constructor(public toolsService: ToolsService) {
-
-  }
 
   ngOnInit() {
     this.parity = this.index % 2 === 0;

@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {BricoCategories, Tool} from '../../../bricolage/models/bricolage.model';
 import {Observable, take} from 'rxjs';
 import {BricolageDatabaseService} from '../../../bricolage/services/bricolage-database.service';
@@ -19,6 +19,9 @@ import { AsyncPipe, TitleCasePipe } from '@angular/common';
     imports: [MatButton, MatDivider, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, BricoTableComponent, AsyncPipe, TitleCasePipe]
 })
 export class AdminBricolageComponent {
+  private bricolageDatabaseService = inject(BricolageDatabaseService);
+  private dialog = inject(MatDialog);
+
   bricoCategories = Object.values(BricoCategories);
   openededCat?: string;
   bois$ = this.bricolageDatabaseService.getBricoCategory('bois');
@@ -33,9 +36,6 @@ export class AdminBricolageComponent {
   electronique$ = this.bricolageDatabaseService.getBricoCategory('Electronique');
   remorques$ = this.bricolageDatabaseService.getBricoCategory('Remorques');
   divers$ = this.bricolageDatabaseService.getBricoCategory('Divers');
-  constructor(private bricolageDatabaseService: BricolageDatabaseService,
-              private dialog: MatDialog) {
-  }
 
   toolsOfCategory(categoryId: string): Observable<Array<Tool>> {
     switch (categoryId) {

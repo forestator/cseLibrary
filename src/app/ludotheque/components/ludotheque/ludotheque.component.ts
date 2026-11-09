@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
@@ -11,7 +11,5 @@ import { AsyncPipe } from '@angular/common';
     imports: [RouterLink, AsyncPipe]
 })
 export class LudothequeComponent {
-
-    constructor(public authService: AuthentificationService) {
-    }
+    authService = inject(AuthentificationService);
 }

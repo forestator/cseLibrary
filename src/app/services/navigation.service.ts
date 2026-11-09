@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Params, Router} from '@angular/router';
 import {BehaviorSubject, filter, map, Observable} from 'rxjs';
 import {BoardGame} from '../models/boardGame.model';
@@ -10,10 +10,13 @@ import {Comissions} from "../models/common.model";
   providedIn: 'root'
 })
 export class NavigationService {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+
 
   public url$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  constructor(private router: Router, private route: ActivatedRoute) {
+  constructor() {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map((event: any) => event.url)

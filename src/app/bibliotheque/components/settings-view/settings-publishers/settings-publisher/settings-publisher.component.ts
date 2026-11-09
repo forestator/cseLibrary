@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {
@@ -18,6 +18,10 @@ import { MatIcon } from '@angular/material/icon';
     imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon]
 })
 export class SettingsPublisherComponent implements OnInit {
+   tools = inject(ToolsService);
+   dialog = inject(MatDialog);
+   dataService = inject(DataService);
+
    @Input()
    publisher!: Publisher;
 
@@ -25,13 +29,6 @@ export class SettingsPublisherComponent implements OnInit {
    index!: string;
 
    @Output() sendDelete = new EventEmitter<string>();
-
-
-   constructor(
-      public tools: ToolsService,
-      public dialog: MatDialog,
-      public dataService: DataService
-   ) { }
 
    ngOnInit(): void {
    }

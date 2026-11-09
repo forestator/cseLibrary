@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {Biblio} from '../../models/author.model';
 import {FirebaseDatabaseService} from '../firebase/firebase-database.service';
 
@@ -6,8 +6,10 @@ import {FirebaseDatabaseService} from '../firebase/firebase-database.service';
   providedIn: 'root'
 })
 export class DataService {
+  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+
   public allBiblio: Array<Biblio>;
-  constructor(private firebaseDatabaseService: FirebaseDatabaseService) {
+  constructor() {
     this.allBiblio = [];
     this.firebaseDatabaseService.bibliothequeOneShot$.subscribe(allBiblio => {
       this.allBiblio = allBiblio ?? [];

@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {AddEmployeeDialogComponent} from '../add-employee-dialog/add-employee-dialog.component';
 import {combineLatest, take} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -14,11 +14,10 @@ import { MatButton } from '@angular/material/button';
     imports: [MatButton]
 })
 export class AdminMenuComponent {
+  private snackBar = inject(MatSnackBar);
+  private userService = inject(UserService);
+  private dialog = inject(MatDialog);
 
-  constructor(private snackBar: MatSnackBar,
-              private userService: UserService,
-              private dialog: MatDialog) {
-  }
 
   addEmployee(): void {
     const dialogRef = this.dialog.open(AddEmployeeDialogComponent);

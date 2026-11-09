@@ -1,4 +1,4 @@
-import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {BricoCategories, Tool, ToolStatus} from '../../../../bricolage/models/bricolage.model';
@@ -25,21 +25,22 @@ import { TitleCasePipe } from '@angular/common';
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSelect, MatOption, MatButtonToggleGroup, MatButtonToggle, MatDivider, UploadFormComponent, MatDialogActions, MatButton, TitleCasePipe]
 })
 export class AddToolModalComponent {
+  dialogRef = inject<MatDialogRef<AddToolModalComponent>>(MatDialogRef);
+  private dialog = inject(MatDialog);
+  fb = inject(FormBuilder);
+  private bricolageDatabaseService = inject(BricolageDatabaseService);
+  private uploadService = inject(StorageUploadService);
+  data = inject<{
+    tools: Array<Tool>;
+    selectedTool?: Tool;
+}>(MAT_DIALOG_DATA);
+
 
   toolForm: FormGroup;
   categoryOptions: string[] = Object.values(BricoCategories);
   readonly defaultImageForTool = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/tools/covers/defaultTool';
 
-  constructor(
-    public dialogRef: MatDialogRef<AddToolModalComponent>,
-    private dialog: MatDialog,
-    public fb: FormBuilder,
-    private bricolageDatabaseService: BricolageDatabaseService,
-    private uploadService: StorageUploadService,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      tools: Array<Tool>, selectedTool?: Tool
-    },
-  ) {
+  constructor() {
     this.toolForm = this.initForm(this.data.selectedTool);
   }
 

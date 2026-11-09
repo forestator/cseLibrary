@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Library} from '../../../models/author.model';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 import {Observable} from 'rxjs';
@@ -14,7 +14,8 @@ import { AsyncPipe } from '@angular/common';
     imports: [RouterLinkActive, RouterLink, AsyncPipe]
 })
 export class BoardGamesComponent {
+  private firebaseDatabase = inject(FirebaseDatabaseService);
+  toolsService = inject(ToolsService);
+
   library$: Observable<Library> = this.firebaseDatabase.boardGamesLibrary$;
-  constructor(private firebaseDatabase: FirebaseDatabaseService,
-              public toolsService: ToolsService) { }
 }

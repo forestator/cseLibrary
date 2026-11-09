@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Biblio, Series} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -18,6 +18,9 @@ import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
     imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, SeriesBadgeComponent, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, AsyncPipe, BookFilterPipe, BookCoverPipe]
 })
 export class SeriesRowComponent implements OnInit {
+  tools = inject(ToolsService);
+  dataService = inject(DataService);
+
   @Input()
   series!: Series | undefined;
 
@@ -25,8 +28,6 @@ export class SeriesRowComponent implements OnInit {
   biblio!: Biblio;
 
   bookColumns: Array<string> = ['cover', 'title', 'authors', 'tome', 'isbn', 'page', 'status'];
-
-  constructor(public tools: ToolsService, public dataService: DataService) { }
 
   ngOnInit(): void {
 

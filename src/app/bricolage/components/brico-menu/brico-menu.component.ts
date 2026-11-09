@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {map, Observable, startWith} from 'rxjs';
 import {Tool} from '../../models/bricolage.model';
@@ -15,11 +15,13 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, AsyncPipe]
 })
 export class BricoMenuComponent {
+  private navService = inject(NavigationService);
+
   @Input() allTools: Array<Tool>;
 
   searchText: FormControl<string> = new FormControl<string>(null);
   filteredOptions$?: Observable<Array<Tool>>;
-  constructor(private navService: NavigationService) {
+  constructor() {
     this.allTools = [];
     this.filteredOptions$ = this.searchText.valueChanges.pipe(
       startWith(''),

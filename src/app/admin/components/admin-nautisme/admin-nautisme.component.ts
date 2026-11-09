@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {take} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {NautismeDatabaseService} from '../../../nautisme/services/nautisme-database.service';
@@ -17,10 +17,9 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatButton, MatDivider, NautismeTableComponent, AsyncPipe]
 })
 export class AdminNautismeComponent {
+  nautismeDatabaseService = inject(NautismeDatabaseService);
+  private dialog = inject(MatDialog);
 
-  constructor(public nautismeDatabaseService: NautismeDatabaseService,
-              private dialog: MatDialog) {
-  }
 
   addItem() {
     this.nautismeDatabaseService.allNautisme$.pipe(take(1)).subscribe(nautItems => {

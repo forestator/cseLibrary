@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Biblio} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import { SettingsAuthorComponent } from '../settings-category/settings-author/settings-author.component';
@@ -11,6 +11,8 @@ import { SettingsAuthorComponent } from '../settings-category/settings-author/se
     imports: [SettingsAuthorComponent]
 })
 export class SettingsAuthorsComponent implements OnInit {
+   dataService = inject(DataService);
+
 
    @Input()
    index!: number;
@@ -19,8 +21,6 @@ export class SettingsAuthorsComponent implements OnInit {
   biblio!: Biblio;
 
    @Output() sendDelete = new EventEmitter<string>();
-
-   constructor(public dataService: DataService) { }
 
    ngOnInit(): void {
    }

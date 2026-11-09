@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable, take} from 'rxjs';
 import {Library} from '../../models/author.model';
@@ -10,11 +10,13 @@ import {FileUpload} from "../../models/fileUpload.model";
   providedIn: 'root'
 })
 export class BricolageDatabaseService {
+  private db = inject(AngularFireDatabase);
+
 
   bricolageLibrary$: Observable<Library>;
   allTools$: Observable<Tool[]>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor() {
     this.bricolageLibrary$ = this.db.object<Library>('bricolage/library')
       .valueChanges().pipe(take(1));
     this.allTools$ = this.db.object<AllTools>('bricolage/tools').valueChanges().pipe(

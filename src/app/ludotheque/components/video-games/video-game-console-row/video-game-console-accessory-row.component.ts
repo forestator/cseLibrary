@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
@@ -13,14 +13,13 @@ import { NgTemplateOutlet } from '@angular/common';
     imports: [NgTemplateOutlet]
 })
 export class VideoGameConsoleAccessoryRowComponent implements OnInit {
+  private toolsService = inject(ToolsService);
+  dialog = inject(MatDialog);
+  private userService = inject(UserService);
+
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
-
-  constructor(private toolsService: ToolsService,
-              public dialog: MatDialog,
-              private userService: UserService) {
-  }
 
   ngOnInit(): void {
     if (this.selectedVideoGameId) {

@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
 import {ToolsService} from './services/biblio/tools.service';
 import {NavigationService} from './services/navigation.service';
 import {BoardGameCategory} from './models/boardGame.model';
@@ -32,6 +32,10 @@ import { AdminMenuComponent } from './admin/components/admin-menu/admin-menu.com
     imports: [FilterBoardGamesComponent, LudoMenuComponent, BricoMenuComponent, AdminMenuComponent, MatSidenavContainer, MatSidenav, RouterLink, MatList, MatListItem, MatListItemTitle, MatDivider, MatIcon, MatSidenavContent, MatToolbar, MatIconButton, LibraryMenuComponent, RouterOutlet, AsyncPipe]
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  private navigationService = inject(NavigationService);
+  private bricolageDatabaseService = inject(BricolageDatabaseService);
+  toolService = inject(ToolsService);
+
   @ViewChild('top') topMenu: MatSidenavContent;
   @ViewChild('drawer') drawer: any;
   title = 'Cse';
@@ -45,13 +49,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   public menu: ({ route: string; name: string, subList?: { route: string; name: string }[] })[];
   showBoardGameFilters = false;
   allTools$?: Observable<Tool[]>;
-
-
-  constructor(
-    private navigationService: NavigationService,
-    private bricolageDatabaseService: BricolageDatabaseService,
-    public toolService: ToolsService) {
-  }
 
   ngOnInit() {
     this.navigationService.url$.subscribe(url => {

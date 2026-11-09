@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Game} from '../../../models/common.model';
 import {BoardGame} from '../../../models/boardGame.model';
 import {VideoGame} from '../../../models/videoGames.model';
@@ -17,12 +17,11 @@ import { AsyncPipe } from '@angular/common';
     imports: [BoardGameCategoryDetailsComponent, VideoGamesConsoleDetailsComponent, GameRowComponent, AsyncPipe]
 })
 export class LudoNewComponent implements OnInit {
+  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+
   videoGames$: Observable<Array<VideoGame>>;
   boardGames$: Observable<Array<BoardGame>>;
   otherGames$: Observable<Array<Game>>;
-
-  constructor(private firebaseDatabaseService: FirebaseDatabaseService) {
-  }
 
   ngOnInit() {
     this.videoGames$ = this.firebaseDatabaseService.videoGamesOneShot$.pipe(

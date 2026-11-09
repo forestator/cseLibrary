@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {Biblio, Book} from 'src/app/models/author.model';
@@ -18,6 +18,10 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, BadgeComponent, MatIcon, AsyncPipe]
 })
 export class SettingsBookComponent implements OnInit {
+  tools = inject(ToolsService);
+  dialog = inject(MatDialog);
+  dataService = inject(DataService);
+
 
   @Input()
   book!: Book;
@@ -29,12 +33,6 @@ export class SettingsBookComponent implements OnInit {
   biblio!: Biblio;
 
   @Output() sendDelete = new EventEmitter<string>();
-
-  constructor(
-    public tools: ToolsService,
-    public dialog: MatDialog,
-    public dataService: DataService) {
-  }
 
   ngOnInit(): void {
   }

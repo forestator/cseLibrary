@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Biblio, Book, Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -14,6 +14,9 @@ import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
     imports: [BadgeComponent, AsyncPipe, BookCoverPipe]
 })
 export class BookRowComponent implements OnInit {
+  tools = inject(ToolsService);
+  dataService = inject(DataService);
+
 
   @Input()
   book!: Book;
@@ -29,7 +32,6 @@ export class BookRowComponent implements OnInit {
 
   parity!: boolean;
   badge!: string;
-  constructor(public tools: ToolsService, public dataService: DataService) { }
 
   ngOnInit(): void {
     this.parity = this.index % 2 === 0;

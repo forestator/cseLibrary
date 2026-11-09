@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Library} from 'src/app/models/author.model';
 import {map, mergeMap, Observable} from 'rxjs';
 import { Params, RouterLink } from '@angular/router';
@@ -16,13 +16,12 @@ import { CategoryBackgroundPipe } from '../../pipes/category-background.pipe';
     imports: [RouterLink, AsyncPipe, CategoryBackgroundPipe]
 })
 export class LibraryViewComponent implements OnInit {
+  private biblioDatabaseService = inject(BiblioDatabaseService);
+  toolsService = inject(ToolsService);
+  private navigationService = inject(NavigationService);
+
 
   library$!: Observable<Library>;
-
-  constructor(private biblioDatabaseService: BiblioDatabaseService,
-              public toolsService: ToolsService,
-              private navigationService: NavigationService) {
-  }
 
   ngOnInit() {
     this.library$ = this.navigationService.getRouteParams().pipe(

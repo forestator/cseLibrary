@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {BricolageDatabaseService} from '../../services/bricolage-database.service';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
@@ -13,8 +13,7 @@ import { AsyncPipe } from '@angular/common';
     imports: [RouterLinkActive, RouterLink, AsyncPipe]
 })
 export class BricolageHomeComponent {
-  constructor(public bricoDb: BricolageDatabaseService,
-              public authService: AuthentificationService,
-              public toolsService: ToolsService) {
-  }
+  bricoDb = inject(BricolageDatabaseService);
+  authService = inject(AuthentificationService);
+  toolsService = inject(ToolsService);
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, inject } from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
@@ -13,14 +13,13 @@ import { NgTemplateOutlet } from '@angular/common';
     imports: [NgTemplateOutlet]
 })
 export class VideoGameRowComponent implements OnInit, OnChanges {
+  private toolsService = inject(ToolsService);
+  dialog = inject(MatDialog);
+  private userService = inject(UserService);
+
 
   @Input() videoGame!: VideoGame;
   @Input() selectedVideoGameId?: string;
-
-  constructor(private toolsService: ToolsService,
-              public dialog: MatDialog,
-              private userService: UserService) {
-  }
   ngOnInit(): void {
     if (this.selectedVideoGameId) {
       this.toolsService.scrollToId(this.selectedVideoGameId);

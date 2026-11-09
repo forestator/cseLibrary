@@ -1,4 +1,4 @@
-import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {Game} from '../../../../../models/common.model';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
@@ -20,19 +20,20 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, AddGameFormComponent, MatDialogActions, MatButton, MatProgressSpinner]
 })
 export class AddGameModalComponent {
+  dialogRef = inject<MatDialogRef<AddGameModalComponent>>(MatDialogRef);
+  fb = inject(FormBuilder);
+  private openAiService = inject(OpenAiService);
+  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+  private bggService = inject(BGGService);
+  data = inject<{
+    games: Array<Game>;
+    selectedGame?: BoardGame;
+}>(MAT_DIALOG_DATA);
+
   gameForm: FormGroup;
   loading: boolean;
 
-  constructor(
-    public dialogRef: MatDialogRef<AddGameModalComponent>,
-    public fb: FormBuilder,
-    private openAiService: OpenAiService,
-    private firebaseDatabaseService: FirebaseDatabaseService,
-    private bggService: BGGService,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      games: Array<Game>, selectedGame?: BoardGame
-    },
-  ) {
+  constructor() {
     this.gameForm = this.initForm(this.data.selectedGame);
   }
 

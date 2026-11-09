@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {AuthentificationService} from "../../../services/firebase/authentification.service";
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {MaterielPhotoDatabaseService} from "../../services/materiel-photo-database.service";
@@ -13,9 +13,7 @@ import { AsyncPipe } from '@angular/common';
     imports: [RouterLinkActive, RouterLink, AsyncPipe]
 })
 export class MaterielPhotoHomeComponent {
-
-  constructor(public materielPhotoDatabaseService: MaterielPhotoDatabaseService,
-              public authService: AuthentificationService,
-              public toolsService: ToolsService) {
-  }
+  materielPhotoDatabaseService = inject(MaterielPhotoDatabaseService);
+  authService = inject(AuthentificationService);
+  toolsService = inject(ToolsService);
 }

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {map} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
@@ -10,10 +10,9 @@ import {GamesUtils} from '../../models/gamesUtils';
   providedIn: 'root'
 })
 export class BGGService {
-  private bggUrl = 'https://www.boardgamegeek.com/xmlapi2';
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {
-  }
+  private bggUrl = 'https://www.boardgamegeek.com/xmlapi2';
 
   send(url: string): Observable<Array<Thing>> {
     return this.http.get(url, {responseType: 'text'}).pipe(

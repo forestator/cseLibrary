@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Game} from '../../../../models/common.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
@@ -13,17 +13,16 @@ import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
     imports: [NgTemplateOutlet, AsyncPipe]
 })
 export class GameRowComponent implements OnInit {
+    toolsService = inject(ToolsService);
+    dialog = inject(MatDialog);
+    private userService = inject(UserService);
+
 
     @Input() game!: Game;
     @Input() index!: number;
     @Input() selectedGame?: string;
 
     parity!: boolean;
-
-    constructor(public toolsService: ToolsService,
-                public dialog: MatDialog,
-                private userService: UserService) {
-    }
 
     ngOnInit() {
         this.parity = this.index % 2 === 0;

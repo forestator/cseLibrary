@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {map, Observable, take} from 'rxjs';
 import {Biblio, Library} from '../../models/author.model';
@@ -12,6 +12,8 @@ import {FileUpload} from '../../models/fileUpload.model';
   providedIn: 'root'
 })
 export class FirebaseDatabaseService {
+  private db = inject(AngularFireDatabase);
+
 
   public bibliothequeOneShot$: Observable<Array<Biblio> | null>;
   public bibliothequeStream$: Observable<Array<Biblio>>;
@@ -27,7 +29,7 @@ export class FirebaseDatabaseService {
   public outsideGamesOneShot$: Observable<Array<Game> | null>;
   public allGames: Observable<Array<Game> | null>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor() {
     this.ludotheque$ = this.db.object<Ludotheque>('ludotheque').valueChanges()
       .pipe(take(1));
 

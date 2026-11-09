@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {FilterBoardGamesService} from '../../../../services/filter-board-games.service';
 import {AdvancedBoardGameFilter, BoardGameFilterType} from '../../../../../models/boardGame.model';
 import { MatIcon } from '@angular/material/icon';
@@ -12,6 +12,8 @@ import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-
     imports: [MatIcon, MatButtonToggleGroup, MatButtonToggle]
 })
 export class FilterBoardGamesComponent {
+  private filterService = inject(FilterBoardGamesService);
+
   numberOfPlayers: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '8+'];
   gameDuration: Array<string> = ['moins de 15min', 'de 15 à 30min', 'de 30 à 1h', 'plus d\'1h'];
   ageList: Array<string> = ['2', '4', '7', '10', '12', '14', '16'];
@@ -21,9 +23,6 @@ export class FilterBoardGamesComponent {
   numberOfPlayersGroupValue: string;
   durationGroupValue: string;
   ageGroupValue: string;
-
-  constructor(private filterService: FilterBoardGamesService) {
-  }
 
   selectedFilter(value: string, filterType: BoardGameFilterType) {
     const convertedVal =

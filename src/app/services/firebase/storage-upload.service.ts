@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {Observable, map, shareReplay, tap} from 'rxjs';
 import {CloudinaryService} from '../cloudinary.service';
 import {FileUpload} from '../../models/fileUpload.model';
@@ -18,21 +18,18 @@ import {NautismeDatabaseService} from '../../nautisme/services/nautisme-database
   providedIn: 'root'
 })
 export class StorageUploadService {
+  private cloudinary = inject(CloudinaryService);
+  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+  private bricolageDatabaseService = inject(BricolageDatabaseService);
+  private sonoDatabaseService = inject(SonoDatabaseService);
+  private nautismeDatabaseService = inject(NautismeDatabaseService);
+
   private readonly basePath = {
     game: '/assets/games/covers',
     brico: '/assets/tools/covers',
     sono: '/assets/sonoItems/covers',
     nautisme: '/assets/nautisme/covers'
   };
-
-  constructor(
-    private cloudinary: CloudinaryService,
-    private firebaseDatabaseService: FirebaseDatabaseService,
-    private bricolageDatabaseService: BricolageDatabaseService,
-    private sonoDatabaseService: SonoDatabaseService,
-    private nautismeDatabaseService: NautismeDatabaseService
-  ) {
-  }
 
   uploadCover(fileUpload: FileUpload, basePath: string, filePath: string,
               itemToUpdate: Game | Tool | SonoItem | NautismeItem): Observable<number> {

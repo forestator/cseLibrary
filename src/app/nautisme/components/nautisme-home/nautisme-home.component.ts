@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {AuthentificationService} from "../../../services/firebase/authentification.service";
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {NautismeDatabaseService} from "../../services/nautisme-database.service";
@@ -14,9 +14,7 @@ import { AsyncPipe } from '@angular/common';
     imports: [NautismeItemRowComponent, RouterLink, AsyncPipe]
 })
 export class NautismeHomeComponent {
-
-  constructor(public nautismeDatabaseService: NautismeDatabaseService,
-              public authService: AuthentificationService,
-              public toolsService: ToolsService) {
-  }
+  nautismeDatabaseService = inject(NautismeDatabaseService);
+  authService = inject(AuthentificationService);
+  toolsService = inject(ToolsService);
 }

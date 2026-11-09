@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import {CseUser} from '../../../../models/users.model';
@@ -15,6 +15,8 @@ import { BadgeComponent } from '../../../../common/components/book-badge/badge.c
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
 })
 export class LudoTableComponent implements OnInit, OnChanges {
+    dialog = inject(MatDialog);
+
     @Input() games?: Array<Game> | null;
     @Input() displayedColumns!: Array<string>;
     @Input() users?: Array<CseUser>;
@@ -22,9 +24,6 @@ export class LudoTableComponent implements OnInit, OnChanges {
     @Input() filterBy?: string;
     dataSource?: MatTableDataSource<Game>;
     @ViewChild(MatSort) sort!: MatSort;
-
-    constructor(public dialog: MatDialog) {
-    }
 
     ngOnInit() {
         if (this.games) {

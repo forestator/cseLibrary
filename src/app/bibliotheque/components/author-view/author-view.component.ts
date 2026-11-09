@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Author, Biblio, Book, BookStatus, Category, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -16,6 +16,9 @@ import { BookCoverPipe } from '../../pipes/book-cover.pipe';
     imports: [MatIcon, BadgeComponent, BookRowComponent, AsyncPipe, BookCoverPipe]
 })
 export class AuthorViewComponent implements OnInit {
+  tools = inject(ToolsService);
+  private bookFilter = inject(BookFilterPipe);
+
   private BOOK_SEPARATOR: Book = {
     id: undefined,
     by: ViewBy.BY_AUTHOR,
@@ -48,8 +51,6 @@ export class AuthorViewComponent implements OnInit {
 
   counter: number = 0;
   books!: Array<Book>;
-
-  constructor(public tools: ToolsService, private bookFilter: BookFilterPipe) { }
 
   ngOnInit(): void {
     this.books = [];

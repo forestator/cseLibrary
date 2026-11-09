@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
 import {map, Observable, take} from 'rxjs';
 import {Author, Biblio, Book, BookStatus, SelectorView, Series, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
@@ -19,6 +19,10 @@ import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
     imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, AsyncPipe, BookFilterPipe_1, BookCoverPipe]
 })
 export class AuthorRowComponent implements OnInit {
+  dataService = inject(DataService);
+  tools = inject(ToolsService);
+  bookFilter = inject(BookFilterPipe);
+
 
   @Input()
   author!: Author;
@@ -34,10 +38,7 @@ export class AuthorRowComponent implements OnInit {
   bookColumns: Array<string> = ['cover', 'title', 'tome', 'isbn', 'page', 'status'];
   seriesBookColumns: Array<string> = ['cover', 'title', 'series', 'tome', 'isbn', 'page', 'status'];
 
-  constructor(
-    public dataService: DataService,
-    public tools: ToolsService,
-    public bookFilter: BookFilterPipe) {
+  constructor() {
     this.counter = 0;
   }
 

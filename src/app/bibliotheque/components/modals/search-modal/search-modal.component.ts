@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {SearchBookResult} from 'src/app/models/author.model';
 import { MatIcon } from '@angular/material/icon';
@@ -15,13 +15,18 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, MatCheckbox, ReactiveFormsModule, FormsModule, MatDialogActions, MatButton]
 })
 export class SearchModalComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<SearchModalComponent>>(MatDialogRef);
+  data = inject<{
+    by: string;
+    searchResults: Array<SearchBookResult>;
+}>(MAT_DIALOG_DATA);
+
 
   public searchResults: Array<SearchBookResult>;
   public by: string;
-  constructor(
-    public dialogRef: MatDialogRef<SearchModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: {by: string; searchResults: Array<SearchBookResult>;}
-  ) {
+  constructor() {
+    const data = this.data;
+
     this.by = data.by;
     this.searchResults = data.searchResults;
   }

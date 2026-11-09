@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UntypedFormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {Author, Biblio, Category, Series, SeriesStatus, ViewBy} from 'src/app/models/author.model';
@@ -20,6 +20,14 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, ReactiveFormsModule, FormsModule, MatFormField, MatLabel, MatInput, MatSelect, MatOption, MatDialogActions, MatButton]
 })
 export class SeriesModalComponent extends BasicModal implements OnInit {
+  dialogRef = inject<MatDialogRef<SeriesModalComponent>>(MatDialogRef);
+  data = inject<{
+    parent: Category | Author;
+    series: Series;
+    biblio: Biblio;
+}>(MAT_DIALOG_DATA);
+  dataService = inject(DataService);
+
 
   public allStatus: Array<string> = Object.keys(SeriesStatus);
 
@@ -28,11 +36,10 @@ export class SeriesModalComponent extends BasicModal implements OnInit {
   public author = new UntypedFormControl();
   public status = new UntypedFormControl();
 
-  constructor(
-    public dialogRef: MatDialogRef<SeriesModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { parent: Category | Author, series: Series, biblio: Biblio },
-    public dataService: DataService) {
+  constructor() {
     super();
+    const data = this.data;
+
     if (data.series) {
       this.isNew = false;
       this.id = data.series.id;

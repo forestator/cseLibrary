@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UntypedFormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {Category, Library} from 'src/app/models/author.model';
@@ -18,17 +18,23 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, ReactiveFormsModule, FormsModule, MatFormField, MatLabel, MatInput, MatDialogActions, MatButton]
 })
 export class CategoryModalComponent extends BasicModal implements OnInit {
+   dialogRef = inject<MatDialogRef<CategoryModalComponent>>(MatDialogRef);
+   data = inject<{
+    parent: Library;
+    category: Category;
+}>(MAT_DIALOG_DATA);
+   dataService = inject(DataService);
+
 
    public name = new UntypedFormControl();
    public resume = new UntypedFormControl();
    public visuel = new UntypedFormControl();
    public prefix = new UntypedFormControl();
 
-   constructor(
-      public dialogRef: MatDialogRef<CategoryModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: { parent: Library, category: Category },
-      public dataService: DataService) {
+   constructor() {
       super();
+      const data = this.data;
+
       if (data.category) {
          this.isNew = false;
          this.id = data.category.id;

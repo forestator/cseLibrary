@@ -1,4 +1,4 @@
-import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
@@ -22,20 +22,21 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatButtonToggleGroup, MatButtonToggle, MatDivider, UploadFormComponent, MatDialogActions, MatButton]
 })
 export class AddNautismeItemModalComponent {
+  dialogRef = inject<MatDialogRef<AddNautismeItemModalComponent>>(MatDialogRef);
+  private dialog = inject(MatDialog);
+  fb = inject(FormBuilder);
+  private nautismeDatabaseService = inject(NautismeDatabaseService);
+  private uploadService = inject(StorageUploadService);
+  data = inject<{
+    items: Array<NautismeItem>;
+    selectedItem?: NautismeItem;
+}>(MAT_DIALOG_DATA);
+
 
   nautismeItemForm: FormGroup;
   readonly defaultNautImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/nautismeItems/nautismeDefaultImage';
 
-  constructor(
-    public dialogRef: MatDialogRef<AddNautismeItemModalComponent>,
-    private dialog: MatDialog,
-    public fb: FormBuilder,
-    private nautismeDatabaseService: NautismeDatabaseService,
-    private uploadService: StorageUploadService,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      items: Array<NautismeItem>, selectedItem?: NautismeItem
-    },
-  ) {
+  constructor() {
     this.nautismeItemForm = this.initForm(this.data.selectedItem);
     console.log(this.nautismeItemForm);
   }

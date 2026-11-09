@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {FirebaseDatabaseService} from '../../../../services/firebase/firebase-database.service';
 import {MatDialog} from '@angular/material/dialog';
 import {AddGameModalComponent} from './add-game-modal/add-game-modal.component';
@@ -18,6 +18,9 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatButton, MatDivider, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, LudoTableComponent, AsyncPipe]
 })
 export class AdminGamesComponent {
+    firebaseDatabaseService = inject(FirebaseDatabaseService);
+    private dialog = inject(MatDialog);
+
     columnsBoardGames = ['category', 'name', 'poids', 'ref'];
     columnsVideoGame = ['category', 'name', 'ref'];
     columnsOutsideGame = ['category', 'name', 'ref'];
@@ -25,10 +28,6 @@ export class AdminGamesComponent {
     boardGamePanelOpen = false;
     videoGamePanelOpen = false;
     outsideGamePanelOpen = false;
-
-    constructor(public firebaseDatabaseService: FirebaseDatabaseService,
-                private dialog: MatDialog) {
-    }
 
     addGame() {
         combineLatest([

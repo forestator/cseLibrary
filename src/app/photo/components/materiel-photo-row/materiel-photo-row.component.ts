@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, inject } from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {MaterielPhotoItem} from '../../models/materiel-photo.model';
 import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
@@ -12,15 +12,14 @@ import { BadgeComponent } from '../../../common/components/book-badge/badge.comp
     imports: [NgTemplateOutlet, BadgeComponent, AsyncPipe]
 })
 export class MaterielPhotoRowComponent {
+  toolsService = inject(ToolsService);
+
   @Input() item!: MaterielPhotoItem;
   @Input() index!: number;
   @Input() selectedItem?: string;
   parity!: boolean;
 
   readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/materielPhoto/defaultPhoto';
-  constructor(public toolsService: ToolsService) {
-
-  }
 
   ngOnInit() {
     this.parity = this.index % 2 === 0;

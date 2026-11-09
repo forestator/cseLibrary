@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {Biblio, Book, Category, Series, SeriesStatus} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -22,6 +22,12 @@ import { BookCoverPipe } from '../../pipes/book-cover.pipe';
     imports: [MatIcon, SeriesBadgeComponent, BadgeComponent, BookRowComponent, AsyncPipe, BookFilterPipe, BookCoverPipe]
 })
 export class SeriesViewComponent implements OnInit {
+  dataService = inject(DataService);
+  private navigationService = inject(NavigationService);
+  private biblioDatabaseService = inject(BiblioDatabaseService);
+  private router = inject(Router);
+  tools = inject(ToolsService);
+
 
   biblio$!: Observable<Biblio>;
 
@@ -30,13 +36,6 @@ export class SeriesViewComponent implements OnInit {
   series$!: Observable<Series>;
 
   book!: Book;
-
-  constructor(public dataService: DataService,
-              private navigationService: NavigationService,
-              private biblioDatabaseService: BiblioDatabaseService,
-              private router: Router,
-              public tools: ToolsService) {
-  }
 
   ngOnInit(): void {
     this.biblio$ = this.navigationService.getRouteParams().pipe(

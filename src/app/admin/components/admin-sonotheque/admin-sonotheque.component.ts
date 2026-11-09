@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {SonoDatabaseService} from "../../../sonotheque/services/sono-database.service";
 import {SonoCategory, SonoItem} from "../../../sonotheque/models/sono.model";
@@ -19,13 +19,12 @@ import { AsyncPipe, TitleCasePipe } from '@angular/common';
     imports: [MatButton, MatDivider, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, SonoTableComponent, AsyncPipe, TitleCasePipe]
 })
 export class AdminSonothequeComponent {
+  sonoDatabaseService = inject(SonoDatabaseService);
+  private dialog = inject(MatDialog);
+
   sonoCategories = Object.values(SonoCategory);
   openededCat?: SonoCategory;
   openededCatItems$?: Observable<SonoItem[]>;
-
-  constructor(public sonoDatabaseService: SonoDatabaseService,
-              private dialog: MatDialog) {
-  }
 
   addItem() {
     this.sonoDatabaseService.allItems$.pipe(take(1)).subscribe(allSonoItems => {

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {map, Observable, Subscription} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
 import {BricolageDatabaseService} from '../../services/bricolage-database.service';
@@ -15,15 +15,14 @@ import { AsyncPipe } from '@angular/common';
     imports: [ToolRowComponent, AsyncPipe]
 })
 export class BricoCategoryComponent implements OnInit, OnDestroy {
+  private bricolageDatabaseService = inject(BricolageDatabaseService);
+  private navigationService = inject(NavigationService);
+
   category$?: Observable<Category>;
   categoryTools$?: Observable<Array<Tool>>;
   searchedToolId?: string;
   categoryId?: string;
   private sub?: Subscription;
-
-  constructor(private bricolageDatabaseService: BricolageDatabaseService,
-              private navigationService: NavigationService) {
-  }
 
   ngOnInit() {
     this.sub = this.navigationService.getRouteParams().subscribe((params) => {

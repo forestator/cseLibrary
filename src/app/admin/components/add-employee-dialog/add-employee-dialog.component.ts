@@ -1,4 +1,4 @@
-import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CdkScrollable } from '@angular/cdk/scrolling';
@@ -19,12 +19,12 @@ interface CseUserForm {
     imports: [MatDialogTitle, ReactiveFormsModule, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, MatDialogActions, MatButton, MatDialogClose]
 })
 export class AddEmployeeDialogComponent {
+  dialogRef = inject<MatDialogRef<AddEmployeeDialogComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+
   userFormGroup: FormGroup<CseUserForm>;
 
-  constructor(
-    public dialogRef: MatDialogRef<AddEmployeeDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {
+  constructor() {
     this.userFormGroup = new FormGroup<CseUserForm>({
       firstName: new FormControl<string>('', Validators.required),
       lastName: new FormControl<string>('', Validators.required),

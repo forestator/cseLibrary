@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Biblio, Category, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
@@ -20,6 +20,10 @@ import { SettingsAuthorComponent } from './settings-author/settings-author.compo
     imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, SettingsSeriesComponent, SettingsAuthorComponent]
 })
 export class SettingsCategoryComponent implements OnInit {
+   dialog = inject(MatDialog);
+   dataService = inject(DataService);
+   private biblioDatabaseService = inject(BiblioDatabaseService);
+
 
    @Input()
    category!: Category;
@@ -31,10 +35,6 @@ export class SettingsCategoryComponent implements OnInit {
    biblio!: Biblio;
 
    @Output() sendDelete = new EventEmitter<string>();
-
-   constructor(public dialog: MatDialog,
-               public dataService: DataService,
-               private biblioDatabaseService: BiblioDatabaseService) { }
 
    ngOnInit(): void {
    }

@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 import { SearchInLibComponent } from '../search-in-lib/search-in-lib.component';
 import { AsyncPipe } from '@angular/common';
@@ -11,6 +11,5 @@ import { AsyncPipe } from '@angular/common';
     imports: [SearchInLibComponent, AsyncPipe]
 })
 export class LudoMenuComponent {
-  constructor(public firebaseDatabaseService: FirebaseDatabaseService) {
-  }
+  firebaseDatabaseService = inject(FirebaseDatabaseService);
 }

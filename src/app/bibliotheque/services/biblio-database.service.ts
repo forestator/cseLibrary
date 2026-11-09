@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {Biblio} from '../../models/author.model';
 import {FirebaseDatabaseService} from '../../services/firebase/firebase-database.service';
 import {map, Observable} from 'rxjs';
@@ -7,12 +7,14 @@ import {map, Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class BiblioDatabaseService {
+  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+
   public imaginaireBiblio$: Observable<Biblio>;
   public inclassaveBiblio$: Observable<Biblio>;
   public jeunesseBiblio$: Observable<Biblio>;
   public adulteBiblio$: Observable<Biblio>;
 
-  constructor(private firebaseDatabaseService: FirebaseDatabaseService) {
+  constructor() {
     // only works with oneshot atm and not with updated stream
     this.imaginaireBiblio$ = this.firebaseDatabaseService.bibliothequeOneShot$.pipe(map(allBiblio => allBiblio[0]));
     this.inclassaveBiblio$ = this.firebaseDatabaseService.bibliothequeOneShot$.pipe(map(allBiblio => allBiblio[1]));

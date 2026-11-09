@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy, inject } from '@angular/core';
 import {BoardGameCategory, Thing} from '../../../../../models/boardGame.model';
 import {Consoles, VideoGameType} from '../../../../../models/videoGames.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -25,13 +25,15 @@ import { UploadGameComponent } from '../upload-game/upload-game.component';
     imports: [ReactiveFormsModule, MatButtonToggleGroup, MatButtonToggle, MatFormField, MatLabel, MatInput, MatIcon, MatSelect, MatOption, BadgeComponent, MatCheckbox, MatDivider, UploadGameComponent]
 })
 export class AddGameFormComponent implements OnChanges {
+  private bggService = inject(BGGService);
+  private dialog = inject(MatDialog);
+
 
   @Input() gameForm: FormGroup;
   @Output() gameSelected: EventEmitter<void> = new EventEmitter<void>();
   categoryOptions: Array<{ id: string; name: string }> = [];
 
-  constructor(private bggService: BGGService,
-              private dialog: MatDialog,) {
+  constructor() {
     this.setCategoryOptions('boardGames');
   }
 

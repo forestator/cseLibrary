@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {map, Observable, take} from "rxjs";
 import {Library} from "../../models/author.model";
 import {AngularFireDatabase} from "@angular/fire/compat/database";
@@ -10,11 +10,13 @@ import {SonoUtils} from "../models/sono.utils";
   providedIn: 'root'
 })
 export class SonoDatabaseService {
+  private db = inject(AngularFireDatabase);
+
 
   sonothequeLibrary$: Observable<Library>;
   allItems$: Observable<SonoItem[]>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor() {
     this.sonothequeLibrary$ = this.db.object<Library>('sonotheque/library')
       .valueChanges().pipe(take(1));
     this.allItems$ = this.db.object<SonoCategories>('sonotheque/items').valueChanges().pipe(

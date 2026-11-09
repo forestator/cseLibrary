@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -13,17 +13,16 @@ import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
     imports: [NgTemplateOutlet, AsyncPipe]
 })
 export class BoardGameRowComponent implements OnInit, OnChanges {
+  toolsService = inject(ToolsService);
+  dialog = inject(MatDialog);
+  private userService = inject(UserService);
+
 
   @Input() boardGame: BoardGame | null = null;
   @Input() index!: number;
   @Input() selectedBoardGameId?: string;
 
   parity!: boolean;
-
-  constructor(public toolsService: ToolsService,
-              public dialog: MatDialog,
-              private userService: UserService) {
-  }
 
   ngOnInit(): void {
     this.parity = this.index % 2 === 0;

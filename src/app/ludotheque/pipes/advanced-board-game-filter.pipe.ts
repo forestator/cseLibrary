@@ -1,13 +1,12 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 import {map, Observable} from 'rxjs';
 import {FilterBoardGamesService} from '../services/filter-board-games.service';
 import {AdvancedBoardGameFilter, BoardGame} from '../../models/boardGame.model';
 
 @Pipe({ name: 'advancedBoardGameFilter' })
 export class AdvancedBoardGameFilterPipe implements PipeTransform {
+  private filterBoardGamesService = inject(FilterBoardGamesService);
 
-  constructor(private filterBoardGamesService: FilterBoardGamesService) {
-  }
 
   transform(boardGames: BoardGame[]): Observable<BoardGame[]> {
     return this.filterBoardGamesService.filter$.pipe(map(filter => {

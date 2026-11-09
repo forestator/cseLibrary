@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {
   Author,
@@ -35,6 +35,16 @@ import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
     imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, ReactiveFormsModule, FormsModule, MatFormField, MatLabel, MatInput, MatSelect, MatOption, MatDialogActions, MatButton, AsyncPipe, BookCoverPipe]
 })
 export class BookModalComponent extends BasicModal implements OnInit {
+   dialogRef = inject<MatDialogRef<BookModalComponent>>(MatDialogRef);
+   data = inject<{
+    parent: Series | Author;
+    book: Book;
+    biblio: Biblio;
+}>(MAT_DIALOG_DATA);
+   dataService = inject(DataService);
+   googleBookService = inject(GoogleBookService);
+   dialog = inject(MatDialog);
+
 
    public parent: Series | Author;
 
@@ -55,13 +65,10 @@ export class BookModalComponent extends BasicModal implements OnInit {
    public cover = new UntypedFormControl();
    public year = new UntypedFormControl();
 
-   constructor(
-      public dialogRef: MatDialogRef<BookModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: { parent: Series | Author, book: Book, biblio: Biblio },
-      public dataService: DataService,
-      public googleBookService: GoogleBookService,
-      public dialog: MatDialog) {
+   constructor() {
       super();
+      const data = this.data;
+
      this.parent = data.parent;
       if (data.book) {
          this.isNew = false;

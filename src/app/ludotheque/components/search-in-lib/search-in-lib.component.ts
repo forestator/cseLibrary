@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, inject } from '@angular/core';
 import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable, startWith} from 'rxjs';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -19,6 +19,9 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, AsyncPipe]
 })
 export class SearchInLibComponent implements OnInit, OnChanges {
+  private router = inject(Router);
+  private navigateService = inject(NavigationService);
+
 
   @Input() boardGames!: Array<BoardGame> | null;
   @Input() videoGames!: Array<VideoGame> | null;
@@ -27,10 +30,6 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   filteredOptions$?: Observable<Array<Game | BoardGame>>;
   datas: Array<Game | BoardGame> = [];
   currentUrl?: string;
-
-  constructor(private router: Router,
-              private navigateService: NavigationService) {
-  }
 
   ngOnInit() {
     this.navigateService.url$.subscribe(url => {

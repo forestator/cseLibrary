@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Biblio, Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
@@ -23,6 +23,11 @@ import { SettingsPublishersComponent } from './settings-publishers/settings-publ
     imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, SettingsCategoryComponent, SettingsAuthorsComponent, SettingsPublishersComponent]
 })
 export class SettingsViewComponent implements OnInit {
+  dialog = inject(MatDialog);
+  private navService = inject(NavigationService);
+  private biblioDatabaseService = inject(BiblioDatabaseService);
+  dataService = inject(DataService);
+
 
   biblio?: Biblio;
 
@@ -32,10 +37,7 @@ export class SettingsViewComponent implements OnInit {
   public isAuthorsDisplayed: boolean;
   public isPublishersDisplayed: boolean;
 
-  constructor(public dialog: MatDialog,
-              private navService: NavigationService,
-              private biblioDatabaseService: BiblioDatabaseService,
-              public dataService: DataService) {
+  constructor() {
     this.isAuthorsDisplayed = false;
     this.isPublishersDisplayed = false;
     this.categoryDisplayed = undefined;

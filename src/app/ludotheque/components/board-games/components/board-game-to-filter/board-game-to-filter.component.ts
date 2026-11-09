@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {map, Observable, Subscription} from 'rxjs';
 import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
 import {NavigationService} from '../../../../../services/navigation.service';
@@ -14,15 +14,14 @@ import { AsyncPipe } from '@angular/common';
     imports: [BoardGameCategoryDetailsComponent, AsyncPipe]
 })
 export class BoardGameToFilterComponent implements OnInit, OnDestroy {
+  private firebaseDb = inject(FirebaseDatabaseService);
+  private navigationService = inject(NavigationService);
+
 
   boardGames$?: Observable<Array<BoardGame> | undefined>;
   selectedBoardGameId?: string;
   categoryId?: BoardGameCategory;
   private sub?: Subscription;
-
-  constructor(private firebaseDb: FirebaseDatabaseService,
-              private navigationService: NavigationService) {
-  }
 
   ngOnInit() {
     this.sub = this.navigationService.getRouteParams().subscribe((params) => {

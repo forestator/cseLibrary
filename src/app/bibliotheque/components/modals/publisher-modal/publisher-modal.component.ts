@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UntypedFormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {Library, Publisher} from 'src/app/models/author.model';
@@ -18,14 +18,20 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, ReactiveFormsModule, FormsModule, MatFormField, MatLabel, MatInput, MatDialogActions, MatButton]
 })
 export class PublisherModalComponent extends BasicModal implements OnInit {
+   dialogRef = inject<MatDialogRef<PublisherModalComponent>>(MatDialogRef);
+   data = inject<{
+    parent: Library;
+    publisher: Publisher;
+}>(MAT_DIALOG_DATA);
+   dataService = inject(DataService);
+
 
    public name = new UntypedFormControl();
 
-   constructor(
-      public dialogRef: MatDialogRef<PublisherModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: { parent: Library, publisher: Publisher },
-      public dataService: DataService) {
+   constructor() {
       super();
+      const data = this.data;
+
       if (data.publisher) {
          this.isNew = false;
          this.by = data.publisher.by;

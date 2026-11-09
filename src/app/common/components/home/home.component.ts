@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import {NavigationService} from '../../../services/navigation.service';
 import {AuthentificationService} from "../../../services/firebase/authentification.service";
 import {Comissions} from "../../../models/common.model";
@@ -17,10 +17,11 @@ import { MomentToDatePipe } from '../../pipe/moment-to-date.pipe';
     imports: [MomentToDatePipe]
 })
 export class HomeComponent {
+  navigateService = inject(NavigationService);
+  authentificationService = inject(AuthentificationService);
+
 
   comissions = Comissions;
-
-  constructor(public navigateService: NavigationService, public authentificationService: AuthentificationService) { }
 
   gotoUrl(url: string) {
     window.open(url, "_blank");

@@ -1,4 +1,4 @@
-import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {Game} from '../../../../../models/common.model';
@@ -19,16 +19,16 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, MatDialogActions, MatButton, AsyncPipe]
 })
 export class EditGameModalComponent {
+  dialogRef = inject<MatDialogRef<EditGameModalComponent>>(MatDialogRef);
+  private dialog = inject(MatDialog);
+  data = inject<{
+    games: Array<Game>;
+}>(MAT_DIALOG_DATA);
+
 
   filteredOptions$: Observable<Array<Game>>;
   searchText: FormControl<string>;
-  constructor(
-    public dialogRef: MatDialogRef<EditGameModalComponent>,
-    private dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      games: Array<Game>
-    },
-  ) {
+  constructor() {
     this.searchText = new FormControl('');
     this.filteredOptions$ = this.searchText.valueChanges.pipe(
       map((value) => this._filter(value || '', this.data.games)),

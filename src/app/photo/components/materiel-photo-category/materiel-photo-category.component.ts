@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {map, Observable, Subscription} from "rxjs";
 import {Category} from "../../../models/author.model";
 import {NavigationService} from "../../../services/navigation.service";
@@ -15,15 +15,14 @@ import { AsyncPipe } from '@angular/common';
     imports: [MaterielPhotoRowComponent, AsyncPipe]
 })
 export class MaterielPhotoCategoryComponent implements OnInit, OnDestroy {
+  private materielPhotoDatabaseService = inject(MaterielPhotoDatabaseService);
+  private navigationService = inject(NavigationService);
+
   category$?: Observable<Category>;
   categoryItems$?: Observable<Array<MaterielPhotoItem>>;
   searchedPhotoItemId?: string;
   categoryId?: PhotoCategory;
   private sub?: Subscription;
-
-  constructor(private materielPhotoDatabaseService: MaterielPhotoDatabaseService,
-              private navigationService: NavigationService) {
-  }
 
   ngOnInit() {
     this.sub = this.navigationService.getRouteParams().subscribe((params) => {

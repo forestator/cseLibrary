@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import {firstValueFrom, map, Observable} from 'rxjs';
 import {Biblio, BookPath, BookStatus, Library} from 'src/app/models/author.model';
 import jspdf from 'jspdf';
@@ -17,10 +17,10 @@ import { AsyncPipe } from '@angular/common';
     imports: [MatIcon, BookRowComponent, AsyncPipe]
 })
 export class NewViewComponent implements OnInit {
-  newBooks$?: Observable<{ biblio: Biblio; books: BookPath[]; bookInProject: BookPath[] }[]>;
+  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+  auth = inject(AuthentificationService);
 
-  constructor(private firebaseDatabaseService: FirebaseDatabaseService, public auth: AuthentificationService) {
-  }
+  newBooks$?: Observable<{ biblio: Biblio; books: BookPath[]; bookInProject: BookPath[] }[]>;
 
   ngOnInit(): void {
     // build new books list

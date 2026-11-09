@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {map, Observable, take} from "rxjs";
 import {Library} from "../../models/author.model";
 import {AngularFireDatabase} from "@angular/fire/compat/database";
@@ -9,10 +9,12 @@ import {PhotoUtils} from '../models/photo.utils';
   providedIn: 'root'
 })
 export class MaterielPhotoDatabaseService {
+  private db = inject(AngularFireDatabase);
+
   photoLibrary$: Observable<Library>;
   allMaterielPhotoItems$: Observable<MaterielPhotoItem[]>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor() {
     this.photoLibrary$ = this.db.object<Library>('photo/library')
       .valueChanges().pipe(take(1));
     this.allMaterielPhotoItems$ = this.db.object<PhotoCategory>('photo/items').valueChanges().pipe(

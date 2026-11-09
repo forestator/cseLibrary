@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
 import { UntypedFormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {Author, Category, Library} from 'src/app/models/author.model';
@@ -19,16 +19,22 @@ import { MatButton } from '@angular/material/button';
     imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, ReactiveFormsModule, FormsModule, MatFormField, MatLabel, MatInput, MatDialogActions, MatButton]
 })
 export class AuthorModalComponent extends BasicModal implements OnInit {
+   dialogRef = inject<MatDialogRef<SeriesModalComponent>>(MatDialogRef);
+   data = inject<{
+    parent: Category | Library;
+    author: Author;
+}>(MAT_DIALOG_DATA);
+   dataService = inject(DataService);
+
 
    public firstName = new UntypedFormControl();
    public lastName = new UntypedFormControl();
    public resume = new UntypedFormControl();
 
-   constructor(
-      public dialogRef: MatDialogRef<SeriesModalComponent>,
-      @Inject(MAT_DIALOG_DATA) public data: { parent: Category | Library, author: Author },
-      public dataService: DataService) {
+   constructor() {
       super();
+      const data = this.data;
+
       if (data.author) {
          this.isNew = false;
          this.by = data.author.by;

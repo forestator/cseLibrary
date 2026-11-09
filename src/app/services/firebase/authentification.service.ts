@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {map, Observable} from 'rxjs';
 import firebase from 'firebase/compat/app';
@@ -8,6 +8,8 @@ import User = firebase.User;
     providedIn: 'root'
 })
 export class AuthentificationService {
+    auth = inject(AngularFireAuth);
+
 
     readonly adminUids = [
         'OBWB7BXsEHPYmauZ6NqwEzcuc0x2',
@@ -48,9 +50,6 @@ export class AuthentificationService {
             return this.adminSonoUid === this.getUserId(user) || this.adminUids.includes(this.getUserId(user));
         })
     );
-
-    constructor(public auth: AngularFireAuth) {
-    }
 
     logout() {
         return this.auth.signOut();

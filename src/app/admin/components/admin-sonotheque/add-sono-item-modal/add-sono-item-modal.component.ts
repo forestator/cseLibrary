@@ -1,4 +1,4 @@
-import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from "@angular/material/dialog";
 import {StorageUploadService} from "../../../../services/firebase/storage-upload.service";
@@ -25,21 +25,22 @@ import { TitleCasePipe } from '@angular/common';
     imports: [MatDialogTitle, CdkScrollable, MatDialogContent, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSelect, MatOption, MatButtonToggleGroup, MatButtonToggle, MatDivider, UploadFormComponent, MatDialogActions, MatButton, TitleCasePipe]
 })
 export class AddSonoItemModalComponent {
+  dialogRef = inject<MatDialogRef<AddSonoItemModalComponent>>(MatDialogRef);
+  fb = inject(FormBuilder);
+  private dialog = inject(MatDialog);
+  private sonoDatabaseService = inject(SonoDatabaseService);
+  private uploadService = inject(StorageUploadService);
+  data = inject<{
+    items: Array<SonoItem>;
+    selectedItem?: SonoItem;
+}>(MAT_DIALOG_DATA);
+
 
   sonoItemForm: FormGroup;
   categoryOptions: string[] = Object.values(SonoCategory);
   readonly defaultImageForSonoItem = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/sonoItems/defaultSonoIItem';
 
-  constructor(
-    public dialogRef: MatDialogRef<AddSonoItemModalComponent>,
-    public fb: FormBuilder,
-    private dialog: MatDialog,
-    private sonoDatabaseService: SonoDatabaseService,
-    private uploadService: StorageUploadService,
-    @Inject(MAT_DIALOG_DATA) public data: {
-      items: Array<SonoItem>, selectedItem?: SonoItem
-    },
-  ) {
+  constructor() {
     this.sonoItemForm = this.initForm(this.data.selectedItem);
     console.log(this.sonoItemForm);
   }
