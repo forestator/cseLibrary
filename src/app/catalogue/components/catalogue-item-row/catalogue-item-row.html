@@ -1,0 +1,19 @@
+<div [id]="item().id" class="book-core" [class.image-right]="imageOnRight()">
+  <div class="book-cover">
+    <img [src]="imageSrc()" [alt]="item().name"/>
+  </div>
+  <div class="book-infos">
+    <div class="book-title">{{item().name}}
+      <app-badge [status]="item().status" />
+    </div>
+    @if (config().showRef) {
+      <div class="book-info">Ref: {{item().id}}</div>
+    }
+    @if (item().description) {
+      <div class="book-info">Description: {{item().description}}</div>
+    }
+    @for (detail of details(); track detail.label) {
+      <div class="book-info">{{detail.label}}: {{detail.value}}</div>
+    }
+  </div>
+</div>

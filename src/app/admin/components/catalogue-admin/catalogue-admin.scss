@@ -1,0 +1,13 @@
+$admin-gap: 20px;
+
+.admin-divider {
+  margin: $admin-gap 10px;
+}
+
+.manage-buttons {
+  padding: $admin-gap;
+
+  button {
+    margin-left: 10px;
+  }
+}

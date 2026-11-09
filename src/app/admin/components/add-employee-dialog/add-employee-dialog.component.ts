@@ -1,45 +1,48 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
-import { MatButton } from '@angular/material/button';
+import {ChangeDetectionStrategy, Component, effect, inject} from '@angular/core';
+import {toSignal} from '@angular/core/rxjs-interop';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatButton} from '@angular/material/button';
+import {MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
+import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
 
-interface CseUserForm {
-  firstName: FormControl<string>;
-  lastName: FormControl<string>;
-  email: FormControl<string>;
+export interface NewEmployee {
+  firstName: string;
+  lastName: string;
+  email: string;
 }
 
 @Component({
-    selector: 'app-add-employee-dialog',
-    templateUrl: './add-employee-dialog.component.html',
-    styleUrls: ['./add-employee-dialog.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatDialogTitle, ReactiveFormsModule, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, MatDialogActions, MatButton, MatDialogClose]
+  selector: 'app-add-employee-dialog',
+  templateUrl: './add-employee-dialog.component.html',
+  styleUrl: './add-employee-dialog.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogTitle, ReactiveFormsModule, MatDialogContent, MatFormField, MatLabel, MatInput, MatDialogActions,
+    MatButton, MatDialogClose],
 })
 export class AddEmployeeDialogComponent {
-  dialogRef = inject<MatDialogRef<AddEmployeeDialogComponent>>(MatDialogRef);
-  data = inject(MAT_DIALOG_DATA);
+  private readonly dialogRef = inject<MatDialogRef<AddEmployeeDialogComponent, NewEmployee>>(MatDialogRef);
 
-  userFormGroup: FormGroup<CseUserForm>;
+  protected readonly userFormGroup = new FormGroup({
+    firstName: new FormControl('', {nonNullable: true, validators: Validators.required}),
+    lastName: new FormControl('', {nonNullable: true, validators: Validators.required}),
+    email: new FormControl('', {nonNullable: true, validators: Validators.required}),
+  });
+
+  private readonly formValue = toSignal(this.userFormGroup.valueChanges);
 
   constructor() {
-    this.userFormGroup = new FormGroup<CseUserForm>({
-      firstName: new FormControl<string>('', Validators.required),
-      lastName: new FormControl<string>('', Validators.required),
-      email: new FormControl<string>('', Validators.required)
-    });
-    this.userFormGroup.valueChanges.subscribe(formVal => {
-      if (formVal.firstName && formVal.lastName && this.userFormGroup.get('email').untouched) {
-        this.userFormGroup.get('email')
-          .patchValue(`${formVal.firstName.toLowerCase()}.${formVal.lastName.toLowerCase()}@harmonicinc.com`,
-            {emitEvent: false, onlySelf: true});
+    // Suggest the company address until the user edits the email field by hand.
+    effect(() => {
+      const {firstName, lastName} = this.formValue() ?? {};
+      const email = this.userFormGroup.controls.email;
+      if (firstName && lastName && email.untouched) {
+        email.patchValue(`${firstName.toLowerCase()}.${lastName.toLowerCase()}@harmonicinc.com`,
+          {emitEvent: false, onlySelf: true});
       }
-    })
+    });
   }
 
-  onNoClick(): void {
+  protected cancel() {
     this.dialogRef.close();
   }
 }

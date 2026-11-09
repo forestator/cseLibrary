@@ -1,0 +1,15 @@
+@use '../../../common/common';
+
+.book-core {
+  flex-wrap: wrap;
+
+  &.image-right .book-cover {
+    order: 2;
+  }
+}
+
+.book-cover {
+  img {
+    height: 300px !important;
+  }
+}

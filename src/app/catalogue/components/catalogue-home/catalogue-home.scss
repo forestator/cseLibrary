@@ -1,0 +1,12 @@
+@use '../../../common/common';
+
+.category-link,
+.admin-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.admin-link {
+  cursor: pointer;
+}

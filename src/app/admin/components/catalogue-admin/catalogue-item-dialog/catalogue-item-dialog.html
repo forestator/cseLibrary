@@ -1,0 +1,56 @@
+<div>
+  <h1 mat-dialog-title>{{adminConfig.texts.addTitle}}</h1>
+  <div mat-dialog-content class="modal-container" [formGroup]="form">
+    <div class="modal-part">
+      <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput [placeholder]="adminConfig.texts.namePlaceholder" formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Référence</mat-label>
+        <input matInput placeholder="123" formControlName="id">
+      </mat-form-field>
+      @if (config.categories; as categories) {
+        <mat-form-field appearance="fill">
+          <mat-label>Catégorie</mat-label>
+          <mat-select formControlName="categoryId">
+            @for (categoryId of categories; track categoryId) {
+              <mat-option [value]="categoryId">
+                {{categoryId | titlecase}}
+              </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      }
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+      <div>
+        <mat-label id="status-label">Status</mat-label>
+        <div>
+          <mat-button-toggle-group name="status" formControlName="status" aria-labelledby="status-label">
+            @for (status of adminConfig.statuses; track status.value) {
+              <mat-button-toggle [value]="status.value">{{status.label}}</mat-button-toggle>
+            }
+          </mat-button-toggle-group>
+        </div>
+      </div>
+    </div>
+    <mat-divider class="modal-divider" [vertical]="true" />
+    <app-upload-form [defaultImage]="coverPreview"
+      [disabled]="invalid()"
+      (fileToUploadReady)="upload($event)" />
+  </div>
+  <div mat-dialog-actions>
+    <button (click)="save()" [disabled]="invalid()" cdkFocusInitial mat-button>
+      Confirm
+    </button>
+    <button (click)="cancel()" mat-button>Cancel</button>
+    @if (selectedItem; as item) {
+      <button (click)="remove(item)" color="warn" mat-button>
+        Delete
+      </button>
+    }
+  </div>
+</div>

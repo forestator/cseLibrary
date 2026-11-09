@@ -1,0 +1,16 @@
+<mat-form-field appearance="fill">
+  <input type="text"
+    [placeholder]="config().searchPlaceholder"
+    matInput
+    [formControl]="searchText"
+    [matAutocomplete]="auto">
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
+    [displayWith]="displayItem"
+    (optionSelected)="goToSelectedItem($event)">
+    @for (option of filteredItems(); track option.categoryId + '/' + option.id) {
+      <mat-option [value]="option">
+        {{option.name}}
+      </mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>

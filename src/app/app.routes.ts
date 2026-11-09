@@ -1,5 +1,7 @@
 import {inject} from '@angular/core';
-import {Routes} from '@angular/router';
+import {Route, Routes} from '@angular/router';
+import {CommissionConfig} from './catalogue/models/commission-config.model';
+import {BRICOLAGE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG, SONOTHEQUE_CONFIG} from './catalogue/models/commission-configs';
 import {AuthentificationService} from './services/firebase/authentification.service';
 
 const ludoRoutes: Routes = [
@@ -23,25 +25,30 @@ const biblioRoutes: Routes = [
     {path: 'bibliotheque/:libraryId/:catId/:seriesId', loadComponent: () => import('./bibliotheque/components/series-view/series-view.component').then(m => m.SeriesViewComponent)},
 ];
 
-const bricoRoutes: Routes = [
-    {path: 'bricolage', loadComponent: () => import('./bricolage/components/bricolage-home/bricolage-home.component').then(m => m.BricolageHomeComponent)},
-    {path: 'bricolage/:categoryId', loadComponent: () => import('./bricolage/components/brico-category/brico-category.component').then(m => m.BricoCategoryComponent)},
-    {path: 'bricolage/:categoryId/:id', loadComponent: () => import('./bricolage/components/brico-category/brico-category.component').then(m => m.BricoCategoryComponent)},
-];
+const loadCatalogueHome = () => import('./catalogue/components/catalogue-home/catalogue-home').then(m => m.CatalogueHome);
+const loadCatalogueCategory = () => import('./catalogue/components/catalogue-category/catalogue-category').then(m => m.CatalogueCategory);
+const loadCatalogueAdmin = () => import('./admin/components/catalogue-admin/catalogue-admin').then(m => m.CatalogueAdmin);
 
-const sonoRoutes: Routes = [
-    {path: 'sonotheque', loadComponent: () => import('./sonotheque/components/sono-home/sono-home.component').then(m => m.SonoHomeComponent)},
-    {path: 'sonotheque/:categoryId', loadComponent: () => import('./sonotheque/components/sono-category/sono-category.component').then(m => m.SonoCategoryComponent)},
-];
+// The commission id reaches the generic components as an input, through the route data.
+function catalogueRoutes(config: CommissionConfig): Routes {
+    const data = {commission: config.id};
+    return [
+        {path: config.id, loadComponent: loadCatalogueHome, data},
+        ...(config.categories ? [
+            {path: `${config.id}/:categoryId`, loadComponent: loadCatalogueCategory, data},
+            {path: `${config.id}/:categoryId/:id`, loadComponent: loadCatalogueCategory, data},
+        ] : []),
+    ];
+}
 
-const nautismeRoutes: Routes = [
-    {path: 'nautisme', loadComponent: () => import('./nautisme/components/nautisme-home/nautisme-home.component').then(m => m.NautismeHomeComponent)},
-];
+function catalogueAdminRoute(config: CommissionConfig): Route {
+    return {
+        path: `${config.id}/${config.adminLink.path}`, loadComponent: loadCatalogueAdmin, data: {commission: config.id},
+        canActivate: [() => inject(AuthentificationService)[config.adminLink.guard]]
+    };
+}
 
-const materielPhotoRoutes: Routes = [
-    {path: 'photo', loadComponent: () => import('./photo/components/materiel-photo-home/materiel-photo-home.component').then(m => m.MaterielPhotoHomeComponent)},
-    {path: 'photo/:categoryId', loadComponent: () => import('./photo/components/materiel-photo-category/materiel-photo-category.component').then(m => m.MaterielPhotoCategoryComponent)},
-];
+const catalogueConfigs = [BRICOLAGE_CONFIG, SONOTHEQUE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG];
 
 const adminRoutes: Routes = [
     {
@@ -51,18 +58,7 @@ const adminRoutes: Routes = [
         path: 'ludotheque/admin/games', loadComponent: () => import('./admin/components/admin-ludo/admin-games/admin-games.component').then(m => m.AdminGamesComponent),
         canActivate: [() => inject(AuthentificationService).isUserLudoAdmin$]
     },
-    {
-        path: 'bricolage/admin/tools', loadComponent: () => import('./admin/components/admin-bricolage/admin-bricolage.component').then(m => m.AdminBricolageComponent),
-        canActivate: [() => inject(AuthentificationService).isUserBricolageAdmin$]
-    },
-    {
-        path: 'sonotheque/admin/sonoItems', loadComponent: () => import('./admin/components/admin-sonotheque/admin-sonotheque.component').then(m => m.AdminSonothequeComponent),
-        canActivate: [() => inject(AuthentificationService).isUserSonoAdmin$]
-    },
-    {
-        path: 'nautisme/admin/nautismeItems', loadComponent: () => import('./admin/components/admin-nautisme/admin-nautisme.component').then(m => m.AdminNautismeComponent),
-        canActivate: [() => inject(AuthentificationService).isUserNautismeAdmin$]
-    },
+    ...[BRICOLAGE_CONFIG, SONOTHEQUE_CONFIG, NAUTISME_CONFIG].map(catalogueAdminRoute),
     {
         path: 'bibliotheque/admin/:libraryId', loadComponent: () => import('./bibliotheque/components/settings-view/settings-view.component').then(m => m.SettingsViewComponent),
         canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
@@ -73,10 +69,7 @@ export const routes: Routes = [
     ...adminRoutes,
     ...ludoRoutes,
     ...biblioRoutes,
-    ...bricoRoutes,
-    ...sonoRoutes,
-    ...nautismeRoutes,
-    ...materielPhotoRoutes,
+    ...catalogueConfigs.flatMap(catalogueRoutes),
     {path: '', loadComponent: () => import('./common/components/home/home.component').then(m => m.HomeComponent)},
     {path: '**', loadComponent: () => import('./common/components/home/home.component').then(m => m.HomeComponent)},
 ];

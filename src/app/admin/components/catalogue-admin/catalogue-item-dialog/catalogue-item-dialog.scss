@@ -1,0 +1,14 @@
+$modal-gap: 20px;
+
+.modal-container {
+  display: flex;
+
+  .modal-part {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-divider {
+    margin: $modal-gap;
+  }
+}
