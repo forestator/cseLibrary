@@ -3,7 +3,7 @@ import {ToolsService} from './services/biblio/tools.service';
 import {NavigationService} from './services/navigation.service';
 import {BoardGameCategory} from './models/boardGame.model';
 import {Consoles} from './models/videoGames.model';
-import {MatSidenavContent} from '@angular/material/sidenav';
+import { MatSidenavContent, MatSidenavContainer, MatSidenav } from '@angular/material/sidenav';
 import {Libraries} from './models/author.model';
 import {BricoCategories, Tool} from './bricolage/models/bricolage.model';
 import {Observable} from 'rxjs';
@@ -11,6 +11,17 @@ import {BricolageDatabaseService} from './bricolage/services/bricolage-database.
 import {SonoCategory} from "./sonotheque/models/sono.model";
 import {Comissions} from "./models/common.model";
 import {PhotoCategory} from './photo/models/materiel-photo.model';
+import { RouterLink, RouterOutlet } from '@angular/router';
+import { MatList, MatListItem, MatListItemTitle, MatDivider } from '@angular/material/list';
+import { MatIcon } from '@angular/material/icon';
+import { MatToolbar } from '@angular/material/toolbar';
+import { MatIconButton } from '@angular/material/button';
+import { LibraryMenuComponent } from './bibliotheque/components/library-menu/library-menu.component';
+import { AsyncPipe } from '@angular/common';
+import { FilterBoardGamesComponent } from './ludotheque/components/board-games/components/filter-board-games/filter-board-games.component';
+import { LudoMenuComponent } from './ludotheque/components/ludo-menu/ludo-menu.component';
+import { BricoMenuComponent } from './bricolage/components/brico-menu/brico-menu.component';
+import { AdminMenuComponent } from './admin/components/admin-menu/admin-menu.component';
 
 
 @Component({
@@ -18,7 +29,7 @@ import {PhotoCategory} from './photo/models/materiel-photo.model';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [FilterBoardGamesComponent, LudoMenuComponent, BricoMenuComponent, AdminMenuComponent, MatSidenavContainer, MatSidenav, RouterLink, MatList, MatListItem, MatListItemTitle, MatDivider, MatIcon, MatSidenavContent, MatToolbar, MatIconButton, LibraryMenuComponent, RouterOutlet, AsyncPipe]
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('top') topMenu: MatSidenavContent;
