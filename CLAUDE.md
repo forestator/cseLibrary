@@ -10,7 +10,7 @@ npm install            # .npmrc active legacy-peer-deps
 npm start              # ng serve -> http://localhost:4200 (base Firestore de production, lecture publique)
 npx ng serve --configuration emulator   # contre les émulateurs Firestore + Auth (voir docs/firestore-model.md)
 npm run build          # sortie dist/CseBiblio
-npx ng test --watch=false --browsers=ChromeHeadlessCI   # CHROME_BIN=/usr/bin/google-chrome ; 21 tests
+npx ng test --watch=false --browsers=ChromeHeadlessCI   # CHROME_BIN=/usr/bin/google-chrome ; 28 tests
 npm run deploy         # firebase deploy – action sortante, ne pas lancer sans demande
 ```
 
