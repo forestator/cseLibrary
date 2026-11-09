@@ -1,7 +1,8 @@
-<h1 mat-dialog-title>{{texts.editTitle}}</h1>
-<div class="modal-container" mat-dialog-content>
-  <mat-form-field>
+<h2 mat-dialog-title>{{texts.editTitle}}</h2>
+<mat-dialog-content>
+  <mat-form-field class="picker-field" appearance="outline">
     <mat-label>{{texts.searchLabel}}</mat-label>
+    <mat-icon matPrefix aria-hidden="true">search</mat-icon>
     <input matInput [placeholder]="texts.searchPlaceholder" [formControl]="searchText" [matAutocomplete]="auto" type="text">
     <mat-autocomplete #auto="matAutocomplete"
       [displayWith]="displayItem"
@@ -14,10 +15,12 @@
           }
           {{option.label}}
         </mat-option>
+      } @empty {
+        <mat-option disabled>Aucun résultat</mat-option>
       }
     </mat-autocomplete>
   </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button (click)="cancel()" mat-button>Cancel</button>
-</div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button (click)="cancel()" type="button" matButton>Annuler</button>
+</mat-dialog-actions>

@@ -1,14 +1,42 @@
-$modal-gap: 20px;
+@use '../../../../../styles/tokens' as *;
+@use '../../../styles/admin' as *;
 
-.modal-container {
+.dialog-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: $space-6;
+  padding-top: $space-2;
+
+  @include mobile {
+    grid-template-columns: minmax(0, 1fr);
+    gap: $space-5;
+  }
+}
+
+.dialog-section {
+  @include form-column;
+}
+
+.dialog-section-title {
+  @include dialog-section-title;
+}
+
+.status-field {
   display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
 
-  .modal-part {
-    display: flex;
-    flex-direction: column;
-  }
+.status-label {
+  font-size: 0.9rem;
+  color: $on-surface-muted;
+}
 
-  .modal-divider {
-    margin: $modal-gap;
-  }
+button {
+  min-height: $control-min-size;
+}
+
+.dialog-delete {
+  margin-right: auto;
+  color: var(--mat-sys-error);
 }

@@ -1,11 +1,157 @@
+@use '../../../../styles/tokens' as *;
 
-.category-link,
-.admin-link {
-  display: block;
-  color: inherit;
-  text-decoration: none;
+.catalogue-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+  animation: page-in 0.3s ease;
 }
 
-.admin-link {
-  cursor: pointer;
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: $space-5;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+  }
+}
+
+.category-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  color: $on-surface;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-4px);
+    border-color: $accent;
+    box-shadow: $shadow-2;
+  }
+}
+
+.category-cover {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: $accent-soft;
+}
+
+.category-cover-empty {
+  display: grid;
+  aspect-ratio: 16 / 6;
+  place-items: center;
+}
+
+.category-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  color: $accent-text;
+}
+
+.category-image {
+  object-fit: cover;
+}
+
+.category-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-2;
+  padding: $space-4 $space-5 $space-5;
+}
+
+.category-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.category-resume {
+  color: $on-surface-muted;
+  font-size: 0.95rem;
+}
+
+.category-count {
+  margin-top: auto;
+  padding-top: $space-2;
+  color: $accent-text;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.category-placeholder {
+  aspect-ratio: 4 / 3;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: linear-gradient(90deg, $surface-card 25%, $surface-high 50%, $surface-card 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+.admin-card {
+  display: flex;
+  align-items: center;
+  gap: $space-4;
+  min-height: 44px;
+  padding: $space-4 $space-5;
+  border: 1px dashed $accent;
+  border-radius: $radius-lg;
+  background: $accent-soft;
+  color: $on-surface;
+  text-decoration: none;
+  transition: box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    box-shadow: $shadow-1;
+  }
+}
+
+.admin-icon {
+  color: $accent-text;
+}
+
+.admin-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.admin-title {
+  font-weight: 700;
+}
+
+.admin-description {
+  color: $on-surface-muted;
+  font-size: 0.9rem;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
 }

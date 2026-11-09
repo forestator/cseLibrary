@@ -1,8 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
-import { MatButton } from '@angular/material/button';
-import { MatFormField, MatLabel, MatInput, MatError } from '@angular/material/input';
+import {MatButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {MatFormField, MatLabel, MatInput, MatError} from '@angular/material/input';
+import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import { AsyncPipe } from '@angular/common';
 
 const AUTH_ERROR_MESSAGES: Record<string, string> = {
@@ -19,9 +21,9 @@ const DEFAULT_AUTH_ERROR = 'Connexion impossible.';
 @Component({
     selector: 'app-admin-home',
     templateUrl: './admin-home.component.html',
-    styleUrls: ['./admin-home.component.scss'],
+    styleUrl: './admin-home.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [MatButton, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatError, AsyncPipe]
+    imports: [MatButton, MatIcon, MatProgressSpinner, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatError, AsyncPipe]
 })
 export class AdminHomeComponent {
   protected readonly auth = inject(AuthentificationService);

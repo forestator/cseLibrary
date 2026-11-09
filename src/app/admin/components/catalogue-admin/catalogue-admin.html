@@ -1,15 +1,25 @@
-<div class="manage-buttons">
-  <button mat-raised-button color="primary" (click)="addItem()">{{texts().addButton}}</button>
-  <button mat-raised-button color="primary" (click)="editItem()">{{texts().editButton}}</button>
-</div>
-<mat-divider class="admin-divider" />
-<div class="items-list">
+<div class="admin-page">
+  <app-catalogue-page-header [title]="config().adminLink.title" [resume]="config().adminLink.description"
+                             [countLabel]="countLabel()" />
+
+  <div class="admin-toolbar" role="toolbar" aria-label="Actions">
+    <button matButton="filled" type="button" (click)="addItem()">
+      <mat-icon aria-hidden="true">add</mat-icon>
+      {{texts().addButton}}
+    </button>
+    <button matButton="tonal" type="button" (click)="editItem()">
+      <mat-icon aria-hidden="true">edit</mat-icon>
+      {{texts().editButton}}
+    </button>
+  </div>
+
   @if (config().categories) {
-    <mat-accordion>
+    <mat-accordion class="admin-panels" multi>
       @for (category of categories(); track category.id) {
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>{{category.id | titlecase}}</mat-panel-title>
+            <mat-panel-description>{{category.countLabel}}</mat-panel-description>
           </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
             <app-catalogue-table [items]="category.items" />

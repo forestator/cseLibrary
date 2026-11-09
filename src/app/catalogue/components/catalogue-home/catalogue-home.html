@@ -1,58 +1,52 @@
-@if (library(); as library) {
-  <div class="core-page fadein">
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary" role="heading" aria-level="1">{{library.name}}</div>
-      </div>
-      <div class="core-resume">
-        {{library.resume}}
-      </div>
-    </div>
-    @if (config().categories) {
-      @for (category of library.categories; track category.id) {
-        <a [routerLink]="category.id"
-           class="core-body core-body-category category-link"
-           title="Cliquez ici pour visualiser cette categorie">
-          @if (!mobile() && category.bg) {
-            <div>
-              <img class="category-visuel" [src]="category.bg" [alt]="category.name">
-            </div>
-          }
-          <div class="core-header">
-            @if (mobile() && category.bg) {
-              <img class="category-visuel small-display" [src]="category.bg" [alt]="category.name">
-            }
-            <div class="core-title">
-              <div class="primary">
-                {{category.name}}
-              </div>
-            </div>
-            <div class="core-resume">
-              {{category.resume}}
-            </div>
-          </div>
-        </a>
-      }
+<div class="catalogue-page">
+  <app-catalogue-page-header [title]="library()?.name" [resume]="library()?.resume" [countLabel]="itemsCountLabel()" />
+
+  @if (config().categories) {
+    @if (library()) {
+      <ul class="category-grid">
+        @for (category of categories(); track category.id; let index = $index) {
+          <li>
+            <a class="category-card" [routerLink]="category.id">
+              <span class="category-cover" [class.category-cover-empty]="!category.bg">
+                @if (category.bg) {
+                  <img class="category-image" [ngSrc]="category.bg" alt="" fill [priority]="index < 3"
+                       sizes="(max-width: 600px) 90vw, 30vw">
+                } @else {
+                  <mat-icon class="category-icon" aria-hidden="true">category</mat-icon>
+                }
+              </span>
+              <span class="category-body">
+                <span class="category-name">{{ category.name }}</span>
+                @if (category.resume) {
+                  <span class="category-resume">{{ category.resume }}</span>
+                }
+                @if (category.countLabel) {
+                  <span class="category-count">{{ category.countLabel }}</span>
+                }
+              </span>
+            </a>
+          </li>
+        }
+      </ul>
     } @else {
-      <div class="core-header">
-        @for (item of flatItems(); track item.id; let index = $index) {
-          <div class="core-body">
-            <app-catalogue-item-row [item]="item" [config]="config()" [index]="index" />
-          </div>
+      <div class="category-grid" aria-busy="true">
+        @for (placeholder of [1, 2, 3, 4, 5, 6]; track placeholder) {
+          <div class="category-placeholder" aria-hidden="true"></div>
         }
       </div>
     }
-    @if (isAdmin()) {
-      <div class="core-header">
-        <div>
-          <div class="core-title">
-            <div class="primary">{{config().adminLink.title}}</div>
-          </div>
-          <a class="core-body admin-link" [routerLink]="config().adminLink.path">
-            {{config().adminLink.description}}
-          </a>
-        </div>
-      </div>
-    }
-  </div>
-}
+  } @else {
+    <app-catalogue-item-grid [items]="items()" [config]="config()" [selectedId]="selectedId()" />
+  }
+
+  @if (isAdmin()) {
+    <a class="admin-card" [routerLink]="config().adminLink.path">
+      <mat-icon class="admin-icon" aria-hidden="true">admin_panel_settings</mat-icon>
+      <span class="admin-text">
+        <span class="admin-title">{{ config().adminLink.title }}</span>
+        <span class="admin-description">{{ config().adminLink.description }}</span>
+      </span>
+      <mat-icon aria-hidden="true">arrow_forward</mat-icon>
+    </a>
+  }
+</div>

@@ -1,0 +1,18 @@
+<header class="page-header">
+  <div class="page-heading">
+    <h1 class="page-title">
+      @if (title(); as title) {
+        {{ title }}
+      } @else {
+        <span class="visually-hidden">Chargement…</span>
+        <span class="skeleton skeleton-title" aria-hidden="true"></span>
+      }
+    </h1>
+    @if (countLabel(); as label) {
+      <span class="page-count">{{ label }}</span>
+    }
+  </div>
+  @if (resume(); as resume) {
+    <p class="page-resume">{{ resume }}</p>
+  }
+</header>

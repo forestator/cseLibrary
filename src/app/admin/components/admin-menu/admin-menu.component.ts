@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {MatButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
 import {MatDialog} from '@angular/material/dialog';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {firstValueFrom} from 'rxjs';
@@ -12,7 +13,7 @@ import {AddEmployeeDialogComponent, NewEmployee} from '../add-employee-dialog/ad
   templateUrl: './admin-menu.component.html',
   styleUrl: './admin-menu.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButton],
+  imports: [MatButton, MatIcon],
 })
 export class AdminMenuComponent {
   private readonly snackBar = inject(MatSnackBar);

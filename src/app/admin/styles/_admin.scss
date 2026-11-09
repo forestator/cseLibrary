@@ -1,0 +1,88 @@
+@use '../../../styles/tokens' as *;
+
+$control-min-size: 44px;
+
+@mixin dialog-section-title {
+  margin: 0 0 $space-3;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $on-surface-muted;
+}
+
+@mixin form-column {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  min-width: 0;
+}
+
+@mixin toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+  margin-bottom: $space-5;
+
+  button {
+    min-height: $control-min-size;
+  }
+}
+
+@mixin panel-list {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+
+  .mat-expansion-panel {
+    border: 1px solid $outline;
+    border-radius: $radius-md !important;
+    box-shadow: none;
+    background: $surface-card;
+    overflow: hidden;
+  }
+
+  .mat-expansion-panel-header {
+    min-height: $control-min-size + $space-2;
+  }
+}
+
+@mixin data-table-container {
+  max-height: 70vh;
+  overflow: auto;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-card;
+
+  table {
+    width: 100%;
+    min-width: 480px;
+    background: transparent;
+  }
+
+  th.mat-mdc-header-cell {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: $surface-high;
+    font-weight: 700;
+    color: $on-surface;
+  }
+
+  tr.mat-mdc-row {
+    transition: background-color 0.15s ease;
+
+    &:nth-child(even) {
+      background: color-mix(in srgb, var(--mat-sys-on-surface) 3%, transparent);
+    }
+
+    &:hover {
+      background: $accent-soft;
+    }
+  }
+
+  td.mat-mdc-cell {
+    padding-block: $space-2;
+  }
+}

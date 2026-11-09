@@ -1,0 +1,21 @@
+@if (items(); as items) {
+  @if (items.length) {
+    <div class="grid">
+      @for (item of items; track item.categoryId + '/' + item.id; let index = $index) {
+        <app-catalogue-item-card [item]="item" [config]="config()" [selected]="item.id === selectedId()"
+                              [priority]="index < 6" />
+      }
+    </div>
+  } @else {
+    <div class="empty" role="status">
+      <mat-icon class="empty-icon" aria-hidden="true">inventory_2</mat-icon>
+      <p class="empty-text">Aucun élément dans cette rubrique pour le moment.</p>
+    </div>
+  }
+} @else {
+  <div class="grid" aria-busy="true">
+    @for (placeholder of placeholders; track placeholder) {
+      <div class="placeholder" aria-hidden="true"></div>
+    }
+  </div>
+}

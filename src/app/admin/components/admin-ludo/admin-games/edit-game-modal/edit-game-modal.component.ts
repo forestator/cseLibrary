@@ -4,10 +4,12 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
 import {MatButton} from '@angular/material/button';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatIcon} from '@angular/material/icon';
+import {MatFormField, MatInput, MatLabel, MatPrefix} from '@angular/material/input';
 import {CdkScrollable} from '@angular/cdk/scrolling';
 import {BadgeComponent} from '../../../../../common/components/book-badge/badge.component';
 import {Game} from '../../../../../models/common.model';
+import {ADMIN_DIALOG_CONFIG} from '../../../../admin-dialog.config';
 import {AddGameModalComponent} from '../add-game-modal/add-game-modal.component';
 
 @Component({
@@ -16,7 +18,7 @@ import {AddGameModalComponent} from '../add-game-modal/add-game-modal.component'
   styleUrl: './edit-game-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule,
-    MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, MatDialogActions, MatButton],
+    MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, MatDialogActions, MatButton, MatIcon, MatPrefix],
 })
 export class EditGameModalComponent {
   private readonly dialogRef = inject<MatDialogRef<EditGameModalComponent>>(MatDialogRef);
@@ -36,6 +38,7 @@ export class EditGameModalComponent {
 
   protected selectGameToModify(event: MatAutocompleteSelectedEvent): void {
     this.dialog.open(AddGameModalComponent, {
+      ...ADMIN_DIALOG_CONFIG,
       data: {games: this.data.games, selectedGame: event.option.value}
     });
     this.cancel();

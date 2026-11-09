@@ -1,0 +1,10 @@
+@use '../../../styles/admin' as *;
+
+.picker-field {
+  width: 100%;
+  padding-top: 4px;
+}
+
+button {
+  min-height: $control-min-size;
+}

@@ -1,21 +1,23 @@
-<div class="upload-form-container" [class.disabled]="disabled()"
-     [title]="disabled() ? 'Remplissez les champs du formulaire en premier' : ''">
-  <button type="button" mat-raised-button (click)="fileInput.click()">Ajouter l'image</button>
-  <input hidden (change)="selectFile($event)" #fileInput type="file"
-         [multiple]="false"
-         accept="image/png, image/jpeg">
-
-  <img [width]="250"
-       alt="cover preview"
-       [src]="previewImage ?? defaultImage()"/>
-
-  <div class="upload-btn">
-    <button
-      color="primary"
-      mat-raised-button
-      [disabled]="!selectedFile"
-      (click)="upload()">
+<div class="upload-form" [class.upload-form-disabled]="disabled()">
+  <div class="dropzone" [class.dropzone-active]="dragging()"
+       (dragover)="dragOver($event)" (dragleave)="dragging.set(false)" (drop)="dropFile($event)">
+    @if (imageSrc(); as src) {
+      <img class="dropzone-image" [src]="src" alt="Aperçu de la couverture" width="250" height="250">
+    } @else {
+      <mat-icon class="dropzone-icon" aria-hidden="true">image</mat-icon>
+    }
+    <p class="dropzone-hint">{{ hint() }}</p>
+  </div>
+  <div class="upload-actions">
+    <button type="button" matButton="outlined" [disabled]="disabled()" (click)="fileInput.click()">
+      <mat-icon aria-hidden="true">add_photo_alternate</mat-icon>
+      Ajouter l'image
+    </button>
+    <button type="button" matButton="filled" [disabled]="disabled() || !selectedFile()" (click)="upload()">
+      <mat-icon aria-hidden="true">cloud_upload</mat-icon>
       Upload
     </button>
   </div>
+  <input hidden #fileInput type="file" accept="image/png, image/jpeg" aria-label="Choisir une image de couverture"
+         [multiple]="false" [disabled]="disabled()" (change)="selectFile($event)">
 </div>

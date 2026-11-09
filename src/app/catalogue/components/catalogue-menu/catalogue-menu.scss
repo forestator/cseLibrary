@@ -1,5 +1,50 @@
-$search-min-width: 250px;
+@use '../../../../styles/tokens' as *;
 
-.mat-mdc-form-field {
-  min-width: $search-min-width;
+$search-width: 320px;
+
+:host {
+  display: block;
+  width: $search-width;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.search-icon {
+  position: absolute;
+  left: $space-3;
+  color: $on-surface-muted;
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 $space-4 0 $space-7;
+  border: 1px solid $outline;
+  border-radius: $radius-pill;
+  background: $surface-card;
+  color: $on-surface;
+  font: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &::placeholder {
+    color: $on-surface-muted;
+  }
+
+  &:hover {
+    border-color: $accent;
+  }
+
+  &:focus-visible {
+    border-color: $accent;
+    outline: 3px solid $accent;
+    outline-offset: 1px;
+  }
 }

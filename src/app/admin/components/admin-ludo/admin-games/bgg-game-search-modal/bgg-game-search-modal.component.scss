@@ -1,0 +1,22 @@
+@use '../../../../../../styles/tokens' as *;
+@use '../../../../styles/admin' as *;
+
+.game-name {
+  font-weight: 600;
+}
+
+.game-year {
+  margin-left: $space-3;
+  color: $on-surface-muted;
+}
+
+.empty {
+  margin: 0;
+  padding: $space-4;
+  color: $on-surface-muted;
+  text-align: center;
+}
+
+button {
+  min-height: $control-min-size;
+}

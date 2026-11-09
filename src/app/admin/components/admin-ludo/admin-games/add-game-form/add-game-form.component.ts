@@ -5,9 +5,9 @@ import {MatOption} from '@angular/material/autocomplete';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatDialog} from '@angular/material/dialog';
-import {MatDivider} from '@angular/material/divider';
+import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatSelect} from '@angular/material/select';
 import {firstValueFrom, map, startWith, switchMap} from 'rxjs';
 import {BadgeComponent} from '../../../../../common/components/book-badge/badge.component';
@@ -29,7 +29,7 @@ interface CategoryOption {
   styleUrl: './add-game-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [ReactiveFormsModule, MatButtonToggleGroup, MatButtonToggle, MatFormField, MatLabel, MatInput, MatIcon,
-    MatSelect, MatOption, BadgeComponent, MatCheckbox, MatDivider, UploadGameComponent],
+    MatSelect, MatOption, BadgeComponent, MatCheckbox, UploadGameComponent, MatIconButton, MatError],
 })
 export class AddGameFormComponent {
   private readonly bggService = inject(BGGService);

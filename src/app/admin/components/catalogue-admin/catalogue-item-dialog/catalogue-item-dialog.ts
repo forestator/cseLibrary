@@ -3,9 +3,9 @@ import {toSignal} from '@angular/core/rxjs-interop';
 import {AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 import {MatButton} from '@angular/material/button';
 import {MatButtonToggle, MatButtonToggleGroup} from '@angular/material/button-toggle';
-import {MatDivider} from '@angular/material/divider';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
-import {MatFormField, MatInput, MatLabel} from '@angular/material/input';
+import {MatIcon} from '@angular/material/icon';
+import {MatError, MatFormField, MatInput, MatLabel} from '@angular/material/input';
 import {MatOption, MatSelect} from '@angular/material/select';
 import {TitleCasePipe} from '@angular/common';
 import {firstValueFrom} from 'rxjs';
@@ -15,7 +15,7 @@ import {CatalogueRepositories} from '../../../../catalogue/services/catalogue-re
 import {UploadFormComponent} from '../../../../common/components/upload-form/upload-form.component';
 import {FileUpload} from '../../../../models/fileUpload.model';
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
-import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.component';
+import {ConfirmationData, ConfirmationModal} from '../../confirmation-modal/confirmation-modal.component';
 
 export interface CatalogueItemDialogData {
   config: CommissionConfig;
@@ -29,8 +29,8 @@ export interface CatalogueItemDialogData {
   styleUrl: './catalogue-item-dialog.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatDialogTitle, MatDialogContent, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSelect,
-    MatOption, MatButtonToggleGroup, MatButtonToggle, MatDivider, UploadFormComponent, MatDialogActions, MatButton,
-    TitleCasePipe],
+    MatOption, MatButtonToggleGroup, MatButtonToggle, UploadFormComponent, MatDialogActions, MatButton,
+    TitleCasePipe, MatIcon, MatError],
 })
 export class CatalogueItemDialog {
   private readonly dialogRef = inject<MatDialogRef<CatalogueItemDialog>>(MatDialogRef);
@@ -84,7 +84,11 @@ export class CatalogueItemDialog {
   protected async remove(item: CatalogueItem) {
     const confirmation = this.dialog.open(ConfirmationModal, {
       maxWidth: '400px',
-      data: {confirmText: `Veuillez confirmer la supression de : ${item.name}`}
+      data: {
+        title: 'Supprimer cet élément ?',
+        confirmText: `Veuillez confirmer la suppression de : ${item.name}`,
+        confirmLabel: 'Supprimer',
+      } satisfies ConfirmationData
     });
     if (await firstValueFrom(confirmation.afterClosed())) {
       await this.repository.remove(item);

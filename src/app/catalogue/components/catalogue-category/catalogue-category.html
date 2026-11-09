@@ -1,17 +1,14 @@
-<div class="core-page fadein">
-  @if (category(); as category) {
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary" role="heading" aria-level="1">{{category.name}}</div>
-      </div>
-      <div class="core-resume">
-        {{category.resume}}
-      </div>
-    </div>
+<div class="catalogue-page">
+  <app-catalogue-page-header [title]="category()?.name" [resume]="category()?.resume" [countLabel]="itemsCountLabel()" />
+
+  @if (categories().length > 1) {
+    <nav class="category-nav" aria-label="Autres catégories">
+      @for (other of categories(); track other.id) {
+        <a class="category-chip" [routerLink]="['..', other.id]"
+           [attr.aria-current]="other.id === categoryId() ? 'page' : null">{{ other.name }}</a>
+      }
+    </nav>
   }
-  @for (item of items(); track item.id; let index = $index) {
-    <div class="core-body">
-      <app-catalogue-item-row [item]="item" [config]="config()" [index]="index" />
-    </div>
-  }
+
+  <app-catalogue-item-grid [items]="items()" [config]="config()" [selectedId]="id()" />
 </div>

@@ -1,4 +1,5 @@
 import {ChangeDetectionStrategy, Component, computed, input, viewChild} from '@angular/core';
+import {NgOptimizedImage} from '@angular/common';
 import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {
   MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
@@ -13,7 +14,7 @@ import {CatalogueItem} from '../../../../catalogue/models/catalogue-item.model';
   styleUrl: './catalogue-table.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell,
-    BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow],
+    BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, NgOptimizedImage],
 })
 export class CatalogueTable {
   readonly items = input.required<CatalogueItem[]>();
