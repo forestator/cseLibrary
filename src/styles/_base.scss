@@ -62,6 +62,8 @@ img {
     // Readable on both schemes: the accent is pulled toward the text colour.
     --accent-text: color-mix(in srgb, #{$color} 62%, var(--mat-sys-on-surface));
     --accent-soft: color-mix(in srgb, #{$color} 14%, var(--mat-sys-surface));
+    // Background for filled elements with white text: darkened so the text keeps an AA contrast.
+    --accent-strong: color-mix(in srgb, #{$color} 72%, #000);
   }
 }
 

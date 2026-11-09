@@ -16,7 +16,7 @@
   z-index: 100;
   padding: $space-2 $space-4;
   border-radius: $radius-pill;
-  background: $accent;
+  background: $accent-strong;
   color: #fff;
   transform: translateY(-200%);
 
@@ -93,7 +93,7 @@
     width: 44px;
     height: 44px;
     border-radius: $radius-md;
-    background: $accent;
+    background: $accent-strong;
     color: #fff;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -284,7 +284,7 @@
   height: 48px;
   border: 0;
   border-radius: $radius-pill;
-  background: $accent;
+  background: $accent-strong;
   color: #fff;
   box-shadow: $shadow-2;
   cursor: pointer;
