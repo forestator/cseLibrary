@@ -1,4 +1,5 @@
-import {AngularFireDatabase} from '@angular/fire/compat/database';
+import {Injector, runInInjectionContext} from '@angular/core';
+import {AngularFireDatabase, AngularFireObject} from '@angular/fire/compat/database';
 import {map, Observable, shareReplay, take} from 'rxjs';
 import {Library} from '../../models/author.model';
 import {CatalogueItem, ItemCollection} from '../models/catalogue-item.model';
@@ -16,8 +17,12 @@ export class CatalogueRepository {
   readonly library$: Observable<Library>;
   readonly allItems$: Observable<ItemCollection>;
 
-  constructor(private readonly config: CommissionConfig, private readonly db: AngularFireDatabase) {
-    this.library$ = this.db.object<Library>(config.libraryPath).valueChanges().pipe(
+  constructor(
+    private readonly config: CommissionConfig,
+    private readonly db: AngularFireDatabase,
+    private readonly injector: Injector
+  ) {
+    this.library$ = this.object<Library>(config.libraryPath).valueChanges().pipe(
       take(1),
       shareReplay({bufferSize: 1, refCount: false})
     );
@@ -25,17 +30,17 @@ export class CatalogueRepository {
   }
 
   categoryItems$(categoryId: string): Observable<ItemCollection> {
-    return this.db.object<StoredCollection>(`${this.config.itemsPath}/${categoryId}`).valueChanges().pipe(
+    return this.object<StoredCollection>(`${this.config.itemsPath}/${categoryId}`).valueChanges().pipe(
       map(stored => this.toCollection(stored, categoryId))
     );
   }
 
   add(item: CatalogueItem): Promise<void> {
-    return this.db.object(this.itemPath(item)).update(this.toStored(item));
+    return this.object<unknown>(this.itemPath(item)).update(this.toStored(item));
   }
 
   update(item: CatalogueItem, changes: Partial<CatalogueItem>): Promise<void> {
-    return this.db.object(this.itemPath(item)).update(this.withoutUndefined(changes));
+    return this.object<unknown>(this.itemPath(item)).update(this.withoutUndefined(changes));
   }
 
   updateCover(item: CatalogueItem, coverUrl: string): Promise<void> {
@@ -43,11 +48,16 @@ export class CatalogueRepository {
   }
 
   remove(item: CatalogueItem): Promise<void> {
-    return this.db.object(this.itemPath(item)).remove();
+    return this.object<unknown>(this.itemPath(item)).remove();
+  }
+
+  // The compat API calls inject() on every access, so each call needs an injection context.
+  private object<T>(path: string): AngularFireObject<T> {
+    return runInInjectionContext(this.injector, () => this.db.object<T>(path));
   }
 
   private allCategorizedItems$(): Observable<ItemCollection> {
-    return this.db.object<Record<string, StoredCollection>>(this.config.itemsPath).valueChanges().pipe(
+    return this.object<Record<string, StoredCollection>>(this.config.itemsPath).valueChanges().pipe(
       map(storedByCategory => {
         const all: ItemCollection = {};
         for (const categoryId of this.config.categories ?? []) {
@@ -62,7 +72,7 @@ export class CatalogueRepository {
   }
 
   private flatItems$(): Observable<ItemCollection> {
-    return this.db.object<StoredCollection>(this.config.itemsPath).valueChanges().pipe(
+    return this.object<StoredCollection>(this.config.itemsPath).valueChanges().pipe(
       map(stored => this.toCollection(stored))
     );
   }
