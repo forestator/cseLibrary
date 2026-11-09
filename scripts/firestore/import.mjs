@@ -1,19 +1,17 @@
 #!/usr/bin/env node
 // Imports a Realtime Database JSON export into Firestore using the document model described in docs/firestore-model.md.
 //
-//   Emulator: FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 node scripts/firestore/import.mjs --export db.json --project cseh-50966
-//   Production: node scripts/firestore/import.mjs --export db.json --project cseh-50966 --prod   (needs Application Default Credentials)
+//   Emulator:   FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 node scripts/firestore/import.mjs --export db.json --project cseh-50966 --database cse-db
+//   Production: GOOGLE_ACCESS_TOKEN=<OAuth token of a project owner> node scripts/firestore/import.mjs --export db.json --project cseh-50966 --database cse-db --prod
 //
 // Add --dry-run to only print the documents and their sizes.
 import {readFileSync} from 'node:fs';
-import {initializeApp, applicationDefault} from 'firebase-admin/app';
-import {getFirestore} from 'firebase-admin/firestore';
 import {rewriteStorageUrls} from './storage-urls.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).map((arg, index, all) =>
   arg.startsWith('--') ? [arg.slice(2), all[index + 1]?.startsWith('--') || all[index + 1] === undefined ? true : all[index + 1]] : []).filter(entry => entry.length));
-if (!args.export || !args.project) {
-  console.error('Usage: import.mjs --export <rtdb.json> --project <id> [--prod] [--dry-run]');
+if (!args.export || !args.project || !args.database) {
+  console.error('Usage: import.mjs --export <rtdb.json> --project <id> --database <id> [--prod] [--dry-run]');
   process.exit(1);
 }
 if (!process.env.FIRESTORE_EMULATOR_HOST && !args.prod && !args['dry-run']) {
@@ -81,11 +79,45 @@ if (args['dry-run']) {
   process.exit(0);
 }
 
-initializeApp({projectId: args.project, ...(process.env.FIRESTORE_EMULATOR_HOST ? {} : {credential: applicationDefault()})});
-const firestore = getFirestore();
-for (let start = 0; start < documents.length; start += 400) {
-  const batch = firestore.batch();
-  documents.slice(start, start + 400).forEach(doc => batch.set(firestore.doc(doc.path), doc.data));
-  await batch.commit();
+const emulatorHost = process.env.FIRESTORE_EMULATOR_HOST;
+const origin = emulatorHost ? `http://${emulatorHost}` : 'https://firestore.googleapis.com';
+const databasePath = `projects/${args.project}/databases/${args.database}/documents`;
+if (!emulatorHost && !process.env.GOOGLE_ACCESS_TOKEN) {
+  console.error('Set GOOGLE_ACCESS_TOKEN for production.');
+  process.exit(1);
 }
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${emulatorHost ? 'owner' : process.env.GOOGLE_ACCESS_TOKEN}`,
+  ...(emulatorHost ? {} : {'x-goog-user-project': args.project}),
+};
+
+// Converts plain JSON to the typed Firestore REST value format.
+const toValue = value => {
+  if (value === null || value === undefined) return {nullValue: null};
+  if (typeof value === 'string') return {stringValue: value};
+  if (typeof value === 'boolean') return {booleanValue: value};
+  if (typeof value === 'number') return Number.isInteger(value) ? {integerValue: String(value)} : {doubleValue: value};
+  if (Array.isArray(value)) return {arrayValue: {values: value.map(toValue)}};
+  return {mapValue: {fields: Object.fromEntries(Object.entries(value).map(([key, child]) => [key, toValue(child)]))}};
+};
+
+const MAX_BATCH_BYTES = 4 * 1024 * 1024;
+let batch = [];
+let batchBytes = 0;
+const flush = async () => {
+  if (!batch.length) return;
+  const response = await fetch(`${origin}/v1/${databasePath.replace(/\/documents$/, '')}/documents:commit`, {
+    method: 'POST', headers, body: JSON.stringify({writes: batch}),
+  });
+  if (!response.ok) throw new Error(`commit failed ${response.status}: ${(await response.text()).slice(0, 400)}`);
+  batch = [];
+  batchBytes = 0;
+};
+for (const doc of documents) {
+  if (batchBytes + doc.bytes > MAX_BATCH_BYTES || batch.length >= 400) await flush();
+  batch.push({update: {name: `${databasePath}/${doc.path}`, fields: toValue(doc.data).mapValue.fields}});
+  batchBytes += doc.bytes * 2;
+}
+await flush();
 console.log('import done');
