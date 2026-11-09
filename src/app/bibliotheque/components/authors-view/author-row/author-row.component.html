@@ -1,10 +1,10 @@
-@if (author && biblio) {
+@if (author() && biblio()) {
   <mat-accordion [id]="id">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <span [class]="author.by === 'BY_AUTHOR'?'author-title-link':'author-title'" (click)="selectAuthor()">
-            {{author.lastName}} {{author.firstName}}
+          <span [class]="author().by === 'BY_AUTHOR'?'author-title-link':'author-title'" (click)="selectAuthor()">
+            {{author().lastName}} {{author().firstName}}
           </span>
           @if (books) {
             <span class="author-info">{{counter}} livres</span>
@@ -18,7 +18,7 @@
             <td mat-cell class="mat-cell-cover" *matCellDef="let book">
               <img alt="" class="cover"
                 (click)=selectBook(book.id)
-                [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
+                [src]="($safeNavigationMigration(biblio().library?.path) | bookCover: book.cover) | async">
             </td>
           </ng-container>
           <ng-container matColumnDef="title">
@@ -57,7 +57,7 @@
                 <td mat-cell class="mat-cell-cover" *matCellDef="let book">
                   <img alt="" class="cover"
                     (click)=selectBook(book.id)
-                    [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
+                    [src]="($safeNavigationMigration(biblio().library?.path) | bookCover: book.cover) | async">
                 </td>
               </ng-container>
               <ng-container matColumnDef="title">

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {Biblio, Book} from 'src/app/models/author.model';
@@ -23,14 +23,11 @@ export class SettingsBookComponent implements OnInit {
   dataService = inject(DataService);
 
 
-  @Input()
-  book!: Book;
+  readonly book = input.required<Book>();
 
-  @Input()
-  index!: string;
+  readonly index = input.required<string>();
 
-  @Input()
-  biblio!: Biblio;
+  readonly biblio = input.required<Biblio>();
 
   @Output() sendDelete = new EventEmitter<string>();
 
@@ -43,27 +40,28 @@ export class SettingsBookComponent implements OnInit {
       BookModalComponent, {
         height: 'auto',
         width: '1200px',
-        data: {parent: null, book: this.book, biblio: this.biblio}
+        data: {parent: null, book: this.book(), biblio: this.biblio()}
       });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // update book
-        this.book.by = result.by;
-        this.book.name = result.name;
-        this.book.status = result.status;
-        this.book.resume = result.resume;
-        this.book.authorIds = result.authorIds;
-        this.book.isbn10 = result.isbn10;
-        this.book.isbn13 = result.isbn13;
-        this.book.cover = result.cover;
-        this.book.format = result.format;
-        this.book.page = result.page;
-        this.book.publisherId = result.publisherId;
-        this.book.ref = result.ref;
-        this.book.tome = result.tome;
-        this.book.date = result.date;
-        this.book.year = result.year;
+        const book = this.book();
+        book.by = result.by;
+        book.name = result.name;
+        book.status = result.status;
+        book.resume = result.resume;
+        book.authorIds = result.authorIds;
+        book.isbn10 = result.isbn10;
+        book.isbn13 = result.isbn13;
+        book.cover = result.cover;
+        book.format = result.format;
+        book.page = result.page;
+        book.publisherId = result.publisherId;
+        book.ref = result.ref;
+        book.tome = result.tome;
+        book.date = result.date;
+        book.year = result.year;
         this.dataService.log();
       }
     });
@@ -75,12 +73,12 @@ export class SettingsBookComponent implements OnInit {
       DeleteModalComponent, {
         height: 'auto',
         width: '600px',
-        data: {id: this.book.id, message: `Voulez vous vraiment supprimer ce livre: ${this.book.name} ?`}
+        data: {id: this.book().id, message: `Voulez vous vraiment supprimer ce livre: ${this.book().name} ?`}
       });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.sendDelete.emit(this.book.id);
+        this.sendDelete.emit(this.book().id);
       }
     });
   }

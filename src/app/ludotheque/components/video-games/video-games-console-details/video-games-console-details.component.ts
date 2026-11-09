@@ -1,4 +1,4 @@
-import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import {Component, ChangeDetectionStrategy, input} from '@angular/core';
 import {Consoles, VideoGame, VideoGameType} from '../../../../models/videoGames.model';
 import { VideoGameConsoleAccessoryRowComponent } from '../video-game-console-row/video-game-console-accessory-row.component';
 import { MatDivider } from '@angular/material/divider';
@@ -14,9 +14,9 @@ import { FilterVideoGameByTypePipe } from '../../../pipes/filter-video-game-by-t
 })
 export class VideoGamesConsoleDetailsComponent {
   videoGameType = VideoGameType;
-  @Input() selectedVideoGameId?: string;
-  @Input() consoleId?: Consoles;
-  @Input() videoGames?: Array<VideoGame> | null;
+  readonly selectedVideoGameId = input<string>(undefined);
+  readonly consoleId = input<Consoles>(undefined);
+  readonly videoGames = input<Array<VideoGame> | null>(undefined);
 
 
   trackVideoGame(index: number, item: VideoGame) {

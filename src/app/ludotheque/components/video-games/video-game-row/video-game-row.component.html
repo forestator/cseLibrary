@@ -1,18 +1,18 @@
-<div [id]="videoGame.ref" class="video-game-core">
+<div [id]="videoGame().ref" class="video-game-core">
   <ng-container [ngTemplateOutlet]="image"></ng-container>
   <div class="video-game-info">
-    <div class="video-game-title">{{videoGame.name}}</div>
-    @if (videoGame.ref) {
-      <div class="">Ref: {{videoGame.ref}}</div>
+    <div class="video-game-title">{{videoGame().name}}</div>
+    @if (videoGame().ref) {
+      <div class="">Ref: {{videoGame().ref}}</div>
     }
   </div>
 </div>
 <ng-template #image>
-  @if (videoGame.cover) {
+  @if (videoGame().cover) {
     <div class="book-cover">
       <img width="120" height="200"
-        [src]="videoGame.cover"
-        [alt]="videoGame.name + ' cover'"/>
+        [src]="videoGame().cover"
+        [alt]="videoGame().name + ' cover'"/>
     </div>
   }
 </ng-template>

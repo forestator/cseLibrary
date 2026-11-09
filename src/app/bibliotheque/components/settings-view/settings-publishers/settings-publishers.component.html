@@ -1,9 +1,9 @@
 <div class="authors">
-  @for (publisher of biblio?.publishers; track publisher; let ai = $index) {
+  @for (publisher of biblio()?.publishers; track publisher; let ai = $index) {
     <app-settings-publisher
       (sendDelete)="deletePublisher($event)"
       [publisher]="publisher"
-      [index]="(index+1) + '_' + (ai+1)">
+      [index]="(index()+1) + '_' + (ai+1)">
     </app-settings-publisher>
   }
 </div>

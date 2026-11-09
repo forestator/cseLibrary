@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {MaterielPhotoItem} from '../../models/materiel-photo.model';
 import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
@@ -14,18 +14,19 @@ import { BadgeComponent } from '../../../common/components/book-badge/badge.comp
 export class MaterielPhotoRowComponent {
   toolsService = inject(ToolsService);
 
-  @Input() item!: MaterielPhotoItem;
-  @Input() index!: number;
-  @Input() selectedItem?: string;
+  readonly item = input.required<MaterielPhotoItem>();
+  readonly index = input.required<number>();
+  readonly selectedItem = input<string>(undefined);
   parity!: boolean;
 
   readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/materielPhoto/defaultPhoto';
 
   ngOnInit() {
-    this.parity = this.index % 2 === 0;
+    this.parity = this.index() % 2 === 0;
 
-    if (this.selectedItem) {
-      this.toolsService.scrollToId(this.selectedItem);
+    const selectedItem = this.selectedItem();
+    if (selectedItem) {
+      this.toolsService.scrollToId(selectedItem);
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {Game} from '../../../../../models/common.model';
 import {FileUpload} from '../../../../../models/fileUpload.model';
 import {StorageUploadService} from '../../../../../services/firebase/storage-upload.service';
@@ -19,20 +19,20 @@ export class UploadGameComponent implements OnChanges {
   private uploadService = inject(StorageUploadService);
   private bgg = inject(BGGService);
 
-  @Input() selectedGame?: Game;
+  readonly selectedGame = input<Game>(undefined);
 
   ngOnChanges(changes: SimpleChanges) {
-    if (GamesUtils.libraryIdOfGame(this.selectedGame) === 'boardGames') {
-      const selectedBoardGame = this.selectedGame as BoardGame;
+    if (GamesUtils.libraryIdOfGame(this.selectedGame()) === 'boardGames') {
+      const selectedBoardGame = this.selectedGame() as BoardGame;
       if (selectedBoardGame.id) {
         this.bgg.gameDetails(selectedBoardGame).pipe(take(1)).subscribe(rep => {
-          this.selectedGame.cover = rep.cover;
+          this.selectedGame().cover = rep.cover;
         });
       }
     }
   }
 
   upload(filteToUpload: FileUpload): void {
-    this.uploadService.uploadGameCover(filteToUpload, this.selectedGame);
+    this.uploadService.uploadGameCover(filteToUpload, this.selectedGame());
   }
 }

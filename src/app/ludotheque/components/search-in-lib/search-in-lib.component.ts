@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable, startWith} from 'rxjs';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
@@ -23,9 +23,9 @@ export class SearchInLibComponent implements OnInit, OnChanges {
   private navigateService = inject(NavigationService);
 
 
-  @Input() boardGames!: Array<BoardGame> | null;
-  @Input() videoGames!: Array<VideoGame> | null;
-  @Input() outsideGames!: Array<Game> | null;
+  readonly boardGames = input.required<Array<BoardGame> | null>();
+  readonly videoGames = input.required<Array<VideoGame> | null>();
+  readonly outsideGames = input.required<Array<Game> | null>();
   searchText: FormControl<string> = new FormControl<string>(null);
   filteredOptions$?: Observable<Array<Game | BoardGame>>;
   datas: Array<Game | BoardGame> = [];
@@ -60,22 +60,25 @@ export class SearchInLibComponent implements OnInit, OnChanges {
 
   private setDatasToSeachIn(url: string): Array<Game | BoardGame> {
     this.currentUrl = url;
-    if (this.boardGames && url.includes('boardGames')) {
-      return this.boardGames;
-    } else if (this.videoGames && url.includes('videoGames')) {
-      return this.videoGames;
-    } else if (this.outsideGames && url.includes('outsideGames')) {
-      return this.outsideGames;
+    const boardGames = this.boardGames();
+    const videoGames = this.videoGames();
+    const outsideGames = this.outsideGames();
+    if (boardGames && url.includes('boardGames')) {
+      return boardGames;
+    } else if (videoGames && url.includes('videoGames')) {
+      return videoGames;
+    } else if (outsideGames && url.includes('outsideGames')) {
+      return outsideGames;
     } else {
       const defaultSearch: Array<Game> = [];
-      if (this.boardGames) {
-        defaultSearch.push(...this.boardGames);
+      if (boardGames) {
+        defaultSearch.push(...boardGames);
       }
-      if (this.videoGames) {
-        defaultSearch.push(...this.videoGames);
+      if (videoGames) {
+        defaultSearch.push(...videoGames);
       }
-      if (this.outsideGames) {
-        defaultSearch.push(...this.outsideGames);
+      if (outsideGames) {
+        defaultSearch.push(...outsideGames);
       }
       return defaultSearch;
     }

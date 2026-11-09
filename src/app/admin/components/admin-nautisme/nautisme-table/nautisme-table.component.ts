@@ -1,4 +1,4 @@
-import {Component, Input, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, SimpleChanges, ViewChild, ChangeDetectionStrategy, input} from '@angular/core';
 import {NautismeItem} from '../../../../nautisme/models/nautisme.model';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -13,14 +13,15 @@ import { BadgeComponent } from '../../../../common/components/book-badge/badge.c
 })
 export class NautismeTableComponent {
 
-  @Input() nautItems: NautismeItem[];
+  readonly nautItems = input<NautismeItem[]>(undefined);
   displayedColumns = ['id', 'cover', 'name', 'status'];
   dataSource?: MatTableDataSource<NautismeItem>;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
-    if (this.nautItems) {
-      this.setDatasource(this.nautItems);
+    const nautItems = this.nautItems();
+    if (nautItems) {
+      this.setDatasource(nautItems);
     }
   }
 
@@ -31,6 +32,7 @@ export class NautismeTableComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.nautItems) this.setDatasource(this.nautItems);
+    const nautItems = this.nautItems();
+    if (nautItems) this.setDatasource(nautItems);
   }
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, ChangeDetectionStrategy, input} from '@angular/core';
 import {Series, SeriesStatus} from 'src/app/models/author.model';
 
 @Component({
@@ -9,7 +9,7 @@ import {Series, SeriesStatus} from 'src/app/models/author.model';
 })
 export class SeriesBadgeComponent implements OnInit {
 
-  @Input() series!: Series;
+  readonly series = input.required<Series>();
 
   txt!: string;
   bg!: string;
@@ -18,7 +18,8 @@ export class SeriesBadgeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    switch (this.series.status) {
+    const series = this.series();
+    switch (series.status) {
       case SeriesStatus.NEW:
         this.txt = 'NOUVEAU';
         this.bg = 'chartreuse';
@@ -50,7 +51,7 @@ export class SeriesBadgeComponent implements OnInit {
         this.fg = 'white';
         break;
       default:
-        this.txt = this.series.status;
+        this.txt = series.status;
         this.bg = 'gray';
         this.fg = 'black';
     }

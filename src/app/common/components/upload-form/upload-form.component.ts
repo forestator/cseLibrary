@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
+import {Component, EventEmitter, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy, input} from '@angular/core';
 import {FileUpload} from '../../../models/fileUpload.model';
 import { MatButton } from '@angular/material/button';
 
@@ -10,8 +10,8 @@ import { MatButton } from '@angular/material/button';
     imports: [MatButton]
 })
 export class UploadFormComponent implements OnChanges {
-  @Input() defaultImage?: string;
-  @Input() disabled?: boolean;
+  readonly defaultImage = input<string>(undefined);
+  readonly disabled = input<boolean>(undefined);
   @Output() fileToUploadReady = new EventEmitter<FileUpload>();
   selectedFile?: File;
   previewImage?: string | ArrayBuffer;

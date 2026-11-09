@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Biblio, Category, ViewBy} from 'src/app/models/author.model';
 import {SeriesModalComponent} from '../../modals/series-modal/series-modal.component';
@@ -25,14 +25,11 @@ export class SettingsCategoryComponent implements OnInit {
    private biblioDatabaseService = inject(BiblioDatabaseService);
 
 
-   @Input()
-   category!: Category;
+   readonly category = input.required<Category>();
 
-   @Input()
-   index!: number;
+   readonly index = input.required<number>();
 
-   @Input()
-   biblio!: Biblio;
+   readonly biblio = input.required<Biblio>();
 
    @Output() sendDelete = new EventEmitter<string>();
 
@@ -45,33 +42,35 @@ export class SettingsCategoryComponent implements OnInit {
          CategoryModalComponent, {
          height: 'auto',
          width: '1200px',
-         data: { category: this.category }
+         data: { category: this.category() }
       });
 
       dialogRef.afterClosed().subscribe(result => {
          if (result) {
             // update book
-            this.category.by = result.by;
-            this.category.name = result.name;
-            this.category.resume = result.resume;
+            const category = this.category();
+            category.by = result.by;
+            category.name = result.name;
+            category.resume = result.resume;
             this.dataService.log();
          }
       });
    }
    public add($event: any) {
       $event.stopPropagation();
-      if (this.category.by === ViewBy.BY_SERIES) {
+      const category = this.category();
+      if (category.by === ViewBy.BY_SERIES) {
          const dialogRef = this.dialog.open(
             SeriesModalComponent, {
             height: 'auto',
             width: '1200px',
-            data: { parent: this.category, series: null, biblio: this.biblio }
+            data: { parent: category, series: null, biblio: this.biblio() }
          });
 
          dialogRef.afterClosed().subscribe(result => {
             console.log(`Add series: ${result}`);
             if (result) {
-               this.category.series?.push(result);
+               this.category().series?.push(result);
                this.dataService.log();
             }
          });
@@ -80,13 +79,13 @@ export class SettingsCategoryComponent implements OnInit {
             AuthorModalComponent, {
             height: 'auto',
             width: '1200px',
-            data: { parent: this.category, author: null }
+            data: { parent: category, author: null }
          });
 
          dialogRef.afterClosed().subscribe(result => {
             console.log(`Add author: ${result}`);
             if (result) {
-              this.biblioDatabaseService.addAuthor(this.biblio, result);
+              this.biblioDatabaseService.addAuthor(this.biblio(), result);
             }
          });
       }
@@ -97,26 +96,28 @@ export class SettingsCategoryComponent implements OnInit {
          DeleteModalComponent, {
          height: 'auto',
          width: '600px',
-         data: { id: this.category.id, message: `Voulez vous vraiment supprimer cette categorie: ${this.category.name}` }
+         data: { id: this.category().id, message: `Voulez vous vraiment supprimer cette categorie: ${this.category().name}` }
       });
 
       dialogRef.afterClosed().subscribe(result => {
          if (result) {
-            this.sendDelete.emit(this.category.id);
+            this.sendDelete.emit(this.category().id);
          }
       });
    }
    public deleteSeries($event: string) {
-      let index = this.category?.series?.findIndex(d => d.id === $event); //find index in your array
+      const category = this.category();
+      let index = category?.series?.findIndex(d => d.id === $event); //find index in your array
       if (index !== undefined) {
-         this.category?.series?.splice(index, 1);//remove element from array
+         category?.series?.splice(index, 1);//remove element from array
       }
       this.dataService.log();
    }
    public deleteAuthor($event: string) {
-      let index = this.category?.authors?.findIndex(d => d.id === $event); //find index in your array
+      const category = this.category();
+      let index = category?.authors?.findIndex(d => d.id === $event); //find index in your array
       if (index !== undefined) {
-         this.category?.authors?.splice(index, 1);//remove element from array
+         category?.authors?.splice(index, 1);//remove element from array
       }
       this.dataService.log();
    }

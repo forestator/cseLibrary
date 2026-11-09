@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
@@ -18,12 +18,13 @@ export class VideoGameConsoleAccessoryRowComponent implements OnInit {
   private userService = inject(UserService);
 
 
-  @Input() videoGame!: VideoGame;
-  @Input() selectedVideoGameId?: string;
+  readonly videoGame = input.required<VideoGame>();
+  readonly selectedVideoGameId = input<string>(undefined);
 
   ngOnInit(): void {
-    if (this.selectedVideoGameId) {
-      this.toolsService.scrollToId(this.selectedVideoGameId);
+    const selectedVideoGameId = this.selectedVideoGameId();
+    if (selectedVideoGameId) {
+      this.toolsService.scrollToId(selectedVideoGameId);
     }
   }
 }

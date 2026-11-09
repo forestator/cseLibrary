@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, input} from '@angular/core';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from "@angular/material/table";
 import { MatSort, MatSortHeader } from "@angular/material/sort";
 import {SonoItem} from "../../../../sonotheque/models/sono.model";
@@ -12,14 +12,15 @@ import { BadgeComponent } from '../../../../common/components/book-badge/badge.c
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
 })
 export class SonoTableComponent implements  OnInit, OnChanges {
-  @Input() sonoItems: Array<SonoItem>;
+  readonly sonoItems = input<Array<SonoItem>>(undefined);
   displayedColumns = ['id', 'cover', 'name', 'status'];
   dataSource?: MatTableDataSource<SonoItem>;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
-    if (this.sonoItems) {
-      this.setDatasource(this.sonoItems);
+    const sonoItems = this.sonoItems();
+    if (sonoItems) {
+      this.setDatasource(sonoItems);
     }
   }
 
@@ -30,6 +31,7 @@ export class SonoTableComponent implements  OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.sonoItems) this.setDatasource(this.sonoItems);
+    const sonoItems = this.sonoItems();
+    if (sonoItems) this.setDatasource(sonoItems);
   }
 }

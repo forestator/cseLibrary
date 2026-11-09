@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {map, Observable, take} from 'rxjs';
 import {Author, Biblio, Book, BookStatus, SelectorView, Series, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
@@ -24,10 +24,8 @@ export class AuthorRowComponent implements OnInit {
   bookFilter = inject(BookFilterPipe);
 
 
-  @Input()
-  author!: Author;
-  @Input()
-  biblio: Biblio;
+  readonly author = input.required<Author>();
+  readonly biblio = input<Biblio>(undefined);
   @Output() sendView = new EventEmitter<SelectorView>();
 
   public books!: Array<Book> | undefined;
@@ -45,13 +43,15 @@ export class AuthorRowComponent implements OnInit {
   ngOnInit(): void {
     this.counter = 0;
     this.books = [];
-    this.id = this.author.lastName[0] ? this.author.lastName[0].toUpperCase() : '??';
-    if (this.author.by === ViewBy.BY_AUTHOR) {
-      if (this.author.books?.length) {
-        let filteredBooks: Array<Book> = this.bookFilter.transform(this.author?.books, this.tools.adminMode);
+    const author = this.author();
+    this.id = author.lastName[0] ? author.lastName[0].toUpperCase() : '??';
+    const authorValue = this.author();
+    if (authorValue.by === ViewBy.BY_AUTHOR) {
+      if (authorValue.books?.length) {
+        let filteredBooks: Array<Book> = this.bookFilter.transform(authorValue?.books, this.tools.adminMode);
         this.books.push(...filteredBooks);
         this.counter += filteredBooks.length;
-        this.series = this.author.series;
+        this.series = authorValue.series;
         if (this.series?.length) {
           this.series?.forEach(s => {
             let filteredBooks: Array<Book> = this.bookFilter.transform(s.books, this.tools.adminMode);
@@ -60,7 +60,7 @@ export class AuthorRowComponent implements OnInit {
         }
       }
     } else {
-      this.getBooksByAuthor(this.author.id).pipe(
+      this.getBooksByAuthor(authorValue.id).pipe(
         map(books => {
           this.books = books;
           this.series = undefined;
@@ -74,7 +74,7 @@ export class AuthorRowComponent implements OnInit {
   private getBooksByAuthor(authorId: string | undefined): Observable<Array<Book>> {
     return new Observable<Array<Book>>(observer => {
       const books: Array<Book> = [];
-      this.biblio.library?.categories?.forEach(category => {
+      this.biblio().library?.categories?.forEach(category => {
         category.series?.forEach(series => {
           series.books?.forEach(book => {
             if (book.authorIds.includes(authorId)) {
@@ -99,9 +99,10 @@ export class AuthorRowComponent implements OnInit {
   }
 
   public selectAuthor() {
-    if (this.author.by === ViewBy.BY_AUTHOR) {
+    const author = this.author();
+    if (author.by === ViewBy.BY_AUTHOR) {
       console.log('select author');
-      this.sendView.emit({ mode: ViewMode.BY_AUTHOR, id: this.author.id });
+      this.sendView.emit({ mode: ViewMode.BY_AUTHOR, id: author.id });
     }
   }
 

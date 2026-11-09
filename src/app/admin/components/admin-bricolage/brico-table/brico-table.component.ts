@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, input} from '@angular/core';
 import {Tool} from '../../../../bricolage/models/bricolage.model';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import { MatSort, MatSortHeader } from '@angular/material/sort';
@@ -12,14 +12,15 @@ import { BadgeComponent } from '../../../../common/components/book-badge/badge.c
     imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
 })
 export class BricoTableComponent implements OnInit, OnChanges {
-  @Input() tools: Array<Tool>;
+  readonly tools = input<Array<Tool>>(undefined);
   displayedColumns = ['id','cover',  'name', 'status'];
   dataSource?: MatTableDataSource<Tool>;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit() {
-    if (this.tools) {
-      this.setDatasource(this.tools);
+    const tools = this.tools();
+    if (tools) {
+      this.setDatasource(tools);
     }
   }
 
@@ -30,6 +31,7 @@ export class BricoTableComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (this.tools) this.setDatasource(this.tools);
+    const tools = this.tools();
+    if (tools) this.setDatasource(tools);
   }
 }

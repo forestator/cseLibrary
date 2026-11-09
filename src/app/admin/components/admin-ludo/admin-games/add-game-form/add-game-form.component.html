@@ -1,4 +1,4 @@
-<div [formGroup]="gameForm" class="form-container">
+<div [formGroup]="gameForm()" class="form-container">
   <div class="main">
     <div class="select-library">
       <mat-button-toggle-group (ngModelChange)="setCategoryOptions($event)"
@@ -43,8 +43,8 @@
   </div>
   <mat-divider [vertical]="true"></mat-divider>
   <div class="boardgames">
-    <app-upload-game [selectedGame]="gameForm.value"></app-upload-game>
-    @if (gameForm.get('libraryId')?.value === 'boardGames') {
+    <app-upload-game [selectedGame]="gameForm().value"></app-upload-game>
+    @if (gameForm().get('libraryId')?.value === 'boardGames') {
       <mat-form-field appearance="fill">
         <mat-label>BoardGameGeek Id</mat-label>
         <input matInput type="number" placeholder="123456" formControlName="id">
@@ -55,7 +55,7 @@
       </mat-form-field>
     }
   </div>
-  @if (gameForm.get('libraryId')?.value === 'boardGames') {
+  @if (gameForm().get('libraryId')?.value === 'boardGames') {
     <mat-divider [vertical]="true"></mat-divider>
     <div class="boardgames">
       <mat-form-field appearance="fill">
@@ -84,7 +84,7 @@
       </mat-form-field>
     </div>
   }
-  @if (gameForm.get('libraryId')?.value === 'videoGames') {
+  @if (gameForm().get('libraryId')?.value === 'videoGames') {
     <mat-divider [vertical]="true"></mat-divider>
     <div class="boardgames">
       <mat-form-field appearance="fill">

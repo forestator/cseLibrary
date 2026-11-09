@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {map, Observable, startWith} from 'rxjs';
 import {Tool} from '../../models/bricolage.model';
@@ -17,12 +17,11 @@ import { AsyncPipe } from '@angular/common';
 export class BricoMenuComponent {
   private navService = inject(NavigationService);
 
-  @Input() allTools: Array<Tool>;
+  readonly allTools = input<Array<Tool>>([]);
 
   searchText: FormControl<string> = new FormControl<string>(null);
   filteredOptions$?: Observable<Array<Tool>>;
   constructor() {
-    this.allTools = [];
     this.filteredOptions$ = this.searchText.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value || '')),
@@ -31,7 +30,7 @@ export class BricoMenuComponent {
 
   private _filter(value: string | Tool): Array<Tool> {
     const filterValue = typeof value === 'string' ? value.toLowerCase() : value.name.toLowerCase();
-    return this.allTools?.filter((item) =>
+    return this.allTools()?.filter((item) =>
       item.name?.toLowerCase().includes(filterValue)
     );
   }

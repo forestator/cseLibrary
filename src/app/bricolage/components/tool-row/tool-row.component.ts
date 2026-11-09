@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {Tool} from '../../models/bricolage.model';
 import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
@@ -15,18 +15,19 @@ export class ToolRowComponent implements OnInit {
   toolsService = inject(ToolsService);
 
 
-  @Input() tool!: Tool;
-  @Input() index!: number;
-  @Input() selectedTool?: string;
+  readonly tool = input.required<Tool>();
+  readonly index = input.required<number>();
+  readonly selectedTool = input<string>(undefined);
   parity!: boolean;
 
   readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/tools/covers/defaultTool';
 
   ngOnInit() {
-    this.parity = this.index % 2 === 0;
+    this.parity = this.index() % 2 === 0;
 
-    if (this.selectedTool) {
-      this.toolsService.scrollToId(this.selectedTool);
+    const selectedTool = this.selectedTool();
+    if (selectedTool) {
+      this.toolsService.scrollToId(selectedTool);
     }
   }
 

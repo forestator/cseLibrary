@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {NautismeItem} from "../../models/nautisme.model";
 import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
@@ -14,18 +14,19 @@ import { BadgeComponent } from '../../../common/components/book-badge/badge.comp
 export class NautismeItemRowComponent {
   toolsService = inject(ToolsService);
 
-  @Input() item!: NautismeItem;
-  @Input() index!: number;
-  @Input() selectedItem?: string;
+  readonly item = input.required<NautismeItem>();
+  readonly index = input.required<number>();
+  readonly selectedItem = input<string>(undefined);
   parity!: boolean;
 
   readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/nautismeItems/nautismeDefaultImage';
 
   ngOnInit() {
-    this.parity = this.index % 2 === 0;
+    this.parity = this.index() % 2 === 0;
 
-    if (this.selectedItem) {
-      this.toolsService.scrollToId(this.selectedItem);
+    const selectedItem = this.selectedItem();
+    if (selectedItem) {
+      this.toolsService.scrollToId(selectedItem);
     }
   }
 }

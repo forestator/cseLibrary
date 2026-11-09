@@ -1,10 +1,10 @@
-@if (boardGames) {
+@if (boardGames()) {
   <div class="core-body">
-    @for (bg of (boardGames | advancedBoardGameFilter | async); track trackBoardGame(index, bg); let index = $index) {
+    @for (bg of (boardGames() | advancedBoardGameFilter | async); track trackBoardGame(index, bg); let index = $index) {
       <div class="core-body">
         <app-board-game-row
           [boardGame]="bg"
-          [selectedBoardGameId]="selectedBoardGameId"
+          [selectedBoardGameId]="selectedBoardGameId()"
         [index]="index"></app-board-game-row>
       </div>
     }

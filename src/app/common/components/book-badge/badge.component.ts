@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, input} from '@angular/core';
 import {BookStatus} from 'src/app/models/author.model';
 import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
@@ -11,8 +11,8 @@ import {Consoles} from '../../../models/videoGames.model';
 })
 export class BadgeComponent implements OnInit, OnChanges {
 
-  @Input() status!: string;
-  @Input() display: string = 'normal';
+  readonly status = input.required<string>();
+  readonly display = input<string>('normal');
 
   txt!: string;
   bg!: string;
@@ -32,22 +32,23 @@ export class BadgeComponent implements OnInit, OnChanges {
   }
 
   private setup() {
-    if (this.status in BookStatus) {
+    const status = this.status();
+    if (status in BookStatus) {
       this.bookStatusBadge();
-    } else if (this.status in Consoles) {
+    } else if (status in Consoles) {
       this.consoleBadge();
-    } else if (this.status in BoardGameCategory) {
+    } else if (status in BoardGameCategory) {
       this.boardGameCategoryBadge();
     } else {
-      this.txt = this.status?.toString();
+      this.txt = status?.toString();
       this.bg = 'gray';
       this.fg = 'black';
     }
   }
 
   private boardGameCategoryBadge() {
-    this.txt = this.status[0].toUpperCase() + this.status.substr(1).toLowerCase();
-    switch (this.status) {
+    this.txt = this.status()[0].toUpperCase() + this.status().substr(1).toLowerCase();
+    switch (this.status()) {
       case BoardGameCategory.duo:
         this.bg = '#d9ab38';
         this.fg = 'white';
@@ -100,30 +101,31 @@ export class BadgeComponent implements OnInit, OnChanges {
   }
 
   private consoleBadge() {
-    switch (this.status) {
+    const status = this.status();
+    switch (status) {
       case Consoles.switch:
-        this.txt = this.status;
+        this.txt = status;
         this.bg = '#fe0016';
         this.fg = 'white';
         break;
       case Consoles.switch2:
-        this.txt = this.status;
+        this.txt = status;
         this.bg = '#9f1e1e';
         this.fg = 'white';
         break;
       case Consoles.ps4:
       case Consoles.ps5:
-        this.txt = this.status.toUpperCase();
+        this.txt = status.toUpperCase();
         this.bg = '#4b38d9';
         this.fg = 'white';
         break;
       case Consoles.xboxOne:
-        this.txt = this.status;
+        this.txt = status;
         this.bg = '#4dd938';
         this.fg = 'white';
         break;
       case Consoles.xboxX:
-        this.txt = this.status;
+        this.txt = status;
         this.bg = '#409131';
         this.fg = 'white';
         break;
@@ -131,7 +133,8 @@ export class BadgeComponent implements OnInit, OnChanges {
   }
 
   private bookStatusBadge() {
-    switch (this.status) {
+    const status = this.status();
+    switch (status) {
       case BookStatus.NEW:
         this.txt = 'NOUVEAU';
         this.bg = 'chartreuse';
@@ -158,7 +161,7 @@ export class BadgeComponent implements OnInit, OnChanges {
         this.fg = 'white';
         break;
       default:
-        this.txt = this.status.toString();
+        this.txt = status.toString();
         this.bg = 'gray';
         this.fg = 'black';
         break;

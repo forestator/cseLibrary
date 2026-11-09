@@ -3,7 +3,7 @@
     <mat-panel-title>
       <div class="settings-header">
         <div class="designation">
-          #{{index}}: {{series.name}}
+          #{{index()}}: {{series().name}}
         </div>
         <div class="controls">
           <mat-icon class="ctrl-edit" (click)="edit($event)">edit</mat-icon>
@@ -17,31 +17,31 @@
   <div class="description">
     <div class="field">
       <div class="label">Nom</div>
-      <div class="content">{{series.name}}</div>
+      <div class="content">{{series().name}}</div>
     </div>
-    @if (series.resume.length>0) {
+    @if (series().resume.length>0) {
       <div class="field">
         <div class="label">Résumé</div>
-        <div class="content">{{series.resume}}</div>
+        <div class="content">{{series().resume}}</div>
       </div>
     }
-    @if (series.by==='BY_SERIES' && series.status!=='ONE_SHOT') {
+    @if (series().by==='BY_SERIES' && series().status!=='ONE_SHOT') {
       <div class="field">
         <div class="label">Auteur(s)</div>
-        <div class="content">{{tools.getAuthors(series.authorIds, biblio) | async}}</div>
+        <div class="content">{{tools.getAuthors(series().authorIds, biblio()) | async}}</div>
       </div>
     }
     <div class="field">
       <div class="label">Status</div>
-      <div class="content"><app-series-badge [series]="series"></app-series-badge></div>
+      <div class="content"><app-series-badge [series]="series()"></app-series-badge></div>
     </div>
   </div>
-  @for (book of series.books; track book; let bi = $index) {
+  @for (book of series().books; track book; let bi = $index) {
     <app-settings-book
-      [biblio]="biblio"
+      [biblio]="biblio()"
       (sendDelete)="deleteBook($event)"
       [book]="book"
-      [index]="index + '_' + (bi+1)">
+      [index]="index() + '_' + (bi+1)">
     </app-settings-book>
   }
 </mat-expansion-panel>

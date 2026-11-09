@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {Game} from '../../../../models/common.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
@@ -18,16 +18,17 @@ export class GameRowComponent implements OnInit {
     private userService = inject(UserService);
 
 
-    @Input() game!: Game;
-    @Input() index!: number;
-    @Input() selectedGame?: string;
+    readonly game = input.required<Game>();
+    readonly index = input.required<number>();
+    readonly selectedGame = input<string>(undefined);
 
     parity!: boolean;
 
     ngOnInit() {
-        this.parity = this.index % 2 === 0;
-        if (this.selectedGame) {
-            this.toolsService.scrollToId(this.selectedGame);
+        this.parity = this.index() % 2 === 0;
+        const selectedGame = this.selectedGame();
+        if (selectedGame) {
+            this.toolsService.scrollToId(selectedGame);
         }
     }
 }

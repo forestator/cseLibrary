@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {
@@ -22,11 +22,9 @@ export class SettingsPublisherComponent implements OnInit {
    dialog = inject(MatDialog);
    dataService = inject(DataService);
 
-   @Input()
-   publisher!: Publisher;
+   readonly publisher = input.required<Publisher>();
 
-   @Input()
-   index!: string;
+   readonly index = input.required<string>();
 
    @Output() sendDelete = new EventEmitter<string>();
 
@@ -39,13 +37,13 @@ export class SettingsPublisherComponent implements OnInit {
          PublisherModalComponent, {
          height: 'auto',
          width: '1200px',
-         data: { publisher: this.publisher }
+         data: { publisher: this.publisher() }
       });
 
       dialogRef.afterClosed().subscribe(result => {
          if (result) {
             // update book
-            this.publisher.name = result.name;
+            this.publisher().name = result.name;
             this.dataService.log();
          }
       });
@@ -56,12 +54,12 @@ export class SettingsPublisherComponent implements OnInit {
          DeleteModalComponent, {
          height: 'auto',
          width: '600px',
-         data: { id: this.publisher.id, message: `Voulez vous vraiment supprimer cet editeur: ${this.publisher.name}` }
+         data: { id: this.publisher().id, message: `Voulez vous vraiment supprimer cet editeur: ${this.publisher().name}` }
       });
 
       dialogRef.afterClosed().subscribe(result => {
          if (result) {
-            this.sendDelete.emit(this.publisher.id);
+            this.sendDelete.emit(this.publisher().id);
          }
       });
    }

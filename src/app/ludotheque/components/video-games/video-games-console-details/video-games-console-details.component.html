@@ -1,32 +1,32 @@
-@if (videoGames) {
+@if (videoGames()) {
   <div class="core-page">
-    @if ((videoGames | filterVideoGameByType: videoGameType.CONSOLE).length > 0) {
+    @if ((videoGames() | filterVideoGameByType: videoGameType.CONSOLE).length > 0) {
       <div class="core-header">
         <div class="core-title">
           <div class="primary">Consoles</div>
         </div>
       </div>
-      @for (videoGame of videoGames | filterVideoGameByType: videoGameType.CONSOLE; track trackVideoGame(index, videoGame); let index = $index) {
+      @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.CONSOLE; track trackVideoGame(index, videoGame); let index = $index) {
         <div class="core-body">
           <app-video-game-console-accessory-row
             [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId">
+            [selectedVideoGameId]="selectedVideoGameId()">
           </app-video-game-console-accessory-row>
         </div>
       }
       <mat-divider></mat-divider>
     }
-    @if ((videoGames | filterVideoGameByType: videoGameType.ACCESSORY).length > 0) {
+    @if ((videoGames() | filterVideoGameByType: videoGameType.ACCESSORY).length > 0) {
       <div class="core-header">
         <div class="core-title">
           <div class="primary">Accessoires</div>
         </div>
       </div>
-      @for (videoGame of videoGames | filterVideoGameByType: videoGameType.ACCESSORY  ; track trackVideoGame(index, videoGame); let index = $index) {
+      @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.ACCESSORY  ; track trackVideoGame(index, videoGame); let index = $index) {
         <div class="core-body">
           <app-video-game-console-accessory-row
             [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId">
+            [selectedVideoGameId]="selectedVideoGameId()">
           </app-video-game-console-accessory-row>
         </div>
       }
@@ -38,11 +38,11 @@
       </div>
     </div>
     <div class="core-body video-game-row">
-      @for (videoGame of videoGames | filterVideoGameByType: videoGameType.GAME; track trackVideoGame(index, videoGame); let index = $index) {
+      @for (videoGame of videoGames() | filterVideoGameByType: videoGameType.GAME; track trackVideoGame(index, videoGame); let index = $index) {
         <div class="core-body">
           <app-video-game-row
             [videoGame]="videoGame"
-            [selectedVideoGameId]="selectedVideoGameId">
+            [selectedVideoGameId]="selectedVideoGameId()">
           </app-video-game-row>
         </div>
       }

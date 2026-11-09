@@ -1,35 +1,35 @@
-@if (tool) {
-  <div [id]="tool.id" class="book-core">
+@if (tool()) {
+  <div [id]="tool().id" class="book-core">
     @if ((parity || (toolsService.mobilePhoneDisplay$ | async))) {
       <ng-container [ngTemplateOutlet]="image"
       ></ng-container>
     }
     <div class="book-infos">
-      <div class="book-title">{{tool.name}}
-        <app-badge [status]="tool.status"></app-badge>
+      <div class="book-title">{{tool().name}}
+        <app-badge [status]="tool().status"></app-badge>
       </div>
-      <div class="book-info">Ref: {{tool.id}}</div>
-      @if (tool.description) {
-        <div class="book-info">Description: {{tool.description}}</div>
+      <div class="book-info">Ref: {{tool().id}}</div>
+      @if (tool().description) {
+        <div class="book-info">Description: {{tool().description}}</div>
       }
-      @if (tool.dimensions) {
-        @if (tool.dimensions.longueur) {
-          <div class="book-info">Longueur: {{tool.dimensions.longueur}}</div>
+      @if (tool().dimensions) {
+        @if (tool().dimensions.longueur) {
+          <div class="book-info">Longueur: {{tool().dimensions.longueur}}</div>
         }
-        @if (tool.dimensions.largeur) {
-          <div class="book-info">Largeur: {{tool.dimensions.largeur}}</div>
+        @if (tool().dimensions.largeur) {
+          <div class="book-info">Largeur: {{tool().dimensions.largeur}}</div>
         }
-        @if (tool.dimensions.hauteur) {
-          <div class="book-info">Hauteur: {{tool.dimensions.hauteur}}</div>
+        @if (tool().dimensions.hauteur) {
+          <div class="book-info">Hauteur: {{tool().dimensions.hauteur}}</div>
         }
-        @if (tool.dimensions.PTAC) {
-          <div class="book-info">PTAC: {{tool.dimensions.PTAC}}</div>
+        @if (tool().dimensions.PTAC) {
+          <div class="book-info">PTAC: {{tool().dimensions.PTAC}}</div>
         }
-        @if (tool.dimensions.PV) {
-          <div class="book-info">PV: {{tool.dimensions.PV}}</div>
+        @if (tool().dimensions.PV) {
+          <div class="book-info">PV: {{tool().dimensions.PV}}</div>
         }
-        @if (tool.dimensions.volume) {
-          <div class="book-info">Volume: {{tool.dimensions.volume}}</div>
+        @if (tool().dimensions.volume) {
+          <div class="book-info">Volume: {{tool().dimensions.volume}}</div>
         }
       }
     </div>
@@ -42,6 +42,6 @@
 
 <ng-template #image>
   <div class="book-cover">
-    <img [src]="tool.cover ?? defaultImage" [alt]="tool.name"/>
+    <img [src]="tool().cover ?? defaultImage" [alt]="tool().name"/>
   </div>
 </ng-template>

@@ -1,13 +1,13 @@
-@if (game) {
-  <div [id]="game.ref" class="book-core">
+@if (game()) {
+  <div [id]="game().ref" class="book-core">
     @if ((parity || (toolsService.mobilePhoneDisplay$ | async))) {
       <ng-container [ngTemplateOutlet]="image"></ng-container>
     }
     <div class="book-infos">
-      <div class="book-title">{{game.name}}
+      <div class="book-title">{{game().name}}
       </div>
-      @if (game.ref) {
-        <div class="book-info">Ref: {{game.ref}}</div>
+      @if (game().ref) {
+        <div class="book-info">Ref: {{game().ref}}</div>
       }
     </div>
     @if (!parity && !(toolsService.mobilePhoneDisplay$ | async)) {
@@ -17,9 +17,9 @@
 }
 
 <ng-template #image>
-  @if (game.cover) {
+  @if (game().cover) {
     <div class="book-cover">
-      <img [src]="game.cover" [alt]="game.name"/>
+      <img [src]="game().cover" [alt]="game().name"/>
     </div>
   }
 </ng-template>

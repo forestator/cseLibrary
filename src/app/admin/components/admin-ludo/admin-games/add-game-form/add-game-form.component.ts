@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, EventEmitter, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {BoardGameCategory, Thing} from '../../../../../models/boardGame.model';
 import {Consoles, VideoGameType} from '../../../../../models/videoGames.model';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +29,7 @@ export class AddGameFormComponent implements OnChanges {
   private dialog = inject(MatDialog);
 
 
-  @Input() gameForm: FormGroup;
+  readonly gameForm = input<FormGroup>(undefined);
   @Output() gameSelected: EventEmitter<void> = new EventEmitter<void>();
   categoryOptions: Array<{ id: string; name: string }> = [];
 
@@ -38,7 +38,7 @@ export class AddGameFormComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.setCategoryOptions(GamesUtils.libraryIdOfGame(this.gameForm.value));
+    this.setCategoryOptions(GamesUtils.libraryIdOfGame(this.gameForm().value));
   }
 
   public setCategoryOptions(category: string) {
@@ -52,7 +52,7 @@ export class AddGameFormComponent implements OnChanges {
         this.categoryOptions = Object.values(Consoles).map(vgCat => {
           return {id: vgCat, name: vgCat};
         });
-        this.gameForm.addControl('type', new FormControl(VideoGameType.GAME));
+        this.gameForm().addControl('type', new FormControl(VideoGameType.GAME));
         break;
       case 'outsideGames':
         this.categoryOptions = [{id: category, name: 'Jeu plein air'}];
@@ -61,7 +61,7 @@ export class AddGameFormComponent implements OnChanges {
   }
 
   search() {
-    const name = this.gameForm.get('name').value;
+    const name = this.gameForm().get('name').value;
     if (name) {
       this.bggService.searchGame(name).pipe(take(1)).subscribe(rep => {
         const ref = this.dialog.open(BggGameSearchModalComponent, {
@@ -69,7 +69,7 @@ export class AddGameFormComponent implements OnChanges {
         });
         ref.afterClosed().pipe(take(1)).subscribe((thing?: Thing) => {
           if (thing) {
-            this.gameForm.get('id').setValue(thing.attributes?.id);
+            this.gameForm().get('id').setValue(thing.attributes?.id);
             this.gameSelected.next();
           }
         });

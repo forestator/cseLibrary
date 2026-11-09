@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {AuthorModalComponent} from 'src/app/bibliotheque/components/modals/author-modal/author-modal.component';
 import {BookModalComponent} from 'src/app/bibliotheque/components/modals/book-modal/book-modal.component';
@@ -24,14 +24,11 @@ export class SettingsAuthorComponent implements OnInit {
    dialog = inject(MatDialog);
    dataService = inject(DataService);
 
-   @Input()
-   author!: Author;
+   readonly author = input.required<Author>();
 
-   @Input()
-   index!: string;
+   readonly index = input.required<string>();
 
-  @Input()
-  biblio!: Biblio;
+  readonly biblio = input.required<Biblio>();
 
    @Output() sendDelete = new EventEmitter<string>();
 
@@ -43,16 +40,17 @@ export class SettingsAuthorComponent implements OnInit {
          AuthorModalComponent, {
          height: '400px',
          width: '1200px',
-         data: { author: this.author }
+         data: { author: this.author() }
       });
 
       dialogRef.afterClosed().subscribe(result => {
          if (result) {
             // update book
-            this.author.by = result.by;
-            this.author.firstName = result.firstName;
-            this.author.lastName = result.lastName;
-            this.author.resume = result.resume;
+            const author = this.author();
+            author.by = result.by;
+            author.firstName = result.firstName;
+            author.lastName = result.lastName;
+            author.resume = result.resume;
             this.dataService.log();
          }
       });
@@ -63,13 +61,13 @@ export class SettingsAuthorComponent implements OnInit {
          BookModalComponent, {
          height: '780px',
          width: '1200px',
-         data: { parent: this.author, book: null, biblio: this.biblio}
+         data: { parent: this.author(), book: null, biblio: this.biblio()}
       });
 
       dialogRef.afterClosed().subscribe(result => {
          console.log(`Dialog result: ${result}`);
          if (result) {
-            this.author.books?.push(result);
+            this.author().books?.push(result);
             this.dataService.log();
          }
       });
@@ -80,13 +78,13 @@ export class SettingsAuthorComponent implements OnInit {
          SeriesModalComponent, {
          height: '780px',
          width: '1200px',
-         data: { parent: this.author, series: null, biblio: this.biblio }
+         data: { parent: this.author(), series: null, biblio: this.biblio() }
       });
 
       dialogRef.afterClosed().subscribe(result => {
          console.log(`Dialog result: ${result}`);
          if (result) {
-            this.author.series?.push(result);
+            this.author().series?.push(result);
             this.dataService.log();
          }
       });
@@ -97,12 +95,12 @@ export class SettingsAuthorComponent implements OnInit {
          DeleteModalComponent, {
          height: '200px',
          width: '600px',
-         data: { id: this.author.id, message: `Voulez vous vraiment supprimer cet auteur: ${this.author.firstName} ${this.author.lastName}` }
+         data: { id: this.author().id, message: `Voulez vous vraiment supprimer cet auteur: ${this.author().firstName} ${this.author().lastName}` }
       });
 
       dialogRef.afterClosed().subscribe(result => {
          if (result) {
-            this.sendDelete.emit(this.author.id);
+            this.sendDelete.emit(this.author().id);
          }
       });
    }

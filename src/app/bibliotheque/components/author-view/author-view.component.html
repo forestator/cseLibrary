@@ -1,23 +1,23 @@
-@if (biblio && category && author) {
+@if (biblio() && category() && author()) {
   <div class="core-page fadein">
     <div class="core-header">
       <div class="core-title">
-        <div class="secondary" (click)="selectLibrary(biblio.library.id)">{{biblio.library.name}}</div>
+        <div class="secondary" (click)="selectLibrary(biblio().library.id)">{{biblio().library.name}}</div>
         <mat-icon>navigate_next</mat-icon>
-        <div class="secondary" (click)="selectCategory(category.id)">{{category.name}}</div>
+        <div class="secondary" (click)="selectCategory(category().id)">{{category().name}}</div>
         <mat-icon>navigate_next</mat-icon>
-        <div class="primary">{{author.lastName}} {{author.firstName}}</div>
+        <div class="primary">{{author().lastName}} {{author().firstName}}</div>
         <div class="counter">{{counter}} livre(s)</div>
       </div>
       <div class="core-resume">
-        {{author.resume}}
+        {{author().resume}}
       </div>
       <div class="books">
         @for (book of books; track book) {
           <div [class]="book.id?'book':'separator'" [title]="book.name">
             @if (book.id) {
               <a [href]="'#'+book.id">
-                <img alt="" class="book-cover" [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
+                <img alt="" class="book-cover" [src]="($safeNavigationMigration(biblio().library?.path) | bookCover: book.cover) | async">
               </a>
             }
             @if (book.id) {
@@ -32,7 +32,7 @@
     <div class="core-body">
       @for (book of books; track book; let index = $index) {
         @if (book.id) {
-          <app-book-row [book]="book" [index]="index" [biblio]="biblio"></app-book-row>
+          <app-book-row [book]="book" [index]="index" [biblio]="biblio()"></app-book-row>
         }
         @if (book.status==='SEPARATOR') {
           <div class="series-separator">

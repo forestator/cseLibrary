@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
 import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import {CseUser} from '../../../../models/users.model';
@@ -17,24 +17,25 @@ import { BadgeComponent } from '../../../../common/components/book-badge/badge.c
 export class LudoTableComponent implements OnInit, OnChanges {
     dialog = inject(MatDialog);
 
-    @Input() games?: Array<Game> | null;
-    @Input() displayedColumns!: Array<string>;
-    @Input() users?: Array<CseUser>;
-    @Input() returnForUser?: CseUser;
-    @Input() filterBy?: string;
+    readonly games = input<Array<Game> | null>(undefined);
+    readonly displayedColumns = input.required<Array<string>>();
+    readonly users = input<Array<CseUser>>(undefined);
+    readonly returnForUser = input<CseUser>(undefined);
+    readonly filterBy = input<string>(undefined);
     dataSource?: MatTableDataSource<Game>;
     @ViewChild(MatSort) sort!: MatSort;
 
     ngOnInit() {
-        if (this.games) {
-            this.setDatasource(this.games);
+        const games = this.games();
+        if (games) {
+            this.setDatasource(games);
         }
     }
 
     private setDatasource(games: Array<Game>) {
-        if (this.filterBy) {
+        if (this.filterBy()) {
             this.dataSource = new MatTableDataSource<Game>(games.filter(game =>
-                game.name.toLowerCase().includes(this.filterBy?.toLowerCase() ?? '')));
+                game.name.toLowerCase().includes(this.filterBy()?.toLowerCase() ?? '')));
         } else {
             this.dataSource = new MatTableDataSource<Game>(games);
         }
@@ -42,13 +43,14 @@ export class LudoTableComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (this.games) this.setDatasource(this.games);
+        const games = this.games();
+        if (games) this.setDatasource(games);
     }
 
 
     // function used and called migclly by table
     sortData(sort: Sort) {
-        let data = this.games.slice();
+        let data = this.games().slice();
         if (!sort.active || sort.direction === '') {
             this.setDatasource(data);
             return;

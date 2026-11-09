@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnChanges, OnInit, SimpleChanges, inject, input } from '@angular/core';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
@@ -18,16 +18,17 @@ export class BoardGameRowComponent implements OnInit, OnChanges {
   private userService = inject(UserService);
 
 
-  @Input() boardGame: BoardGame | null = null;
-  @Input() index!: number;
-  @Input() selectedBoardGameId?: string;
+  readonly boardGame = input<BoardGame | null>(null);
+  readonly index = input.required<number>();
+  readonly selectedBoardGameId = input<string>(undefined);
 
   parity!: boolean;
 
   ngOnInit(): void {
-    this.parity = this.index % 2 === 0;
-    if (this.selectedBoardGameId) {
-      this.toolsService.scrollToId(this.selectedBoardGameId);
+    this.parity = this.index() % 2 === 0;
+    const selectedBoardGameId = this.selectedBoardGameId();
+    if (selectedBoardGameId) {
+      this.toolsService.scrollToId(selectedBoardGameId);
     }
   }
 

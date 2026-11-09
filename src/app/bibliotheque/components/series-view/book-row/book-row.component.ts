@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {Biblio, Book, Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -18,25 +18,22 @@ export class BookRowComponent implements OnInit {
   dataService = inject(DataService);
 
 
-  @Input()
-  book!: Book;
+  readonly book = input.required<Book>();
 
-  @Input()
-  category!: Category;
+  readonly category = input<Category>();
 
-  @Input()
-  index!: number;
+  readonly index = input.required<number>();
 
-  @Input()
-  biblio!: Biblio;
+  readonly biblio = input.required<Biblio>();
 
   parity!: boolean;
   badge!: string;
 
   ngOnInit(): void {
-    this.parity = this.index % 2 === 0;
-    if (this.category) {
-      this.badge = this.category.name === 'Science fiction' ? 'S.F.' : this.category.name;
+    this.parity = this.index() % 2 === 0;
+    const category = this.category();
+    if (category) {
+      this.badge = category.name === 'Science fiction' ? 'S.F.' : category.name;
     }
   }
 }

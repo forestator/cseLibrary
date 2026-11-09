@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {SonoItem} from "../../models/sono.model";
 import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
@@ -15,18 +15,19 @@ export class SonoItemRowComponent implements OnInit {
   toolsService = inject(ToolsService);
 
 
-  @Input() sonoItem!: SonoItem;
-  @Input() index!: number;
-  @Input() selectedSonoItemId?: string;
+  readonly sonoItem = input.required<SonoItem>();
+  readonly index = input.required<number>();
+  readonly selectedSonoItemId = input<string>(undefined);
   parity!: boolean;
 
   readonly defaultImage = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/sonoItems/defaultSonoIItem';
 
   ngOnInit() {
-    this.parity = this.index % 2 === 0;
+    this.parity = this.index() % 2 === 0;
 
-    if (this.selectedSonoItemId) {
-      this.toolsService.scrollToId(this.selectedSonoItemId);
+    const selectedSonoItemId = this.selectedSonoItemId();
+    if (selectedSonoItemId) {
+      this.toolsService.scrollToId(selectedSonoItemId);
     }
   }
 }

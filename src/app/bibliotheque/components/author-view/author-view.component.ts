@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy, inject, input } from '@angular/core';
 import {Author, Biblio, Book, BookStatus, Category, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
@@ -38,14 +38,11 @@ export class AuthorViewComponent implements OnInit {
     year: ''
   }
 
-  @Input()
-  biblio!: Biblio | undefined;
+  readonly biblio = input.required<Biblio | undefined>();
 
-  @Input()
-  category!: Category | undefined;
+  readonly category = input.required<Category | undefined>();
 
-  @Input()
-  author!: Author | undefined;
+  readonly author = input.required<Author | undefined>();
 
   @Output() sendView = new EventEmitter<SelectorView>();
 
@@ -55,13 +52,14 @@ export class AuthorViewComponent implements OnInit {
   ngOnInit(): void {
     this.books = [];
     this.counter = 0;
-    if (this.author?.books?.length) {
-      let filterBook: Array<Book> = this.bookFilter.transform(this.author?.books, this.tools.adminMode);
+    const author = this.author();
+    if (author?.books?.length) {
+      let filterBook: Array<Book> = this.bookFilter.transform(author?.books, this.tools.adminMode);
       this.counter += filterBook.length;
       this.books.push(...filterBook);
     }
-    if (this.author?.series?.length) {
-      this.author?.series?.forEach(series => {
+    if (author?.series?.length) {
+      author?.series?.forEach(series => {
         if (series.books?.length) {
           let filterBook: Array<Book> = this.bookFilter.transform(series.books, this.tools.adminMode);
           this.counter += filterBook.length;

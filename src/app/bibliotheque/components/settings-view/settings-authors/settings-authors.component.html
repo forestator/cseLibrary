@@ -1,10 +1,10 @@
 <div class="authors">
-  @for (author of biblio?.authors; track author; let ai = $index) {
+  @for (author of biblio()?.authors; track author; let ai = $index) {
     <app-settings-author
       (sendDelete)="deleteAuthor($event)"
-      [biblio]="biblio"
+      [biblio]="biblio()"
       [author]="author"
-      [index]="(index+1) + '_' + (ai+1)">
+      [index]="(index()+1) + '_' + (ai+1)">
     </app-settings-author>
   }
 </div>
