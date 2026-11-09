@@ -2,11 +2,11 @@ import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/cor
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatOption} from '@angular/material/autocomplete';
-import {MatFormField, MatInput} from '@angular/material/input';
-import {BadgeComponent} from '../../../common/components/book-badge/badge.component';
+import {MatIcon} from '@angular/material/icon';
 import {BoardGame} from '../../../models/boardGame.model';
 import {Game, LibraryId} from '../../../models/common.model';
 import {NavigationService} from '../../../services/navigation.service';
+import {GameCategoryLabelPipe} from '../../pipes/game-category-label.pipe';
 import {GamesRepository} from '../../services/games.repository';
 
 @Component({
@@ -14,7 +14,7 @@ import {GamesRepository} from '../../services/games.repository';
   templateUrl: './search-in-lib.component.html',
   styleUrl: './search-in-lib.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent],
+  imports: [MatIcon, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, GameCategoryLabelPipe],
 })
 export class SearchInLibComponent {
   private readonly navigationService = inject(NavigationService);
@@ -45,6 +45,8 @@ export class SearchInLibComponent {
     }
   });
 
+  protected readonly hasText = computed(() => !!this.searchValue());
+
   protected readonly filteredOptions = computed(() => {
     const value = this.searchValue();
     const filterValue = (typeof value === 'string' ? value : value?.name ?? '').toLowerCase();
@@ -52,6 +54,10 @@ export class SearchInLibComponent {
   });
 
   protected readonly displayGame = (game?: Game): string => game ? `${game.name}` : '';
+
+  protected clear(): void {
+    this.searchText.setValue('');
+  }
 
   protected goToSelectedItem(event: MatAutocompleteSelectedEvent): void {
     this.navigationService.goToGame(event.option.value as BoardGame);

@@ -1,7 +1,82 @@
-mat-form-field {
+@use '../../../../styles/tokens' as *;
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
   width: 100%;
+  max-width: 420px;
+  min-height: 44px;
+  border: 1px solid $outline;
+  border-radius: $radius-pill;
+  background: $surface-low;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    border-color: $on-surface-muted;
+  }
+
+  &:focus-within {
+    border-color: $accent;
+    box-shadow: 0 0 0 3px $accent-soft;
+  }
 }
 
-.badge {
-  margin-right: 10px;
+.search-icon {
+  flex: none;
+  margin-left: $space-3;
+  color: $on-surface-muted;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 $space-3;
+  border: 0;
+  background: transparent;
+  color: $on-surface;
+  font: inherit;
+  text-overflow: ellipsis;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $on-surface-muted;
+  }
+}
+
+.search-clear {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: $radius-pill;
+  background: transparent;
+  color: $on-surface-muted;
+  cursor: pointer;
+
+  &:hover {
+    color: $on-surface;
+  }
+}
+
+.search-option {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+}
+
+.search-option-category {
+  padding: 1px $space-2;
+  border-radius: $radius-pill;
+  background: $accent-soft;
+  color: $accent-text;
+  font-size: 0.75rem;
+  font-weight: 600;
 }

@@ -1,15 +1,21 @@
-@for (group of groups; track group.type) {
-  <div class="filter-group">
-    <div class="filter-header">
+<p class="filter-title">Filtres</p>
+@for (group of groups(); track group.type) {
+  <div class="filter-group" role="group" [attr.aria-labelledby]="'filter-' + group.type">
+    <p class="filter-header" [id]="'filter-' + group.type">
       <mat-icon aria-hidden="true">{{ group.icon }}</mat-icon>
       {{ group.title }}
-    </div>
-    <div class="number-list">
-      <mat-button-toggle-group [(value)]="group.selected" [aria-label]="group.ariaLabel">
-        @for (option of group.options; track option) {
-          <mat-button-toggle [value]="option" (click)="selectedFilter(group, option)">{{ option }}{{ group.unit }}</mat-button-toggle>
-        }
-      </mat-button-toggle-group>
+    </p>
+    <div class="filter-chips">
+      @for (option of group.options; track option.value) {
+        <button type="button" class="filter-chip" [class.filter-chip-selected]="option.pressed"
+          [attr.aria-pressed]="option.pressed" (click)="toggle(group.type, option.value)">{{ option.label }}</button>
+      }
     </div>
   </div>
+}
+@if (hasFilter()) {
+  <button type="button" class="filter-reset" (click)="reset()">
+    <mat-icon aria-hidden="true">filter_alt_off</mat-icon>
+    Réinitialiser les filtres
+  </button>
 }

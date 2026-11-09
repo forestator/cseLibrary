@@ -1,19 +1,23 @@
-<mat-form-field appearance="fill">
-  <input type="text"
-    placeholder="Search game"
-    id="ludoSearch"
-    matInput
-    aria-label="Rechercher un jeu"
-    [formControl]="searchText"
-    [matAutocomplete]="auto">
+<div class="search" role="search">
+  <label class="visually-hidden" for="ludoSearch">Rechercher un jeu</label>
+  <mat-icon class="search-icon" aria-hidden="true">search</mat-icon>
+  <input class="search-input" type="text" id="ludoSearch" autocomplete="off" placeholder="Rechercher un jeu"
+    [formControl]="searchText" [matAutocomplete]="auto">
+  @if (hasText()) {
+    <button type="button" class="search-clear" aria-label="Effacer la recherche" (click)="clear()">
+      <mat-icon aria-hidden="true">close</mat-icon>
+    </button>
+  }
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
     [displayWith]="displayGame"
     (optionSelected)="goToSelectedItem($event)">
     @for (option of filteredOptions(); track option.category + option.ref) {
       <mat-option [value]="option">
-        <app-badge class="badge" [status]="option.category" />
-        {{ option.name }}
+        <span class="search-option">
+          <span class="search-option-category">{{ option.category | gameCategoryLabel }}</span>
+          {{ option.name }}
+        </span>
       </mat-option>
     }
   </mat-autocomplete>
-</mat-form-field>
+</div>
