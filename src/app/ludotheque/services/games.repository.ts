@@ -1,4 +1,4 @@
-import {Injectable, inject} from '@angular/core';
+import {Injectable, Injector, inject, runInInjectionContext} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {combineLatest, map, Observable, take} from 'rxjs';
 import {Library} from '../../models/author.model';
@@ -25,6 +25,7 @@ const LIBRARY_IDS: ReadonlyArray<LibraryId> = ['boardGames', 'videoGames', 'outs
 @Injectable({providedIn: 'root'})
 export class GamesRepository {
   private db = inject(AngularFireDatabase);
+  private injector = inject(Injector);
 
   /** Live list of the games of a library, newest reference first. */
   watchGames$<Id extends LibraryId>(libraryId: Id): Observable<Array<GameOf<Id>>> {
@@ -44,7 +45,7 @@ export class GamesRepository {
   }
 
   loadLibrary$(libraryId: LibraryId): Observable<Library | null> {
-    return this.db.object<Library>(`ludotheque/${libraryId}/library`).valueChanges().pipe(take(1));
+    return this.object<Library>(`ludotheque/${libraryId}/library`).valueChanges().pipe(take(1));
   }
 
   addGame(game: Game, libraryId?: LibraryId): Promise<void> {
@@ -63,14 +64,19 @@ export class GamesRepository {
     return this.gameObject(game).update({cover: coverUrl});
   }
 
+  /** AngularFire's `object()` injects services: it must also work when called lazily, outside a constructor. */
+  private object<T>(path: string) {
+    return runInInjectionContext(this.injector, () => this.db.object<T>(path));
+  }
+
   private gamesByRef$<Id extends LibraryId>(libraryId: Id): Observable<Record<string, GameOf<Id>> | null> {
-    return this.db.object<BddGame>(`ludotheque/${libraryId}/games`).valueChanges() as
+    return this.object<BddGame>(`ludotheque/${libraryId}/games`).valueChanges() as
       Observable<Record<string, GameOf<Id>> | null>;
   }
 
   private gameObject(game: Game, libraryId?: LibraryId) {
     const resolvedLibraryId = libraryId ?? GamesUtils.libraryIdOfGame(game);
-    return this.db.object<Game>(`ludotheque/${resolvedLibraryId}/games/${game.ref}`);
+    return this.object<Game>(`ludotheque/${resolvedLibraryId}/games/${game.ref}`);
   }
 
   private toSortedList<Id extends LibraryId>(gamesByRef: Record<string, GameOf<Id>> | null): Array<GameOf<Id>> {
