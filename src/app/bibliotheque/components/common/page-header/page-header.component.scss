@@ -39,6 +39,10 @@
   font-weight: 500;
   text-decoration: none;
 
+  @include mobile {
+    min-height: 44px;
+  }
+
   &:hover {
     text-decoration: underline;
   }
