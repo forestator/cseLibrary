@@ -7,15 +7,13 @@ import {AppCommonModule} from "../common/app-common.module";
 
 
 @NgModule({
-  declarations: [
-    NautismeHomeComponent,
-    NautismeItemRowComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    AppCommonModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        AppCommonModule,
+        NautismeHomeComponent,
+        NautismeItemRowComponent
+    ]
 })
 export class NautismeModule {
 }

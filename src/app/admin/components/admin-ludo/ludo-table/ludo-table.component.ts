@@ -1,17 +1,18 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
-import {MatSort, Sort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
+import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
 import {CseUser} from '../../../../models/users.model';
 import {MatDialog} from '@angular/material/dialog';
 import {Game} from '../../../../models/common.model';
 import {BoardGame} from '../../../../models/boardGame.model';
+import { BadgeComponent } from '../../../../common/components/book-badge/badge.component';
 
 @Component({
     selector: 'app-ludo-table',
     templateUrl: './ludo-table.component.html',
     styleUrls: ['./ludo-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
 })
 export class LudoTableComponent implements OnInit, OnChanges {
     @Input() games?: Array<Game> | null;

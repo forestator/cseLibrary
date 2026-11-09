@@ -4,13 +4,17 @@ import {MatDialog} from '@angular/material/dialog';
 import {NautismeDatabaseService} from '../../../nautisme/services/nautisme-database.service';
 import {AddNautismeItemModalComponent} from './add-nautisme-item-modal/add-nautisme-item-modal.component';
 import {EditNautismeItemModalComponent} from './edit-nautisme-item-modal/edit-nautisme-item-modal.component';
+import { MatButton } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { NautismeTableComponent } from './nautisme-table/nautisme-table.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-admin-nautisme',
     templateUrl: './admin-nautisme.component.html',
     styleUrls: ['./admin-nautisme.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatButton, MatDivider, NautismeTableComponent, AsyncPipe]
 })
 export class AdminNautismeComponent {
 

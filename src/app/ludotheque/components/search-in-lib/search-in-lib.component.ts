@@ -1,19 +1,22 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {BoardGame} from '../../../models/boardGame.model';
 import {map, Observable, startWith} from 'rxjs';
-import {FormControl} from '@angular/forms';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
 import {Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {VideoGame} from '../../../models/videoGames.model';
 import {Game} from '../../../models/common.model';
+import { MatFormField, MatInput } from '@angular/material/input';
+import { BadgeComponent } from '../../../common/components/book-badge/badge.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-search-in-lib',
     templateUrl: './search-in-lib.component.html',
     styleUrls: ['./search-in-lib.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, AsyncPipe]
 })
 export class SearchInLibComponent implements OnInit, OnChanges {
 

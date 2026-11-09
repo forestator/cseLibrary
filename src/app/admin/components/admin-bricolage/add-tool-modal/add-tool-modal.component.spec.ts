@@ -8,8 +8,8 @@ describe('AddToolModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddToolModalComponent ]
-    })
+    imports: [AddToolModalComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AddToolModalComponent);

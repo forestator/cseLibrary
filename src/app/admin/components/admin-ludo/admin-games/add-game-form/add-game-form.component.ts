@@ -1,19 +1,28 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {BoardGameCategory, Thing} from '../../../../../models/boardGame.model';
 import {Consoles, VideoGameType} from '../../../../../models/videoGames.model';
-import {FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {GamesUtils} from '../../../../../models/gamesUtils';
 import {BGGService} from '../../../../../ludotheque/services/bgg.service';
 import {take} from 'rxjs';
 import {MatDialog} from '@angular/material/dialog';
 import {BggGameSearchModalComponent} from '../bgg-game-search-modal/bgg-game-search-modal.component';
+import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatIcon } from '@angular/material/icon';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/autocomplete';
+import { BadgeComponent } from '../../../../../common/components/book-badge/badge.component';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { MatDivider } from '@angular/material/divider';
+import { UploadGameComponent } from '../upload-game/upload-game.component';
 
 @Component({
     selector: 'app-add-game-form',
     templateUrl: './add-game-form.component.html',
     styleUrls: ['./add-game-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [ReactiveFormsModule, MatButtonToggleGroup, MatButtonToggle, MatFormField, MatLabel, MatInput, MatIcon, MatSelect, MatOption, BadgeComponent, MatCheckbox, MatDivider, UploadGameComponent]
 })
 export class AddGameFormComponent implements OnChanges {
 

@@ -4,13 +4,15 @@ import {Library} from '../../../models/author.model';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 import {Game} from '../../../models/common.model';
 import {NavigationService} from '../../../services/navigation.service';
+import { GameRowComponent } from './game-row/game-row.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-games-list',
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [GameRowComponent, AsyncPipe]
 })
 export class GameComponent implements OnInit, OnDestroy {
   library$: Observable<Library | null> = this.firebaseDb.outsideGamesLibrary$;

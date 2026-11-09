@@ -1,14 +1,15 @@
 import {Component, Input, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {NautismeItem} from '../../../../nautisme/models/nautisme.model';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
+import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { BadgeComponent } from '../../../../common/components/book-badge/badge.component';
 
 @Component({
     selector: 'app-nautisme-table',
     templateUrl: './nautisme-table.component.html',
     styleUrls: ['./nautisme-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
 })
 export class NautismeTableComponent {
 

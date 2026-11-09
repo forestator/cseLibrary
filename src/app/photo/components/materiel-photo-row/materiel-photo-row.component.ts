@@ -1,13 +1,15 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {MaterielPhotoItem} from '../../models/materiel-photo.model';
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
+import { BadgeComponent } from '../../../common/components/book-badge/badge.component';
 
 @Component({
     selector: 'app-materiel-photo-row',
     templateUrl: './materiel-photo-row.component.html',
     styleUrls: ['./materiel-photo-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgTemplateOutlet, BadgeComponent, AsyncPipe]
 })
 export class MaterielPhotoRowComponent {
   @Input() item!: MaterielPhotoItem;

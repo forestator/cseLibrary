@@ -3,10 +3,7 @@ import {BGGService} from '../../services/bgg.service';
 import {Observable} from 'rxjs';
 import {BoardGame} from '../../../models/boardGame.model';
 
-@Pipe({
-    name: 'boardGameDetails',
-    standalone: false
-})
+@Pipe({ name: 'boardGameDetails' })
 export class BoardGameDetailsPipe implements PipeTransform {
 
   constructor(private bggServ: BGGService) {

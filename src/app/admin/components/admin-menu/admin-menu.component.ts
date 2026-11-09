@@ -4,13 +4,14 @@ import {combineLatest, take} from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../../services/firebase/user.service';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-admin-menu',
     templateUrl: './admin-menu.component.html',
     styleUrls: ['./admin-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatButton]
 })
 export class AdminMenuComponent {
 

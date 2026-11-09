@@ -6,13 +6,14 @@ import {BGGService} from '../../../../../ludotheque/services/bgg.service';
 import {GamesUtils} from '../../../../../models/gamesUtils';
 import {BoardGame} from '../../../../../models/boardGame.model';
 import {take} from 'rxjs';
+import { UploadFormComponent } from '../../../../../common/components/upload-form/upload-form.component';
 
 @Component({
     selector: 'app-upload-game',
     templateUrl: './upload-game.component.html',
     styleUrls: ['./upload-game.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [UploadFormComponent]
 })
 export class UploadGameComponent implements OnChanges {
   @Input() selectedGame?: Game;

@@ -7,13 +7,14 @@ import moment from 'moment';
 import {BiblioUtils} from '../../../bibliotheque/models/biblio-utils';
 import {BricoUtils} from '../../../bricolage/models/brico-utils';
 import {SonoUtils} from '../../../sonotheque/models/sono.utils';
+import { MomentToDatePipe } from '../../pipe/moment-to-date.pipe';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MomentToDatePipe]
 })
 export class HomeComponent {
 

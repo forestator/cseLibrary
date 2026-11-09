@@ -8,8 +8,8 @@ describe('VideoGameConsoleRowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VideoGameConsoleAccessoryRowComponent ]
-    })
+    imports: [VideoGameConsoleAccessoryRowComponent]
+})
     .compileComponents();
   });
 

@@ -2,13 +2,16 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {AuthentificationService} from "../../../services/firebase/authentification.service";
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {NautismeDatabaseService} from "../../services/nautisme-database.service";
+import { NautismeItemRowComponent } from '../nautisme-item-row/nautisme-item-row.component';
+import { RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-nautisme-home',
     templateUrl: './nautisme-home.component.html',
     styleUrls: ['./nautisme-home.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NautismeItemRowComponent, RouterLink, AsyncPipe]
 })
 export class NautismeHomeComponent {
 

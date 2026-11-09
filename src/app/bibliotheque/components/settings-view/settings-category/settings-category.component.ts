@@ -7,13 +7,17 @@ import {DeleteModalComponent} from '../../modals/delete-modal/delete-modal.compo
 import {DataService} from 'src/app/services/biblio/data.service';
 import {AuthorModalComponent} from '../../modals/author-modal/author-modal.component';
 import {BiblioDatabaseService} from '../../../services/biblio-database.service';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
+import { SettingsSeriesComponent } from './settings-series/settings-series.component';
+import { SettingsAuthorComponent } from './settings-author/settings-author.component';
 
 @Component({
     selector: 'app-settings-category',
     templateUrl: './settings-category.component.html',
     styleUrls: ['./settings-category.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, SettingsSeriesComponent, SettingsAuthorComponent]
 })
 export class SettingsCategoryComponent implements OnInit {
 

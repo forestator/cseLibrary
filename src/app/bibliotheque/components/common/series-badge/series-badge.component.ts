@@ -5,8 +5,7 @@ import {Series, SeriesStatus} from 'src/app/models/author.model';
     selector: 'app-series-badge',
     templateUrl: './series-badge.component.html',
     styleUrls: ['./series-badge.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class SeriesBadgeComponent implements OnInit {
 

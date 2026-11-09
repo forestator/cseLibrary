@@ -57,13 +57,6 @@ import {NautismeTableComponent} from './components/admin-nautisme/nautisme-table
 
 
 @NgModule({
-    declarations: [
-        AdminHomeComponent,
-        AdminGamesComponent,
-        LudoTableComponent,
-        AddEmployeeDialogComponent,
-        AdminMenuComponent, AddGameFormComponent, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, ConfirmationModal, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent
-    ],
     exports: [
         AdminMenuComponent,
         ConfirmationModal
@@ -93,6 +86,11 @@ import {NautismeTableComponent} from './components/admin-nautisme/nautisme-table
         MatProgressSpinnerModule,
         MatIconModule,
         NgOptimizedImage,
+        AdminHomeComponent,
+        AdminGamesComponent,
+        LudoTableComponent,
+        AddEmployeeDialogComponent,
+        AdminMenuComponent, AddGameFormComponent, AddGameModalComponent, EditGameModalComponent, AdminBricolageComponent, BricoTableComponent, AddToolModalComponent, EditToolModalComponent, UploadGameComponent, ConfirmationModal, AdminSonothequeComponent, SonoTableComponent, AddSonoItemModalComponent, EditSonoItemModalComponent, BggGameSearchModalComponent, AdminNautismeComponent, AddNautismeItemModalComponent, EditNautismeItemModalComponent, NautismeTableComponent,
     ]
 })
 export class AdminModule {

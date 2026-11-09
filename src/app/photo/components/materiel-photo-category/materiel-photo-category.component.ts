@@ -4,13 +4,15 @@ import {Category} from "../../../models/author.model";
 import {NavigationService} from "../../../services/navigation.service";
 import {MaterielPhotoItem, PhotoCategory} from '../../models/materiel-photo.model';
 import {MaterielPhotoDatabaseService} from '../../services/materiel-photo-database.service';
+import { MaterielPhotoRowComponent } from '../materiel-photo-row/materiel-photo-row.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-materiel-photo-category',
     templateUrl: './materiel-photo-category.component.html',
     styleUrls: ['./materiel-photo-category.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MaterielPhotoRowComponent, AsyncPipe]
 })
 export class MaterielPhotoCategoryComponent implements OnInit, OnDestroy {
   category$?: Observable<Category>;

@@ -8,8 +8,8 @@ describe('EditNautismeItemModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EditNautismeItemModalComponent]
-    });
+    imports: [EditNautismeItemModalComponent]
+});
     fixture = TestBed.createComponent(EditNautismeItemModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

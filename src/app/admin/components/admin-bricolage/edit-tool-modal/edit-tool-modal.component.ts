@@ -1,17 +1,21 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable} from 'rxjs';
-import {FormControl} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
 import {Tool} from '../../../../bricolage/models/bricolage.model';
 import {AddToolModalComponent} from "../add-tool-modal/add-tool-modal.component";
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-edit-tool-modal',
     templateUrl: './edit-tool-modal.component.html',
     styleUrls: ['./edit-tool-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, MatDialogActions, MatButton, AsyncPipe]
 })
 export class EditToolModalComponent {
 

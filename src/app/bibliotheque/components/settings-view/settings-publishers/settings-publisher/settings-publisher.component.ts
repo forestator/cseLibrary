@@ -7,13 +7,15 @@ import {
 import {Publisher} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
     selector: 'app-settings-publisher',
     templateUrl: './settings-publisher.component.html',
     styleUrls: ['./settings-publisher.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon]
 })
 export class SettingsPublisherComponent implements OnInit {
    @Input()

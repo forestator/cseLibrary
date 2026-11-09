@@ -1,12 +1,13 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {FileUpload} from '../../../models/fileUpload.model';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-upload-form',
     templateUrl: './upload-form.component.html',
     styleUrls: ['./upload-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatButton]
 })
 export class UploadFormComponent implements OnChanges {
   @Input() defaultImage?: string;

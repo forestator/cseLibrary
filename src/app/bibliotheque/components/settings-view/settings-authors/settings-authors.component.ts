@@ -1,13 +1,14 @@
 import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy} from '@angular/core';
 import {Biblio} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
+import { SettingsAuthorComponent } from '../settings-category/settings-author/settings-author.component';
 
 @Component({
     selector: 'app-settings-authors',
     templateUrl: './settings-authors.component.html',
     styleUrls: ['./settings-authors.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [SettingsAuthorComponent]
 })
 export class SettingsAuthorsComponent implements OnInit {
 

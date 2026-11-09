@@ -5,13 +5,17 @@ import {Biblio, Book} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {BookModalComponent} from '../../../../modals/book-modal/book-modal.component';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { BadgeComponent } from '../../../../../../common/components/book-badge/badge.component';
+import { MatIcon } from '@angular/material/icon';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-settings-book',
     templateUrl: './settings-book.component.html',
     styleUrls: ['./settings-book.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, BadgeComponent, MatIcon, AsyncPipe]
 })
 export class SettingsBookComponent implements OnInit {
 

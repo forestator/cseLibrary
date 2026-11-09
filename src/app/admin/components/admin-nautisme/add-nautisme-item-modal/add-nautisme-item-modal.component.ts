@@ -1,19 +1,25 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
 import {FileUpload} from '../../../../models/fileUpload.model';
 import {NautismeDatabaseService} from '../../../../nautisme/services/nautisme-database.service';
 import {NautismeItem, NautismeStatus} from '../../../../nautisme/models/nautisme.model';
 import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.component';
 import {take} from 'rxjs';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
+import { MatDivider } from '@angular/material/divider';
+import { UploadFormComponent } from '../../../../common/components/upload-form/upload-form.component';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-add-nautisme-item-modal',
     templateUrl: './add-nautisme-item-modal.component.html',
     styleUrls: ['./add-nautisme-item-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatButtonToggleGroup, MatButtonToggle, MatDivider, UploadFormComponent, MatDialogActions, MatButton]
 })
 export class AddNautismeItemModalComponent {
 

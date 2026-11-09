@@ -1,17 +1,22 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {FormControl} from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {Game} from '../../../../../models/common.model';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
 import {map, Observable} from 'rxjs';
 import {AddGameModalComponent} from '../add-game-modal/add-game-modal.component';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { BadgeComponent } from '../../../../../common/components/book-badge/badge.component';
+import { MatButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-edit-game-modal',
     templateUrl: './edit-game-modal.component.html',
     styleUrls: ['./edit-game-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, BadgeComponent, MatDialogActions, MatButton, AsyncPipe]
 })
 export class EditGameModalComponent {
 

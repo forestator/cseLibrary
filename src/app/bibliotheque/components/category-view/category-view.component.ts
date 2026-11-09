@@ -3,16 +3,23 @@ import {Author, Biblio, Category, SelectorView, ViewBy} from 'src/app/models/aut
 import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {DataService} from '../../../services/biblio/data.service';
 import {map, mergeMap, Observable} from 'rxjs';
-import {Params} from '@angular/router';
+import { Params, RouterLink } from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
+import { MatIcon } from '@angular/material/icon';
+import { AlphabetComponent } from '../common/alphabet/alphabet.component';
+import { SeriesRowComponent } from './series-row/series-row.component';
+import { AuthorRowComponent } from '../authors-view/author-row/author-row.component';
+import { AsyncPipe } from '@angular/common';
+import { BookFilterPipe } from '../../../pipes/book-filter.pipe';
+import { SeriesFilterPipe } from '../../../pipes/series-filter.pipe';
 
 @Component({
     selector: 'app-category-view',
     templateUrl: './category-view.component.html',
     styleUrls: ['./category-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatIcon, AlphabetComponent, RouterLink, SeriesRowComponent, AuthorRowComponent, AsyncPipe, BookFilterPipe, SeriesFilterPipe]
 })
 export class CategoryViewComponent implements OnInit {
 

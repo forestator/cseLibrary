@@ -6,13 +6,18 @@ import {SeriesModalComponent} from '../../../modals/series-modal/series-modal.co
 import {BookModalComponent} from '../../../modals/book-modal/book-modal.component';
 import {DeleteModalComponent} from 'src/app/bibliotheque/components/modals/delete-modal/delete-modal.component';
 import {DataService} from 'src/app/services/biblio/data.service';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
+import { SeriesBadgeComponent } from '../../../common/series-badge/series-badge.component';
+import { SettingsBookComponent } from './settings-book/settings-book.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-settings-series',
     templateUrl: './settings-series.component.html',
     styleUrls: ['./settings-series.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, SeriesBadgeComponent, SettingsBookComponent, AsyncPipe]
 })
 export class SettingsSeriesComponent implements OnInit {
 

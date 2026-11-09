@@ -8,8 +8,8 @@ describe('AdminBricolageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminBricolageComponent ]
-    })
+    imports: [AdminBricolageComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AdminBricolageComponent);

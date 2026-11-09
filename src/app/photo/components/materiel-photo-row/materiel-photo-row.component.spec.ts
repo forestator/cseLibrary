@@ -8,8 +8,8 @@ describe('NautismeItemRowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MaterielPhotoRowComponent ]
-    })
+    imports: [MaterielPhotoRowComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(MaterielPhotoRowComponent);

@@ -8,8 +8,8 @@ describe('LudoBorrowTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LudoTableComponent ]
-    })
+    imports: [LudoTableComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LudoTableComponent);

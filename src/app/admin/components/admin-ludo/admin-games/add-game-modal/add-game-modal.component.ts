@@ -1,5 +1,5 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {Game} from '../../../../../models/common.model';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {BoardGame} from '../../../../../models/boardGame.model';
@@ -7,13 +7,17 @@ import {OpenAiService} from '../../../../../services/open-ai.service';
 import {BGGService} from '../../../../../ludotheque/services/bgg.service';
 import {GamesUtils} from '../../../../../models/gamesUtils';
 import {FirebaseDatabaseService} from '../../../../../services/firebase/firebase-database.service';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { AddGameFormComponent } from '../add-game-form/add-game-form.component';
+import { MatButton } from '@angular/material/button';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
     selector: 'app-add-game-modal',
     templateUrl: './add-game-modal.component.html',
     styleUrls: ['./add-game-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, AddGameFormComponent, MatDialogActions, MatButton, MatProgressSpinner]
 })
 export class AddGameModalComponent {
   gameForm: FormGroup;

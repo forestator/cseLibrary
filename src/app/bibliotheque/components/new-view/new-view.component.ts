@@ -5,13 +5,16 @@ import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
+import { MatIcon } from '@angular/material/icon';
+import { BookRowComponent } from '../series-view/book-row/book-row.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-new-view',
     templateUrl: './new-view.component.html',
     styleUrls: ['./new-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatIcon, BookRowComponent, AsyncPipe]
 })
 export class NewViewComponent implements OnInit {
   newBooks$?: Observable<{ biblio: Biblio; books: BookPath[]; bookInProject: BookPath[] }[]>;

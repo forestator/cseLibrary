@@ -8,8 +8,8 @@ describe('VideoGamesToFilterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VideoGamesToFilterComponent ]
-    })
+    imports: [VideoGamesToFilterComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(VideoGamesToFilterComponent);

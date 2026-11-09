@@ -2,13 +2,15 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {BricolageDatabaseService} from '../../services/bricolage-database.service';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
+import { RouterLinkActive, RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-bricolage-home',
     templateUrl: './bricolage-home.component.html',
     styleUrls: ['./bricolage-home.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RouterLinkActive, RouterLink, AsyncPipe]
 })
 export class BricolageHomeComponent {
   constructor(public bricoDb: BricolageDatabaseService,

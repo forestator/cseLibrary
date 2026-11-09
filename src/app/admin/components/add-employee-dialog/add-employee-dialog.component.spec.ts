@@ -8,8 +8,8 @@ describe('AddEmployeeDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddEmployeeDialogComponent ]
-    })
+    imports: [AddEmployeeDialogComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AddEmployeeDialogComponent);

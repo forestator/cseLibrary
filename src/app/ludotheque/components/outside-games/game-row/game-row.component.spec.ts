@@ -8,8 +8,8 @@ describe('OutsideGameRowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GameRowComponent ]
-    })
+    imports: [GameRowComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(GameRowComponent);

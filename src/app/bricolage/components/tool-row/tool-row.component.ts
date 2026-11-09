@@ -1,13 +1,15 @@
 import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {Tool} from '../../models/bricolage.model';
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
+import { BadgeComponent } from '../../../common/components/book-badge/badge.component';
 
 @Component({
     selector: 'app-tool-row',
     templateUrl: './tool-row.component.html',
     styleUrls: ['./tool-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgTemplateOutlet, BadgeComponent, AsyncPipe]
 })
 export class ToolRowComponent implements OnInit {
 

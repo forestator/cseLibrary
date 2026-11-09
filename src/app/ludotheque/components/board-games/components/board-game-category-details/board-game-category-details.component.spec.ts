@@ -8,8 +8,8 @@ describe('BoardGameCategoryDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardGameCategoryDetailsComponent ]
-    })
+    imports: [BoardGameCategoryDetailsComponent]
+})
     .compileComponents();
   });
 

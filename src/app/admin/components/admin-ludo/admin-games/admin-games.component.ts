@@ -4,13 +4,18 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddGameModalComponent} from './add-game-modal/add-game-modal.component';
 import {combineLatest, take} from 'rxjs';
 import {EditGameModalComponent} from './edit-game-modal/edit-game-modal.component';
+import { MatButton } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { LudoTableComponent } from '../ludo-table/ludo-table.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-admin-games',
     templateUrl: './admin-games.component.html',
     styleUrls: ['./admin-games.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatButton, MatDivider, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, LudoTableComponent, AsyncPipe]
 })
 export class AdminGamesComponent {
     columnsBoardGames = ['category', 'name', 'poids', 'ref'];

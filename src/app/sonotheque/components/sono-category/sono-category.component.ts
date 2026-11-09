@@ -4,13 +4,15 @@ import {Category} from "../../../models/author.model";
 import {NavigationService} from "../../../services/navigation.service";
 import {SonoCategory, SonoItem} from "../../models/sono.model";
 import {SonoDatabaseService} from "../../services/sono-database.service";
+import { SonoItemRowComponent } from '../sono-item-row/sono-item-row.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-sono-category',
     templateUrl: './sono-category.component.html',
     styleUrls: ['./sono-category.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [SonoItemRowComponent, AsyncPipe]
 })
 export class SonoCategoryComponent implements OnInit, OnDestroy {
   category$?: Observable<Category>;

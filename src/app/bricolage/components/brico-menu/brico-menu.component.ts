@@ -1,16 +1,18 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import {map, Observable, startWith} from 'rxjs';
 import {Tool} from '../../models/bricolage.model';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
 import {NavigationService} from '../../../services/navigation.service';
+import { MatFormField, MatInput } from '@angular/material/input';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-brico-menu',
     templateUrl: './brico-menu.component.html',
     styleUrls: ['./brico-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatFormField, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, AsyncPipe]
 })
 export class BricoMenuComponent {
   @Input() allTools: Array<Tool>;

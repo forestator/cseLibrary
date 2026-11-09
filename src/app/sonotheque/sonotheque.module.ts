@@ -8,15 +8,13 @@ import {AppCommonModule} from "../common/app-common.module";
 
 
 @NgModule({
-  declarations: [
-    SonoHomeComponent,
-    SonoCategoryComponent,
-    SonoItemRowComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    AppCommonModule,
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        AppCommonModule,
+        SonoHomeComponent,
+        SonoCategoryComponent,
+        SonoItemRowComponent,
+    ]
 })
 export class SonothequeModule { }

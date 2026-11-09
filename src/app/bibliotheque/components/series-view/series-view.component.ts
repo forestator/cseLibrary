@@ -6,13 +6,20 @@ import {map, mergeMap, Observable} from 'rxjs';
 import {Params, Router} from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
+import { MatIcon } from '@angular/material/icon';
+import { SeriesBadgeComponent } from '../common/series-badge/series-badge.component';
+import { BadgeComponent } from '../../../common/components/book-badge/badge.component';
+import { BookRowComponent } from './book-row/book-row.component';
+import { AsyncPipe } from '@angular/common';
+import { BookFilterPipe } from '../../../pipes/book-filter.pipe';
+import { BookCoverPipe } from '../../pipes/book-cover.pipe';
 
 @Component({
     selector: 'app-series-view',
     templateUrl: './series-view.component.html',
     styleUrls: ['./series-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatIcon, SeriesBadgeComponent, BadgeComponent, BookRowComponent, AsyncPipe, BookFilterPipe, BookCoverPipe]
 })
 export class SeriesViewComponent implements OnInit {
 

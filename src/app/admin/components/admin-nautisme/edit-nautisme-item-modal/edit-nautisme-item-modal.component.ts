@@ -1,17 +1,21 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable} from 'rxjs';
-import {FormControl} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import {MatAutocompleteSelectedEvent} from '@angular/material/autocomplete';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from '@angular/material/autocomplete';
 import {NautismeItem} from '../../../../nautisme/models/nautisme.model';
 import {AddNautismeItemModalComponent} from '../add-nautisme-item-modal/add-nautisme-item-modal.component';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-edit-nautisme-item-modal',
     templateUrl: './edit-nautisme-item-modal.component.html',
     styleUrls: ['./edit-nautisme-item-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, MatDialogActions, MatButton, AsyncPipe]
 })
 export class EditNautismeItemModalComponent {
   filteredOptions$: Observable<Array<NautismeItem>>;

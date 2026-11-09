@@ -8,8 +8,8 @@ describe('BggGameSearchModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BggGameSearchModalComponent ]
-    })
+    imports: [BggGameSearchModalComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(BggGameSearchModalComponent);

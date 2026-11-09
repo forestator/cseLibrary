@@ -1,13 +1,15 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
 import {ToolsService} from "../../../services/biblio/tools.service";
 import {NautismeItem} from "../../models/nautisme.model";
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
+import { BadgeComponent } from '../../../common/components/book-badge/badge.component';
 
 @Component({
     selector: 'app-nautisme-item-row',
     templateUrl: './nautisme-item-row.component.html',
     styleUrls: ['./nautisme-item-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgTemplateOutlet, BadgeComponent, AsyncPipe]
 })
 export class NautismeItemRowComponent {
   @Input() item!: NautismeItem;

@@ -4,8 +4,7 @@ import {Component, EventEmitter, OnInit, Output, ChangeDetectionStrategy} from '
     selector: 'app-alphabet',
     templateUrl: './alphabet.component.html',
     styleUrls: ['./alphabet.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class AlphabetComponent implements OnInit {
 

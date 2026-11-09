@@ -1,13 +1,15 @@
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {FilterBoardGamesService} from '../../../../services/filter-board-games.service';
 import {AdvancedBoardGameFilter, BoardGameFilterType} from '../../../../../models/boardGame.model';
+import { MatIcon } from '@angular/material/icon';
+import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
 
 @Component({
     selector: 'app-filter-board-games',
     templateUrl: './filter-board-games.component.html',
     styleUrls: ['./filter-board-games.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatIcon, MatButtonToggleGroup, MatButtonToggle]
 })
 export class FilterBoardGamesComponent {
   numberOfPlayers: Array<string> = ['1', '2', '3', '4', '5', '6', '7', '8', '8+'];

@@ -1,19 +1,28 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators, ReactiveFormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {BricoCategories, Tool, ToolStatus} from '../../../../bricolage/models/bricolage.model';
 import {BricolageDatabaseService} from '../../../../bricolage/services/bricolage-database.service';
 import {FileUpload} from "../../../../models/fileUpload.model";
 import {StorageUploadService} from '../../../../services/firebase/storage-upload.service';
 import {ConfirmationModal} from '../../confirmation-modal/confirmation-modal.component';
 import {take} from 'rxjs';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatButtonToggleGroup, MatButtonToggle } from '@angular/material/button-toggle';
+import { MatDivider } from '@angular/material/divider';
+import { UploadFormComponent } from '../../../../common/components/upload-form/upload-form.component';
+import { MatButton } from '@angular/material/button';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-add-tool-modal',
     templateUrl: './add-tool-modal.component.html',
     styleUrls: ['./add-tool-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, ReactiveFormsModule, MatFormField, MatLabel, MatInput, MatSelect, MatOption, MatButtonToggleGroup, MatButtonToggle, MatDivider, UploadFormComponent, MatDialogActions, MatButton, TitleCasePipe]
 })
 export class AddToolModalComponent {
 

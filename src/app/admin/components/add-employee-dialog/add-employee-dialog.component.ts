@@ -1,6 +1,9 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 interface CseUserForm {
   firstName: FormControl<string>;
@@ -13,7 +16,7 @@ interface CseUserForm {
     templateUrl: './add-employee-dialog.component.html',
     styleUrls: ['./add-employee-dialog.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, ReactiveFormsModule, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, MatDialogActions, MatButton, MatDialogClose]
 })
 export class AddEmployeeDialogComponent {
   userFormGroup: FormGroup<CseUserForm>;

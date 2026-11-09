@@ -5,13 +5,18 @@ import {BricolageDatabaseService} from '../../../bricolage/services/bricolage-da
 import {MatDialog} from '@angular/material/dialog';
 import {AddToolModalComponent} from './add-tool-modal/add-tool-modal.component';
 import {EditToolModalComponent} from './edit-tool-modal/edit-tool-modal.component';
+import { MatButton } from '@angular/material/button';
+import { MatDivider } from '@angular/material/divider';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { BricoTableComponent } from './brico-table/brico-table.component';
+import { AsyncPipe, TitleCasePipe } from '@angular/common';
 
 @Component({
     selector: 'app-admin-bricolage',
     templateUrl: './admin-bricolage.component.html',
     styleUrls: ['./admin-bricolage.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatButton, MatDivider, MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, BricoTableComponent, AsyncPipe, TitleCasePipe]
 })
 export class AdminBricolageComponent {
   bricoCategories = Object.values(BricoCategories);

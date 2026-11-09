@@ -2,13 +2,18 @@ import {Component, EventEmitter, Input, OnInit, Output, ChangeDetectionStrategy}
 import {Author, Biblio, Book, BookStatus, Category, SelectorView, ViewBy, ViewMode} from 'src/app/models/author.model';
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
+import { MatIcon } from '@angular/material/icon';
+import { BadgeComponent } from '../../../common/components/book-badge/badge.component';
+import { BookRowComponent } from '../series-view/book-row/book-row.component';
+import { AsyncPipe } from '@angular/common';
+import { BookCoverPipe } from '../../pipes/book-cover.pipe';
 
 @Component({
     selector: 'app-author-view',
     templateUrl: './author-view.component.html',
     styleUrls: ['./author-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatIcon, BadgeComponent, BookRowComponent, AsyncPipe, BookCoverPipe]
 })
 export class AuthorViewComponent implements OnInit {
   private BOOK_SEPARATOR: Book = {

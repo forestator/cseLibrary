@@ -1,13 +1,18 @@
 import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {SearchBookResult} from 'src/app/models/author.model';
+import { MatIcon } from '@angular/material/icon';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatCheckbox } from '@angular/material/checkbox';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-search-modal',
     templateUrl: './search-modal.component.html',
     styleUrls: ['./search-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, MatCheckbox, ReactiveFormsModule, FormsModule, MatDialogActions, MatButton]
 })
 export class SearchModalComponent implements OnInit {
 

@@ -8,8 +8,8 @@ describe('NautismeTableComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NautismeTableComponent]
-    });
+    imports: [NautismeTableComponent]
+});
     fixture = TestBed.createComponent(NautismeTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

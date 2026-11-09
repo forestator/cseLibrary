@@ -7,8 +7,7 @@ import {Consoles} from '../../../models/videoGames.model';
     selector: 'app-badge',
     templateUrl: './badge.component.html',
     styleUrls: ['./badge.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    changeDetection: ChangeDetectionStrategy.Eager
 })
 export class BadgeComponent implements OnInit, OnChanges {
 

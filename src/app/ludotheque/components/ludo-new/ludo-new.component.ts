@@ -4,13 +4,17 @@ import {BoardGame} from '../../../models/boardGame.model';
 import {VideoGame} from '../../../models/videoGames.model';
 import {map, Observable} from 'rxjs';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import { BoardGameCategoryDetailsComponent } from '../board-games/components/board-game-category-details/board-game-category-details.component';
+import { VideoGamesConsoleDetailsComponent } from '../video-games/video-games-console-details/video-games-console-details.component';
+import { GameRowComponent } from '../outside-games/game-row/game-row.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-ludo-new',
     templateUrl: './ludo-new.component.html',
     styleUrls: ['./ludo-new.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [BoardGameCategoryDetailsComponent, VideoGamesConsoleDetailsComponent, GameRowComponent, AsyncPipe]
 })
 export class LudoNewComponent implements OnInit {
   videoGames$: Observable<Array<VideoGame>>;

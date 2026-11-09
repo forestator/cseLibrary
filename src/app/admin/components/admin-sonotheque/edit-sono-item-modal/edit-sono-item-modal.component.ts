@@ -1,17 +1,21 @@
 import {Component, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {map, Observable} from "rxjs";
-import {FormControl} from "@angular/forms";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import { FormControl, ReactiveFormsModule } from "@angular/forms";
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from "@angular/material/dialog";
+import { MatAutocompleteSelectedEvent, MatAutocompleteTrigger, MatAutocomplete, MatOption } from "@angular/material/autocomplete";
 import {AddSonoItemModalComponent} from "../add-sono-item-modal/add-sono-item-modal.component";
 import {SonoItem} from "../../../../sonotheque/models/sono.model";
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-edit-sono-item-modal',
     templateUrl: './edit-sono-item-modal.component.html',
     styleUrls: ['./edit-sono-item-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatFormField, MatLabel, MatInput, ReactiveFormsModule, MatAutocompleteTrigger, MatAutocomplete, MatOption, MatDialogActions, MatButton, AsyncPipe]
 })
 export class EditSonoItemModalComponent {
   filteredOptions$: Observable<Array<SonoItem>>;

@@ -13,27 +13,25 @@ import {UploadFormComponent} from './components/upload-form/upload-form.componen
 import {MomentToDatePipe} from './pipe/moment-to-date.pipe';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    BadgeComponent,
-    UploadFormComponent,
-    MomentToDatePipe
-  ],
-  imports: [
-    CommonModule,
-    MatAutocompleteModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatMenuModule,
-    RouterModule,
-    MatIconModule
-  ],
-  exports: [
-    HomeComponent,
-    BadgeComponent,
-    UploadFormComponent,
-  ]
+    imports: [
+        CommonModule,
+        MatAutocompleteModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatButtonModule,
+        MatMenuModule,
+        RouterModule,
+        MatIconModule,
+        HomeComponent,
+        BadgeComponent,
+        UploadFormComponent,
+        MomentToDatePipe
+    ],
+    exports: [
+        HomeComponent,
+        BadgeComponent,
+        UploadFormComponent,
+    ]
 })
 export class AppCommonModule {
 }

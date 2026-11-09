@@ -3,13 +3,14 @@ import {VideoGame} from '../../../../models/videoGames.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
 import {UserService} from '../../../../services/firebase/user.service';
 import {MatDialog} from '@angular/material/dialog';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
     selector: 'app-video-game-row',
     templateUrl: './video-game-row.component.html',
     styleUrls: ['./video-game-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [NgTemplateOutlet]
 })
 export class VideoGameRowComponent implements OnInit, OnChanges {
 

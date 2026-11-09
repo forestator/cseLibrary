@@ -8,8 +8,8 @@ describe('AddNautismeItemModalComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AddNautismeItemModalComponent]
-    });
+    imports: [AddNautismeItemModalComponent]
+});
     fixture = TestBed.createComponent(AddNautismeItemModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,14 +1,15 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ChangeDetectionStrategy} from '@angular/core';
 import {Tool} from '../../../../bricolage/models/bricolage.model';
-import {MatTableDataSource} from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
+import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { MatSort, MatSortHeader } from '@angular/material/sort';
+import { BadgeComponent } from '../../../../common/components/book-badge/badge.component';
 
 @Component({
     selector: 'app-brico-table',
     templateUrl: './brico-table.component.html',
     styleUrls: ['./brico-table.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
 })
 export class BricoTableComponent implements OnInit, OnChanges {
   @Input() tools: Array<Tool>;

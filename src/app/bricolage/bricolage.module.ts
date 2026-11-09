@@ -13,24 +13,22 @@ import {MatOptionModule} from '@angular/material/core';
 import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    BricolageHomeComponent,
-    BricoMenuComponent,
-    BricoCategoryComponent,
-    ToolRowComponent,
-  ],
-  exports: [
-    BricoMenuComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    AppCommonModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatOptionModule,
-    ReactiveFormsModule
-  ]
+    exports: [
+        BricoMenuComponent
+    ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        AppCommonModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatOptionModule,
+        ReactiveFormsModule,
+        BricolageHomeComponent,
+        BricoMenuComponent,
+        BricoCategoryComponent,
+        ToolRowComponent
+    ]
 })
 export class BricolageModule { }

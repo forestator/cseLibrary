@@ -9,13 +9,18 @@ import {NavigationService} from '../../../services/navigation.service';
 import {mergeMap, take} from 'rxjs';
 import {Params} from '@angular/router';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
+import { SettingsCategoryComponent } from './settings-category/settings-category.component';
+import { SettingsAuthorsComponent } from './settings-authors/settings-authors.component';
+import { SettingsPublishersComponent } from './settings-publishers/settings-publishers.component';
 
 @Component({
     selector: 'app-settings-view',
     templateUrl: './settings-view.component.html',
     styleUrls: ['./settings-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, SettingsCategoryComponent, SettingsAuthorsComponent, SettingsPublishersComponent]
 })
 export class SettingsViewComponent implements OnInit {
 

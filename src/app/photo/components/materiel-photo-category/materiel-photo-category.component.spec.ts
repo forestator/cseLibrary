@@ -8,8 +8,8 @@ describe('SonoCategoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MaterielPhotoCategoryComponent ]
-    })
+    imports: [MaterielPhotoCategoryComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(MaterielPhotoCategoryComponent);

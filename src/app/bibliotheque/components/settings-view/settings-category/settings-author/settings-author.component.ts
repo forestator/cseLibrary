@@ -7,13 +7,17 @@ import {SeriesModalComponent} from 'src/app/bibliotheque/components/modals/serie
 import {Author, Biblio} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
+import { MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatIcon } from '@angular/material/icon';
+import { SettingsBookComponent } from '../settings-series/settings-book/settings-book.component';
+import { SettingsSeriesComponent } from '../settings-series/settings-series.component';
 
 @Component({
     selector: 'app-settings-author',
     templateUrl: './settings-author.component.html',
     styleUrls: ['./settings-author.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatIcon, SettingsBookComponent, SettingsSeriesComponent]
 })
 export class SettingsAuthorComponent implements OnInit {
    @Input()

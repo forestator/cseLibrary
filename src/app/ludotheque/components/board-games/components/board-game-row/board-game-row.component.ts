@@ -3,13 +3,14 @@ import {BoardGame} from '../../../../../models/boardGame.model';
 import {ToolsService} from '../../../../../services/biblio/tools.service';
 import {MatDialog} from '@angular/material/dialog';
 import {UserService} from '../../../../../services/firebase/user.service';
+import { NgTemplateOutlet, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-board-game-row',
     templateUrl: './board-game-row.component.html',
     styleUrls: ['./board-game-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [NgTemplateOutlet, AsyncPipe]
 })
 export class BoardGameRowComponent implements OnInit, OnChanges {
 

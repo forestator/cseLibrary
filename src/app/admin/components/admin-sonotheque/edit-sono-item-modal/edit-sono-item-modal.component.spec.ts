@@ -8,8 +8,8 @@ describe('EditSonoItemModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditSonoItemModalComponent ]
-    })
+    imports: [EditSonoItemModalComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(EditSonoItemModalComponent);

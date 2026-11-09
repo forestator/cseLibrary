@@ -1,10 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Book, BookStatus, SeriesStatus } from '../models/author.model';
 
-@Pipe({
-    name: 'bookFilter',
-    standalone: false
-})
+@Pipe({ name: 'bookFilter' })
 export class BookFilterPipe implements PipeTransform {
 
   transform(books: Array<Book> | undefined, isAdmin: boolean): Array<Book> {

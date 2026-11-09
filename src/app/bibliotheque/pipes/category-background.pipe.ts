@@ -2,10 +2,7 @@ import {Pipe, PipeTransform, inject} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {CloudinaryService} from '../../services/cloudinary.service';
 
-@Pipe({
-    name: 'categoryBackground',
-    standalone: false
-})
+@Pipe({ name: 'categoryBackground' })
 export class CategoryBackgroundPipe implements PipeTransform {
   private readonly cloudinary = inject(CloudinaryService);
 

@@ -2,13 +2,16 @@ import {Component, Input, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Biblio, Book, Category} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
+import { BadgeComponent } from '../../../../common/components/book-badge/badge.component';
+import { AsyncPipe } from '@angular/common';
+import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
 
 @Component({
     selector: 'app-book-row',
     templateUrl: './book-row.component.html',
     styleUrls: ['./book-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [BadgeComponent, AsyncPipe, BookCoverPipe]
 })
 export class BookRowComponent implements OnInit {
 

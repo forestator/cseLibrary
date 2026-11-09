@@ -3,10 +3,7 @@ import {map, Observable} from 'rxjs';
 import {FilterBoardGamesService} from '../services/filter-board-games.service';
 import {AdvancedBoardGameFilter, BoardGame} from '../../models/boardGame.model';
 
-@Pipe({
-    name: 'advancedBoardGameFilter',
-    standalone: false
-})
+@Pipe({ name: 'advancedBoardGameFilter' })
 export class AdvancedBoardGameFilterPipe implements PipeTransform {
 
   constructor(private filterBoardGamesService: FilterBoardGamesService) {

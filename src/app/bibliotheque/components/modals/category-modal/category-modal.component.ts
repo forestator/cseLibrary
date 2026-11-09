@@ -1,17 +1,21 @@
 import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {UntypedFormControl} from '@angular/forms';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { UntypedFormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {Category, Library} from 'src/app/models/author.model';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {BasicModal} from '../basic-modal';
 import {v4 as uuidv4} from 'uuid';
+import { MatIcon } from '@angular/material/icon';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
 
 @Component({
     selector: 'app-category-modal',
     templateUrl: './category-modal.component.html',
     styleUrls: ['./category-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, ReactiveFormsModule, FormsModule, MatFormField, MatLabel, MatInput, MatDialogActions, MatButton]
 })
 export class CategoryModalComponent extends BasicModal implements OnInit {
 

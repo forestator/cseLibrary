@@ -1,17 +1,19 @@
 import {Component, OnInit, ChangeDetectionStrategy} from '@angular/core';
 import {Library} from 'src/app/models/author.model';
 import {map, mergeMap, Observable} from 'rxjs';
-import {Params} from '@angular/router';
+import { Params, RouterLink } from '@angular/router';
 import {NavigationService} from '../../../services/navigation.service';
 import {BiblioDatabaseService} from '../../services/biblio-database.service';
 import {ToolsService} from '../../../services/biblio/tools.service';
+import { AsyncPipe } from '@angular/common';
+import { CategoryBackgroundPipe } from '../../pipes/category-background.pipe';
 
 @Component({
     selector: 'app-library-view',
     templateUrl: './library-view.component.html',
     styleUrls: ['./library-view.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RouterLink, AsyncPipe, CategoryBackgroundPipe]
 })
 export class LibraryViewComponent implements OnInit {
 

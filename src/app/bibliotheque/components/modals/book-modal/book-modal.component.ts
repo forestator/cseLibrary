@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit, ChangeDetectionStrategy} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
 import {
   Author,
   Biblio,
@@ -14,17 +14,25 @@ import {
 import {GoogleBookService} from 'src/app/services/biblio/google-book.service';
 import {map, take} from 'rxjs';
 import {SearchModalComponent} from '../search-modal/search-modal.component';
-import {UntypedFormControl} from '@angular/forms';
+import { UntypedFormControl, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {v4 as uuidv4} from 'uuid';
 import {BasicModal} from '../basic-modal';
+import { MatIcon } from '@angular/material/icon';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatInput } from '@angular/material/input';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/autocomplete';
+import { MatButton } from '@angular/material/button';
+import { AsyncPipe } from '@angular/common';
+import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
 
 @Component({
     selector: 'app-book-modal',
     templateUrl: './book-modal.component.html',
     styleUrls: ['./book-modal.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatDialogTitle, MatIcon, CdkScrollable, MatDialogContent, ReactiveFormsModule, FormsModule, MatFormField, MatLabel, MatInput, MatSelect, MatOption, MatDialogActions, MatButton, AsyncPipe, BookCoverPipe]
 })
 export class BookModalComponent extends BasicModal implements OnInit {
 

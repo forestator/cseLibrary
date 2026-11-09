@@ -4,13 +4,15 @@ import {NavigationService} from '../../../services/navigation.service';
 import {BricolageDatabaseService} from '../../services/bricolage-database.service';
 import {Tool} from '../../models/bricolage.model';
 import {Category} from '../../../models/author.model';
+import { ToolRowComponent } from '../tool-row/tool-row.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-brico-category',
     templateUrl: './brico-category.component.html',
     styleUrls: ['./brico-category.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [ToolRowComponent, AsyncPipe]
 })
 export class BricoCategoryComponent implements OnInit, OnDestroy {
   category$?: Observable<Category>;

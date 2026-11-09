@@ -8,15 +8,13 @@ import {MaterielPhotoCategoryComponent} from './components/materiel-photo-catego
 
 
 @NgModule({
-  declarations: [
-    MaterielPhotoHomeComponent,
-    MaterielPhotoRowComponent,
-    MaterielPhotoCategoryComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    AppCommonModule
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        AppCommonModule,
+        MaterielPhotoHomeComponent,
+        MaterielPhotoRowComponent,
+        MaterielPhotoCategoryComponent
+    ]
 })
 export class MaterielPhotoModule { }

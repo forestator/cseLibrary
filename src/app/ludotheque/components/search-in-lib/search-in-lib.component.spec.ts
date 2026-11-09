@@ -8,8 +8,8 @@ describe('SearchInLibComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchInLibComponent ]
-    })
+    imports: [SearchInLibComponent]
+})
     .compileComponents();
   });
 

@@ -2,10 +2,7 @@ import {Pipe, PipeTransform, inject} from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {CloudinaryService} from '../../services/cloudinary.service';
 
-@Pipe({
-    name: 'bookCover',
-    standalone: false
-})
+@Pipe({ name: 'bookCover' })
 export class BookCoverPipe implements PipeTransform {
   private readonly cloudinary = inject(CloudinaryService);
 

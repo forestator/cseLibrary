@@ -4,13 +4,19 @@ import {Author, Biblio, Book, BookStatus, SelectorView, Series, ViewBy, ViewMode
 import {BookFilterPipe} from 'src/app/pipes/book-filter.pipe';
 import {DataService} from 'src/app/services/biblio/data.service';
 import {ToolsService} from 'src/app/services/biblio/tools.service';
+import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
+import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
+import { BadgeComponent } from '../../../../common/components/book-badge/badge.component';
+import { AsyncPipe } from '@angular/common';
+import { BookFilterPipe as BookFilterPipe_1 } from '../../../../pipes/book-filter.pipe';
+import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
 
 @Component({
     selector: 'app-author-row',
     templateUrl: './author-row.component.html',
     styleUrls: ['./author-row.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, AsyncPipe, BookFilterPipe_1, BookCoverPipe]
 })
 export class AuthorRowComponent implements OnInit {
 

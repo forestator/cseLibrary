@@ -8,8 +8,8 @@ describe('BricoCategoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BricoCategoryComponent ]
-    })
+    imports: [BricoCategoryComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(BricoCategoryComponent);

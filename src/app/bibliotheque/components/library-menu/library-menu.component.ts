@@ -4,13 +4,15 @@ import {ToolsService} from 'src/app/services/biblio/tools.service';
 import {Observable} from 'rxjs';
 import {NavigationService} from '../../../services/navigation.service';
 import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
+import { RouterLink } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-library-menu',
     templateUrl: './library-menu.component.html',
     styleUrls: ['./library-menu.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
-    standalone: false
+    imports: [RouterLink, AsyncPipe]
 })
 export class LibraryMenuComponent {
 

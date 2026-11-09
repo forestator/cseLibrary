@@ -8,8 +8,8 @@ describe('NautismeItemRowComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NautismeItemRowComponent ]
-    })
+    imports: [NautismeItemRowComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(NautismeItemRowComponent);
