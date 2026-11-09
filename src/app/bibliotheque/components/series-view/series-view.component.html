@@ -1,45 +1,40 @@
-@if ((biblio$ | async); as biblio) {
-  @if ((series$ | async); as series) {
-    @if ((category$ | async); as category) {
-      @if (series && category) {
-        <div class="core-page fadein">
-          <div class="core-header">
-            <div class="core-title">
-              <div class="secondary" (click)="selectLibrary(biblio.library.id)">{{biblio.library.name}}</div>
-              <mat-icon>navigate_next</mat-icon>
-              <div class="secondary" (click)="selectCategory(biblio.library.id, category.id)">{{category.name}}</div>
-              <mat-icon>navigate_next</mat-icon>
-              <div class="primary">{{series.name}}</div>
-              <div class="badge">
-                <app-series-badge [series]="series" />
-              </div>
-              <div class="counter">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
-            </div>
-            <div class="core-resume">
-              {{series.resume}}
-            </div>
-            <div class="books">
-              @for (book of series.books | bookFilter: tools.adminMode; track book) {
-                <div class="book" [title]="book.name">
-                  <div (click)="tools.scrollToId(book.id)">
-                    <img alt="" class="book-cover" [src]="($safeNavigationMigration(biblio.library?.path) | bookCover: book.cover) | async">
-                  </div>
-                  <div class="book-badge">
-                    <app-badge [status]="book.status" [display]="'small'" />
-                  </div>
-                </div>
-              }
-            </div>
-          </div>
-          <div class="core-body">
-            @for (book of series.books | bookFilter: tools.adminMode; track book; let index = $index) {
-              <app-book-row [biblio]="biblio"
-                [book]="book"
-              [index]="index" />
-            }
-          </div>
+@let biblioValue = biblio();
+@let seriesValue = series();
+@let categoryValue = category();
+@if (biblioValue && seriesValue && categoryValue) {
+  <div class="core-page fadein">
+    <div class="core-header">
+      <div class="core-title">
+        <div class="secondary"><a class="crumb-link" [routerLink]="['/bibliotheque', biblioValue.library.id]">{{biblioValue.library.name}}</a></div>
+        <mat-icon>navigate_next</mat-icon>
+        <div class="secondary"><a class="crumb-link" [routerLink]="['/bibliotheque', biblioValue.library.id, categoryValue.id]">{{categoryValue.name}}</a></div>
+        <mat-icon>navigate_next</mat-icon>
+        <div class="primary">{{seriesValue.name}}</div>
+        <div class="badge">
+          <app-series-badge [series]="seriesValue" />
         </div>
+        <div class="counter">{{books().length}} livres</div>
+      </div>
+      <div class="core-resume">
+        {{seriesValue.resume}}
+      </div>
+      <div class="books">
+        @for (book of books(); track book.id) {
+          <div class="book" [title]="book.name">
+            <button type="button" class="book-link" (click)="tools.scrollToId(book.id)">
+              <img class="book-cover" [alt]="'Couverture de ' + book.name" [src]="biblioValue.library.path | bookCover: book.cover">
+            </button>
+            <div class="book-badge">
+              <app-badge [status]="book.status" [display]="'small'" />
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+    <div class="core-body">
+      @for (book of books(); track book.id; let index = $index) {
+        <app-book-row [biblio]="biblioValue" [book]="book" [index]="index" />
       }
-    }
-  }
+    </div>
+  </div>
 }

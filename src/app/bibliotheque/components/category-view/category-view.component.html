@@ -1,49 +1,43 @@
-@if (biblio$ | async; as biblio) {
-  @if (category$ | async; as category) {
-    <div class="core-page fadein">
-      <div class="core-header">
-        <div class="core-title">
-          <div class="secondary"></div>
-          <mat-icon>navigate_next</mat-icon>
-          <div class="primary">{{category.name}}</div>
-          <div class="counter">{{counter}} livres</div>
-        </div>
-        <div class="core-resume">
-          {{category.resume}}
-        </div>
-        @if (category.by===VIEW_BY.BY_AUTHOR) {
-          <div>
-            @if (category.by===VIEW_BY.BY_AUTHOR) {
-              <app-alphabet (filterByLetter)="filterByLetter($event)" />
-            }
-          </div>
-        }
-        <div class="all-series">
-          @for (series of category.series | seriesFilter : tools.adminMode; track series) {
-            <div
-              class="series bloc-link"
-              [routerLink]="$safeNavigationMigration(series?.id)">
-              <div class="series-title">{{series.name}}</div>
-              <div class="series-info">{{(series.books | bookFilter: tools.adminMode).length}} livres</div>
-            </div>
-          }
-        </div>
+@let biblioValue = biblio();
+@if (category(); as category) {
+  <div class="core-page fadein">
+    <div class="core-header">
+      <div class="core-title">
+        <div class="secondary"></div>
+        <mat-icon>navigate_next</mat-icon>
+        <div class="primary">{{category.name}}</div>
+        <div class="counter">{{counter()}} livres</div>
       </div>
+      <div class="core-resume">
+        {{category.resume}}
+      </div>
+      @if (isByAuthor()) {
+        <div>
+          <app-alphabet (filterByLetter)="filterLetter.set($event)" />
+        </div>
+      }
+      <nav class="all-series" aria-label="Séries de la catégorie">
+        @for (entry of seriesList(); track entry.series.id) {
+          <a class="series bloc-link" [routerLink]="entry.series.id">
+            <span class="series-title">{{entry.series.name}}</span>
+            <span class="series-info">{{entry.bookCount}} livres</span>
+          </a>
+        }
+      </nav>
+    </div>
+    @if (biblioValue) {
       <div class="category-core">
-        @for (series of category.series  | seriesFilter : tools.adminMode; track series) {
-          <app-series-row [biblio]="biblio"
-            [series]="series" />
+        @for (entry of seriesList(); track entry.series.id) {
+          <app-series-row [biblio]="biblioValue" [series]="entry.series" />
         }
       </div>
-      @if (category.by===VIEW_BY.BY_AUTHOR) {
+      @if (isByAuthor()) {
         <div class="category-core">
-          @for (author of filterAuthors(category.authors); track author) {
-            <app-author-row [author]="author"
-              [biblio]="biblio"
-              (sendView)="selectAuthor($event)" />
+          @for (author of authors(); track author.id) {
+            <app-author-row [author]="author" [biblio]="biblioValue" />
           }
         </div>
       }
-    </div>
-  }
+    }
+  </div>
 }

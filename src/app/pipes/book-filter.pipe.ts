@@ -1,18 +1,18 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { Book, BookStatus, SeriesStatus } from '../models/author.model';
+import {Pipe, PipeTransform} from '@angular/core';
+import {Book, BookStatus} from '../models/author.model';
 
-@Pipe({ name: 'bookFilter' })
+export function isBookVisible(book: Book): boolean {
+  return book.status !== BookStatus.DECLASSED && book.status !== BookStatus.MISSING;
+}
+
+/** Hides declassed and missing books unless the admin mode is on. */
+export function filterBooks(books: ReadonlyArray<Book> | undefined, isAdmin: boolean): Array<Book> {
+  return isAdmin ? [...(books ?? [])] : (books ?? []).filter(isBookVisible);
+}
+
+@Pipe({name: 'bookFilter'})
 export class BookFilterPipe implements PipeTransform {
-
-  transform(books: Array<Book> | undefined, isAdmin: boolean): Array<Book> {
-    let result: Array<Book> = [];
-    if (books) {
-      if (isAdmin) {
-        result = books;
-      } else {
-        result = books.filter(item => item.status !== BookStatus.DECLASSED && item.status !== BookStatus.MISSING);
-      }
-    }
-    return result;
+  transform(books: ReadonlyArray<Book> | undefined, isAdmin: boolean): Array<Book> {
+    return filterBooks(books, isAdmin);
   }
 }

@@ -1,59 +1,31 @@
-import {Component, OnInit, ChangeDetectionStrategy, input} from '@angular/core';
-import {Series, SeriesStatus} from 'src/app/models/author.model';
+import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
+import {Series, SeriesStatus} from '../../../../models/author.model';
+
+interface BadgeStyle {
+  text: string;
+  cssClass: string;
+}
+
+const BADGES: Record<SeriesStatus, BadgeStyle> = {
+  [SeriesStatus.NEW]: {text: 'NOUVEAU', cssClass: 'badge-new'},
+  [SeriesStatus.IN_PROGRESS]: {text: 'EN COURS...', cssClass: 'badge-in-progress'},
+  [SeriesStatus.INCOMPLETE]: {text: 'INCOMPLETE', cssClass: 'badge-incomplete'},
+  [SeriesStatus.FINISHED]: {text: 'COMPLETE', cssClass: 'badge-finished'},
+  [SeriesStatus.DECLASSED]: {text: 'DECLASSEE', cssClass: 'badge-declassed'},
+  [SeriesStatus.ONE_SHOT]: {text: 'UNIQUE', cssClass: 'badge-one-shot'},
+};
 
 @Component({
-    selector: 'app-series-badge',
-    templateUrl: './series-badge.component.html',
-    styleUrls: ['./series-badge.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
+  selector: 'app-series-badge',
+  templateUrl: './series-badge.component.html',
+  styleUrl: './series-badge.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SeriesBadgeComponent implements OnInit {
-
+export class SeriesBadgeComponent {
   readonly series = input.required<Series>();
 
-  txt!: string;
-  bg!: string;
-  fg!: string;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    const series = this.series();
-    switch (series.status) {
-      case SeriesStatus.NEW:
-        this.txt = 'NOUVEAU';
-        this.bg = 'chartreuse';
-        this.fg = 'white';
-        break;
-      case SeriesStatus.IN_PROGRESS:
-        this.txt = 'EN COURS...';
-        this.bg = '#00C000';
-        this.fg = 'white';
-        break;
-      case SeriesStatus.INCOMPLETE:
-        this.txt = 'INCOMPLETE';
-        this.bg = 'orange';
-        this.fg = 'white';
-        break;
-      case SeriesStatus.FINISHED:
-        this.txt = 'COMPLETE';
-        this.bg = 'green';
-        this.fg = 'white';
-        break;
-      case SeriesStatus.DECLASSED:
-        this.txt = 'DECLASSEE';
-        this.bg = 'red';
-        this.fg = 'white';
-        break;
-      case SeriesStatus.ONE_SHOT:
-        this.txt = 'UNIQUE';
-        this.bg = '#00A000';
-        this.fg = 'white';
-        break;
-      default:
-        this.txt = series.status;
-        this.bg = 'gray';
-        this.fg = 'black';
-    }
-  }
+  protected readonly badge = computed<BadgeStyle>(() => {
+    const status = this.series().status;
+    return BADGES[status] ?? {text: status, cssClass: 'badge-default'};
+  });
 }

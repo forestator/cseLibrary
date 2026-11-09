@@ -1,4 +1,4 @@
-@if ((library$ | async); as library) {
+@if (library(); as library) {
   <div class="core-page fadein">
     <div class="core-header">
       <div class="core-title">
@@ -8,21 +8,20 @@
         {{library.resume}}
       </div>
     </div>
-    @for (category of library?.categories; track category) {
-      <div
+    @for (category of library.categories; track category.id) {
+      @let background = library.path | categoryBackground: category.bg;
+      <a
         class="core-body core-body-category"
         [routerLink]="category.id"
         title="Clickez ici pour visualiser cette categorie">
-        @if (!(toolsService.mobilePhoneDisplay$ | async)) {
+        @if (!isMobile()) {
           <div>
-            <img alt="" class="category-visuel"
-              [src]="($safeNavigationMigration(library?.path) | categoryBackground: category.bg) | async">
+            <img alt="" class="category-visuel" [src]="background">
           </div>
         }
         <div class="core-header">
-          @if (toolsService.mobilePhoneDisplay$ | async) {
-            <img alt="" class="category-visuel small-display"
-              [src]="($safeNavigationMigration(library?.path) | categoryBackground: category.bg) | async">
+          @if (isMobile()) {
+            <img alt="" class="category-visuel small-display" [src]="background">
           }
           <div class="core-title">
             <div class="primary">{{category.name}}</div>
@@ -31,7 +30,7 @@
             {{category.resume}}
           </div>
         </div>
-      </div>
+      </a>
     }
   </div>
 }

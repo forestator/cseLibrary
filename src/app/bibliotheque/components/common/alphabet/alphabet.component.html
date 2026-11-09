@@ -1,7 +1,7 @@
-<div class="alphabet">
-  @for (letter of ALPHABET; track letter) {
-    <div class="letter bloc-link" (click)="filterByLetter.emit(letter)">
+<nav class="alphabet" aria-label="Filtrer par lettre">
+  @for (letter of letters; track letter) {
+    <button type="button" class="letter bloc-link" (click)="filterByLetter.emit(letter)">
       {{letter}}
-    </div>
+    </button>
   }
-</div>
+</nav>

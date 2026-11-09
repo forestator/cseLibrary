@@ -1,0 +1,82 @@
+$small-space: 5px;
+$font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+$edit-color: darkblue;
+$delete-color: #c00000;
+$add-color: green;
+$description-bg: rgba(210, 210, 210, 0.5);
+$field-border: lightgrey;
+// Room left on the right of the header for the expansion indicator.
+$indicator-space: 56px;
+
+.settings-node {
+  position: relative;
+}
+
+.designation {
+  font-family: $font-stack;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+// The buttons sit over the header instead of inside it: interactive content cannot be nested in the header button.
+.controls {
+  position: absolute;
+  top: 0;
+  right: $indicator-space;
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  margin-left: $small-space;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-weight: bold;
+
+  &.control-edit {
+    color: $edit-color;
+  }
+
+  &.control-delete {
+    color: $delete-color;
+  }
+
+  &.control-add {
+    color: $add-color;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  background-color: $description-bg;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 4px;
+  font-family: $font-stack;
+}
+
+.field {
+  border-top: solid 1px $field-border;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.label {
+  width: 200px;
+  font-weight: bold;
+}
+
+.content {
+  width: calc(100% - 250px);
+}

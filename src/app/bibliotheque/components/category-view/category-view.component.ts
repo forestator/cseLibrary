@@ -1,79 +1,59 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
-import {Author, Biblio, Category, SelectorView, ViewBy} from 'src/app/models/author.model';
-import {ToolsService} from 'src/app/services/biblio/tools.service';
-import {DataService} from '../../../services/biblio/data.service';
-import {map, mergeMap, Observable} from 'rxjs';
-import { Params, RouterLink } from '@angular/router';
-import {NavigationService} from '../../../services/navigation.service';
-import {BiblioDatabaseService} from '../../services/biblio-database.service';
-import { MatIcon } from '@angular/material/icon';
-import { AlphabetComponent } from '../common/alphabet/alphabet.component';
-import { SeriesRowComponent } from './series-row/series-row.component';
-import { AuthorRowComponent } from '../authors-view/author-row/author-row.component';
-import { AsyncPipe } from '@angular/common';
-import { BookFilterPipe } from '../../../pipes/book-filter.pipe';
-import { SeriesFilterPipe } from '../../../pipes/series-filter.pipe';
+import {ChangeDetectionStrategy, Component, computed, inject, input, signal} from '@angular/core';
+import {RouterLink} from '@angular/router';
+import {MatIcon} from '@angular/material/icon';
+import {ViewBy} from '../../../models/author.model';
+import {filterBooks} from '../../../pipes/book-filter.pipe';
+import {filterSeries} from '../../../pipes/series-filter.pipe';
+import {ToolsService} from '../../../services/biblio/tools.service';
+import {LibraryRepository} from '../../services/library.repository';
+import {AuthorRowComponent} from '../authors-view/author-row/author-row.component';
+import {AlphabetComponent} from '../common/alphabet/alphabet.component';
+import {SeriesRowComponent} from './series-row/series-row.component';
 
 @Component({
-    selector: 'app-category-view',
-    templateUrl: './category-view.component.html',
-    styleUrls: ['./category-view.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatIcon, AlphabetComponent, RouterLink, SeriesRowComponent, AuthorRowComponent, AsyncPipe, BookFilterPipe, SeriesFilterPipe]
+  selector: 'app-category-view',
+  templateUrl: './category-view.component.html',
+  styleUrl: './category-view.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIcon, AlphabetComponent, RouterLink, SeriesRowComponent, AuthorRowComponent],
 })
-export class CategoryViewComponent implements OnInit {
-  tools = inject(ToolsService);
-  private navigationService = inject(NavigationService);
-  private biblioDatabaseService = inject(BiblioDatabaseService);
-  dataService = inject(DataService);
+export class CategoryViewComponent {
+  private readonly repository = inject(LibraryRepository);
+  private readonly adminMode = inject(ToolsService).adminMode;
 
+  /** Route parameters. */
+  readonly libraryId = input<string>();
+  readonly catId = input<string>();
 
-  biblio$!: Observable<Biblio>;
+  protected readonly isByAuthor = computed(() => this.category()?.by === ViewBy.BY_AUTHOR);
+  protected readonly filterLetter = signal<string | undefined>(undefined);
 
-  public filterLetter?: string;
+  protected readonly biblio = computed(() => this.repository.libraryById(this.libraryId()));
+  protected readonly category = computed(() =>
+    this.biblio()?.library?.categories?.find(category => category.id === this.catId())
+  );
 
-  category$?: Observable<Category>;
-  counter: number = 0;
-  VIEW_BY = ViewBy;
-
-  ngOnInit(): void {
-    this.biblio$ = this.navigationService.getRouteParams().pipe(
-      mergeMap((params: Params) => this.biblioDatabaseService.getBiblio(params['libraryId']!))
-    );
-    this.category$ = this.navigationService.getRouteParams().pipe(
-      mergeMap((params: Params) =>
-        this.biblioDatabaseService.getBiblio(params['libraryId']!).pipe(
-          map(biblio => {
-            const category = biblio.library.categories.find(cat => cat.id === params['catId']);
-            this.counter = 0;
-            if (category.by === ViewBy.BY_SERIES) {
-              category.series?.forEach(serie => serie.books?.forEach(() => this.counter++));
-            }
-            if (category.by === ViewBy.BY_AUTHOR) {
-              // todo count books with all authors
-            }
-            return category;
-          })
-        )
-      )
-    );
-  }
-
-  selectAuthor(selectorView: SelectorView) {
-    // this.sendView.emit(selectorView);
-  }
-
-  filterByLetter($event: string) {
-    this.filterLetter = $event;
-  }
-
-  filterAuthors(authors: Array<Author> | undefined): Array<Author> {
-    let filteredAuth: Array<Author> = authors ?? [];
-    if (this.filterLetter && authors) {
-      filteredAuth = authors.filter(auth =>
-        auth.firstName.startsWith(this.filterLetter!) ||
-        auth.lastName.startsWith(this.filterLetter!));
+  /** Counts every book of the category, visible or not; authors categories are not counted. */
+  protected readonly counter = computed(() => {
+    const category = this.category();
+    if (category?.by !== ViewBy.BY_SERIES) {
+      return 0;
     }
-    return filteredAuth;
-  }
+    return (category.series ?? []).reduce((total, series) => total + (series.books?.length ?? 0), 0);
+  });
+
+  protected readonly seriesList = computed(() =>
+    filterSeries(this.category()?.series, this.adminMode).map(series => ({
+      series,
+      bookCount: filterBooks(series.books, this.adminMode).length,
+    }))
+  );
+
+  protected readonly authors = computed(() => {
+    const authors = this.category()?.authors ?? [];
+    const letter = this.filterLetter();
+    return letter
+      ? authors.filter(author => author.firstName.startsWith(letter) || author.lastName.startsWith(letter))
+      : authors;
+  });
 }

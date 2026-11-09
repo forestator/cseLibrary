@@ -1,33 +1,23 @@
-import { Component, OnInit, ChangeDetectionStrategy, inject, input } from '@angular/core';
-import {Biblio, Series} from 'src/app/models/author.model';
-import {DataService} from 'src/app/services/biblio/data.service';
-import {ToolsService} from 'src/app/services/biblio/tools.service';
-import { MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle } from '@angular/material/expansion';
-import { SeriesBadgeComponent } from '../../common/series-badge/series-badge.component';
-import { MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import { BadgeComponent } from '../../../../common/components/book-badge/badge.component';
-import { AsyncPipe } from '@angular/common';
-import { BookFilterPipe } from '../../../../pipes/book-filter.pipe';
-import { BookCoverPipe } from '../../../pipes/book-cover.pipe';
+import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {Biblio, Series} from '../../../../models/author.model';
+import {filterBooks} from '../../../../pipes/book-filter.pipe';
+import {ToolsService} from '../../../../services/biblio/tools.service';
+import {BookTableComponent} from '../../common/book-table/book-table.component';
+import {SeriesBadgeComponent} from '../../common/series-badge/series-badge.component';
 
 @Component({
-    selector: 'app-series-row',
-    templateUrl: './series-row.component.html',
-    styleUrls: ['./series-row.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatAccordion, MatExpansionPanel, MatExpansionPanelHeader, MatExpansionPanelTitle, SeriesBadgeComponent, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow, AsyncPipe, BookFilterPipe, BookCoverPipe]
+  selector: 'app-series-row',
+  templateUrl: './series-row.component.html',
+  styleUrl: './series-row.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatExpansionModule, SeriesBadgeComponent, BookTableComponent],
 })
-export class SeriesRowComponent implements OnInit {
-  tools = inject(ToolsService);
-  dataService = inject(DataService);
+export class SeriesRowComponent {
+  private readonly tools = inject(ToolsService);
 
-  readonly series = input.required<Series | undefined>();
-
+  readonly series = input.required<Series>();
   readonly biblio = input.required<Biblio>();
 
-  bookColumns: Array<string> = ['cover', 'title', 'authors', 'tome', 'isbn', 'page', 'status'];
-
-  ngOnInit(): void {
-
-  }
+  protected readonly visibleBooks = computed(() => filterBooks(this.series().books, this.tools.adminMode));
 }
