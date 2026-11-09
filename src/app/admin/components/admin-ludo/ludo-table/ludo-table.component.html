@@ -1,5 +1,5 @@
-@if (dataSource) {
-  <table mat-table [dataSource]="dataSource"
+@if (rows(); as rows) {
+  <table mat-table [dataSource]="rows"
     (matSortChange)="sortData($event)"
     matSort
     class="mat-elevation-z8">

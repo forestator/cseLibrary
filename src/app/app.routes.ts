@@ -6,12 +6,12 @@ const ludoRoutes: Routes = [
     {path: 'ludotheque', loadComponent: () => import('./ludotheque/components/ludotheque/ludotheque.component').then(m => m.LudothequeComponent)},
     {path: 'ludotheque/outsideGames', loadComponent: () => import('./ludotheque/components/outside-games/game.component').then(m => m.GameComponent)},
     {path: 'ludotheque/outsideGames/:id', loadComponent: () => import('./ludotheque/components/outside-games/game.component').then(m => m.GameComponent)},
-    {path: 'ludotheque/videoGames', loadComponent: () => import('./ludotheque/components/video-games/video-games.component').then(m => m.VideoGamesComponent)},
-    {path: 'ludotheque/videoGames/:categoryId', loadComponent: () => import('./ludotheque/components/video-games/video-games-to-filter/video-games-to-filter.component').then(m => m.VideoGamesToFilterComponent)},
-    {path: 'ludotheque/videoGames/:categoryId/:id', loadComponent: () => import('./ludotheque/components/video-games/video-games-to-filter/video-games-to-filter.component').then(m => m.VideoGamesToFilterComponent)},
-    {path: 'ludotheque/boardGames', loadComponent: () => import('./ludotheque/components/board-games/board-games.component').then(m => m.BoardGamesComponent)},
-    {path: 'ludotheque/boardGames/:categoryId', loadComponent: () => import('./ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component').then(m => m.BoardGameToFilterComponent)},
-    {path: 'ludotheque/boardGames/:categoryId/:id', loadComponent: () => import('./ludotheque/components/board-games/components/board-game-to-filter/board-game-to-filter.component').then(m => m.BoardGameToFilterComponent)},
+    {path: 'ludotheque/videoGames', loadComponent: () => import('./ludotheque/components/library-categories/library-categories.component').then(m => m.LibraryCategoriesComponent), data: {libraryId: 'videoGames'}},
+    {path: 'ludotheque/videoGames/:categoryId', loadComponent: () => import('./ludotheque/components/game-category-page/game-category-page.component').then(m => m.GameCategoryPageComponent), data: {libraryId: 'videoGames'}},
+    {path: 'ludotheque/videoGames/:categoryId/:id', loadComponent: () => import('./ludotheque/components/game-category-page/game-category-page.component').then(m => m.GameCategoryPageComponent), data: {libraryId: 'videoGames'}},
+    {path: 'ludotheque/boardGames', loadComponent: () => import('./ludotheque/components/library-categories/library-categories.component').then(m => m.LibraryCategoriesComponent), data: {libraryId: 'boardGames'}},
+    {path: 'ludotheque/boardGames/:categoryId', loadComponent: () => import('./ludotheque/components/game-category-page/game-category-page.component').then(m => m.GameCategoryPageComponent), data: {libraryId: 'boardGames'}},
+    {path: 'ludotheque/boardGames/:categoryId/:id', loadComponent: () => import('./ludotheque/components/game-category-page/game-category-page.component').then(m => m.GameCategoryPageComponent), data: {libraryId: 'boardGames'}},
     {path: 'ludotheque/new', loadComponent: () => import('./ludotheque/components/ludo-new/ludo-new.component').then(m => m.LudoNewComponent)},
 ];
 

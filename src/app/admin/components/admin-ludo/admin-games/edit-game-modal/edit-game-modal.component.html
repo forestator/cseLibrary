@@ -7,11 +7,10 @@
       [displayWith]="displayGame"
       (optionSelected)="selectGameToModify($event)"
       autoActiveFirstOption>
-      @for (option of filteredOptions$ | async; track option) {
-        <mat-option
-          [value]="option">
+      @for (option of filteredOptions(); track option.category + option.ref) {
+        <mat-option [value]="option">
           <app-badge [status]="option.category" />
-          {{displayGame(option)}}
+          {{ option.name }}
         </mat-option>
       }
     </mat-autocomplete>

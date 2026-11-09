@@ -3,15 +3,16 @@
     placeholder="Search game"
     id="ludoSearch"
     matInput
+    aria-label="Rechercher un jeu"
     [formControl]="searchText"
     [matAutocomplete]="auto">
   <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
     [displayWith]="displayGame"
     (optionSelected)="goToSelectedItem($event)">
-    @for (option of filteredOptions$ | async; track option) {
+    @for (option of filteredOptions(); track option.category + option.ref) {
       <mat-option [value]="option">
         <app-badge class="badge" [status]="option.category" />
-        {{option.name}}
+        {{ option.name }}
       </mat-option>
     }
   </mat-autocomplete>

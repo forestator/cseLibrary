@@ -1,0 +1,8 @@
+@switch (libraryId()) {
+  @case ('boardGames') {
+    <app-board-game-category-details [boardGames]="boardGames()" [selectedId]="id()" />
+  }
+  @case ('videoGames') {
+    <app-video-games-console-details [videoGames]="videoGames()" [selectedId]="id()" />
+  }
+}

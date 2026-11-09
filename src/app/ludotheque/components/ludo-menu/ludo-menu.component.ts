@@ -1,15 +1,11 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import {FirebaseDatabaseService} from '../../../services/firebase/firebase-database.service';
-import { SearchInLibComponent } from '../search-in-lib/search-in-lib.component';
-import { AsyncPipe } from '@angular/common';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {SearchInLibComponent} from '../search-in-lib/search-in-lib.component';
 
 @Component({
-    selector: 'app-ludo-menu',
-    templateUrl: './ludo-menu.component.html',
-    styleUrls: ['./ludo-menu.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [SearchInLibComponent, AsyncPipe]
+  selector: 'app-ludo-menu',
+  templateUrl: './ludo-menu.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [SearchInLibComponent],
 })
 export class LudoMenuComponent {
-  firebaseDatabaseService = inject(FirebaseDatabaseService);
 }

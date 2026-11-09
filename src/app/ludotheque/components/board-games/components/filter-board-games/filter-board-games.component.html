@@ -1,45 +1,15 @@
-<div class="filter-group">
-  <div class="filter-header">
-    <mat-icon>group</mat-icon>
-    Nombre de joueurs
+@for (group of groups; track group.type) {
+  <div class="filter-group">
+    <div class="filter-header">
+      <mat-icon aria-hidden="true">{{ group.icon }}</mat-icon>
+      {{ group.title }}
+    </div>
+    <div class="number-list">
+      <mat-button-toggle-group [(value)]="group.selected" [aria-label]="group.ariaLabel">
+        @for (option of group.options; track option) {
+          <mat-button-toggle [value]="option" (click)="selectedFilter(group, option)">{{ option }}{{ group.unit }}</mat-button-toggle>
+        }
+      </mat-button-toggle-group>
+    </div>
   </div>
-  <div class="number-list">
-    <mat-button-toggle-group [(value)]="numberOfPlayersGroupValue" aria-label="Number of players">
-      @for (nb of numberOfPlayers; track nb) {
-        <mat-button-toggle [value]="nb"
-          (click)="selectedFilter(nb, boardGameFilterType.NUMBER_OF_PLAYERS)"
-        >{{nb}}</mat-button-toggle>
-      }
-    </mat-button-toggle-group>
-  </div>
-</div>
-<div class="filter-group">
-  <div class="filter-header">
-    <mat-icon>timer</mat-icon>
-    Durée d'une partie
-  </div>
-  <div class="number-list">
-    <mat-button-toggle-group [(value)]="durationGroupValue" aria-label="Game duration">
-      @for (nb of gameDuration; track nb) {
-        <mat-button-toggle [value]="nb"
-          (click)="selectedFilter(nb, boardGameFilterType.DURATION)"
-        >{{nb}}</mat-button-toggle>
-      }
-    </mat-button-toggle-group>
-  </div>
-</div>
-<div class="filter-group">
-  <div class="filter-header">
-    <mat-icon>family_restroom</mat-icon>
-    Âge, à partir de
-  </div>
-  <div class="number-list">
-    <mat-button-toggle-group [(value)]="ageGroupValue" aria-label="Player Age">
-      @for (nb of ageList; track nb) {
-        <mat-button-toggle [value]="nb"
-          (click)="selectedFilter(nb, boardGameFilterType.AGE)"
-        >{{nb}} ans</mat-button-toggle>
-      }
-    </mat-button-toggle-group>
-  </div>
-</div>
+}

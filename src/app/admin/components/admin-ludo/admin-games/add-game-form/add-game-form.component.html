@@ -1,8 +1,7 @@
 <div [formGroup]="gameForm()" class="form-container">
   <div class="main">
     <div class="select-library">
-      <mat-button-toggle-group (ngModelChange)="setCategoryOptions($event)"
-        name="libraryId" formControlName="libraryId" aria-label="Font Style">
+      <mat-button-toggle-group name="libraryId" formControlName="libraryId" aria-label="Font Style">
         <mat-button-toggle value="boardGames">Jeu de Société</mat-button-toggle>
         <mat-button-toggle value="videoGames">Jeux Vidéo</mat-button-toggle>
         <mat-button-toggle value="outsideGames">Grand Jeu</mat-button-toggle>
@@ -13,9 +12,9 @@
         <mat-label>Nom</mat-label>
         <input matInput placeholder="Splendor" formControlName="name">
       </mat-form-field>
-      <div class="search" (click)="search()">
-        <mat-icon aria-label="Search on bgg">search</mat-icon>
-      </div>
+      <button type="button" class="search" aria-label="Search on bgg" (click)="search()">
+        <mat-icon aria-hidden="true">search</mat-icon>
+      </button>
     </div>
     <mat-form-field>
       <mat-label>Référence</mat-label>
@@ -24,7 +23,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Catégorie</mat-label>
       <mat-select formControlName="category">
-        @for (cat of categoryOptions; track cat) {
+        @for (cat of categoryOptions(); track cat.id) {
           <mat-option [value]="cat.id">
             <app-badge class="category" [status]="cat.id" />
           </mat-option>
@@ -43,8 +42,8 @@
   </div>
   <mat-divider [vertical]="true" />
   <div class="boardgames">
-    <app-upload-game [selectedGame]="gameForm().value" />
-    @if (gameForm().get('libraryId')?.value === 'boardGames') {
+    <app-upload-game [selectedGame]="game()" />
+    @if (libraryId() === 'boardGames') {
       <mat-form-field appearance="fill">
         <mat-label>BoardGameGeek Id</mat-label>
         <input matInput type="number" placeholder="123456" formControlName="id">
@@ -55,7 +54,7 @@
       </mat-form-field>
     }
   </div>
-  @if (gameForm().get('libraryId')?.value === 'boardGames') {
+  @if (libraryId() === 'boardGames') {
     <mat-divider [vertical]="true" />
     <div class="boardgames">
       <mat-form-field appearance="fill">
@@ -84,7 +83,7 @@
       </mat-form-field>
     </div>
   }
-  @if (gameForm().get('libraryId')?.value === 'videoGames') {
+  @if (libraryId() === 'videoGames') {
     <mat-divider [vertical]="true" />
     <div class="boardgames">
       <mat-form-field appearance="fill">

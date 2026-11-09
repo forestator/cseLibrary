@@ -4,7 +4,7 @@ import {CloudinaryService} from '../cloudinary.service';
 import {FileUpload} from '../../models/fileUpload.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {BoardGame} from '../../models/boardGame.model';
-import {FirebaseDatabaseService} from './firebase-database.service';
+import {GamesRepository} from '../../ludotheque/services/games.repository';
 import {GamesUtils} from '../../models/gamesUtils';
 import {Game} from '../../models/common.model';
 import {Tool} from "../../bricolage/models/bricolage.model";
@@ -19,7 +19,7 @@ import {NautismeDatabaseService} from '../../nautisme/services/nautisme-database
 })
 export class StorageUploadService {
   private cloudinary = inject(CloudinaryService);
-  private firebaseDatabaseService = inject(FirebaseDatabaseService);
+  private gamesRepository = inject(GamesRepository);
   private bricolageDatabaseService = inject(BricolageDatabaseService);
   private sonoDatabaseService = inject(SonoDatabaseService);
   private nautismeDatabaseService = inject(NautismeDatabaseService);
@@ -56,7 +56,7 @@ export class StorageUploadService {
   private updateItemCover(basePath: string, fileUpload: FileUpload, itemToUpdate: Game | Tool | SonoItem | NautismeItem): void {
     switch (basePath) {
       case this.basePath.game:
-        this.firebaseDatabaseService.updateGameImage(itemToUpdate as Game, fileUpload);
+        this.gamesRepository.updateCover(itemToUpdate as Game, fileUpload.url);
         break;
       case this.basePath.brico:
         this.bricolageDatabaseService.updateToolCover(itemToUpdate as Tool, fileUpload);

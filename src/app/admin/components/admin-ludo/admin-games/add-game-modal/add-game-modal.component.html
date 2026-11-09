@@ -1,4 +1,4 @@
-<div [class.disable]="loading">
+<div [class.modal-disabled]="loading()">
   <h1 mat-dialog-title>Ajouter un jeu</h1>
   <div class="modal-container" mat-dialog-content>
     <app-add-game-form [gameForm]="gameForm" (gameSelected)="makeSomeMagic()" />
@@ -7,15 +7,15 @@
     <button (click)="cancel()" id="cancel" mat-button>Cancel</button>
     <button (click)="addGame()"
       id="save"
-      [disabled]="$safeNavigationMigration(gameForm?.invalid)"
+      [disabled]="formInvalid()"
       cdkFocusInitial
       mat-button>
       Confirm
     </button>
     <button mat-button
       id="makeMagic"
-      [title]="disableMagic() ? 'Ajouter l\'id boardgamegeek et le nom du jeu' : ''"
-      [disabled]="disableMagic()"
+      [title]="magicDisabled() ? 'Ajouter l\'id boardgamegeek et le nom du jeu' : ''"
+      [disabled]="magicDisabled()"
       (click)="makeSomeMagic()">Remplir automatiquement les champs
     </button>
     <button mat-button
@@ -24,7 +24,7 @@
       [disabled]="!data.selectedGame"
       (click)="deleteGame()">Delete
     </button>
-    @if (loading) {
+    @if (loading()) {
       <mat-spinner />
     }
   </div>

@@ -1,84 +1,63 @@
-import { Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, inject, input, viewChild } from '@angular/core';
-import { MatSort, Sort, MatSortHeader } from '@angular/material/sort';
-import { MatTableDataSource, MatTable, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatCellDef, MatCell, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow } from '@angular/material/table';
-import {CseUser} from '../../../../models/users.model';
-import {MatDialog} from '@angular/material/dialog';
-import {Game} from '../../../../models/common.model';
+import {ChangeDetectionStrategy, Component, computed, input, signal} from '@angular/core';
+import {Sort, MatSort, MatSortHeader} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {BadgeComponent} from '../../../../common/components/book-badge/badge.component';
 import {BoardGame} from '../../../../models/boardGame.model';
-import { BadgeComponent } from '../../../../common/components/book-badge/badge.component';
+import {Game} from '../../../../models/common.model';
 
 @Component({
-    selector: 'app-ludo-table',
-    templateUrl: './ludo-table.component.html',
-    styleUrls: ['./ludo-table.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatTable, MatSort, MatColumnDef, MatHeaderCellDef, MatHeaderCell, MatSortHeader, MatCellDef, MatCell, BadgeComponent, MatHeaderRowDef, MatHeaderRow, MatRowDef, MatRow]
+  selector: 'app-ludo-table',
+  templateUrl: './ludo-table.component.html',
+  styleUrl: './ludo-table.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatTableModule, MatSort, MatSortHeader, BadgeComponent],
 })
-export class LudoTableComponent implements OnInit, OnChanges {
-    dialog = inject(MatDialog);
+export class LudoTableComponent {
+  readonly games = input<ReadonlyArray<Game>>();
+  readonly displayedColumns = input.required<ReadonlyArray<string>>();
+  readonly filterBy = input<string>();
 
-    readonly games = input<Array<Game> | null>(undefined);
-    readonly displayedColumns = input.required<Array<string>>();
-    readonly users = input<Array<CseUser>>(undefined);
-    readonly returnForUser = input<CseUser>(undefined);
-    readonly filterBy = input<string>(undefined);
-    dataSource?: MatTableDataSource<Game>;
-    readonly sort = viewChild.required(MatSort);
+  private readonly sort = signal<Sort>({active: '', direction: ''});
 
-    ngOnInit() {
-        const games = this.games();
-        if (games) {
-            this.setDatasource(games);
-        }
+  protected readonly rows = computed(() => {
+    const games = this.games();
+    if (!games) {
+      return undefined;
     }
+    const filterBy = this.filterBy()?.toLowerCase();
+    const filteredGames = filterBy ? games.filter(game => game.name.toLowerCase().includes(filterBy)) : [...games];
+    return this.sortGames(filteredGames, this.sort());
+  });
 
-    private setDatasource(games: Array<Game>) {
-        if (this.filterBy()) {
-            this.dataSource = new MatTableDataSource<Game>(games.filter(game =>
-                game.name.toLowerCase().includes(this.filterBy()?.toLowerCase() ?? '')));
-        } else {
-            this.dataSource = new MatTableDataSource<Game>(games);
-        }
-        this.dataSource.sort = this.sort();
+  protected sortData(sort: Sort): void {
+    this.sort.set(sort);
+  }
+
+  private sortGames(games: Array<Game>, sort: Sort): Array<Game> {
+    if (!sort.active || sort.direction === '') {
+      return games;
     }
+    const isAsc = sort.direction === 'asc';
+    return games.sort((first, second) => {
+      switch (sort.active) {
+        case 'category':
+          return this.compare(first.category, second.category, isAsc);
+        case 'name':
+          return this.compare(first.name, second.name, isAsc);
+        case 'weight':
+          if ('weight' in first && 'weight' in second) {
+            return this.compare((first as BoardGame).weight, (second as BoardGame).weight, isAsc);
+          }
+          return 0;
+        case 'ref':
+          return this.compare(first.ref, second.ref, isAsc);
+        default:
+          return 0;
+      }
+    });
+  }
 
-    ngOnChanges(changes: SimpleChanges) {
-        const games = this.games();
-        if (games) this.setDatasource(games);
-    }
-
-
-    // function used and called migclly by table
-    sortData(sort: Sort) {
-        let data = this.games().slice();
-        if (!sort.active || sort.direction === '') {
-            this.setDatasource(data);
-            return;
-        }
-
-        data = data.sort((a, b) => {
-            const isAsc = sort.direction === 'asc';
-            switch (sort.active) {
-                case 'category':
-                    return this.compare(a.category, b.category, isAsc);
-                case 'name':
-                    return this.compare(a.name, b.name, isAsc);
-                case 'weight':
-                    if ('weight' in a && 'weight' in b) {
-                        return this.compare((a as BoardGame).weight, (b as BoardGame).weight, isAsc)
-                    }
-                    return 0;
-                case 'ref':
-                    return this.compare(a.ref, b.ref, isAsc);
-                default:
-                    return 0;
-            }
-        });
-
-        this.setDatasource(data);
-    }
-
-    private compare(a: number | string, b: number | string, isAsc: boolean): number {
-        return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-    }
+  private compare(first: number | string, second: number | string, isAsc: boolean): number {
+    return (first < second ? -1 : 1) * (isAsc ? 1 : -1);
+  }
 }

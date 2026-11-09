@@ -1,0 +1,34 @@
+@if (library(); as library) {
+  <div class="core-page fadein">
+    <div class="core-header">
+      <div class="core-title">
+        <div class="primary">{{ library.name }}</div>
+      </div>
+      <div class="core-resume">
+        {{ library.resume }}
+      </div>
+    </div>
+    @for (category of categories(); track category.id) {
+      <a [routerLink]="category.id" routerLinkActive="active"
+        class="core-body core-body-category category-link"
+        title="Cliquez ici pour visualiser cette categorie">
+        @if (!mobilePhoneDisplay()) {
+          <div>
+            <img class="category-visuel" [src]="category.bg" [alt]="category.name">
+          </div>
+        }
+        <div class="core-header">
+          @if (mobilePhoneDisplay()) {
+            <img class="category-visuel small-display" [src]="category.bg" [alt]="category.name">
+          }
+          <div class="core-title">
+            <div class="primary">{{ category.name }}</div>
+          </div>
+          <div class="core-resume">
+            {{ category.resume }}
+          </div>
+        </div>
+      </a>
+    }
+  </div>
+}

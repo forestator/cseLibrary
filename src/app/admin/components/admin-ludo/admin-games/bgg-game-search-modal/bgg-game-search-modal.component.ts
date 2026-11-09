@@ -1,25 +1,31 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
+import {CdkScrollable} from '@angular/cdk/scrolling';
+import {MatButton} from '@angular/material/button';
+import {
+  MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle
+} from '@angular/material/dialog';
+import {MatListOption, MatSelectionList, MatSelectionListChange} from '@angular/material/list';
 import {Thing} from '../../../../../models/boardGame.model';
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import { MatSelectionList, MatListOption } from '@angular/material/list';
-import { MatButton } from '@angular/material/button';
 
 @Component({
-    selector: 'app-bgg-game-search-modal',
-    templateUrl: './bgg-game-search-modal.component.html',
-    styleUrls: ['./bgg-game-search-modal.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager,
-    imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatSelectionList, MatListOption, MatDialogActions, MatButton, MatDialogClose]
+  selector: 'app-bgg-game-search-modal',
+  templateUrl: './bgg-game-search-modal.component.html',
+  styleUrl: './bgg-game-search-modal.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatDialogTitle, CdkScrollable, MatDialogContent, MatSelectionList, MatListOption, MatDialogActions,
+    MatButton, MatDialogClose],
 })
 export class BggGameSearchModalComponent {
-  dialogRef = inject<MatDialogRef<BggGameSearchModalComponent>>(MatDialogRef);
-  data = inject<{
-    games: Array<Thing>;
-}>(MAT_DIALOG_DATA);
+  private readonly dialogRef = inject<MatDialogRef<BggGameSearchModalComponent>>(MatDialogRef);
+  protected readonly data = inject<{ games: Array<Thing> }>(MAT_DIALOG_DATA);
 
+  protected readonly selectedGame = signal<Thing | undefined>(undefined);
 
-  close() {
+  protected select(change: MatSelectionListChange): void {
+    this.selectedGame.set(change.source.selectedOptions.selected[0]?.value);
+  }
+
+  protected close(): void {
     this.dialogRef.close();
   }
 }

@@ -1,20 +1,37 @@
 @import '../../../../common/common';
 
-.video-game-core {
+.video-row {
   display: flex;
   align-items: center;
 
-  .video-game-info {
+  .video-row-info {
     margin-left: 5px;
 
     * {
       padding: 5px;
     }
+  }
 
-    .video-game-title {
-      font-size: large;
-      font-weight: bold;
-      color: black;
+  .video-row-title {
+    font-size: large;
+    font-weight: bold;
+    color: black;
+  }
+
+  &.video-row-console {
+    flex-wrap: wrap;
+
+    .video-row-info {
+      margin-left: 0;
+
+      * {
+        margin: 10px;
+        padding: 0;
+      }
+    }
+
+    .video-row-title {
+      font-size: x-large;
     }
   }
 }

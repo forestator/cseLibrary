@@ -1,12 +1,12 @@
-@import '../../../../../common/common';
+@import '../../../common/common';
 
-img {
+.game-row {
+  flex-wrap: wrap;
+}
+
+.game-cover {
   width: 100% !important;
   max-width: 400px;
   min-width: 100px;
   height: auto !important;
-}
-
-.book-core {
-  flex-wrap: wrap;
 }
