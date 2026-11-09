@@ -1,0 +1,36 @@
+@use '../ui' as *;
+
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.skeleton-head {
+  @include shimmer;
+  height: 180px;
+  border-radius: $radius-lg;
+}
+
+.skeleton-item {
+  @include shimmer;
+  border-radius: $radius-lg;
+}
+
+.skeleton-cards .skeleton-items {
+  @include responsive-grid(300px);
+}
+
+.skeleton-cards .skeleton-item {
+  height: 240px;
+}
+
+.skeleton-list .skeleton-items {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.skeleton-list .skeleton-item {
+  height: 72px;
+}

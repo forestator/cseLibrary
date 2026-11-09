@@ -1,15 +1,27 @@
-<mat-accordion>
-  <mat-expansion-panel>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
+<article class="row-card">
+  <div class="row-head">
+    <h2 class="row-heading">
+      <button type="button" class="row-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="panelId()" [attr.aria-label]="toggleLabel()" (click)="open.update(isOpen => !isOpen)">
+        <mat-icon class="row-chevron" [class.row-chevron-open]="open()" aria-hidden="true">chevron_right</mat-icon>
+        <span class="row-text">
+          <span class="row-title">{{series().name}}</span>
+          <span class="row-info">{{visibleBooks().length}} livres</span>
+        </span>
         <app-series-badge [series]="series()" />
-        <span class="series-title">{{series().name}}</span>
-        <span class="series-info">{{visibleBooks().length}} livres</span>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    {{series().resume}}
-    @if (series().books) {
-      <app-book-table [books]="visibleBooks()" [biblio]="biblio()" [showAuthors]="true" />
-    }
-  </mat-expansion-panel>
-</mat-accordion>
+      </button>
+    </h2>
+    <a class="row-link" [routerLink]="series().id" [attr.aria-label]="linkLabel()" title="Ouvrir la série">
+      <mat-icon aria-hidden="true">open_in_new</mat-icon>
+    </a>
+  </div>
+  @if (open()) {
+    <div class="row-body" [id]="panelId()">
+      @if (series().resume) {
+        <p class="row-resume">{{series().resume}}</p>
+      }
+      @if (series().books) {
+        <app-book-list [books]="visibleBooks()" [biblio]="biblio()" [showAuthors]="true" />
+      }
+    </div>
+  }
+</article>

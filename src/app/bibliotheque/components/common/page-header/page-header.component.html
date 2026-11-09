@@ -1,0 +1,28 @@
+<header class="page-header">
+  @if (crumbs().length) {
+    <nav aria-label="Fil d'Ariane">
+      <ol class="crumbs">
+        @for (crumb of crumbs(); track crumb.label) {
+          <li><a class="crumb-link" [routerLink]="crumb.link">{{crumb.label}}</a></li>
+        }
+      </ol>
+    </nav>
+  }
+  <div class="page-title-row">
+    <h1 class="page-title">{{title()}}</h1>
+    <ng-content select="[headerMeta]" />
+  </div>
+  @if (facts().length) {
+    <ul class="facts">
+      @for (fact of facts(); track fact) {
+        <li>{{fact}}</li>
+      }
+    </ul>
+  }
+  @if (resume()) {
+    <p class="page-resume">{{resume()}}</p>
+  }
+  <div class="page-actions">
+    <ng-content />
+  </div>
+</header>

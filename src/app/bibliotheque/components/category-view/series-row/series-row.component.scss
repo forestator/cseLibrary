@@ -1,23 +1,85 @@
-$title-color: black;
-$info-color: #595959;
+@use '../../common/ui' as *;
 
-.mat-accordion .mat-expansion-panel {
-  margin-bottom: 10px;
+.row-card {
+  @include surface-card;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    border-color: $accent;
+  }
 }
 
-.mat-expansion-panel-header {
-  font-size: 16px;
-  font-weight: bold;
+.row-head {
+  @include disclosure-head;
 }
 
-.series-title {
-  font-size: x-large;
-  margin-left: 10px;
-  color: $title-color;
+.row-heading {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: inherit;
 }
 
-.series-info {
-  font-size: medium;
-  margin-left: 10px;
-  color: $info-color;
+.row-toggle {
+  @include disclosure-toggle;
+  flex-wrap: wrap;
+
+  @include mobile {
+    row-gap: $space-1;
+  }
+}
+
+.row-chevron {
+  flex: none;
+  color: $accent-text;
+  transition: transform 0.2s ease;
+
+  &.row-chevron-open {
+    transform: rotate(90deg);
+  }
+}
+
+.row-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.row-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.row-info {
+  color: $on-surface-muted;
+  font-size: 0.9rem;
+}
+
+.row-link {
+  @include touch-target;
+  border-radius: $radius-pill;
+  color: $accent-text;
+  text-decoration: none;
+
+  &:hover {
+    background: $accent-soft;
+  }
+}
+
+.row-body {
+  padding: $space-2 $space-4 $space-4;
+  animation: reveal 0.2s ease;
+}
+
+.row-resume {
+  max-width: 75ch;
+  margin: 0 0 $space-3;
+  color: $on-surface-muted;
+  white-space: pre-line;
 }

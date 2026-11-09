@@ -1,7 +1,6 @@
-<nav class="alphabet" aria-label="Filtrer par lettre">
+<nav class="alphabet" aria-label="Filtrer les auteurs par lettre">
+  <button type="button" class="letter letter-all" [attr.aria-pressed]="!selected()" (click)="filterByLetter.emit(undefined)">Tous</button>
   @for (letter of letters; track letter) {
-    <button type="button" class="letter bloc-link" (click)="filterByLetter.emit(letter)">
-      {{letter}}
-    </button>
+    <button type="button" class="letter" [attr.aria-pressed]="letter === selected()" (click)="choose(letter)">{{letter}}</button>
   }
 </nav>

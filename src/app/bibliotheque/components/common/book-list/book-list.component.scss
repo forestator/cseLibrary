@@ -1,0 +1,95 @@
+@use '../ui' as *;
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.book-item {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) minmax(150px, auto) 110px;
+  align-items: center;
+  gap: $space-4;
+  padding: $space-3 $space-2;
+  border-top: 1px solid $outline;
+
+  &:first-child {
+    border-top: 0;
+  }
+
+  @include mobile {
+    grid-template-columns: 56px minmax(0, 1fr);
+    align-items: start;
+    gap: $space-2 $space-3;
+  }
+}
+
+.book-thumb {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: $radius-sm;
+  background: $surface-high;
+  box-shadow: $shadow-1;
+
+  @include mobile {
+    grid-row: span 3;
+  }
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.book-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.book-tome {
+  @include chip;
+  margin-left: $space-2;
+  font-weight: 600;
+}
+
+.book-authors {
+  margin: 0;
+  color: $accent-text;
+  font-size: 0.95rem;
+}
+
+.book-meta {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  margin: 0;
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+
+  div {
+    display: flex;
+    gap: $space-2;
+  }
+
+  dt {
+    min-width: 44px;
+    font-weight: 600;
+  }
+
+  dd {
+    margin: 0;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.book-status {
+  justify-self: end;
+
+  @include mobile {
+    justify-self: start;
+  }
+}

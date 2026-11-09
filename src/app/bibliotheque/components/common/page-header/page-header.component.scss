@@ -1,0 +1,95 @@
+@use '../ui' as *;
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  padding: $space-6 $space-5;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 20%, var(--mat-sys-surface)), $surface-card);
+  animation: reveal 0.3s ease;
+
+  @include mobile {
+    padding: $space-5 $space-4;
+  }
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-1 $space-2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+
+  li + li::before {
+    content: '/';
+    margin-right: $space-2;
+    color: $on-surface-muted;
+  }
+}
+
+.crumb-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: $accent-text;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.page-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  letter-spacing: -0.03em;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    @include chip;
+    padding: $space-1 $space-3;
+    border: 1px solid $outline;
+    background: $surface;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: $on-surface;
+  }
+}
+
+.page-resume {
+  max-width: 75ch;
+  margin: 0;
+  color: $on-surface-muted;
+  font-size: 1.05rem;
+  white-space: pre-line;
+}
+
+.page-actions:empty {
+  display: none;
+}
+
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}

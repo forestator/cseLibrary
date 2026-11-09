@@ -1,17 +1,13 @@
+import {NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
 import {Biblio, Book, Category} from '../../../../models/author.model';
-import {BadgeComponent} from '../../../../common/components/book-badge/badge.component';
 import {authorNames, publisherName} from '../../../models/library-queries';
 import {BookCoverPipe} from '../../../pipes/book-cover.pipe';
+import {BookStatusComponent} from '../../common/book-status/book-status.component';
 
 interface BookInfo {
   label: string;
   value?: string;
-}
-
-// An absent value is displayed like an empty one; only an explicitly empty string hides the line.
-function isDisplayed(value?: string): boolean {
-  return value?.length !== 0;
 }
 
 @Component({
@@ -19,16 +15,21 @@ function isDisplayed(value?: string): boolean {
   templateUrl: './book-row.component.html',
   styleUrl: './book-row.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BadgeComponent, BookCoverPipe],
+  imports: [NgOptimizedImage, BookStatusComponent, BookCoverPipe],
 })
 export class BookRowComponent {
   readonly book = input.required<Book>();
   readonly category = input<Category>();
-  readonly index = input.required<number>();
   readonly biblio = input.required<Biblio>();
+  readonly highlighted = input(false);
+  readonly resumeOpen = input(false);
+  /** The PDF export needs every cover already loaded. */
+  readonly eagerCover = input(false);
+  /** Marks the cover as the page's main image so it loads first. */
+  readonly priorityCover = input(false);
 
-  /** Odd rows show the cover on the right. */
-  protected readonly isReversed = computed(() => this.index() % 2 !== 0);
+  // NgOptimizedImage forbids an explicit `loading` together with `priority`.
+  protected readonly loading = computed(() => (this.priorityCover() ? undefined : this.eagerCover() ? 'eager' : 'lazy'));
 
   protected readonly badge = computed(() => {
     const name = this.category()?.name;
@@ -40,16 +41,15 @@ export class BookRowComponent {
   protected readonly infos = computed<Array<BookInfo>>(() => {
     const book = this.book();
     const infos: Array<BookInfo> = [
-      {label: 'TOME', value: book.tome},
-      {label: 'ISNB10', value: book.isbn10},
-      {label: 'ISNB13', value: book.isbn13},
-      {label: 'Editeur', value: publisherName(book.publisherId, this.biblio())},
+      {label: 'Tome', value: book.tome},
+      {label: 'ISBN 10', value: book.isbn10},
+      {label: 'ISBN 13', value: book.isbn13},
+      {label: 'Éditeur', value: publisherName(book.publisherId, this.biblio())},
       {label: 'Format', value: book.format},
-      {label: 'Page', value: book.page},
-      {label: 'Achat', value: book.year},
+      {label: 'Pages', value: book.page},
+      {label: "Année d'achat", value: book.year},
       {label: 'Repère', value: book.ref},
     ];
-    // The publisher line is always shown, even without publisher.
-    return infos.filter(info => info.label === 'Editeur' || isDisplayed(info.value));
+    return infos.filter(info => !!info.value);
   });
 }

@@ -1,31 +1,30 @@
+@use '../common/ui' as *;
 
-.all-series {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.series {
+.page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin: 4px;
-  width: 200px;
-  height: 100px;
-  padding: 0 5px;
-  cursor: pointer;
-  text-decoration: none;
+  gap: $space-5;
 }
 
-.series-title {
+.block {
   display: flex;
-  font-weight: bold;
-  justify-content: center;
-  word-wrap: normal;
+  flex-direction: column;
+  gap: $space-3;
 }
 
-.series-info {
+.block-title {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.block-count {
+  @include chip;
+  margin-left: $space-2;
+  vertical-align: middle;
+}
+
+.block-list {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: $space-3;
 }

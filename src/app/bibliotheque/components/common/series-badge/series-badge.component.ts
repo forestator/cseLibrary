@@ -3,16 +3,16 @@ import {Series, SeriesStatus} from '../../../../models/author.model';
 
 interface BadgeStyle {
   text: string;
-  cssClass: string;
+  tone: string;
 }
 
 const BADGES: Record<SeriesStatus, BadgeStyle> = {
-  [SeriesStatus.NEW]: {text: 'NOUVEAU', cssClass: 'badge-new'},
-  [SeriesStatus.IN_PROGRESS]: {text: 'EN COURS...', cssClass: 'badge-in-progress'},
-  [SeriesStatus.INCOMPLETE]: {text: 'INCOMPLETE', cssClass: 'badge-incomplete'},
-  [SeriesStatus.FINISHED]: {text: 'COMPLETE', cssClass: 'badge-finished'},
-  [SeriesStatus.DECLASSED]: {text: 'DECLASSEE', cssClass: 'badge-declassed'},
-  [SeriesStatus.ONE_SHOT]: {text: 'UNIQUE', cssClass: 'badge-one-shot'},
+  [SeriesStatus.NEW]: {text: 'Nouveau', tone: 'chip-info'},
+  [SeriesStatus.IN_PROGRESS]: {text: 'En cours…', tone: 'chip-teal'},
+  [SeriesStatus.INCOMPLETE]: {text: 'Incomplète', tone: 'chip-warning'},
+  [SeriesStatus.FINISHED]: {text: 'Complète', tone: 'chip-success'},
+  [SeriesStatus.DECLASSED]: {text: 'Déclassée', tone: 'chip-danger'},
+  [SeriesStatus.ONE_SHOT]: {text: 'Unique', tone: 'chip-project'},
 };
 
 @Component({
@@ -26,6 +26,6 @@ export class SeriesBadgeComponent {
 
   protected readonly badge = computed<BadgeStyle>(() => {
     const status = this.series().status;
-    return BADGES[status] ?? {text: status, cssClass: 'badge-default'};
+    return BADGES[status] ?? {text: status, tone: 'chip-neutral'};
   });
 }

@@ -1,14 +1,168 @@
+@use '../../common/ui' as *;
 
-.book-core-reverse {
-  flex-direction: row-reverse;
+:host {
+  display: block;
+  container-type: inline-size;
 }
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
+.book-card {
+  @include surface-card;
+  display: grid;
+  grid-template-columns: clamp(104px, 30cqw, 190px) minmax(0, 1fr);
+  gap: $space-4;
+  padding: $space-4;
+  scroll-margin-top: $topbar-height + $space-4;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: $accent;
   }
 
-  to {
-    transform: rotate(-45deg);
+  &.book-card-highlighted {
+    border-color: $accent;
+    box-shadow: 0 0 0 3px $accent, $shadow-2;
+    animation: pulse 1.2s ease 2;
+  }
+}
+
+.book-cover {
+  position: relative;
+  align-self: start;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: $radius-md;
+  background: $surface-high;
+  box-shadow: $shadow-1;
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.book-category {
+  @include chip;
+  background: $accent;
+  color: #fff;
+}
+
+.book-infos {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  min-width: 0;
+}
+
+.book-title {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.book-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2 $space-3;
+}
+
+.book-authors {
+  margin: 0;
+  color: $accent-text;
+  font-weight: 500;
+}
+
+.book-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: $space-2 $space-4;
+  margin: $space-2 0 0;
+}
+
+.book-fact {
+  min-width: 0;
+
+  dt {
+    color: $on-surface-muted;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.book-resume {
+  margin-top: $space-2;
+  max-width: 75ch;
+
+  summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 $space-3;
+    border-radius: $radius-pill;
+    background: $accent-soft;
+    color: $accent-text;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  p {
+    margin: $space-2 0 0;
+    white-space: pre-line;
+    animation: reveal 0.2s ease;
+  }
+}
+
+// Narrow card (phone, or two columns): the facts use the full width under the cover.
+@container (max-width: 520px) {
+  .book-card {
+    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-areas:
+      'cover title'
+      'cover line'
+      'facts facts'
+      'resume resume';
+    grid-template-rows: auto 1fr auto auto;
+    gap: $space-1 $space-3;
+  }
+
+  .book-infos {
+    display: contents;
+  }
+
+  .book-cover {
+    grid-area: cover;
+  }
+
+  .book-title {
+    grid-area: title;
+  }
+
+  .book-line {
+    grid-area: line;
+    align-content: start;
+  }
+
+  .book-facts {
+    grid-area: facts;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: $space-3;
+  }
+
+  .book-resume {
+    grid-area: resume;
+  }
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 8px transparent, $shadow-2;
   }
 }

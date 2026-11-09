@@ -27,7 +27,9 @@ export interface DialogParent {
   by?: ViewBy;
 }
 
-const DIALOG_WIDTH = '1200px';
+const DIALOG_WIDTH = '1100px';
+// The default 80vw cap leaves too little room on a phone.
+const DIALOG_MAX_WIDTH = '96vw';
 const NO_COVER = 'NoCover.jpg';
 
 function isSeries(parent: Series | Author): parent is Series {
@@ -54,7 +56,8 @@ export class LibraryDialogs {
   async confirmDelete(message: string): Promise<boolean> {
     const dialogRef = this.dialog.open<DeleteModalComponent, {message: string}, boolean>(DeleteModalComponent, {
       height: 'auto',
-      width: '600px',
+      width: '560px',
+      maxWidth: DIALOG_MAX_WIDTH,
       data: {message},
     });
     return (await firstValueFrom(dialogRef.afterClosed())) === true;
@@ -283,8 +286,10 @@ export class LibraryDialogs {
       return;
     }
     const dialogRef = this.dialog.open<SearchModalComponent, unknown, SearchBookResult>(SearchModalComponent, {
-      height: '780px',
-      width: '1200px',
+      height: 'auto',
+      maxHeight: '92vh',
+      width: DIALOG_WIDTH,
+      maxWidth: DIALOG_MAX_WIDTH,
       data: {by: search.by, searchResults: results},
     });
     const selected = await firstValueFrom(dialogRef.afterClosed());
@@ -320,6 +325,7 @@ export class LibraryDialogs {
     const dialogRef = this.dialog.open<FormDialogComponent, FormDialogData, FormValues>(FormDialogComponent, {
       height: 'auto',
       width: DIALOG_WIDTH,
+      maxWidth: DIALOG_MAX_WIDTH,
       data,
     });
     return firstValueFrom(dialogRef.afterClosed());

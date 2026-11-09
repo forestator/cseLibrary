@@ -1,0 +1,137 @@
+// Building blocks shared by the library pages; tokens are forwarded so a component needs a single `@use`.
+@forward '../../../../styles/tokens';
+@use '../../../../styles/tokens' as *;
+
+// Status colours: [light background, light text, dark background, dark text], all above 4.5:1.
+$tones: (
+  'success': (#dcfce7, #14532d, #14532d, #bbf7d0),
+  'info': (#dbeafe, #1e3a8a, #1e3a8a, #bfdbfe),
+  'warning': (#ffedd5, #7c2d12, #7c2d12, #fed7aa),
+  'danger': (#fee2e2, #7f1d1d, #7f1d1d, #fecaca),
+  'project': (#fae8ff, #701a75, #701a75, #f5d0fe),
+  'teal': (#ccfbf1, #134e4a, #134e4a, #99f6e4),
+);
+
+@mixin chip {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  padding: 2px $space-3;
+  border-radius: $radius-pill;
+  background: $surface-high;
+  color: $on-surface-muted;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+// Emits `.chip-<tone>` classes for every tone.
+@mixin chip-tones {
+  @each $name, $colors in $tones {
+    .chip-#{$name} {
+      background: light-dark(nth($colors, 1), nth($colors, 3));
+      color: light-dark(nth($colors, 2), nth($colors, 4));
+    }
+  }
+}
+
+@mixin surface-card {
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  color: $on-surface;
+}
+
+@mixin interactive-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $accent;
+    box-shadow: $shadow-2;
+    transform: translateY(-3px);
+  }
+}
+
+@mixin responsive-grid($min: 300px) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, #{$min}), 1fr));
+  gap: $space-4;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// Square touch target (44px) hosting an icon.
+@mixin touch-target {
+  display: inline-grid;
+  place-items: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@mixin clamp-lines($lines) {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+}
+
+@mixin shimmer {
+  background: linear-gradient(90deg, $surface-high 25%, $surface-card 50%, $surface-high 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// Disclosure header shared by the series and author cards.
+@mixin disclosure-head {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-2 $space-2 $space-2 $space-1;
+}
+
+@mixin disclosure-toggle {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: $space-3;
+  min-width: 0;
+  min-height: 56px;
+  padding: $space-2 $space-3;
+  border: 0;
+  border-radius: $radius-md;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background: $surface-high;
+  }
+}

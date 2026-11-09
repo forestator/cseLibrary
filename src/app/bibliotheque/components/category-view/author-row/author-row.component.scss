@@ -1,23 +1,62 @@
-$title-color: black;
-$info-color: #595959;
+@use '../../common/ui' as *;
 
-.mat-accordion .mat-expansion-panel {
-  margin-bottom: 10px;
+.row-card {
+  @include surface-card;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+
+  &:hover,
+  &:focus-within {
+    border-color: $accent;
+  }
 }
 
-.mat-expansion-panel-header {
-  font-size: 16px;
-  font-weight: bold;
+.row-heading {
+  display: flex;
+  margin: 0;
+  padding: $space-2;
+  font-size: inherit;
 }
 
-.author-title {
-  font-size: x-large;
-  margin-left: 10px;
-  color: $title-color;
+.row-toggle {
+  @include disclosure-toggle;
 }
 
-.author-info {
-  font-size: medium;
-  margin-left: 10px;
-  color: $info-color;
+.row-chevron {
+  flex: none;
+  color: $accent-text;
+  transition: transform 0.2s ease;
+
+  &.row-chevron-open {
+    transform: rotate(90deg);
+  }
+}
+
+.row-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.row-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.row-info {
+  color: $on-surface-muted;
+  font-size: 0.9rem;
+}
+
+.row-body {
+  padding: 0 $space-4 $space-4;
+  animation: reveal 0.2s ease;
+}
+
+.row-series-title {
+  margin: $space-4 0 $space-1;
+  padding-left: $space-2;
+  color: $accent-text;
+  font-size: 1rem;
 }

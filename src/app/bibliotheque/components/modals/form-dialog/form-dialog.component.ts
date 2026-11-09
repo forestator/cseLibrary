@@ -1,3 +1,4 @@
+import {NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {FormControl, FormRecord, ReactiveFormsModule} from '@angular/forms';
@@ -15,7 +16,7 @@ import {DialogForm, FormDialogData, FormValues} from './form-dialog.model';
   templateUrl: './form-dialog.component.html',
   styleUrl: './form-dialog.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, MatDialogModule, MatInputModule, MatSelectModule, MatButton, MatIcon, BookCoverPipe],
+  imports: [ReactiveFormsModule, MatDialogModule, MatInputModule, MatSelectModule, MatButton, MatIcon, BookCoverPipe, NgOptimizedImage],
 })
 export class FormDialogComponent {
   private readonly dialogRef = inject<MatDialogRef<FormDialogComponent, FormValues>>(MatDialogRef);

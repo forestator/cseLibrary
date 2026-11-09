@@ -1,24 +1,45 @@
-<div class="core-page fadein">
-  @for (biblio of libraries(); track biblio.library?.id) {
-    <a class="core-header" [routerLink]="biblio.library?.id">
-      <div class="core-title">
-        <div class="primary">{{biblio.library?.name}}</div>
-      </div>
-      <div class="core-resume">
-        {{biblio.library?.resume}}
-      </div>
-    </a>
-  }
-  @if (authService.isUserSuperAdmin | async) {
-    <div class="core-header">
-      <div class="core-title">
-        <div class="primary">Administration biblio</div>
-      </div>
-      @for (biblio of libraries(); track biblio.library?.id) {
-        <a class="core-body" [routerLink]="'admin/' + biblio.library?.id">
-          Gestion des livres {{biblio.library?.name}}
-        </a>
+<div class="page">
+  <app-page-header
+    title="Bibliothèque"
+    resume="Romans, bandes dessinées et livres jeunesse : parcourez les quatre bibliothèques du CSE par catégorie, série ou auteur." />
+
+  @if (cards(); as libraryCards) {
+    <ul class="cards">
+      @for (card of libraryCards; track card.id; let first = $first) {
+        <li>
+          <a class="card" [routerLink]="card.id">
+            <span class="card-cover">
+              <img [ngSrc]="card.path | categoryBackground: card.cover" fill alt="" [priority]="first" sizes="(max-width: 840px) 100vw, 40vw">
+            </span>
+            <span class="card-body">
+              <h2 class="card-title">{{card.name}}</h2>
+              <span class="card-text">{{card.resume}}</span>
+              <span class="card-note">
+                <mat-icon aria-hidden="true">category</mat-icon>{{card.categoryCount}} catégories
+                <mat-icon aria-hidden="true">menu_book</mat-icon>{{card.bookCount}} livres
+              </span>
+            </span>
+          </a>
+        </li>
       }
-    </div>
+    </ul>
+  } @else {
+    <app-skeleton variant="cards" [count]="4" />
+  }
+
+  @if (authService.isUserSuperAdmin | async) {
+    <section class="admin" aria-labelledby="admin-heading">
+      <h2 id="admin-heading" class="admin-title"><mat-icon aria-hidden="true">admin_panel_settings</mat-icon>Administration biblio</h2>
+      <ul class="admin-links">
+        @for (card of cards(); track card.id) {
+          <li>
+            <a class="admin-link" [routerLink]="'admin/' + card.id">
+              <mat-icon aria-hidden="true">edit_note</mat-icon>
+              Gestion des livres {{card.name}}
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
   }
 </div>

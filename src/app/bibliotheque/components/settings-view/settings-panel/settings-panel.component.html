@@ -1,48 +1,56 @@
-<div class="settings-node">
-  <!-- Before the panel so keyboard users reach these buttons before the children's. -->
-  <div class="controls">
-    @for (action of node().actions; track action.label) {
-      <button
-        type="button"
-        class="control"
-        [class]="'control-' + action.tone"
-        [attr.aria-label]="action.label + ' : ' + node().title"
-        [title]="action.label"
-        (click)="action.run()">
-        <mat-icon>{{action.icon}}</mat-icon>
-      </button>
+<div class="node" [class.node-open]="open()">
+  <div class="node-head">
+    <button type="button" class="node-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="bodyId" (click)="open.update(isOpen => !isOpen)">
+      <mat-icon class="node-chevron" aria-hidden="true">chevron_right</mat-icon>
+      <span class="node-title">{{node().title}}</span>
+      @if (node().bookStatus; as status) {
+        <app-book-status [status]="status" />
+      }
+    </button>
+    @if (node().actions.length) {
+      <div class="node-actions" role="group" [attr.aria-label]="'Actions : ' + node().title">
+        @for (action of node().actions; track action.label) {
+          <button
+            type="button"
+            class="node-action"
+            [class]="'node-action-' + action.tone"
+            [attr.aria-label]="action.label + ' : ' + node().title"
+            [title]="action.label"
+            (click)="action.run()">
+            <mat-icon aria-hidden="true">{{action.icon}}</mat-icon>
+          </button>
+        }
+      </div>
     }
   </div>
-  <mat-expansion-panel [expanded]="node().expanded ?? false">
-    <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
-      <mat-panel-title>
-        <div class="designation">
-          {{node().title}}
-          @if (node().bookStatus; as status) {
-            <app-badge [status]="status" />
+  @if (open()) {
+    <div class="node-body" [id]="bodyId">
+      @if (node().fields.length) {
+        <dl class="node-fields">
+          @for (field of node().fields; track field.label) {
+            <div class="node-field">
+              <dt>{{field.label}}</dt>
+              <dd>
+                @if (field.bookStatus; as status) {
+                  <app-book-status [status]="status" />
+                } @else if (field.series; as series) {
+                  <app-series-badge [series]="series" />
+                } @else {
+                  {{field.value}}
+                }
+              </dd>
+            </div>
+          }
+        </dl>
+      }
+      @if (node().children.length) {
+        <div class="node-children">
+          @for (child of node().children; track child.id) {
+            <app-settings-panel [node]="child" />
           }
         </div>
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="description">
-      @for (field of node().fields; track field.label) {
-        <div class="field">
-          <div class="label">{{field.label}}</div>
-          <div class="content">
-            @if (field.bookStatus; as status) {
-              <app-badge [status]="status" />
-            } @else if (field.series; as series) {
-              <app-series-badge [series]="series" />
-            } @else {
-              {{field.value}}
-            }
-          </div>
-        </div>
       }
+      <ng-content />
     </div>
-    @for (child of node().children; track child.id) {
-      <app-settings-panel [node]="child" />
-    }
-    <ng-content />
-  </mat-expansion-panel>
+  }
 </div>

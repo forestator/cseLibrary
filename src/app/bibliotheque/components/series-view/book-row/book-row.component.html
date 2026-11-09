@@ -1,20 +1,31 @@
-<article [id]="book().id" class="book-core" [class.book-core-reverse]="isReversed()">
+<article [id]="book().id" class="book-card" [class.book-card-highlighted]="highlighted()">
   <div class="book-cover">
-    <img [alt]="'Couverture de ' + book().name" [src]="biblio().library?.path | bookCover: book().cover">
-    @if (badge()) {
-      <div class="badge">{{badge()}}</div>
-    }
+    <img [ngSrc]="biblio().library?.path | bookCover: book().cover" fill [alt]="'Couverture de ' + book().name" sizes="(max-width: 840px) 40vw, 20vw" [priority]="priorityCover()" [loading]="loading()">
   </div>
   <div class="book-infos">
-    <div class="book-title">{{book().name}}
-      <app-badge [status]="book().status" />
+    <h2 class="book-title">{{book().name}}</h2>
+    <div class="book-line">
+      @if (badge()) {
+        <span class="book-category">{{badge()}}</span>
+      }
+      <app-book-status [status]="book().status" />
+      @if (authors()) {
+        <p class="book-authors">{{authors()}}</p>
+      }
     </div>
-    <div class="book-authors">{{authors()}}</div>
-    @for (info of infos(); track info.label) {
-      <div class="book-info">{{info.label}}: {{info.value}}</div>
+    <dl class="book-facts">
+      @for (info of infos(); track info.label) {
+        <div class="book-fact">
+          <dt>{{info.label}}</dt>
+          <dd>{{info.value}}</dd>
+        </div>
+      }
+    </dl>
+    @if (book().resume) {
+      <details class="book-resume" [open]="resumeOpen()">
+        <summary>Résumé</summary>
+        <p>{{book().resume}}</p>
+      </details>
     }
-    <div class="book-resume">
-      {{book().resume}}
-    </div>
   </div>
 </article>

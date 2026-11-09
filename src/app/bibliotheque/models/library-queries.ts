@@ -1,4 +1,5 @@
-import {Author, Biblio, Book, BookPath, BookStatus} from '../../models/author.model';
+import {Author, Biblio, Book, BookPath, BookStatus, Category} from '../../models/author.model';
+import {filterBooks} from './library-visibility';
 
 export function authorNames(authorIds: ReadonlyArray<string | undefined> | undefined, biblio?: Biblio): string {
   return (authorIds ?? [])
@@ -21,4 +22,22 @@ export function booksWithStatus(biblio: Biblio, status: BookStatus): Array<BookP
         .map(book => ({category, series, book}))
     )
   );
+}
+
+/** Every book of a category, whether it hangs under a series or under an author, without duplicates. */
+export function categoryBooks(category: Category): Array<Book> {
+  const books = [
+    ...(category.series ?? []).flatMap(series => series.books ?? []),
+    ...(category.authors ?? []).flatMap(author => [
+      ...(author.books ?? []),
+      ...(author.series ?? []).flatMap(series => series.books ?? []),
+    ]),
+  ];
+  return [...new Map(books.map(book => [book.id, book])).values()];
+}
+
+/** Number of books a visitor sees (all of them in admin mode) in the given categories. */
+export function visibleBookCount(categories: ReadonlyArray<Category> | undefined, isAdmin: boolean): number {
+  const books = (categories ?? []).flatMap(category => categoryBooks(category));
+  return filterBooks([...new Map(books.map(book => [book.id, book])).values()], isAdmin).length;
 }

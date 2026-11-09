@@ -1,0 +1,31 @@
+@use '../ui' as *;
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-7 $space-4;
+  border: 1px dashed $outline;
+  border-radius: $radius-lg;
+  text-align: center;
+}
+
+.empty-icon {
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+  color: $accent-text;
+}
+
+.empty-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.empty-text {
+  margin: 0;
+  max-width: 50ch;
+  color: $on-surface-muted;
+}
