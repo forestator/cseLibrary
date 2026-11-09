@@ -1,4 +1,4 @@
-import {computed, inject, Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {AngularFireDatabase} from '@angular/fire/compat/database';
 import {catchError, map, of, take} from 'rxjs';
@@ -32,8 +32,6 @@ export class LibraryRepository {
       })
     )
   );
-
-  readonly isLoaded = computed(() => this.libraries() !== undefined);
 
   /** An unknown id resolves to the first library, as the app always did. */
   libraryById(libraryId?: string): Biblio | undefined {

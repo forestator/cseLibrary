@@ -23,6 +23,7 @@ $indicator-space: 56px;
   position: absolute;
   top: 0;
   right: $indicator-space;
+  z-index: 1;
   height: 48px;
   display: flex;
   align-items: center;

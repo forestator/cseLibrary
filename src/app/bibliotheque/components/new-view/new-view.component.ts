@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {DOCUMENT} from '@angular/common';
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, DOCUMENT} from '@angular/common';
 import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {BookStatus} from '../../../models/author.model';

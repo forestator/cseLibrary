@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, output} from '@angular/core';
 
-const ALPHABET: ReadonlyArray<string> = Array.from({length: 26}, (_, offset) => String.fromCharCode(65 + offset));
+const ALPHABET: ReadonlyArray<string> = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
 @Component({
   selector: 'app-alphabet',

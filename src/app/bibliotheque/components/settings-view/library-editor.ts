@@ -210,6 +210,15 @@ export class LibraryEditor {
       ),
     ];
     const children: Array<SettingsNode> = [];
+    if (categoryId) {
+      const location: SeriesLocation = {categoryId, authorId: author.id};
+      children.push(
+        ...(author.books ?? []).map((book, bookIndex) =>
+          this.bookNode(biblio, book, `${index}_${bookIndex + 1}`, location)),
+        ...(author.series ?? []).map((series, seriesIndex) =>
+          this.seriesNode(biblio, series, `${index}_${seriesIndex + 1}`, location))
+      );
+    }
     if (categoryId && author.by === ViewBy.BY_AUTHOR) {
       const location: SeriesLocation = {categoryId, authorId: author.id};
       actions.push(
@@ -235,12 +244,6 @@ export class LibraryEditor {
             }
           },
         }
-      );
-      children.push(
-        ...(author.books ?? []).map((book, bookIndex) =>
-          this.bookNode(biblio, book, `${index}_${bookIndex + 1}`, location)),
-        ...(author.series ?? []).map((series, seriesIndex) =>
-          this.seriesNode(biblio, series, `${index}_${seriesIndex + 1}`, location))
       );
     }
     const fields = [field('Nom', fullName)];

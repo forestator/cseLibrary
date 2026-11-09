@@ -20,7 +20,6 @@ export class CategoryViewComponent {
   private readonly repository = inject(LibraryRepository);
   private readonly adminMode = inject(ToolsService).adminMode;
 
-  /** Route parameters. */
   readonly libraryId = input<string>();
   readonly catId = input<string>();
 

@@ -19,10 +19,8 @@ import {BookRowComponent} from './book-row/book-row.component';
 })
 export class SeriesViewComponent {
   private readonly repository = inject(LibraryRepository);
-  private readonly adminMode = inject(ToolsService).adminMode;
   protected readonly tools = inject(ToolsService);
 
-  /** Route parameters. */
   readonly libraryId = input<string>();
   readonly catId = input<string>();
   readonly seriesId = input<string>();
@@ -38,7 +36,7 @@ export class SeriesViewComponent {
   /** One-shot series list their latest book first. */
   protected readonly books = computed(() => {
     const series = this.series();
-    const books = filterBooks(series?.books, this.adminMode);
+    const books = filterBooks(series?.books, this.tools.adminMode);
     return series?.status === SeriesStatus.ONE_SHOT ? books.reverse() : books;
   });
 }
