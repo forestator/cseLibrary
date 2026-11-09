@@ -1,0 +1,23 @@
+@use '../../../../styles/tokens' as *;
+
+.confirm-title {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+}
+
+.confirm-icon {
+  color: var(--mat-sys-error);
+}
+
+.confirm-text {
+  margin: 0;
+  color: $on-surface-muted;
+}
+
+.confirm-action {
+  --mat-button-filled-container-color: var(--mat-sys-error);
+  --mat-button-filled-label-text-color: var(--mat-sys-on-error);
+
+  min-height: 44px;
+}

@@ -1,170 +1,80 @@
-import {Component, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy, input} from '@angular/core';
-import {BookStatus} from 'src/app/models/author.model';
+import {ChangeDetectionStrategy, Component, computed, input} from '@angular/core';
+import {BookStatus} from '../../../models/author.model';
 import {BoardGameCategory} from '../../../models/boardGame.model';
 import {Consoles} from '../../../models/videoGames.model';
 
+type BadgeTone =
+  'green' | 'lime' | 'orange' | 'red' | 'pink' | 'purple' | 'violet' | 'blue' | 'teal' | 'amber' | 'ink' | 'gray';
+
+interface BadgeView {
+  label: string;
+  tone: BadgeTone;
+}
+
+const BOOK_STATUS_VIEWS: Partial<Record<string, BadgeView>> = {
+  [BookStatus.NEW]: {label: 'NOUVEAU', tone: 'lime'},
+  [BookStatus.AVAILABLE]: {label: 'DISPONIBLE', tone: 'green'},
+  [BookStatus.DECLASSED]: {label: 'DECLASSE', tone: 'orange'},
+  [BookStatus.MISSING]: {label: 'PERDU!', tone: 'red'},
+  [BookStatus.IN_PROJECT]: {label: 'EN PROJET', tone: 'pink'},
+};
+
+// Statuses used by the catalogue commissions, which have no dedicated enum.
+const CATALOGUE_STATUS_VIEWS: Partial<Record<string, BadgeView>> = {
+  HS: {label: 'HS', tone: 'red'},
+  REPARATION: {label: 'EN RÉPARATION', tone: 'orange'},
+};
+
+const BOARD_GAME_TONES: Record<BoardGameCategory, BadgeTone> = {
+  [BoardGameCategory.duo]: 'amber',
+  [BoardGameCategory.ambiance]: 'pink',
+  [BoardGameCategory.culture]: 'purple',
+  [BoardGameCategory.familial]: 'green',
+  [BoardGameCategory.strategie]: 'red',
+  [BoardGameCategory.puzzle]: 'violet',
+  [BoardGameCategory.enfant]: 'blue',
+  [BoardGameCategory.escape]: 'teal',
+  [BoardGameCategory.abstrait]: 'orange',
+  [BoardGameCategory.inclassable]: 'gray',
+  [BoardGameCategory.enquete]: 'ink',
+  [BoardGameCategory.coop]: 'orange',
+};
+
+const CONSOLE_VIEWS: Record<Consoles, BadgeView> = {
+  [Consoles.switch]: {label: Consoles.switch, tone: 'red'},
+  [Consoles.switch2]: {label: Consoles.switch2, tone: 'pink'},
+  [Consoles.ps4]: {label: Consoles.ps4.toUpperCase(), tone: 'blue'},
+  [Consoles.ps5]: {label: Consoles.ps5.toUpperCase(), tone: 'blue'},
+  [Consoles.xboxOne]: {label: Consoles.xboxOne, tone: 'green'},
+  [Consoles.xboxX]: {label: Consoles.xboxX, tone: 'teal'},
+};
+
+function capitalize(text: string): string {
+  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+}
+
 @Component({
-    selector: 'app-badge',
-    templateUrl: './badge.component.html',
-    styleUrls: ['./badge.component.scss'],
-    changeDetection: ChangeDetectionStrategy.Eager
+  selector: 'app-badge',
+  templateUrl: './badge.component.html',
+  styleUrl: './badge.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BadgeComponent implements OnInit, OnChanges {
+export class BadgeComponent {
+  readonly status = input<string>();
+  readonly display = input<'normal' | 'small'>('normal');
 
-  readonly status = input.required<string>();
-  readonly display = input<string>('normal');
-
-  txt!: string;
-  bg!: string;
-  fg!: string;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-    this.setup();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['status']) {
-      this.setup();
-    }
-  }
-
-  private setup() {
+  protected readonly view = computed<BadgeView | undefined>(() => {
     const status = this.status();
-    if (status in BookStatus) {
-      this.bookStatusBadge();
-    } else if (status in Consoles) {
-      this.consoleBadge();
-    } else if (status in BoardGameCategory) {
-      this.boardGameCategoryBadge();
-    } else {
-      this.txt = status?.toString();
-      this.bg = 'gray';
-      this.fg = 'black';
+    if (!status) {
+      return undefined;
     }
-  }
-
-  private boardGameCategoryBadge() {
-    this.txt = this.status()[0].toUpperCase() + this.status().substr(1).toLowerCase();
-    switch (this.status()) {
-      case BoardGameCategory.duo:
-        this.bg = '#d9ab38';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.ambiance:
-        this.bg = '#d93856';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.culture:
-        this.bg = '#b007e8';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.familial:
-        this.bg = '#4dd938';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.strategie:
-        this.bg = '#d93838';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.puzzle:
-        this.bg = '#b138d9';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.enfant:
-        this.bg = '#5d97e0';
-        this.fg = 'black';
-        break;
-      case BoardGameCategory.escape:
-        this.bg = '#11cba3';
-        this.fg = 'black';
-        break;
-      case BoardGameCategory.abstrait:
-        this.bg = '#d93838';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.inclassable:
-        this.bg = 'white';
-        this.fg = 'black';
-        break;
-      case BoardGameCategory.enquete:
-        this.bg = 'black';
-        this.fg = 'white';
-        break;
-      case BoardGameCategory.coop:
-        this.bg = '#e0610f';
-        this.fg = 'white';
-        break;
+    const known = BOOK_STATUS_VIEWS[status] ?? CATALOGUE_STATUS_VIEWS[status] ?? CONSOLE_VIEWS[status as Consoles];
+    if (known) {
+      return known;
     }
-  }
-
-  private consoleBadge() {
-    const status = this.status();
-    switch (status) {
-      case Consoles.switch:
-        this.txt = status;
-        this.bg = '#fe0016';
-        this.fg = 'white';
-        break;
-      case Consoles.switch2:
-        this.txt = status;
-        this.bg = '#9f1e1e';
-        this.fg = 'white';
-        break;
-      case Consoles.ps4:
-      case Consoles.ps5:
-        this.txt = status.toUpperCase();
-        this.bg = '#4b38d9';
-        this.fg = 'white';
-        break;
-      case Consoles.xboxOne:
-        this.txt = status;
-        this.bg = '#4dd938';
-        this.fg = 'white';
-        break;
-      case Consoles.xboxX:
-        this.txt = status;
-        this.bg = '#409131';
-        this.fg = 'white';
-        break;
+    if (status in BOARD_GAME_TONES) {
+      return {label: capitalize(status), tone: BOARD_GAME_TONES[status as BoardGameCategory]};
     }
-  }
-
-  private bookStatusBadge() {
-    const status = this.status();
-    switch (status) {
-      case BookStatus.NEW:
-        this.txt = 'NOUVEAU';
-        this.bg = 'chartreuse';
-        this.fg = 'white';
-        break;
-      case BookStatus.AVAILABLE:
-        this.txt = 'DISPONIBLE';
-        this.bg = 'green';
-        this.fg = 'white';
-        break;
-      case BookStatus.DECLASSED:
-        this.txt = 'DECLASSE';
-        this.bg = 'darkorange';
-        this.fg = 'white';
-        break;
-      case BookStatus.MISSING:
-        this.txt = 'PERDU!';
-        this.bg = 'red';
-        this.fg = 'white';
-        break;
-      case BookStatus.IN_PROJECT:
-        this.txt = 'EN PROJET';
-        this.bg = 'fuchsia';
-        this.fg = 'white';
-        break;
-      default:
-        this.txt = status.toString();
-        this.bg = 'gray';
-        this.fg = 'black';
-        break;
-    }
-  }
+    return {label: status, tone: 'gray'};
+  });
 }

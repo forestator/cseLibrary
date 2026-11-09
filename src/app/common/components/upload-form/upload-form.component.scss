@@ -1,24 +1,65 @@
-.upload-form-container {
+@use '../../../../styles/tokens' as *;
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+  width: 250px;
+  max-width: 100%;
+}
+
+.dropzone {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: $space-2;
+  min-height: 250px;
+  padding: $space-3;
+  border: 2px dashed $outline;
+  border-radius: $radius-md;
+  background: $surface-low;
+  text-align: center;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 
-  &.disabled {
-    *:not(img) {
-      opacity: 0.5;
-      pointer-events: none;
-    }
+  &-active {
+    border-color: var(--mat-sys-primary);
+    background: var(--mat-sys-primary-container);
   }
+}
 
-  img {
-    margin: 20px 0;
+.dropzone-image {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  border-radius: $radius-sm;
+  object-fit: contain;
+  background: $surface-high;
+}
+
+.dropzone-icon {
+  width: 48px;
+  height: 48px;
+  font-size: 48px;
+  color: $on-surface-muted;
+}
+
+.dropzone-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: $on-surface-muted;
+}
+
+.upload-actions {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+
+  button {
+    min-height: 44px;
   }
+}
 
-  .upload-btn {
-
-    .progress {
-      margin-left: 5px;
-    }
-  }
+.upload-form-disabled .dropzone {
+  opacity: 0.6;
 }

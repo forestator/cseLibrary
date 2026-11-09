@@ -1,12 +1,11 @@
-<h1 mat-dialog-title>
-  Confirmation
-</h1>
-
-<div mat-dialog-content>
-  <p>{{data.confirmText}}</p>
-</div>
-
-<div mat-dialog-actions>
-  <button mat-button (click)="onDismiss()">No</button>
-  <button mat-raised-button color="primary" (click)="onConfirm()">Yes</button>
-</div>
+<h2 mat-dialog-title class="confirm-title">
+  <mat-icon class="confirm-icon" aria-hidden="true">warning</mat-icon>
+  {{ title }}
+</h2>
+<mat-dialog-content>
+  <p class="confirm-text">{{ data.confirmText }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button matButton type="button" [mat-dialog-close]="false" cdkFocusInitial>{{ cancelLabel }}</button>
+  <button matButton="filled" type="button" class="confirm-action" [mat-dialog-close]="true">{{ confirmLabel }}</button>
+</mat-dialog-actions>
