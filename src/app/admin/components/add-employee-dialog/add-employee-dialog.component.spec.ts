@@ -1,4 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MatDialogRef} from '@angular/material/dialog';
 
 import {AddEmployeeDialogComponent} from './add-employee-dialog.component';
 
@@ -8,8 +9,9 @@ describe('AddEmployeeDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [AddEmployeeDialogComponent]
-})
+    imports: [AddEmployeeDialogComponent],
+      providers: [{provide: MatDialogRef, useValue: {close: () => undefined}}]
+    })
     .compileComponents();
 
     fixture = TestBed.createComponent(AddEmployeeDialogComponent);

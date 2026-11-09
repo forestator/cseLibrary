@@ -1,4 +1,6 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {of} from 'rxjs';
+import {AuthentificationService} from '../../../services/firebase/authentification.service';
 
 import {AdminHomeComponent} from './admin-home.component';
 
@@ -8,8 +10,9 @@ describe('AdminHomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-    imports: [AdminHomeComponent]
-})
+    imports: [AdminHomeComponent],
+      providers: [{provide: AuthentificationService, useValue: {currentUser$: of(null)}}]
+    })
     .compileComponents();
 
     fixture = TestBed.createComponent(AdminHomeComponent);

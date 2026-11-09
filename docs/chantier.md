@@ -10,7 +10,7 @@
 - **1213 fichiers** du bucket `cseh-50966.appspot.com` copiés vers Cloudinary (`scripts/migrate-storage/migrate.mjs copy`), avec la même arborescence ; sauvegarde locale de 104 Mo faite pendant la session (dossier de session temporaire, à avoir copié ailleurs).
 - 9 fichiers source (templates/services) réécrits avec les nouvelles URLs (`rewrite-src`).
 
-## En cours : bascule de la base Firebase (à faire par le propriétaire du projet)
+## Historique : bascule des URLs d'images (terminée par la migration Firestore)
 `scripts/migrate-storage/updates.json` (ignoré par git, régénérable) contient 265 champs de la base qui pointent encore vers Firebase Storage. Pour l'appliquer :
 1. Exporter la base (console Realtime Database → Export JSON) ; `node scripts/migrate-storage/migrate.mjs rewrite-db --cloud seo9axkp --db <export.json>` régénère `updates.json`.
 2. `npx firebase-tools database:update / scripts/migrate-storage/updates.json --project cseh-50966` (multi-path update, n'écrase pas le reste).
@@ -30,13 +30,18 @@ Tant que l'étape 2 n'est pas faite, les couvertures de jeux/outils/sono/nautism
 10. Refonte des emprunts, de zéro (ne pas réintroduire l'ancien schéma).
 11. Alertes de budget Google Cloud à 1 € (le projet est en Blaze) et sortie éventuelle de Blaze après migration complète.
 
-## Plan de modernisation décidé le 2026-11-09 (ordre recommandé)
-1. **Outillage de vérification navigateur** : fait (MCP utilisateur + headless Chrome, voir `CLAUDE.md`).
-2. **Bonnes pratiques Angular + suppression des doublons**, en commençant par une couche d'accès aux données générique (un « repository » par commission au lieu de 6 services quasi identiques) et des composants de liste/ligne/admin génériques pour bricolage / sono / nautisme / photo. Standalone, signals (`toSignal` sur les flux Firebase), `input()`/`output()`, `@if`/`@for`, `inject()`, OnPush, SCSS.
-3. **Migration Realtime Database → Firestore** (demandée le 2026-11-09), à faire *derrière* la couche repository de l'étape 2 pour ne toucher qu'un endroit. Points à trancher avant de commencer :
-   - Facturation Firestore : lectures facturées **par document** (quota gratuit, à vérifier : ~50 000 lectures/jour). Un catalogue d'environ 1 200 objets rechargé à chaque visite consommerait vite ce quota. Pistes : cache persistant du SDK, ou documents « paquets » par bibliothèque/catégorie plutôt qu'un document par objet.
-   - Les règles de sécurité Firestore sont plus fines que celles de la RTDB (à écrire dès le départ, version contrôlée dans le repo, lecture publique du catalogue seulement, `users` restreint).
-   - Données : script d'import depuis l'export RTDB (sauvegarde du 2026-11-08 faite), ré-identification des chemins (tableaux RTDB → collections), double lecture le temps de la bascule.
-   - `@angular/fire` : passer de l'API `compat` à l'API modulaire (`@angular/fire/firestore`, `@angular/fire/auth`).
-   - Le gain doit être confirmé avant d'investir : la RTDB reste utilisable ; objectifs attendus (requêtes/filtrage serveur, règles fines, modèle de données propre) à valider.
-4. **Refonte de l'affichage et de la navigation** (design moderne, thème clair/sombre, mobile d'abord, accessibilité AA) : proposition de direction à valider avant d'implémenter.
+## Fait le 2026-11-09
+- Outillage navigateur (MCP utilisateur, puppeteer-core, émulateurs).
+- Refactoring complet : migrations officielles (standalone, `inject()`, signals, queries, outputs, self-closing), routes lazy, plus aucun NgModule ; suppression des doublons (`catalogue/` générique pour 4 commissions, ludothèque et bibliothèque refondues autour de dépôts de données, modales/réglages génériques).
+- Migration Realtime Database → Firestore (base `cse-db`, europe-west1) : modèle, règles déployées, 313 documents importés en production, Auth passé en API modulaire (`@angular/fire` compat supprimé), émulateurs pour tester l'admin.
+- Vérifications : build dev + prod, 21 tests unitaires, 33 pages comparées à une référence (données et images identiques, base Firestore de production), connexion admin + ajout d'un outil de bout en bout sur émulateur.
+
+## Reste à faire (priorité décroissante)
+1. **Verrouiller la Realtime Database** (encore lisible publiquement, dont 280 employés) maintenant que l'app n'en dépend plus : règles `{".read": false, ".write": false}` ou suppression. Garder la sauvegarde `db-export-*.json`. L'ancienne appli déployée sur `cseh-50966.web.app` utilise encore la RTDB : redéployer (`firebase deploy --only hosting`, action sortante, à faire avec l'accord du propriétaire) AVANT de verrouiller.
+2. Nouveau design (navigation, accueil, grilles de couvertures, thème clair/sombre, mobile d'abord, AA) : voir la section ci-dessous si déjà entamé.
+3. 5 composants partagés encore en `ChangeDetectionStrategy.Eager` à passer en OnPush/signals.
+4. Écritures admin ludothèque / bibliothèque non testées de bout en bout (seul l'ajout catalogue l'a été) ; la persistance des réglages bibliothèque n'existe pas (comme avant).
+5. Révoquer la clé OpenAI compromise ; décider du sort des descriptions IA.
+6. `@angular/fire` stable dès sa sortie ; repasser le projet de Blaze à Spark seulement si Firestore + Cloudinary restent dans leurs quotas gratuits (Storage Firebase n'est plus utilisé mais le bucket existe encore).
+7. `strict: true`, config/UIDs admin hors du code, Moment.js, CI, tests e2e à jour (Cypress est obsolète).
+8. Refonte des emprunts, de zéro.
