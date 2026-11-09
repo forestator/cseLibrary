@@ -1,4 +1,18 @@
 <div class="settings-node">
+  <!-- Before the panel so keyboard users reach these buttons before the children's. -->
+  <div class="controls">
+    @for (action of node().actions; track action.label) {
+      <button
+        type="button"
+        class="control"
+        [class]="'control-' + action.tone"
+        [attr.aria-label]="action.label + ' : ' + node().title"
+        [title]="action.label"
+        (click)="action.run()">
+        <mat-icon>{{action.icon}}</mat-icon>
+      </button>
+    }
+  </div>
   <mat-expansion-panel [expanded]="node().expanded ?? false">
     <mat-expansion-panel-header collapsedHeight="48px" expandedHeight="48px">
       <mat-panel-title>
@@ -31,17 +45,4 @@
     }
     <ng-content />
   </mat-expansion-panel>
-  <div class="controls">
-    @for (action of node().actions; track action.label) {
-      <button
-        type="button"
-        class="control"
-        [class]="'control-' + action.tone"
-        [attr.aria-label]="action.label + ' : ' + node().title"
-        [title]="action.label"
-        (click)="action.run()">
-        <mat-icon>{{action.icon}}</mat-icon>
-      </button>
-    }
-  </div>
 </div>

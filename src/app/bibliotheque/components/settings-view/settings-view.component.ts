@@ -15,7 +15,6 @@ import {SettingsPanelComponent} from './settings-panel/settings-panel.component'
 export class SettingsViewComponent {
   private readonly repository = inject(LibraryRepository);
 
-  /** Route parameter. */
   readonly libraryId = input<string>();
 
   // Edited copy: the shared catalogue displayed by the public pages must not change while editing.

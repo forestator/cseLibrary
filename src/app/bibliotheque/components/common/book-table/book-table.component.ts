@@ -5,7 +5,6 @@ import {BadgeComponent} from '../../../../common/components/book-badge/badge.com
 import {AuthorNamesPipe} from '../../../pipes/author-names.pipe';
 import {BookCoverPipe} from '../../../pipes/book-cover.pipe';
 
-/** Table of books shared by the series and author rows; optional columns depend on the context. */
 @Component({
   selector: 'app-book-table',
   templateUrl: './book-table.component.html',

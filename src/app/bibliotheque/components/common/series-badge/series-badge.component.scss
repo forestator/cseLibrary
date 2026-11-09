@@ -12,7 +12,7 @@ $badge-dark-text: black;
   justify-content: center;
   text-align: center;
   align-items: center;
-  color: $badge-light-text;
+  color: $badge-dark-text;
 
   &.badge-new {
     background-color: chartreuse;
@@ -28,6 +28,7 @@ $badge-dark-text: black;
 
   &.badge-finished {
     background-color: green;
+    color: $badge-light-text;
   }
 
   &.badge-declassed {
@@ -40,6 +41,5 @@ $badge-dark-text: black;
 
   &.badge-default {
     background-color: gray;
-    color: $badge-dark-text;
   }
 }

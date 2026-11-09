@@ -33,7 +33,7 @@
       </div>
       @if (isByAuthor()) {
         <div class="category-core">
-          @for (author of authors(); track author.id) {
+          @for (author of authors(); track $index) {
             <app-author-row [author]="author" [biblio]="biblioValue" />
           }
         </div>

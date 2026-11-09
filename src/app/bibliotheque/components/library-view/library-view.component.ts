@@ -15,7 +15,6 @@ import {LibraryRepository} from '../../services/library.repository';
 export class LibraryViewComponent {
   private readonly repository = inject(LibraryRepository);
 
-  /** Route parameter. */
   readonly libraryId = input<string>();
 
   protected readonly isMobile = toSignal(inject(ToolsService).mobilePhoneDisplay$, {initialValue: false});
