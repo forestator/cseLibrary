@@ -60,6 +60,7 @@
   }
 }
 
-.upload-form-disabled .dropzone {
+.upload-form-disabled .dropzone-image,
+.upload-form-disabled .dropzone-icon {
   opacity: 0.6;
 }
