@@ -1,0 +1,42 @@
+<section class="arrivals" aria-labelledby="arrivals-title">
+  <header class="arrivals-header">
+    <mat-icon class="arrivals-icon" aria-hidden="true">auto_awesome</mat-icon>
+    <div class="arrivals-heading">
+      <h2 class="arrivals-title" id="arrivals-title">Nouveautés</h2>
+      <p class="arrivals-text">Les derniers jeux arrivés à la ludothèque.</p>
+    </div>
+    @if (count()) {
+      <span class="arrivals-count">{{ count() }}</span>
+    }
+    <a class="arrivals-all" routerLink="new">
+      Tout voir
+      <mat-icon aria-hidden="true">arrow_forward</mat-icon>
+    </a>
+  </header>
+  @if (shown(); as arrivals) {
+    <ul class="arrivals-list">
+      @for (arrival of arrivals; track arrival.ref; let index = $index) {
+        <li class="arrivals-item">
+          <a class="arrival" [routerLink]="arrival.link">
+            <span class="arrival-cover">
+              @if (arrival.cover) {
+                <img class="arrival-image" [ngSrc]="arrival.cover" alt="" fill [priority]="index < 4" sizes="(max-width: 840px) 45vw, 15vw">
+              } @else {
+                <mat-icon class="arrival-empty" aria-hidden="true">casino</mat-icon>
+              }
+              <span class="arrival-badge">Nouveau</span>
+            </span>
+            <span class="arrival-name">{{ arrival.name }}</span>
+            <span class="arrival-label">{{ arrival.label }}</span>
+          </a>
+        </li>
+      }
+    </ul>
+  } @else {
+    <ul class="arrivals-list" aria-busy="true">
+      @for (placeholder of placeholders; track placeholder) {
+        <li class="arrivals-item"><span class="arrival-placeholder" aria-hidden="true"></span></li>
+      }
+    </ul>
+  }
+</section>

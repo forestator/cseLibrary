@@ -8,6 +8,8 @@ export interface NavLink {
   name: string;
   route: string;
   subList?: NavLink[];
+  /** Rendered as a call to action in the side rail. */
+  highlight?: boolean;
 }
 
 export interface CommissionNav {
@@ -67,6 +69,7 @@ export function subMenuOf(section: SectionId): NavLink[] {
   switch (section) {
     case Comissions.LUDOTHEQUE:
       return [
+        {name: 'Nouveautés', route: '/ludotheque/new', highlight: true},
         {
           name: 'Jeux de société', route: '/ludotheque/boardGames',
           subList: Object.values(BoardGameCategory).map(category => ({name: category, route: `/ludotheque/boardGames/${category}`})),
@@ -76,7 +79,6 @@ export function subMenuOf(section: SectionId): NavLink[] {
           subList: Object.values(Consoles).map(console => ({name: console, route: `/ludotheque/videoGames/${console}`})),
         },
         {name: 'Grands jeux', route: '/ludotheque/outsideGames'},
-        {name: 'Nouveautés', route: '/ludotheque/new'},
       ];
     case Comissions.SONOTHEQUE:
       return Object.values(SonoCategory).map(category => ({name: category, route: `/sonotheque/${category}`}));
@@ -86,11 +88,11 @@ export function subMenuOf(section: SectionId): NavLink[] {
       }));
     case Comissions.BIBLIOTHEQUE:
       return [
+        {name: 'Nouveautés', route: '/bibliotheque/new', highlight: true},
         {name: 'Imaginaire', route: `/bibliotheque/${Libraries.IMAGINAIRE}`},
         {name: 'Inclassable', route: `/bibliotheque/${Libraries.INCLASSABLE}`},
         {name: 'Jeunesse', route: `/bibliotheque/${Libraries.LIBRAIRIE_JEUNESSE}`},
         {name: 'Adultes', route: `/bibliotheque/${Libraries.LITTERATURE_ADULTE}`},
-        {name: 'Nouveautés', route: '/bibliotheque/new'},
       ];
     case Comissions.BRICOLAGE:
       return [

@@ -1,6 +1,7 @@
 <div class="page">
   <app-page-header title="Ludothèque"
     resume="Jeux de société, jeux vidéo et grands jeux en prêt pour les salariés du CSE." />
+  <app-new-arrivals />
   <app-game-grid>
     @for (entry of entries; track entry.route) {
       <app-tile-card [priority]="$index < 4" [route]="entry.route" [title]="entry.title" [resume]="entry.resume" [image]="entry.image" />

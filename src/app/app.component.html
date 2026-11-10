@@ -21,8 +21,13 @@
       <nav class="rail-section rail-sub" [attr.aria-label]="'Rubriques ' + sectionLabel()">
         <p class="rail-heading">{{ sectionLabel() }}</p>
         @for (link of subMenu(); track link.route) {
-          <a class="rail-sublink" [routerLink]="link.route" routerLinkActive="rail-sublink-active"
-             [routerLinkActiveOptions]="{exact: !!link.subList}">{{ link.name }}</a>
+          <a class="rail-sublink" [class.rail-sublink-highlight]="link.highlight" [routerLink]="link.route" routerLinkActive="rail-sublink-active"
+             [routerLinkActiveOptions]="{exact: !!link.subList}">
+            @if (link.highlight) {
+              <mat-icon class="rail-sublink-icon" aria-hidden="true">auto_awesome</mat-icon>
+            }
+            {{ link.name }}
+          </a>
           @if (link.subList) {
             <div class="rail-chips">
               @for (child of link.subList; track child.route) {

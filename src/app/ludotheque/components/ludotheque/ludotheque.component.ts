@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
+import {NewArrivals} from '../new-arrivals/new-arrivals';
 import {GameGridComponent} from '../shared/game-grid/game-grid.component';
 import {PageHeaderComponent} from '../shared/page-header/page-header.component';
 import {TileCardComponent} from '../shared/tile-card/tile-card.component';
@@ -19,7 +20,7 @@ const COVERS_URL = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/cate
   templateUrl: './ludotheque.component.html',
   styleUrl: './ludotheque.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [GameGridComponent, PageHeaderComponent, TileCardComponent],
+  imports: [GameGridComponent, NewArrivals, PageHeaderComponent, TileCardComponent],
 })
 export class LudothequeComponent {
   protected readonly isLudoAdmin = toSignal(inject(AuthentificationService).isUserLudoAdmin$);

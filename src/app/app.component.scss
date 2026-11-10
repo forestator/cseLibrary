@@ -178,6 +178,23 @@
     color: $accent-text;
     font-weight: 600;
   }
+
+  &.rail-sublink-highlight {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    margin-bottom: $space-1;
+    border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+    background: $accent-soft;
+    color: $accent-text;
+    font-weight: 700;
+  }
+}
+
+.rail-sublink-icon {
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
 }
 
 .rail-chips {

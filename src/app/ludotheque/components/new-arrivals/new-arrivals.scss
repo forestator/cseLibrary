@@ -1,0 +1,181 @@
+@use '../../../../styles/tokens' as *;
+
+:host {
+  display: block;
+  margin-bottom: $space-5;
+}
+
+.arrivals {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+  padding: $space-5;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: $radius-lg;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, var(--mat-sys-surface)), $surface-card 70%);
+}
+
+.arrivals-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-3;
+}
+
+.arrivals-icon {
+  width: 36px;
+  height: 36px;
+  font-size: 36px;
+  color: $accent-text;
+}
+
+.arrivals-heading {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+.arrivals-title {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  letter-spacing: -0.02em;
+}
+
+.arrivals-text {
+  margin: 0;
+  color: $on-surface-muted;
+}
+
+.arrivals-count {
+  padding: $space-1 $space-3;
+  border-radius: $radius-pill;
+  background: $accent-strong;
+  color: #fff;
+  font-weight: 700;
+}
+
+.arrivals-all {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  min-height: 44px;
+  padding: 0 $space-4;
+  border: 1px solid $accent-text;
+  border-radius: $radius-pill;
+  color: $accent-text;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    background: $accent-soft;
+  }
+}
+
+.arrivals-list {
+  display: flex;
+  gap: $space-4;
+  margin: 0 (-$space-5);
+  padding: $space-1 $space-5 $space-2;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: $space-5;
+}
+
+.arrivals-item {
+  flex: 0 0 clamp(150px, 18vw, 190px);
+  scroll-snap-align: start;
+}
+
+.arrival {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  height: 100%;
+  color: $on-surface;
+  text-decoration: none;
+
+  &:hover .arrival-cover,
+  &:focus-visible .arrival-cover {
+    transform: translateY(-3px);
+    box-shadow: $shadow-2;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:hover .arrival-cover,
+    &:focus-visible .arrival-cover {
+      transform: none;
+    }
+  }
+}
+
+.arrival-cover {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-high;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.arrival-image {
+  padding: $space-2;
+  object-fit: contain;
+}
+
+.arrival-empty {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  color: $on-surface-muted;
+}
+
+.arrival-badge {
+  position: absolute;
+  top: $space-2;
+  left: $space-2;
+  padding: 2px $space-3;
+  border-radius: $radius-pill;
+  background: $accent-strong;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.arrival-name {
+  display: -webkit-box;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 1.25;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.arrival-label {
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+}
+
+.arrival-placeholder {
+  display: block;
+  aspect-ratio: 4 / 5;
+  border-radius: $radius-md;
+  background: linear-gradient(90deg, $surface-high 25%, $surface-low 50%, $surface-high 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
