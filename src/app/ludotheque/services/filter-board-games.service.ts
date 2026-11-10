@@ -1,4 +1,4 @@
-import {Injectable, signal} from '@angular/core';
+import {Injectable, computed, signal} from '@angular/core';
 import {AdvancedBoardGameFilter, BoardGame} from '../../models/boardGame.model';
 
 @Injectable({
@@ -6,6 +6,8 @@ import {AdvancedBoardGameFilter, BoardGame} from '../../models/boardGame.model';
 })
 export class FilterBoardGamesService {
   readonly filter = signal<AdvancedBoardGameFilter>({age: null, duration: null, nbPlayers: null});
+
+  readonly activeCount = computed(() => Object.values(this.filter()).filter(value => !!value).length);
 
   matches(boardGame: BoardGame, filter: AdvancedBoardGameFilter = this.filter()): boolean {
     return this.isAgeOk(boardGame, filter.age)

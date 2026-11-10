@@ -1,7 +1,6 @@
 @use '@angular/material' as mat;
 @use 'styles/tokens' as *;
 @use 'styles/base';
-@use 'app/common/common';
 
 html {
   @include mat.theme((
