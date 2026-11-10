@@ -78,3 +78,9 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 - Jeux de société : 67 jeux ajoutés (`ludo229` à `ludo232`, `ludo281` à `ludo343`) avec couverture Cloudinary, infos et description vérifiées sur les sites de revendeurs ; nouveautés = `ludo315` à `ludo343` (29). Non ajoutés : `ludo14` et `ludo97` (déjà là sous une autre référence), `ludo24` (noté « Disparu »). `ludo229` (Puzzle 2 : Habitation) n'a ni couverture ni infos fiables.
 - Jeux vidéo : 35 jeux ajoutés (Switch 12, Switch 2 6, PS4 2, PS5 12, Xbox One 2, Series X 1), tous en nouveauté. Consoles et accessoires de l'Excel déjà présents (autres noms) : non ajoutés.
 - Toutes les anciennes nouveautés (jeux de société 22, jeux vidéo 20, grands jeux 4) ont perdu le drapeau `isNew`. Sauvegardes locales (hors dépôt) avant écriture.
+
+## 10/11/2026 (nuit) : images du bricolage et de la photo, nouveautés mises en avant
+
+- Bricolage : 196 des 224 outils sans image ont reçu une photo (Cloudinary `assets/tools/covers/<catégorie>/<id>-cover`) ; 28 restent sur l'image par défaut (aucune photo fiable trouvée). La plupart sont des photos représentatives (même type d'outil, parfois autre marque) : à remplacer par les vraies photos du CSE au fil de l'eau (admin > modifier un outil > image).
+- Photo & vidéo : les 19 équipements sans image en ont une (`assets/materielPhoto/covers/...`), dont 7 modèles exacts ; les autres sont des modèles proches ou génériques (écrans, trépied, copieur VHS...).
+- Ludothèque : bandeau « Nouveautés » en tête de la page d'accueil (`new-arrivals`), lien « Nouveautés » mis en avant en tête du menu latéral (ludothèque et bibliothèque).
