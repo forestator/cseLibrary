@@ -84,3 +84,7 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 - Bricolage : 196 des 224 outils sans image ont reçu une photo (Cloudinary `assets/tools/covers/<catégorie>/<id>-cover`) ; 28 restent sur l'image par défaut (aucune photo fiable trouvée). La plupart sont des photos représentatives (même type d'outil, parfois autre marque) : à remplacer par les vraies photos du CSE au fil de l'eau (admin > modifier un outil > image).
 - Photo & vidéo : les 19 équipements sans image en ont une (`assets/materielPhoto/covers/...`), dont 7 modèles exacts ; les autres sont des modèles proches ou génériques (écrans, trépied, copieur VHS...).
 - Ludothèque : bandeau « Nouveautés » en tête de la page d'accueil (`new-arrivals`), lien « Nouveautés » mis en avant en tête du menu latéral (ludothèque et bibliothèque).
+
+## 10/11/2026 (nuit) : images de la sonothèque
+
+- 56 objets sans image ont reçu une photo générique par type d'équipement (20 types, `assets/sonoItems/covers/<type>` sur Cloudinary) ; 4 sont des modèles précis (lecteurs Gemini CDM3600/3700, table DJX750, projecteur Mushroom). Les micros HF/filaires, lasers, jeux de lumière LED, « wings » et sonos portables sont des photos représentatives d'autres modèles : à remplacer par les vraies photos du CSE via l'administration si besoin.
