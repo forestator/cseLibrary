@@ -13,6 +13,7 @@ import {GameFact} from '../../../models';
   styleUrl: './game-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIcon, NgOptimizedImage, ScrollToSelectedDirective],
+  host: {'[class.game-card-open]': 'open()'},
 })
 export class GameCardComponent {
   readonly game = input.required<Game>();

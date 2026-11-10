@@ -21,6 +21,35 @@
   box-shadow: 0 0 0 3px $accent, $shadow-2;
 }
 
+:host(.catalogue-card-open) {
+  grid-column: 1 / -1;
+  animation: card-expand 0.3s ease;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  @include desktop {
+    flex-direction: row;
+
+    .card-cover {
+      flex: 0 0 clamp(240px, 28%, 340px);
+      aspect-ratio: auto;
+      min-height: 220px;
+    }
+
+    .card-body {
+      padding: $space-5 $space-6;
+    }
+
+    .card-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: $space-3 $space-5;
+    }
+  }
+}
+
 .card-cover {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -99,7 +128,11 @@
   flex-direction: column;
   gap: $space-2;
   margin: 0;
-  animation: details-in 0.2s ease;
+  animation: details-in 0.35s ease 0.1s backwards;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
 }
 
 .card-detail {
@@ -121,10 +154,22 @@
   }
 }
 
+@keyframes card-expand {
+  from {
+    opacity: 0.6;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @keyframes details-in {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-6px);
   }
 
   to {

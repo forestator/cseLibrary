@@ -18,7 +18,8 @@ let nextCardId = 0;
   styleUrl: './catalogue-item-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BadgeComponent, MatIcon, NgOptimizedImage],
-  host: {class: 'catalogue-card', '[id]': 'item().id', '[class.catalogue-card-selected]': 'selected()'},
+  host: {class: 'catalogue-card', '[id]': 'item().id', '[class.catalogue-card-selected]': 'selected()',
+    '[class.catalogue-card-open]': 'open()'},
 })
 export class CatalogueItemCard {
   readonly item = input.required<CatalogueItem>();

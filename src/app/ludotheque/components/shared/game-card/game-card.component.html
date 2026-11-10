@@ -1,4 +1,4 @@
-<article class="card" [class.card-selected]="selected()" [id]="cardId()" [appScrollToSelected]="selectedId()"
+<article class="card" [class.card-selected]="selected()" [class.card-open]="open()" [id]="cardId()" [appScrollToSelected]="selectedId()"
   [attr.aria-labelledby]="titleId()">
   <div class="card-cover">
     @if (game().cover) {
