@@ -1,4 +1,4 @@
-<article class="card" [class.card-selected]="selected()" [class.card-open]="open()" [id]="cardId()" [appScrollToSelected]="selectedId()"
+<article class="card" [class.card-selected]="selected()" [id]="cardId()" [appScrollToSelected]="selectedId()"
   [attr.aria-labelledby]="titleId()">
   <div class="card-cover">
     @if (game().cover) {
@@ -30,23 +30,10 @@
       }
     </ul>
     @if (hasDetails()) {
-      <button type="button" class="card-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="detailsId()"
-        (click)="toggle()">
+      <button type="button" class="card-toggle" aria-haspopup="dialog" (click)="openDetails()">
         Détails
-        <mat-icon class="card-toggle-icon" [class.card-toggle-icon-open]="open()" aria-hidden="true">expand_more</mat-icon>
+        <mat-icon class="card-toggle-icon" aria-hidden="true">chevron_right</mat-icon>
       </button>
-      <div class="card-details" [id]="detailsId()" [hidden]="!open()">
-        @if (details().length) {
-          <ul class="card-details-list">
-            @for (detail of details(); track detail) {
-              <li>{{ detail }}</li>
-            }
-          </ul>
-        }
-        @if (description()) {
-          <div class="card-description" [innerHTML]="description()"></div>
-        }
-      </div>
     }
   </div>
 </article>

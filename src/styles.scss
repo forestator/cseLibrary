@@ -28,3 +28,45 @@ html[data-theme='dark'] {
   color-scheme: dark;
 }
 
+
+// Dialogs and panels are rendered in the CDK overlay: they follow the accent of the current commission.
+.mat-mdc-dialog-container {
+  --mat-button-filled-container-color: var(--accent-strong, var(--mat-sys-primary));
+  --mat-button-filled-label-text-color: var(--mat-sys-on-primary);
+  --mat-button-text-label-text-color: var(--accent-text, var(--mat-sys-primary));
+  --mat-button-outlined-label-text-color: var(--accent-text, var(--mat-sys-primary));
+  --mat-button-tonal-container-color: var(--accent-soft, var(--mat-sys-secondary-container));
+  --mat-button-tonal-label-text-color: var(--accent-text, var(--mat-sys-on-secondary-container));
+}
+
+// The detail panel slides in from the right edge; on phones it covers the whole screen.
+.detail-panel-overlay {
+  .mat-mdc-dialog-surface {
+    border-radius: var(--mat-sys-corner-extra-large) 0 0 var(--mat-sys-corner-extra-large);
+    animation: detail-panel-in 0.28s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  @media (max-width: 839px) {
+    .mat-mdc-dialog-surface {
+      border-radius: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mat-mdc-dialog-surface {
+      animation: none;
+    }
+  }
+}
+
+@keyframes detail-panel-in {
+  from {
+    opacity: 0.4;
+    transform: translateX(48px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

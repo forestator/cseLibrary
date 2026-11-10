@@ -1,0 +1,52 @@
+<header class="panel-header">
+  @if (data.tag) {
+    <span class="panel-tag">{{ data.tag }}</span>
+  }
+  <button matIconButton type="button" class="panel-close" mat-dialog-close aria-label="Fermer le détail">
+    <mat-icon aria-hidden="true">close</mat-icon>
+  </button>
+</header>
+<div class="panel-scroll">
+  <div class="panel-cover">
+    @if (data.cover) {
+      <img class="panel-image" [ngSrc]="data.cover" [alt]="data.coverAlt" fill priority sizes="(max-width: 840px) 100vw, 40vw">
+    } @else {
+      <mat-icon class="panel-cover-empty" aria-hidden="true">image</mat-icon>
+    }
+  </div>
+  <div class="panel-body">
+    <h2 class="panel-title" id="detail-panel-title">{{ data.title }}</h2>
+    @if (data.facts.length) {
+      <ul class="panel-facts">
+        @for (fact of data.facts; track fact.icon + fact.label) {
+          <li class="panel-fact">
+            <mat-icon aria-hidden="true">{{ fact.icon }}</mat-icon>
+            {{ fact.label }}
+          </li>
+        }
+      </ul>
+    }
+    @if (data.lines.length) {
+      <ul class="panel-lines">
+        @for (line of data.lines; track line) {
+          <li>{{ line }}</li>
+        }
+      </ul>
+    }
+    @if (data.properties.length) {
+      <dl class="panel-properties">
+        @for (property of data.properties; track property.label) {
+          <div class="panel-property">
+            <dt>{{ property.label }}</dt>
+            <dd>{{ property.value }}</dd>
+          </div>
+        }
+      </dl>
+    }
+    @if (data.descriptionHtml) {
+      <div class="panel-description" [innerHTML]="data.descriptionHtml"></div>
+    } @else if (data.descriptionText) {
+      <p class="panel-description panel-description-text">{{ data.descriptionText }}</p>
+    }
+  </div>
+</div>

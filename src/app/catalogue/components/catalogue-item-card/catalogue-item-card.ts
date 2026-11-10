@@ -1,6 +1,7 @@
 import {NgOptimizedImage} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, input, linkedSignal, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, effect, inject, input, signal, untracked} from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
+import {DetailPanelService} from '../../../common/components/detail-panel/detail-panel.service';
 import {BadgeComponent} from '../../../common/components/book-badge/badge.component';
 import {CatalogueItem} from '../../models/catalogue-item.model';
 import {CommissionConfig} from '../../models/commission-config.model';
@@ -10,25 +11,23 @@ interface ItemDetail {
   value: string;
 }
 
-let nextCardId = 0;
-
 @Component({
   selector: 'app-catalogue-item-card',
   templateUrl: './catalogue-item-card.html',
   styleUrl: './catalogue-item-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [BadgeComponent, MatIcon, NgOptimizedImage],
-  host: {class: 'catalogue-card', '[id]': 'item().id', '[class.catalogue-card-selected]': 'selected()',
-    '[class.catalogue-card-open]': 'open()'},
+  host: {class: 'catalogue-card', '[id]': 'item().id', '[class.catalogue-card-selected]': 'selected()'},
 })
 export class CatalogueItemCard {
+  private readonly detailPanel = inject(DetailPanelService);
+
   readonly item = input.required<CatalogueItem>();
   readonly config = input.required<CommissionConfig>();
   readonly selected = input(false);
   /** Cards of the first row are loaded eagerly: they are the largest contentful paint. */
   readonly priority = input(false);
 
-  protected readonly panelId = `catalogue-details-${nextCardId++}`;
   protected readonly coverFailed = signal(false);
 
   protected readonly imageSrc = computed(() =>
@@ -43,10 +42,26 @@ export class CatalogueItemCard {
   });
   protected readonly hasDetails = computed(() => this.details().length > 0);
 
-  // The item picked through the route or the search starts expanded.
-  protected readonly open = linkedSignal(() => this.selected());
+  constructor() {
+    // The item picked through the route or the search opens its panel right away.
+    effect(() => {
+      if (this.selected() && this.hasDetails()) {
+        untracked(() => this.openDetails());
+      }
+    });
+  }
 
-  protected toggle(): void {
-    this.open.update(open => !open);
+  protected openDetails(): void {
+    const item = this.item();
+    const config = this.config();
+    this.detailPanel.open({
+      title: item.name,
+      cover: this.imageSrc(),
+      coverAlt: item.name,
+      facts: config.showRef ? [{icon: 'tag', label: `Réf. ${item.id}`}] : [],
+      lines: [],
+      properties: this.details().filter(detail => detail.label !== 'Description'),
+      descriptionText: item.description,
+    });
   }
 }

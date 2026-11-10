@@ -1,3 +1,4 @@
+import {DOCUMENT} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, effect, inject, signal} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
 import {NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
@@ -29,6 +30,7 @@ export class AppComponent {
   private readonly router = inject(Router);
   private readonly toolsService = inject(ToolsService);
   private readonly theme = inject(ThemeService);
+  private readonly document = inject(DOCUMENT);
 
   protected readonly commissions = COMMISSION_NAV;
   protected readonly navOpen = signal(false);
@@ -71,6 +73,16 @@ export class AppComponent {
     query.addEventListener('change', event => this.isMobile.set(event.matches));
     // Rows still read the legacy flag to adapt their layout.
     effect(() => this.toolsService.mobilePhoneDisplay$.next(this.isMobile()));
+// Dialogs and panels live in the CDK overlay, outside the shell: the accent has to be reachable from the root.
+effect(() => {
+  const root = this.document.documentElement;
+  const section = this.section();
+  if (section) {
+    root.dataset['commission'] = section;
+  } else {
+    delete root.dataset['commission'];
+  }
+});
     effect(() => {
       this.url();
       this.navOpen.set(false);

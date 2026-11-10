@@ -11,20 +11,9 @@
     }
   </div>
   @if (hasDetails()) {
-    <button type="button" class="card-toggle" [attr.aria-expanded]="open()" [attr.aria-controls]="panelId"
-            (click)="toggle()">
+    <button type="button" class="card-toggle" aria-haspopup="dialog" (click)="openDetails()">
       Détails
-      <mat-icon class="card-toggle-icon" aria-hidden="true">expand_more</mat-icon>
+      <mat-icon class="card-toggle-icon" aria-hidden="true">chevron_right</mat-icon>
     </button>
-    @if (open()) {
-      <dl class="card-details" [id]="panelId">
-        @for (detail of details(); track detail.label) {
-          <div class="card-detail">
-            <dt>{{ detail.label }}</dt>
-            <dd>{{ detail.value }}</dd>
-          </div>
-        }
-      </dl>
-    }
   }
 </div>

@@ -1,6 +1,7 @@
 import {NgOptimizedImage} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, input, linkedSignal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, effect, inject, input, untracked} from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
+import {DetailPanelService} from '../../../../common/components/detail-panel/detail-panel.service';
 import {Game} from '../../../../models/common.model';
 import {ScrollToSelectedDirective} from '../../../directives/scroll-to-selected.directive';
 import {categoryLabel} from '../../../pipes/game-category-label.pipe';
@@ -13,9 +14,10 @@ import {GameFact} from '../../../models';
   styleUrl: './game-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatIcon, NgOptimizedImage, ScrollToSelectedDirective],
-  host: {'[class.game-card-open]': 'open()'},
 })
 export class GameCardComponent {
+  private readonly detailPanel = inject(DetailPanelService);
+
   readonly game = input.required<Game>();
   readonly selectedId = input<string>();
   /** Id of the card in the page, defaults to the game reference. */
@@ -33,10 +35,27 @@ export class GameCardComponent {
   protected readonly selected = computed(() => !!this.selectedId() && this.selectedId() === this.cardId());
   protected readonly category = computed(() => this.showCategory() && this.game().category ? categoryLabel(this.game().category) : undefined);
   protected readonly hasDetails = computed(() => this.details().length > 0 || !!this.description());
-  /** A game reached through the route starts with its details open. */
-  protected readonly open = linkedSignal(() => this.selected());
 
-  protected toggle(): void {
-    this.open.update(open => !open);
+  constructor() {
+    // A game reached through the route or the search opens its panel right away.
+    effect(() => {
+      if (this.selected() && this.hasDetails()) {
+        untracked(() => this.openDetails());
+      }
+    });
+  }
+
+  protected openDetails(): void {
+    const game = this.game();
+    this.detailPanel.open({
+      title: game.name,
+      cover: game.cover,
+      coverAlt: game.name,
+      tag: this.category(),
+      facts: [...(game.ref ? [{icon: 'tag', label: `Réf. ${game.ref}`}] : []), ...this.facts()],
+      lines: this.details(),
+      properties: [],
+      descriptionHtml: this.description(),
+    });
   }
 }
