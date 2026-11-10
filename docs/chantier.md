@@ -60,3 +60,11 @@ Ajout d'un équipement photo, ajout / modification / suppression d'un jeu de la 
 ## 10/11/2026 : retour au forfait gratuit
 
 Base `(default)` recréée en Firestore natif, données copiées, hébergement redéployé, objet de test « test2 » supprimé. À vérifier après le passage en Spark : le site charge toujours ses données ; puis supprimer `cse-db`.
+
+## 10/11/2026 (soir) : panneau de détail, recherche bibliothèque, ménage
+
+- Détail des cartes : panneau latéral (`common/components/detail-panel`, ouvert via `DetailPanelService`), plein écran sur mobile ; l'élément choisi par la recherche l'ouvre directement.
+- Accent par commission pour les dialogues/panneaux : `data-commission` posé sur `<html>` par `AppComponent`, boutons Material recolorés dans `styles.scss`.
+- Recherche de la bibliothèque (titre, série, auteur, ISBN) : `bibliotheque/models/library-search.ts`, composant générique `common/components/search-box`.
+- Bouton « Filtres » mobile pour les jeux de société ; `common.scss` (CSS mort) supprimé ; `.firebase/` ignoré.
+- Reste : suivi des limites listées dans l'historique (pas d'axe sur la recherche et la feuille de filtres), @angular/fire stable, mode strict, Moment, CI, Cypress, OpenAI, deux jeux sans image (967, 968).
