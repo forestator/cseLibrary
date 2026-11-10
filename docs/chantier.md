@@ -72,3 +72,9 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 ## 10/11/2026 (nuit) : persistance des réglages de la bibliothèque
 
 - Page réglages : boutons « Enregistrer les modifications » / « Annuler » ; `LibraryRepository.save` écrit en un batch (testé sur émulateur : ajout d'un auteur persisté). Compteur de l'admin ludothèque en direct. Budgets de build ajustés (styles de composant 6 ko, initial 2,3 Mo) ; avertissement Sass `list.nth` corrigé.
+
+## 10/11/2026 (nuit) : mise à jour de la ludothèque depuis l'Excel « Liste des jeux et Réservation 2026 »
+
+- Jeux de société : 67 jeux ajoutés (`ludo229` à `ludo232`, `ludo281` à `ludo343`) avec couverture Cloudinary, infos et description vérifiées sur les sites de revendeurs ; nouveautés = `ludo315` à `ludo343` (29). Non ajoutés : `ludo14` et `ludo97` (déjà là sous une autre référence), `ludo24` (noté « Disparu »). `ludo229` (Puzzle 2 : Habitation) n'a ni couverture ni infos fiables.
+- Jeux vidéo : 35 jeux ajoutés (Switch 12, Switch 2 6, PS4 2, PS5 12, Xbox One 2, Series X 1), tous en nouveauté. Consoles et accessoires de l'Excel déjà présents (autres noms) : non ajoutés.
+- Toutes les anciennes nouveautés (jeux de société 22, jeux vidéo 20, grands jeux 4) ont perdu le drapeau `isNew`. Sauvegardes locales (hors dépôt) avant écriture.
