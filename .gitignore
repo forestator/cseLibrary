@@ -52,4 +52,4 @@ firestore-debug.log
 ui-debug.log
 
 # Firebase hosting deploy cache
-.firebase/hosting.*.cache
+.firebase/
