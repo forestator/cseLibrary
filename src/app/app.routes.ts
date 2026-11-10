@@ -58,7 +58,7 @@ const adminRoutes: Routes = [
         path: 'ludotheque/admin/games', loadComponent: () => import('./admin/components/admin-ludo/admin-games/admin-games.component').then(m => m.AdminGamesComponent),
         canActivate: [() => inject(AuthentificationService).isUserLudoAdmin$]
     },
-    ...[BRICOLAGE_CONFIG, SONOTHEQUE_CONFIG, NAUTISME_CONFIG].map(catalogueAdminRoute),
+    ...[BRICOLAGE_CONFIG, SONOTHEQUE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG].map(catalogueAdminRoute),
     {
         path: 'bibliotheque/admin/:libraryId', loadComponent: () => import('./bibliotheque/components/settings-view/settings-view.component').then(m => m.SettingsViewComponent),
         canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],

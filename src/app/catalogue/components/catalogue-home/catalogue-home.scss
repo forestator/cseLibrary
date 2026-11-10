@@ -49,14 +49,14 @@
 
 .category-cover-empty {
   display: grid;
-  aspect-ratio: 16 / 6;
+  aspect-ratio: 16 / 8;
   place-items: center;
 }
 
 .category-icon {
-  width: 40px;
-  height: 40px;
-  font-size: 40px;
+  width: 56px;
+  height: 56px;
+  font-size: 56px;
   color: $accent-text;
 }
 

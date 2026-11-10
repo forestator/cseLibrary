@@ -29,7 +29,9 @@
           </div>
         }
       </dl>
-      <app-book-status class="book-status" [status]="book.status" />
+      @if (book.status !== 'AVAILABLE') {
+        <app-book-status class="book-status" [status]="book.status" />
+      }
     </li>
   }
 </ul>

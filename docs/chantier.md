@@ -45,3 +45,9 @@ Tant que l'étape 2 n'est pas faite, les couvertures de jeux/outils/sono/nautism
 6. `@angular/fire` stable dès sa sortie ; repasser le projet de Blaze à Spark seulement si Firestore + Cloudinary restent dans leurs quotas gratuits (Storage Firebase n'est plus utilisé mais le bucket existe encore).
 7. `strict: true`, config/UIDs admin hors du code, Moment.js, CI, tests e2e à jour (Cypress est obsolète).
 8. Refonte des emprunts, de zéro.
+
+## Couvertures de la ludothèque (10/11/2026)
+
+- 111 jeux sans image ou avec lien cassé ont reçu une couverture (101 jeux vidéo, 8 jeux de société, 2 jeux d'extérieur), écrite dans le champ `cover` de `ludotheque/{boardGames|videoGames|outsideGames}` (base `cse-db`) ; rien d'autre n'a été modifié.
+- Fichiers sur Cloudinary : `assets/games/covers/<bibliothèque>/<référence>-cover`. Jaquettes de jeux vidéo lues sur les fiches Wikipédia (images « fair use », usage interne), les autres sur les fiches des fabricants et revendeurs.
+- Restent sans image : `videoGames/967` (Moto Racer 4) et `videoGames/968` (Handball 17).

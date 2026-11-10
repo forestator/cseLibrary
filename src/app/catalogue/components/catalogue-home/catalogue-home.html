@@ -12,7 +12,7 @@
                   <img class="category-image" [ngSrc]="category.bg" alt="" fill [priority]="index < 3"
                        sizes="(max-width: 600px) 90vw, 30vw">
                 } @else {
-                  <mat-icon class="category-icon" aria-hidden="true">category</mat-icon>
+                  <mat-icon class="category-icon" aria-hidden="true">{{ category.icon }}</mat-icon>
                 }
               </span>
               <span class="category-body">

@@ -7,6 +7,7 @@ import {switchMap} from 'rxjs';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {AuthentificationService} from '../../../services/firebase/authentification.service';
 import {ItemCollection} from '../../models/catalogue-item.model';
+import {CATEGORY_ICONS} from '../../models/catalogue-categories';
 import {countLabel} from '../../models/count-label';
 import {CatalogueCommission} from '../../models/commission-config.model';
 import {injectCatalogue} from '../../services/inject-catalogue';
@@ -55,6 +56,8 @@ export class CatalogueHome {
     const items = this.items() ?? [];
     return (this.library()?.categories ?? []).map(category => ({
       ...category,
+      bg: category.bg,
+      icon: CATEGORY_ICONS[category.id ?? ''] ?? 'category',
       countLabel: this.items() ? countLabel(items.filter(item => item.categoryId === category.id).length) : undefined,
     }));
   });

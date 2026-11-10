@@ -111,7 +111,6 @@ export const NAUTISME_CONFIG: CommissionConfig = {
   },
 };
 
-// No admin screen exists for the photo equipment yet: the home only links to the (missing) admin route.
 export const PHOTO_CONFIG: CommissionConfig = {
   id: Comissions.PHOTO,
   libraryPath: 'photo/library',
@@ -127,6 +126,19 @@ export const PHOTO_CONFIG: CommissionConfig = {
     path: 'admin/tools',
     title: 'Administration matériel photo',
     description: 'Gestion du matériel photo',
+  },
+  admin: {
+    coverPath: '/assets/materielPhoto/covers',
+    statuses: OUT_OF_ORDER_OR_LOST,
+    texts: {
+      addButton: 'Ajouter un équipement',
+      editButton: 'Modifier un équipement existant',
+      addTitle: 'Ajouter un équipement',
+      editTitle: 'Modifier un équipement photo',
+      searchLabel: 'Chercher un équipement',
+      searchPlaceholder: 'Objectif 50mm',
+      namePlaceholder: 'Reflex numérique',
+    },
   },
 };
 
