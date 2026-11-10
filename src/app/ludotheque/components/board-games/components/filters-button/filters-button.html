@@ -1,0 +1,9 @@
+<button type="button" class="filters-button" aria-haspopup="dialog" [attr.aria-expanded]="open()"
+  [attr.aria-controls]="open() ? sheetId : null" (click)="openFilters()">
+  <mat-icon aria-hidden="true">tune</mat-icon>
+  Filtres
+  @if (activeCount()) {
+    <span class="filters-count" aria-hidden="true">{{ activeCount() }}</span>
+    <span class="visually-hidden">, {{ activeCount() }} actif(s)</span>
+  }
+</button>

@@ -14,6 +14,12 @@ describe('FilterBoardGamesService', () => {
     service = TestBed.inject(FilterBoardGamesService);
   });
 
+  it('counts the active filters', () => {
+    expect(service.activeCount()).toBe(0);
+    service.filter.set({age: '10', duration: null, nbPlayers: '2'});
+    expect(service.activeCount()).toBe(2);
+  });
+
   it('accepts every game when no filter is set', () => {
     expect(service.matches(game)).toBeTrue();
   });

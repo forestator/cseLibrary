@@ -58,7 +58,7 @@ export class FilterBoardGamesComponent {
     }));
   });
 
-  protected readonly hasFilter = computed(() => Object.values(this.filterService.filter()).some(value => !!value));
+  protected readonly hasFilter = computed(() => this.filterService.activeCount() > 0);
 
   protected toggle(type: BoardGameFilterType, value: string): void {
     // Clicking the already selected value removes the filter.

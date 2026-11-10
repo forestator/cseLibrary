@@ -1,0 +1,19 @@
+@use '../../../../../../styles/tokens' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.sheet-close {
+  min-height: 48px;
+  margin-inline: $space-3;
+  border: 0;
+  border-radius: $radius-pill;
+  background: $accent-strong;
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}

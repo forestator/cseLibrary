@@ -3,6 +3,7 @@
     [backLink]="parentLink()" [backLabel]="parentLabel()" />
   @switch (libraryId()) {
     @case ('boardGames') {
+      <app-filters-button />
       <h2 class="visually-hidden">Jeux</h2>
       <app-board-game-category-details [boardGames]="filteredBoardGames()" [selectedId]="id()"
         [showCategory]="false"

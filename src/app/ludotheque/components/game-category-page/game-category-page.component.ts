@@ -8,6 +8,7 @@ import {categoryLabel} from '../../pipes/game-category-label.pipe';
 import {FilterBoardGamesService} from '../../services/filter-board-games.service';
 import {GamesRepository} from '../../services/games.repository';
 import {BoardGameCategoryDetailsComponent} from '../board-games/components/board-game-category-details/board-game-category-details.component';
+import {FiltersButton} from '../board-games/components/filters-button/filters-button';
 import {PageHeaderComponent} from '../shared/page-header/page-header.component';
 import {VideoGamesConsoleDetailsComponent} from '../video-games/video-games-console-details/video-games-console-details.component';
 
@@ -17,7 +18,7 @@ import {VideoGamesConsoleDetailsComponent} from '../video-games/video-games-cons
   templateUrl: './game-category-page.component.html',
   styleUrl: './game-category-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BoardGameCategoryDetailsComponent, VideoGamesConsoleDetailsComponent, PageHeaderComponent],
+  imports: [BoardGameCategoryDetailsComponent, FiltersButton, VideoGamesConsoleDetailsComponent, PageHeaderComponent],
 })
 export class GameCategoryPageComponent {
   /** Provided by the route `data`. */
