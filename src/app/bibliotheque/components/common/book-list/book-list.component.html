@@ -1,6 +1,6 @@
 <ul class="book-list">
   @for (book of books(); track book.id) {
-    <li class="book-item">
+    <li class="book-item" [id]="book.id" [class.book-item-highlighted]="book.id === highlightedBookId()">
       <span class="book-thumb">
         <img [ngSrc]="biblio().library?.path | bookCover: book.cover" fill [alt]="'Couverture de ' + book.name" sizes="(max-width: 840px) 20vw, 6vw">
       </span>

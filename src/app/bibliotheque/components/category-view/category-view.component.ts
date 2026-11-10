@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, effect, inject, input, signal} from '@angular/core';
 import {ViewBy} from '../../../models/author.model';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {countLabel, visibleBookCount} from '../../models/library-queries';
@@ -20,10 +20,14 @@ import {SeriesRowComponent} from './series-row/series-row.component';
 })
 export class CategoryViewComponent {
   private readonly repository = inject(LibraryRepository);
-  private readonly adminMode = inject(ToolsService).adminMode;
+  private readonly tools = inject(ToolsService);
+  private readonly adminMode = this.tools.adminMode;
 
   readonly libraryId = input<string>();
   readonly catId = input<string>();
+  /** Author to open and book to highlight, from the search (`?author=&book=`). */
+  readonly openAuthorId = input<string>(undefined, {alias: 'author'});
+  readonly book = input<string>();
 
   protected readonly isByAuthor = computed(() => this.category()?.by === ViewBy.BY_AUTHOR);
   protected readonly filterLetter = signal<string | undefined>(undefined);
@@ -60,4 +64,13 @@ export class CategoryViewComponent {
       ? authors.filter(author => author.firstName.startsWith(letter) || author.lastName.startsWith(letter))
       : authors;
   });
+
+  constructor() {
+    effect(() => {
+      const bookId = this.book();
+      if (bookId && this.openAuthorId() && this.authors().length) {
+        this.tools.scrollToId(bookId);
+      }
+    });
+  }
 }

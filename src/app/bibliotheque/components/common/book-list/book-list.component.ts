@@ -17,4 +17,5 @@ export class BookListComponent {
   readonly books = input.required<ReadonlyArray<Book>>();
   readonly biblio = input.required<Biblio>();
   readonly showAuthors = input(false);
+  readonly highlightedBookId = input<string>();
 }

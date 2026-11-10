@@ -1,23 +1,9 @@
-<div class="search" role="search">
-  <label class="visually-hidden" for="ludoSearch">Rechercher un jeu</label>
-  <mat-icon class="search-icon" aria-hidden="true">search</mat-icon>
-  <input class="search-input" type="text" id="ludoSearch" autocomplete="off" placeholder="Rechercher un jeu"
-    [formControl]="searchText" [matAutocomplete]="auto">
-  @if (hasText()) {
-    <button type="button" class="search-clear" aria-label="Effacer la recherche" (click)="clear()">
-      <mat-icon aria-hidden="true">close</mat-icon>
-    </button>
-  }
-  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"
-    [displayWith]="displayGame"
-    (optionSelected)="goToSelectedItem($event)">
-    @for (option of filteredOptions(); track option.category + option.ref) {
-      <mat-option [value]="option">
-        <span class="search-option">
-          <span class="search-option-category">{{ option.category | gameCategoryLabel }}</span>
-          {{ option.name }}
-        </span>
-      </mat-option>
-    }
-  </mat-autocomplete>
-</div>
+<app-search-box inputId="ludoSearch" label="Rechercher un jeu" [options]="filteredOptions()" [displayWith]="displayGame"
+  (queryChange)="query.set($event)" (selected)="goToSelectedItem($event)">
+  <ng-template let-option>
+    <span class="search-option">
+      <span class="search-option-category">{{ option.category | gameCategoryLabel }}</span>
+      {{ option.name }}
+    </span>
+  </ng-template>
+</app-search-box>

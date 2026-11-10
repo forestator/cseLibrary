@@ -5,6 +5,7 @@ import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
 import {filter, map} from 'rxjs';
 import {AdminMenuComponent} from './admin/components/admin-menu/admin-menu.component';
+import {LibrarySearchComponent} from './bibliotheque/components/library-search/library-search.component';
 import {CatalogueMenu} from './catalogue/components/catalogue-menu/catalogue-menu';
 import {CatalogueCommission} from './catalogue/models/commission-config.model';
 import {FilterBoardGamesComponent} from './ludotheque/components/board-games/components/filter-board-games/filter-board-games.component';
@@ -23,7 +24,7 @@ const THEME_ICONS = {system: 'brightness_auto', light: 'light_mode', dark: 'dark
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AdminMenuComponent, CatalogueMenu, FilterBoardGamesComponent, LudoMenuComponent, MatIcon, MatIconButton, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [AdminMenuComponent, CatalogueMenu, FilterBoardGamesComponent, LibrarySearchComponent, LudoMenuComponent, MatIcon, MatIconButton, RouterLink, RouterLinkActive, RouterOutlet],
 })
 export class AppComponent {
   private readonly router = inject(Router);
@@ -51,6 +52,8 @@ export class AppComponent {
     switch (this.section()) {
       case Comissions.LUDOTHEQUE:
         return 'ludotheque';
+      case Comissions.BIBLIOTHEQUE:
+        return 'bibliotheque';
       case Comissions.BRICOLAGE:
       case Comissions.SONOTHEQUE:
       case Comissions.NAUTISME:

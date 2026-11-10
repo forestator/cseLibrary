@@ -20,7 +20,7 @@
           <p class="visually-hidden" role="status">Auteurs affichés : {{authors().length}}</p>
           <div class="block-list">
             @for (author of authors(); track author.id) {
-              <app-author-row [author]="author" [biblio]="biblioValue" />
+              <app-author-row [author]="author" [biblio]="biblioValue" [expanded]="author.id === openAuthorId()" [highlightedBookId]="book()" />
             } @empty {
               <app-empty-state icon="person_search" title="Aucun auteur pour cette lettre" text="Choisissez « Tous » pour revoir la liste complète." />
             }

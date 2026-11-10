@@ -1,0 +1,27 @@
+<app-search-box inputId="librarySearch" label="Rechercher un livre, une série, un auteur ou un ISBN"
+  [options]="results()" [displayWith]="displayEntry" (queryChange)="query.set($event)" (selected)="open($event)">
+  <ng-template let-entry>
+    <span class="result">
+      <span class="result-cover">
+        <img [ngSrc]="entry.libraryPath | bookCover: entry.book.cover" fill alt="" sizes="(max-width: 840px) 12vw, 4vw">
+      </span>
+      <span class="result-text">
+        <span class="result-title">
+          {{ entry.book.name }}
+          @if (entry.book.tome) {
+            <span class="result-tome">Tome {{ entry.book.tome }}</span>
+          }
+        </span>
+        @if (entry.authors) {
+          <span class="result-line">{{ entry.authors }}</span>
+        }
+        <span class="result-line">
+          @if (entry.series) {
+            {{ entry.series.name }} ·
+          }
+          {{ entry.libraryName }} › {{ entry.category.name }}
+        </span>
+      </span>
+    </span>
+  </ng-template>
+</app-search-box>
