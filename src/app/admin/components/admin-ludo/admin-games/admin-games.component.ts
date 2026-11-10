@@ -28,9 +28,9 @@ export class AdminGamesComponent {
   private readonly repository = inject(GamesRepository);
   private readonly dialog = inject(MatDialog);
 
-  private readonly boardGames = toSignal(this.repository.loadGames$('boardGames'));
-  private readonly videoGames = toSignal(this.repository.loadGames$('videoGames'));
-  private readonly outsideGames = toSignal(this.repository.loadGames$('outsideGames'));
+  private readonly boardGames = toSignal(this.repository.watchGames$('boardGames'));
+  private readonly videoGames = toSignal(this.repository.watchGames$('videoGames'));
+  private readonly outsideGames = toSignal(this.repository.watchGames$('outsideGames'));
 
   protected readonly sections = computed(() => [
     {title: 'BoardGames', columns: ['category', 'name', 'poids', 'ref'], games: this.boardGames()},

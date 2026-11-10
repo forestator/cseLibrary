@@ -1,6 +1,12 @@
 @if (editor.libraryNode(); as libraryNode) {
   <div class="page">
-    <app-page-header [title]="title()" [crumbs]="crumbs" resume="Les modifications restent dans cette page : elles ne sont pas enregistrées dans la base." />
+    <app-page-header [title]="title()" [crumbs]="crumbs" resume="Modifiez les sections ci-dessous, puis enregistrez : les pages publiques sont mises à jour à l'enregistrement.">
+      <button matButton="filled" type="button" [disabled]="!hasChanges() || saving()" (click)="save()">
+        <mat-icon aria-hidden="true">save</mat-icon>
+        {{saving() ? 'Enregistrement…' : 'Enregistrer les modifications'}}
+      </button>
+      <button matButton="outlined" type="button" [disabled]="!hasChanges() || saving()" (click)="discard()">Annuler les modifications</button>
+    </app-page-header>
     <app-settings-panel [node]="libraryNode">
       <nav class="tiles" aria-label="Sections de la bibliothèque">
         @for (tile of editor.tiles(); track tile.key) {

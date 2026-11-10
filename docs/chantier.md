@@ -68,3 +68,7 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 - Recherche de la bibliothèque (titre, série, auteur, ISBN) : `bibliotheque/models/library-search.ts`, composant générique `common/components/search-box`.
 - Bouton « Filtres » mobile pour les jeux de société ; `common.scss` (CSS mort) supprimé ; `.firebase/` ignoré.
 - Reste : suivi des limites listées dans l'historique (pas d'axe sur la recherche et la feuille de filtres), @angular/fire stable, mode strict, Moment, CI, Cypress, OpenAI, deux jeux sans image (967, 968).
+
+## 10/11/2026 (nuit) : persistance des réglages de la bibliothèque
+
+- Page réglages : boutons « Enregistrer les modifications » / « Annuler » ; `LibraryRepository.save` écrit en un batch (testé sur émulateur : ajout d'un auteur persisté). Compteur de l'admin ludothèque en direct. Budgets de build ajustés (styles de composant 6 ko, initial 2,3 Mo) ; avertissement Sass `list.nth` corrigé.

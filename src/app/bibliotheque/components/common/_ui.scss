@@ -1,3 +1,4 @@
+@use 'sass:list';
 // Building blocks shared by the library pages; tokens are forwarded so a component needs a single `@use`.
 @forward '../../../../styles/tokens';
 @use '../../../../styles/tokens' as *;
@@ -41,8 +42,8 @@ $action-delete: light-dark(#b91c1c, #fca5a5);
 @mixin chip-tones {
   @each $name, $colors in $tones {
     .chip-#{$name} {
-      background: light-dark(nth($colors, 1), nth($colors, 3));
-      color: light-dark(nth($colors, 2), nth($colors, 4));
+      background: light-dark(list.nth($colors, 1), list.nth($colors, 3));
+      color: light-dark(list.nth($colors, 2), list.nth($colors, 4));
     }
   }
 }

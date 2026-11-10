@@ -37,7 +37,7 @@ Règles globales de l'utilisateur (voir son CLAUDE.md) : standalone sans `standa
 |---|---|
 | `catalogue/` | Fonctionnalité **générique** des 4 commissions simples (bricolage, sonothèque, nautisme, photo) : configs (`models/commission-configs.ts`), `CatalogueRepository` (+ `catalogue-mapper.ts` pur), pages home/category, ligne, menu. Une commission = une config. |
 | `ludotheque/` | Jeux de société, vidéo, grands jeux. `services/games.repository.ts` = seul accès aux données ; `GameCategoryPageComponent` / `game-row` génériques ; filtres via `FilterBoardGamesService`. |
-| `bibliotheque/` | Livres. `services/library.repository.ts` (lecture seule, signal), modales génériques (`modals/form-dialog`), arbre de réglages générique (`settings-view/settings-panel`), helpers purs dans `models/`. Les réglages éditent une copie en mémoire (pas de persistance, comme avant). |
+| `bibliotheque/` | Livres. `services/library.repository.ts` (lecture seule, signal), modales génériques (`modals/form-dialog`), arbre de réglages générique (`settings-view/settings-panel`), helpers purs dans `models/`. Les réglages (`settings-view`) éditent une copie, enregistrée par `LibraryRepository.save` (un batch : document de la bibliothèque + un document par catégorie ; les catégories retirées sont supprimées), réservé aux super-admins par les règles. |
 | `admin/` | `catalogue-admin/` (admin générique des commissions simples), `admin-ludo/`, `admin-home` (connexion maison : email, Google, GitHub), `admin-menu`, `add-employee-dialog`, `confirmation-modal`. |
 | `common/` | home, badge, upload-form, pipes partagés. |
 | `models/`, `services/` | Modèles transverses ; `services/firebase/` (auth, user, storage-upload), `services/firestore/document-paths.ts` (helpers de chemins dans les documents), `cloudinary.service.ts`, `navigation.service.ts`. |
@@ -58,6 +58,6 @@ Pas de Firebase Storage (payant). Couvertures sur **Cloudinary** (cloud `seo9axk
 ## Pièges
 
 - Les emprunts ont été supprimés (ne pas réintroduire l'ancien schéma : copie de l'objet, tableau indexé, dates persistées, statut LATE en base).
-- `bibliotheque2` (RTDB) : refonte inachevée, non migrée.
+- `bibliotheque2` (RTDB) : refonte inachevée, non migrée. Le suppression de catégorie dans les réglages (batch.delete) n'a pas été testée de bout en bout.
 - Clé OpenAI compromise dans l'historique de l'ancien dépôt : à révoquer.
 - `.vs/`, `.firebase/`, `.idea/` sont versionnés : bruit, ne pas modifier. Pas de CI. Cypress couvre seulement ludothèque / admin ludo (obsolète).
