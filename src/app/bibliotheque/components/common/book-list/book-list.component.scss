@@ -8,7 +8,9 @@
   list-style: none;
 }
 
+// Keeps a book reached by the search below the sticky top bar and alphabet filter.
 .book-item {
+  scroll-margin-top: 200px;
   display: grid;
   grid-template-columns: 56px minmax(0, 1fr) minmax(150px, auto) 110px;
   align-items: center;
@@ -25,6 +27,12 @@
     align-items: start;
     gap: $space-2 $space-3;
   }
+}
+
+.book-item-highlighted {
+  border-radius: $radius-sm;
+  background: $accent-soft;
+  box-shadow: 0 0 0 3px $accent;
 }
 
 .book-thumb {

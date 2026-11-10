@@ -66,6 +66,7 @@
         @switch (searchKind()) {
           @case ('ludotheque') { <app-ludo-menu /> }
           @case ('catalogue') { <app-catalogue-menu [commission]="catalogueCommission()" /> }
+          @case ('bibliotheque') { @defer { <app-library-search /> } }
           @case ('admin') { <app-admin-menu /> }
         }
       </div>

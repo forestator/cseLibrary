@@ -11,12 +11,12 @@
   @if (open()) {
     <div class="row-body" [id]="panelId()">
       @if (books().length) {
-        <app-book-list [books]="books()" [biblio]="biblio()" />
+        <app-book-list [books]="books()" [biblio]="biblio()" [highlightedBookId]="highlightedBookId()" />
       }
       @for (entry of series(); track entry.series.id) {
         <section class="row-series">
           <h3 class="row-series-title">{{entry.series.name}}</h3>
-          <app-book-list [books]="entry.books" [biblio]="biblio()" />
+          <app-book-list [books]="entry.books" [biblio]="biblio()" [highlightedBookId]="highlightedBookId()" />
         </section>
       }
     </div>

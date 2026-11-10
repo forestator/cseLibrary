@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, computed, inject, input, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, inject, input, linkedSignal} from '@angular/core';
 import {MatIcon} from '@angular/material/icon';
 import {Author, Biblio, Book, Series, ViewBy} from '../../../../models/author.model';
 import {ToolsService} from '../../../../services/biblio/tools.service';
@@ -24,7 +24,11 @@ export class AuthorRowComponent {
   readonly author = input.required<Author>();
   readonly biblio = input.required<Biblio>();
 
-  protected readonly open = signal(false);
+  /** Opens the row, and highlights the book, when a search result points here. */
+  readonly expanded = input(false);
+  readonly highlightedBookId = input<string>();
+
+  protected readonly open = linkedSignal(() => this.expanded());
   protected readonly fullName = computed(() => `${this.author().lastName} ${this.author().firstName}`);
   protected readonly panelId = computed(() => `author-panel-${this.author().id}`);
 

@@ -1,0 +1,22 @@
+<div class="search" role="search" matAutocompleteOrigin #origin="matAutocompleteOrigin">
+  <label class="visually-hidden" [for]="inputId()">{{ label() }}</label>
+  <mat-icon class="search-icon" aria-hidden="true">search</mat-icon>
+  <input class="search-input" type="text" autocomplete="off"
+    [id]="inputId()" [placeholder]="label()" [formControl]="searchText" [matAutocomplete]="auto" [matAutocompleteConnectedTo]="origin">
+  @if (hasText()) {
+    <button type="button" class="search-clear" aria-label="Effacer la recherche" (click)="clear()">
+      <mat-icon aria-hidden="true">close</mat-icon>
+    </button>
+  }
+  <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="display" (optionSelected)="select($event)">
+    @for (option of options(); track $index) {
+      <mat-option [value]="option">
+        <ng-container [ngTemplateOutlet]="optionTemplate()" [ngTemplateOutletContext]="{$implicit: option}" />
+      </mat-option>
+    }
+    @if (isEmpty()) {
+      <mat-option disabled>{{ emptyText() }}</mat-option>
+    }
+  </mat-autocomplete>
+  <p class="visually-hidden" role="status">{{ status() }}</p>
+</div>
