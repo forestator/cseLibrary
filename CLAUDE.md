@@ -42,9 +42,9 @@ Règles globales de l'utilisateur (voir son CLAUDE.md) : standalone sans `standa
 | `common/` | home, badge, upload-form, pipes partagés. |
 | `models/`, `services/` | Modèles transverses ; `services/firebase/` (auth, user, storage-upload), `services/firestore/document-paths.ts` (helpers de chemins dans les documents), `cloudinary.service.ts`, `navigation.service.ts`. |
 
-## Données : Firestore (base nommée `cse-db`, europe-west1, projet `cseh-50966`)
+## Données : Firestore (base `(default)`, natif, europe-west1, projet `cseh-50966`, forfait gratuit)
 
-Modèle, règles, import et émulateur : **`docs/firestore-model.md`**. En bref : documents « gros » lus d'un coup (`ludotheque/{boardGames|videoGames|outsideGames}`, `commissions/{bricolage|sonotheque|nautisme|photo}`, `bibliotheque/{libraryId}` + sous-collection `categories`), `users/{id}` réservé aux super-admins. Toute lecture/écriture passe par un dépôt (`GamesRepository`, `CatalogueRepository`, `LibraryRepository`, `UserService`) : ne pas appeler Firestore depuis un composant. La Realtime Database (`cseh-50966-default-rtdb`) n'est plus utilisée et est **verrouillée** (`database.rules.json`, lecture/écriture refusées) depuis le 10/11/2026. La base `(default)` du projet est en mode Datastore (inutilisable).
+Modèle, règles, import et émulateur : **`docs/firestore-model.md`**. En bref : documents « gros » lus d'un coup (`ludotheque/{boardGames|videoGames|outsideGames}`, `commissions/{bricolage|sonotheque|nautisme|photo}`, `bibliotheque/{libraryId}` + sous-collection `categories`), `users/{id}` réservé aux super-admins. Toute lecture/écriture passe par un dépôt (`GamesRepository`, `CatalogueRepository`, `LibraryRepository`, `UserService`) : ne pas appeler Firestore depuis un composant. La Realtime Database (`cseh-50966-default-rtdb`) n'est plus utilisée et est **verrouillée** (`database.rules.json`, lecture/écriture refusées) depuis le 10/11/2026.
 
 ## Images
 

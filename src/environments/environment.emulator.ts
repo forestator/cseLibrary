@@ -16,7 +16,7 @@ export const environment = {
     appId: '1:380057552327:web:6f48c47bb21f44fd32c5e2'
   },
   // Firestore database created next to the legacy (Datastore mode) default one, see docs/firestore-model.md.
-  firestoreDatabaseId: 'cse-db',
+  firestoreDatabaseId: '(default)',
   emulators: {firestore: {host: '127.0.0.1', port: 8080}, auth: 'http://127.0.0.1:9099'},
   openAiApiKey: '',
   // Unsigned upload preset configured in the Cloudinary console (Settings > Upload).

@@ -33,7 +33,7 @@ Tant que l'étape 2 n'est pas faite, les couvertures de jeux/outils/sono/nautism
 ## Fait le 2026-11-09
 - Outillage navigateur (MCP utilisateur, puppeteer-core, émulateurs).
 - Refactoring complet : migrations officielles (standalone, `inject()`, signals, queries, outputs, self-closing), routes lazy, plus aucun NgModule ; suppression des doublons (`catalogue/` générique pour 4 commissions, ludothèque et bibliothèque refondues autour de dépôts de données, modales/réglages génériques).
-- Migration Realtime Database → Firestore (base `cse-db`, europe-west1) : modèle, règles déployées, 313 documents importés en production, Auth passé en API modulaire (`@angular/fire` compat supprimé), émulateurs pour tester l'admin.
+- Migration Realtime Database → Firestore (base `(default)` native, europe-west1, depuis le 10/11/2026 : l'ancienne base nommée `cse-db` exigeait la facturation) : modèle, règles déployées, 313 documents importés en production, Auth passé en API modulaire (`@angular/fire` compat supprimé), émulateurs pour tester l'admin.
 - Vérifications : build dev + prod, 21 tests unitaires, 33 pages comparées à une référence (données et images identiques, base Firestore de production), connexion admin + ajout d'un outil de bout en bout sur émulateur.
 
 ## Reste à faire (priorité décroissante)
@@ -56,3 +56,7 @@ Tant que l'étape 2 n'est pas faite, les couvertures de jeux/outils/sono/nautism
 ## 10/11/2026 : tests d'écriture admin (émulateurs)
 
 Ajout d'un équipement photo, ajout / modification / suppression d'un jeu de la ludothèque, ajout d'un outil de bricolage : OK. Page réglages de la bibliothèque : chargement OK (édition en mémoire seulement). Envoi Cloudinary : testé à la main par le propriétaire. Reste : révoquer la clé OpenAI, supprimer l'objet de test « test2 » (réf. 666) dans la production du bricolage.
+
+## 10/11/2026 : retour au forfait gratuit
+
+Base `(default)` recréée en Firestore natif, données copiées, hébergement redéployé, objet de test « test2 » supprimé. À vérifier après le passage en Spark : le site charge toujours ses données ; puis supprimer `cse-db`.

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Imports a Realtime Database JSON export into Firestore using the document model described in docs/firestore-model.md.
 //
-//   Emulator:   FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 node scripts/firestore/import.mjs --export db.json --project cseh-50966 --database cse-db
-//   Production: GOOGLE_ACCESS_TOKEN=<OAuth token of a project owner> node scripts/firestore/import.mjs --export db.json --project cseh-50966 --database cse-db --prod
+//   Emulator:   FIRESTORE_EMULATOR_HOST=127.0.0.1:8080 node scripts/firestore/import.mjs --export db.json --project cseh-50966 --database "(default)"
+//   Production: GOOGLE_ACCESS_TOKEN=<OAuth token of a project owner> node scripts/firestore/import.mjs --export db.json --project cseh-50966 --database "(default)" --prod
 //
 // Add --dry-run to only print the documents and their sizes.
 import {readFileSync} from 'node:fs';

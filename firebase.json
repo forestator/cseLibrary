@@ -15,7 +15,7 @@
   },
   "firestore": [
     {
-      "database": "cse-db",
+      "database": "(default)",
       "rules": "firestore.rules",
       "indexes": "firestore.indexes.json"
     }
