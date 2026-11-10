@@ -50,3 +50,6 @@ scripts/migrate-storage/updates.json
 firebase-debug.log
 firestore-debug.log
 ui-debug.log
+
+# Firebase hosting deploy cache
+.firebase/hosting.*.cache
