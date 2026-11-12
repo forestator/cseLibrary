@@ -88,3 +88,10 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 ## 10/11/2026 (nuit) : images de la sonothèque
 
 - 56 objets sans image ont reçu une photo générique par type d'équipement (20 types, `assets/sonoItems/covers/<type>` sur Cloudinary) ; 4 sont des modèles précis (lecteurs Gemini CDM3600/3700, table DJX750, projecteur Mushroom). Les micros HF/filaires, lasers, jeux de lumière LED, « wings » et sonos portables sont des photos représentatives d'autres modèles : à remplacer par les vraies photos du CSE via l'administration si besoin.
+
+## Bibliothèque : couvertures et nettoyage (2026-11-12)
+- **Couvertures :** 980 livres sans couverture en ont une (Open Library, correspondance titre + nom d'auteur ; images redimensionnées à 600×900 max, envoyées sur Cloudinary en `assets/books/covers/<rom|img|kids|others>/<id du livre>`, champ `cover` = `<id>.jpg`). Les images uniformes ou noires (76) ont été écartées. Restent ~1390 livres sans couverture (jeunesse sans auteur, guides, titres introuvables). 4 couvertures qui renvoyaient 404 sont repassées à `NoCover.jpg`.
+- **Rangement :** 4 romans déplacés de « Romans français » / « Policiers » vers « Romans étrangers » (cote `RE-*`) : Evans, Haran, O'Connell, Osorio. À examiner à la main : Lenteric (`R-LEN`) en 13 ans, Wood (`(5:6)`) en 7-9 ans, Simenon (`RP-SIM`) en romans français. Genres discutables non touchés (cote = étagère) : Gaiman, Outlander en SF ; Jurassic Park, Fatherland, Metro 2033 en fantastique.
+- **Doublons supprimés :** *L'homme aux cercles bleus* (entrée `RE-VAR`), *Zulu* (`POL-FER`), *L'éveil d'Endymion* (entrée « déclassée »). Les autres paires (mêmes cotes) sont des exemplaires multiples probables, conservés.
+- **ISBN poubelle :** `9780662533313` sur 9 livres sans rapport (métadonnées et résumés faux, ex. *Un été en Toscane*) : à nettoyer.
+- Sauvegardes locales avant écriture (hors dépôt) : dumps JSON des documents `bibliotheque`.
