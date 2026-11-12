@@ -28,3 +28,15 @@ export interface AdminCollection {
   add(): Promise<void>;
   edit(item: AdminItem): Promise<void>;
 }
+
+/** A commission as the global administration presents it: pick one, then manage its objects. */
+export interface AdminSection {
+  /** Commission id, also the last segment of the `/admin/<id>` address. */
+  id: string;
+  label: string;
+  icon: string;
+  summary: string;
+  canManage$: Observable<boolean>;
+  /** The lists of objects of the commission; empty for the library, which has its own editor. */
+  collections: ReadonlyArray<AdminCollection>;
+}

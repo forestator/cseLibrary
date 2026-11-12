@@ -17,6 +17,15 @@
       }
     </nav>
 
+    @if (isAdmin()) {
+      <nav class="rail-section" aria-label="Administration">
+        <a class="rail-link rail-link-admin" routerLink="/admin" routerLinkActive="rail-link-active">
+          <mat-icon aria-hidden="true">admin_panel_settings</mat-icon>
+          <span>Administration</span>
+        </a>
+      </nav>
+    }
+
     @if (subMenu().length) {
       <nav class="rail-section rail-sub" [attr.aria-label]="'Rubriques ' + sectionLabel()">
         <p class="rail-heading">{{ sectionLabel() }}</p>

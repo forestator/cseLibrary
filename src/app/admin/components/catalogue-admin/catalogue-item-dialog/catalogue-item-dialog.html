@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>{{adminConfig.texts.addTitle}}</h2>
+<h2 mat-dialog-title>{{ selectedItem ? adminConfig.texts.editTitle : adminConfig.texts.addTitle }}</h2>
 <mat-dialog-content>
   <div class="dialog-layout" [formGroup]="form">
     <section class="dialog-section" aria-labelledby="item-info-title">

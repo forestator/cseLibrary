@@ -44,7 +44,7 @@ Règles globales de l'utilisateur (voir son CLAUDE.md) : standalone sans `standa
 
 ## Données : Firestore (base `(default)`, natif, europe-west1, projet `cseh-50966`, forfait gratuit)
 
-Modèle, règles, import et émulateur : **`docs/firestore-model.md`**. En bref : documents « gros » lus d'un coup (`ludotheque/{boardGames|videoGames|outsideGames}`, `commissions/{bricolage|sonotheque|nautisme|photo}`, `bibliotheque/{libraryId}` + sous-collection `categories`), `users/{id}` (annuaire des employés de l'ancien système de réservation : plus utilisé par l'application, données et règles conservées en attendant la refonte des réservations). Toute lecture/écriture passe par un dépôt (`GamesRepository`, `CatalogueRepository`, `LibraryRepository`) : ne pas appeler Firestore depuis un composant. La Realtime Database (`cseh-50966-default-rtdb`) n'est plus utilisée et est **verrouillée** (`database.rules.json`, lecture/écriture refusées) depuis le 10/11/2026.
+Modèle, règles, import et émulateur : **`docs/firestore-model.md`**. En bref : documents « gros » lus d'un coup (`ludotheque/{boardGames|videoGames|outsideGames}`, `commissions/{bricolage|sonotheque|nautisme|photo}`, `bibliotheque/{libraryId}` + sous-collection `categories`). Toute lecture/écriture passe par un dépôt (`GamesRepository`, `CatalogueRepository`, `LibraryRepository`) : ne pas appeler Firestore depuis un composant. La Realtime Database (`cseh-50966-default-rtdb`) n'est plus utilisée et est **verrouillée** (`database.rules.json`, lecture/écriture refusées) depuis le 10/11/2026.
 
 ## Images
 

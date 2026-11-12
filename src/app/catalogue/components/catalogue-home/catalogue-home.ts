@@ -5,7 +5,6 @@ import {MatIcon} from '@angular/material/icon';
 import {ActivatedRoute, RouterLink} from '@angular/router';
 import {switchMap} from 'rxjs';
 import {ToolsService} from '../../../services/biblio/tools.service';
-import {AuthentificationService} from '../../../services/firebase/authentification.service';
 import {ItemCollection} from '../../models/catalogue-item.model';
 import {CATEGORY_ICONS} from '../../models/catalogue-categories';
 import {countLabel} from '../../models/count-label';
@@ -22,7 +21,6 @@ import {CataloguePageHeader} from '../catalogue-page-header/catalogue-page-heade
   imports: [RouterLink, NgOptimizedImage, MatIcon, CatalogueItemGrid, CataloguePageHeader],
 })
 export class CatalogueHome {
-  private readonly auth = inject(AuthentificationService);
   private readonly toolsService = inject(ToolsService);
 
   // Bound from the route data.
@@ -33,9 +31,6 @@ export class CatalogueHome {
 
   protected readonly library = toSignal(
     toObservable(this.catalogue.repository).pipe(switchMap(repository => repository.library$)));
-  protected readonly isAdmin = toSignal(
-    toObservable(this.config).pipe(switchMap(config => this.auth[config.adminLink.guard])),
-    {initialValue: false});
 
   private readonly collection = toSignal(
     toObservable(this.catalogue.repository).pipe(switchMap(repository => repository.allItems$)));

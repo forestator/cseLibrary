@@ -166,3 +166,72 @@
   display: flex;
   justify-content: center;
 }
+
+.admin-back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: $space-1;
+  min-height: 44px;
+  color: $accent-text;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.admin-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: $space-3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-card {
+  display: flex;
+  align-items: center;
+  gap: $space-3;
+  height: 100%;
+  padding: $space-4;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  color: $on-surface;
+  text-decoration: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: $accent;
+    box-shadow: $shadow-1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+
+.admin-card-icon {
+  flex: none;
+  color: $accent-text;
+}
+
+.admin-card-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.admin-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.admin-card-summary {
+  color: $on-surface-muted;
+  font-size: 0.9rem;
+}

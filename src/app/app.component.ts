@@ -14,6 +14,7 @@ import {Comissions} from './models/common.model';
 import {COMMISSION_NAV, sectionOf, subMenuOf} from './navigation/navigation.config';
 import {ToolsService} from './services/biblio/tools.service';
 import {ThemeService} from './services/theme.service';
+import {AuthentificationService} from './services/firebase/authentification.service';
 
 const MOBILE_QUERY = '(max-width: 839px)';
 const THEME_LABELS = {system: 'Thème automatique', light: 'Thème clair', dark: 'Thème sombre'} as const;
@@ -31,6 +32,9 @@ export class AppComponent {
   private readonly toolsService = inject(ToolsService);
   private readonly theme = inject(ThemeService);
   private readonly document = inject(DOCUMENT);
+
+  /** Signed-in administrators get a link to the global administration. */
+  protected readonly isAdmin = toSignal(inject(AuthentificationService).isUserAnyAdmin$, {initialValue: false});
 
   protected readonly commissions = COMMISSION_NAV;
   protected readonly navOpen = signal(false);

@@ -39,14 +39,4 @@
     <app-catalogue-item-grid [items]="items()" [config]="config()" [selectedId]="selectedId()" />
   }
 
-  @if (isAdmin()) {
-    <a class="admin-card" [routerLink]="config().adminLink.path">
-      <mat-icon class="admin-icon" aria-hidden="true">admin_panel_settings</mat-icon>
-      <span class="admin-text">
-        <span class="admin-title">{{ config().adminLink.title }}</span>
-        <span class="admin-description">{{ config().adminLink.description }}</span>
-      </span>
-      <mat-icon aria-hidden="true">arrow_forward</mat-icon>
-    </a>
-  }
 </div>

@@ -21,12 +21,8 @@ export interface DetailField {
 }
 
 export interface CommissionAdminTexts {
-  addButton: string;
-  editButton: string;
   addTitle: string;
   editTitle: string;
-  searchLabel: string;
-  searchPlaceholder: string;
   namePlaceholder: string;
 }
 
@@ -53,10 +49,6 @@ export interface CommissionConfig {
   searchPlaceholder?: string;
   adminLink: {
     guard: AdminGuardKey;
-    /** Relative to the commission home, and to the commission root for the admin route. */
-    path: string;
-    title: string;
-    description: string;
   };
   admin?: CommissionAdminConfig;
 }

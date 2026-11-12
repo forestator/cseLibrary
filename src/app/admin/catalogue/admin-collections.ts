@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {firstValueFrom, map} from 'rxjs';
+import {firstValueFrom, map, Observable, of} from 'rxjs';
 import {BRICOLAGE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG, SONOTHEQUE_CONFIG} from '../../catalogue/models/commission-configs';
 import {CatalogueItem} from '../../catalogue/models/catalogue-item.model';
 import {CommissionConfig} from '../../catalogue/models/commission-config.model';
@@ -12,7 +12,8 @@ import {AuthentificationService} from '../../services/firebase/authentification.
 import {ADMIN_DIALOG_CONFIG} from '../admin-dialog.config';
 import {AddGameModalComponent} from '../components/admin-ludo/admin-games/add-game-modal/add-game-modal.component';
 import {CatalogueItemDialog} from '../components/catalogue-admin/catalogue-item-dialog/catalogue-item-dialog';
-import {AdminCollection, AdminItem} from './admin-collection.model';
+import {COMMISSION_NAV} from '../../navigation/navigation.config';
+import {AdminCollection, AdminItem, AdminSection} from './admin-collection.model';
 
 type GameWithStatus = Game & {status?: string};
 
@@ -35,6 +36,15 @@ const GAME_COLLECTIONS: ReadonlyArray<{libraryId: LibraryId; label: string; icon
   {libraryId: 'outsideGames', label: 'Grands jeux', icon: 'sports_handball'},
 ];
 
+const SECTION_SUMMARIES: Readonly<Record<string, string>> = {
+  [Comissions.BIBLIOTHEQUE]: 'Catégories, auteurs, séries et livres des quatre bibliothèques.',
+  [Comissions.LUDOTHEQUE]: 'Jeux de société, jeux vidéo et grands jeux.',
+  [Comissions.BRICOLAGE]: 'Outils et machines à prêter.',
+  [Comissions.SONOTHEQUE]: 'Matériel de sonorisation et de lumière.',
+  [Comissions.NAUTISME]: 'Matériel nautique.',
+  [Comissions.PHOTO]: 'Appareils photo, caméscopes, projecteurs et accessoires.',
+};
+
 /**
  * Every collection of objects managed from the global administration. Each one sits on the repository
  * of its commission, which stays the only code talking to Firestore, and opens the existing forms.
@@ -46,10 +56,31 @@ export class AdminCollections {
   private readonly catalogues = inject(CatalogueRepositories);
   private readonly games = inject(GamesRepository);
 
-  readonly collections: ReadonlyArray<AdminCollection> = [
+  private readonly collections: ReadonlyArray<AdminCollection> = [
     ...GAME_COLLECTIONS.map(info => this.gameCollection(info.libraryId, info.label, info.icon)),
     ...CATALOGUE_COLLECTIONS.map(info => this.catalogueCollection(info)),
   ];
+
+  /** One section per commission, in the order of the side rail. */
+  readonly sections: ReadonlyArray<AdminSection> = COMMISSION_NAV.map(commission => ({
+    id: commission.id,
+    label: commission.label,
+    icon: commission.icon,
+    summary: SECTION_SUMMARIES[commission.id] ?? '',
+    canManage$: this.canManage(commission.id),
+    collections: this.collections.filter(collection => collection.commission === commission.id),
+  }));
+
+  private canManage(commission: string): Observable<boolean> {
+    if (commission === Comissions.LUDOTHEQUE) {
+      return this.auth.isUserLudoAdmin$;
+    }
+    if (commission === Comissions.BIBLIOTHEQUE) {
+      return this.auth.isUserSuperAdmin;
+    }
+    const info = CATALOGUE_COLLECTIONS.find(candidate => candidate.config.id === commission);
+    return info ? this.auth[info.config.adminLink.guard] : of(false);
+  }
 
   private catalogueCollection({config, label, icon}: CatalogueCollectionInfo): AdminCollection {
     const repository = this.catalogues.of(config);

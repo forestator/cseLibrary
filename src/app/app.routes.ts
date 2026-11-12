@@ -1,5 +1,5 @@
 import {inject} from '@angular/core';
-import {Route, Routes} from '@angular/router';
+import {Routes} from '@angular/router';
 import {CommissionConfig} from './catalogue/models/commission-config.model';
 import {BRICOLAGE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG, SONOTHEQUE_CONFIG} from './catalogue/models/commission-configs';
 import {AuthentificationService} from './services/firebase/authentification.service';
@@ -27,7 +27,6 @@ const biblioRoutes: Routes = [
 
 const loadCatalogueHome = () => import('./catalogue/components/catalogue-home/catalogue-home').then(m => m.CatalogueHome);
 const loadCatalogueCategory = () => import('./catalogue/components/catalogue-category/catalogue-category').then(m => m.CatalogueCategory);
-const loadCatalogueAdmin = () => import('./admin/components/catalogue-admin/catalogue-admin').then(m => m.CatalogueAdmin);
 
 // The commission id reaches the generic components as an input, through the route data.
 function catalogueRoutes(config: CommissionConfig): Routes {
@@ -41,32 +40,21 @@ function catalogueRoutes(config: CommissionConfig): Routes {
     ];
 }
 
-function catalogueAdminRoute(config: CommissionConfig): Route {
-    return {
-        path: `${config.id}/${config.adminLink.path}`, loadComponent: loadCatalogueAdmin, data: {commission: config.id},
-        canActivate: [() => inject(AuthentificationService)[config.adminLink.guard]]
-    };
-}
-
 const catalogueConfigs = [BRICOLAGE_CONFIG, SONOTHEQUE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG];
+
+const adminGuard = () => inject(AuthentificationService).isUserAnyAdmin$;
+const loadAdminCatalogue = () => import('./admin/catalogue/admin-catalogue').then(m => m.AdminCatalogue);
 
 const adminRoutes: Routes = [
     {
         path: 'iWantToConfigureThisAwesomeApp', loadComponent: () => import('./admin/components/admin-home/admin-home.component').then(m => m.AdminHomeComponent)
     },
-    {
-        path: 'admin', loadComponent: () => import('./admin/catalogue/admin-catalogue').then(m => m.AdminCatalogue),
-        canActivate: [() => inject(AuthentificationService).isUserAnyAdmin$]
-    },
-    {
-        path: 'ludotheque/admin/games', loadComponent: () => import('./admin/components/admin-ludo/admin-games/admin-games.component').then(m => m.AdminGamesComponent),
-        canActivate: [() => inject(AuthentificationService).isUserLudoAdmin$]
-    },
-    ...[BRICOLAGE_CONFIG, SONOTHEQUE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG].map(catalogueAdminRoute),
-    {
-        path: 'bibliotheque/admin/:libraryId', loadComponent: () => import('./bibliotheque/components/settings-view/settings-view.component').then(m => m.SettingsViewComponent),
-        canActivate: [() => inject(AuthentificationService).isUserSuperAdmin],
-    },
+    {path: 'admin', loadComponent: loadAdminCatalogue, canActivate: [adminGuard]},
+    {path: 'admin/:commission', loadComponent: loadAdminCatalogue, canActivate: [adminGuard]},
+    // Former per-commission administration addresses, kept for old bookmarks.
+    {path: 'ludotheque/admin/games', redirectTo: 'admin/ludotheque'},
+    {path: 'bibliotheque/admin/:libraryId', redirectTo: 'admin/bibliotheque'},
+    ...catalogueConfigs.map(config => ({path: `${config.id}/admin/:page`, redirectTo: `admin/${config.id}`})),
 ];
 
 export const routes: Routes = [

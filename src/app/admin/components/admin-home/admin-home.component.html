@@ -4,7 +4,11 @@
       <mat-icon class="login-mark" aria-hidden="true">verified_user</mat-icon>
       <h1 class="login-title">Espace administrateur</h1>
       <p class="login-status" role="status">Connecté en tant que <strong>{{ user.email }}</strong></p>
-      <p class="login-hint">Choisissez une commission dans le menu pour gérer son catalogue.</p>
+      <p class="login-hint">Gérez les objets de vos commissions depuis la page d'administration.</p>
+      <a matButton="filled" class="login-button" routerLink="/admin">
+        <mat-icon aria-hidden="true">arrow_forward</mat-icon>
+        Ouvrir l'administration
+      </a>
       <button matButton="outlined" type="button" class="login-button" (click)="logout()">
         <mat-icon aria-hidden="true">logout</mat-icon>
         Se déconnecter

@@ -30,20 +30,13 @@ export const BRICOLAGE_CONFIG: CommissionConfig = {
   searchPlaceholder: 'Rechercher un outil',
   adminLink: {
     guard: 'isUserBricolageAdmin$',
-    path: 'admin/tools',
-    title: 'Administration bricolage',
-    description: 'Gestion des outils',
   },
   admin: {
     coverPath: '/assets/tools/covers',
     statuses: [AVAILABLE, {value: 'REPARATION', label: 'En Réparation'}, {value: 'HS', label: 'HS'}],
     texts: {
-      addButton: 'Ajouter un nouvel outil',
-      editButton: 'Modifier un outil existant',
       addTitle: 'Ajouter un outil',
       editTitle: 'Modifier un outil',
-      searchLabel: 'Chercher un outil',
-      searchPlaceholder: 'Super perceuse',
       namePlaceholder: 'Rotototor',
     },
   },
@@ -61,20 +54,13 @@ export const SONOTHEQUE_CONFIG: CommissionConfig = {
   detailFields: [],
   adminLink: {
     guard: 'isUserSonoAdmin$',
-    path: 'admin/sonoItems',
-    title: 'Administration sonothèque',
-    description: 'Gestion des enceintes, jeux de lumière ...',
   },
   admin: {
     coverPath: '/assets/sonoItems/covers',
     statuses: OUT_OF_ORDER_OR_LOST,
     texts: {
-      addButton: 'Ajouter une nouveauté',
-      editButton: 'Modifier un objet existant',
       addTitle: 'Ajouter un item',
       editTitle: 'Modifier un item de la sonothèque',
-      searchLabel: 'Chercher un item',
-      searchPlaceholder: 'Super jeux de lumière',
       namePlaceholder: 'Jeux de lumière',
     },
   },
@@ -92,20 +78,13 @@ export const NAUTISME_CONFIG: CommissionConfig = {
   detailFields: [],
   adminLink: {
     guard: 'isUserNautismeAdmin$',
-    path: 'admin/nautismeItems',
-    title: 'Administration matériel nautique',
-    description: 'Gestion du matériel nautique',
   },
   admin: {
     coverPath: '/assets/nautisme/covers',
     statuses: OUT_OF_ORDER_OR_LOST,
     texts: {
-      addButton: 'Ajouter une nouveauté',
-      editButton: 'Modifier un objet existant',
       addTitle: 'Ajouter un item',
       editTitle: 'Modifier un item nautique',
-      searchLabel: 'Chercher un item',
-      searchPlaceholder: 'Paddle',
       namePlaceholder: 'Jeux de lumière',
     },
   },
@@ -123,20 +102,13 @@ export const PHOTO_CONFIG: CommissionConfig = {
   detailFields: [],
   adminLink: {
     guard: 'isUserSuperAdmin',
-    path: 'admin/tools',
-    title: 'Administration matériel photo',
-    description: 'Gestion du matériel photo',
   },
   admin: {
     coverPath: '/assets/materielPhoto/covers',
     statuses: OUT_OF_ORDER_OR_LOST,
     texts: {
-      addButton: 'Ajouter un équipement',
-      editButton: 'Modifier un équipement existant',
       addTitle: 'Ajouter un équipement',
       editTitle: 'Modifier un équipement photo',
-      searchLabel: 'Chercher un équipement',
-      searchPlaceholder: 'Objectif 50mm',
       namePlaceholder: 'Reflex numérique',
     },
   },

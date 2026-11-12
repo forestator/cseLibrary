@@ -71,9 +71,5 @@ service cloud.firestore {
       allow write: if isSuperAdmin();
     }
 
-    // Employee directory: personal data, never public.
-    match /users/{userId} {
-      allow read, write: if isSuperAdmin();
-    }
   }
 }
