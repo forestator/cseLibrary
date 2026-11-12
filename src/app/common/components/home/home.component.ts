@@ -2,8 +2,7 @@ import {NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
-import {BiblioUtils} from '../../../bibliotheque/models/biblio-utils';
-import {dayLabel, nextBricolageOpening, nextLudothequeSession, sessionLabel} from '../../../catalogue/models/commission-schedule';
+import {nextBricolageSession, nextLibrarySession, nextLudothequeSession, sessionLabel} from '../../../catalogue/models/commission-schedule';
 import {Comissions} from '../../../models/common.model';
 import {COMMISSION_NAV} from '../../../navigation/navigation.config';
 
@@ -38,11 +37,11 @@ export class HomeComponent {
   private nextSessionOf(commission: Comissions): string | undefined {
     switch (commission) {
       case Comissions.BIBLIOTHEQUE:
-        return dayLabel(BiblioUtils.nextComission());
+        return sessionLabel(nextLibrarySession());
       case Comissions.LUDOTHEQUE:
         return sessionLabel(nextLudothequeSession());
       case Comissions.BRICOLAGE:
-        return dayLabel(nextBricolageOpening());
+        return sessionLabel(nextBricolageSession());
       default:
         return undefined;
     }

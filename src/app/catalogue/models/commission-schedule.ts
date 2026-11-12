@@ -1,16 +1,5 @@
 import moment, {Moment} from 'moment';
 
-export function nextBricolageOpening(): Moment {
-  const currentDate = moment();
-  if (currentDate.day() === 0) {
-    currentDate.day(1);
-  } else if (currentDate.day() !== 1) {
-    currentDate.day(1);
-    currentDate.add(1, 'week');
-  }
-  return currentDate;
-}
-
 export interface CommissionSession {
   start: Moment;
   end: Moment;
@@ -23,11 +12,17 @@ interface WeeklySlot {
   end: string;
 }
 
-/** The ludotheque is open every other week, on Tuesday at lunch and on Thursday early afternoon. */
 const LUDOTHEQUE_SLOTS: ReadonlyArray<WeeklySlot> = [
   {isoWeekday: 2, start: '12:00', end: '12:30'},
   {isoWeekday: 4, start: '13:30', end: '14:00'},
 ];
+
+const LIBRARY_SLOTS: ReadonlyArray<WeeklySlot> = [
+  {isoWeekday: 1, start: '12:00', end: '12:30'},
+  {isoWeekday: 4, start: '13:30', end: '14:00'},
+];
+
+const BRICOLAGE_SLOTS: ReadonlyArray<WeeklySlot> = [{isoWeekday: 1, start: '12:00', end: '12:30'}];
 
 // Counting weeks from a fixed open Monday keeps the alternation right across year boundaries,
 // unlike the week-of-year number, which restarts every January.
@@ -39,18 +34,15 @@ function timeOn(day: Moment, time: string): Moment {
   return day.clone().hour(hours).minute(minutes).second(0).millisecond(0);
 }
 
-/** First ludotheque session not yet over at `now` (a session in progress is still the current one). */
-export function nextLudothequeSession(now: Moment = moment()): CommissionSession {
-  const openMonday = moment(LUDOTHEQUE_OPEN_WEEK);
+/** First session not yet over at `now` (a session in progress is still the current one). */
+function nextSession(slots: ReadonlyArray<WeeklySlot>, now: Moment, isOpenWeek: (monday: Moment) => boolean): CommissionSession {
   const thisMonday = now.clone().startOf('isoWeek');
   for (let offset = 0; offset <= WEEKS_TO_LOOK_AHEAD; offset++) {
     const monday = thisMonday.clone().add(offset, 'weeks');
-    // Rounded, because a daylight-saving change makes a week 167 or 169 hours long.
-    const weeksSinceOpen = Math.round(monday.diff(openMonday, 'days') / 7);
-    if (weeksSinceOpen % 2 !== 0) {
+    if (!isOpenWeek(monday)) {
       continue;
     }
-    for (const slot of LUDOTHEQUE_SLOTS) {
+    for (const slot of slots) {
       const day = monday.clone().isoWeekday(slot.isoWeekday);
       const session = {start: timeOn(day, slot.start), end: timeOn(day, slot.end)};
       if (session.end.isAfter(now)) {
@@ -58,7 +50,27 @@ export function nextLudothequeSession(now: Moment = moment()): CommissionSession
       }
     }
   }
-  throw new Error('No ludotheque session found in the coming weeks');
+  throw new Error('No session found in the coming weeks');
+}
+
+/** The ludotheque is open every other week, on Tuesday at lunch and on Thursday early afternoon. */
+export function nextLudothequeSession(now: Moment = moment()): CommissionSession {
+  const openMonday = moment(LUDOTHEQUE_OPEN_WEEK);
+  return nextSession(LUDOTHEQUE_SLOTS, now, monday => {
+    // Rounded, because a daylight-saving change makes a week 167 or 169 hours long.
+    const weeksSinceOpen = Math.round(monday.diff(openMonday, 'days') / 7);
+    return weeksSinceOpen % 2 === 0;
+  });
+}
+
+/** The bricolage commission lends every Monday at lunch. */
+export function nextBricolageSession(now: Moment = moment()): CommissionSession {
+  return nextSession(BRICOLAGE_SLOTS, now, () => true);
+}
+
+/** The library is open every week, on Monday at lunch and on Thursday early afternoon. */
+export function nextLibrarySession(now: Moment = moment()): CommissionSession {
+  return nextSession(LIBRARY_SLOTS, now, () => true);
 }
 
 function hourLabel(time: Moment): string {

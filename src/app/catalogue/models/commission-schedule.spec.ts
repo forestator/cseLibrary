@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {dayLabel, nextLudothequeSession, sessionLabel} from './commission-schedule';
+import {dayLabel, nextBricolageSession, nextLibrarySession, nextLudothequeSession, sessionLabel} from './commission-schedule';
 
 describe('nextLudothequeSession', () => {
   const next = (date: string) => nextLudothequeSession(moment(date));
@@ -42,5 +42,36 @@ describe('nextLudothequeSession', () => {
 describe('dayLabel', () => {
   it('writes the weekday and the day in French', () => {
     expect(dayLabel(moment('2026-11-16'))).toBe('lundi 16 novembre');
+  });
+});
+
+describe('nextLibrarySession', () => {
+  const label = (date: string) => sessionLabel(nextLibrarySession(moment(date)));
+
+  it('opens Monday at lunch', () => {
+    expect(label('2026-11-16T09:00')).toBe('lundi 16 novembre, 12h – 12h30');
+  });
+
+  it('goes to Thursday once Monday is over, and from Tuesday or Wednesday', () => {
+    expect(label('2026-11-16T12:45')).toBe('jeudi 19 novembre, 13h30 – 14h');
+    expect(label('2026-11-17T09:00')).toBe('jeudi 19 novembre, 13h30 – 14h');
+  });
+
+  it('comes back to Monday after the Thursday session, every week', () => {
+    expect(label('2026-11-19T14:30')).toBe('lundi 23 novembre, 12h – 12h30');
+    expect(label('2026-11-14T10:00')).toBe('lundi 16 novembre, 12h – 12h30');
+  });
+});
+
+describe('nextBricolageSession', () => {
+  const label = (date: string) => sessionLabel(nextBricolageSession(moment(date)));
+
+  it('opens every Monday at lunch', () => {
+    expect(label('2026-11-16T09:00')).toBe('lundi 16 novembre, 12h – 12h30');
+  });
+
+  it('waits for the next Monday once the session is over', () => {
+    expect(label('2026-11-16T13:00')).toBe('lundi 23 novembre, 12h – 12h30');
+    expect(label('2026-11-12T10:00')).toBe('lundi 16 novembre, 12h – 12h30');
   });
 });
