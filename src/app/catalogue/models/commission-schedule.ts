@@ -65,7 +65,12 @@ function hourLabel(time: Moment): string {
   return time.minutes() === 0 ? time.format('H[h]') : time.format('H[h]mm');
 }
 
+/** "mardi 17 novembre", for sessions whose hours are not published. */
+export function dayLabel(day: Moment): string {
+  return day.clone().locale('fr').format('dddd D MMMM');
+}
+
 /** "mardi 17 novembre, 12h – 12h30". */
 export function sessionLabel(session: CommissionSession): string {
-  return `${session.start.clone().locale('fr').format('dddd D MMMM')}, ${hourLabel(session.start)} – ${hourLabel(session.end)}`;
+  return `${dayLabel(session.start)}, ${hourLabel(session.start)} – ${hourLabel(session.end)}`;
 }

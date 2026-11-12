@@ -1,5 +1,5 @@
 import moment from 'moment';
-import {nextLudothequeSession, sessionLabel} from './commission-schedule';
+import {dayLabel, nextLudothequeSession, sessionLabel} from './commission-schedule';
 
 describe('nextLudothequeSession', () => {
   const next = (date: string) => nextLudothequeSession(moment(date));
@@ -36,5 +36,11 @@ describe('nextLudothequeSession', () => {
   it('labels the session in French with its hours', () => {
     expect(sessionLabel(next('2026-11-10T09:00'))).toBe('mardi 10 novembre, 12h – 12h30');
     expect(sessionLabel(next('2026-11-12T09:00'))).toBe('jeudi 12 novembre, 13h30 – 14h');
+  });
+});
+
+describe('dayLabel', () => {
+  it('writes the weekday and the day in French', () => {
+    expect(dayLabel(moment('2026-11-16'))).toBe('lundi 16 novembre');
   });
 });
