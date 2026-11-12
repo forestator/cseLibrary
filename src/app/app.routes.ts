@@ -55,6 +55,10 @@ const adminRoutes: Routes = [
         path: 'iWantToConfigureThisAwesomeApp', loadComponent: () => import('./admin/components/admin-home/admin-home.component').then(m => m.AdminHomeComponent)
     },
     {
+        path: 'admin', loadComponent: () => import('./admin/catalogue/admin-catalogue').then(m => m.AdminCatalogue),
+        canActivate: [() => inject(AuthentificationService).isUserAnyAdmin$]
+    },
+    {
         path: 'ludotheque/admin/games', loadComponent: () => import('./admin/components/admin-ludo/admin-games/admin-games.component').then(m => m.AdminGamesComponent),
         canActivate: [() => inject(AuthentificationService).isUserLudoAdmin$]
     },

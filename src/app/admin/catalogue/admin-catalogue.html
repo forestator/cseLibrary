@@ -1,0 +1,103 @@
+<div class="admin-page">
+  <app-catalogue-page-header title="Gestion du catalogue"
+    resume="Tous les objets de toutes les commissions au même endroit : recherchez, filtrez, ajoutez et modifiez."
+    [countLabel]="resultLabel()" />
+
+  <div class="admin-toolbar" role="toolbar" aria-label="Actions">
+    <button matButton="filled" type="button" [matMenuTriggerFor]="addMenu" [disabled]="manageable().length === 0">
+      <mat-icon aria-hidden="true">add</mat-icon>
+      Ajouter un objet
+    </button>
+    <mat-menu #addMenu="matMenu">
+      @for (collection of manageable(); track collection.id) {
+        <button mat-menu-item type="button" (click)="add(collection)">
+          <mat-icon aria-hidden="true">{{ collection.icon }}</mat-icon>
+          {{ collection.label }}
+        </button>
+      }
+    </mat-menu>
+  </div>
+
+  <div class="admin-filters">
+    <label class="admin-search">
+      <span class="admin-search-label">Rechercher</span>
+      <input class="admin-search-input" type="search" placeholder="Nom, référence, catégorie…"
+             [value]="search()" (input)="setSearch($any($event.target).value)">
+    </label>
+
+    <div class="admin-chips" role="group" aria-label="Commission">
+      <button type="button" class="admin-chip" [class.admin-chip-active]="collectionFilter() === null"
+              [attr.aria-pressed]="collectionFilter() === null" (click)="setCollection(null)">Toutes</button>
+      @for (entry of counts(); track entry.collection.id) {
+        <button type="button" class="admin-chip" [class.admin-chip-active]="collectionFilter() === entry.collection.id"
+                [attr.aria-pressed]="collectionFilter() === entry.collection.id" (click)="setCollection(entry.collection.id)">
+          {{ entry.collection.label }} <span class="admin-chip-count">{{ entry.count }}</span>
+        </button>
+      }
+      <button type="button" class="admin-chip" [class.admin-chip-active]="withoutCover()"
+              [attr.aria-pressed]="withoutCover()" (click)="toggleWithoutCover()">Sans couverture</button>
+    </div>
+  </div>
+
+  @if (loading()) {
+    <p class="admin-loading" role="status">Chargement du catalogue…</p>
+  }
+
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <caption class="admin-caption">Objets du catalogue</caption>
+      <thead>
+        <tr>
+          <th scope="col" class="admin-col-cover"><span class="admin-hidden">Couverture</span></th>
+          <th scope="col">Nom</th>
+          <th scope="col">Commission</th>
+          <th scope="col">Catégorie</th>
+          <th scope="col">Réf.</th>
+          <th scope="col">Statut</th>
+          <th scope="col" class="admin-col-action"><span class="admin-hidden">Actions</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (row of rows(); track row.item.key) {
+          <tr>
+            <td class="admin-col-cover">
+              @if (row.item.cover) {
+                <img class="admin-thumb" [ngSrc]="row.item.cover" width="48" height="48" alt="">
+              } @else {
+                <mat-icon class="admin-thumb-empty" aria-hidden="true">image_not_supported</mat-icon>
+              }
+            </td>
+            <th scope="row" class="admin-name">{{ row.item.name }}</th>
+            <td>{{ row.collectionLabel }}</td>
+            <td>{{ row.categoryLabel }}</td>
+            <td>{{ row.item.ref }}</td>
+            <td>
+              @if (row.item.status) {
+                <app-badge [status]="row.item.status" display="small" />
+              }
+            </td>
+            <td class="admin-col-action">
+              @if (row.editable) {
+                <button matIconButton type="button" [attr.aria-label]="'Modifier ' + row.item.name" (click)="edit(row.item)">
+                  <mat-icon aria-hidden="true">edit</mat-icon>
+                </button>
+              }
+            </td>
+          </tr>
+        } @empty {
+          @if (!loading()) {
+            <tr>
+              <td class="admin-empty" colspan="7">Aucun objet ne correspond à la recherche.</td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  @if (remaining() > 0) {
+    <div class="admin-more">
+      <button matButton="tonal" type="button" (click)="showMore()">Afficher {{ remaining() > 100 ? 100 : remaining() }} de plus ({{ remaining() }} restants)</button>
+    </div>
+  }
+</div>

@@ -95,3 +95,9 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 - **Doublons supprimés :** *L'homme aux cercles bleus* (entrée `RE-VAR`), *Zulu* (`POL-FER`), *L'éveil d'Endymion* (entrée « déclassée »). Les autres paires (mêmes cotes) sont des exemplaires multiples probables, conservés.
 - **ISBN poubelle :** `9780662533313` sur 9 livres sans rapport (métadonnées et résumés faux, ex. *Un été en Toscane*) : à nettoyer.
 - Sauvegardes locales avant écriture (hors dépôt) : dumps JSON des documents `bibliotheque`.
+
+## Chantiers ouverts (2026-11-12)
+1. **Administration unifiée du catalogue** : une seule porte d'entrée `/admin` pour tous les objets, au lieu d'une administration par commission. Conception, architecture et phases : `docs/admin-unifiee.md`. Première tranche (liste globale avec recherche et filtres, ajout et modification via les formulaires existants) en cours.
+2. **Repenser les comptes administrateurs par section** (à planifier, pas commencé) : aujourd'hui un UID par commission (bricolage, ludothèque, nautisme, sonothèque) plus six super-administrateurs, écrits en dur dans `services/firebase/authentification.service.ts` **et** dans `firestore.rules`. À revoir : gestion des administrateurs depuis l'application (et non dans le code), rôles par commission, une personne pouvant administrer plusieurs sections, journal des modifications. Dépend de la décision « droits par commission ou rôle unique » de `docs/admin-unifiee.md`.
+3. **Import du catalogue du logiciel de gestion** (`catalogue_complet_*.xls`) : fait à la main par script le 12/11/2026 (anciennes consoles, jeux, bricolage, livres). À transformer en écran de réconciliation (« à ajouter / à modifier / à retirer »), cf. phase 4 de l'administration unifiée.
+

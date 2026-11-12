@@ -1,0 +1,168 @@
+@use '../../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.admin-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-3;
+}
+
+.admin-filters {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.admin-search {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  max-width: 480px;
+}
+
+.admin-search-label {
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.admin-search-input {
+  min-height: 44px;
+  padding: 0 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-card;
+  color: $on-surface;
+  font: inherit;
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 1px;
+  }
+}
+
+.admin-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.admin-chip {
+  min-height: 36px;
+  padding: 0 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-pill;
+  background: transparent;
+  color: $on-surface;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $accent;
+  }
+
+  &-active {
+    border-color: $accent;
+    background: $accent-soft;
+    color: $accent-text;
+    font-weight: 600;
+  }
+
+  &-count {
+    margin-left: $space-1;
+    color: $on-surface-muted;
+    font-size: 0.8rem;
+  }
+}
+
+.admin-loading {
+  margin: 0;
+  color: $on-surface-muted;
+}
+
+.admin-table-wrap {
+  overflow-x: auto;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: $space-2 $space-3;
+    border-bottom: 1px solid $outline;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  thead th {
+    color: $on-surface-muted;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+}
+
+.admin-caption,
+.admin-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.admin-col-cover {
+  width: 64px;
+}
+
+.admin-col-action {
+  width: 56px;
+  text-align: right;
+}
+
+.admin-name {
+  font-weight: 600;
+}
+
+.admin-thumb {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: $radius-sm;
+  object-fit: cover;
+  background: $surface-high;
+}
+
+.admin-thumb-empty {
+  color: $on-surface-muted;
+}
+
+.admin-empty {
+  padding: $space-5;
+  color: $on-surface-muted;
+  text-align: center;
+}
+
+.admin-more {
+  display: flex;
+  justify-content: center;
+}
