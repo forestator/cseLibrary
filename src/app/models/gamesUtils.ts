@@ -1,7 +1,6 @@
 import {BoardGame, BoardGameCategory, Thing} from './boardGame.model';
 import {Consoles} from './videoGames.model';
 import {Game, LibraryId} from './common.model';
-import moment, {Moment} from 'moment';
 
 export class GamesUtils {
     static convertGameDetailsThingToBoardGame(ludoGame: BoardGame, boardGameWithDetails: Thing | null): BoardGame {
@@ -74,17 +73,4 @@ export class GamesUtils {
         return library;
     }
 
-    static getNextLudothequeOpening(): Moment {
-        const currentDate: Moment = moment();
-        if (currentDate.week() % 2 !== 0) {
-            currentDate.day(2);
-            currentDate.add(1, 'week');
-        } else if (currentDate.week() % 2 === 0 && currentDate.day() > 4) {
-            currentDate.day(2);
-            currentDate.add(2, 'week');
-        } else if (currentDate.day() !== 2 || currentDate.day() !== 4) {
-            currentDate.day(currentDate.day() === 3 ? 4 : 2);
-        }
-        return currentDate;
-    }
 }

@@ -14,7 +14,7 @@
           <span class="card-title"><mat-icon aria-hidden="true">{{ card.icon }}</mat-icon>{{ card.label }}</span>
           <span class="card-text">{{ card.summary }}</span>
           @if (card.nextSession; as nextSession) {
-            <span class="card-note"><mat-icon aria-hidden="true">event</mat-icon>Prochaine commission : {{ nextSession | momentToDate }}</span>
+            <span class="card-note"><mat-icon aria-hidden="true">event</mat-icon>Prochaine commission : {{ nextSession }}</span>
           } @else {
             <span class="card-note"><mat-icon aria-hidden="true">forum</mat-icon>Contactez un membre de la commission pour emprunter</span>
           }

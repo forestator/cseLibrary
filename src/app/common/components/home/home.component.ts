@@ -4,11 +4,9 @@ import {RouterLink} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
 import {Moment} from 'moment';
 import {BiblioUtils} from '../../../bibliotheque/models/biblio-utils';
-import {nextBricolageOpening} from '../../../catalogue/models/commission-schedule';
+import {nextBricolageOpening, nextLudothequeSession, sessionLabel} from '../../../catalogue/models/commission-schedule';
 import {Comissions} from '../../../models/common.model';
-import {GamesUtils} from '../../../models/gamesUtils';
 import {COMMISSION_NAV} from '../../../navigation/navigation.config';
-import {MomentToDatePipe} from '../../pipe/moment-to-date.pipe';
 
 interface HomeCard {
   id: Comissions;
@@ -17,7 +15,7 @@ interface HomeCard {
   route: string;
   summary: string;
   cover: string;
-  nextSession?: Moment;
+  nextSession?: string;
 }
 
 const BDGEST_URL = 'https://www.bdgest.com/online/collection?IdUser=118221&IdCollection=1';
@@ -27,7 +25,7 @@ const BDGEST_URL = 'https://www.bdgest.com/online/collection?IdUser=118221&IdCol
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatIcon, MomentToDatePipe, NgOptimizedImage, RouterLink],
+  imports: [MatIcon, NgOptimizedImage, RouterLink],
 })
 export class HomeComponent {
   protected readonly bdgestUrl = BDGEST_URL;
@@ -38,16 +36,20 @@ export class HomeComponent {
     nextSession: this.nextSessionOf(commission.id),
   }));
 
-  private nextSessionOf(commission: Comissions): Moment | undefined {
+  private nextSessionOf(commission: Comissions): string | undefined {
     switch (commission) {
       case Comissions.BIBLIOTHEQUE:
-        return BiblioUtils.nextComission();
+        return this.dayLabel(BiblioUtils.nextComission());
       case Comissions.LUDOTHEQUE:
-        return GamesUtils.getNextLudothequeOpening();
+        return sessionLabel(nextLudothequeSession());
       case Comissions.BRICOLAGE:
-        return nextBricolageOpening();
+        return this.dayLabel(nextBricolageOpening());
       default:
         return undefined;
     }
+  }
+
+  private dayLabel(day: Moment): string {
+    return day.clone().locale('fr').format('L');
   }
 }

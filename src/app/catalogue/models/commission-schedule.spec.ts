@@ -1,0 +1,40 @@
+import moment from 'moment';
+import {nextLudothequeSession, sessionLabel} from './commission-schedule';
+
+describe('nextLudothequeSession', () => {
+  const next = (date: string) => nextLudothequeSession(moment(date));
+  const format = (date: string) => next(date).start.format('ddd YYYY-MM-DD HH:mm');
+
+  it('picks Tuesday lunch on an open week before it starts', () => {
+    expect(format('2026-11-10T09:00')).toBe('Tue 2026-11-10 12:00');
+  });
+
+  it('moves on to Thursday once Tuesday session is over', () => {
+    expect(format('2026-11-10T12:45')).toBe('Thu 2026-11-12 13:30');
+  });
+
+  it('keeps a session in progress as the current one', () => {
+    expect(format('2026-11-12T13:45')).toBe('Thu 2026-11-12 13:30');
+  });
+
+  it('skips the closed week after the Thursday session', () => {
+    expect(format('2026-11-12T14:30')).toBe('Tue 2026-11-24 12:00');
+  });
+
+  it('skips the closed week from its first day', () => {
+    expect(format('2026-11-16T08:00')).toBe('Tue 2026-11-24 12:00');
+  });
+
+  it('keeps alternating across the new year', () => {
+    expect(format('2026-12-24T15:00')).toBe('Tue 2027-01-05 12:00');
+  });
+
+  it('survives the daylight-saving change', () => {
+    expect(format('2027-03-25T15:00')).toBe('Tue 2027-03-30 12:00');
+  });
+
+  it('labels the session in French with its hours', () => {
+    expect(sessionLabel(next('2026-11-10T09:00'))).toBe('mardi 10 novembre, 12h – 12h30');
+    expect(sessionLabel(next('2026-11-12T09:00'))).toBe('jeudi 12 novembre, 13h30 – 14h');
+  });
+});
