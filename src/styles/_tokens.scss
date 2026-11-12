@@ -58,3 +58,31 @@ $commission-accents: (
     @content;
   }
 }
+
+/// Title button whose pseudo-element covers the whole card: the card opens its details on click
+/// while keyboard and screen-reader users still get one real button.
+@mixin card-open {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::after {
+    outline: 3px solid $accent;
+    outline-offset: -3px;
+  }
+}

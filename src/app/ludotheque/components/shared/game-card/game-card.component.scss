@@ -5,6 +5,7 @@
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -117,23 +118,7 @@
   }
 }
 
-.card-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: $space-1;
-  min-height: 44px;
-  margin: 0 (-$space-2);
-  padding: 0 $space-2;
-  border: 0;
-  border-radius: $radius-sm;
-  background: transparent;
-  color: $accent-text;
-  font: inherit;
-  font-weight: 600;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
+.card-open {
+  @include card-open;
 }
 

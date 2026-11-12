@@ -3,17 +3,17 @@
        sizes="(max-width: 600px) 90vw, 25vw" (error)="coverFailed.set(true)">
 </div>
 <div class="card-body">
-  <h2 class="card-title">{{ item().name }}</h2>
+  <h2 class="card-title">
+    @if (hasDetails()) {
+      <button type="button" class="card-open" aria-haspopup="dialog" (click)="openDetails()">{{ item().name }}</button>
+    } @else {
+      {{ item().name }}
+    }
+  </h2>
   <div class="card-chips">
     <app-badge [status]="item().status" />
     @if (config().showRef) {
       <span class="card-chip">Réf. {{ item().id }}</span>
     }
   </div>
-  @if (hasDetails()) {
-    <button type="button" class="card-toggle" aria-haspopup="dialog" (click)="openDetails()">
-      Détails
-      <mat-icon class="card-toggle-icon" aria-hidden="true">chevron_right</mat-icon>
-    </button>
-  }
 </div>

@@ -14,7 +14,13 @@
     @if (category()) {
       <span class="card-category">{{ category() }}</span>
     }
-    <h3 class="card-title" [id]="titleId()">{{ game().name }}</h3>
+    <h3 class="card-title" [id]="titleId()">
+      @if (hasDetails()) {
+        <button type="button" class="card-open" aria-haspopup="dialog" (click)="openDetails()">{{ game().name }}</button>
+      } @else {
+        {{ game().name }}
+      }
+    </h3>
     <ul class="card-facts">
       @if (game().ref) {
         <li class="card-fact">
@@ -29,11 +35,5 @@
         </li>
       }
     </ul>
-    @if (hasDetails()) {
-      <button type="button" class="card-toggle" aria-haspopup="dialog" (click)="openDetails()">
-        Détails
-        <mat-icon class="card-toggle-icon" aria-hidden="true">chevron_right</mat-icon>
-      </button>
-    }
   </div>
 </article>

@@ -1,6 +1,5 @@
 import {NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, effect, inject, input, signal, untracked} from '@angular/core';
-import {MatIcon} from '@angular/material/icon';
 import {DetailPanelService} from '../../../common/components/detail-panel/detail-panel.service';
 import {BadgeComponent} from '../../../common/components/book-badge/badge.component';
 import {CatalogueItem} from '../../models/catalogue-item.model';
@@ -16,7 +15,7 @@ interface ItemDetail {
   templateUrl: './catalogue-item-card.html',
   styleUrl: './catalogue-item-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BadgeComponent, MatIcon, NgOptimizedImage],
+  imports: [BadgeComponent, NgOptimizedImage],
   host: {class: 'catalogue-card', '[id]': 'item().id', '[class.catalogue-card-selected]': 'selected()'},
 })
 export class CatalogueItemCard {
