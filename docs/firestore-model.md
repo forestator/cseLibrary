@@ -7,7 +7,7 @@ ludotheque/{boardGames|videoGames|outsideGames}   { library: {...}, games: { [re
 commissions/{bricolage|sonotheque|nautisme|photo} nœud RTDB tel quel : { library, tools|items }
 bibliotheque/{libraryId}                          { library: {...meta, categoryIds[]}, authors: [], publishers: [] }
 bibliotheque/{libraryId}/categories/{categoryId}  catégorie complète (séries et livres, ou auteurs)
-users/{userId}                                    annuaire des employés (lecture/écriture super-admin uniquement)
+users/{userId}                                    annuaire des employés de l'ancien système de réservation (plus utilisé par l'app ; à supprimer avec la refonte des réservations)
 ```
 
 `libraryId` = `litterature-imaginaire`, `inclassable`, `litterature-jeunesse`, `litterature-adulte` (ordre du tableau RTDB `bibliotheque`).

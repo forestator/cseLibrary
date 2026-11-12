@@ -5,7 +5,6 @@ import {NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from 
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
 import {filter, map} from 'rxjs';
-import {AdminMenuComponent} from './admin/components/admin-menu/admin-menu.component';
 import {LibrarySearchComponent} from './bibliotheque/components/library-search/library-search.component';
 import {CatalogueMenu} from './catalogue/components/catalogue-menu/catalogue-menu';
 import {CatalogueCommission} from './catalogue/models/commission-config.model';
@@ -25,7 +24,7 @@ const THEME_ICONS = {system: 'brightness_auto', light: 'light_mode', dark: 'dark
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AdminMenuComponent, CatalogueMenu, FilterBoardGamesComponent, LibrarySearchComponent, LudoMenuComponent, MatIcon, MatIconButton, RouterLink, RouterLinkActive, RouterOutlet],
+  imports: [CatalogueMenu, FilterBoardGamesComponent, LibrarySearchComponent, LudoMenuComponent, MatIcon, MatIconButton, RouterLink, RouterLinkActive, RouterOutlet],
 })
 export class AppComponent {
   private readonly router = inject(Router);
@@ -49,7 +48,7 @@ export class AppComponent {
   protected readonly showBoardGameFilters = computed(() => this.url().includes('boardGames/'));
   protected readonly searchKind = computed(() => {
     if (this.isAdminPage()) {
-      return 'admin';
+      return 'none';
     }
     switch (this.section()) {
       case Comissions.LUDOTHEQUE:
