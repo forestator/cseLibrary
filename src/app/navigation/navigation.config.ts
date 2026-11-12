@@ -1,6 +1,7 @@
 import {Comissions} from '../models/common.model';
 import {BoardGameCategory} from '../models/boardGame.model';
-import {Consoles} from '../models/videoGames.model';
+import {categoryLabel} from '../ludotheque/pipes/game-category-label.pipe';
+import {Consoles, isLegacyConsole} from '../models/videoGames.model';
 import {Libraries} from '../models/author.model';
 import {BricoCategories, PhotoCategory, SonoCategory} from '../catalogue/models/catalogue-categories';
 
@@ -10,6 +11,8 @@ export interface NavLink {
   subList?: NavLink[];
   /** Rendered as a call to action in the side rail. */
   highlight?: boolean;
+  /** Rendered discreetly, for entries that matter less (old consoles). */
+  muted?: boolean;
 }
 
 export interface CommissionNav {
@@ -76,7 +79,9 @@ export function subMenuOf(section: SectionId): NavLink[] {
         },
         {
           name: 'Jeux vidéo', route: '/ludotheque/videoGames',
-          subList: Object.values(Consoles).map(console => ({name: console, route: `/ludotheque/videoGames/${console}`})),
+          subList: Object.values(Consoles).map(console => ({
+            name: categoryLabel(console), route: `/ludotheque/videoGames/${console}`, muted: isLegacyConsole(console),
+          })),
         },
         {name: 'Grands jeux', route: '/ludotheque/outsideGames'},
       ];

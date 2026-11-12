@@ -1,9 +1,12 @@
 import {ChangeDetectionStrategy, Component, computed, inject, input} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
+import {RouterLink} from '@angular/router';
 import {switchMap} from 'rxjs';
 import {LibraryId} from '../../../models/common.model';
+import {isLegacyConsole} from '../../../models/videoGames.model';
 import {GamesRepository} from '../../services/games.repository';
 import {GameGridComponent} from '../shared/game-grid/game-grid.component';
+import {SectionTitleComponent} from '../shared/section-title/section-title.component';
 import {PageHeaderComponent} from '../shared/page-header/page-header.component';
 import {TileCardComponent} from '../shared/tile-card/tile-card.component';
 
@@ -13,7 +16,7 @@ import {TileCardComponent} from '../shared/tile-card/tile-card.component';
   templateUrl: './library-categories.component.html',
   styleUrl: './library-categories.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [GameGridComponent, PageHeaderComponent, TileCardComponent],
+  imports: [GameGridComponent, PageHeaderComponent, RouterLink, SectionTitleComponent, TileCardComponent],
 })
 export class LibraryCategoriesComponent {
   /** Provided by the route `data`. */
@@ -25,6 +28,9 @@ export class LibraryCategoriesComponent {
     toObservable(this.libraryId).pipe(switchMap(libraryId => this.repository.loadLibrary$(libraryId)))
   );
   protected readonly categories = computed(() => this.library()?.categories ?? []);
+  // Old consoles get their own, discreet section under the current ones.
+  protected readonly currentCategories = computed(() => this.categories().filter(category => !isLegacyConsole(category.id ?? '')));
+  protected readonly legacyCategories = computed(() => this.categories().filter(category => isLegacyConsole(category.id ?? '')));
   protected readonly categoryCount = computed(() => {
     const count = this.categories().length;
     return count ? `${count} catégorie${count > 1 ? 's' : ''}` : undefined;

@@ -31,7 +31,7 @@
           @if (link.subList) {
             <div class="rail-chips">
               @for (child of link.subList; track child.route) {
-                <a class="rail-chip" [routerLink]="child.route" routerLinkActive="rail-chip-active">{{ child.name }}</a>
+                <a class="rail-chip" [class.rail-chip-muted]="child.muted" [routerLink]="child.route" routerLinkActive="rail-chip-active">{{ child.name }}</a>
               }
             </div>
           }

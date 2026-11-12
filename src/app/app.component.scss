@@ -224,6 +224,11 @@
     color: $accent-text;
     font-weight: 600;
   }
+
+  &.rail-chip-muted {
+    border-style: dashed;
+    font-size: 0.8rem;
+  }
 }
 
 .rail-footer {

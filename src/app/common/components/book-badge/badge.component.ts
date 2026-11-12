@@ -47,6 +47,14 @@ const CONSOLE_VIEWS: Record<Consoles, BadgeView> = {
   [Consoles.ps5]: {label: Consoles.ps5.toUpperCase(), tone: 'blue'},
   [Consoles.xboxOne]: {label: Consoles.xboxOne, tone: 'green'},
   [Consoles.xboxX]: {label: Consoles.xboxX, tone: 'teal'},
+  [Consoles.wii]: {label: 'Wii', tone: 'gray'},
+  [Consoles.ps3]: {label: 'PS3', tone: 'gray'},
+  [Consoles.xbox360]: {label: 'Xbox 360', tone: 'gray'},
+  [Consoles.ds]: {label: 'DS', tone: 'gray'},
+  [Consoles.ds3]: {label: '3DS', tone: 'gray'},
+  [Consoles.ps2]: {label: 'PS2', tone: 'gray'},
+  [Consoles.psp]: {label: 'PSP', tone: 'gray'},
+  [Consoles.psVita]: {label: 'PS Vita', tone: 'gray'},
 };
 
 function capitalize(text: string): string {

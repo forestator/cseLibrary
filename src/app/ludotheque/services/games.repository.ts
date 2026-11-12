@@ -7,6 +7,7 @@ import {Game, LibraryId} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
 import {mergeAtPath, removeAtPath, replaceAtPath} from '../../services/firestore/document-paths';
+import {compareGameRefs} from '../../models/game-ref';
 
 export interface GameByLibrary {
   boardGames: BoardGame;
@@ -96,27 +97,6 @@ export class GamesRepository {
     }
     return Object.entries(gamesByRef)
       .map(([ref, game]) => ({ref, ...game}))
-      .sort((first, second) => this.compareRefs(first.ref, second.ref));
-  }
-
-  /** References like "ludo12" are ordered by their number, descending; the ones without number come last. */
-  private compareRefs(first: string, second: string): number {
-    const firstNumber = this.numericPart(first);
-    const secondNumber = this.numericPart(second);
-    if (firstNumber !== undefined && secondNumber !== undefined) {
-      return secondNumber - firstNumber;
-    }
-    if (firstNumber !== undefined) {
-      return -1;
-    }
-    if (secondNumber !== undefined) {
-      return 1;
-    }
-    return 0;
-  }
-
-  private numericPart(ref: string): number | undefined {
-    const numericPart = ref?.match(/\d+/);
-    return numericPart ? parseInt(numericPart[0], 10) : undefined;
+      .sort((first, second) => compareGameRefs(first.ref, second.ref));
   }
 }
