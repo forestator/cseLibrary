@@ -1,6 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {toSignal} from '@angular/core/rxjs-interop';
-import {AuthentificationService} from '../../../services/firebase/authentification.service';
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NewArrivals} from '../new-arrivals/new-arrivals';
 import {GameGridComponent} from '../shared/game-grid/game-grid.component';
 import {PageHeaderComponent} from '../shared/page-header/page-header.component';
@@ -23,7 +21,6 @@ const COVERS_URL = 'https://res.cloudinary.com/seo9axkp/image/upload/assets/cate
   imports: [GameGridComponent, NewArrivals, PageHeaderComponent, TileCardComponent],
 })
 export class LudothequeComponent {
-  protected readonly isLudoAdmin = toSignal(inject(AuthentificationService).isUserLudoAdmin$);
 
   protected readonly entries: ReadonlyArray<LudothequeEntry> = [
     {route: 'boardGames', title: 'Jeux de société', resume: 'Les jeux de société : duo, ambiance, stratégie, famille…', image: `${COVERS_URL}/categorie%20jeux%20de%20societe`},

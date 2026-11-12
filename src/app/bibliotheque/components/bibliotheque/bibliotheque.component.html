@@ -26,20 +26,4 @@
   } @else {
     <app-skeleton variant="cards" [count]="4" />
   }
-
-  @if (authService.isUserSuperAdmin | async) {
-    <section class="admin" aria-labelledby="admin-heading">
-      <h2 id="admin-heading" class="admin-title"><mat-icon aria-hidden="true">admin_panel_settings</mat-icon>Administration biblio</h2>
-      <ul class="admin-links">
-        @for (card of cards(); track card.id) {
-          <li>
-            <a class="admin-link" [routerLink]="'admin/' + card.id">
-              <mat-icon aria-hidden="true">edit_note</mat-icon>
-              Gestion des livres {{card.name}}
-            </a>
-          </li>
-        }
-      </ul>
-    </section>
-  }
 </div>

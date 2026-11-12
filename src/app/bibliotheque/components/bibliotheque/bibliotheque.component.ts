@@ -1,8 +1,7 @@
 import {ChangeDetectionStrategy, Component, computed, inject} from '@angular/core';
-import {AsyncPipe, NgOptimizedImage} from '@angular/common';
+import {NgOptimizedImage} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {MatIcon} from '@angular/material/icon';
-import {AuthentificationService} from '../../../services/firebase/authentification.service';
 import {ToolsService} from '../../../services/biblio/tools.service';
 import {CategoryBackgroundPipe} from '../../pipes/category-background.pipe';
 import {countLabel, visibleBookCount} from '../../models/library-queries';
@@ -15,11 +14,10 @@ import {SkeletonComponent} from '../common/skeleton/skeleton.component';
   templateUrl: './bibliotheque.component.html',
   styleUrl: './bibliotheque.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, AsyncPipe, NgOptimizedImage, MatIcon, CategoryBackgroundPipe, PageHeaderComponent, SkeletonComponent],
+  imports: [RouterLink, NgOptimizedImage, MatIcon, CategoryBackgroundPipe, PageHeaderComponent, SkeletonComponent],
 })
 export class BibliothequeComponent {
   private readonly adminMode = inject(ToolsService).adminMode;
-  protected readonly authService = inject(AuthentificationService);
   protected readonly libraries = inject(LibraryRepository).libraries;
 
   protected readonly cards = computed(() =>
