@@ -1,4 +1,5 @@
 import moment, {Moment} from 'moment';
+import {isFrenchPublicHoliday} from './french-holidays';
 
 export interface CommissionSession {
   start: Moment;
@@ -10,6 +11,8 @@ interface WeeklySlot {
   isoWeekday: number;
   start: string;
   end: string;
+  /** Held the day after instead when the usual day is a public holiday. */
+  nextDayOnHoliday?: boolean;
 }
 
 const LUDOTHEQUE_SLOTS: ReadonlyArray<WeeklySlot> = [
@@ -22,7 +25,7 @@ const LIBRARY_SLOTS: ReadonlyArray<WeeklySlot> = [
   {isoWeekday: 4, start: '13:30', end: '14:00'},
 ];
 
-const BRICOLAGE_SLOTS: ReadonlyArray<WeeklySlot> = [{isoWeekday: 1, start: '12:00', end: '12:30'}];
+const BRICOLAGE_SLOTS: ReadonlyArray<WeeklySlot> = [{isoWeekday: 1, start: '12:00', end: '12:30', nextDayOnHoliday: true}];
 
 // Counting weeks from a fixed open Monday keeps the alternation right across year boundaries,
 // unlike the week-of-year number, which restarts every January.
@@ -44,6 +47,9 @@ function nextSession(slots: ReadonlyArray<WeeklySlot>, now: Moment, isOpenWeek: 
     }
     for (const slot of slots) {
       const day = monday.clone().isoWeekday(slot.isoWeekday);
+      if (slot.nextDayOnHoliday && isFrenchPublicHoliday(day)) {
+        day.add(1, 'day');
+      }
       const session = {start: timeOn(day, slot.start), end: timeOn(day, slot.end)};
       if (session.end.isAfter(now)) {
         return session;
@@ -63,7 +69,7 @@ export function nextLudothequeSession(now: Moment = moment()): CommissionSession
   });
 }
 
-/** The bricolage commission lends every Monday at lunch. */
+/** The bricolage commission lends every Monday at lunch, on Tuesday when Monday is a public holiday. */
 export function nextBricolageSession(now: Moment = moment()): CommissionSession {
   return nextSession(BRICOLAGE_SLOTS, now, () => true);
 }

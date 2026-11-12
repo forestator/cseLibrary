@@ -75,3 +75,21 @@ describe('nextBricolageSession', () => {
     expect(label('2026-11-12T10:00')).toBe('lundi 16 novembre, 12h – 12h30');
   });
 });
+
+describe('nextBricolageSession on a public holiday', () => {
+  const label = (date: string) => sessionLabel(nextBricolageSession(moment(date)));
+
+  it('moves to Tuesday when Monday is a holiday', () => {
+    // Lundi de Pâques 2027: 29 mars.
+    expect(label('2027-03-25T10:00')).toBe('mardi 30 mars, 12h – 12h30');
+    expect(label('2027-03-29T09:00')).toBe('mardi 30 mars, 12h – 12h30');
+  });
+
+  it('is back to Monday the week after', () => {
+    expect(label('2027-03-30T13:00')).toBe('lundi 5 avril, 12h – 12h30');
+  });
+
+  it('does not move the library, which keeps its own schedule', () => {
+    expect(sessionLabel(nextLibrarySession(moment('2027-03-25T15:00')))).toBe('lundi 29 mars, 12h – 12h30');
+  });
+});
