@@ -1,0 +1,110 @@
+<div class="reco-page">
+  <app-catalogue-page-header title="Réconciliation du catalogue"
+    resume="Comparez un export du logiciel de gestion à la base : ce qui manque, ce qui diffère, ce qui est à vérifier." />
+
+  <a class="reco-back" routerLink="/admin">
+    <mat-icon aria-hidden="true">arrow_back</mat-icon>
+    Administration
+  </a>
+
+  <section class="reco-section" aria-labelledby="reco-file-title">
+    <h2 class="reco-title" id="reco-file-title">1. Le fichier</h2>
+    <div class="reco-drop" [class.reco-drop-active]="dragging()" (dragover)="dragOver($event)" (dragleave)="dragging.set(false)" (drop)="drop($event)">
+      <mat-icon class="reco-drop-icon" aria-hidden="true">upload_file</mat-icon>
+      <p class="reco-hint">Déposez le fichier ici : XLS, XLSX, ODS, CSV, TSV ou TXT.</p>
+      <button matButton="filled" type="button" (click)="fileInput.click()">
+        <mat-icon aria-hidden="true">folder_open</mat-icon>
+        Choisir un fichier
+      </button>
+      <input hidden #fileInput type="file" [accept]="accepted" aria-label="Fichier du catalogue" (change)="pick($event)">
+    </div>
+    @if (reading()) {
+      <p class="reco-message" role="status">Lecture du fichier…</p>
+    }
+    @if (error(); as message) {
+      <p class="reco-message reco-error" role="alert">{{ message }}</p>
+    }
+  </section>
+
+  @if (hasFile()) {
+    <section class="reco-section" aria-labelledby="reco-columns-title">
+      <h2 class="reco-title" id="reco-columns-title">2. Les colonnes</h2>
+      <p class="reco-message" role="status">
+        « {{ fileName() }} » :
+        @if (ready()) {
+          {{ recordCount() }} lignes lues.
+        } @else {
+          colonnes à préciser.
+        }
+      </p>
+
+      @if (sheets().length > 1) {
+        <label class="reco-field">
+          <span class="reco-field-label">Feuille à lire</span>
+          <select class="reco-select" (change)="chooseSheet($any($event.target).value)">
+            @for (sheet of sheets(); track sheet.index) {
+              <option [value]="sheet.index">{{ sheet.name }} ({{ sheet.rows }} lignes)</option>
+            }
+          </select>
+        </label>
+      }
+
+      <ul class="reco-fields">
+        @for (row of fieldRows(); track row.field) {
+          <li>
+            <label class="reco-field">
+              <span class="reco-field-label">{{ row.label }}</span>
+              <select class="reco-select" (change)="chooseColumn(row.field, $any($event.target).value)">
+                @for (option of row.options; track option.value) {
+                  <option [value]="option.value" [selected]="option.value === row.column">{{ option.label }}</option>
+                }
+              </select>
+            </label>
+          </li>
+        }
+      </ul>
+
+      @if (!ready()) {
+        <p class="reco-message reco-error" role="alert">Indiquez la colonne : {{ missing().join(', ') }}.</p>
+      }
+    </section>
+
+    @if (ready()) {
+      <section class="reco-section" aria-labelledby="reco-preview-title">
+        <h2 class="reco-title" id="reco-preview-title">3. Aperçu</h2>
+        @if (damaged() > 0) {
+          <p class="reco-message reco-warning" role="status">
+            {{ damaged() }} ligne(s) contiennent des caractères abîmés dans le fichier lui-même (accents mal enregistrés).
+          </p>
+        }
+        <div class="reco-table-wrap">
+          <table class="reco-table">
+            <caption class="reco-hidden">Les premières lignes du fichier</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ligne</th>
+                <th scope="col">Code-barres</th>
+                <th scope="col">Type</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Auteur</th>
+                <th scope="col">Cote</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (record of preview(); track record.line) {
+                <tr>
+                  <td>{{ record.line }}</td>
+                  <td>{{ record.barcode }}</td>
+                  <td>{{ record.type }}</td>
+                  <th scope="row" class="reco-name">{{ record.title }}@if (record.subtitle) { — {{ record.subtitle }}}</th>
+                  <td>{{ record.author }}</td>
+                  <td>{{ record.cote }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+    }
+  }
+</div>

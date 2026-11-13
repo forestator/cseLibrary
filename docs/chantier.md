@@ -138,3 +138,17 @@ Administration centralisée complétée : tri des colonnes, sélection multiple 
 ## Journal des modifications (2026-11-13)
 Journal append-only de tout ce qui est modifié depuis l'administration (qui, quand, avant/après), page `/admin/journal` pour les super-administrateurs. Détails : `docs/admin-unifiee.md`, modèle et règles : `docs/firestore-model.md`. **Commité en local ; à déployer avec les règles Firestore** (`firebase deploy --only firestore,hosting`).
 
+## Réconciliation du catalogue avec l'export du logiciel de gestion (en cours, 2026-11-13)
+**Objectif** : écran `/admin/reconciliation` (super-administrateurs) qui compare un export du logiciel de gestion à la base et propose trois listes (à ajouter, à modifier, à vérifier), appliquées par coche via les mêmes opérations que le formulaire (donc journalisées). Les objets de la base absents du fichier ne sont **jamais supprimés automatiquement** (liste « à vérifier »). Le second fichier (`catalogue_bibliotheque_*.xls`) est un sous-ensemble du fichier complet, mêmes colonnes : un seul profil de lecture.
+
+**Fait (étape 1)** : lecture de tous les formats courants et reconnaissance des colonnes, page hors menu (route directe, pas encore de carte sur `/admin` tant que l'écran n'est pas utilisable).
+- `admin/reconciliation/table-file.ts` : XLS, XLSX, XLSM, XLSB, ODS (SheetJS, chargé à la demande) ; CSV, TSV, TXT (décodage UTF-8, UTF-16 ou Windows-1252, séparateur détecté, guillemets RFC 4180) ; extensions inconnues refusées.
+- `admin/reconciliation/column-mapping.ts` : ligne d'en-têtes retrouvée même après des lignes de titre, noms de colonnes reconnus (export du logiciel + variantes courantes), association manuelle sinon ; enregistrements normalisés (zéros du code-barres conservés, `.0` retiré).
+- Dépendance : **SheetJS 0.20.3 installé depuis le serveur de ses auteurs** (`https://cdn.sheetjs.com/xlsx-0.20.3/xlsx-0.20.3.tgz`), pas depuis npm où la 0.18.5 est périmée et vulnérable ; à ne pas « mettre à jour » depuis npm.
+- Tests : 20 unitaires + 12 Cypress (mêmes 40 lignes lues à l'identique dans 6 formats, deux feuilles, lignes de titre, en-têtes inconnus, fichier non lisible, accessibilité). Fichiers de test générés par `node scripts/e2e/make-catalogue-fixtures.mjs`.
+
+**À faire** :
+2. Classement et comparaison des objets à clé fiable (bricolage par code-barres, jeux par cote, photo), trois listes avec cases, application via les collections (journal), rapport CSV. Règles déjà éprouvées le 12/11 : classer par la cote avant le code de type (`th_code` se trompe), titre + sous-titre recollés, placeholders écartés, types exclus (DVD, CD, BD, magazines, audio, matériel informatique) listés comme « ignorés », codes inconnus listés « non classés ».
+3. Livres : rapprochement par titre et auteur avec indice de confiance (sûr / douteux), relecture humaine du douteux.
+4. Couvertures proposées : sources joignables du navigateur (Open Library par ISBN puis titre + auteur, Wikipédia, Libretro), grille de validation, envoi à Cloudinary par URL. Pour le reste (boutiques en ligne), la recherche complète de la session reste à demander dans le chat.
+

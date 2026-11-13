@@ -51,6 +51,10 @@ const adminRoutes: Routes = [
     },
     {path: 'admin', loadComponent: loadAdminCatalogue, canActivate: [adminGuard]},
     {
+        path: 'admin/reconciliation', loadComponent: () => import('./admin/reconciliation/admin-reconciliation').then(m => m.AdminReconciliation),
+        canActivate: [() => inject(AuthentificationService).isUserSuperAdmin]
+    },
+    {
         path: 'admin/journal', loadComponent: () => import('./admin/journal/admin-journal').then(m => m.AdminJournal),
         canActivate: [() => inject(AuthentificationService).isUserSuperAdmin]
     },

@@ -1,0 +1,164 @@
+@use '../../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.reco-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.reco-back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: $space-1;
+  min-height: 44px;
+  color: $accent-text;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.reco-section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.reco-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.reco-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-5;
+  border: 2px dashed $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+  text-align: center;
+
+  &-active {
+    border-color: $accent;
+    background: $accent-soft;
+  }
+}
+
+.reco-drop-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  color: $accent-text;
+}
+
+.reco-hint,
+.reco-message {
+  margin: 0;
+}
+
+.reco-message {
+  color: $on-surface;
+}
+
+.reco-error {
+  color: var(--mat-sys-error);
+  font-weight: 600;
+}
+
+.reco-warning {
+  padding: $space-2 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-high;
+}
+
+.reco-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: $space-3;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reco-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+}
+
+.reco-field-label {
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.reco-select {
+  min-height: 44px;
+  padding: 0 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-card;
+  color: $on-surface;
+  font: inherit;
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 1px;
+  }
+}
+
+.reco-table-wrap {
+  // Positioned so that the visually hidden caption is clipped with the table, not left sticking out of the page.
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+}
+
+.reco-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: $space-2 $space-3;
+    border-bottom: 1px solid $outline;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    color: $on-surface-muted;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+}
+
+.reco-name {
+  font-weight: 600;
+}
+
+.reco-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
