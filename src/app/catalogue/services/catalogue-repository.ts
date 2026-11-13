@@ -1,6 +1,6 @@
 import {DocumentReference, Firestore, doc, docData} from '@angular/fire/firestore';
 import {map, Observable, shareReplay, take} from 'rxjs';
-import {removeAtPath, saveAtPath} from '../../services/firestore/document-paths';
+import {removeAtPath, saveAtPath, updateEntries} from '../../services/firestore/document-paths';
 import {Library} from '../../models/author.model';
 import {CatalogueItem, ItemCollection} from '../models/catalogue-item.model';
 import {CommissionConfig} from '../models/commission-config.model';
@@ -63,6 +63,16 @@ export class CatalogueRepository {
 
   remove(item: CatalogueItem): Promise<void> {
     return removeAtPath(this.reference, this.itemPath(item));
+  }
+
+  /** Sets the status of several items in one write. */
+  setStatus(items: ReadonlyArray<CatalogueItem>, status: string): Promise<void> {
+    return updateEntries(this.reference, items.map(item => ({path: [...this.itemPath(item), 'status'], value: status})));
+  }
+
+  /** Removes several items in one write. */
+  removeItems(items: ReadonlyArray<CatalogueItem>): Promise<void> {
+    return updateEntries(this.reference, items.map(item => ({path: this.itemPath(item), value: undefined})));
   }
 
   private itemPath(item: CatalogueItem): string[] {

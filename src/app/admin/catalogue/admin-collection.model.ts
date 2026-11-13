@@ -2,7 +2,7 @@ import {Observable} from 'rxjs';
 import {CatalogueItem} from '../../catalogue/models/catalogue-item.model';
 import {Comissions, Game} from '../../models/common.model';
 import {CloudinaryUploadState} from '../../services/cloudinary.service';
-import {AdminFormSection, AdminFormValues} from '../form/admin-form.model';
+import {AdminFieldOption, AdminFormSection, AdminFormValues} from '../form/admin-form.model';
 
 /** Read-only view of one object, whatever its commission: what the global list shows. */
 export interface AdminItem {
@@ -68,6 +68,11 @@ export interface AdminCollection {
   uploadCover(file: File, values: AdminFormValues): Observable<CloudinaryUploadState>;
   save(request: AdminSaveRequest): Promise<void>;
   remove(item: AdminItem): Promise<void>;
+  /** Statuses an item can be set to. */
+  statuses: ReadonlyArray<AdminFieldOption>;
+  /** Bulk actions: each is one write for all the given items, which belong to this collection. */
+  setStatus(items: ReadonlyArray<AdminItem>, status: string): Promise<void>;
+  removeMany(items: ReadonlyArray<AdminItem>): Promise<void>;
 }
 
 /** A commission as the global administration presents it: pick one, then manage its objects. */

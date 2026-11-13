@@ -87,5 +87,8 @@ export function createCatalogueCollection(deps: CatalogueCollectionDeps): AdminC
       await repository.save(entry, previous);
     },
     remove: (item: AdminItem) => repository.remove(item.source as CatalogueItem),
+    statuses: config.admin.statuses,
+    setStatus: (items, status) => repository.setStatus(items.map(item => item.source as CatalogueItem), status),
+    removeMany: items => repository.removeItems(items.map(item => item.source as CatalogueItem)),
   };
 }

@@ -5,6 +5,7 @@ const row = (name: string, extra: Partial<AdminItem> = {}, labels: Partial<Admin
   item: {key: name, id: name, collectionId: 'c', name, source: {id: name, name}, ...extra},
   collectionLabel: '',
   categoryLabel: '',
+  statusLabel: '',
   ...labels,
 });
 

@@ -6,7 +6,7 @@ import {BoardGame} from '../../models/boardGame.model';
 import {Game, LibraryId} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
-import {removeAtPath, saveAtPath} from '../../services/firestore/document-paths';
+import {removeAtPath, saveAtPath, updateEntries} from '../../services/firestore/document-paths';
 import {compareGameRefs} from '../../models/game-ref';
 
 export interface GameByLibrary {
@@ -60,6 +60,16 @@ export class GamesRepository {
   /** Writes the game whole; when its reference changed the entry it replaces is removed in the same update. */
   saveGame(game: Game, libraryId: LibraryId, previous?: Game): Promise<void> {
     return saveAtPath(this.libraryReference(game, libraryId), this.gamePath(game), game, previous && this.gamePath(previous));
+  }
+
+  /** Sets the status of several games of a library in one write. */
+  setStatus(games: ReadonlyArray<Game>, libraryId: LibraryId, status: string): Promise<void> {
+    return updateEntries(this.libraryReference(games[0], libraryId), games.map(game => ({path: [...this.gamePath(game), 'status'], value: status})));
+  }
+
+  /** Deletes several games of a library in one write. */
+  deleteGames(games: ReadonlyArray<Game>, libraryId: LibraryId): Promise<void> {
+    return updateEntries(this.libraryReference(games[0], libraryId), games.map(game => ({path: this.gamePath(game), value: undefined})));
   }
 
   deleteGame(game: Game): Promise<void> {

@@ -42,7 +42,31 @@
             </button>
           }
         }
+        <button matButton="outlined" type="button" (click)="exportCsv()">
+          <mat-icon aria-hidden="true">download</mat-icon>
+          Exporter en CSV
+        </button>
       </div>
+
+      @if (selectedCount() > 0) {
+        <div class="admin-selection" role="region" aria-label="Sélection">
+          <p class="admin-selection-count" role="status">{{ selectedCount() }} sélectionné(s)</p>
+          <button matButton="tonal" type="button" [matMenuTriggerFor]="statusMenu">
+            <mat-icon aria-hidden="true">published_with_changes</mat-icon>
+            Changer le statut
+          </button>
+          <mat-menu #statusMenu="matMenu">
+            @for (status of bulkStatuses(); track status.value) {
+              <button mat-menu-item type="button" (click)="changeStatus(status.value, status.label)">{{ status.label }}</button>
+            }
+          </mat-menu>
+          <button matButton type="button" class="admin-selection-delete" (click)="deleteSelected()">
+            <mat-icon aria-hidden="true">delete</mat-icon>
+            Supprimer
+          </button>
+          <button matButton type="button" (click)="clearSelection()">Tout désélectionner</button>
+        </div>
+      }
 
       <div class="admin-filters">
         <label class="admin-search">
@@ -76,6 +100,9 @@
           <caption class="admin-caption">Objets de la commission {{ current.label }}</caption>
           <thead>
             <tr>
+              <th scope="col" class="admin-col-check">
+                <mat-checkbox aria-label="Tout sélectionner" [checked]="allSelected()" [indeterminate]="someSelected()" (change)="toggleAll()" />
+              </th>
               @for (header of headers(); track header.column) {
                 <th scope="col" [attr.aria-sort]="header.ariaSort" [class.admin-col-cover]="header.iconOnly">
                   <button type="button" class="admin-sort" (click)="sortBy(header.column)">
@@ -89,7 +116,10 @@
           </thead>
           <tbody>
             @for (row of rows(); track row.item.key) {
-              <tr>
+              <tr [class.admin-row-selected]="row.selected">
+                <td class="admin-col-check">
+                  <mat-checkbox [aria-label]="'Sélectionner ' + row.item.name" [checked]="row.selected" (change)="toggleSelected(row.item.key)" />
+                </td>
                 <td class="admin-col-cover">
                   @if (row.item.cover) {
                     <img class="admin-thumb" [ngSrc]="row.item.cover" width="48" height="48" alt="">
@@ -117,7 +147,7 @@
             } @empty {
               @if (!loading()) {
                 <tr>
-                  <td class="admin-empty" colspan="7">Aucun objet ne correspond à la recherche.</td>
+                  <td class="admin-empty" [attr.colspan]="headers().length + 2">Aucun objet ne correspond à la recherche.</td>
                 </tr>
               }
             }

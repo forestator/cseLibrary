@@ -13,6 +13,7 @@ export interface AdminRow {
   item: AdminItem;
   collectionLabel: string;
   categoryLabel: string;
+  statusLabel: string;
 }
 
 // Numeric, accent- and case-insensitive: "ludo96" comes before "ludo342", "é" sorts with "e".
@@ -25,7 +26,7 @@ function valueOf(row: AdminRow, column: AdminSortColumn): string {
     case 'collection': return row.collectionLabel;
     case 'category': return row.categoryLabel;
     case 'ref': return row.item.ref ?? '';
-    case 'status': return row.item.status ?? '';
+    case 'status': return row.statusLabel;
   }
 }
 

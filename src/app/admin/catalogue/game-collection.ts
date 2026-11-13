@@ -159,5 +159,8 @@ export function createGameCollection(deps: GameCollectionDeps): AdminCollection 
       await games.saveGame(entry, libraryId, previous);
     },
     remove: (item: AdminItem) => games.deleteGame(item.source as Game),
+    statuses: ITEM_STATUSES,
+    setStatus: (items, status) => games.setStatus(items.map(item => item.source as Game), libraryId, status),
+    removeMany: items => games.deleteGames(items.map(item => item.source as Game), libraryId),
   };
 }

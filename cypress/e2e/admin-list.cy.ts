@@ -30,7 +30,7 @@ describe('Administration: the list of a commission', () => {
     cy.visit('/admin/ludotheque');
     cy.get('.admin-table tbody tr').should('have.length.at.least', 3);
     header('Réf.').find('button').click();
-    cy.get('.admin-table tbody tr td:nth-child(5)').then(cells => {
+    header('Réf.').then(cell => cell.index() + 1).then(position => cy.get(`.admin-table tbody tr td:nth-child(${position})`)).then(cells => {
       const numbers = [...cells].map(cell => /^ludo(\d+)$/.exec((cell.textContent ?? '').trim())?.[1]).filter(Boolean).map(Number);
       expect(numbers.length).to.be.at.least(3);
       expect(numbers).to.deep.equal([...numbers].sort((first, second) => first - second));

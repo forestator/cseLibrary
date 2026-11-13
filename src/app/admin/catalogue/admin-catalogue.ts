@@ -1,12 +1,14 @@
-import {NgOptimizedImage} from '@angular/common';
+import {DOCUMENT, NgOptimizedImage} from '@angular/common';
 import {ChangeDetectionStrategy, Component, computed, effect, inject, input, Injector, signal, untracked} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {MatButton, MatIconButton} from '@angular/material/button';
+import {MatCheckbox} from '@angular/material/checkbox';
 import {MatIcon} from '@angular/material/icon';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {RouterLink} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
-import {combineLatest, map, of, startWith, switchMap} from 'rxjs';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {combineLatest, firstValueFrom, map, of, startWith, switchMap} from 'rxjs';
 import {LibraryRepository} from '../../bibliotheque/services/library.repository';
 import {SettingsViewComponent} from '../../bibliotheque/components/settings-view/settings-view.component';
 import {BadgeComponent} from '../../common/components/book-badge/badge.component';
@@ -16,8 +18,10 @@ import {categoryLabel} from '../../ludotheque/pipes/game-category-label.pipe';
 import {Comissions} from '../../models/common.model';
 import {AdminCollection, AdminItem} from './admin-collection.model';
 import {ADMIN_DIALOG_CONFIG} from '../admin-dialog.config';
+import {ConfirmationData, ConfirmationModal} from '../components/confirmation-modal/confirmation-modal.component';
 import {AdminItemDialog, AdminItemDialogData} from '../form/admin-item-dialog';
 import {AdminCollections} from './admin-collections';
+import {CsvColumn, toCsv} from './admin-csv';
 import {AdminRow, AdminSort, AdminSortColumn, nextSort, sortRows} from './admin-sort';
 
 const PAGE_SIZE = 100;
@@ -35,12 +39,14 @@ function plain(text: string): string {
   templateUrl: './admin-catalogue.html',
   styleUrl: './admin-catalogue.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [BadgeComponent, CataloguePageHeader, MatButton, MatIcon, MatIconButton, MatMenu, MatMenuItem, MatMenuTrigger,
+  imports: [BadgeComponent, CataloguePageHeader, MatButton, MatCheckbox, MatIcon, MatIconButton, MatMenu, MatMenuItem, MatMenuTrigger,
     NgOptimizedImage, RouterLink, SettingsViewComponent],
 })
 export class AdminCatalogue {
   private readonly dialog = inject(MatDialog);
   private readonly injector = inject(Injector);
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly document = inject(DOCUMENT);
   private readonly sections = inject(AdminCollections).sections;
 
   /** Bound from the route: the commission being managed, if any. */
@@ -50,6 +56,8 @@ export class AdminCatalogue {
   protected readonly collectionFilter = signal<string | null>(null);
   protected readonly withoutCover = signal(false);
   protected readonly sort = signal<AdminSort | null>(null);
+  /** Keys of the selected items. Cleared whenever the list changes, so a bulk action never reaches a row that is out of sight. */
+  protected readonly selection = signal<ReadonlySet<string>>(new Set());
   private readonly selectedLibraryId = signal<string | undefined>(undefined);
   private readonly limit = signal(PAGE_SIZE);
 
@@ -93,14 +101,22 @@ export class AdminCatalogue {
   });
   private readonly tableRows = computed<AdminRow[]>(() => {
     const labels = new Map(this.collections().map(collection => [collection.id, collection.label]));
+    const statusLabels = new Map(this.collections().flatMap(collection => collection.statuses).map(option => [option.value, option.label]));
     return this.filtered().map(item => ({
       item,
       collectionLabel: labels.get(item.collectionId) ?? '',
       categoryLabel: item.categoryId ? categoryLabel(item.categoryId) : '',
+      statusLabel: item.status ? (statusLabels.get(item.status) ?? item.status) : '',
     }));
   });
   // Sorted before the page is cut: the order concerns the whole list, not only what is shown.
-  protected readonly rows = computed(() => sortRows(this.tableRows(), this.sort()).slice(0, this.limit()));
+  private readonly sortedRows = computed(() => sortRows(this.tableRows(), this.sort()));
+  protected readonly rows = computed(() => this.sortedRows().slice(0, this.limit())
+    .map(row => ({...row, selected: this.selection().has(row.item.key)})));
+  protected readonly selectedCount = computed(() => this.selection().size);
+  protected readonly allSelected = computed(() => this.tableRows().length > 0 && this.selection().size === this.tableRows().length);
+  protected readonly someSelected = computed(() => this.selection().size > 0 && !this.allSelected());
+  protected readonly bulkStatuses = computed(() => this.collections()[0]?.statuses ?? []);
   protected readonly headers = computed(() => {
     const sort = this.sort();
     const columns: ReadonlyArray<{column: AdminSortColumn; label: string; iconOnly?: boolean}> = [
@@ -133,6 +149,7 @@ export class AdminCatalogue {
         this.collectionFilter.set(null);
         this.withoutCover.set(false);
         this.sort.set(null);
+        this.selection.set(new Set());
         this.limit.set(PAGE_SIZE);
       });
     });
@@ -145,17 +162,101 @@ export class AdminCatalogue {
 
   protected setSearch(value: string): void {
     this.search.set(value);
+    this.selection.set(new Set());
     this.limit.set(PAGE_SIZE);
   }
 
   protected setCollection(collectionId: string | null): void {
     this.collectionFilter.set(collectionId);
+    this.selection.set(new Set());
     this.limit.set(PAGE_SIZE);
   }
 
   protected toggleWithoutCover(): void {
     this.withoutCover.update(value => !value);
+    this.selection.set(new Set());
     this.limit.set(PAGE_SIZE);
+  }
+
+  protected toggleSelected(key: string): void {
+    this.selection.update(current => {
+      const next = new Set(current);
+      if (!next.delete(key)) {
+        next.add(key);
+      }
+      return next;
+    });
+  }
+
+  /** Selects every row of the list as filtered (not only the page shown), or none when they all are. */
+  protected toggleAll(): void {
+    this.selection.set(this.allSelected() ? new Set() : new Set(this.tableRows().map(row => row.item.key)));
+  }
+
+  protected clearSelection(): void {
+    this.selection.set(new Set());
+  }
+
+  protected async changeStatus(status: string, label: string): Promise<void> {
+    const count = await this.applyToSelection((collection, items) => collection.setStatus(items, status));
+    if (count) {
+      this.snackBar.open(`${count} objet(s) passé(s) à « ${label} »`, 'Fermer', {duration: 4000});
+    }
+  }
+
+  protected async deleteSelected(): Promise<void> {
+    const count = this.selection().size;
+    const confirmation = this.dialog.open(ConfirmationModal, {
+      maxWidth: '400px',
+      data: {
+        title: `Supprimer ${count} objet(s) ?`,
+        confirmText: `Cette action supprime définitivement les ${count} objet(s) sélectionné(s).`,
+        confirmLabel: 'Supprimer',
+      } satisfies ConfirmationData,
+    });
+    if (await firstValueFrom(confirmation.afterClosed())) {
+      if (await this.applyToSelection((collection, items) => collection.removeMany(items))) {
+        this.snackBar.open(`${count} objet(s) supprimé(s)`, 'Fermer', {duration: 4000});
+      }
+    }
+  }
+
+  /** The whole list as filtered and sorted (not only the page shown), as a CSV download. */
+  protected exportCsv(): void {
+    const several = this.severalCollections();
+    const columns: ReadonlyArray<CsvColumn> = [
+      {header: 'Nom', value: row => row.item.name},
+      ...(several ? [{header: 'Type', value: (row: AdminRow) => row.collectionLabel}] : []),
+      {header: 'Catégorie', value: row => row.categoryLabel},
+      {header: 'Référence', value: row => row.item.ref ?? ''},
+      {header: 'Statut', value: row => row.statusLabel},
+      {header: 'Couverture', value: row => row.item.cover ?? ''},
+    ];
+    const blob = new Blob([toCsv(this.sortedRows(), columns)], {type: 'text/csv;charset=utf-8'});
+    const link = this.document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `catalogue-${this.commission()}-${new Date().toISOString().slice(0, 10)}.csv`;
+    link.click();
+    URL.revokeObjectURL(link.href);
+  }
+
+  /** Runs a bulk action once per collection involved, on the selected items of that collection, then clears the selection. */
+  private async applyToSelection(action: (collection: AdminCollection, items: ReadonlyArray<AdminItem>) => Promise<void>): Promise<number> {
+    const selected = this.tableRows().map(row => row.item).filter(item => this.selection().has(item.key));
+    try {
+      for (const collection of this.collections()) {
+        const items = selected.filter(item => item.collectionId === collection.id);
+        if (items.length) {
+          await action(collection, items);
+        }
+      }
+      this.selection.set(new Set());
+      return selected.length;
+    } catch (error) {
+      console.error('Bulk action failed', error);
+      this.snackBar.open('Action impossible : vérifiez votre connexion et vos droits', 'Fermer', {duration: 8000});
+      return 0;
+    }
   }
 
   protected selectLibrary(libraryId: string): void {

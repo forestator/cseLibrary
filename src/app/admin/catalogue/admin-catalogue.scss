@@ -266,3 +266,32 @@
   height: 18px;
   font-size: 18px;
 }
+
+.admin-col-check {
+  width: 56px;
+}
+
+.admin-row-selected {
+  background: $accent-soft;
+}
+
+.admin-selection {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $space-2 $space-3;
+  padding: $space-2 $space-3;
+  border: 1px solid $accent;
+  border-radius: $radius-md;
+  background: $accent-soft;
+}
+
+.admin-selection-count {
+  margin: 0;
+  font-weight: 700;
+  color: $accent-text;
+}
+
+.admin-selection-delete {
+  color: var(--mat-sys-error);
+}

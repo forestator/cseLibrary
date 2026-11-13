@@ -27,3 +27,25 @@ export function saveAtPath(
   }
   return updateDoc(reference, new FieldPath(...path), entry, new FieldPath(...previousPath), deleteField());
 }
+
+/** Maximum number of entries changed by one update, well under what Firestore accepts in a single write. */
+const UPDATE_CHUNK = 200;
+
+export interface EntryUpdate {
+  path: ReadonlyArray<string>;
+  /** `undefined` removes the entry or field. */
+  value: unknown;
+}
+
+/**
+ * Applies many updates to one document with a single `updateDoc` per chunk, never one write per entry:
+ * a bulk change of a hundred items is one round trip and one atomic write.
+ */
+export async function updateEntries(reference: DocumentReference, updates: ReadonlyArray<EntryUpdate>): Promise<void> {
+  for (let start = 0; start < updates.length; start += UPDATE_CHUNK) {
+    const [first, ...rest] = updates.slice(start, start + UPDATE_CHUNK);
+    const asValue = (update: EntryUpdate): unknown => update.value === undefined ? deleteField() : update.value;
+    await updateDoc(reference, new FieldPath(...first.path), asValue(first),
+      ...rest.flatMap(update => [new FieldPath(...update.path), asValue(update)]));
+  }
+}

@@ -54,6 +54,10 @@ Cypress.Commands.add('saveForm', () => {
 
 Cypress.Commands.add('checkA11y', (selector?: string) => {
   // axe is injected as a file: bundled into the spec, its UMD wrapper does not load.
+  // Colours are measured on what is on screen: wait until no animation (a dialog opening) is still running.
+  cy.window({log: false}).should(window => {
+    expect(window.document.getAnimations().filter(animation => animation.playState === 'running'), 'running animations').to.have.length(0);
+  });
   cy.readFile<string>('node_modules/axe-core/axe.min.js', 'utf8', {log: false}).then(source => {
     cy.window({log: false}).then(async window => {
       const page = window as unknown as PageWithAxe;
