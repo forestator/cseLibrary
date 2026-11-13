@@ -30,8 +30,18 @@ function valueOf(row: AdminRow, column: AdminSortColumn): string {
   }
 }
 
-/** The rows ordered by a column; empty values always come last, whatever the direction. Without a sort, the rows are left as they are. */
-export function sortRows(rows: ReadonlyArray<AdminRow>, sort: AdminSort | null): AdminRow[] {
+export interface ColumnSort<Column extends string> {
+  column: Column;
+  direction: AdminSortDirection;
+}
+
+/**
+ * The rows ordered by a column; empty values always come last, whatever the direction. Without a sort, the rows are
+ * left as they are. Shared by every table of the administration.
+ */
+export function sortWith<Row, Column extends string>(
+  rows: ReadonlyArray<Row>, sort: ColumnSort<Column> | null, valueOf: (row: Row, column: Column) => string,
+): Row[] {
   if (!sort) {
     return [...rows];
   }
@@ -46,8 +56,12 @@ export function sortRows(rows: ReadonlyArray<AdminRow>, sort: AdminSort | null):
   });
 }
 
+export function sortRows(rows: ReadonlyArray<AdminRow>, sort: AdminSort | null): AdminRow[] {
+  return sortWith(rows, sort, valueOf);
+}
+
 /** The sort after a click on a column header: ascending, then descending, then back to the default order. */
-export function nextSort(current: AdminSort | null, column: AdminSortColumn): AdminSort | null {
+export function nextSort<Column extends string>(current: ColumnSort<Column> | null, column: Column): ColumnSort<Column> | null {
   if (current?.column !== column) {
     return {column, direction: 'asc'};
   }

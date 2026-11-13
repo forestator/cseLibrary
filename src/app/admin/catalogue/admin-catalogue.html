@@ -188,6 +188,18 @@
             </a>
           </li>
         }
+        @if (isSuperAdmin()) {
+          <li>
+            <a class="admin-card" routerLink="/admin/journal">
+              <mat-icon class="admin-card-icon" aria-hidden="true">history</mat-icon>
+              <span class="admin-card-text">
+                <span class="admin-card-title">Journal des modifications</span>
+                <span class="admin-card-summary">Qui a modifié quoi, et quand.</span>
+              </span>
+              <mat-icon aria-hidden="true">arrow_forward</mat-icon>
+            </a>
+          </li>
+        }
       </ul>
     } @else {
       <p class="admin-loading">Vous n'administrez aucune commission avec ce compte.</p>

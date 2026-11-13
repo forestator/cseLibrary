@@ -50,6 +50,10 @@ const adminRoutes: Routes = [
         path: 'iWantToConfigureThisAwesomeApp', loadComponent: () => import('./admin/components/admin-home/admin-home.component').then(m => m.AdminHomeComponent)
     },
     {path: 'admin', loadComponent: loadAdminCatalogue, canActivate: [adminGuard]},
+    {
+        path: 'admin/journal', loadComponent: () => import('./admin/journal/admin-journal').then(m => m.AdminJournal),
+        canActivate: [() => inject(AuthentificationService).isUserSuperAdmin]
+    },
     {path: 'admin/:commission', loadComponent: loadAdminCatalogue, canActivate: [adminGuard]},
     // Former per-commission administration addresses, kept for old bookmarks.
     {path: 'ludotheque/admin/games', redirectTo: 'admin/ludotheque'},

@@ -3,6 +3,8 @@ import {MatButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {Biblio} from '../../../models/author.model';
+import {structureEntry} from '../../../admin/journal/journal-entry';
+import {JournalRepository} from '../../../admin/journal/journal.repository';
 import {LibraryDialogs} from '../../services/library-dialogs.service';
 import {LibraryRepository} from '../../services/library.repository';
 import {LibraryEditor} from './library-editor';
@@ -21,6 +23,7 @@ import {SettingsPanelComponent} from './settings-panel/settings-panel.component'
 export class SettingsViewComponent {
   private readonly repository = inject(LibraryRepository);
   private readonly snackBar = inject(MatSnackBar);
+  private readonly journal = inject(JournalRepository);
 
   readonly libraryId = input<string>();
 
@@ -53,6 +56,8 @@ export class SettingsViewComponent {
     try {
       await this.repository.save(edited.library.id ?? this.libraryId() ?? '', edited);
       this.snackBar.open('Modifications enregistrées', 'Fermer', {duration: 4000});
+      // The change is saved: a journal that cannot be written must not make it look as if it had failed.
+      this.journal.log(structureEntry(edited.library.id ?? '', edited.library.name)).catch(error => console.error('Unable to write the journal', error));
     } catch (error) {
       console.error('Unable to save the library', error);
       this.snackBar.open('Enregistrement impossible : vérifiez votre connexion et vos droits', 'Fermer', {duration: 8000});

@@ -51,7 +51,7 @@ describe('Mobile administration', () => {
 
   it('keeps the commission picker and the list readable without sideways page scroll', () => {
     cy.visit('/admin');
-    cy.get('.admin-card').should('have.length', 6);
+    cy.get('.admin-card[data-commission]').should('have.length', 6);
     cy.visit('/admin/bricolage');
     cy.get('.admin-table tbody tr').should('have.length.at.least', 3);
     cy.document().then(document => {

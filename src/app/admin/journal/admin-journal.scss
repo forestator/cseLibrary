@@ -1,0 +1,199 @@
+@use '../../../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.journal-page {
+  display: flex;
+  flex-direction: column;
+  gap: $space-4;
+}
+
+.journal-back {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: $space-1;
+  min-height: 44px;
+  color: $accent-text;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.journal-filters {
+  display: flex;
+  flex-direction: column;
+  gap: $space-3;
+}
+
+.journal-search {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  max-width: 480px;
+}
+
+.journal-search-label {
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.journal-search-input {
+  min-height: 44px;
+  padding: 0 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-card;
+  color: $on-surface;
+  font: inherit;
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 1px;
+  }
+}
+
+.journal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}
+
+.journal-chip {
+  min-height: 36px;
+  padding: 0 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-pill;
+  background: transparent;
+  color: $on-surface;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $accent;
+  }
+
+  &-active {
+    border-color: $accent;
+    background: $accent-soft;
+    color: $accent-text;
+    font-weight: 600;
+  }
+}
+
+.journal-message {
+  margin: 0;
+  color: $on-surface-muted;
+}
+
+.journal-table-wrap {
+  // Positioned so that the visually hidden caption is clipped with the table, not left sticking out of the page.
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid $outline;
+  border-radius: $radius-lg;
+  background: $surface-card;
+}
+
+.journal-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th,
+  td {
+    padding: $space-2 $space-3;
+    border-bottom: 1px solid $outline;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  thead th {
+    color: $on-surface-muted;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child > * {
+    border-bottom: 0;
+  }
+}
+
+.journal-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.journal-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: $accent-text;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.journal-sort-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
+.journal-date {
+  white-space: nowrap;
+}
+
+.journal-item {
+  font-weight: 600;
+}
+
+.journal-summary,
+.journal-names {
+  margin: 0;
+}
+
+.journal-names {
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+}
+
+.journal-changes {
+  margin: $space-1 0 0;
+  padding-left: $space-4;
+  color: $on-surface-muted;
+  font-size: 0.9rem;
+}
+
+.journal-empty {
+  padding: $space-5;
+  color: $on-surface-muted;
+  text-align: center;
+}
+
+.journal-more {
+  display: flex;
+  justify-content: center;
+}

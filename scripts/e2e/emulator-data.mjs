@@ -10,6 +10,8 @@ const OWNER = {Authorization: 'Bearer owner', 'Content-Type': 'application/json'
 
 // A super-administrator UID of firestore.rules: the rules of the emulator are the real ones.
 export const ADMIN = {uid: 'OBWB7BXsEHPYmauZ6NqwEzcuc0x2', email: 'admin-test@example.com', password: 'Test-12345'};
+// The administrator of one commission only (bricolage): to check what the rules refuse to anyone but a super-administrator.
+export const COMMISSION_ADMIN = {uid: 'ls9tc3kKxeRlkaXAccs0qk9T9oA2', email: 'bricolage-test@example.com', password: 'Test-12345'};
 
 async function send(url, options) {
   const response = await fetch(url, options);
@@ -39,9 +41,9 @@ export async function seedFirestore(directory) {
 
 export async function createAdmin() {
   await send(`http://${AUTH}/emulator/v1/projects/${PROJECT}/accounts`, {method: 'DELETE'});
-  const user = {localId: ADMIN.uid, email: ADMIN.email, emailVerified: true, rawPassword: ADMIN.password};
+  const users = [ADMIN, COMMISSION_ADMIN].map(account => ({localId: account.uid, email: account.email, emailVerified: true, rawPassword: account.password}));
   await send(`http://${AUTH}/identitytoolkit.googleapis.com/v1/projects/${PROJECT}/accounts:batchCreate`,
-    {method: 'POST', headers: OWNER, body: JSON.stringify({users: [user]})});
+    {method: 'POST', headers: OWNER, body: JSON.stringify({users})});
 }
 
 const decode = value => {

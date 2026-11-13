@@ -12,6 +12,9 @@ bibliotheque/{libraryId}/categories/{categoryId}  catégorie complète (séries 
 `libraryId` = `litterature-imaginaire`, `inclassable`, `litterature-jeunesse`, `litterature-adulte` (ordre du tableau RTDB `bibliotheque`).
 Non migrés : `borrows` (emprunts supprimés), `bibliotheque2` (refonte inachevée, non utilisée par le code).
 
+## Journal des modifications
+`journal/{id}` : une entrée par action faite depuis l'administration (`at` = horloge du serveur, `uid`, `email`, `action` = create | update | delete | status | structure, `commission`, `collection`, `collectionLabel`, `itemName`, `summary`, `changes` = [{field, before, after}], `count`, `names`). **Append-only** : les règles refusent toute modification ou suppression, même d'un super-administrateur ; création réservée à l'administrateur de la commission concernée, avec son propre `uid` et l'heure du serveur ; lecture réservée aux super-administrateurs. Voir `docs/admin-unifiee.md`.
+
 ## Outils
 - `firestore.rules` : lecture publique du catalogue, écriture réservée aux admins (mêmes UIDs que `authentification.service.ts`). À garder synchronisé.
 - `scripts/firestore/import.mjs` : importe un export RTDB (`--dry-run` pour contrôler). Réécrit au passage les URLs Firebase Storage vers Cloudinary. Refuse d'écrire en production sans `--prod`.

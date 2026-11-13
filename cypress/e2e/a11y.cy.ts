@@ -31,7 +31,7 @@ describe('Accessibility', () => {
 
     it('the commission picker and a commission list have no violation', () => {
       cy.visit('/admin');
-      cy.get('.admin-card').should('have.length', 6);
+      cy.get('.admin-card[data-commission]').should('have.length', 6);
       cy.checkA11y();
       cy.visit('/admin/ludotheque');
       cy.get('.admin-table tbody tr').should('have.length.at.least', 1);

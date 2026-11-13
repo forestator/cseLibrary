@@ -1,5 +1,5 @@
 import {defineConfig} from 'cypress';
-import {ADMIN, assertEmulators, createAdmin, readDocument, resetFirestore, seedFirestore} from './scripts/e2e/emulator-data.mjs';
+import {ADMIN, COMMISSION_ADMIN, assertEmulators, createAdmin, readDocument, resetFirestore, seedFirestore} from './scripts/e2e/emulator-data.mjs';
 
 const FIXTURES = 'cypress/fixtures/firestore';
 
@@ -13,7 +13,7 @@ export default defineConfig({
     defaultCommandTimeout: 10000,
     viewportWidth: 1300,
     viewportHeight: 900,
-    env: {adminEmail: ADMIN.email, adminPassword: ADMIN.password},
+    env: {adminEmail: ADMIN.email, adminPassword: ADMIN.password, commissionAdminEmail: COMMISSION_ADMIN.email, commissionAdminPassword: COMMISSION_ADMIN.password},
     setupNodeEvents(on) {
       on('task', {
         /** Stored content of a Firestore document (`ludotheque/boardGames`), to check what was really written. */

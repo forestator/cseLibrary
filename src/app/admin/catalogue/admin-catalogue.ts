@@ -16,6 +16,7 @@ import {CataloguePageHeader} from '../../catalogue/components/catalogue-page-hea
 import {countLabel} from '../../catalogue/models/count-label';
 import {categoryLabel} from '../../ludotheque/pipes/game-category-label.pipe';
 import {Comissions} from '../../models/common.model';
+import {AuthentificationService} from '../../services/firebase/authentification.service';
 import {AdminCollection, AdminItem} from './admin-collection.model';
 import {ADMIN_DIALOG_CONFIG} from '../admin-dialog.config';
 import {ConfirmationData, ConfirmationModal} from '../components/confirmation-modal/confirmation-modal.component';
@@ -48,6 +49,9 @@ export class AdminCatalogue {
   private readonly snackBar = inject(MatSnackBar);
   private readonly document = inject(DOCUMENT);
   private readonly sections = inject(AdminCollections).sections;
+
+  /** Super-administrators also get the journal of changes. */
+  protected readonly isSuperAdmin = toSignal(inject(AuthentificationService).isUserSuperAdmin, {initialValue: false});
 
   /** Bound from the route: the commission being managed, if any. */
   readonly commission = input<string>();

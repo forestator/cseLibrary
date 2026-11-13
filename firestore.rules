@@ -36,6 +36,27 @@ service cloud.firestore {
       return isSuperAdmin() || signedInUid() == 'h1YOMupBxBTdKBAuCGJFryqE4n72';
     }
 
+    function mayLog(commission) {
+      return isSuperAdmin()
+        || (commission == 'ludotheque' && isLudoAdmin())
+        || (commission == 'bricolage' && isBricolageAdmin())
+        || (commission == 'nautisme' && isNautismeAdmin())
+        || (commission == 'sonotheque' && isSonoAdmin());
+    }
+
+    // Journal of the changes made from the administration: append-only, written by the administrator who made the
+    // change (their own uid, the server's clock, a commission they manage), read by the super-administrators.
+    match /journal/{entry} {
+      allow read: if isSuperAdmin();
+      allow create: if request.resource.data.keys().hasOnly(
+            ['at', 'uid', 'email', 'action', 'commission', 'collection', 'collectionLabel', 'itemName', 'summary', 'changes', 'count', 'names'])
+        && request.resource.data.uid == signedInUid()
+        && request.resource.data.at == request.time
+        && mayLog(request.resource.data.commission)
+        && request.resource.data.summary.size() <= 500;
+      allow update, delete: if false;
+    }
+
     match /ludotheque/{library} {
       allow read: if true;
       allow write: if isLudoAdmin();

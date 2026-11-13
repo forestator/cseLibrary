@@ -64,7 +64,7 @@ admin/catalogue/
    (catégorie → auteur/série → livre) et s'écrivent par catégorie ; la liste globale les affiche à plat, l'édition
    passe par le même formulaire, l'écriture reste portée par `LibraryRepository`.
 4. **Actions groupées, export CSV** fait le 2026-11-13 ; **import du catalogue** reste à faire : (voir « Cible »).
-5. **Journal des modifications** (qui a changé quoi) : utile dès qu'il y a plusieurs administrateurs.
+5. ~~**Journal des modifications**~~ **Fait le 2026-11-13** (voir « Journal des modifications » plus bas).
 
 ## Décisions à prendre
 
@@ -97,4 +97,12 @@ admin/catalogue/
 - **Résolution paresseuse** : la collection n'obtient `LibraryRepository` qu'à l'ouverture de la section Bibliothèque (sinon les quatre bibliothèques seraient relues sur toutes les pages d'administration).
 - **Actions groupées** : cases à cocher (une par ligne + « Tout sélectionner » pour toute la liste filtrée), barre « N sélectionné(s) » : changer le statut (une écriture par document, jamais une par objet), supprimer (avec confirmation), désélectionner. La sélection est vidée dès que la liste change. **Export CSV** de toute la liste filtrée et triée (BOM UTF-8, `;`, cellules entre guillemets, formules neutralisées).
 - **Pas dans cette étape** : recherche Google Books dans le formulaire d'un livre (elle existe encore dans la vue « Structure »), changement d'éditeur d'un livre, déplacement entre bibliothèques.
+
+## Journal des modifications (fait le 2026-11-13)
+
+- **Écriture** : un enrobage unique autour de chaque collection (`admin/journal/journaled-collection.ts`) écrit une entrée une fois le changement réussi ; tous les écrans passent par les collections, aucun chemin ne l'évite. L'avant/après est calculé avant l'enregistrement, avec les libellés du formulaire (« Statut : Disponible → Perdu »). Une modification qui ne change rien n'écrit rien. Une action groupée écrit une seule entrée (nombre d'objets et les 20 premiers noms). La modification de la structure de la bibliothèque écrit une entrée sans détail. Si l'écriture du journal échoue, le changement reste fait et un message l'indique.
+- **Sécurité** (`firestore.rules`) : append-only (ni modification ni suppression, même pour un super-administrateur), création seulement par l'administrateur de la commission concernée, avec son `uid` et l'horloge du serveur (date non falsifiable), champs limités, lecture réservée aux super-administrateurs. Testé avec un vrai compte d'administrateur de commission sur les émulateurs.
+- **Page** `/admin/journal` (carte « Journal des modifications » sur la page d'administration, super-administrateurs) : 500 dernières entrées, plus récentes d'abord, tri par colonne, filtre par type d'action, recherche (administrateur, commission, objet, détail), « Afficher plus ».
+- **Hors journal** : les modifications faites avant le 13/11/2026 et les imports par script.
+- **Déploiement** : les règles doivent être déployées (`firebase deploy --only firestore`) en même temps que l'application, sinon l'écriture du journal est refusée.
 

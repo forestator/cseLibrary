@@ -1,0 +1,84 @@
+<div class="journal-page">
+  <app-catalogue-page-header title="Journal des modifications"
+    resume="Qui a modifié quoi, et quand, depuis l'administration. Les entrées ne peuvent ni être modifiées ni être supprimées."
+    [countLabel]="loading() || failed() ? undefined : resultLabel()" />
+
+  <a class="journal-back" routerLink="/admin">
+    <mat-icon aria-hidden="true">arrow_back</mat-icon>
+    Toutes les commissions
+  </a>
+
+  <div class="journal-filters">
+    <label class="journal-search">
+      <span class="journal-search-label">Rechercher</span>
+      <input class="journal-search-input" type="search" placeholder="Administrateur, commission, objet…"
+             [value]="search()" (input)="setSearch($any($event.target).value)">
+    </label>
+    <div class="journal-chips" role="group" aria-label="Type d'action">
+      <button type="button" class="journal-chip" [class.journal-chip-active]="actionFilter() === null"
+              [attr.aria-pressed]="actionFilter() === null" (click)="setAction(null)">Toutes</button>
+      @for (entry of actions; track entry.action) {
+        <button type="button" class="journal-chip" [class.journal-chip-active]="actionFilter() === entry.action"
+                [attr.aria-pressed]="actionFilter() === entry.action" (click)="setAction(entry.action)">{{ entry.label }}</button>
+      }
+    </div>
+  </div>
+
+  @if (loading()) {
+    <p class="journal-message" role="status">Chargement du journal…</p>
+  } @else if (failed()) {
+    <p class="journal-message" role="alert">Le journal n'a pas pu être lu : il est réservé aux super-administrateurs.</p>
+  } @else {
+    <div class="journal-table-wrap">
+      <table class="journal-table">
+        <caption class="journal-hidden">Modifications faites depuis l'administration</caption>
+        <thead>
+          <tr>
+            @for (header of headers(); track header.column) {
+              <th scope="col" [attr.aria-sort]="header.ariaSort">
+                <button type="button" class="journal-sort" (click)="sortBy(header.column)">
+                  {{ header.label }}
+                  <mat-icon class="journal-sort-icon" aria-hidden="true">{{ header.icon }}</mat-icon>
+                </button>
+              </th>
+            }
+            <th scope="col">Détail</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (row of visible(); track row.record.id) {
+            <tr>
+              <td class="journal-date">{{ row.date }}</td>
+              <td>{{ row.record.email }}</td>
+              <td>{{ row.actionLabel }}</td>
+              <td>{{ row.record.collectionLabel }}</td>
+              <th scope="row" class="journal-item">{{ row.record.itemName }}</th>
+              <td>
+                <p class="journal-summary">{{ row.record.summary }}</p>
+                @if (row.record.changes.length) {
+                  <ul class="journal-changes">
+                    @for (change of row.record.changes; track change.field) {
+                      <li>{{ change.field }} : {{ change.before }} → {{ change.after }}</li>
+                    }
+                  </ul>
+                }
+                @if (row.record.names.length > 1) {
+                  <p class="journal-names">{{ row.record.names.join(', ') }}@if (row.record.count > row.record.names.length) {…}</p>
+                }
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td class="journal-empty" colspan="6">Aucune modification ne correspond.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+    @if (remaining() > 0) {
+      <div class="journal-more">
+        <button matButton="tonal" type="button" (click)="showMore()">Afficher {{ nextPageSize() }} de plus ({{ remaining() }} restantes)</button>
+      </div>
+    }
+  }
+</div>

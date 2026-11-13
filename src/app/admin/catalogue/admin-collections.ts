@@ -1,5 +1,6 @@
 import {inject, Injectable, Injector} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
 import {Observable, of} from 'rxjs';
 import {BRICOLAGE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG, SONOTHEQUE_CONFIG} from '../../catalogue/models/commission-configs';
 import {CommissionConfig} from '../../catalogue/models/commission-config.model';
@@ -12,6 +13,8 @@ import {CloudinaryService} from '../../services/cloudinary.service';
 import {AuthentificationService} from '../../services/firebase/authentification.service';
 import {StorageUploadService} from '../../services/firebase/storage-upload.service';
 import {OpenAiService} from '../../services/open-ai.service';
+import {journaled} from '../journal/journaled-collection';
+import {JournalRepository} from '../journal/journal.repository';
 import {AdminCollection, AdminSection} from './admin-collection.model';
 import {createCatalogueCollection} from './catalogue-collection';
 import {createGameCollection} from './game-collection';
@@ -68,8 +71,10 @@ export class AdminCollections {
   private readonly dialog = inject(MatDialog);
   private readonly injector = inject(Injector);
   private readonly cloudinary = inject(CloudinaryService);
+  private readonly journal = inject(JournalRepository);
+  private readonly snackBar = inject(MatSnackBar);
 
-  private readonly collections: ReadonlyArray<AdminCollection> = [
+  private readonly collections: ReadonlyArray<AdminCollection> = ([
     ...GAME_COLLECTIONS.map(info => createGameCollection({
       ...info, games: this.games, upload: this.upload, bgg: this.bgg, openAi: this.openAi, dialog: this.dialog,
       canManage$: this.auth.isUserLudoAdmin$,
@@ -80,7 +85,8 @@ export class AdminCollections {
     ...CATALOGUE_COLLECTIONS.map(info => createCatalogueCollection({
       ...info, repository: this.catalogues.of(info.config), upload: this.upload, canManage$: this.auth[info.config.adminLink.guard],
     })),
-  ];
+  ]).map(collection => journaled(collection, this.journal, () =>
+    this.snackBar.open("La modification est enregistrée, mais le journal n'a pas pu être mis à jour", 'Fermer', {duration: 8000})));
 
   /** One section per commission, in the order of the side rail. */
   readonly sections: ReadonlyArray<AdminSection> = COMMISSION_NAV.map(commission => ({
