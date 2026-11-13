@@ -59,6 +59,21 @@ describe('Reconciliation: comparing and applying', () => {
     });
   });
 
+  it('proposes nothing to write when the same file is dropped again after an apply', () => {
+    cy.get('[data-list=moves] .reco-check').check();
+    cy.contains('button', 'Appliquer').click();
+    cy.get('mat-dialog-container').contains('button', 'Appliquer').click();
+    cy.contains('appliqués');
+    cy.reload();
+    cy.get('input[type=file]').selectFile('cypress/fixtures/catalogue/reconciliation.csv', {force: true});
+    count('toAdd').should('have.text', '0');
+    count('moves').should('have.text', '0');
+    cy.get('[data-list=toAdd]').should('not.exist');
+    cy.get('[data-list=moves]').should('not.exist');
+    cy.get('[data-test=plan]').should('contain.text', '0 ajout(s) et 0 déplacement(s)');
+    cy.contains('button', 'Appliquer').should('be.disabled');
+  });
+
   it('remembers « Ne plus proposer » after a reload', () => {
     cy.get('[data-list=toAdd]').contains('tr', 'Azul').contains('button', 'Ne plus proposer').click();
     count('toAdd').should('have.text', '1');
