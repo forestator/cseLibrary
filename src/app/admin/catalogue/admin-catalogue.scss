@@ -90,6 +90,8 @@
 }
 
 .admin-table-wrap {
+  // Positioned so that the visually hidden labels inside the table are clipped with it, not left sticking out of the page.
+  position: relative;
   overflow-x: auto;
   border: 1px solid $outline;
   border-radius: $radius-lg;

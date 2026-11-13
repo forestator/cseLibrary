@@ -37,7 +37,9 @@ try {
   await resetFirestore();
   await seedFirestore(FIXTURES);
   await createAdmin();
-  const cypress = spawn('npx', ['cypress', 'run', ...process.argv.slice(2)], {stdio: 'inherit'});
+  // E2E_SPEC="cypress/e2e/a.cy.ts,cypress/e2e/b.cy.ts" npm run e2e: only those files.
+  const only = process.env.E2E_SPEC ? ['--spec', process.env.E2E_SPEC] : [];
+  const cypress = spawn('npx', ['cypress', 'run', ...only], {stdio: 'inherit'});
   code = await new Promise(resolve => cypress.on('exit', exitCode => resolve(exitCode ?? 1)));
 } finally {
   process.kill(-server.pid);
