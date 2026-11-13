@@ -85,3 +85,5 @@ admin/catalogue/
 - **Aide BoardGameGeek** : proposée aux seuls jeux de société (recherche + remplissage) ; l'appel OpenAI reste tel quel (échoue sans bruit).
 - Supprimés : `CatalogueItemDialog`, `AddGameModal`, `AddGameForm`, `UploadGame`, les anciennes méthodes d'écriture des dépôts.
 - **Vérifié sur les émulateurs** (jamais sur la production) : ajout, modification, changement de référence, de catégorie (sans doublon), champs cachés conservés, doublon de référence refusé, envoi d'image puis annulation (aucune fiche), suppression confirmée ; axe sans violation.
+- **Tri** (2026-11-13) : chaque colonne du tableau est triable (clic : croissant, décroissant, ordre d'origine ; `aria-sort`) ; collation française numérique, insensible à la casse et aux accents (« ludo96 » avant « ludo342 »), valeurs vides toujours en dernier, tri appliqué avant la pagination. Logique pure dans `admin-sort.ts`, testée.
+

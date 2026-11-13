@@ -4,7 +4,7 @@ import {provideAnimations} from '@angular/platform-browser/animations';
 import {provideRouter, withComponentInputBinding} from '@angular/router';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
 import {getApp, initializeApp, provideFirebaseApp} from '@angular/fire/app';
-import {connectFirestoreEmulator, getFirestore, provideFirestore} from '@angular/fire/firestore';
+import {connectFirestoreEmulator, getFirestore, initializeFirestore, provideFirestore} from '@angular/fire/firestore';
 import {connectAuthEmulator, getAuth, provideAuth} from '@angular/fire/auth';
 import {getAnalytics, provideAnalytics, ScreenTrackingService} from '@angular/fire/analytics';
 import {environment} from '../environments/environment';
@@ -18,7 +18,11 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => {
-      const firestore = getFirestore(getApp(), environment.firestoreDatabaseId);
+      // Against the emulators (end-to-end tests) Firestore uses plain long polling: the Cypress proxy holds back the
+      // streamed responses of the default transport, and big reads then never complete.
+      const firestore = environment.emulators
+        ? initializeFirestore(getApp(), {experimentalForceLongPolling: true}, environment.firestoreDatabaseId)
+        : getFirestore(getApp(), environment.firestoreDatabaseId);
       if (environment.emulators) {
         connectFirestoreEmulator(firestore, environment.emulators.firestore.host, environment.emulators.firestore.port);
       }

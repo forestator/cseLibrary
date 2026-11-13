@@ -43,3 +43,26 @@ export async function createAdmin() {
   await send(`http://${AUTH}/identitytoolkit.googleapis.com/v1/projects/${PROJECT}/accounts:batchCreate`,
     {method: 'POST', headers: OWNER, body: JSON.stringify({users: [user]})});
 }
+
+const decode = value => {
+  const [kind] = Object.keys(value);
+  const inner = value[kind];
+  switch (kind) {
+    case 'mapValue': return Object.fromEntries(Object.entries(inner.fields ?? {}).map(([key, field]) => [key, decode(field)]));
+    case 'arrayValue': return (inner.values ?? []).map(decode);
+    case 'integerValue':
+    case 'doubleValue': return Number(inner);
+    case 'nullValue': return null;
+    default: return inner;
+  }
+};
+
+/** A document as the tests want to compare it: plain values, `null` when it does not exist. */
+export async function readDocument(path) {
+  const response = await fetch(`http://${FIRESTORE}/v1/projects/${PROJECT}/databases/(default)/documents/${path}`, {headers: OWNER});
+  if (response.status === 404) {
+    return null;
+  }
+  const document = await response.json();
+  return Object.fromEntries(Object.entries(document.fields ?? {}).map(([key, field]) => [key, decode(field)]));
+}

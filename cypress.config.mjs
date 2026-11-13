@@ -1,5 +1,5 @@
 import {defineConfig} from 'cypress';
-import {ADMIN, assertEmulators, createAdmin, resetFirestore, seedFirestore} from './scripts/e2e/emulator-data.mjs';
+import {ADMIN, assertEmulators, createAdmin, readDocument, resetFirestore, seedFirestore} from './scripts/e2e/emulator-data.mjs';
 
 const FIXTURES = 'cypress/fixtures/firestore';
 
@@ -16,6 +16,8 @@ export default defineConfig({
     env: {adminEmail: ADMIN.email, adminPassword: ADMIN.password},
     setupNodeEvents(on) {
       on('task', {
+        /** Stored content of a Firestore document (`ludotheque/boardGames`), to check what was really written. */
+        document: path => readDocument(path),
         /** Puts the emulators back in the state of the fixtures: call it before a test that writes. */
         async resetData() {
           assertEmulators();

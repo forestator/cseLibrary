@@ -76,14 +76,14 @@
           <caption class="admin-caption">Objets de la commission {{ current.label }}</caption>
           <thead>
             <tr>
-              <th scope="col" class="admin-col-cover"><span class="admin-hidden">Couverture</span></th>
-              <th scope="col">Nom</th>
-              @if (severalCollections()) {
-                <th scope="col">Type</th>
+              @for (header of headers(); track header.column) {
+                <th scope="col" [attr.aria-sort]="header.ariaSort" [class.admin-col-cover]="header.iconOnly">
+                  <button type="button" class="admin-sort" (click)="sortBy(header.column)">
+                    <span [class.admin-hidden]="header.iconOnly">{{ header.label }}</span>
+                    <mat-icon class="admin-sort-icon" aria-hidden="true">{{ header.icon }}</mat-icon>
+                  </button>
+                </th>
               }
-              <th scope="col">Catégorie</th>
-              <th scope="col">Réf.</th>
-              <th scope="col">Statut</th>
               <th scope="col" class="admin-col-action"><span class="admin-hidden">Actions</span></th>
             </tr>
           </thead>

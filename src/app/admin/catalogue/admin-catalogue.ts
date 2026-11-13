@@ -18,6 +18,7 @@ import {AdminCollection, AdminItem} from './admin-collection.model';
 import {ADMIN_DIALOG_CONFIG} from '../admin-dialog.config';
 import {AdminItemDialog, AdminItemDialogData} from '../form/admin-item-dialog';
 import {AdminCollections} from './admin-collections';
+import {AdminRow, AdminSort, AdminSortColumn, nextSort, sortRows} from './admin-sort';
 
 const PAGE_SIZE = 100;
 
@@ -48,6 +49,7 @@ export class AdminCatalogue {
   protected readonly search = signal('');
   protected readonly collectionFilter = signal<string | null>(null);
   protected readonly withoutCover = signal(false);
+  protected readonly sort = signal<AdminSort | null>(null);
   private readonly selectedLibraryId = signal<string | undefined>(undefined);
   private readonly limit = signal(PAGE_SIZE);
 
@@ -63,7 +65,7 @@ export class AdminCatalogue {
 
   // --- library ---
   // The libraries are only loaded (a lot of reads) when the library itself is being managed.
-  private readonly libraries = computed(() => this.isLibrary() ? this.injector.get(LibraryRepository).libraries() : undefined);
+  private readonly libraries = computed(() => this.isLibrary() ? untracked(() => this.injector.get(LibraryRepository)).libraries() : undefined);
   protected readonly libraryOptions = computed(() =>
     (this.libraries() ?? []).map(biblio => ({id: biblio.library.id ?? '', name: biblio.library.name})));
   protected readonly libraryId = computed(() => this.selectedLibraryId() ?? this.libraryOptions()[0]?.id);
@@ -89,13 +91,34 @@ export class AdminCatalogue {
       && (!this.withoutCover() || !item.cover)
       && words.every(word => plain(`${item.name} ${item.ref ?? ''} ${item.categoryId ?? ''}`).includes(word)));
   });
-  protected readonly rows = computed(() => {
+  private readonly tableRows = computed<AdminRow[]>(() => {
     const labels = new Map(this.collections().map(collection => [collection.id, collection.label]));
-    return this.filtered().slice(0, this.limit()).map(item => ({
+    return this.filtered().map(item => ({
       item,
       collectionLabel: labels.get(item.collectionId) ?? '',
       categoryLabel: item.categoryId ? categoryLabel(item.categoryId) : '',
     }));
+  });
+  // Sorted before the page is cut: the order concerns the whole list, not only what is shown.
+  protected readonly rows = computed(() => sortRows(this.tableRows(), this.sort()).slice(0, this.limit()));
+  protected readonly headers = computed(() => {
+    const sort = this.sort();
+    const columns: ReadonlyArray<{column: AdminSortColumn; label: string; iconOnly?: boolean}> = [
+      {column: 'cover', label: 'Couverture', iconOnly: true},
+      {column: 'name', label: 'Nom'},
+      ...(this.severalCollections() ? [{column: 'collection' as const, label: 'Type'}] : []),
+      {column: 'category', label: 'Catégorie'},
+      {column: 'ref', label: 'Réf.'},
+      {column: 'status', label: 'Statut'},
+    ];
+    return columns.map(header => {
+      const active = sort?.column === header.column;
+      return {
+        ...header,
+        ariaSort: active ? (sort.direction === 'asc' ? 'ascending' : 'descending') : null,
+        icon: active ? (sort.direction === 'asc' ? 'arrow_upward' : 'arrow_downward') : 'unfold_more',
+      };
+    });
   });
   protected readonly remaining = computed(() => Math.max(0, this.filtered().length - this.limit()));
   protected readonly nextPageSize = computed(() => Math.min(PAGE_SIZE, this.remaining()));
@@ -109,9 +132,15 @@ export class AdminCatalogue {
         this.search.set('');
         this.collectionFilter.set(null);
         this.withoutCover.set(false);
+        this.sort.set(null);
         this.limit.set(PAGE_SIZE);
       });
     });
+  }
+
+  protected sortBy(column: AdminSortColumn): void {
+    this.sort.update(current => nextSort(current, column));
+    this.limit.set(PAGE_SIZE);
   }
 
   protected setSearch(value: string): void {

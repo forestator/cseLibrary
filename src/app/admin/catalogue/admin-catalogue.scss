@@ -235,3 +235,32 @@
   color: $on-surface-muted;
   font-size: 0.9rem;
 }
+
+.admin-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-1;
+  min-height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: $accent-text;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 2px;
+  }
+}
+
+.admin-sort-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}

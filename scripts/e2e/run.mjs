@@ -24,7 +24,13 @@ async function waitFor(url, timeoutMs) {
   throw new Error(`${url} did not answer within ${timeoutMs / 1000} s`);
 }
 
-const server = spawn('npx', ['ng', 'serve', '--configuration', 'emulator', '--port', String(PORT)], {stdio: 'ignore'});
+const alreadyServed = await fetch(URL).then(() => true, () => false);
+if (alreadyServed) {
+  throw new Error(`${URL} already answers: stop the server running on port ${PORT} first, it may not use the emulators.`);
+}
+
+// Own process group: killing only `npx` would leave `ng serve` running on the port.
+const server = spawn('npx', ['ng', 'serve', '--configuration', 'emulator', '--port', String(PORT)], {stdio: 'ignore', detached: true});
 let code = 1;
 try {
   await waitFor(URL, 240_000);
@@ -34,6 +40,6 @@ try {
   const cypress = spawn('npx', ['cypress', 'run', ...process.argv.slice(2)], {stdio: 'inherit'});
   code = await new Promise(resolve => cypress.on('exit', exitCode => resolve(exitCode ?? 1)));
 } finally {
-  server.kill();
+  process.kill(-server.pid);
 }
 process.exit(code);
