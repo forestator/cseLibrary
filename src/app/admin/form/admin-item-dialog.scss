@@ -1,0 +1,61 @@
+@use '../../../styles/tokens' as *;
+@use '../styles/admin' as *;
+
+.form-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: $space-6;
+  padding-top: $space-2;
+}
+
+.form-section {
+  @include form-column;
+}
+
+.form-section-title {
+  @include dialog-section-title;
+}
+
+.status-field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+  margin-bottom: $space-3;
+}
+
+.status-label {
+  font-size: 0.9rem;
+  color: $on-surface-muted;
+}
+
+.name-field {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-2;
+
+}
+
+.name-field-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.name-search {
+  flex: none;
+  margin-top: $space-2;
+}
+
+.cover-note {
+  margin: $space-2 0 0;
+  color: $on-surface-muted;
+  font-size: 0.85rem;
+}
+
+.dialog-action {
+  min-height: $control-min-size;
+}
+
+.dialog-delete {
+  margin-right: auto;
+  color: var(--mat-sys-error);
+}

@@ -57,7 +57,7 @@ admin/catalogue/
 1. **Socle et liste globale** (fait dans cette première tranche) : page `/admin`, collections catalogue et jeux,
    recherche + filtres, ajout et modification qui **ouvrent les formulaires existants** (aucun écran réécrit,
    donc aucun risque pour les données).
-2. **Formulaire unique** : remplacer `CatalogueItemDialog` et le formulaire de jeu par un formulaire piloté par
+2. ~~**Formulaire unique**~~ **Fait le 2026-11-13** (voir « Formulaire unique » plus bas) : remplacer `CatalogueItemDialog` et le formulaire de jeu par un formulaire piloté par
    un schéma de champs ; reprendre BGG / OpenAI comme une « aide à la saisie » optionnelle d'une collection.
    Supprimer ensuite les routes `<commission>/admin/...` et `ludotheque/admin/games` (redirigées vers `/admin`).
 3. **Livres** : intégrer la bibliothèque à la liste globale. Particularité : les livres vivent dans un arbre
@@ -73,3 +73,15 @@ admin/catalogue/
   ou un seul rôle « administrateur du catalogue » pour tout ?
 - Les anciennes adresses d'administration (`/bricolage/admin/...`) doivent-elles rediriger vers `/admin` ?
 - Les livres entrent-ils dans la liste globale dès la phase 1 (lecture seule) ou seulement en phase 3 ?
+
+## Formulaire unique (fait le 2026-11-13)
+
+`admin/form/` : `AdminItemDialog` est le seul formulaire d'ajout et de modification, quelle que soit la collection.
+- **Champs** : chaque collection porte sa liste (`AdminFormDefinition` : sections de champs `text | textarea | number | select | status | checkbox`, champ identifiant, valeurs initiales). `catalogue-collection.ts` et `game-collection.ts` les construisent (statut et dimensions ajoutés ; plus de bascule « Type de jeu »).
+- **Fonctions pures testées** (`admin-form.ts`) : fiche → valeurs du formulaire, valeurs → fiche (la fiche d'origine reste la base : les champs que le formulaire ne montre pas, comme `themes`, et les nombres stockés en texte sont conservés ; un champ vidé est retiré), unicité de l'identifiant.
+- **Écriture** : `saveAtPath` (`services/firestore/document-paths.ts`), un seul `updateDoc` : écrit la fiche entière à sa place et supprime l'ancienne entrée quand l'identifiant ou la catégorie a changé (plus de doublon).
+- **Couverture** : envoyée à Cloudinary dès qu'elle est choisie, mais écrite en base seulement à « Enregistrer » (annuler ne laisse plus de fiche orpheline).
+- **Suppression** : confirmation partout (`ConfirmationModal`).
+- **Aide BoardGameGeek** : proposée aux seuls jeux de société (recherche + remplissage) ; l'appel OpenAI reste tel quel (échoue sans bruit).
+- Supprimés : `CatalogueItemDialog`, `AddGameModal`, `AddGameForm`, `UploadGame`, les anciennes méthodes d'écriture des dépôts.
+- **Vérifié sur les émulateurs** (jamais sur la production) : ajout, modification, changement de référence, de catégorie (sans doublon), champs cachés conservés, doublon de référence refusé, envoi d'image puis annulation (aucune fiche), suppression confirmée ; axe sans violation.

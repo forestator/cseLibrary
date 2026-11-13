@@ -117,3 +117,6 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 
 **Autres reprises possibles** : trois décisions en attente pour l'administration (droits par commission ou rôle unique, redirection des anciennes adresses déjà faite, livres dans la liste globale) ; refonte des comptes administrateurs par section ; 2 livres à ranger à la main (Lenteric, Wood) et Simenon ; ISBN faux `9780662533313` sur 9 livres ; pochettes de jeux vidéo manquantes (57, listées dans la sortie de l'agent, non conservée) ; 53 jeux de société sans image.
 
+## Mise à jour du 2026-11-13
+**Formulaire unique de l'administration : fait** (commit local, pas encore déployé). Détails dans `docs/admin-unifiee.md`, section « Formulaire unique ». Reste de la conception : livres dans la liste globale (phase 3), actions groupées / export CSV / import du catalogue (phase 4), journal des modifications (phase 5), comptes administrateurs par section.
+

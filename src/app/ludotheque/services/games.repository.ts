@@ -6,7 +6,7 @@ import {BoardGame} from '../../models/boardGame.model';
 import {Game, LibraryId} from '../../models/common.model';
 import {VideoGame} from '../../models/videoGames.model';
 import {GamesUtils} from '../../models/gamesUtils';
-import {mergeAtPath, removeAtPath, replaceAtPath, saveAtPath} from '../../services/firestore/document-paths';
+import {removeAtPath, saveAtPath} from '../../services/firestore/document-paths';
 import {compareGameRefs} from '../../models/game-ref';
 
 export interface GameByLibrary {
@@ -57,25 +57,13 @@ export class GamesRepository {
     );
   }
 
-  addGame(game: Game, libraryId?: LibraryId): Promise<void> {
-    return replaceAtPath(this.libraryReference(game, libraryId), this.gamePath(game), game);
-  }
-
   /** Writes the game whole; when its reference changed the entry it replaces is removed in the same update. */
   saveGame(game: Game, libraryId: LibraryId, previous?: Game): Promise<void> {
     return saveAtPath(this.libraryReference(game, libraryId), this.gamePath(game), game, previous && this.gamePath(previous));
   }
 
-  updateGame(game: Game, libraryId?: LibraryId): Promise<void> {
-    return mergeAtPath(this.libraryReference(game, libraryId), this.gamePath(game), game);
-  }
-
   deleteGame(game: Game): Promise<void> {
     return removeAtPath(this.libraryReference(game), this.gamePath(game));
-  }
-
-  updateCover(game: Game, coverUrl: string): Promise<void> {
-    return mergeAtPath(this.libraryReference(game), this.gamePath(game), {cover: coverUrl});
   }
 
   private libraryDocument$(libraryId: LibraryId): Observable<LibraryDocument | undefined> {

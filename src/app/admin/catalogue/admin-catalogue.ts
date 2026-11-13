@@ -5,6 +5,7 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {RouterLink} from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 import {combineLatest, map, of, startWith, switchMap} from 'rxjs';
 import {LibraryRepository} from '../../bibliotheque/services/library.repository';
 import {SettingsViewComponent} from '../../bibliotheque/components/settings-view/settings-view.component';
@@ -14,6 +15,8 @@ import {countLabel} from '../../catalogue/models/count-label';
 import {categoryLabel} from '../../ludotheque/pipes/game-category-label.pipe';
 import {Comissions} from '../../models/common.model';
 import {AdminCollection, AdminItem} from './admin-collection.model';
+import {ADMIN_DIALOG_CONFIG} from '../admin-dialog.config';
+import {AdminItemDialog, AdminItemDialogData} from '../form/admin-item-dialog';
 import {AdminCollections} from './admin-collections';
 
 const PAGE_SIZE = 100;
@@ -35,6 +38,7 @@ function plain(text: string): string {
     NgOptimizedImage, RouterLink, SettingsViewComponent],
 })
 export class AdminCatalogue {
+  private readonly dialog = inject(MatDialog);
   private readonly libraries = inject(LibraryRepository);
   private readonly sections = inject(AdminCollections).sections;
 
@@ -132,10 +136,17 @@ export class AdminCatalogue {
   }
 
   protected add(collection: AdminCollection): void {
-    void collection.add();
+    this.openForm({collection});
   }
 
   protected edit(item: AdminItem): void {
-    void this.collections().find(collection => collection.id === item.collectionId)?.edit(item);
+    const collection = this.collections().find(candidate => candidate.id === item.collectionId);
+    if (collection) {
+      this.openForm({collection, item});
+    }
+  }
+
+  private openForm(data: AdminItemDialogData): void {
+    this.dialog.open(AdminItemDialog, {data, ...ADMIN_DIALOG_CONFIG});
   }
 }
