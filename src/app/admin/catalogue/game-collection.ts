@@ -162,5 +162,7 @@ export function createGameCollection(deps: GameCollectionDeps): AdminCollection 
     statuses: ITEM_STATUSES,
     setStatus: (items, status) => games.setStatus(items.map(item => item.source as Game), libraryId, status),
     removeMany: items => games.deleteGames(items.map(item => item.source as Game), libraryId),
+    addMany: entries => games.addGames(entries.map(values => ({...toStoredEntry(undefined, values, fields), libraryId}) as unknown as Game), libraryId),
+    moveMany: moves => games.moveGames(moves.map(({item, category}) => ({game: item.source as Game, category})), libraryId),
   };
 }

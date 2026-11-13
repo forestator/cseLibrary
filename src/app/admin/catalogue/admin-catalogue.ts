@@ -22,7 +22,7 @@ import {ADMIN_DIALOG_CONFIG} from '../admin-dialog.config';
 import {ConfirmationData, ConfirmationModal} from '../components/confirmation-modal/confirmation-modal.component';
 import {AdminItemDialog, AdminItemDialogData} from '../form/admin-item-dialog';
 import {AdminCollections} from './admin-collections';
-import {CsvColumn, toCsv} from './admin-csv';
+import {CsvColumn, downloadCsv, toCsv} from './admin-csv';
 import {AdminRow, AdminSort, AdminSortColumn, nextSort, sortRows} from './admin-sort';
 
 const PAGE_SIZE = 100;
@@ -240,12 +240,7 @@ export class AdminCatalogue {
       {header: 'Statut', value: row => row.statusLabel},
       {header: 'Couverture', value: row => row.item.cover ?? ''},
     ];
-    const blob = new Blob([toCsv(this.sortedRows(), columns)], {type: 'text/csv;charset=utf-8'});
-    const link = this.document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `catalogue-${this.commission()}-${new Date().toISOString().slice(0, 10)}.csv`;
-    link.click();
-    URL.revokeObjectURL(link.href);
+    downloadCsv(this.document, `catalogue-${this.commission()}-${new Date().toISOString().slice(0, 10)}.csv`, toCsv(this.sortedRows(), columns));
   }
 
   /** Runs a bulk action once per collection involved, on the selected items of that collection, then clears the selection. */

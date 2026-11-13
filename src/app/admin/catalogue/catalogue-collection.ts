@@ -90,5 +90,7 @@ export function createCatalogueCollection(deps: CatalogueCollectionDeps): AdminC
     statuses: config.admin.statuses,
     setStatus: (items, status) => repository.setStatus(items.map(item => item.source as CatalogueItem), status),
     removeMany: items => repository.removeItems(items.map(item => item.source as CatalogueItem)),
+    addMany: entries => repository.addItems(entries.map(values => toStoredEntry(undefined, values, fields) as unknown as CatalogueItem)),
+    moveMany: moves => repository.moveItems(moves.map(({item, category}) => ({item: item.source as CatalogueItem, categoryId: category}))),
   };
 }

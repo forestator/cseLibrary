@@ -1,5 +1,5 @@
 import {AdminField} from '../form/admin-form.model';
-import {deleteEntry, diffValues, saveEntry, statusEntry} from './journal-entry';
+import {deleteEntry, diffValues, importEntry, saveEntry, statusEntry} from './journal-entry';
 
 const FIELDS: ReadonlyArray<AdminField> = [
   {key: 'name', label: 'Nom', kind: 'text'},
@@ -58,5 +58,11 @@ describe('journal entries', () => {
   it('words a status change for one item and for several', () => {
     expect(statusEntry(subject, ['Catan'], 'Perdu').summary).toBe('« Catan » passé à « Perdu »');
     expect(statusEntry(subject, ['A', 'B'], 'Perdu').summary).toBe('2 objets passés à « Perdu »');
+  });
+
+  it('words an import and keeps the number of objects with the first names', () => {
+    const entry = importEntry(subject, 'ajoutés', ['A', 'B', 'C']);
+    expect(entry).toEqual(jasmine.objectContaining({action: 'import', itemName: '3 objets', summary: 'Import : 3 ajoutés', count: 3}));
+    expect(entry.names).toEqual(['A', 'B', 'C']);
   });
 });

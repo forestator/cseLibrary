@@ -190,6 +190,16 @@
         }
         @if (isSuperAdmin()) {
           <li>
+            <a class="admin-card" routerLink="/admin/reconciliation">
+              <mat-icon class="admin-card-icon" aria-hidden="true">compare_arrows</mat-icon>
+              <span class="admin-card-text">
+                <span class="admin-card-title">Réconciliation du catalogue</span>
+                <span class="admin-card-summary">Comparer un export du logiciel de gestion à la base.</span>
+              </span>
+              <mat-icon aria-hidden="true">arrow_forward</mat-icon>
+            </a>
+          </li>
+          <li>
             <a class="admin-card" routerLink="/admin/journal">
               <mat-icon class="admin-card-icon" aria-hidden="true">history</mat-icon>
               <span class="admin-card-text">

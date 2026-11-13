@@ -81,6 +81,9 @@ export interface AdminCollection {
   /** Bulk actions: each is one write for all the given items, which belong to this collection. */
   setStatus(items: ReadonlyArray<AdminItem>, status: string): Promise<void>;
   removeMany(items: ReadonlyArray<AdminItem>): Promise<void>;
+  /** Reconciliation: adds items given as form values, and files items under another category, each in one write. Not every collection offers them. */
+  addMany?(entries: ReadonlyArray<AdminFormValues>): Promise<void>;
+  moveMany?(moves: ReadonlyArray<{item: AdminItem; category: string}>): Promise<void>;
 }
 
 /** A commission as the global administration presents it: pick one, then manage its objects. */

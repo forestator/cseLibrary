@@ -162,3 +162,66 @@
   clip-path: inset(50%);
   white-space: nowrap;
 }
+
+.reco-subtitle {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.reco-counters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.reco-counter {
+  padding: $space-2 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-card;
+}
+
+.reco-input {
+  min-width: 200px;
+  min-height: 44px;
+  padding: 0 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+  background: $surface-card;
+  color: $on-surface;
+  font: inherit;
+
+  &:focus-visible {
+    outline: 3px solid $accent;
+    outline-offset: 1px;
+  }
+}
+
+.reco-check {
+  width: 24px;
+  height: 24px;
+}
+
+.reco-code {
+  color: $on-surface-muted;
+}
+
+.reco-plain {
+  margin: 0;
+  padding-left: $space-4;
+}
+
+.reco-details {
+  padding: $space-2 $space-3;
+  border: 1px solid $outline;
+  border-radius: $radius-md;
+}
+
+.reco-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-2;
+}

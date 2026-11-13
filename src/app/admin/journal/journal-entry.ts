@@ -1,6 +1,6 @@
 import {AdminField, AdminFormValue, AdminFormValues} from '../form/admin-form.model';
 
-export type JournalAction = 'create' | 'update' | 'delete' | 'status' | 'structure';
+export type JournalAction = 'create' | 'update' | 'delete' | 'status' | 'structure' | 'import';
 
 export interface JournalChange {
   field: string;
@@ -29,6 +29,7 @@ export const JOURNAL_ACTION_LABELS: Readonly<Record<JournalAction, string>> = {
   delete: 'Suppression',
   status: 'Changement de statut',
   structure: 'Structure',
+  import: 'Import',
 };
 
 const MAX_VALUE_LENGTH = 120;
@@ -97,6 +98,14 @@ export function statusEntry(subject: Subject, names: ReadonlyArray<string>, stat
     changes: [],
     count: names.length,
     names: names.slice(0, MAX_LISTED_NAMES),
+  };
+}
+
+/** A bulk addition or move made by the reconciliation with a catalogue export. */
+export function importEntry(subject: Subject, summary: string, names: ReadonlyArray<string>): JournalEntry {
+  return {
+    ...subject, action: 'import', itemName: `${names.length} objets`, summary: `Import : ${names.length} ${summary}`, changes: [],
+    count: names.length, names: names.slice(0, MAX_LISTED_NAMES),
   };
 }
 

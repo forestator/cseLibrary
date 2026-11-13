@@ -1,6 +1,6 @@
 import {AdminCollection, AdminSaveRequest} from '../catalogue/admin-collection.model';
 import {toFormValues} from '../form/admin-form';
-import {diffValues, deleteEntry, JournalEntry, saveEntry, statusEntry} from './journal-entry';
+import {diffValues, deleteEntry, importEntry, JournalEntry, saveEntry, statusEntry} from './journal-entry';
 import {JournalRepository} from './journal.repository';
 
 /**
@@ -20,8 +20,24 @@ export function journaled(collection: AdminCollection, journal: JournalRepositor
   };
   const names = (items: ReadonlyArray<{name: string}>) => items.map(item => item.name);
 
+  // The bulk methods of the reconciliation exist on some collections only: wrapping them must not create them on the others.
+  const bulk: PropertyDescriptorMap = {};
+  if (collection.addMany) {
+    bulk['addMany'] = {value: async (entries: Parameters<NonNullable<AdminCollection['addMany']>>[0]): Promise<void> => {
+      await collection.addMany?.(entries);
+      await record(importEntry(subject, 'ajoutés', entries.map(values => String(values['name'] ?? ''))));
+    }};
+  }
+  if (collection.moveMany) {
+    bulk['moveMany'] = {value: async (moves: Parameters<NonNullable<AdminCollection['moveMany']>>[0]): Promise<void> => {
+      await collection.moveMany?.(moves);
+      await record(importEntry(subject, 'déplacés vers une autre catégorie', moves.map(move => move.item.name)));
+    }};
+  }
+
   // Created from the collection (not spread) so that getters, such as a form built from loaded data, keep working.
   return Object.create(collection, {
+    ...bulk,
     save: {
       value: async (request: AdminSaveRequest): Promise<void> => {
         // What the form showed is read before saving: afterwards the collection's own data has already changed.

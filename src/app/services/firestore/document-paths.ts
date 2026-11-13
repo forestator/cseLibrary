@@ -44,7 +44,13 @@ export interface EntryUpdate {
 export async function updateEntries(reference: DocumentReference, updates: ReadonlyArray<EntryUpdate>): Promise<void> {
   for (let start = 0; start < updates.length; start += UPDATE_CHUNK) {
     const [first, ...rest] = updates.slice(start, start + UPDATE_CHUNK);
-    const asValue = (update: EntryUpdate): unknown => update.value === undefined ? deleteField() : update.value;
+    const asValue = (update: EntryUpdate): unknown => {
+      const {value} = update;
+      if (value === undefined) {
+        return deleteField();
+      }
+      return typeof value === 'object' && value !== null && !Array.isArray(value) ? withoutNulls(withoutUndefined(value)) : value;
+    };
     await updateDoc(reference, new FieldPath(...first.path), asValue(first),
       ...rest.flatMap(update => [new FieldPath(...update.path), asValue(update)]));
   }

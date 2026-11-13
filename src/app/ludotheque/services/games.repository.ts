@@ -72,6 +72,17 @@ export class GamesRepository {
     return updateEntries(this.libraryReference(games[0], libraryId), games.map(game => ({path: this.gamePath(game), value: undefined})));
   }
 
+  /** Adds several games of a library in one write. */
+  addGames(games: ReadonlyArray<Game>, libraryId: LibraryId): Promise<void> {
+    return updateEntries(this.libraryReference(games[0], libraryId), games.map(game => ({path: this.gamePath(game), value: game})));
+  }
+
+  /** Files several games of a library under another category (console), in one write. */
+  moveGames(moves: ReadonlyArray<{game: Game; category: string}>, libraryId: LibraryId): Promise<void> {
+    return updateEntries(this.libraryReference(moves[0].game, libraryId),
+      moves.map(({game, category}) => ({path: [...this.gamePath(game), 'category'], value: category})));
+  }
+
   deleteGame(game: Game): Promise<void> {
     return removeAtPath(this.libraryReference(game), this.gamePath(game));
   }

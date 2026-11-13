@@ -105,6 +105,154 @@
           </table>
         </div>
       </section>
+
+      <section class="reco-section" aria-labelledby="reco-result-title">
+        <h2 class="reco-title" id="reco-result-title">4. Comparaison avec la base</h2>
+        @if (!databaseReady()) {
+          <p class="reco-message" role="status">Lecture de la base…</p>
+        } @else if (compared()) {
+          <ul class="reco-counters" aria-label="Résumé">
+            <li class="reco-counter"><strong>{{ counts().matched }}</strong> déjà en base</li>
+            <li class="reco-counter"><strong data-test="count-toAdd">{{ counts().toAdd }}</strong> à ajouter</li>
+            <li class="reco-counter"><strong data-test="count-probable">{{ counts().probable }}</strong> probables</li>
+            <li class="reco-counter"><strong data-test="count-moves">{{ counts().moves }}</strong> déplacements</li>
+            <li class="reco-counter"><strong data-test="count-conflicts">{{ counts().conflicts }}</strong> conflits</li>
+            <li class="reco-counter"><strong data-test="count-missing">{{ counts().missing }}</strong> absents du fichier</li>
+            <li class="reco-counter"><strong data-test="count-duplicates">{{ counts().duplicates }}</strong> doublons</li>
+            <li class="reco-counter"><strong>{{ counts().ignored }}</strong> ignorés (DVD, CD…)</li>
+            <li class="reco-counter"><strong>{{ counts().unclassified }}</strong> non classés</li>
+            <li class="reco-counter"><strong>{{ counts().books }}</strong> livres (étape suivante)</li>
+          </ul>
+          @if (decisionsCount() > 0) {
+            <p class="reco-message">{{ decisionsCount() }} ligne(s) marquées « Ne plus proposer ».</p>
+          }
+        }
+      </section>
+
+      @if (compared()) {
+        <ng-template #editable let-rows let-title="title" let-hint="hint" let-id="id" let-remember="remember">
+          @if (rows.length > 0) {
+            <section class="reco-section" [attr.aria-labelledby]="'reco-list-' + id" [attr.data-list]="id">
+              <h3 class="reco-subtitle" [id]="'reco-list-' + id">{{ title }} ({{ rows.length }})</h3>
+              <p class="reco-hint">{{ hint }}</p>
+              <div class="reco-table-wrap">
+                <table class="reco-table">
+                  <caption class="reco-hidden">{{ title }}</caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Retenir</th>
+                      <th scope="col">Ligne</th>
+                      <th scope="col">Fichier</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Collection</th>
+                      <th scope="col">Catégorie</th>
+                      <th scope="col">Déjà en base</th>
+                      @if (remember) {
+                        <th scope="col">Décision</th>
+                      }
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @for (row of rows; track row.line) {
+                      <tr>
+                        <td>
+                          <input type="checkbox" class="reco-check" [checked]="row.include" [attr.aria-label]="'Retenir la ligne ' + row.line"
+                                 (change)="setIncluded(row.line, $any($event.target).checked)">
+                        </td>
+                        <td>{{ row.line }}</td>
+                        <td>{{ row.sourceName }}<span class="reco-code"> ({{ row.code }})</span></td>
+                        <td>
+                          <input class="reco-input" type="text" [value]="row.name" [attr.aria-label]="'Nom de la ligne ' + row.line"
+                                 (change)="setName(row.line, $any($event.target).value)">
+                        </td>
+                        <td>{{ row.domainLabel }}</td>
+                        <td>
+                          <select class="reco-select" [attr.aria-label]="'Catégorie de la ligne ' + row.line" (change)="setCategory(row.line, $any($event.target).value)">
+                            @for (option of row.categoryOptions; track option.value) {
+                              <option [value]="option.value" [selected]="option.value === row.category">{{ option.label }}</option>
+                            }
+                          </select>
+                        </td>
+                        <td>
+                          @if (row.dbName) {
+                            {{ row.dbName }}@if (row.dbCategoryLabel) { <span class="reco-code"> ({{ row.dbCategoryLabel }})</span>}
+                          }
+                        </td>
+                        @if (remember) {
+                          <td>
+                            <button matButton type="button" [attr.aria-label]="'Ne plus proposer la ligne ' + row.line" (click)="ignore(row.decision)">Ne plus proposer</button>
+                          </td>
+                        }
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          }
+        </ng-template>
+
+        <ng-container [ngTemplateOutlet]="editable" [ngTemplateOutletContext]="{$implicit: toAddRows(), id: 'toAdd', title: 'À ajouter', remember: true,
+          hint: 'Absents de la base. Cochés par défaut : corrigez le nom ou la catégorie si besoin.'}" />
+        <ng-container [ngTemplateOutlet]="editable" [ngTemplateOutletContext]="{$implicit: probableRows(), id: 'probable', title: 'Probablement déjà en base', remember: true,
+          hint: 'Un nom proche existe déjà. Cochez seulement si c\'est bien un objet différent.'}" />
+        <ng-container [ngTemplateOutlet]="editable" [ngTemplateOutletContext]="{$implicit: moveRows(), id: 'moves', title: 'Déplacements de catégorie', remember: false,
+          hint: 'Même objet, catégorie différente du fichier. Cochez pour le ranger dans la catégorie indiquée.'}" />
+        <ng-container [ngTemplateOutlet]="editable" [ngTemplateOutletContext]="{$implicit: conflictRows(), id: 'conflicts', title: 'Conflits de clé', remember: true,
+          hint: 'La clé existe en base pour un autre objet : rien n\'est écrit sans vérification manuelle.'}" />
+
+        @if (duplicateRows().length > 0) {
+          <section class="reco-section" data-list="duplicates">
+            <h3 class="reco-subtitle">Doublons dans le fichier ({{ duplicateRows().length }})</h3>
+            <ul class="reco-plain">
+              @for (row of duplicateRows(); track row.line) {
+                <li>Ligne {{ row.line }} : {{ row.name }} ({{ row.domainLabel }})</li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (missingRows().length > 0) {
+          <section class="reco-section" data-list="missing">
+            <h3 class="reco-subtitle">En base mais absents du fichier ({{ missingRows().length }})</h3>
+            <p class="reco-hint">Rien n'est supprimé : à vérifier à la main.</p>
+            <ul class="reco-plain">
+              @for (row of missingRows(); track row.key + row.domainLabel) {
+                <li>{{ row.name }} — {{ row.domainLabel }}, clé {{ row.key }}</li>
+              }
+            </ul>
+          </section>
+        }
+
+        @if (ignoredReasons().length + unclassifiedCodes().length > 0) {
+          <details class="reco-details">
+            <summary>Lignes ignorées ou non classées</summary>
+            <ul class="reco-plain">
+              @for (reason of ignoredReasons(); track reason.label) {
+                <li>{{ reason.label }} : {{ reason.count }} (ignoré)</li>
+              }
+              @for (code of unclassifiedCodes(); track code.label) {
+                <li>{{ code.label }} : {{ code.count }} (non classé)</li>
+              }
+            </ul>
+          </details>
+        }
+
+        <section class="reco-section reco-actions" aria-labelledby="reco-apply-title">
+          <h2 class="reco-title" id="reco-apply-title">5. Appliquer</h2>
+          <p class="reco-message" role="status" data-test="plan">{{ plan().additions }} ajout(s) et {{ plan().moves }} déplacement(s) prévus. Rien n'est supprimé.</p>
+          <div class="reco-buttons">
+            <button matButton="filled" type="button" [disabled]="nothingChosen() || applying()" (click)="apply()">
+              <mat-icon aria-hidden="true">done_all</mat-icon>
+              Appliquer
+            </button>
+            <button matButton="outlined" type="button" (click)="downloadReport()">
+              <mat-icon aria-hidden="true">download</mat-icon>
+              Rapport CSV
+            </button>
+          </div>
+        </section>
+      }
     }
   }
 </div>

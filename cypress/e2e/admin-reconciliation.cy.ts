@@ -6,7 +6,7 @@ describe('Reconciliation: reading the catalogue file', () => {
   });
 
   const drop = (name: string) => cy.get('input[type=file]').selectFile(`cypress/fixtures/catalogue/${name}`, {force: true});
-  const firstRows = () => cy.get('.reco-table tbody tr');
+  const firstRows = () => cy.get('[aria-labelledby=reco-preview-title] .reco-table tbody tr');
 
   describe('every format gives the same catalogue', () => {
     for (const name of ['sample.xlsx', 'sample.xls', 'sample.ods', 'sample-utf8.csv', 'sample-windows1252.csv', 'sample.tsv']) {

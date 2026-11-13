@@ -75,6 +75,19 @@ export class CatalogueRepository {
     return updateEntries(this.reference, items.map(item => ({path: this.itemPath(item), value: undefined})));
   }
 
+  /** Adds several items in one write. */
+  addItems(items: ReadonlyArray<CatalogueItem>): Promise<void> {
+    return updateEntries(this.reference, items.map(item => ({path: this.itemPath(item), value: toStored(this.config, item)})));
+  }
+
+  /** Files several items under another category, in one write: the new entries are written and the old ones removed together. */
+  moveItems(moves: ReadonlyArray<{item: CatalogueItem; categoryId: string}>): Promise<void> {
+    return updateEntries(this.reference, moves.flatMap(({item, categoryId}) => {
+      const moved = {...item, categoryId};
+      return [{path: this.itemPath(moved), value: toStored(this.config, moved)}, {path: this.itemPath(item), value: undefined}];
+    }));
+  }
+
   private itemPath(item: CatalogueItem): string[] {
     return this.config.categories
       ? [this.itemsField, item.categoryId ?? '', item.id]

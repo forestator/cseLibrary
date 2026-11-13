@@ -112,7 +112,8 @@ function clearlyDifferent(first: string, second: string): boolean {
   return !similarName(first, second) && ![...tokens(first)].some(token => right.has(token));
 }
 
-const decisionKey = (record: CatalogueRecord): string => record.id || `${record.barcode}|${record.title}`;
+/** How a catalogue line is remembered once the user said to stop proposing it. */
+export const decisionKey = (record: CatalogueRecord): string => record.id || `${record.barcode}|${record.title}`;
 const normalizedKey = (key: string): string => key.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
 
 // Board games and outside games are one family: a game can be filed in either and the file does not say which.

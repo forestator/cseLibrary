@@ -57,6 +57,11 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    // Choices made in the reconciliation with a catalogue export (lines never to be proposed again).
+    match /reconciliation/{document} {
+      allow read, write: if isSuperAdmin();
+    }
+
     match /ludotheque/{library} {
       allow read: if true;
       allow write: if isLudoAdmin();
