@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, Injector} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {Observable, of} from 'rxjs';
 import {BRICOLAGE_CONFIG, NAUTISME_CONFIG, PHOTO_CONFIG, SONOTHEQUE_CONFIG} from '../../catalogue/models/commission-configs';
@@ -8,12 +8,14 @@ import {BGGService} from '../../ludotheque/services/bgg.service';
 import {GamesRepository} from '../../ludotheque/services/games.repository';
 import {Comissions, LibraryId} from '../../models/common.model';
 import {COMMISSION_NAV} from '../../navigation/navigation.config';
+import {CloudinaryService} from '../../services/cloudinary.service';
 import {AuthentificationService} from '../../services/firebase/authentification.service';
 import {StorageUploadService} from '../../services/firebase/storage-upload.service';
 import {OpenAiService} from '../../services/open-ai.service';
 import {AdminCollection, AdminSection} from './admin-collection.model';
 import {createCatalogueCollection} from './catalogue-collection';
 import {createGameCollection} from './game-collection';
+import {createLibraryCollection} from './library-collection';
 
 interface CatalogueCollectionInfo {
   config: CommissionConfig;
@@ -35,8 +37,15 @@ const GAME_COLLECTIONS: ReadonlyArray<{libraryId: LibraryId; label: string; icon
   {libraryId: 'outsideGames', label: 'Grands jeux', icon: 'sports_handball'},
 ];
 
+const LIBRARY_COLLECTIONS: ReadonlyArray<{libraryId: string; label: string; icon: string}> = [
+  {libraryId: 'litterature-imaginaire', label: 'Imaginaire', icon: 'auto_stories'},
+  {libraryId: 'inclassable', label: 'Inclassable', icon: 'category'},
+  {libraryId: 'litterature-jeunesse', label: 'Jeunesse', icon: 'child_care'},
+  {libraryId: 'litterature-adulte', label: 'Adultes', icon: 'menu_book'},
+];
+
 const SECTION_SUMMARIES: Readonly<Record<string, string>> = {
-  [Comissions.BIBLIOTHEQUE]: 'Catégories, auteurs, séries et livres des quatre bibliothèques.',
+  [Comissions.BIBLIOTHEQUE]: 'Les livres des quatre bibliothèques, et leur structure (catégories, auteurs, séries).',
   [Comissions.LUDOTHEQUE]: 'Jeux de société, jeux vidéo et grands jeux.',
   [Comissions.BRICOLAGE]: 'Outils et machines à prêter.',
   [Comissions.SONOTHEQUE]: 'Matériel de sonorisation et de lumière.',
@@ -57,11 +66,16 @@ export class AdminCollections {
   private readonly bgg = inject(BGGService);
   private readonly openAi = inject(OpenAiService);
   private readonly dialog = inject(MatDialog);
+  private readonly injector = inject(Injector);
+  private readonly cloudinary = inject(CloudinaryService);
 
   private readonly collections: ReadonlyArray<AdminCollection> = [
     ...GAME_COLLECTIONS.map(info => createGameCollection({
       ...info, games: this.games, upload: this.upload, bgg: this.bgg, openAi: this.openAi, dialog: this.dialog,
       canManage$: this.auth.isUserLudoAdmin$,
+    })),
+    ...LIBRARY_COLLECTIONS.map(info => createLibraryCollection({
+      ...info, injector: this.injector, upload: this.upload, cloudinary: this.cloudinary, canManage$: this.auth.isUserSuperAdmin,
     })),
     ...CATALOGUE_COLLECTIONS.map(info => createCatalogueCollection({
       ...info, repository: this.catalogues.of(info.config), upload: this.upload, canManage$: this.auth[info.config.adminLink.guard],

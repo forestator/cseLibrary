@@ -10,7 +10,7 @@ npm install            # .npmrc active legacy-peer-deps
 npm start              # ng serve -> http://localhost:4200 (base Firestore de production, lecture publique)
 npx ng serve --configuration emulator   # contre les émulateurs Firestore + Auth (voir docs/firestore-model.md)
 npm run build          # sortie dist/CseBiblio
-npx ng test --watch=false --browsers=ChromeHeadlessCI   # CHROME_BIN=/usr/bin/google-chrome ; 28 tests
+npx ng test --watch=false --browsers=ChromeHeadlessCI   # CHROME_BIN=/usr/bin/google-chrome ; 98 tests
 npm run e2e            # Cypress contre les émulateurs (jamais la production) : voir docs/chantier.md, section Tests de bout en bout
 npm run deploy         # firebase deploy – action sortante, ne pas lancer sans demande
 ```
@@ -39,7 +39,7 @@ Règles globales de l'utilisateur (voir son CLAUDE.md) : standalone sans `standa
 | `catalogue/` | Fonctionnalité **générique** des 4 commissions simples (bricolage, sonothèque, nautisme, photo) : configs (`models/commission-configs.ts`), `CatalogueRepository` (+ `catalogue-mapper.ts` pur), pages home/category, ligne, menu. Une commission = une config. |
 | `ludotheque/` | Jeux de société, vidéo, grands jeux. `services/games.repository.ts` = seul accès aux données ; `GameCategoryPageComponent` / `game-row` génériques ; filtres via `FilterBoardGamesService`. |
 | `bibliotheque/` | Livres. `services/library.repository.ts` (lecture seule, signal), modales génériques (`modals/form-dialog`), arbre de réglages générique (`settings-view/settings-panel`), helpers purs dans `models/`. Les réglages (`settings-view`) éditent une copie, enregistrée par `LibraryRepository.save` (un batch : document de la bibliothèque + un document par catégorie ; les catégories retirées sont supprimées), réservé aux super-admins par les règles. |
-| `admin/` | `catalogue/` (page `/admin` : collections par commission), `form/` (formulaire unique `AdminItemDialog`, fonctions pures `admin-form.ts`), `admin-home` (connexion maison : email, Google, GitHub), `confirmation-modal`, `bgg-game-search-modal`. Voir `docs/admin-unifiee.md`. |
+| `admin/` | `catalogue/` (page `/admin` : collections par commission, dont les livres ; tri, sélection, actions groupées, export CSV), `form/` (formulaire unique `AdminItemDialog`, fonctions pures `admin-form.ts`), `admin-home` (connexion maison : email, Google, GitHub), `confirmation-modal`, `bgg-game-search-modal`. Voir `docs/admin-unifiee.md`. |
 | `common/` | home, badge, upload-form, pipes partagés. |
 | `models/`, `services/` | Modèles transverses ; `services/firebase/` (auth, storage-upload), `services/firestore/document-paths.ts` (helpers de chemins dans les documents), `cloudinary.service.ts`, `navigation.service.ts`. |
 

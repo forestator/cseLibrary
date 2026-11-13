@@ -2,7 +2,7 @@
   <p class="admin-loading" role="status">Chargement…</p>
 } @else if (section(); as current) {
   <div class="admin-page">
-    <app-catalogue-page-header [title]="current.label" [resume]="current.summary" [countLabel]="isLibrary() ? undefined : resultLabel()" />
+    <app-catalogue-page-header [title]="current.label" [resume]="current.summary" [countLabel]="showStructure() ? undefined : resultLabel()" />
 
     <a class="admin-back" routerLink="/admin">
       <mat-icon aria-hidden="true">arrow_back</mat-icon>
@@ -10,6 +10,15 @@
     </a>
 
     @if (isLibrary()) {
+      <div class="admin-chips" role="group" aria-label="Vue de la bibliothèque">
+        <button type="button" class="admin-chip" [class.admin-chip-active]="!showStructure()"
+                [attr.aria-pressed]="!showStructure()" (click)="showView('books')">Livres</button>
+        <button type="button" class="admin-chip" [class.admin-chip-active]="showStructure()"
+                [attr.aria-pressed]="showStructure()" (click)="showView('structure')">Structure</button>
+      </div>
+    }
+
+    @if (showStructure()) {
       <div class="admin-chips" role="group" aria-label="Bibliothèque">
         @for (option of libraryOptions(); track option.id) {
           <button type="button" class="admin-chip" [class.admin-chip-active]="libraryId() === option.id"

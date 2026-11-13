@@ -4,11 +4,12 @@ describe('Administration: the library', () => {
     cy.loginAsAdmin();
   });
 
-  it('embeds the library editor, one library at a time', () => {
+  it('embeds the structure editor, one library at a time', () => {
     cy.visit('/admin/bibliotheque');
-    cy.get('.admin-chip').should('have.length', 4);
+    cy.contains('.admin-chip', 'Structure').click();
+    cy.get('[aria-label="Bibliothèque"] .admin-chip').should('have.length', 4);
     cy.get('app-settings-view').should('contain.text', 'Gestion :');
-    cy.contains('.admin-chip', 'Inclassable').click();
+    cy.contains('[aria-label="Bibliothèque"] .admin-chip', 'Inclassable').click();
     cy.get('app-settings-view').should('contain.text', 'Inclassable');
   });
 

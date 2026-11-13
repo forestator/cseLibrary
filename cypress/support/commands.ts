@@ -73,7 +73,7 @@ Cypress.Commands.add('checkA11y', (selector?: string) => {
 Cypress.Commands.add('stubCloudinary', () => {
   cy.intercept('POST', 'https://api.cloudinary.com/**', {
     statusCode: 200,
-    body: {secure_url: 'https://res.cloudinary.com/seo9axkp/image/upload/fake-test-cover'},
+    body: {secure_url: 'https://res.cloudinary.com/seo9axkp/image/upload/fake-test-cover.jpg'},
   }).as('cloudinaryUpload');
 });
 

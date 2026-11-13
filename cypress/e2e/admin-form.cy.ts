@@ -118,7 +118,7 @@ describe('Administration: the shared item form', () => {
       cy.saveForm();
       cy.get('.mat-mdc-dialog-container').should('not.exist');
       games('boardGames').then(stored => {
-        expect(stored['zzimage1']['cover']).to.eq('https://res.cloudinary.com/seo9axkp/image/upload/fake-test-cover');
+        expect(stored['zzimage1']['cover']).to.eq('https://res.cloudinary.com/seo9axkp/image/upload/fake-test-cover.jpg');
       });
     });
 

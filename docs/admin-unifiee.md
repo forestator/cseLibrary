@@ -60,10 +60,10 @@ admin/catalogue/
 2. ~~**Formulaire unique**~~ **Fait le 2026-11-13** (voir « Formulaire unique » plus bas) : remplacer `CatalogueItemDialog` et le formulaire de jeu par un formulaire piloté par
    un schéma de champs ; reprendre BGG / OpenAI comme une « aide à la saisie » optionnelle d'une collection.
    Supprimer ensuite les routes `<commission>/admin/...` et `ludotheque/admin/games` (redirigées vers `/admin`).
-3. **Livres** : intégrer la bibliothèque à la liste globale. Particularité : les livres vivent dans un arbre
+3. ~~**Livres**~~ **Fait le 2026-11-13** (voir « Livres et actions groupées » plus bas) : intégrer la bibliothèque à la liste globale. Particularité : les livres vivent dans un arbre
    (catégorie → auteur/série → livre) et s'écrivent par catégorie ; la liste globale les affiche à plat, l'édition
    passe par le même formulaire, l'écriture reste portée par `LibraryRepository`.
-4. **Actions groupées, export CSV, import du catalogue** (voir « Cible »).
+4. **Actions groupées, export CSV** fait le 2026-11-13 ; **import du catalogue** reste à faire : (voir « Cible »).
 5. **Journal des modifications** (qui a changé quoi) : utile dès qu'il y a plusieurs administrateurs.
 
 ## Décisions à prendre
@@ -86,4 +86,15 @@ admin/catalogue/
 - Supprimés : `CatalogueItemDialog`, `AddGameModal`, `AddGameForm`, `UploadGame`, les anciennes méthodes d'écriture des dépôts.
 - **Vérifié sur les émulateurs** (jamais sur la production) : ajout, modification, changement de référence, de catégorie (sans doublon), champs cachés conservés, doublon de référence refusé, envoi d'image puis annulation (aucune fiche), suppression confirmée ; axe sans violation.
 - **Tri** (2026-11-13) : chaque colonne du tableau est triable (clic : croissant, décroissant, ordre d'origine ; `aria-sort`) ; collation française numérique, insensible à la casse et aux accents (« ludo96 » avant « ludo342 »), valeurs vides toujours en dernier, tri appliqué avant la pagination. Logique pure dans `admin-sort.ts`, testée.
+
+## Livres et actions groupées (fait le 2026-11-13)
+
+- **Livres dans la liste** : une collection par bibliothèque (`library-collection.ts`), regroupées dans la section Bibliothèque ; deux vues, une à la fois : « Livres » (par défaut, même liste, mêmes filtres, mêmes tris, même formulaire que les autres commissions) et « Structure » (l'éditeur d'arbre existant, pour catégories, auteurs, séries, éditeurs). La recherche couvre aussi l'auteur et la série.
+- **Écriture ciblée** (`LibraryRepository.saveBook / removeBooks / setBooksStatus`) : une transaction qui lit puis réécrit seulement les documents de catégorie concernés (et l'index des auteurs de la bibliothèque si l'auteur est nouveau), jamais `save` qui réécrit toute la bibliothèque. Changer de catégorie déplace le livre (retiré de l'ancienne, ajouté à la nouvelle, un auteur resté sans livre disparaît) ; pas de déplacement entre bibliothèques (la couverture dépend du dossier de la bibliothèque).
+- **Logique pure testée** (`bibliotheque/models/library-books.ts`) : retrouver, remplacer, insérer, supprimer, changer le statut, auteur retrouvé par ses mots dans n'importe quel ordre. Un livre par auteur porte `seriesId` = id de l'auteur ; un livre par série porte `parentId` = id de la série (série « Divers » ou celle nommée, créée au besoin).
+- **La cote n'est pas un identifiant** (beaucoup de livres en partagent une) : le formulaire n'a pas de champ clé pour les livres, aucune unicité n'est exigée. Les livres sans `id` sont retrouvés par leur place et reçoivent un id à la première modification.
+- **Couverture d'un livre** : le nom de fichier (`<id>.jpg`) est écrit, jamais l'URL (le pipe `bookCover` ajoute le préfixe).
+- **Résolution paresseuse** : la collection n'obtient `LibraryRepository` qu'à l'ouverture de la section Bibliothèque (sinon les quatre bibliothèques seraient relues sur toutes les pages d'administration).
+- **Actions groupées** : cases à cocher (une par ligne + « Tout sélectionner » pour toute la liste filtrée), barre « N sélectionné(s) » : changer le statut (une écriture par document, jamais une par objet), supprimer (avec confirmation), désélectionner. La sélection est vidée dès que la liste change. **Export CSV** de toute la liste filtrée et triée (BOM UTF-8, `;`, cellules entre guillemets, formules neutralisées).
+- **Pas dans cette étape** : recherche Google Books dans le formulaire d'un livre (elle existe encore dans la vue « Structure »), changement d'éditeur d'un livre, déplacement entre bibliothèques.
 

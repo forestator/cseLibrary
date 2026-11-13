@@ -1,4 +1,5 @@
 import {Observable} from 'rxjs';
+import {BookEntry} from '../../bibliotheque/models/library-books';
 import {CatalogueItem} from '../../catalogue/models/catalogue-item.model';
 import {Comissions, Game} from '../../models/common.model';
 import {CloudinaryUploadState} from '../../services/cloudinary.service';
@@ -12,20 +13,24 @@ export interface AdminItem {
   id: string;
   collectionId: string;
   categoryId?: string;
+  /** Shown instead of a label derived from `categoryId`, when the id means nothing to a reader (books). */
+  categoryName?: string;
   name: string;
   ref?: string;
   status?: string;
   cover?: string;
   /** The stored object, handed back to its collection to be edited. */
-  source: CatalogueItem | Game;
+  /** Words, besides the name, that the search looks into (a book's authors and series). */
+  searchText?: string;
+  source: CatalogueItem | Game | BookEntry;
 }
 
 /** How the form of a collection looks and which field identifies its items. */
 export interface AdminFormDefinition {
   /** "un jeu", "un outil": used in titles and messages. */
   noun: string;
-  /** Form field holding the identifier, which must be unique. */
-  keyField: string;
+  /** Form field holding the identifier, which must be unique. Absent when items have no identifier of their own (books). */
+  keyField?: string;
   sections: ReadonlyArray<AdminFormSection>;
   /** Initial values of a new item. */
   defaults: AdminFormValues;
@@ -60,8 +65,11 @@ export interface AdminCollection {
   /** Whether the signed-in user may add and edit here; the Firestore rules remain the real barrier. */
   canManage$: Observable<boolean>;
   items$: Observable<AdminItem[]>;
-  form: AdminFormDefinition;
+  /** A getter for collections whose options come from loaded data. */
+  readonly form: AdminFormDefinition;
   assist?: AdminAssist;
+  /** Form values of an item being edited, when they are not simply its stored fields. */
+  initialValues?(item: AdminItem): AdminFormValues;
   /** Identifiers already used, to keep new ones unique. */
   existingKeys(): Promise<string[]>;
   /** Uploads an image and reports its URL; nothing is written until the item is saved. */

@@ -59,6 +59,8 @@ export class AdminCatalogue {
   /** Keys of the selected items. Cleared whenever the list changes, so a bulk action never reaches a row that is out of sight. */
   protected readonly selection = signal<ReadonlySet<string>>(new Set());
   private readonly selectedLibraryId = signal<string | undefined>(undefined);
+  /** The library commission has two views, shown one at a time: its books, and its structure (the tree editor). */
+  protected readonly libraryView = signal<'books' | 'structure'>('books');
   private readonly limit = signal(PAGE_SIZE);
 
   /** `undefined` until the sign-in state is known. */
@@ -70,6 +72,7 @@ export class AdminCatalogue {
   protected readonly cards = computed(() => this.sections.filter(section => this.manageableIds()?.has(section.id)));
   protected readonly section = computed(() => this.cards().find(section => section.id === this.commission()));
   protected readonly isLibrary = computed(() => this.section()?.id === Comissions.BIBLIOTHEQUE);
+  protected readonly showStructure = computed(() => this.isLibrary() && this.libraryView() === 'structure');
 
   // --- library ---
   // The libraries are only loaded (a lot of reads) when the library itself is being managed.
@@ -97,7 +100,7 @@ export class AdminCatalogue {
     return this.loaded().flatMap(items => items ?? []).filter(item =>
       (!collectionId || item.collectionId === collectionId)
       && (!this.withoutCover() || !item.cover)
-      && words.every(word => plain(`${item.name} ${item.ref ?? ''} ${item.categoryId ?? ''}`).includes(word)));
+      && words.every(word => plain(`${item.name} ${item.ref ?? ''} ${item.categoryName ?? item.categoryId ?? ''} ${item.searchText ?? ''}`).includes(word)));
   });
   private readonly tableRows = computed<AdminRow[]>(() => {
     const labels = new Map(this.collections().map(collection => [collection.id, collection.label]));
@@ -105,7 +108,7 @@ export class AdminCatalogue {
     return this.filtered().map(item => ({
       item,
       collectionLabel: labels.get(item.collectionId) ?? '',
-      categoryLabel: item.categoryId ? categoryLabel(item.categoryId) : '',
+      categoryLabel: item.categoryName ?? (item.categoryId ? categoryLabel(item.categoryId) : ''),
       statusLabel: item.status ? (statusLabels.get(item.status) ?? item.status) : '',
     }));
   });
@@ -149,6 +152,7 @@ export class AdminCatalogue {
         this.collectionFilter.set(null);
         this.withoutCover.set(false);
         this.sort.set(null);
+        this.libraryView.set('books');
         this.selection.set(new Set());
         this.limit.set(PAGE_SIZE);
       });
@@ -257,6 +261,11 @@ export class AdminCatalogue {
       this.snackBar.open('Action impossible : vérifiez votre connexion et vos droits', 'Fermer', {duration: 8000});
       return 0;
     }
+  }
+
+  protected showView(view: 'books' | 'structure'): void {
+    this.libraryView.set(view);
+    this.selection.set(new Set());
   }
 
   protected selectLibrary(libraryId: string): void {

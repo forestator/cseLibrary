@@ -11,6 +11,8 @@ export interface AdminField {
   label: string;
   kind: AdminFieldKind;
   required?: boolean;
+  /** Required only for a new item (an existing one may keep what it has). */
+  requiredWhenAdding?: boolean;
   placeholder?: string;
   /** For `select` and `status`. */
   options?: ReadonlyArray<AdminFieldOption>;

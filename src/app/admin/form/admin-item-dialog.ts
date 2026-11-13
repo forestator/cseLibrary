@@ -69,8 +69,12 @@ export class AdminItemDialog {
 
   protected readonly invalid = computed(() => this.formStatus() !== 'VALID');
   protected readonly errors = computed<Record<string, string | undefined>>(() => {
-    const key = String(this.formValue()[controlName(this.definition.keyField)] ?? '').trim();
-    return {[controlName(this.definition.keyField)]: key && isKeyTaken(key, this.existingKeys(), this.item?.id) ? 'Cette référence existe déjà' : undefined};
+    const keyField = this.definition.keyField;
+    if (!keyField) {
+      return {};
+    }
+    const key = String(this.formValue()[controlName(keyField)] ?? '').trim();
+    return {[controlName(keyField)]: key && isKeyTaken(key, this.existingKeys(), this.item?.id) ? 'Cette référence existe déjà' : undefined};
   });
 
   // The cover is uploaded as soon as it is chosen but only written, with the rest, on Enregistrer.
@@ -94,7 +98,9 @@ export class AdminItemDialog {
   constructor() {
     void this.collection.existingKeys().then(keys => {
       this.existingKeys.set(keys);
-      this.form.controls[controlName(this.definition.keyField)].updateValueAndValidity();
+      if (this.definition.keyField) {
+        this.form.controls[controlName(this.definition.keyField)].updateValueAndValidity();
+      }
     });
   }
 
@@ -199,12 +205,12 @@ export class AdminItemDialog {
 
   private createForm(): FormGroup<Record<string, FormControl<AdminFormValue>>> {
     const initial: AdminFormValues = this.item
-      ? toFormValues(this.item.source as unknown as Record<string, unknown>, this.fields)
+      ? (this.collection.initialValues?.(this.item) ?? toFormValues(this.item.source as unknown as Record<string, unknown>, this.fields))
       : {...toFormValues(undefined, this.fields), ...this.definition.defaults};
-    const keyName = controlName(this.definition.keyField);
+    const keyName = this.definition.keyField ? controlName(this.definition.keyField) : undefined;
     const controls = Object.fromEntries(this.fields.map(field => {
       const validators = [
-        ...(field.required ? [Validators.required] : []),
+        ...(field.required || (field.requiredWhenAdding && !this.item) ? [Validators.required] : []),
         ...(field.name === keyName ? [(control: AbstractControl): ValidationErrors | null => this.uniqueKey(control)] : []),
       ];
       return [field.name, new FormControl<AdminFormValue>(initial[field.key], {nonNullable: true, validators})];
