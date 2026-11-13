@@ -7,7 +7,7 @@
     "build": "ng build",
     "deploy": "firebase deploy",
     "watch": "ng build --watch --configuration development",
-    "cypress": "npx open cypress",
+    "e2e": "npx firebase-tools emulators:exec --only firestore,auth --project cseh-50966 \"node scripts/e2e/run.mjs\"",
     "test": "ng test"
   },
   "private": true,

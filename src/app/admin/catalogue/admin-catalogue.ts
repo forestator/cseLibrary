@@ -1,5 +1,5 @@
 import {NgOptimizedImage} from '@angular/common';
-import {ChangeDetectionStrategy, Component, computed, effect, inject, input, signal, untracked} from '@angular/core';
+import {ChangeDetectionStrategy, Component, computed, effect, inject, input, Injector, signal, untracked} from '@angular/core';
 import {toObservable, toSignal} from '@angular/core/rxjs-interop';
 import {MatButton, MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
@@ -39,7 +39,7 @@ function plain(text: string): string {
 })
 export class AdminCatalogue {
   private readonly dialog = inject(MatDialog);
-  private readonly libraries = inject(LibraryRepository);
+  private readonly injector = inject(Injector);
   private readonly sections = inject(AdminCollections).sections;
 
   /** Bound from the route: the commission being managed, if any. */
@@ -62,8 +62,10 @@ export class AdminCatalogue {
   protected readonly isLibrary = computed(() => this.section()?.id === Comissions.BIBLIOTHEQUE);
 
   // --- library ---
+  // The libraries are only loaded (a lot of reads) when the library itself is being managed.
+  private readonly libraries = computed(() => this.isLibrary() ? this.injector.get(LibraryRepository).libraries() : undefined);
   protected readonly libraryOptions = computed(() =>
-    (this.libraries.libraries() ?? []).map(biblio => ({id: biblio.library.id ?? '', name: biblio.library.name})));
+    (this.libraries() ?? []).map(biblio => ({id: biblio.library.id ?? '', name: biblio.library.name})));
   protected readonly libraryId = computed(() => this.selectedLibraryId() ?? this.libraryOptions()[0]?.id);
 
   // --- objects ---

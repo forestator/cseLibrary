@@ -53,3 +53,7 @@ ui-debug.log
 
 # Firebase hosting deploy cache
 .firebase/
+
+# Cypress
+cypress/screenshots/
+cypress/videos/

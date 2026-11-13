@@ -1,37 +1,35 @@
-/// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Cypress {
+    interface Chainable {
+      /** Signs in with the test administrator of the Auth emulator from a clean visitor. */
+      loginAsAdmin(): Chainable<void>;
+      /** Visits a page as an anonymous visitor: Firebase keeps the sign-in in IndexedDB, which Cypress does not reset. */
+      visitAsVisitor(url: string): Chainable<void>;
+      /** Answers Cloudinary uploads with a fake URL, so a test never stores a real image. */
+      stubCloudinary(): Chainable<void>;
+    }
+  }
+}
+
+Cypress.Commands.add('loginAsAdmin', () => {
+  // Always from a clean visitor: a session kept in IndexedDB would show the form for a moment before being recognised.
+  cy.visitAsVisitor('/iWantToConfigureThisAwesomeApp');
+  cy.get('input[type=email]').type(Cypress.env('adminEmail'));
+  cy.get('input[type=password]').type(Cypress.env('adminPassword'), {log: false});
+  cy.get('button[type=submit]').click();
+  cy.contains('.login-status', Cypress.env('adminEmail'));
+});
+
+Cypress.Commands.add('visitAsVisitor', (url: string) => {
+  cy.visit(url, {onBeforeLoad: window => void window.indexedDB.deleteDatabase('firebaseLocalStorageDb')});
+});
+
+Cypress.Commands.add('stubCloudinary', () => {
+  cy.intercept('POST', 'https://api.cloudinary.com/**', {
+    statusCode: 200,
+    body: {secure_url: 'https://res.cloudinary.com/seo9axkp/image/upload/fake-test-cover'},
+  }).as('cloudinaryUpload');
+});
+
+export {};

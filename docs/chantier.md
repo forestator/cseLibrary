@@ -120,3 +120,12 @@ Base `(default)` recréée en Firestore natif, données copiées, hébergement r
 ## Mise à jour du 2026-11-13
 **Formulaire unique de l'administration : fait** (commit local, pas encore déployé). Détails dans `docs/admin-unifiee.md`, section « Formulaire unique ». Reste de la conception : livres dans la liste globale (phase 3), actions groupées / export CSV / import du catalogue (phase 4), journal des modifications (phase 5), comptes administrateurs par section.
 
+
+## Tests de bout en bout (Cypress), 2026-11-13
+- `npm run e2e` : démarre les émulateurs Firestore + Auth (`firebase emulators:exec`), sert l'application en mode émulateur (port 4301), charge les données de test, lance `cypress run`. **Jamais contre la production.** Java portable requis si absent : `JAVA_HOME=<jre> PATH=$JAVA_HOME/bin:$PATH npm run e2e` (voir `docs/firestore-model.md`).
+- Données de test : `cypress/fixtures/firestore/` (une fiche réduite par collection, un fichier `a__b__c.json` = document `a/b/c`, aucune donnée personnelle) ; `scripts/e2e/emulator-data.mjs` les charge et crée le compte administrateur de test (UID super-administrateur, `admin-test@example.com`). `cy.task('resetData')` remet les émulateurs dans cet état avant un test qui écrit.
+- Commandes : `cy.loginAsAdmin()`, `cy.visitAsVisitor(url)` (la connexion Firebase reste dans IndexedDB, que Cypress ne remet pas à zéro : toute page « visiteur » doit passer par cette commande), `cy.stubCloudinary()` (aucun envoi réel).
+- Particularités : Cypress 12 + TypeScript 6 → `cypress/tsconfig.json` propre (`ignoreDeprecations`) ; `cypress.config.mjs` ; `scrollBehavior: 'center'` (barre supérieure collante) ; délai de commande 10 s.
+- Suite actuelle : `smoke.cy.ts` (pages publiques, `/admin` fermé aux visiteurs) et `admin-smoke.cy.ts` (connexion, lien du menu, liste d'une commission, formulaire). À écrire ensuite : le scénario complet du formulaire (les 20 contrôles faits à la main le 13/11), détail d'un jeu, recherche, bibliothèque, accessibilité (axe).
+- Les anciens tests (`ludotheque.cy.ts`, `admin_ludo.cy.ts`) ciblaient d'anciens écrans : supprimés.
+- Trouvaille : le premier test d'administration a révélé que la page `/admin/<commission>` chargeait inutilement les 4 bibliothèques (des dizaines de lectures) et restait bloquée en « Chargement » au démarrage à froid ; elles ne sont plus chargées que pour la section Bibliothèque.

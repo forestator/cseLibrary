@@ -11,6 +11,7 @@ npm start              # ng serve -> http://localhost:4200 (base Firestore de pr
 npx ng serve --configuration emulator   # contre les émulateurs Firestore + Auth (voir docs/firestore-model.md)
 npm run build          # sortie dist/CseBiblio
 npx ng test --watch=false --browsers=ChromeHeadlessCI   # CHROME_BIN=/usr/bin/google-chrome ; 28 tests
+npm run e2e            # Cypress contre les émulateurs (jamais la production) : voir docs/chantier.md, section Tests de bout en bout
 npm run deploy         # firebase deploy – action sortante, ne pas lancer sans demande
 ```
 
@@ -60,4 +61,4 @@ Pas de Firebase Storage (payant). Couvertures sur **Cloudinary** (cloud `seo9axk
 - Les emprunts ont été supprimés (ne pas réintroduire l'ancien schéma : copie de l'objet, tableau indexé, dates persistées, statut LATE en base).
 - `bibliotheque2` (RTDB) : refonte inachevée, non migrée. Le suppression de catégorie dans les réglages (batch.delete) n'a pas été testée de bout en bout.
 - Clé OpenAI compromise dans l'historique de l'ancien dépôt : à révoquer.
-- `.vs/`, `.firebase/`, `.idea/` sont versionnés : bruit, ne pas modifier. Pas de CI. Cypress couvre seulement ludothèque / admin ludo (obsolète).
+- `.vs/`, `.firebase/`, `.idea/` sont versionnés : bruit, ne pas modifier. Pas de CI. Cypress : `npm run e2e` (pages publiques, administration ; la suite est à étoffer).
