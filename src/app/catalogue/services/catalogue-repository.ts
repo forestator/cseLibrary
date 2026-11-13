@@ -1,6 +1,6 @@
 import {DocumentReference, Firestore, doc, docData} from '@angular/fire/firestore';
 import {map, Observable, shareReplay, take} from 'rxjs';
-import {mergeAtPath, removeAtPath} from '../../services/firestore/document-paths';
+import {mergeAtPath, removeAtPath, saveAtPath} from '../../services/firestore/document-paths';
 import {Library} from '../../models/author.model';
 import {CatalogueItem, ItemCollection} from '../models/catalogue-item.model';
 import {CommissionConfig} from '../models/commission-config.model';
@@ -58,6 +58,11 @@ export class CatalogueRepository {
 
   add(item: CatalogueItem): Promise<void> {
     return mergeAtPath(this.reference, this.itemPath(item), toStored(this.config, item));
+  }
+
+  /** Writes the item whole; when it moved (new id or category) the entry it replaces is removed in the same update. */
+  save(item: CatalogueItem, previous?: CatalogueItem): Promise<void> {
+    return saveAtPath(this.reference, this.itemPath(item), toStored(this.config, item), previous && this.itemPath(previous));
   }
 
   update(item: CatalogueItem, changes: Partial<CatalogueItem>): Promise<void> {

@@ -30,3 +30,17 @@ export function replaceAtPath(reference: DocumentReference, path: ReadonlyArray<
 export function removeAtPath(reference: DocumentReference, path: ReadonlyArray<string>): Promise<void> {
   return updateDoc(reference, new FieldPath(...path), deleteField());
 }
+
+/**
+ * Writes the whole entry at `path`, and when `previousPath` is another place removes the entry that was there:
+ * one atomic update, so a renamed or recategorised item can never be left behind as a duplicate.
+ */
+export function saveAtPath(
+  reference: DocumentReference, path: ReadonlyArray<string>, value: object, previousPath?: ReadonlyArray<string>,
+): Promise<void> {
+  const entry = withoutNulls(withoutUndefined(value));
+  if (!previousPath || previousPath.join('\u0000') === path.join('\u0000')) {
+    return updateDoc(reference, new FieldPath(...path), entry);
+  }
+  return updateDoc(reference, new FieldPath(...path), entry, new FieldPath(...previousPath), deleteField());
+}
